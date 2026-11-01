@@ -240,8 +240,11 @@ method pivLoAt(Bars b, int i, int n, bool strictLeft) =>
 
 method firstAtOrAfter(Bars b, int t) =>
     int k = b.size() - 1
-    while k > b.base and b.T(k - 1) >= t
-        k -= 1
+    while k > b.base
+        if b.T(k - 1) >= t
+            k -= 1
+        else
+            break
     k
 
 // FVG bookkeeping on a new candle j: mark first opposite close-throughs, add the new FVG
@@ -468,10 +471,14 @@ f_ctScan(float bot, float top, bool sh, int tStart) =>
     bool pending = false
     int n = ctC.size()
     int k = n - 1
-    while k > 0 and ctT.get(k - 1) >= tStart
-        k -= 1
-    if n > 0 and ctT.get(k) < tStart
-        k += 1
+    while k > 0
+        if ctT.get(k - 1) >= tStart
+            k -= 1
+        else
+            break
+    if n > 0
+        if ctT.get(k) < tStart
+            k += 1
     while k < n
         float c = ctC.get(k)
         bool through = sh ? c > top : c < bot
@@ -625,7 +632,9 @@ if new4
                                 if tm < extT
                                     break
                                 if tm < extT + 4 * HOUR
-                                    if anc < 0 or (sh ? B1.H(m) > B1.H(anc) : B1.L(m) < B1.L(anc))
+                                    if anc < 0
+                                        anc := m
+                                    else if sh ? B1.H(m) > B1.H(anc) : B1.L(m) < B1.L(anc)
                                         anc := m
                         if anc >= 0
                             string info = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept | 4H " + conf + " | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
