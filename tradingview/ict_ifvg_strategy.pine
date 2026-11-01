@@ -17,7 +17,7 @@
 //  Rule 7  Intraday stop: previous COMPLETED 1H candle high/low (or 4H sweep extreme).
 //          Swing stop: 4H sweep extreme (or previous COMPLETED 4H candle). Both: + buffer, target 3R, breakeven at +1R.
 // =====================================================================================================
-strategy("ICT Sweep > IFVG > MSS Strategy (rules 1-7)", shorttitle="ICT IFVG Strategy", overlay=true, pyramiding=5, initial_capital=10000, default_qty_type=strategy.fixed, commission_type=strategy.commission_cash_per_contract, commission_value=0, slippage=0, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
+strategy("ICT Sweep > IFVG > MSS Strategy (rules 1-7)", shorttitle="ICT IFVG Strategy", overlay=true, pyramiding=5, initial_capital=10000, default_qty_type=strategy.fixed, commission_type=strategy.commission.cash_per_contract, commission_value=0, slippage=0, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
 
 // ───────────────────────────────────────────────────────────────────────────── inputs
 g1 = "Rule 1 - D/W/M swing levels"
