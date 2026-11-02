@@ -170,6 +170,12 @@ type Sig
     float     risk = na
     bool      beDone = false
     string    result = ""
+    line      lnE = na
+    line      lnS = na
+    line      lnT = na
+    label     lbE = na
+    label     lbS = na
+    label     lbT = na
 
 // ───────────────────────────────────────────────────────────────────────────── Bars helpers
 method size(Bars b) => b.base + b.o.size()
@@ -495,6 +501,19 @@ f_stopBase(bool sh, float px, float ext) =>
     bool ok = not na(base) and (sh ? base > px : base < px)
     ok ? base : na
 
+// entry / stop / target lines of a signal: stop extending, gray + dotted if the order never filled
+method finishLines(Sig g) =>
+    if not na(g.lnE)
+        bool filled = g.fillIdx >= 0
+        for ln in array.from(g.lnE, g.lnS, g.lnT)
+            line.set_x2(ln, time)
+            if not filled
+                line.set_color(ln, color.new(color.gray, 30))
+                line.set_style(ln, line.style_dotted)
+        label.delete(g.lbE)
+        label.delete(g.lbS)
+        label.delete(g.lbT)
+
 // close-back-through scan of the entry FVG on 5m closes from tStart: [cancelled, pending]
 f_ctScan(float bot, float top, bool sh, int tStart) =>
     bool cancelled = false
@@ -719,7 +738,16 @@ if new1 and ST.size() > 0
                                     Fvg fb = F1.get(pick)
                                     if sh ? f.bot < fb.bot : f.top > fb.top
                                         pick := m
-            if pick >= 0
+            bool dupSig = false
+            if pick >= 0 and SG.size() > 0
+                Fvg fd = F1.get(pick)
+                for m = 0 to SG.size() - 1
+                    Sig gd = SG.get(m)
+                    if gd.sh == sh and gd.sigT == B1.TC(q) and gd.top == fd.top and gd.bot == fd.bot
+                        dupSig := true
+            if pick >= 0 and dupSig
+                st.state := 1
+            else if pick >= 0
                 Fvg f = F1.get(pick)
                 st.state := 1
                 n1 += 1
@@ -737,6 +765,7 @@ if tfOK and SG.size() > 0
     for k = SG.size() - 1 to 0
         Sig g = SG.get(k)
         if g.state == 3
+            g.finishLines()
             SG.remove(k)
             continue
         bool sh = g.sh
@@ -905,6 +934,40 @@ if tfOK and SG.size() > 0
                     g.cancelled := cx
                     g.blocked := pend
 
+// ───────────────────────────────────────────────────────────────────────────── 5b. entry / stop / target levels on the chart
+var string actTxt = "-"
+actTxt := "-"
+if i_showE and tfOK and SG.size() > 0
+    for k = 0 to SG.size() - 1
+        Sig g = SG.get(k)
+        if (g.state == 1 or g.state == 2) and not na(g.lvl) and not na(g.sl) and not na(g.tp)
+            float ePx = g.state == 2 ? g.entry : g.lvl
+            string side = g.sh ? "SHORT" : "LONG"
+            string stx = g.state == 2 ? "OPEN" : "PENDING"
+            if na(g.lnE)
+                g.lnE := line.new(time, ePx, time + 1, ePx, xloc=xloc.bar_time, color=color.orange, width=2)
+                g.lnS := line.new(time, g.sl, time + 1, g.sl, xloc=xloc.bar_time, color=color.red, width=2)
+                g.lnT := line.new(time, g.tp, time + 1, g.tp, xloc=xloc.bar_time, color=color.teal, width=2)
+                g.lbE := label.new(time, ePx, "", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.orange, 15), textcolor=color.white, size=size.small)
+                g.lbS := label.new(time, g.sl, "", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.red, 15), textcolor=color.white, size=size.small)
+                g.lbT := label.new(time, g.tp, "", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.teal, 15), textcolor=color.white, size=size.small)
+            line.set_y1(g.lnE, ePx)
+            line.set_y2(g.lnE, ePx)
+            line.set_x2(g.lnE, time)
+            line.set_y1(g.lnS, g.sl)
+            line.set_y2(g.lnS, g.sl)
+            line.set_x2(g.lnS, time)
+            line.set_y1(g.lnT, g.tp)
+            line.set_y2(g.lnT, g.tp)
+            line.set_x2(g.lnT, time)
+            label.set_xy(g.lbE, time, ePx)
+            label.set_text(g.lbE, side + " " + stx + "  entry " + str.tostring(ePx, format.mintick))
+            label.set_xy(g.lbS, time, g.sl)
+            label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? "  (breakeven)" : ""))
+            label.set_xy(g.lbT, time, g.tp)
+            label.set_text(g.lbT, "TP " + str.tostring(g.tp, format.mintick) + "  (" + str.tostring(i_tgtR) + "R)")
+            actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
+
 // ───────────────────────────────────────────────────────────────────────────── 6. chart-TF swings (usable from the next candle)
 int pc = p - i_ltfPiv
 if pc >= BC.base + i_ltfPiv
@@ -960,7 +1023,7 @@ if barstate.islast
             f_drawLv(dHp, dHt, color.new(color.orange, 40), "D")
             f_drawLv(dLp, dLt, color.new(color.orange, 40), "D")
 
-var table tb = table.new(position.top_right, 2, 11, bgcolor=color.new(color.black, 20), border_width=1)
+var table tb = table.new(position.top_right, 2, 12, bgcolor=color.new(color.black, 20), border_width=1)
 if barstate.islast and i_table
     table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? (isSwing ? "SWING model - entry" : "INTRADAY model - entry") : (isSwing ? "Use a 5m (or 1H) chart" : "Use a 5m chart"), text_color=tfOK ? color.white : color.yellow, text_size=size.small)
     table.cell(tb, 1, 0, isSwing ? i_swEntry : i_entry, text_color=color.white, text_size=size.small)
@@ -984,3 +1047,5 @@ if barstate.islast and i_table
     table.cell(tb, 1, 9, nTrades > 0 ? str.tostring(holdH / nTrades, "0.0") + " h" : "-", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 10, "Stop / target", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 10, (isSwing ? i_swStop : i_inStop) + " / " + str.tostring(i_tgtR) + "R" + (i_be ? ", BE +" + str.tostring(i_beR) + "R" : ""), text_color=color.white, text_size=size.small)
+    table.cell(tb, 0, 11, "Active trade", text_color=color.white, text_size=size.small)
+    table.cell(tb, 1, 11, actTxt, text_color=actTxt == "-" ? color.white : color.yellow, text_size=size.small)

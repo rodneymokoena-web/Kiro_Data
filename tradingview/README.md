@@ -28,6 +28,14 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 6. **Risk:** swing stop beyond the **4H sweep extreme**, intraday stop beyond the **previous completed 1H candle**
    (+ 2 point buffer); **target 3R**; **stop to breakeven at +1R**; strategy risks 1 % of equity per trade.
 
+## On the chart
+- **Entry / stop / target lines** for every pending and open trade: orange = entry, red = stop, green = target, with
+  price labels on the right ("LONG PENDING entry …", "SL … (breakeven)" after the stop moves, "TP … (3R)").
+  They update every candle (the stop is final at the fill) and turn gray + dotted if the order expires unfilled.
+- **Stats table** (top right): model and entry, trades (W / L / BE), win rate, profit factor, total R, average hold,
+  stop / target settings and the **active trade** with its entry / SL / TP.
+- A 1H IFVG reached through two different 4H setups is traded once.
+
 ## Default settings
 | Input | Default |
 |---|---|
@@ -41,8 +49,8 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 ## Backtest reference – US100 only, 2021-04 → 2026-10
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** 1H touch, 4H extreme stop | 24 trades · PF 3.34 · +18.90R · max DD 2.0 % | 24 trades · PF 2.97 · +17.88R · max DD 2.0 % |
-| **Intraday** 5m touch, prev 1H candle stop | 17 trades · PF 3.25 · +14.44R · max DD 2.2 % | 17 trades · PF 4.93 · +21.29R · max DD 2.1 % |
+| **Swing** 1H touch, 4H extreme stop | 23 trades · PF 2.97 · +15.90R · max DD 2.0 % | 23 trades · PF 2.64 · +14.88R · max DD 2.0 % |
+| **Intraday** 5m touch, prev 1H candle stop | 16 trades · PF 3.27 · +14.47R · max DD 2.2 % | 16 trades · PF 4.95 · +21.32R · max DD 2.1 % |
 
 2021-2023 was never used for tuning (out of sample). About 4 swing and 3 intraday trades per year.
 Both models trade the same setups – if you run both on one account, use 0.5 % risk per model.
