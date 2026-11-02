@@ -3,12 +3,16 @@
 //  ICT  D/W/M sweep -> 4H IFVG -> 1H IFVG -> entry       two models (Python backtest rules 1-7 + swing.py)
 //  Strategy - generated from pine/core.pine by pine/build.py - edit core.pine, then rebuild both scripts.
 //
-//  MODEL "Intraday (5m entry)": 5m chart. Entry filter 5m Touch / 5m 50% CE at the MSS FVG (rule 6).
-//  MODEL "Swing (1H entry)":     5m chart recommended (1H also works). Entry filter 1H Touch / 1H 50% CE at the 1H IFVG.
+//  US100 ONLY (default): trades only on a US100 / NAS100 / USTEC chart.
+//  MODEL "Swing (1H entry)" (default, main): 5m chart recommended (1H works). 1H Touch (default) / 1H 50% CE at the
+//          1H IFVG, stop beyond the 4H sweep extreme.
+//  MODEL "Intraday (5m entry)" (optional): 5m chart. 5m Touch (default) / 5m 50% CE at the MSS FVG (rule 6),
+//          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
 //
 //  Rule 1  D/W/M swing highs/lows (N candles each side, confirmed after N candles).
-//  Rule 2  A swing level is swept by a 4H candle; a 4H FVG in the leg into the sweep gets inverted.
+//  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
+//          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
 //  Rule 4  The 4H inversion needs displacement (>= 2 candles, >= 1 ATR) AND (CISD or MSS).
 //  Rule 5  4H IFVG retested within 48h; a 1H FVG of that retest leg is inverted with displacement.
 //  Rule 6  1H IFVG retested within 24h; trigger = chart-TF MSS with displacement or 1H CISD;
@@ -28,7 +32,10 @@ i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
 i_showLv = input.bool(true, "Show unbroken levels", group=g1)
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
-i_legLB  = input.int(20, "Leg lookback before the sweep (4H candles)", minval=2, group=g2)
+i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
+i_legPiv = input.int(2, "Leg swing size (4H candles each side)", minval=1, group=g2)
+i_legLB  = input.int(20, "N for 'Lowest/highest of N'", minval=2, group=g2)
+i_fvgInto = input.bool(true, "4H FVG must be formed into the sweep", group=g2)
 i_invWin = input.int(20, "Inversion window after the sweep (4H candles)", minval=1, group=g2)
 i_dMin   = input.int(2, "Displacement: minimum candles", minval=1, group=g2)
 i_dAtr   = input.float(1.0, "Displacement: minimum move (x ATR14)", minval=0, step=0.1, group=g2)
@@ -40,7 +47,8 @@ i_rt4Hrs = input.int(48, "4H IFVG retest window (hours after the 4H signal)", mi
 i_inv1   = input.int(20, "1H inversion window (1H candles after the retest)", minval=1, group=g3)
 
 g0 = "Model"
-i_model   = input.string("Intraday (5m entry)", "Model", options=["Intraday (5m entry)", "Swing (1H entry)"], group=g0, tooltip="Intraday: rules 1-6, entry at the 5m MSS FVG, short holds. Swing: rules 1-5, entry at the 1H IFVG, multi-day holds.")
+i_us100   = input.bool(true, "Trade US100 only (NAS100 / US100 / USTEC / NDX)", group=g0)
+i_model   = input.string("Swing (1H entry)", "Model", options=["Swing (1H entry)", "Intraday (5m entry)"], group=g0, tooltip="Intraday: rules 1-6, entry at the 5m MSS FVG, short holds. Swing: rules 1-5, entry at the 1H IFVG, multi-day holds.")
 i_swEntry = input.string("1H Touch", "Swing entry filter: limit at the 1H IFVG", options=["1H Touch", "1H 50% CE"], group=g0, tooltip="1H Touch = limit at the 1H IFVG near edge. 1H 50% CE = limit at its midpoint.")
 i_swStop  = input.string("4H sweep extreme", "Swing stop", options=["4H sweep extreme", "Previous 4H candle"], group=g0)
 i_swValid = input.int(24, "Swing order valid (hours after the 1H signal)", minval=1, group=g0)
@@ -78,7 +86,10 @@ cBear = color.new(color.red, 70)
 isM5  = timeframe.period == "5"
 isM15 = timeframe.period == "15"
 isSwing = i_model == "Swing (1H entry)"
-tfOK  = isSwing ? (timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600) : isM5
+string symU = str.upper(syminfo.ticker)
+isUS100 = str.contains(symU, "NAS100") or str.contains(symU, "US100") or str.contains(symU, "USTEC") or str.contains(symU, "NDX") or str.contains(symU, "US TECH") or str.contains(symU, "NQ")
+symOK = not i_us100 or isUS100
+tfOK  = symOK and (isSwing ? (timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600) : isM5)
 
 // ───────────────────────────────────────────────────────────────────────────── types
 type Bars
@@ -381,12 +392,29 @@ f_sweeps(array<float> lvP, array<int> lvT, bool isHigh, string tf, int j) =>
                     if not seen
                         sweptP.push(p)
                         sweptT.push(ct)
-                        int lo = math.max(j - i_legLB, B4.base)
-                        int org = lo
-                        for m = lo to j
-                            if isHigh ? B4.L(m) < B4.L(org) : B4.H(m) > B4.H(org)
-                                org := m
-                        SW.push(Sweep.new(isHigh ? 1 : -1, j, org, p, tf))
+                        int org = -1
+                        if i_legMode == "Last 4H swing"
+                            // last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep candle j
+                            int top = j - i_legPiv
+                            int bot = B4.base + i_legPiv
+                            if top >= bot
+                                for m = top to bot
+                                    bool isPiv = true
+                                    for q2 = m - i_legPiv to m + i_legPiv
+                                        if isHigh ? B4.L(q2) < B4.L(m) : B4.H(q2) > B4.H(m)
+                                            isPiv := false
+                                            break
+                                    if isPiv
+                                        org := m
+                                        break
+                        else
+                            int lo = math.max(j - i_legLB, B4.base)
+                            org := lo
+                            for m = lo to j
+                                if isHigh ? B4.L(m) < B4.L(org) : B4.H(m) > B4.H(org)
+                                    org := m
+                        if org >= 0
+                            SW.push(Sweep.new(isHigh ? 1 : -1, j, org, p, tf))
     while sweptP.size() > 400
         sweptP.shift()
         sweptT.shift()
@@ -603,7 +631,7 @@ if new4
             if F4.size() > 0
                 for m = 0 to F4.size() - 1
                     Fvg f = F4.get(m)
-                    if f.dir == want and f.inv == j and f.i3 - 2 >= sw.origin
+                    if f.dir == want and f.inv == j and f.i3 - 2 >= sw.origin and (not i_fvgInto or f.i3 - 1 <= sw.s)
                         cand.push(m)
             while cand.size() > 0 and not sw.done
                 int bi = 0
@@ -934,7 +962,7 @@ if barstate.islast
 
 var table tb = table.new(position.top_right, 2, 11, bgcolor=color.new(color.black, 20), border_width=1)
 if barstate.islast and i_table
-    table.cell(tb, 0, 0, tfOK ? (isSwing ? "SWING model - entry" : "INTRADAY model - entry") : (isSwing ? "Use a 5m (or 1H) chart" : "Use a 5m chart"), text_color=tfOK ? color.white : color.yellow, text_size=size.small)
+    table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? (isSwing ? "SWING model - entry" : "INTRADAY model - entry") : (isSwing ? "Use a 5m (or 1H) chart" : "Use a 5m chart"), text_color=tfOK ? color.white : color.yellow, text_size=size.small)
     table.cell(tb, 1, 0, isSwing ? i_swEntry : i_entry, text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 1, "4H setups", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 1, str.tostring(n4), text_color=color.white, text_size=size.small)
