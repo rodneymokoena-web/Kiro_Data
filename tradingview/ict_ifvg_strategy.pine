@@ -13,11 +13,14 @@
 //  Rule 1  D/W/M swing highs/lows (N candles each side, confirmed after N candles).
 //  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
 //          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
-//  Rule 4  The 4H inversion needs displacement (>= 2 candles, >= 1 ATR) AND (CISD or MSS).
-//  Rule 3 option "1H wick + close (Ha)" (swing model only, off by default): the sweep is timed on 1H; the LAST 4H FVG
+//  Rule 3  (M1, default) The 4H inversion needs 4H displacement (>= 2 candles, >= 1 ATR) AND a 1H MSS: a 1H close
+//          through the last 1H swing low (short) / high (long) before the sweep extreme, by the close of the 4H
+//          inversion candle. No 4H CISD. (Input "Rule 3 confirmation" can switch back to the previous 4H CISD or MSS.)
+//  Rule 3 option "1H wick + close (M6)" (swing model only, off by default): the sweep is timed on 1H; the LAST 4H FVG
 //          of the sweeping leg (middle candle at or before the sweep's 4H candle, within 60 4H candles, no 1H close
 //          through it before the sweep) is inverted by the FIRST 1H candle whose wick trades through it, and that
-//          candle must CLOSE through it, with 1H displacement, the 4H CISD level broken by a 1H close AND a 1H MSS.
+//          candle must CLOSE through it, with 1H displacement AND a 1H MSS = a close through the most recent confirmed
+//          1H swing low (short) / high (long), formed before or after the sweep. No 4H CISD.
 //  Rule 5  4H IFVG retested within 48h; a 1H FVG of that retest leg is inverted with displacement.
 //  Rule 6  1H IFVG retested within 24h; trigger = chart-TF MSS with displacement or 1H CISD;
 //          entry = limit at the MSS FVG (touch or 50% CE); a 5m close back through the entry FVG
@@ -44,10 +47,11 @@ i_invWin = input.int(20, "Inversion window after the sweep (4H candles)", minval
 i_dMin   = input.int(2, "Displacement: minimum candles", minval=1, group=g2)
 i_dAtr   = input.float(1.0, "Displacement: minimum move (x ATR14)", minval=0, step=0.1, group=g2)
 i_dBody  = input.float(0.0, "Displacement: minimum body / range per candle", minval=0, maxval=1, step=0.1, group=g2)
-i_mssPiv = input.int(2, "4H MSS swing size", minval=1, group=g2)
-i_rule3  = input.string("4H close (current)", "Rule 3: 4H FVG inversion (swing model)", options=["4H close (current)", "1H wick + close (Ha)"], group=g2, tooltip="4H close (current) = a 4H candle closes through the 4H FVG, 4H displacement + 4H CISD/MSS.\n1H wick + close (Ha) = optional, swing model only: the first 1H candle after the sweep that wicks through the last 4H FVG of the sweeping leg must also close through it, with 1H displacement, the 4H CISD level broken by a 1H close AND a 1H MSS. Intraday always uses the current rule.")
-i_haWin  = input.int(80, "Ha: inversion window after the sweep (1H candles)", minval=1, group=g2)
-i_haLB   = input.int(60, "Ha: last FVG at most N 4H candles before the sweep", minval=1, group=g2)
+i_mssPiv = input.int(2, "MSS swing size (4H and 1H)", minval=1, group=g2)
+i_conf   = input.string("1H MSS (M1)", "Rule 3 confirmation (4H close inversion)", options=["1H MSS (M1)", "4H CISD or MSS (previous)"], group=g2, tooltip="1H MSS (M1, default) = 4H displacement AND a 1H close through the last 1H swing low (short) / high (long) before the sweep extreme, by the 4H inversion close. No 4H CISD.\n4H CISD or MSS (previous) = 4H displacement AND (4H CISD or 4H MSS).")
+i_rule3  = input.string("4H close (M1)", "Rule 3: 4H FVG inversion (swing model)", options=["4H close (M1)", "1H wick + close (M6)"], group=g2, tooltip="4H close (M1, default) = a 4H candle closes through the 4H FVG, confirmed as set in 'Rule 3 confirmation'.\n1H wick + close (M6) = optional, swing model only: the first 1H candle after the sweep that wicks through the last 4H FVG of the sweeping leg must also close through it, with 1H displacement AND a 1H MSS (close through the most recent 1H swing, formed before or after the sweep). No 4H CISD. Intraday always uses 4H close.")
+i_haWin  = input.int(80, "M6: inversion window after the sweep (1H candles)", minval=1, group=g2)
+i_haLB   = input.int(60, "M6: last FVG at most N 4H candles before the sweep", minval=1, group=g2)
 
 g3 = "Rule 5 - 4H IFVG retest > 1H IFVG"
 i_rt4Hrs = input.int(48, "4H IFVG retest window (hours after the 4H signal)", minval=1, group=g3)
@@ -93,7 +97,8 @@ cBear = color.new(color.red, 70)
 isM5  = timeframe.period == "5"
 isM15 = timeframe.period == "15"
 isSwing = i_model == "Swing (1H entry)"
-useHa   = isSwing and i_rule3 == "1H wick + close (Ha)"
+useHa   = isSwing and i_rule3 == "1H wick + close (M6)"     // rule 3 option M6 (variable name kept)
+useM1   = i_conf == "1H MSS (M1)"
 string symU = str.upper(syminfo.ticker)
 isUS100 = str.contains(symU, "NAS100") or str.contains(symU, "US100") or str.contains(symU, "USTEC") or str.contains(symU, "NDX") or str.contains(symU, "US TECH") or str.contains(symU, "NQ")
 symOK = not i_us100 or isUS100
@@ -124,7 +129,7 @@ type Sweep
     string tf
     bool   done = false
 
-type Sweep1                 // rule 3 option Ha: a D/W/M level swept on 1H
+type Sweep1                 // rule 3 option M6: a D/W/M level swept on 1H
     int    dir         // 1 = swing high taken (short idea), -1 = swing low taken (long idea)
     int    s1          // 1H index of the sweep candle
     int    s4          // 4H index of the candle containing it (may still be forming)
@@ -293,6 +298,26 @@ method mssHit(Bars b, int ext, int j, bool sh) =>
                     break
     mss
 
+// MSS "most recent swing": from candle s to j, the first close through the most recent swing low (short) / high (long)
+// already confirmed at that candle (pivot + i_mssPiv < t), formed before or after the sweep
+method mssAny(Bars b, int s, int j, bool sh) =>
+    bool mss = false
+    if j >= s
+        for t = s to j
+            int pv = -1
+            int top = t - i_mssPiv - 1
+            if top >= b.base + i_mssPiv
+                for k = top to b.base + i_mssPiv
+                    if sh ? b.pivLoAt(k, i_mssPiv, true) : b.pivHiAt(k, i_mssPiv, true)
+                        pv := k
+                        break
+            if pv >= 0
+                float lv = sh ? b.L(pv) : b.H(pv)
+                if sh ? b.C(t) < lv : b.C(t) > lv
+                    mss := true
+                    break
+    mss
+
 method firstAtOrAfter(Bars b, int t) =>
     int k = b.size() - 1
     while k > b.base
@@ -404,13 +429,13 @@ var array<int>   sweptT = array.new_int()
 var array<Sweep> SW = array.new<Sweep>()
 var array<Setup> ST = array.new<Setup>()
 var array<Sig>   SG = array.new<Sig>()
-var array<Sweep1> SW1 = array.new<Sweep1>()   // rule 3 option Ha
-var array<float> haP = array.new_float()      // unbroken D/W/M levels tracked on 1H (Ha)
+var array<Sweep1> SW1 = array.new<Sweep1>()   // rule 3 option M6
+var array<float> haP = array.new_float()      // unbroken D/W/M levels tracked on 1H (M6)
 var array<int>   haT = array.new_int()
 var array<bool>  haHi = array.new_bool()
 var array<string> haTf = array.new_string()
 var array<int>   haLast = array.new_int(6, 0)  // newest level confirmation time merged per list
-var array<int>   haKeys = array.new_int()      // 4H FVGs that already produced an Ha setup
+var array<int>   haKeys = array.new_int()      // 4H FVGs that already produced an M6 setup
 var int   nTrades = 0
 var int   nBE = 0
 var float grossW = 0.0
@@ -509,7 +534,30 @@ f_quality(int s, int j, bool sh) =>
                     mss := true
                     break
     string conf = cisd and mss ? "CISD+MSS" : cisd ? "CISD" : mss ? "MSS" : "-"
-    [dOk and (cisd or mss), dN, dAtr, conf, ext]
+    bool passed = dOk and (cisd or mss)
+    if useM1
+        // M1: 1H MSS on the 1H swing before the 1H sweep extreme, from the 4H sweep candle to the 4H inversion close
+        int s1 = -1
+        int j1 = -1
+        if B1.size() > B1.base
+            for mm = B1.size() - 1 to B1.base
+                int tm = B1.T(mm)
+                if tm < B4.T(s)
+                    break
+                if tm < B4.TC(j)
+                    if j1 < 0
+                        j1 := mm
+                    s1 := mm
+        bool mss1 = false
+        if s1 >= 0 and j1 >= s1
+            int e1 = s1
+            for mm = s1 to j1
+                if sh ? B1.H(mm) > B1.H(e1) : B1.L(mm) < B1.L(e1)
+                    e1 := mm
+            mss1 := B1.mssHit(e1, j1, sh)
+        conf := mss1 ? "1H MSS" : "-"
+        passed := dOk and mss1
+    [passed, dN, dAtr, conf, ext]
 
 // 4H index of the candle containing time t (B4.size() = the candle still forming)
 f_h4idx(int t) =>
@@ -524,25 +572,7 @@ f_h4idx(int t) =>
                     break
     r
 
-// 4H CISD level: open of the first candle of the consecutive delivery run (bullish for a short) ending at 4H candle d0
-f_cisdLv4(int d0, bool sh) =>
-    int sgn = sh ? -1 : 1
-    int d = d0
-    float lv = na
-    if d >= B4.base
-        if math.sign(B4.C(d) - B4.O(d)) == sgn
-            d -= 1
-    int m = d
-    while m >= B4.base
-        if math.sign(B4.C(m) - B4.O(m)) == -sgn
-            m -= 1
-        else
-            break
-    if d >= B4.base and m < d
-        lv := B4.O(m + 1)
-    lv
-
-// Ha: add newly confirmed D/W/M levels to the 1H level list (levels are confirmed in time order)
+// M6: add newly confirmed D/W/M levels to the 1H level list (levels are confirmed in time order)
 f_merge(array<float> P, array<int> T, bool isHi, string tf, int slot) =>
     if not na(P)
         if P.size() > 0
@@ -786,7 +816,7 @@ if new4
                                 label.new(B4.TC(j), sh ? B4.H(j) : B4.L(j), "4H " + (sh ? "short" : "long") + "\n" + info, xloc=xloc.bar_time, style=sh ? label.style_label_down : label.style_label_up, color=sh ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                             alert(syminfo.ticker + " 4H setup " + (sh ? "SHORT" : "LONG") + ": " + info, alert.freq_once_per_bar_close)
 
-// ───────────────────────────────────────────────────────────────────────────── 3b. rule 3 option Ha (swing only) on the new 1H candle
+// ───────────────────────────────────────────────────────────────────────────── 3b. rule 3 option M6 (swing only) on the new 1H candle
 if new1 and useHa
     if i_useD
         f_merge(dHp, dHt, true, "D", 0)
@@ -846,29 +876,20 @@ if new1 and useHa
                     for m = sw.s1 to q
                         if sh ? B1.H(m) > B1.H(e1) : B1.L(m) < B1.L(e1)
                             e1 := m
-                    bool mss = B1.mssHit(e1, q, sh)
-                    int e4 = f_h4idx(B1.T(e1))
-                    int k4 = B4.size() - 1
-                    float cLv = f_cisdLv4(e4 <= k4 ? e4 : e4 - 1, sh)
-                    bool cisd = false
-                    if not na(cLv)
-                        for m = e1 to q
-                            if sh ? B1.C(m) < cLv : B1.C(m) > cLv
-                                cisd := true
-                                break
+                    bool mss = B1.mssAny(sw.s1, q, sh)
                     int key = want * (f.i3 + 1)
-                    if thr and dOk and cisd and mss and not haKeys.includes(key)
+                    if thr and dOk and mss and not haKeys.includes(key)
                         haKeys.push(key)
                         while haKeys.size() > 200
                             haKeys.shift()
                         float ext1 = sh ? B1.H(e1) : B1.L(e1)
-                        string info = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept | Ha: 1H wick+close, 4H CISD + 1H MSS | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
+                        string info = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept | M6: 1H wick+close + 1H MSS | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
                         ST.push(Setup.new(sh, f.top, f.bot, B1.TC(q), ext1, e1, info, 0, array.new_int(), array.new_int(), -10))
                         n4 += 1
                         if i_show4
-                            box.new(B4.T(f.i3 - 2), f.top, B1.TC(q) + 24 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG (Ha)", text_size=size.tiny, text_color=color.gray)
-                            label.new(B1.TC(q), sh ? B1.H(q) : B1.L(q), "4H " + (sh ? "short" : "long") + " (Ha)\n" + info, xloc=xloc.bar_time, style=sh ? label.style_label_down : label.style_label_up, color=sh ? color.red : color.teal, textcolor=color.white, size=size.tiny)
-                        alert(syminfo.ticker + " 4H setup (Ha) " + (sh ? "SHORT" : "LONG") + ": " + info, alert.freq_once_per_bar_close)
+                            box.new(B4.T(f.i3 - 2), f.top, B1.TC(q) + 24 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG (M6)", text_size=size.tiny, text_color=color.gray)
+                            label.new(B1.TC(q), sh ? B1.H(q) : B1.L(q), "4H " + (sh ? "short" : "long") + " (M6)\n" + info, xloc=xloc.bar_time, style=sh ? label.style_label_down : label.style_label_up, color=sh ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                        alert(syminfo.ticker + " 4H setup (M6) " + (sh ? "SHORT" : "LONG") + ": " + info, alert.freq_once_per_bar_close)
 
 // ───────────────────────────────────────────────────────────────────────────── 4. rule 5 on the new 1H candle
 if new1 and ST.size() > 0
@@ -1203,7 +1224,7 @@ var table tb = table.new(position.top_right, 2, 12, bgcolor=color.new(color.blac
 if barstate.islast and i_table
     table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? (isSwing ? "SWING model - entry" : "INTRADAY model - entry") : (isSwing ? "Use a 5m (or 1H) chart" : "Use a 5m chart"), text_color=tfOK ? color.white : color.yellow, text_size=size.small)
     table.cell(tb, 1, 0, isSwing ? i_swEntry : i_entry, text_color=color.white, text_size=size.small)
-    table.cell(tb, 0, 1, useHa ? "4H setups (rule 3 Ha)" : "4H setups", text_color=color.white, text_size=size.small)
+    table.cell(tb, 0, 1, useHa ? "4H setups (rule 3 M6)" : useM1 ? "4H setups (rule 3 M1)" : "4H setups", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 1, str.tostring(n4), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 2, "1H IFVG signals", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 2, str.tostring(n1), text_color=color.white, text_size=size.small)

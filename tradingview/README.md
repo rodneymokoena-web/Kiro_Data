@@ -18,13 +18,16 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 2. **Sweep + leg + FVG:** a wick trades through a D/W/M level. The leg into the sweep starts at the **last 4H swing
    low / high before the sweep** (2 candles each side). A **4H FVG formed by that leg into the sweep** (middle candle at
    or before the sweep candle).
-3. **4H inversion:** within 20 4H candles a 4H candle **closes through** that FVG, with displacement (≥ 2 candles,
-   ≥ 1 ATR14) **and** CISD or MSS.
-   - **Optional, swing only – Rule 3 "1H wick + close (Ha)"** (input *Rule 3: 4H FVG inversion*, off by default):
+3. **4H inversion (Rule 3 "M1"):** within 20 4H candles a 4H candle **closes through** that FVG, with 4H displacement
+   (≥ 2 candles, ≥ 1 ATR14) **and a 1H MSS**: a 1H close through the last 1H swing low (short) / high (long) before
+   the sweep extreme, by the close of the 4H inversion candle. **No 4H CISD.** (Input *Rule 3 confirmation* can switch
+   back to the previous "4H CISD or MSS".)
+   - **Optional, swing only – Rule 3 "1H wick + close (M6)"** (input *Rule 3: 4H FVG inversion*, off by default):
      the sweep is timed on 1H; the **last 4H FVG of the sweeping leg** (middle candle at or before the sweep's 4H
      candle, within 60 4H candles, no 1H close through it before the sweep) is inverted by the **first 1H candle whose
-     wick trades through it**, and that candle must **close through it**, with 1H displacement, the **4H CISD level
-     broken by a 1H close and a 1H MSS**. Within 80 1H candles of the sweep. Intraday always uses the current rule.
+     wick trades through it**, and that candle must **close through it**, with 1H displacement and a **1H MSS** = a
+     close through the most recent confirmed 1H swing low / high, formed before or after the sweep. No 4H CISD.
+     Within 80 1H candles of the sweep. Intraday always uses M1.
 4. **4H IFVG retest** within 48 h, then a **1H FVG** of the retest leg is inverted with displacement → 1H IFVG signal.
 5. **Entry:**
    - **Swing (default, main):** limit at the 1H IFVG – **1H Touch** (default) or 1H 50% CE – valid 24 h.
@@ -49,20 +52,24 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 | Swing entry filter / stop | **1H Touch** / **4H sweep extreme** |
 | Intraday entry filter / stop | 5m Touch / Previous 1H candle |
 | Leg start / FVG into sweep | **Last 4H swing** / **on** |
-| Rule 3: 4H FVG inversion | **4H close (current)** – optional *1H wick + close (Ha)* for the swing model |
+| Rule 3 confirmation | **1H MSS (M1)** – previous: 4H CISD or MSS |
+| Rule 3: 4H FVG inversion | **4H close (M1)** – optional *1H wick + close (M6)* for the swing model |
 | Stop buffer · Target · Breakeven | 2.0 · 3R · +1R |
 
 ## Backtest reference – US100 only, 2021-04 → 2026-10
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** 1H touch, 4H extreme stop | 23 trades · PF 2.97 · +15.90R · max DD 2.0 % | 23 trades · PF 2.64 · +14.88R · max DD 2.0 % |
-| **Intraday** 5m touch, prev 1H candle stop | 16 trades · PF 3.27 · +14.47R · max DD 2.2 % | 16 trades · PF 4.95 · +21.32R · max DD 2.1 % |
+| **Swing** 1H touch, 4H extreme stop | 28 trades · PF 2.68 · +16.90R · max DD 3.0 % | 30 trades · PF 2.48 · +17.86R · max DD 3.1 % |
+| **Intraday** 5m touch, prev 1H candle stop | 21 trades · PF 3.51 · +21.27R · max DD 3.2 % | 22 trades · PF 4.75 · +28.04R · max DD 3.2 % |
 
-Optional swing Rule 3 **Ha** (Python, with its "last 4H FVG of any sweeping leg" Rule 2), 2021-04 → 2026-10:
-GoatFunded 7 trades · PF 11.9 · +11.0R · max DD 1R; Pepperstone 9 trades · PF 5.9 · +10.0R · max DD 2R
-(same R as the current rule with about half the trades; small sample, so forward-test it next to the current rule).
+Rules as in these scripts (Rule 3 M1, leg from the last 4H swing, FVG formed into the sweep). 2021-2023 alone:
+swing +5.95R / +4.90R, intraday +10.76R / +18.55R (GoatFunded / Pepperstone).
 
-2021-2023 was never used for tuning (out of sample). About 4 swing and 3 intraday trades per year.
+Optional swing Rule 3 **M6** (Python, with its "last 4H FVG of any sweeping leg" Rule 2), 2021-04 → 2026-10:
+GoatFunded 10 trades · PF 14.7 · +13.97R · max DD 1.0 %; Pepperstone 16 trades · PF 3.7 · +10.91R · max DD 2.0 %
+(small sample – forward-test it next to the default).
+
+2021-2023 was never used for tuning (out of sample). About 5 swing and 4 intraday trades per year.
 Both models trade the same setups – if you run both on one account, use 0.5 % risk per model.
 
 TradingView results will differ somewhat: chart history depends on your plan, D/W/4H candles follow the symbol's
