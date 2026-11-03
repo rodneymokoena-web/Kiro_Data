@@ -1,0 +1,13 @@
+config,broker,model,months,months traded,profitable,losing,flat/no trade,avg profit $,median $ (traded),best $,worst $,worst DD%,total $
+current (swing D/W/M + intraday D/W/M),goat,both,67,45,29,16,22,51,36,1153,-300,3.0,3409
+current (swing D/W/M + intraday D/W/M),goat,intraday,67,17,9,8,50,32,183,602,-107,1.13,2129
+current (swing D/W/M + intraday D/W/M),goat,swing,67,43,28,15,24,18,28,833,-201,2.01,1239
+current (swing D/W/M + intraday D/W/M),pepperstone,both,67,47,30,17,20,67,36,1140,-302,3.02,4469
+current (swing D/W/M + intraday D/W/M),pepperstone,intraday,67,19,10,9,48,42,185,599,-112,1.12,2818
+current (swing D/W/M + intraday D/W/M),pepperstone,swing,67,46,31,15,21,24,33,817,-205,2.05,1599
+recommended (swing D/W/M + intraday 4H(10)),goat,both,67,47,29,18,20,65,32,1153,-300,3.0,4326
+recommended (swing D/W/M + intraday 4H(10)),goat,intraday,67,19,9,10,48,45,-2,606,-107,1.13,3031
+recommended (swing D/W/M + intraday 4H(10)),goat,swing,67,43,28,15,24,18,28,833,-201,2.01,1239
+recommended (swing D/W/M + intraday 4H(10)),pepperstone,both,67,47,30,17,20,80,36,1140,-302,3.02,5382
+recommended (swing D/W/M + intraday 4H(10)),pepperstone,intraday,67,20,10,10,47,56,92,604,-112,1.12,3721
+recommended (swing D/W/M + intraday 4H(10)),pepperstone,swing,67,46,31,15,21,24,33,817,-205,2.05,1599

@@ -1,0 +1,9 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,7,long,5m,touch,no trigger
+US100,12,short,5m,touch,"trigger, no FVG"
+US100,14,long,5m,touch,no trigger
+US100,20,long,5m,touch,"trigger, no FVG"
+US100,22,long,5m,touch,cancelled (5m close back through entry FVG)
+US100,26,short,5m,touch,no trigger
+US100,32,long,5m,touch,no retest
+US100,42,long,5m,touch,cancelled (5m close back through entry FVG)

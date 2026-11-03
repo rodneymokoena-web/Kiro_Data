@@ -1,0 +1,5 @@
+broker,model,trades,simulated,not filled on ticks,candle R,tick R,candle PF,tick PF,candle win%,tick win%,candle capital,tick capital,candle DD%,tick DD%,outcome changed,avg stop slippage pts
+goat,intraday,26,24,1,30.13,33.93,4.53,5.19,54,58,13434,13947,3.2,3.0,1,0.31
+goat,swing,75,71,3,10.56,10.38,1.58,1.54,44,46,11061,11041,5.9,7.0,1,0.56
+pepperstone,intraday,26,25,0,36.83,33.82,5.9,5.11,60,56,14355,13932,3.2,3.2,1,0.5
+pepperstone,swing,83,78,4,16.69,15.12,1.86,1.72,47,51,11754,11570,4.3,4.1,3,0.64

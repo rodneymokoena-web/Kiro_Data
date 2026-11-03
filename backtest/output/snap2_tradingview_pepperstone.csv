@@ -1,0 +1,513 @@
+source,grid,variant,entry_time,exit,r_net,risk_pts
+pepperstone,tradingview,A current swing model,2024-08-06 15:00:00+00:00,target,2.9984649899633955,846.9000000000015
+pepperstone,tradingview,A current swing model,2025-01-14 19:00:00+00:00,target,2.995313626532084,277.3999999999978
+pepperstone,tradingview,A current swing model,2025-02-19 08:00:00+00:00,breakeven,-0.026156941649899016,49.70000000000073
+pepperstone,tradingview,A current swing model,2025-03-27 08:00:00+00:00,target,2.996904024767802,419.90000000000146
+pepperstone,tradingview,A current swing model,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,488.5
+pepperstone,tradingview,A current swing model,2025-04-11 07:00:00+00:00,target,2.999292555507183,1837.5999999999985
+pepperstone,tradingview,A current swing model,2025-08-06 10:00:00+00:00,breakeven,-0.0038759689922480455,335.40000000000146
+pepperstone,tradingview,A current swing model,2025-12-09 14:00:00+00:00,stop,-1.0064837905236907,200.5
+pepperstone,tradingview,A current swing model,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,113.5
+pepperstone,tradingview,A current swing model,2026-01-15 23:00:00+00:00,target,2.9926387315968292,176.60000000000218
+pepperstone,tradingview,A current swing model,2026-01-30 08:00:00+00:00,breakeven,-0.0024495948746937972,530.7000000000007
+pepperstone,tradingview,A current swing model,2026-03-06 09:00:00+00:00,stop,-1.0029095792300806,446.7999999999993
+pepperstone,tradingview,A current swing model,2026-07-10 11:00:00+00:00,stop,-1.0015966592974699,814.2000000000007
+pepperstone,tradingview,A current swing model,2026-07-22 11:00:00+00:00,stop,-1.0032532532532532,399.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-03-01 13:00:00+00:00,stop,-1.0336787564766852,38.599999999998545
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.004723837209302313,275.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-03-21 19:00:00+00:00,breakeven,-0.010699588477366255,121.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-05-31 13:00:00+00:00,stop,-1.0096225018504814,135.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-07-22 19:00:00+00:00,stop,-1.0040049291435613,324.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-07-31 06:00:00+00:00,breakeven,-0.0026998961578400833,481.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-08-05 16:00:00+00:00,target,2.9981620246005933,707.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-08-07 11:00:00+00:00,breakeven,-0.0012066085019491353,1077.4000000000015
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-08-22 16:00:00+00:00,breakeven,-0.004600141542816726,282.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0058426966292136,222.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-10-31 00:00:00+00:00,breakeven,-0.0036131183991106246,359.7999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2024-11-01 14:00:00+00:00,target,2.9909847434119277,144.20000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-01-15 14:00:00+00:00,breakeven,-0.0024523674778343775,530.0999999999985
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-02-18 15:00:00+00:00,breakeven,-0.01136363636363622,114.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-02-28 21:00:00+00:00,stop,-1.0036101083032491,360.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-03-05 20:00:00+00:00,stop,-1.0022549869904596,576.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-03-26 18:00:00+00:00,target,2.9968929254302106,418.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.00333504361210878,389.7999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-04-10 15:00:00+00:00,target,2.999337241906704,1961.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0095168374816985,136.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0039755351681958,327.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0033565711334882,387.3000000000029
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-06-20 15:00:00+00:00,breakeven,-0.012037037037037037,108.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-07-16 07:00:00+00:00,stop,-1.0065922920892496,197.1999999999971
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-09-02 08:00:00+00:00,stop,-1.0027694929697486,469.3999999999978
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0062290368950648,208.6999999999971
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-10-21 14:00:00+00:00,target,2.990269461077844,133.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-11-21 14:00:00+00:00,target,2.9961031175059953,333.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2025-12-01 04:00:00+00:00,stop,-1.0059990770650669,216.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0021100470702808036,616.0999999999985
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.0030878859857482186,421.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.003231419338801895,402.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0028310104529616,459.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.003744239631336398,347.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-04-01 08:00:00+00:00,target,2.9987421383647797,1033.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.008678237650200309,149.79999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0151162790697674,86.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-07-09 09:00:00+00:00,stop,-1.0018291824961305,710.7000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.002893389717338086,449.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-09-17 13:00:00+00:00,target,2.996966161026838,428.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-09-23 13:00:00+00:00,target,2.9722222222222214,46.79999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-09-25 08:00:00+00:00,breakeven,-0.013091641490433127,99.29999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-10-14 02:00:00+00:00,stop,-1.006496751624188,200.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.003155339805825243,412.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 3R",2026-10-28 23:00:00+00:00,target,2.995896464646465,316.8000000000029
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-03-01 13:00:00+00:00,stop,-1.0336787564766852,38.599999999998545
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.7365552325581376,275.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-03-21 19:00:00+00:00,breakeven,-0.010699588477366255,121.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-05-31 13:00:00+00:00,stop,-1.0096225018504814,135.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-07-22 19:00:00+00:00,stop,-1.0040049291435613,324.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-07-31 06:00:00+00:00,target,0.22969885773623638,481.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-08-05 16:00:00+00:00,target,0.7793015693482265,707.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-08-07 11:00:00+00:00,target,0.16808984592537365,1077.4000000000015
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-08-22 16:00:00+00:00,target,0.6790516631281023,282.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0058426966292136,222.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-10-31 00:00:00+00:00,target,0.2201222901612011,359.7999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-11-01 14:00:00+00:00,target,1.8162274618585257,144.20000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-01-15 14:00:00+00:00,target,0.17449537823052166,530.0999999999985
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-02-18 15:00:00+00:00,target,1.1180069930069534,114.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.0036101083032491,360.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-03-05 20:00:00+00:00,stop,-1.0022549869904596,576.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.0664435946462678,418.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.00333504361210878,389.7999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.0786133061432577,1961.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0095168374816985,136.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0039755351681958,327.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.5409243480506007,387.3000000000029
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-06-20 15:00:00+00:00,breakeven,-0.012037037037037037,108.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-07-16 07:00:00+00:00,target,0.6815415821501151,197.1999999999971
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.2846186621218621,469.3999999999978
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0062290368950648,208.6999999999971
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.488772455089842,133.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-11-21 14:00:00+00:00,target,3.20623501199038,333.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-12-01 04:00:00+00:00,stop,-1.0059990770650669,216.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.1218957961369934,616.0999999999985
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.1847980997624755,421.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.1844394730300774,402.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.5341898954703792,459.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.5385944700460797,347.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-04-01 08:00:00+00:00,target,0.33942912433478684,1033.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.008678237650200309,149.79999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0151162790697674,86.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-07-09 09:00:00+00:00,target,0.16814408329815556,710.7000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.18339639439127725,449.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.283547257876311,428.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-09-23 13:00:00+00:00,target,5.290598290598326,46.79999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-09-25 08:00:00+00:00,target,1.964753272910365,99.29999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-10-14 02:00:00+00:00,stop,-1.006496751624188,200.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-10-26 16:00:00+00:00,target,1.631067961165047,412.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.2541035353535193,316.8000000000029
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-03-01 13:00:00+00:00,stop,-1.0336787564766852,38.599999999998545
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.070494186046501,275.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-03-21 19:00:00+00:00,breakeven,-0.010699588477366255,121.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-05-31 13:00:00+00:00,stop,-1.0096225018504814,135.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-07-22 19:00:00+00:00,stop,-1.0040049291435613,324.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-07-31 06:00:00+00:00,breakeven,-0.0026998961578400833,481.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-08-05 16:00:00+00:00,target,2.785663791884638,707.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-08-07 11:00:00+00:00,target,1.1713384072767752,1077.4000000000015
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-08-22 16:00:00+00:00,breakeven,-0.004600141542816726,282.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0058426966292136,222.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-10-31 00:00:00+00:00,target,1.029460811561983,359.7999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-11-01 14:00:00+00:00,target,5.041608876560303,144.20000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-01-15 14:00:00+00:00,target,1.222222222222227,530.0999999999985
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-02-18 15:00:00+00:00,breakeven,-0.01136363636363622,114.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.0036101083032491,360.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-03-05 20:00:00+00:00,stop,-1.0022549869904596,576.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.2564531548757127,418.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.00333504361210878,389.7999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.7734386948763708,1961.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0095168374816985,136.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.0039755351681958,327.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.5409243480506007,387.3000000000029
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-06-20 15:00:00+00:00,breakeven,-0.012037037037037037,108.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-07-16 07:00:00+00:00,stop,-1.0065922920892496,197.1999999999971
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-09-02 08:00:00+00:00,stop,-1.0027694929697486,469.3999999999978
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.0062290368950648,208.6999999999971
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.009730538922155795,133.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-11-21 14:00:00+00:00,target,4.721822541966396,333.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-12-01 04:00:00+00:00,stop,-1.0059990770650669,216.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.5917870475572184,616.0999999999985
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-01-29 20:00:00+00:00,target,1.205700712589077,421.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.0686055182699514,402.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-03-24 00:00:00+00:00,stop,-1.0028310104529616,459.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-03-24 13:00:00+00:00,breakeven,-0.003744239631336398,347.2000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-04-01 08:00:00+00:00,target,0.6620222544750847,1033.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-04-08 16:00:00+00:00,breakeven,-0.008678237650200309,149.79999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.0151162790697674,86.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-07-09 09:00:00+00:00,stop,-1.0018291824961305,710.7000000000007
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-08-18 06:00:00+00:00,breakeven,-0.002893389717338086,449.2999999999993
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-09-17 13:00:00+00:00,target,0.8858809801633639,428.5
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-09-23 13:00:00+00:00,breakeven,-0.02777777777777821,46.79999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-09-25 08:00:00+00:00,breakeven,-0.013091641490433127,99.29999999999927
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-10-14 02:00:00+00:00,stop,-1.006496751624188,200.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-10-26 16:00:00+00:00,target,1.631067961165047,412.0
+pepperstone,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-10-28 23:00:00+00:00,target,2.2414772727272454,316.8000000000029
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.005799687709123318,224.15000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-07-31 06:00:00+00:00,breakeven,-0.003527336860670201,368.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-08-05 16:00:00+00:00,target,2.9975680478907494,534.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-08-07 11:00:00+00:00,breakeven,-0.0014370198419278151,904.6500000000015
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-08-22 16:00:00+00:00,breakeven,-0.005099039027260306,254.9499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0068475111930473,189.84999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-10-31 00:00:00+00:00,breakeven,-0.0037895350531992503,343.0499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-11-01 14:00:00+00:00,target,2.9909847434119277,144.20000000000073
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-01-15 14:00:00+00:00,breakeven,-0.002755696873343932,471.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-02-18 15:00:00+00:00,breakeven,-0.01136363636363622,114.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-03-05 20:00:00+00:00,stop,-1.00268845000517,483.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-03-26 18:00:00+00:00,target,2.996798423839429,406.0500000000029
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-04-10 15:00:00+00:00,target,2.9992681210415197,1776.25
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0107084019769357,121.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-06-05 20:00:00+00:00,stop,-1.004553415061296,285.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0037834691501746,343.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-06-20 15:00:00+00:00,breakeven,-0.01702685003274427,76.34999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-07-16 07:00:00+00:00,stop,-1.0083093640140621,156.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-09-02 08:00:00+00:00,stop,-1.0028631208016738,454.04999999999563
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0065507684555306,198.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-10-21 14:00:00+00:00,target,2.9892650701899255,121.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-11-21 14:00:00+00:00,target,2.9961031175059953,333.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-12-01 04:00:00+00:00,stop,-1.007669616519174,169.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0022630342066324426,574.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.003237051792828697,401.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.003811199061858709,341.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-03-24 00:00:00+00:00,stop,-1.003227808814401,402.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.004471195184866724,290.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-04-01 08:00:00+00:00,target,2.9986940579637347,995.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.01309823677581864,99.25
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-07-09 09:00:00+00:00,stop,-1.002002002002002,649.3500000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.003111909036505087,417.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-09-17 13:00:00+00:00,target,2.995202066801993,270.9500000000007
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-09-23 13:00:00+00:00,target,2.960183767228175,32.64999999999782
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-09-25 08:00:00+00:00,breakeven,-0.015267175572519475,85.14999999999782
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.0036552790664979465,355.65000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-10-28 23:00:00+00:00,target,2.99430823117338,228.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.9043051527994588,224.15000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-07-31 06:00:00+00:00,target,0.3000949667616281,368.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-08-05 16:00:00+00:00,target,1.0311476943223288,534.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-08-07 11:00:00+00:00,target,0.20018791797932628,904.6500000000015
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-08-22 16:00:00+00:00,target,0.7526966071778894,254.9499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0068475111930473,189.84999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-10-31 00:00:00+00:00,target,0.23087013554875432,343.0499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-11-01 14:00:00+00:00,target,1.8162274618585257,144.20000000000073
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-01-15 14:00:00+00:00,target,0.1960784313725475,471.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-02-18 15:00:00+00:00,target,1.1180069930069534,114.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-03-05 20:00:00+00:00,stop,-1.00268845000517,483.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06846447481836805,406.0500000000029
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.08681210415200562,1776.25
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0107084019769357,121.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.004553415061296,285.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.609720605355058,343.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-06-20 15:00:00+00:00,breakeven,-0.01702685003274427,76.34999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-07-16 07:00:00+00:00,target,0.8590604026845843,156.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.2942407223874083,454.04999999999563
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0065507684555306,198.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.6424442609413965,121.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-11-21 14:00:00+00:00,target,3.20623501199038,333.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-12-01 04:00:00+00:00,stop,-1.007669616519174,169.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.13073374532161516,574.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.19372509960159978,401.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.21753151568455092,341.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.6090626939788915,402.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.6431642304385186,290.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-04-01 08:00:00+00:00,target,0.3524034356321294,995.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.01309823677581864,99.25
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-07-09 09:00:00+00:00,target,0.1840301840301823,649.3500000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.19724715739078572,417.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.44842221812142075,270.9500000000007
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-09-23 13:00:00+00:00,target,7.583460949464452,32.64999999999782
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-09-25 08:00:00+00:00,target,2.2912507339988584,85.14999999999782
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-10-26 16:00:00+00:00,target,1.8894981020666288,355.65000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.7394921190892996,228.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.3142984608520896,224.15000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-07-31 06:00:00+00:00,breakeven,-0.003527336860670201,368.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-08-05 16:00:00+00:00,target,3.6859040314283136,534.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-08-07 11:00:00+00:00,target,1.395014646548386,904.6500000000015
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-08-22 16:00:00+00:00,breakeven,-0.005099039027260306,254.9499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0068475111930473,189.84999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-10-31 00:00:00+00:00,target,1.0797259874653884,343.0499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-11-01 14:00:00+00:00,target,5.041608876560303,144.20000000000073
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-01-15 14:00:00+00:00,target,1.3733969263381045,471.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-02-18 15:00:00+00:00,breakeven,-0.01136363636363622,114.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-03-05 20:00:00+00:00,stop,-1.00268845000517,483.5499999999993
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.2946681443171932,406.0500000000029
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.8541027445460951,1776.25
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0107084019769357,121.40000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.004553415061296,285.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.609720605355058,343.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-06-20 15:00:00+00:00,breakeven,-0.01702685003274427,76.34999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-07-16 07:00:00+00:00,stop,-1.0083093640140621,156.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-09-02 08:00:00+00:00,stop,-1.0028631208016738,454.04999999999563
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.0065507684555306,198.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.010734929810074447,121.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-11-21 14:00:00+00:00,target,4.721822541966396,333.6000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-12-01 04:00:00+00:00,stop,-1.007669616519174,169.5
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.6346940551832244,574.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-01-29 20:00:00+00:00,target,1.263944223107578,401.59999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.2603342128408166,341.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-03-24 00:00:00+00:00,stop,-1.003227808814401,402.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-03-24 13:00:00+00:00,breakeven,-0.004471195184866724,290.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-04-01 08:00:00+00:00,target,0.6873273393942458,995.4499999999971
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-04-08 16:00:00+00:00,breakeven,-0.01309823677581864,99.25
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-07-09 09:00:00+00:00,stop,-1.002002002002002,649.3500000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-08-18 06:00:00+00:00,breakeven,-0.003111909036505087,417.75
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-09-17 13:00:00+00:00,target,1.4009964938180492,270.9500000000007
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-09-23 13:00:00+00:00,breakeven,-0.03981623277182502,32.64999999999782
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-09-25 08:00:00+00:00,breakeven,-0.015267175572519475,85.14999999999782
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-10-26 16:00:00+00:00,target,1.8894981020666288,355.65000000000146
+pepperstone,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-10-28 23:00:00+00:00,target,3.1090192644483072,228.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.004723837209302313,275.2000000000007
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-03-21 19:00:00+00:00,breakeven,-0.010699588477366255,121.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-05-31 13:00:00+00:00,stop,-1.0096225018504814,135.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-07-22 19:00:00+00:00,stop,-1.0040049291435613,324.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-08-05 16:00:00+00:00,target,2.9981620246005933,707.2999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-08-07 11:00:00+00:00,breakeven,-0.0012066085019491353,1077.4000000000015
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-08-22 16:00:00+00:00,breakeven,-0.004600141542816726,282.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0058426966292136,222.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-10-31 00:00:00+00:00,breakeven,-0.0036131183991106246,359.7999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2024-11-01 14:00:00+00:00,target,2.9909847434119277,144.20000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-01-15 14:00:00+00:00,breakeven,-0.0024523674778343775,530.0999999999985
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-02-28 21:00:00+00:00,stop,-1.0036101083032491,360.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-03-05 20:00:00+00:00,stop,-1.0022549869904596,576.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-03-26 18:00:00+00:00,target,2.9968929254302106,418.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.00333504361210878,389.7999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-04-10 15:00:00+00:00,target,2.999337241906704,1961.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0095168374816985,136.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0039755351681958,327.0
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0033565711334882,387.3000000000029
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-07-16 07:00:00+00:00,stop,-1.0065922920892496,197.1999999999971
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0062290368950648,208.6999999999971
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-10-21 14:00:00+00:00,target,2.990269461077844,133.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-11-21 14:00:00+00:00,target,2.9961031175059953,333.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2025-12-01 04:00:00+00:00,stop,-1.0059990770650669,216.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0021100470702808036,616.0999999999985
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.003231419338801895,402.2999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-04-01 08:00:00+00:00,target,2.9987421383647797,1033.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0151162790697674,86.0
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-07-09 09:00:00+00:00,stop,-1.0018291824961305,710.7000000000007
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-09-17 13:00:00+00:00,target,2.996966161026838,428.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-10-14 02:00:00+00:00,stop,-1.006496751624188,200.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 3R",2026-10-28 23:00:00+00:00,target,2.995896464646465,316.8000000000029
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.7365552325581376,275.2000000000007
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-03-21 19:00:00+00:00,breakeven,-0.010699588477366255,121.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-05-31 13:00:00+00:00,stop,-1.0096225018504814,135.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-07-22 19:00:00+00:00,stop,-1.0040049291435613,324.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-08-05 16:00:00+00:00,target,0.7793015693482265,707.2999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-08-07 11:00:00+00:00,target,0.16808984592537365,1077.4000000000015
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-08-22 16:00:00+00:00,target,0.6790516631281023,282.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0058426966292136,222.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-10-31 00:00:00+00:00,target,0.2201222901612011,359.7999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-11-01 14:00:00+00:00,target,1.8162274618585257,144.20000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-01-15 14:00:00+00:00,target,0.17449537823052166,530.0999999999985
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.0036101083032491,360.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-03-05 20:00:00+00:00,stop,-1.0022549869904596,576.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.0664435946462678,418.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.00333504361210878,389.7999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.0786133061432577,1961.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0095168374816985,136.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0039755351681958,327.0
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.5409243480506007,387.3000000000029
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-07-16 07:00:00+00:00,target,0.6815415821501151,197.1999999999971
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0062290368950648,208.6999999999971
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.488772455089842,133.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-11-21 14:00:00+00:00,target,3.20623501199038,333.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-12-01 04:00:00+00:00,stop,-1.0059990770650669,216.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.1218957961369934,616.0999999999985
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.1844394730300774,402.2999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-04-01 08:00:00+00:00,target,0.33942912433478684,1033.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0151162790697674,86.0
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-07-09 09:00:00+00:00,target,0.16814408329815556,710.7000000000007
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.283547257876311,428.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-10-14 02:00:00+00:00,stop,-1.006496751624188,200.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.2541035353535193,316.8000000000029
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.070494186046501,275.2000000000007
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-03-21 19:00:00+00:00,breakeven,-0.010699588477366255,121.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-05-31 13:00:00+00:00,stop,-1.0096225018504814,135.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-07-22 19:00:00+00:00,stop,-1.0040049291435613,324.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-08-05 16:00:00+00:00,target,2.785663791884638,707.2999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-08-07 11:00:00+00:00,target,1.1713384072767752,1077.4000000000015
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-08-22 16:00:00+00:00,breakeven,-0.004600141542816726,282.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0058426966292136,222.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-10-31 00:00:00+00:00,target,1.029460811561983,359.7999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-11-01 14:00:00+00:00,target,5.041608876560303,144.20000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-01-15 14:00:00+00:00,target,1.222222222222227,530.0999999999985
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.0036101083032491,360.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-03-05 20:00:00+00:00,stop,-1.0022549869904596,576.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.2564531548757127,418.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.00333504361210878,389.7999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.7734386948763708,1961.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0095168374816985,136.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.0039755351681958,327.0
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.5409243480506007,387.3000000000029
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-07-16 07:00:00+00:00,stop,-1.0065922920892496,197.1999999999971
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.0062290368950648,208.6999999999971
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.009730538922155795,133.59999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-11-21 14:00:00+00:00,target,4.721822541966396,333.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-12-01 04:00:00+00:00,stop,-1.0059990770650669,216.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.5917870475572184,616.0999999999985
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.0686055182699514,402.2999999999993
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-04-01 08:00:00+00:00,target,0.6620222544750847,1033.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.0151162790697674,86.0
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-07-09 09:00:00+00:00,stop,-1.0018291824961305,710.7000000000007
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-09-17 13:00:00+00:00,target,0.8858809801633639,428.5
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-10-14 02:00:00+00:00,stop,-1.006496751624188,200.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-10-28 23:00:00+00:00,target,2.2414772727272454,316.8000000000029
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.005799687709123318,224.15000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-08-05 16:00:00+00:00,target,2.9975680478907494,534.5499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-08-07 11:00:00+00:00,breakeven,-0.0014370198419278151,904.6500000000015
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-08-22 16:00:00+00:00,breakeven,-0.005099039027260306,254.9499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0068475111930473,189.84999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-10-31 00:00:00+00:00,breakeven,-0.0037895350531992503,343.0499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-11-01 14:00:00+00:00,target,2.9909847434119277,144.20000000000073
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-01-15 14:00:00+00:00,breakeven,-0.002755696873343932,471.75
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-03-05 20:00:00+00:00,stop,-1.00268845000517,483.5499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-03-26 18:00:00+00:00,target,2.996798423839429,406.0500000000029
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-04-10 15:00:00+00:00,target,2.9992681210415197,1776.25
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0107084019769357,121.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-06-05 20:00:00+00:00,stop,-1.004553415061296,285.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0037834691501746,343.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-07-16 07:00:00+00:00,stop,-1.0083093640140621,156.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0065507684555306,198.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-10-21 14:00:00+00:00,target,2.9892650701899255,121.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-11-21 14:00:00+00:00,target,2.9961031175059953,333.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-12-01 04:00:00+00:00,stop,-1.007669616519174,169.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0022630342066324426,574.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.003811199061858709,341.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-04-01 08:00:00+00:00,target,2.9986940579637347,995.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-07-09 09:00:00+00:00,stop,-1.002002002002002,649.3500000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-09-17 13:00:00+00:00,target,2.995202066801993,270.9500000000007
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-10-28 23:00:00+00:00,target,2.99430823117338,228.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.9043051527994588,224.15000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-08-05 16:00:00+00:00,target,1.0311476943223288,534.5499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-08-07 11:00:00+00:00,target,0.20018791797932628,904.6500000000015
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-08-22 16:00:00+00:00,target,0.7526966071778894,254.9499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0068475111930473,189.84999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-10-31 00:00:00+00:00,target,0.23087013554875432,343.0499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-11-01 14:00:00+00:00,target,1.8162274618585257,144.20000000000073
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-01-15 14:00:00+00:00,target,0.1960784313725475,471.75
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-03-05 20:00:00+00:00,stop,-1.00268845000517,483.5499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06846447481836805,406.0500000000029
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.08681210415200562,1776.25
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0107084019769357,121.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.004553415061296,285.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.609720605355058,343.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-07-16 07:00:00+00:00,target,0.8590604026845843,156.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0065507684555306,198.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.6424442609413965,121.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-11-21 14:00:00+00:00,target,3.20623501199038,333.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-12-01 04:00:00+00:00,stop,-1.007669616519174,169.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.13073374532161516,574.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.21753151568455092,341.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-04-01 08:00:00+00:00,target,0.3524034356321294,995.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-07-09 09:00:00+00:00,target,0.1840301840301823,649.3500000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.44842221812142075,270.9500000000007
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.7394921190892996,228.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.3142984608520896,224.15000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-08-05 16:00:00+00:00,target,3.6859040314283136,534.5499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-08-07 11:00:00+00:00,target,1.395014646548386,904.6500000000015
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-08-22 16:00:00+00:00,breakeven,-0.005099039027260306,254.9499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0068475111930473,189.84999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-10-31 00:00:00+00:00,target,1.0797259874653884,343.0499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-11-01 14:00:00+00:00,target,5.041608876560303,144.20000000000073
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-01-15 14:00:00+00:00,target,1.3733969263381045,471.75
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-03-05 20:00:00+00:00,stop,-1.00268845000517,483.5499999999993
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.2946681443171932,406.0500000000029
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.8541027445460951,1776.25
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.005826983415509,223.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0107084019769357,121.40000000000146
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.004553415061296,285.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.609720605355058,343.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-07-16 07:00:00+00:00,stop,-1.0083093640140621,156.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.0065507684555306,198.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.010734929810074447,121.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-11-21 14:00:00+00:00,target,4.721822541966396,333.6000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-12-01 04:00:00+00:00,stop,-1.007669616519174,169.5
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.6346940551832244,574.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.2603342128408166,341.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-04-01 08:00:00+00:00,target,0.6873273393942458,995.4499999999971
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-07-09 09:00:00+00:00,stop,-1.002002002002002,649.3500000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.002406961673764,540.1000000000022
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-09-17 13:00:00+00:00,target,1.4009964938180492,270.9500000000007
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854
+pepperstone,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-10-28 23:00:00+00:00,target,3.1090192644483072,228.40000000000146

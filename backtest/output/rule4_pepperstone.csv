@@ -1,0 +1,73 @@
+source,variant,model,entry_time,exit,r_net
+pepperstone,C current: cancel beyond sweep extreme,swing,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798
+pepperstone,C current: cancel beyond sweep extreme,swing,2024-08-06 15:00:00+00:00,target,2.998493452311971
+pepperstone,C current: cancel beyond sweep extreme,swing,2025-01-14 19:00:00+00:00,target,2.995313626532084
+pepperstone,C current: cancel beyond sweep extreme,swing,2025-03-27 08:00:00+00:00,target,2.997010807082088
+pepperstone,C current: cancel beyond sweep extreme,swing,2025-04-11 07:00:00+00:00,target,2.999387023764617
+pepperstone,C current: cancel beyond sweep extreme,swing,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036
+pepperstone,C current: cancel beyond sweep extreme,swing,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-01-30 08:00:00+00:00,target,2.997862896597074
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-03-06 09:00:00+00:00,stop,-1.0021790144150184
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-04-02 08:00:00+00:00,target,2.9985484591335414
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-07-22 11:00:00+00:00,stop,-1.0017280340289778
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885
+pepperstone,C current: cancel beyond sweep extreme,swing,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132
+pepperstone,C current: cancel beyond sweep extreme,intraday,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,C current: cancel beyond sweep extreme,intraday,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,C current: cancel beyond sweep extreme,intraday,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,C current: cancel beyond sweep extreme,intraday,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,C current: cancel beyond sweep extreme,intraday,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,C current: cancel beyond sweep extreme,intraday,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,C current: cancel beyond sweep extreme,intraday,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,C current: cancel beyond sweep extreme,intraday,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,C current: cancel beyond sweep extreme,intraday,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,C current: cancel beyond sweep extreme,intraday,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,C current: cancel beyond sweep extreme,intraday,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,C current: cancel beyond sweep extreme,intraday,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,C current: cancel beyond sweep extreme,intraday,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2025-03-27 08:00:00+00:00,target,2.997010807082088
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2025-04-09 08:00:00+00:00,target,2.9981044036162143
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2025-04-11 07:00:00+00:00,target,2.999387023764617
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2026-01-12 14:00:00+00:00,stop,-1.011453744493392
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204
+pepperstone,C current: cancel beyond sweep extreme,swing M6,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867
+pepperstone,"N no cancellation, extreme follows price",swing,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798
+pepperstone,"N no cancellation, extreme follows price",swing,2024-08-06 15:00:00+00:00,target,2.998493452311971
+pepperstone,"N no cancellation, extreme follows price",swing,2025-01-14 19:00:00+00:00,target,2.995313626532084
+pepperstone,"N no cancellation, extreme follows price",swing,2025-03-27 08:00:00+00:00,target,2.997010807082088
+pepperstone,"N no cancellation, extreme follows price",swing,2025-04-11 07:00:00+00:00,target,2.999387023764617
+pepperstone,"N no cancellation, extreme follows price",swing,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036
+pepperstone,"N no cancellation, extreme follows price",swing,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765
+pepperstone,"N no cancellation, extreme follows price",swing,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204
+pepperstone,"N no cancellation, extreme follows price",swing,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867
+pepperstone,"N no cancellation, extreme follows price",swing,2026-01-30 08:00:00+00:00,target,2.997862896597074
+pepperstone,"N no cancellation, extreme follows price",swing,2026-03-06 09:00:00+00:00,stop,-1.0021790144150184
+pepperstone,"N no cancellation, extreme follows price",swing,2026-04-02 08:00:00+00:00,target,2.9985484591335414
+pepperstone,"N no cancellation, extreme follows price",swing,2026-07-22 11:00:00+00:00,stop,-1.0017280340289778
+pepperstone,"N no cancellation, extreme follows price",swing,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885
+pepperstone,"N no cancellation, extreme follows price",swing,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132
+pepperstone,"N no cancellation, extreme follows price",intraday,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,"N no cancellation, extreme follows price",intraday,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,"N no cancellation, extreme follows price",intraday,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,"N no cancellation, extreme follows price",intraday,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,"N no cancellation, extreme follows price",intraday,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,"N no cancellation, extreme follows price",intraday,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,"N no cancellation, extreme follows price",intraday,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,"N no cancellation, extreme follows price",intraday,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,"N no cancellation, extreme follows price",intraday,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,"N no cancellation, extreme follows price",intraday,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,"N no cancellation, extreme follows price",intraday,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,"N no cancellation, extreme follows price",intraday,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,"N no cancellation, extreme follows price",intraday,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,"N no cancellation, extreme follows price",swing M6,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918
+pepperstone,"N no cancellation, extreme follows price",swing M6,2025-03-27 08:00:00+00:00,target,2.997010807082088
+pepperstone,"N no cancellation, extreme follows price",swing M6,2025-04-09 08:00:00+00:00,target,2.9981044036162143
+pepperstone,"N no cancellation, extreme follows price",swing M6,2025-04-11 07:00:00+00:00,target,2.999387023764617
+pepperstone,"N no cancellation, extreme follows price",swing M6,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036
+pepperstone,"N no cancellation, extreme follows price",swing M6,2026-01-12 14:00:00+00:00,stop,-1.011453744493392
+pepperstone,"N no cancellation, extreme follows price",swing M6,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204
+pepperstone,"N no cancellation, extreme follows price",swing M6,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867

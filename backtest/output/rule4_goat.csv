@@ -1,0 +1,63 @@
+source,variant,model,entry_time,exit,r_net
+goat,C current: cancel beyond sweep extreme,swing,2025-01-14 19:00:00+00:00,target,2.9940640932265112
+goat,C current: cancel beyond sweep extreme,swing,2025-03-27 08:00:00+00:00,target,2.996242508068234
+goat,C current: cancel beyond sweep extreme,swing,2025-04-11 07:00:00+00:00,target,2.9992239573414587
+goat,C current: cancel beyond sweep extreme,swing,2025-08-05 12:00:00+00:00,breakeven,-0.002797082797082797
+goat,C current: cancel beyond sweep extreme,swing,2025-10-23 13:00:00+00:00,stop,-1.005338136564598
+goat,C current: cancel beyond sweep extreme,swing,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559
+goat,C current: cancel beyond sweep extreme,swing,2026-01-22 18:00:00+00:00,breakeven,-0.002483998780859505
+goat,C current: cancel beyond sweep extreme,swing,2026-01-30 08:00:00+00:00,target,2.99730667547918
+goat,C current: cancel beyond sweep extreme,swing,2026-03-06 09:00:00+00:00,stop,-1.0027394957983193
+goat,C current: cancel beyond sweep extreme,swing,2026-04-02 08:00:00+00:00,target,2.9981860672156686
+goat,C current: cancel beyond sweep extreme,swing,2026-07-22 11:00:00+00:00,stop,-1.0021472796732973
+goat,C current: cancel beyond sweep extreme,swing,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854
+goat,C current: cancel beyond sweep extreme,swing,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685
+goat,C current: cancel beyond sweep extreme,swing,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445
+goat,C current: cancel beyond sweep extreme,intraday,2025-01-15 01:10:00+00:00,stop,-1.0737556561086021
+goat,C current: cancel beyond sweep extreme,intraday,2025-03-27 12:35:00+00:00,target,2.958942065491181
+goat,C current: cancel beyond sweep extreme,intraday,2025-04-11 17:00:00+00:00,target,2.990664375715922
+goat,C current: cancel beyond sweep extreme,intraday,2025-08-05 14:00:00+00:00,stop,-1.0264181523500824
+goat,C current: cancel beyond sweep extreme,intraday,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035
+goat,C current: cancel beyond sweep extreme,intraday,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426
+goat,C current: cancel beyond sweep extreme,intraday,2026-01-30 15:35:00+00:00,target,2.9875477463712756
+goat,C current: cancel beyond sweep extreme,intraday,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585
+goat,C current: cancel beyond sweep extreme,intraday,2026-07-22 22:05:00+00:00,target,2.96639175257732
+goat,C current: cancel beyond sweep extreme,intraday,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015
+goat,C current: cancel beyond sweep extreme,intraday,2026-09-28 13:50:00+00:00,target,2.9832648870636547
+goat,C current: cancel beyond sweep extreme,intraday,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364
+goat,C current: cancel beyond sweep extreme,swing M6,2025-03-27 08:00:00+00:00,target,2.996242508068234
+goat,C current: cancel beyond sweep extreme,swing M6,2025-04-09 08:00:00+00:00,target,2.997610321067292
+goat,C current: cancel beyond sweep extreme,swing M6,2025-04-11 07:00:00+00:00,target,2.9992239573414587
+goat,C current: cancel beyond sweep extreme,swing M6,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559
+goat,C current: cancel beyond sweep extreme,swing M6,2026-03-24 08:00:00+00:00,stop,-1.0024927358923383
+goat,"N no cancellation, extreme follows price",swing,2025-01-14 19:00:00+00:00,target,2.9940640932265112
+goat,"N no cancellation, extreme follows price",swing,2025-03-27 08:00:00+00:00,target,2.996242508068234
+goat,"N no cancellation, extreme follows price",swing,2025-04-11 07:00:00+00:00,target,2.9992239573414587
+goat,"N no cancellation, extreme follows price",swing,2025-08-05 12:00:00+00:00,breakeven,-0.002797082797082797
+goat,"N no cancellation, extreme follows price",swing,2025-10-23 13:00:00+00:00,stop,-1.005338136564598
+goat,"N no cancellation, extreme follows price",swing,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559
+goat,"N no cancellation, extreme follows price",swing,2026-01-22 18:00:00+00:00,breakeven,-0.002483998780859505
+goat,"N no cancellation, extreme follows price",swing,2026-01-30 08:00:00+00:00,target,2.99730667547918
+goat,"N no cancellation, extreme follows price",swing,2026-03-06 09:00:00+00:00,stop,-1.0027394957983193
+goat,"N no cancellation, extreme follows price",swing,2026-04-02 08:00:00+00:00,target,2.9981860672156686
+goat,"N no cancellation, extreme follows price",swing,2026-07-22 11:00:00+00:00,stop,-1.0021472796732973
+goat,"N no cancellation, extreme follows price",swing,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854
+goat,"N no cancellation, extreme follows price",swing,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685
+goat,"N no cancellation, extreme follows price",swing,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445
+goat,"N no cancellation, extreme follows price",intraday,2025-01-15 01:10:00+00:00,stop,-1.0737556561086021
+goat,"N no cancellation, extreme follows price",intraday,2025-03-27 12:35:00+00:00,target,2.958942065491181
+goat,"N no cancellation, extreme follows price",intraday,2025-04-11 17:00:00+00:00,target,2.990664375715922
+goat,"N no cancellation, extreme follows price",intraday,2025-08-05 14:00:00+00:00,stop,-1.0264181523500824
+goat,"N no cancellation, extreme follows price",intraday,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035
+goat,"N no cancellation, extreme follows price",intraday,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426
+goat,"N no cancellation, extreme follows price",intraday,2026-01-30 15:35:00+00:00,target,2.9875477463712756
+goat,"N no cancellation, extreme follows price",intraday,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585
+goat,"N no cancellation, extreme follows price",intraday,2026-07-22 22:05:00+00:00,target,2.96639175257732
+goat,"N no cancellation, extreme follows price",intraday,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015
+goat,"N no cancellation, extreme follows price",intraday,2026-09-28 13:50:00+00:00,target,2.9832648870636547
+goat,"N no cancellation, extreme follows price",intraday,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364
+goat,"N no cancellation, extreme follows price",swing M6,2025-03-27 08:00:00+00:00,target,2.996242508068234
+goat,"N no cancellation, extreme follows price",swing M6,2025-04-09 08:00:00+00:00,target,2.997610321067292
+goat,"N no cancellation, extreme follows price",swing M6,2025-04-11 07:00:00+00:00,target,2.9992239573414587
+goat,"N no cancellation, extreme follows price",swing M6,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559
+goat,"N no cancellation, extreme follows price",swing M6,2026-03-24 08:00:00+00:00,stop,-1.0024927358923383
