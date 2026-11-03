@@ -5,7 +5,7 @@
 //
 //  US100 ONLY (default): trades only on a US100 / NAS100 / USTEC chart.
 //  MODEL "Swing (1H entry)" (default, main): 5m chart recommended (1H works). 1H Touch (default) / 1H 50% CE at the
-//          1H IFVG, stop beyond the 4H sweep extreme.
+//          1H IFVG, stop beyond the 4H order block.
 //  MODEL "Intraday (5m entry)" (optional): 5m chart. 5m Touch (default) / 5m 50% CE at the MSS FVG (rule 6),
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
@@ -26,7 +26,9 @@
 //          entry = limit at the MSS FVG (touch or 50% CE); a 5m close back through the entry FVG
 //          cancels the order unless the next 5m candle re-inverts it.
 //  Rule 7  Intraday stop: previous COMPLETED 1H candle high/low (or 4H sweep extreme).
-//          Swing stop: 4H sweep extreme (or previous COMPLETED 4H candle). Both: + buffer, target 3R, breakeven at +1R.
+//          Swing stop: 4H ORDER BLOCK = above the high of the last up-close 4H candle before the 4H displacement that
+//          inverted the FVG (short; M6: last up-close completed 4H candle of the sweeping leg). Options: 4H sweep extreme,
+//          previous COMPLETED 4H candle. Both models: + buffer, target 3R, breakeven at +1R.
 // =====================================================================================================
 strategy("ICT Sweep > IFVG > MSS Strategy (rules 1-7)", shorttitle="ICT IFVG Strategy", overlay=true, pyramiding=5, initial_capital=10000, default_qty_type=strategy.fixed, commission_type=strategy.commission.cash_per_contract, commission_value=0, slippage=0, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
 
@@ -61,7 +63,7 @@ g0 = "Model"
 i_us100   = input.bool(true, "Trade US100 only (NAS100 / US100 / USTEC / NDX)", group=g0)
 i_model   = input.string("Swing (1H entry)", "Model", options=["Swing (1H entry)", "Intraday (5m entry)"], group=g0, tooltip="Intraday: rules 1-6, entry at the 5m MSS FVG, short holds. Swing: rules 1-5, entry at the 1H IFVG, multi-day holds.")
 i_swEntry = input.string("1H Touch", "Swing entry filter: limit at the 1H IFVG", options=["1H Touch", "1H 50% CE"], group=g0, tooltip="1H Touch = limit at the 1H IFVG near edge. 1H 50% CE = limit at its midpoint.")
-i_swStop  = input.string("4H sweep extreme", "Swing stop", options=["4H sweep extreme", "Previous 4H candle"], group=g0)
+i_swStop  = input.string("4H order block", "Swing stop", options=["4H order block", "4H sweep extreme", "Previous 4H candle"], group=g0, tooltip="4H order block (default) = beyond the last up-close (short) / down-close (long) 4H candle before the 4H displacement that inverted the FVG (M6: the last one of the sweeping leg, completed at the signal).")
 i_swValid = input.int(24, "Swing order valid (hours after the 1H signal)", minval=1, group=g0)
 
 g4 = "Rule 6 - intraday entry (5m chart)"
@@ -149,6 +151,7 @@ type Setup
     array<int> rtI
     array<int> rtO
     int        lastTouch = -10
+    float      ob = na     // 4H order block stop level (swing)
 
 type Rt
     int r                  // chart index of the retest
@@ -197,6 +200,7 @@ type Sig
     label     lbE = na
     label     lbS = na
     label     lbT = na
+    float     ob = na      // 4H order block stop level (swing)
 
 // ───────────────────────────────────────────────────────────────────────────── Bars helpers
 method size(Bars b) => b.base + b.o.size()
@@ -616,10 +620,22 @@ f_prev4h(bool sh, float px) =>
                 break
     res
 
+// 4H order block: high (short) of the last up-close 4H candle at or before 4H index `start` (low of the last
+// down-close candle for a long), searching up to 30 candles back
+f_ob4(int start, bool sh) =>
+    float res = na
+    int st = math.min(start, B4.size() - 1)
+    if st >= B4.base
+        for m = st to math.max(B4.base, st - 29)
+            if sh ? B4.C(m) > B4.O(m) : B4.C(m) < B4.O(m)
+                res := sh ? B4.H(m) : B4.L(m)
+                break
+    res
+
 // stop level (before the buffer) for the selected model / stop option; na = no valid stop
-f_stopBase(bool sh, float px, float ext) =>
+f_stopBase(bool sh, float px, float ext, float ob) =>
     string mode = isSwing ? i_swStop : i_inStop
-    float base = mode == "Previous 1H candle" ? f_prev1h(sh, px) : mode == "Previous 4H candle" ? f_prev4h(sh, px) : ext
+    float base = mode == "Previous 1H candle" ? f_prev1h(sh, px) : mode == "Previous 4H candle" ? f_prev4h(sh, px) : mode == "4H order block" ? ob : ext
     bool ok = not na(base) and (sh ? base > px : base < px)
     ok ? base : na
 
@@ -707,7 +723,7 @@ if SG.size() > 0
                 g.result := "cancelled (gap beyond retest extreme)"
             else if not g.blocked and (g.sh ? high >= g.lvl : low <= g.lvl)
                 g.entry := g.sh ? math.max(g.lvl, open) : math.min(g.lvl, open)
-                float pc1 = f_stopBase(g.sh, g.entry, g.ext)
+                float pc1 = f_stopBase(g.sh, g.entry, g.ext, g.ob)
                 if na(pc1)
                     g.state := 3
                     g.result := "no valid stop beyond entry"
@@ -809,7 +825,9 @@ if new4
                                         anc := m
                         if anc >= 0
                             string info = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept | 4H " + conf + " | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
-                            ST.push(Setup.new(sh, f.top, f.bot, B4.TC(j), sh ? B1.H(anc) : B1.L(anc), anc, info, 0, array.new_int(), array.new_int(), -10))
+                            Setup nst = Setup.new(sh, f.top, f.bot, B4.TC(j), sh ? B1.H(anc) : B1.L(anc), anc, info, 0, array.new_int(), array.new_int(), -10)
+                            nst.ob := f_ob4(dN > 0 ? j - dN : j, sh)     // last opposite candle before the 4H displacement
+                            ST.push(nst)
                             n4 += 1
                             if i_show4
                                 box.new(B4.T(f.i3 - 2), f.top, B4.TC(j) + 24 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG", text_size=size.tiny, text_color=color.gray)
@@ -884,7 +902,9 @@ if new1 and useHa
                             haKeys.shift()
                         float ext1 = sh ? B1.H(e1) : B1.L(e1)
                         string info = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept | M6: 1H wick+close + 1H MSS | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
-                        ST.push(Setup.new(sh, f.top, f.bot, B1.TC(q), ext1, e1, info, 0, array.new_int(), array.new_int(), -10))
+                        Setup nst6 = Setup.new(sh, f.top, f.bot, B1.TC(q), ext1, e1, info, 0, array.new_int(), array.new_int(), -10)
+                        nst6.ob := f_ob4(f_h4idx(B1.T(e1)), sh)        // completed 4H candles of the sweeping leg only
+                        ST.push(nst6)
                         n4 += 1
                         if i_show4
                             box.new(B4.T(f.i3 - 2), f.top, B1.TC(q) + 24 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG (M6)", text_size=size.tiny, text_color=color.gray)
@@ -950,7 +970,9 @@ if new1 and ST.size() > 0
                 n1 += 1
                 string sid = (sh ? "S" : "L") + str.tostring(B1.TC(q))
                 string inf = st.info + "\n1H IFVG " + str.tostring(f.bot, format.mintick) + "-" + str.tostring(f.top, format.mintick) + " | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
-                SG.push(Sig.new(sh, f.top, f.bot, B1.TC(q), st.ext, inf, sid, 0, -1, -1, -10, array.new<Rt>()))
+                Sig nsg = Sig.new(sh, f.top, f.bot, B1.TC(q), st.ext, inf, sid, 0, -1, -1, -10, array.new<Rt>())
+                nsg.ob := st.ob
+                SG.push(nsg)
                 if i_show1
                     box.new(B1.T(f.i3 - 2), f.top, B1.TC(q) + 12 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=color.new(sh ? color.red : color.teal, 55), text="1H IFVG", text_size=size.tiny, text_color=color.white)
                 alert(syminfo.ticker + " 1H IFVG " + (sh ? "SHORT" : "LONG") + " signal", alert.freq_once_per_bar_close)
@@ -1118,7 +1140,7 @@ if tfOK and SG.size() > 0
                 g.result := "trigger, no FVG"
             // preliminary stop / target for the pending order (final values are set at the fill)
             if g.fI3 >= 0 and g.state == 1
-                float pc0 = f_stopBase(sh, g.lvl, g.ext)
+                float pc0 = f_stopBase(sh, g.lvl, g.ext, g.ob)
                 g.sl := na(pc0) ? na : sh ? pc0 + i_slBuf : pc0 - i_slBuf
                 g.tp := na(pc0) ? na : sh ? g.lvl - i_tgtR * (g.sl - g.lvl) : g.lvl + i_tgtR * (g.lvl - g.sl)
             if isSwing and g.state == 1 and p == g.trig and not na(g.sl)

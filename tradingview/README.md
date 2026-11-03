@@ -33,8 +33,12 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
    - **Swing (default, main):** limit at the 1H IFVG – **1H Touch** (default) or 1H 50% CE – valid 24 h.
    - **Intraday (optional):** 1H IFVG retest → 5m MSS (or 1H CISD) with displacement → limit at the 5m MSS FVG –
      **5m Touch** (default) or 5m 50% CE; cancelled on a 5m close back through the entry FVG unless re-inverted.
-6. **Risk:** swing stop beyond the **4H sweep extreme**, intraday stop beyond the **previous completed 1H candle**
-   (+ 2 point buffer); **target 3R**; **stop to breakeven at +1R**; strategy risks 1 % of equity per trade.
+6. **Risk:**
+   - **Swing stop: 4H order block** – above the high of the last up-close 4H candle before the 4H displacement that
+     inverted the FVG (short; long: below the low of the last down-close candle). M6 option: the last up-close
+     completed 4H candle of the sweeping leg.
+   - **Intraday stop:** beyond the **previous completed 1H candle** high / low beyond the entry.
+   - Both: + 2 point buffer, **target 3R**, **stop to breakeven at +1R**; strategy risks 1 % of equity per trade.
 
 ## On the chart
 - **Entry / stop / target lines** for every pending and open trade: orange = entry, red = stop, green = target, with
@@ -49,7 +53,7 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 |---|---|
 | Trade US100 only | **on** (other symbols: no trades, warning in the table) |
 | Model | **Swing (1H entry)** |
-| Swing entry filter / stop | **1H Touch** / **4H sweep extreme** |
+| Swing entry filter / stop | **1H Touch** / **4H order block** (options: 4H sweep extreme, previous 4H candle) |
 | Intraday entry filter / stop | 5m Touch / Previous 1H candle |
 | Leg start / FVG into sweep | **Last 4H swing** / **on** |
 | Rule 3 confirmation | **1H MSS (M1)** – previous: 4H CISD or MSS |
@@ -59,14 +63,17 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 ## Backtest reference – US100 only, 2021-04 → 2026-10
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** 1H touch, 4H extreme stop | 28 trades · PF 2.68 · +16.90R · max DD 3.0 % | 30 trades · PF 2.48 · +17.86R · max DD 3.1 % |
-| **Intraday** 5m touch, prev 1H candle stop | 21 trades · PF 3.51 · +21.27R · max DD 3.2 % | 22 trades · PF 4.75 · +28.04R · max DD 3.2 % |
+| **Swing** 1H touch, 4H order block stop | 28 trades · win 39 % · PF 4.08 · +24.87R · $10k → $12,757 · max DD 2.0 % | 30 trades · win 40 % · PF 3.55 · +25.82R · $10k → $12,871 · max DD 3.0 % |
+| **Intraday** 5m touch, prev 1H candle stop | 21 trades · win 48 % · PF 3.51 · +21.27R · $10k → $12,311 · max DD 3.2 % | 22 trades · win 55 % · PF 4.75 · +28.04R · $10k → $13,163 · max DD 3.2 % |
+| **Both** (1 % each) | 49 trades · PF 3.79 · +46.14R · $10k → $15,705 · max DD 3.1 % | 52 trades · PF 4.06 · +53.86R · $10k → $16,943 · max DD 5.1 % |
 
 Rules as in these scripts (Rule 3 M1, leg from the last 4H swing, FVG formed into the sweep). 2021-2023 alone:
-swing +5.95R / +4.90R, intraday +10.76R / +18.55R (GoatFunded / Pepperstone).
+swing +12.94R / +11.87R, intraday +10.76R / +18.55R (GoatFunded / Pepperstone). Capital: $10,000 start, 1 % risk
+per trade, compounded, after costs.
 
 Optional swing Rule 3 **M6** (Python, with its "last 4H FVG of any sweeping leg" Rule 2), 2021-04 → 2026-10:
-GoatFunded 10 trades · PF 14.7 · +13.97R · max DD 1.0 %; Pepperstone 16 trades · PF 3.7 · +10.91R · max DD 2.0 %
+GoatFunded 10 trades · PF 17.7 · +16.97R · max DD 1.0 %; Pepperstone 16 trades · PF 4.4 · +13.89R · max DD 2.0 %
+(4H order block stop)
 (small sample – forward-test it next to the default).
 
 2021-2023 was never used for tuning (out of sample). About 5 swing and 4 intraday trades per year.
