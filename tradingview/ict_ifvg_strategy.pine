@@ -12,7 +12,8 @@
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
 //
-//  Rule 1  D/W/M swing highs/lows (N candles each side, confirmed after N candles).
+//  Rule 1  D/W/M swing highs/lows (N candles each side, confirmed after N candles). Intraday model: also 4H swing
+//          highs/lows with 10 candles each side (input "4H swings for the intraday model"), built from completed 4H candles.
 //  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
 //          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
 //  Rule 3  (M1, default) The 4H inversion needs 4H displacement (>= 2 candles, >= 1 ATR) AND a 1H MSS: a 1H close
@@ -37,6 +38,7 @@ i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
 i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
 i_showLv = input.bool(true, "Show unbroken levels", group=g1)
+i_liq4   = input.int(10, "4H swings for the intraday model (candles each side, 0 = off)", minval=0, maxval=30, group=g1, tooltip="Intraday liquidity = 4H/D/W/M: 4H swing highs/lows with this many 4H candles each side (only the significant ones), usable after they are confirmed. The swing model uses D/W/M only.")
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
 i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
@@ -435,6 +437,10 @@ var array<Sweep> SW = array.new<Sweep>()
 var array<Setup> ST = array.new<Setup>()
 var array<Sig>   SG = array.new<Sig>()
 var array<Sweep1> SW1 = array.new<Sweep1>()   // swing model sweeps
+var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing highs (price / confirmation time)
+var array<int>   l4HT = array.new_int()
+var array<float> l4LP = array.new_float()     // intraday: unbroken 4H swing lows
+var array<int>   l4LT = array.new_int()
 var array<float> haP = array.new_float()      // unbroken D/W/M levels tracked on 1H (swing)
 var array<int>   haT = array.new_int()
 var array<bool>  haHi = array.new_bool()
@@ -830,6 +836,34 @@ if new4
     if i_useM and not useHa
         f_sweeps(mHp, mHt, true, "M", j)
         f_sweeps(mLp, mLt, false, "M", j)
+    // intraday 4H liquidity: sweeps of confirmed 4H swings, then drop broken ones, then add the swing confirmed now
+    if i_liq4 > 0 and not useHa
+        f_sweeps(l4HP, l4HT, true, "4H", j)
+        f_sweeps(l4LP, l4LT, false, "4H", j)
+        if l4HP.size() > 0
+            for k = l4HP.size() - 1 to 0
+                if l4HT.get(k) <= B4.T(j) and B4.H(j) > l4HP.get(k)
+                    l4HP.remove(k)
+                    l4HT.remove(k)
+        if l4LP.size() > 0
+            for k = l4LP.size() - 1 to 0
+                if l4LT.get(k) <= B4.T(j) and B4.L(j) < l4LP.get(k)
+                    l4LP.remove(k)
+                    l4LT.remove(k)
+        int pv4 = j - i_liq4
+        if pv4 - i_liq4 >= B4.base
+            if B4.pivHiAt(pv4, i_liq4, true)
+                l4HP.push(B4.H(pv4))
+                l4HT.push(B4.TC(j))
+            if B4.pivLoAt(pv4, i_liq4, true)
+                l4LP.push(B4.L(pv4))
+                l4LT.push(B4.TC(j))
+        while l4HP.size() > 100
+            l4HP.shift()
+            l4HT.shift()
+        while l4LP.size() > 100
+            l4LP.shift()
+            l4LT.shift()
     if SW.size() > 0
         for k = SW.size() - 1 to 0
             Sweep sw = SW.get(k)
@@ -1302,6 +1336,9 @@ if barstate.islast
         if i_useD
             f_drawLv(dHp, dHt, color.new(color.orange, 40), "D")
             f_drawLv(dLp, dLt, color.new(color.orange, 40), "D")
+        if i_liq4 > 0 and not isSwing
+            f_drawLv(l4HP, l4HT, color.new(color.gray, 40), "4H")
+            f_drawLv(l4LP, l4LT, color.new(color.gray, 40), "4H")
 
 var table tb = table.new(position.top_right, 2, 12, bgcolor=color.new(color.black, 20), border_width=1)
 if barstate.islast and i_table
