@@ -48,6 +48,9 @@ LEG_LOOKBACK = 20      # bars before the sweep to find where the leg started ("l
 # Rule 2 (revised)
 SWEEP_TFS = ("M", "W", "D")   # rule 1 liquidity: swing levels whose sweep starts a setup; add "4H" for 4H swings
 SESSION_TFS = ()              # session liquidity (e.g. ("ASIA","LONDON","NY")); swept like swing levels
+SIG_4H = False                # True = 4H liquidity = only significant 4H swings (swings.significant_4h_levels)
+import os as _os
+RULE1_4H_PIVOT = int(_os.environ.get("RULE1_4H_PIVOT", "10"))   # 4H swing size: 10 = major swings (default), 2 = all swings
 LEG_MODE = "swing"     # default rule 2: "swing" = leg from the last 4H swing; "any" = any leg sweeping the D/W/M level
                        # (used by the swing option M6); "lookback"
                        # "lookback" = lowest low (highest high) of the LEG_LOOKBACK candles before the sweep

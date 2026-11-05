@@ -63,7 +63,7 @@ COST = json.loads(_costs.read_text()) if DATA_SOURCE != "yahoo" and _costs.exist
 # Rule 1 for the intraday model: liquidity = 4H swings (INTRADAY_4H_PIVOT candles each side, only the significant 4H
 # highs/lows) + D/W/M swings (2 each side). The swing model keeps D/W/M (ifvg.SWEEP_TFS).
 INTRADAY_LIQ_TFS = ("M", "W", "D", "4H")
-INTRADAY_4H_PIVOT = 10
+INTRADAY_4H_PIVOT = ifvg.RULE1_4H_PIVOT   # 4H swing size (ifvg.RULE1_4H_PIVOT): 10 = major swings, 2 = all swings
 # How a 4H swing sweep is traded: "4H FVG" = like D/W/M (4H FVG -> 4H IFVG -> retest -> 1H IFVG);
 # "1H FVG" = rule 1b: 1H FVG of the leg inverted -> 1H IFVG straight away (setups_v2, no 4H step).
 INTRADAY_4H_MODE = "4H FVG"
@@ -73,6 +73,9 @@ INTRADAY_1H_PIVOT = 0   # rule 1c: 1H swing sweeps -> 1H FVG of the leg -> 1H IF
 # extra layers on top of the above: [(level tf, pivot)], each traded via 1H FVG -> 1H IFVG, only at a POI
 # (4H sweep into a D FVG, 1H sweep into a 4H FVG). [] = off.
 INTRADAY_POI_LAYERS: list = []
+# Fast intraday path: sweep -> 15m FVG inverted (15m IFVG) + 15m CISD -> retest + 5m entry (setups_15m). "" = off,
+# "add" = run alongside the 4H->1H->5m setups, "only" = use the fast path alone.
+INTRADAY_FAST15 = ""
 STOP_MODE = "prev_1h_candle"                   # "prev_1h_candle" = beyond the previous completed 1H candle's high/low
                                                # "prev_swing" = beyond the previous 5m/15m swing (entry TF)
                                                # "4h_extreme" = beyond the 4H sweep extreme | "fvg" = beyond the entry FVG
@@ -178,8 +181,15 @@ def _intraday_setups(h1: pd.DataFrame):
     split = INTRADAY_4H_MODE == "1H FVG" and "4H" in INTRADAY_LIQ_TFS
     ifvg.SWEEP_TFS = tuple(t for t in INTRADAY_LIQ_TFS if t != "4H") if split else INTRADAY_LIQ_TFS
     try:
-        h4, setups = build_4h_setups(h1)
-        if split:
+        h4, setups = ([], []) if INTRADAY_FAST15 == "only" else build_4h_setups(h1)
+        if INTRADAY_FAST15 in ("add", "only"):
+            import setups_15m
+            m15 = load(DATA / SYMBOLS[list(SYMBOLS)[0]][1]) if len(SYMBOLS) == 1 else None
+            fast = []
+            for sym, (hf, m15f, _) in SYMBOLS.items():
+                fast += setups_15m.build_setups(h1 if sym == list(SYMBOLS)[0] else load(DATA / hf), load(DATA / m15f))
+            setups = sorted(list(setups) + fast, key=lambda d: d["signal_time"])
+        if split and INTRADAY_FAST15 != "only":
             import setups_v2
             ifvg.SWEEP_TFS = ("4H",)
             saved_req = setups_v2.REQUIRE_4H_FVG

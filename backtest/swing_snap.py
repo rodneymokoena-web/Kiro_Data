@@ -60,7 +60,7 @@ SWING_4H_PIVOT = 0
 # Rule 1 liquidity for the swing model: 4H / D / W / M (4H swings with RULE1_4H_PIVOT candles each side). Set
 # LIQ_TFS_RULE1 = ("M", "W", "D") for D/W/M only.
 LIQ_TFS_RULE1 = ("M", "W", "D", "4H")
-RULE1_4H_PIVOT = 10
+RULE1_4H_PIVOT = ifvg.RULE1_4H_PIVOT      # 4H swing size (ifvg.RULE1_4H_PIVOT): 10 = major swings, 2 = all swings
 SESSION_LIQ = ()      # add previous-session highs/lows, e.g. ("ASIA","LONDON","NY")
 SESSION_MIN_TF = ("1H",)   # a session level counts only if it is also a swing on these TFs
 # TARGET "liquidity": the OPPOSITE liquidity draw = nearest unbroken swing low (short) / high (long) beyond the entry
