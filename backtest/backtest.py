@@ -53,7 +53,7 @@ from matplotlib.patches import Rectangle
 from swings import DATA, DATA_SOURCE, SYMBOLS, draw_candles, load
 
 # ----------------------------------------------------------------------------- CONFIG
-SL_BUFFER = {"US100": 2.0, "XAUUSD": 0.5}      # price units beyond the entry FVG
+SL_BUFFER = {"US100": 2.0, "XAUUSD": 0.5, "US500": 0.6, "US30": 4.5, "DE30": 2.0, "UK100": 1.0, "JP225": 4.0}   # price units beyond the stop level (~0.01% of price)
 # round-trip cost per trade, price units: broker data = median spread of the export (data/{source}/costs.json,
 # written by fetch_goat.py; no commission included); Yahoo = estimate
 _costs = DATA / "costs.json"

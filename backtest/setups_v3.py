@@ -45,6 +45,11 @@ INVERT_ON = "close"          # "close" = first 1H CLOSE through the 4H FVG
 WICK_CLOSE = "any"           # "through" = closes below the FVG (a) | "inside" = closes inside it (b)
                              # "back" = closes back above it (c) | "any" = any close
 H1 = pd.Timedelta(hours=1)
+STATS: dict[str, int] = {}     # funnel counters (reset by the caller): stage -> number of sweeps reaching it
+
+
+def _c(name: str) -> None:
+    STATS[name] = STATS.get(name, 0) + 1
 
 
 def _cisd_level_4h(o4, c4, d: int, short: bool) -> float:
@@ -81,6 +86,7 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
         s4 = idx4.searchsorted(lv.broken_time, side="right") - 1
         if s1 < 0 or s4 < 0:
             continue
+        _c("1 level swept")
         # ---- rule 2: last 4H FVG of the sweeping leg, intact (1H closes) at the sweep
         origin4 = ifvg.leg_origin(o4, hh4, ll4, c4, s4, short)
         if origin4 < 0:
@@ -110,8 +116,10 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
             if hit:
                 f, j = r, t
                 break
+        _c("2 intact 4H FVG exists") if live else None
         if f is None:
             continue
+        _c("3 inverted by a 1H close in the window")
         if INVERT_ON == "wick" and WICK_CLOSE != "any":
             through = c[j] < f.bottom if short else c[j] > f.top
             back = c[j] > f.top if short else c[j] < f.bottom
@@ -122,6 +130,7 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
         ok_d, run_len, move, _ = structure.displacement(h1, j, short)
         if not ok_d:
             continue
+        _c("4 1H displacement ok")
         ext1 = s1 + int(np.argmax(h[s1:j + 1]) if short else np.argmin(l[s1:j + 1]))
         extreme = h[ext1] if short else l[ext1]
         # confirmation window: inversion candle (+ WAIT_1H while still inverted and extreme intact)
@@ -150,7 +159,10 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
                 hit = np.where(seg < level if short else seg > level)[0]
                 cisd_i = ext1 + int(hit[0]) if len(hit) else -1
         conf = [x for x in (cisd_i, mss_i) if x >= 0]
-        if REQUIRE == "mss":
+        if REQUIRE == "none":                  # no MSS / CISD requirement (displacement only)
+            cisd_i = mss_i = -1
+            sig = j
+        elif REQUIRE == "mss":
             if mss_i < 0:
                 continue
             cisd_i = -1
@@ -165,6 +177,7 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
             sig = max(j, min(conf))
         if sig > w_end:
             continue
+        _c("5 1H MSS ok")
         key = (int(f.idx), want)
         tag = f"{lv.tf}{'H' if short else 'L'} {lv.price:.2f}"
         if key in out:

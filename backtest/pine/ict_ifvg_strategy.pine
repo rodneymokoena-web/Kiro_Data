@@ -12,8 +12,8 @@
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
 //
-//  Rule 1  D/W/M swing highs/lows (N candles each side, confirmed after N candles). Intraday model: also 4H swing
-//          highs/lows with 10 candles each side (input "4H swings for the intraday model"), built from completed 4H candles.
+//  Rule 1  Liquidity = 4H / D / W / M: D/W/M swing highs/lows (N candles each side) plus 4H swing highs/lows with
+//          10 candles each side (input "4H swings (candles each side)"), built from completed 4H candles. Both models.
 //  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
 //          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
 //  Rule 3  (M1, default) The 4H inversion needs 4H displacement (>= 2 candles, >= 1 ATR) AND a 1H MSS: a 1H close
@@ -38,7 +38,7 @@ i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
 i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
 i_showLv = input.bool(true, "Show unbroken levels", group=g1)
-i_liq4   = input.int(10, "4H swings for the intraday model (candles each side, 0 = off)", minval=0, maxval=30, group=g1, tooltip="Intraday liquidity = 4H/D/W/M: 4H swing highs/lows with this many 4H candles each side (only the significant ones), usable after they are confirmed. The swing model uses D/W/M only.")
+i_liq4   = input.int(10, "4H swings (candles each side, 0 = off)", minval=0, maxval=30, group=g1, tooltip="Liquidity = 4H/D/W/M for BOTH models: 4H swing highs/lows with this many candles each side (only the significant ones), usable once confirmed, plus the D/W/M swings.")
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
 i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
@@ -445,7 +445,7 @@ var array<float> haP = array.new_float()      // unbroken D/W/M levels tracked o
 var array<int>   haT = array.new_int()
 var array<bool>  haHi = array.new_bool()
 var array<string> haTf = array.new_string()
-var array<int>   haLast = array.new_int(6, 0)  // newest level confirmation time merged per list
+var array<int>   haLast = array.new_int(8, 0)  // newest confirmation time merged per list (D/W/M H/L + 4H H/L)
 var array<int>   haKeys = array.new_int()      // 4H FVGs that already produced a swing setup
 var int   nTrades = 0
 var int   nBE = 0
@@ -836,10 +836,12 @@ if new4
     if i_useM and not useHa
         f_sweeps(mHp, mHt, true, "M", j)
         f_sweeps(mLp, mLt, false, "M", j)
-    // intraday 4H liquidity: sweeps of confirmed 4H swings, then drop broken ones, then add the swing confirmed now
-    if i_liq4 > 0 and not useHa
-        f_sweeps(l4HP, l4HT, true, "4H", j)
-        f_sweeps(l4LP, l4LT, false, "4H", j)
+    // 4H liquidity: intraday sweeps these 4H levels here (swing sweeps them on 1H in section 3b). Either way, keep the
+    // l4HP/l4LP list current: drop levels broken by this 4H candle, then add a swing confirmed now.
+    if i_liq4 > 0
+        if not useHa
+            f_sweeps(l4HP, l4HT, true, "4H", j)
+            f_sweeps(l4LP, l4LT, false, "4H", j)
         if l4HP.size() > 0
             for k = l4HP.size() - 1 to 0
                 if l4HT.get(k) <= B4.T(j) and B4.H(j) > l4HP.get(k)
@@ -934,6 +936,9 @@ if new1 and useHa
     if i_useM
         f_merge(mHp, mHt, true, "M", 4)
         f_merge(mLp, mLt, false, "M", 5)
+    if i_liq4 > 0
+        f_merge(l4HP, l4HT, true, "4H", 6)
+        f_merge(l4LP, l4LT, false, "4H", 7)
     // sweeps on this 1H candle (each level once: removed when swept)
     if haP.size() > 0
         for k = haP.size() - 1 to 0
@@ -1336,7 +1341,7 @@ if barstate.islast
         if i_useD
             f_drawLv(dHp, dHt, color.new(color.orange, 40), "D")
             f_drawLv(dLp, dLt, color.new(color.orange, 40), "D")
-        if i_liq4 > 0 and not isSwing
+        if i_liq4 > 0
             f_drawLv(l4HP, l4HT, color.new(color.gray, 40), "4H")
             f_drawLv(l4LP, l4LT, color.new(color.gray, 40), "4H")
 
