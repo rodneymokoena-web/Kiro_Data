@@ -57,6 +57,7 @@ _SOURCES = {
     "exness": (Path(__file__).parent / "data" / "exness", {                        # Exness USTEC / XAUUSD, built from ticks
         "US100": ("US100_1h.csv", "US100_15m.csv", "US100_5m.csv"),
         "XAUUSD": ("XAUUSD_1h.csv", "XAUUSD_15m.csv", "XAUUSD_5m.csv"),
+        **{s: (f"{s}_1h.csv", f"{s}_15m.csv", f"{s}_5m.csv") for s in ("US500", "US30", "DE30", "UK100", "JP225")},
     }),
     "pepperstone_oos": (Path(__file__).parent / "data" / "pepperstone_oos", {      # Pepperstone 2021-2023 (out of sample)
         "US100": ("US100_1h.csv", "US100_15m.csv", "US100_5m.csv"),
@@ -199,6 +200,63 @@ def find_swings(htf: pd.DataFrame, tf: str) -> pd.DataFrame:
         "confirmed_time": htf["End"].iloc[i + right],
     } for kind, price, i, first in rows], columns=["tf", "type", "price", "pivot_time", "confirmed_time"])
     return df
+
+
+# ICT sessions on the New York clock (hour ranges, NY time). A session level is the high/low of a completed session.
+SESSIONS = {"ASIA": (20, 24), "LONDON": (2, 5), "NY": (7, 10)}
+
+
+SESSION_MIN_TF = ("1H",)   # a session high/low counts only if it is also a swing on one of these TFs ("1H","4H","D"...)
+SESSION_SWING_TOL = 0.0001  # price match tolerance (fraction) between the session extreme and the swing
+
+
+def _swing_prices(h1: pd.DataFrame, tfs) -> dict:
+    """{tf: (array of swing-high prices, array of swing-low prices)} for the requested timeframes (1H = the 1H bars)."""
+    out = {}
+    for tf in tfs:
+        bars = h1.assign(Start=h1.index, End=h1.index + BAR_SIZE["1H"]) if tf == "1H" else build_htf(h1, tf)
+        sw = find_swings(bars, tf)
+        out[tf] = (sw.loc[sw["type"] == "high", "price"].to_numpy(), sw.loc[sw["type"] == "low", "price"].to_numpy())
+    return out
+
+
+def session_levels(h1: pd.DataFrame, which=("ASIA", "LONDON", "NY"), min_tf=None) -> pd.DataFrame:
+    """High and low of each completed session as liquidity levels (tf = session name), confirmed at the session close.
+    min_tf (default SESSION_MIN_TF): keep a session extreme only if it also lines up with a swing high/low on one of
+    those timeframes (1H and above). min_tf=() keeps every session extreme."""
+    if min_tf is None:
+        min_tf = SESSION_MIN_TF
+    swings = _swing_prices(h1, min_tf) if min_tf else None
+    ny = h1.index.tz_convert("America/New_York")
+    hour = ny.hour + ny.minute / 60.0
+    day = (ny + pd.Timedelta(hours=7)).tz_localize(None).floor("D")       # trading-day key (rolls 17:00 NY)
+
+    def is_swing(price: float, kind: str) -> bool:
+        if swings is None:
+            return True
+        tol = price * SESSION_SWING_TOL
+        for hi_p, lo_p in swings.values():
+            arr = hi_p if kind == "high" else lo_p
+            if len(arr) and np.min(np.abs(arr - price)) <= tol:
+                return True
+        return False
+
+    rows = []
+    for name in which:
+        lo_h, hi_h = SESSIONS[name]
+        inb = (hour >= lo_h) & (hour < hi_h)
+        if not inb.any():
+            continue
+        sub = h1[inb].assign(_d=day[inb])
+        g = sub.groupby("_d")
+        hi = g["High"].max(); lo = g["Low"].min()
+        end = g.apply(lambda x: x.index.max() + BAR_SIZE["1H"], include_groups=False)
+        for d in hi.index:
+            if is_swing(float(hi[d]), "high"):
+                rows.append({"tf": name, "type": "high", "price": float(hi[d]), "pivot_time": end[d], "confirmed_time": end[d]})
+            if is_swing(float(lo[d]), "low"):
+                rows.append({"tf": name, "type": "low", "price": float(lo[d]), "pivot_time": end[d], "confirmed_time": end[d]})
+    return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time"])
 
 
 def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:

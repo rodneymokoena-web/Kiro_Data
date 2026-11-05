@@ -69,8 +69,12 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
     h4 = h4_full.drop(columns=["Start", "End"])
     end4 = h4_full["End"]
     end_idx = pd.DatetimeIndex(end4)
-    levels = pd.concat([find_swings(htf[tf], tf) for tf in ifvg.SWEEP_TFS], ignore_index=True)   # rule 1 liquidity
-    levels = levels[levels["tf"].isin(ifvg.SWEEP_TFS)]
+    import swings as _S
+    parts = [find_swings(htf[tf], tf) for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
+    if ifvg.SESSION_TFS:
+        parts.append(_S.session_levels(h1, ifvg.SESSION_TFS))
+    levels = pd.concat(parts, ignore_index=True)
+    levels = levels[levels["tf"].isin(tuple(ifvg.SWEEP_TFS) + tuple(ifvg.SESSION_TFS))]
     levels = add_break_times(levels, h1)
     levels = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(TEST_START, h1.index[0]))]
 

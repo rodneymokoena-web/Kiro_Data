@@ -12,8 +12,9 @@
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
 //
-//  Rule 1  Liquidity = 4H / D / W / M: D/W/M swing highs/lows (N candles each side) plus 4H swing highs/lows with
-//          10 candles each side (input "4H swings (candles each side)"), built from completed 4H candles. Both models.
+//  Rule 1  Liquidity = 4H / D / W / M swing highs/lows (both models). Intraday model also uses the previous Asia /
+//          London / NY SESSION highs/lows, kept only where a session extreme coincides with a 1H-or-higher swing
+//          (input "Intraday: session highs/lows"). Sessions on the New York clock: Asia 20-00, London 02-05, NY 07-10.
 //  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
 //          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
 //  Rule 3  (M1, default) The 4H inversion needs 4H displacement (>= 2 candles, >= 1 ATR) AND a 1H MSS: a 1H close
@@ -40,6 +41,8 @@ i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
 i_showLv = input.bool(true, "Show unbroken levels", group=g1)
 i_liq4   = input.int(10, "4H swings (candles each side, 0 = off)", minval=0, maxval=30, group=g1, tooltip="Liquidity = 4H/D/W/M for BOTH models: 4H swing highs/lows with this many candles each side (only the significant ones), usable once confirmed, plus the D/W/M swings.")
+i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group=g1, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
+i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=g1)
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
 i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
@@ -306,6 +309,19 @@ method mssHit(Bars b, int ext, int j, bool sh) =>
                     break
     mss
 
+// session end: is the completed-session extreme `price` a swing high/low on B1 (i_sessPiv each side)? 1H+ filter
+f_sessSwing(float price, bool isHi) =>
+    bool ok = false
+    int n = i_sessPiv
+    int last = B1.size() - 1 - n
+    if last >= B1.base + n
+        for i = last to B1.base + n
+            bool piv = isHi ? B1.pivHiAt(i, n, true) : B1.pivLoAt(i, n, true)
+            if piv and math.abs((isHi ? B1.H(i) : B1.L(i)) - price) <= price * 0.0002
+                ok := true
+                break
+    ok
+
 // MSS "most recent swing": from candle s to j, the first close through the most recent swing low (short) / high (long)
 // already confirmed at that candle (pivot + i_mssPiv < t), formed before or after the sweep
 method mssAny(Bars b, int s, int j, bool sh) =>
@@ -442,6 +458,13 @@ var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing hig
 var array<int>   l4HT = array.new_int()
 var array<float> l4LP = array.new_float()     // intraday: unbroken 4H swing lows
 var array<int>   l4LT = array.new_int()
+var array<float> lSHP = array.new_float()     // intraday: unbroken session highs (1H+ swing filtered)
+var array<int>   lSHT = array.new_int()
+var array<float> lSLP = array.new_float()     // intraday: unbroken session lows
+var array<int>   lSLT = array.new_int()
+var float sesHi = na                          // running high/low of the session currently open
+var float sesLo = na
+var int   sesId = -1                          // which session is open (0 Asia, 1 London, 2 NY); -1 = none
 var array<float> haP = array.new_float()      // unbroken D/W/M levels tracked on 1H (swing)
 var array<int>   haT = array.new_int()
 var array<bool>  haHi = array.new_bool()
@@ -761,6 +784,30 @@ if new1
     B1.add(o1, h1, l1, c1, t1, tc1, 1500)
     q := B1.size() - 1
     updFvgs(F1, B1, q, 150)
+    // ----- session highs/lows (intraday only): track the open session, push its extreme at the close (1H+ swing)
+    if i_sess and not isSwing
+        int nyh = hour(B1.T(q), "America/New_York")
+        int cur = (nyh >= 20 or nyh < 0) ? 0 : (nyh >= 2 and nyh < 5) ? 1 : (nyh >= 7 and nyh < 10) ? 2 : -1
+        if cur != sesId                                       // a session just ended / another began
+            if sesId >= 0 and not na(sesHi)
+                if f_sessSwing(sesHi, true)
+                    lSHP.push(sesHi)
+                    lSHT.push(B1.T(q))
+                if f_sessSwing(sesLo, false)
+                    lSLP.push(sesLo)
+                    lSLT.push(B1.T(q))
+                while lSHP.size() > 60
+                    lSHP.shift()
+                    lSHT.shift()
+                while lSLP.size() > 60
+                    lSLP.shift()
+                    lSLT.shift()
+            sesId := cur
+            sesHi := cur >= 0 ? B1.H(q) : na
+            sesLo := cur >= 0 ? B1.L(q) : na
+        else if cur >= 0
+            sesHi := math.max(sesHi, B1.H(q))
+            sesLo := math.min(sesLo, B1.L(q))
 
 // ───────────────────────────────────────────────────────────────────────────── 2. virtual fills / exits (orders were set on the previous candle)
 if SG.size() > 0
@@ -867,6 +914,20 @@ if new4
         while l4LP.size() > 100
             l4LP.shift()
             l4LT.shift()
+    // session liquidity (intraday): sweep, then drop broken levels
+    if i_sess and not useHa
+        f_sweeps(lSHP, lSHT, true, "SESS", j)
+        f_sweeps(lSLP, lSLT, false, "SESS", j)
+        if lSHP.size() > 0
+            for k = lSHP.size() - 1 to 0
+                if lSHT.get(k) <= B4.T(j) and B4.H(j) > lSHP.get(k)
+                    lSHP.remove(k)
+                    lSHT.remove(k)
+        if lSLP.size() > 0
+            for k = lSLP.size() - 1 to 0
+                if lSLT.get(k) <= B4.T(j) and B4.L(j) < lSLP.get(k)
+                    lSLP.remove(k)
+                    lSLT.remove(k)
     if SW.size() > 0
         for k = SW.size() - 1 to 0
             Sweep sw = SW.get(k)
@@ -1345,6 +1406,9 @@ if barstate.islast
         if i_liq4 > 0
             f_drawLv(l4HP, l4HT, color.new(color.gray, 40), "4H")
             f_drawLv(l4LP, l4LT, color.new(color.gray, 40), "4H")
+        if i_sess and not isSwing
+            f_drawLv(lSHP, lSHT, color.new(color.teal, 30), "S")
+            f_drawLv(lSLP, lSLT, color.new(color.teal, 30), "S")
 
 var table tb = table.new(position.top_right, 2, 12, bgcolor=color.new(color.black, 20), border_width=1)
 if barstate.islast and i_table

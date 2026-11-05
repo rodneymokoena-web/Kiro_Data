@@ -72,6 +72,7 @@ def build_4h_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
 #   "CISD or MSS" = previous rule: 4H displacement AND (4H CISD or 4H MSS)
 CONFIRM_4H = "1H MSS"
 MSS_MODE_1H = "ext"
+MSS_REQUIRED_4H = True     # False = the 4H inversion needs only 4H displacement (no 1H MSS)
 
 
 def _accept_1h_mss(h1: pd.DataFrame, h4_full: pd.DataFrame):
@@ -85,6 +86,7 @@ def _accept_1h_mss(h1: pd.DataFrame, h4_full: pd.DataFrame):
         j1 = idx1.searchsorted(h4_full["End"].iat[j]) - 1                # last 1H candle of the 4H inversion candle
         ok_m, lv, t = structure.mss(h1, s1, j1, short, MSS_MODE_1H) if j1 >= s1 else (False, np.nan, -1)
         atr_j = structure._arrays(h4)[4][j]
+        ok_m = ok_m or not MSS_REQUIRED_4H
         return {"passed": bool(ok_d and ok_m), "confirm": "MSS1H" if ok_m else "-",
                 "disp_candles": int(run_len), "disp_atr": round(float(move / atr_j), 2), "mss_level": lv,
                 "reject_reason": "" if ok_d and ok_m else ("no displacement" if not ok_d else "no 1H MSS")}
@@ -93,7 +95,11 @@ def _accept_1h_mss(h1: pd.DataFrame, h4_full: pd.DataFrame):
 
 def build_4h_setups_v1(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
     htf = {tf: build_htf(h1, tf) for tf in ("D", "W", "M", "4H")}
-    levels = pd.concat([find_swings(htf[tf], tf) for tf in ifvg.SWEEP_TFS], ignore_index=True)   # rule 1 liquidity
+    import swings as _S
+    _parts = [find_swings(htf[tf], tf) for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
+    if ifvg.SESSION_TFS:
+        _parts.append(_S.session_levels(h1, ifvg.SESSION_TFS))
+    levels = pd.concat(_parts, ignore_index=True)
     h4_full = htf["4H"]
     h4 = h4_full.drop(columns=["Start", "End"])
     accept = structure.quality if CONFIRM_4H == "CISD or MSS" else _accept_1h_mss(h1, h4_full)

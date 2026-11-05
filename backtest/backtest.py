@@ -67,6 +67,8 @@ INTRADAY_4H_PIVOT = 10
 # How a 4H swing sweep is traded: "4H FVG" = like D/W/M (4H FVG -> 4H IFVG -> retest -> 1H IFVG);
 # "1H FVG" = rule 1b: 1H FVG of the leg inverted -> 1H IFVG straight away (setups_v2, no 4H step).
 INTRADAY_4H_MODE = "4H FVG"
+INTRADAY_SESSION_LIQ = ("ASIA", "LONDON", "NY")   # previous-session highs/lows added to the intraday Rule 1
+INTRADAY_SESSION_MIN_TF = ("1H", "4H", "D", "W", "M")   # kept only if also a swing on 1H or above
 INTRADAY_1H_PIVOT = 0   # rule 1c: 1H swing sweeps -> 1H FVG of the leg -> 1H IFVG (setups_v2), 0 = off
 # extra layers on top of the above: [(level tf, pivot)], each traded via 1H FVG -> 1H IFVG, only at a POI
 # (4H sweep into a D FVG, 1H sweep into a 4H FVG). [] = off.
@@ -169,7 +171,9 @@ def plot_trade(symbol: str, tr: dict, ltf: pd.DataFrame, path: Path) -> None:
 def _intraday_setups(h1: pd.DataFrame):
     """Rules 1-4 with the intraday liquidity (INTRADAY_LIQ_TFS, 4H swings INTRADAY_4H_PIVOT each side)."""
     import swings
-    saved = (ifvg.SWEEP_TFS, dict(swings.PIVOT_BY_TF))
+    saved = (ifvg.SWEEP_TFS, dict(swings.PIVOT_BY_TF), ifvg.SESSION_TFS)
+    ifvg.SESSION_TFS = INTRADAY_SESSION_LIQ
+    swings.SESSION_MIN_TF = INTRADAY_SESSION_MIN_TF
     swings.PIVOT_BY_TF = {**swings.PIVOT_BY_TF, "4H": INTRADAY_4H_PIVOT}
     split = INTRADAY_4H_MODE == "1H FVG" and "4H" in INTRADAY_LIQ_TFS
     ifvg.SWEEP_TFS = tuple(t for t in INTRADAY_LIQ_TFS if t != "4H") if split else INTRADAY_LIQ_TFS
@@ -210,7 +214,7 @@ def _intraday_setups(h1: pd.DataFrame):
             setups = sorted(setups + s4, key=lambda d: d["signal_time"])
         return h4, setups
     finally:
-        ifvg.SWEEP_TFS, swings.PIVOT_BY_TF = saved[0], saved[1]
+        ifvg.SWEEP_TFS, swings.PIVOT_BY_TF, ifvg.SESSION_TFS = saved
 
 
 def run() -> pd.DataFrame:

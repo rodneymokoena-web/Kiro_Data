@@ -61,6 +61,8 @@ SWING_4H_PIVOT = 0
 # LIQ_TFS_RULE1 = ("M", "W", "D") for D/W/M only.
 LIQ_TFS_RULE1 = ("M", "W", "D", "4H")
 RULE1_4H_PIVOT = 10
+SESSION_LIQ = ()      # add previous-session highs/lows, e.g. ("ASIA","LONDON","NY")
+SESSION_MIN_TF = ("1H",)   # a session level counts only if it is also a swing on these TFs
 # TARGET "liquidity": the OPPOSITE liquidity draw = nearest unbroken swing low (short) / high (long) beyond the entry
 # on LIQ_TFS ("4H" swings with LIQ_4H_PIVOT candles each side, "D", "W", "M"), confirmed and not yet traded through at
 # the fill. LIQ_MIN_RR > 0: skip levels closer than LIQ_MIN_RR x risk and take the next one.
@@ -142,11 +144,13 @@ def _setups_1h_close(h1: pd.DataFrame, disp_min: int):
     import swings
     keys = ("INVERT_ON", "WICK_CLOSE", "CISD_MODE", "REQUIRE", "WAIT_1H", "MSS_MODE")
     saved = {k: getattr(V3, k) for k in keys}
-    saved2 = (ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES, ifvg.SWEEP_TFS, dict(swings.PIVOT_BY_TF))
+    saved2 = (ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES, ifvg.SWEEP_TFS, dict(swings.PIVOT_BY_TF), ifvg.SESSION_TFS)
     for k, v in zip(keys, ("close", "any", "1h_close", REQUIRE_MSS, 0, "ext")):
         setattr(V3, k, v)
     ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES = "any", LEG_LOOKBACK_4H, disp_min
     ifvg.SWEEP_TFS = LIQ_TFS_RULE1                                    # rule 1 liquidity for the swing model
+    ifvg.SESSION_TFS = SESSION_LIQ
+    swings.SESSION_MIN_TF = SESSION_MIN_TF
     if "4H" in LIQ_TFS_RULE1:
         swings.PIVOT_BY_TF = {**swings.PIVOT_BY_TF, "4H": RULE1_4H_PIVOT}
     try:
@@ -154,7 +158,7 @@ def _setups_1h_close(h1: pd.DataFrame, disp_min: int):
     finally:
         for k, v in saved.items():
             setattr(V3, k, v)
-        ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES, ifvg.SWEEP_TFS, swings.PIVOT_BY_TF = saved2
+        ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES, ifvg.SWEEP_TFS, swings.PIVOT_BY_TF, ifvg.SESSION_TFS = saved2
 
 
 FVG_PICK = "nearest"    # "nearest" (closest to the 4H IFVG) | "farthest" (most extreme of the leg)

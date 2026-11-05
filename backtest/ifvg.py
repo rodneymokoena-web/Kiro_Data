@@ -47,6 +47,7 @@ from swings import (DATA, STYLE, SYMBOLS, TEST_START, add_break_times, build_htf
 LEG_LOOKBACK = 20      # bars before the sweep to find where the leg started ("lookback" leg mode)
 # Rule 2 (revised)
 SWEEP_TFS = ("M", "W", "D")   # rule 1 liquidity: swing levels whose sweep starts a setup; add "4H" for 4H swings
+SESSION_TFS = ()              # session liquidity (e.g. ("ASIA","LONDON","NY")); swept like swing levels
 LEG_MODE = "swing"     # default rule 2: "swing" = leg from the last 4H swing; "any" = any leg sweeping the D/W/M level
                        # (used by the swing option M6); "lookback"
                        # "lookback" = lowest low (highest high) of the LEG_LOOKBACK candles before the sweep
@@ -122,7 +123,7 @@ def find_setups(bars: pd.DataFrame, levels: pd.DataFrame, tf: str, accept=None) 
     n = len(bars)
     fvgs = find_fvgs(bars)
     swept = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(TEST_START, bars.index[0]))
-                   & levels["tf"].isin(SWEEP_TFS)]
+                   & levels["tf"].isin(tuple(SWEEP_TFS) + tuple(SESSION_TFS))]
 
     setups: dict[tuple, dict] = {}
     for lv in swept.itertuples(index=False):
