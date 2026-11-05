@@ -36,6 +36,8 @@ Short described; long is the mirror image.
    2 candles each side, before the 4H FVG's middle candle). *Fixed R* optional.
 
 **Intraday model (optional)** (Python: `backtest.py`)
+1b. **Also previous-session highs/lows** (Asia / London / NY, New York clock) added to Rule 1, kept only where the
+   session extreme is also a swing on 1H or higher. Input *Intraday: previous session highs/lows*.
 2. **Sweep + leg + FVG:** a wick trades through one of the Rule 1 levels. The leg into the sweep starts at the **last 4H swing low
    / high before the sweep**. A **4H FVG formed by that leg into the sweep**.
 3. **4H inversion (M1):** within 20 4H candles a 4H candle **closes through** that FVG, with 4H displacement (≥ 2
@@ -65,6 +67,7 @@ Short described; long is the mirror image.
 | Swing 1H displacement · inversion window · last-FVG lookback | 1 candle · 80 1H candles · 60 4H candles |
 | Intraday entry / stop / target | 5m Touch / Previous 1H candle / 3R |
 | Liquidity (both models) | **4H (10 each side) / D / W / M** |
+| Intraday also | **Asia/London/NY session highs/lows (1H+ swing)** |
 | Intraday leg start / FVG into sweep / Rule 3 confirmation | Last 4H swing / on / 1H MSS (M1) |
 | Stop buffer · Breakeven | 2.0 · +1R |
 
@@ -74,8 +77,8 @@ $10,000 start, 1 % risk per trade, compounded, after costs. Python backtest on M
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
 | **Swing** (snapshot rules, 4H/D/W/M) | 104 trades · win 45 % · PF 1.39 · +11.52R · $10k → $11,155 · max DD 7.9 % | 111 trades · win 51 % · PF 1.61 · +18.04R · $10k → $11,903 · max DD 8.0 % |
-| **Intraday** 4H/D/W/M liquidity, 5m touch, prev 1H candle stop | 26 trades · win 50 % · PF 4.48 · +30.02R · $10k → $13,420 · max DD 3.2 % | 26 trades · win 58 % · PF 5.89 · +36.82R · $10k → $14,353 · max DD 3.2 % |
-| **Both** (1 % each) | 130 trades · PF 2.10 · +41.55R · $10k → $14,971 · max DD 6.1 % | 137 trades · PF 2.49 · +54.86R · $10k → $17,084 · max DD 7.3 % |
+| **Intraday** 4H/D/W/M + session liquidity, 5m touch | 73 trades · win 25 % · PF 1.40 · +15.28R · $10k → $11,537 · max DD 7.7 % | 76 trades · win 34 % · PF 2.23 · +42.45R · $10k → $15,092 · max DD 7.4 % |
+| **Both** (1 % each) | 177 trades · PF 1.40 · +26.80R · $10k → $12,870 · max DD 14.3 % | 187 trades · PF 1.95 · +60.49R · $10k → $17,964 · max DD 10.5 % |
 
 2021-2023 (never used for tuning) / 2024-2026: swing +3.13R / +9.20R (GoatFunded), +6.49R / +9.47R (Pepperstone);
 intraday +16.62R / +13.41R (GoatFunded), +24.38R / +12.44R (Pepperstone). About 14 swing and 5 intraday trades per year.
