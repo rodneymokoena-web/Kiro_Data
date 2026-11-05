@@ -16,10 +16,12 @@ Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 Short described; long is the mirror image.
 
 **Both models**
-1. **Liquidity:** D / W / M swing highs and lows, 2 candles each side, confirmed after 2 candles.
+1. **Liquidity: 4H / D / W / M** – D/W/M swing highs/lows (2 candles each side, confirmed after 2 candles) plus **4H
+   swing highs/lows with 10 candles each side** (only the significant ones), from completed 4H candles. Input *4H swings
+   (candles each side)*, 0 = off.
 
 **Swing model (default, main) – "snapshot rules"** (Python: `swing_snap.py`)
-2. **Sweep:** a 1H wick trades above a D/W/M swing high.
+2. **Sweep:** a 1H wick trades above a 4H / D / W / M swing high.
 3. **4H FVG:** the **last bullish 4H FVG of the leg that swept the level** (middle candle at or before the sweep's 4H
    candle, within 60 4H candles, no 1H close below it before the sweep).
 4. **Inversion (4H IFVG):** within 80 1H candles of the sweep, the **first 1H candle that closes below that 4H FVG**,
@@ -34,9 +36,7 @@ Short described; long is the mirror image.
    2 candles each side, before the 4H FVG's middle candle). *Fixed R* optional.
 
 **Intraday model (optional)** (Python: `backtest.py`)
-1. **Liquidity: 4H / D / W / M** – the D/W/M swings plus **4H swing highs / lows with 10 candles each side** (only the
-   significant 4H levels; input *4H swings for the intraday model*, 0 = off).
-2. **Sweep + leg + FVG:** a wick trades through one of those levels. The leg into the sweep starts at the **last 4H swing low
+2. **Sweep + leg + FVG:** a wick trades through one of the Rule 1 levels. The leg into the sweep starts at the **last 4H swing low
    / high before the sweep**. A **4H FVG formed by that leg into the sweep**.
 3. **4H inversion (M1):** within 20 4H candles a 4H candle **closes through** that FVG, with 4H displacement (≥ 2
    candles, ≥ 1 ATR14) **and a 1H MSS** by the 4H close. No 4H CISD.
@@ -64,7 +64,7 @@ Short described; long is the mirror image.
 | Swing entry / stop / target | **4H IFVG Touch** / **1H OB 50%** / **1H swing low** (valid 48 h) |
 | Swing 1H displacement · inversion window · last-FVG lookback | 1 candle · 80 1H candles · 60 4H candles |
 | Intraday entry / stop / target | 5m Touch / Previous 1H candle / 3R |
-| Intraday liquidity | **4H (10 each side) / D / W / M** |
+| Liquidity (both models) | **4H (10 each side) / D / W / M** |
 | Intraday leg start / FVG into sweep / Rule 3 confirmation | Last 4H swing / on / 1H MSS (M1) |
 | Stop buffer · Breakeven | 2.0 · +1R |
 
@@ -73,9 +73,9 @@ $10,000 start, 1 % risk per trade, compounded, after costs. Python backtest on M
 
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** (snapshot rules) | 75 trades · win 44 % · PF 1.64 · +12.33R · $10k → $11,255 · max DD 6.4 % | 83 trades · win 48 % · PF 1.75 · +15.96R · $10k → $11,667 · max DD 6.2 % |
+| **Swing** (snapshot rules, 4H/D/W/M) | 104 trades · win 45 % · PF 1.39 · +11.52R · $10k → $11,155 · max DD 7.9 % | 111 trades · win 51 % · PF 1.61 · +18.04R · $10k → $11,903 · max DD 8.0 % |
 | **Intraday** 4H/D/W/M liquidity, 5m touch, prev 1H candle stop | 26 trades · win 50 % · PF 4.48 · +30.02R · $10k → $13,420 · max DD 3.2 % | 26 trades · win 58 % · PF 5.89 · +36.82R · $10k → $14,353 · max DD 3.2 % |
-| **Both** (1 % each) | 101 trades · PF 2.52 · +42.35R · $10k → $15,105 · max DD 5.0 % | 109 trades · PF 2.83 · +52.78R · $10k → $16,746 · max DD 6.8 % |
+| **Both** (1 % each) | 130 trades · PF 2.10 · +41.55R · $10k → $14,971 · max DD 6.1 % | 137 trades · PF 2.49 · +54.86R · $10k → $17,084 · max DD 7.3 % |
 
 2021-2023 (never used for tuning) / 2024-2026: swing +3.13R / +9.20R (GoatFunded), +6.49R / +9.47R (Pepperstone);
 intraday +16.62R / +13.41R (GoatFunded), +24.38R / +12.44R (Pepperstone). About 14 swing and 5 intraday trades per year.
