@@ -308,19 +308,6 @@ method mssHit(Bars b, int ext, int j, bool sh) =>
                     break
     mss
 
-// session end: is the completed-session extreme `price` a swing high/low on B1 (i_sessPiv each side)? 1H+ filter
-f_sessSwing(float price, bool isHi) =>
-    bool ok = false
-    int n = i_sessPiv
-    int last = B1.size() - 1 - n
-    if last >= B1.base + n
-        for i = last to B1.base + n
-            bool piv = isHi ? B1.pivHiAt(i, n, true) : B1.pivLoAt(i, n, true)
-            if piv and math.abs((isHi ? B1.H(i) : B1.L(i)) - price) <= price * 0.0002
-                ok := true
-                break
-    ok
-
 // MSS "most recent swing": from candle s to j, the first close through the most recent swing low (short) / high (long)
 // already confirmed at that candle (pivot + i_mssPiv < t), formed before or after the sweep
 method mssAny(Bars b, int s, int j, bool sh) =>
@@ -665,6 +652,19 @@ f_ob4(int start, bool sh) =>
 // swing stop: 50% of the 1H order block of the drop = first candle (last up-close 1H candle, short) of the first bearish
 // 1H FVG formed by the drop from the sweep extreme (candle 3 after the extreme, candle 1 at or after the candle before
 // it, complete, top above the 4H IFVG bottom). na = none (stop falls back to the sweep extreme)
+// session end: is the completed-session extreme `price` a swing high/low on B1 (i_sessPiv each side)? 1H+ filter
+f_sessSwing(float price, bool isHi) =>
+    bool ok = false
+    int n = i_sessPiv
+    int last = B1.size() - 1 - n
+    if last >= B1.base + n
+        for i = last to B1.base + n
+            bool piv = isHi ? B1.pivHiAt(i, n, true) : B1.pivLoAt(i, n, true)
+            if piv and math.abs((isHi ? B1.H(i) : B1.L(i)) - price) <= price * 0.0002
+                ok := true
+                break
+    ok
+
 f_dropOb(bool sh, int anc, float bot4, float top4) =>
     float res = na
     int best = -1
