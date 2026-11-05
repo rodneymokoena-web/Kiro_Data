@@ -59,6 +59,7 @@ SETUPS = "1H close"     # "1H close" (snapshot rules) | "M1" (current rules 2-3)
 SWING_4H_PIVOT = 0
 # Rule 1 liquidity for the swing model: 4H / D / W / M (4H swings with RULE1_4H_PIVOT candles each side). Set
 # LIQ_TFS_RULE1 = ("M", "W", "D") for D/W/M only.
+SWEEP_DEF = "sweep"     # swing sweep: "sweep" = wick through AND close back (high: close<level); "wick" = wick only
 LIQ_TFS_RULE1 = ("M", "W", "D", "4H")
 RULE1_4H_PIVOT = ifvg.RULE1_4H_PIVOT      # 4H swing size (ifvg.RULE1_4H_PIVOT): 10 = major swings, 2 = all swings
 SESSION_LIQ = ()      # add previous-session highs/lows, e.g. ("ASIA","LONDON","NY")
@@ -143,6 +144,8 @@ def _setups_1h_close(h1: pd.DataFrame, disp_min: int):
     import structure
     import swings
     keys = ("INVERT_ON", "WICK_CLOSE", "CISD_MODE", "REQUIRE", "WAIT_1H", "MSS_MODE")
+    saved_break = swings.BREAK_ON
+    swings.BREAK_ON = SWEEP_DEF
     saved = {k: getattr(V3, k) for k in keys}
     saved2 = (ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES, ifvg.SWEEP_TFS, dict(swings.PIVOT_BY_TF), ifvg.SESSION_TFS)
     for k, v in zip(keys, ("close", "any", "1h_close", REQUIRE_MSS, 0, "ext")):
@@ -159,6 +162,7 @@ def _setups_1h_close(h1: pd.DataFrame, disp_min: int):
         for k, v in saved.items():
             setattr(V3, k, v)
         ifvg.LEG_MODE, ifvg.LEG_MAX_LOOKBACK, structure.DISP_MIN_CANDLES, ifvg.SWEEP_TFS, swings.PIVOT_BY_TF, ifvg.SESSION_TFS = saved2
+        swings.BREAK_ON = saved_break
 
 
 FVG_PICK = "nearest"    # "nearest" (closest to the 4H IFVG) | "farthest" (most extreme of the leg)
@@ -332,7 +336,10 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
     for symbol, (h1_file, _, _) in SYMBOLS.items():
         h1 = load(DATA / h1_file)
         htf = {tf: build_htf(h1, tf) for tf in ("D", "W", "M")}
+        import swings as _sw
+        _sb = _sw.BREAK_ON; _sw.BREAK_ON = SWEEP_DEF
         levels = add_break_times(pd.concat([find_swings(htf[tf], tf) for tf in ("M", "W", "D")], ignore_index=True), h1)
+        _sw.BREAK_ON = _sb
         liq = liquidity_levels(h1, levels, liq_tfs, liq_pivot4) if target == "liquidity" else None
         with contextlib.redirect_stdout(io.StringIO()):
             h4, setups = W._swing_setups(h1) if setups_kind == "M1" else _setups_1h_close(h1, disp_min)

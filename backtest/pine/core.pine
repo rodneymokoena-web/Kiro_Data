@@ -68,6 +68,7 @@ i_swEntry = input.string("4H IFVG Touch", "Swing entry: limit at the 4H IFVG", o
 i_swStop  = input.string("1H OB 50%", "Swing stop", options=["1H OB 50%", "4H sweep extreme", "Previous 4H candle"], group=g0, tooltip="1H OB 50% = above the middle of the 1H order block of the drop: the first candle (last up-close 1H candle) of the first bearish 1H FVG formed by the drop from the sweep extreme (short; long mirrored). No such FVG -> the sweep extreme.")
 i_swTgt   = input.string("1H swing low", "Swing target", options=["1H swing low", "Fixed R"], group=g0, tooltip="1H swing low = the most recent confirmed 1H swing low (2 candles each side) before the 4H FVG's middle candle, i.e. where the leg that built the 4H FVG started (swing high for a long). Fixed R = 'Target (R)'.")
 i_swValid = input.int(48, "Swing order valid (hours after the 1H inversion)", minval=1, group=g0)
+i_swSweep = input.bool(true, "Swing: sweep must close back through the level", group=g0, tooltip="On (default): a swing sweep needs a wick through the level AND a close back the other way (high: close below the level; low: close above). Off: a wick through is enough. The intraday model always uses a wick.")
 i_haWin   = input.int(80, "Swing: inversion window after the sweep (1H candles)", minval=1, group=g0)
 i_haLB    = input.int(60, "Swing: last 4H FVG at most N 4H candles before the sweep", minval=1, group=g0)
 i_dMin1   = input.int(1, "Swing: 1H displacement minimum candles", minval=1, group=g0)
@@ -1008,7 +1009,9 @@ if new1 and useHa
         for k = haP.size() - 1 to 0
             float pr = haP.get(k)
             bool hiL = haHi.get(k)
-            if haT.get(k) <= B1.T(q) and (hiL ? B1.H(q) > pr : B1.L(q) < pr)
+            bool wick = hiL ? B1.H(q) > pr : B1.L(q) < pr
+            bool back = i_swSweep ? (hiL ? B1.C(q) < pr : B1.C(q) > pr) : true   // close-back rejection (swing)
+            if haT.get(k) <= B1.T(q) and wick and back
                 SW1.push(Sweep1.new(hiL ? 1 : -1, q, f_h4idx(B1.T(q)), pr, haTf.get(k)))
                 haP.remove(k)
                 haT.remove(k)

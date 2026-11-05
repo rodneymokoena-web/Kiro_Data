@@ -37,7 +37,9 @@ PIVOT_BY_TF = {}           # rule 1 (original): every timeframe uses PIVOT_LEFT 
 D_EQUAL_ONLY = False       # rule 1 (original): every D swing counts; True = relative equal highs / lows only
 EQ_TOL_ATR = 0.2           # "relatively equal" = within this x ATR(14) of the D candles
 EQ_LOOKBACK = 60           # D candles back to look for the matching swing
-BREAK_ON = "wick"          # "wick" = High/Low trades through, "close" = candle closes through
+import os as _os_b
+BREAK_ON = _os_b.environ.get("BREAK_ON", "wick")   # "wick" = High/Low trades through; "close" = candle closes through;
+                           # "sweep" = wick through AND close back (high: High>lvl & Close<lvl; low: Low<lvl & Close>lvl)
 TEST_START = pd.Timestamp(os.environ.get("TEST_START", "2026-01-01"), tz="UTC")   # override: TEST_START=2024-01-01
 
 # Data source for every script: "goat" = GoatFunded-Server MT5 M1 export (default), "pepperstone" = Pepperstone
@@ -202,6 +204,71 @@ def find_swings(htf: pd.DataFrame, tf: str) -> pd.DataFrame:
     return df
 
 
+SIG_TOL = 0.0003   # price-match tolerance (fraction) for "significant 4H swing" qualifiers
+SIG_4H_PIVOT = 2   # pivot size to detect 4H swings before testing them for significance
+
+
+def significant_4h_levels(h1: pd.DataFrame) -> pd.DataFrame:
+    """4H swing highs/lows that are SIGNIFICANT: a 4H swing (SIG_4H_PIVOT each side) kept only if, at the time it is
+    confirmed, its price coincides with one of:
+      1. a previous D / W / M swing high/low,
+      2. a D / W / M FVG still unfilled (a PD array above 4H), the swing price inside the FVG zone,
+      3. another unbroken 4H swing level at the same price (a 4H liquidity draw / equal high-low),
+      4. a previous Asia/London/NY session high/low.
+    tf = "4H" on the kept levels. Everything is causal (only data known by the swing's confirmation time)."""
+    import ifvg
+    htf = {t: build_htf(h1, t) for t in ("D", "W", "M", "4H")}
+    h4 = htf["4H"]
+    sw4 = find_swings(h4.assign(**{"_": 0}) if False else h4, "4H") if False else None
+    # all 4H swings with SIG_4H_PIVOT each side
+    saved = PIVOT_BY_TF.get("4H")
+    PIVOT_BY_TF["4H"] = SIG_4H_PIVOT
+    try:
+        sw4 = find_swings(h4, "4H")
+    finally:
+        if saved is None:
+            PIVOT_BY_TF.pop("4H", None)
+        else:
+            PIVOT_BY_TF["4H"] = saved
+    # reference liquidity: D/W/M swings, D/W/M FVGs, session levels
+    dwm = pd.concat([find_swings(htf[t], t) for t in ("D", "W", "M")], ignore_index=True)
+    fvg = {t: ifvg.find_fvgs(htf[t].drop(columns=["Start", "End"])) for t in ("D", "W", "M")}
+    for t in ("D", "W", "M"):
+        fvg[t] = fvg[t].assign(done=htf[t]["End"].to_numpy()[fvg[t]["idx"].to_numpy()])
+    sess = session_levels(h1, ("ASIA", "LONDON", "NY"), min_tf=("4H", "D", "W", "M"))  # significant session levels only
+
+    kept = []
+    for lv in sw4.itertuples(index=False):
+        p, ct, kind = lv.price, lv.confirmed_time, lv.type
+        tol = p * SIG_TOL
+        ok = False
+        # 1. previous D/W/M swing (same side), confirmed before this 4H swing
+        d = dwm[(dwm["type"] == kind) & (dwm["confirmed_time"] <= ct)]
+        if len(d) and (np.abs(d["price"].to_numpy() - p) <= tol).any():
+            ok = True
+        # 2. at the EDGE of an unfilled D/W/M FVG (a PD array above 4H): swing price within tol of the FVG top or bottom
+        if not ok:
+            for t in ("D", "W", "M"):
+                f = fvg[t]
+                f = f[f["done"] <= ct]
+                if len(f) and ((np.abs(f["top"].to_numpy() - p) <= tol) | (np.abs(f["bottom"].to_numpy() - p) <= tol)).any():
+                    ok = True
+                    break
+        # 3. another 4H swing (same side) at the same price, confirmed earlier (4H liquidity draw / equal level)
+        if not ok:
+            o4 = sw4[(sw4["type"] == kind) & (sw4["confirmed_time"] < ct)]
+            if len(o4) and (np.abs(o4["price"].to_numpy() - p) <= tol).any():
+                ok = True
+        # 4. previous session high/low (same side), confirmed before this 4H swing
+        if not ok and len(sess):
+            se = sess[(sess["type"] == kind) & (sess["confirmed_time"] <= ct)]
+            if len(se) and (np.abs(se["price"].to_numpy() - p) <= tol).any():
+                ok = True
+        if ok:
+            kept.append({"tf": "4H", "type": kind, "price": p, "pivot_time": lv.pivot_time, "confirmed_time": ct})
+    return pd.DataFrame(kept, columns=["tf", "type", "price", "pivot_time", "confirmed_time"])
+
+
 # ICT sessions on the New York clock (hour ranges, NY time). A session level is the high/low of a completed session.
 SESSIONS = {"ASIA": (20, 24), "LONDON": (2, 5), "NY": (7, 10)}
 
@@ -266,7 +333,9 @@ def session_levels(h1: pd.DataFrame, which=("ASIA", "LONDON", "NY"), min_tf=None
 
 
 def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:
-    """First bar (after confirmation) that trades through each level."""
+    """First bar (after confirmation) that sweeps each level, per BREAK_ON:
+    "wick"  = High/Low trades through;  "close" = candle closes through;
+    "sweep" = wick through AND close back the other way (high: High>level & Close<level; low: Low<level & Close>level)."""
     hi_col, lo_col = ("High", "Low") if BREAK_ON == "wick" else ("Close", "Close")
     breaks = []
     for _, lv in levels.iterrows():
@@ -274,7 +343,13 @@ def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:
         exp = lv.get("expires", pd.NaT) if hasattr(lv, "get") else pd.NaT
         if pd.notna(exp):                                    # session levels: only sweepable until they expire
             after = after[after.index <= exp]
-        hit = after[after[hi_col] > lv["price"]] if lv["type"] == "high" else after[after[lo_col] < lv["price"]]
+        if BREAK_ON == "sweep":
+            if lv["type"] == "high":
+                hit = after[(after["High"] > lv["price"]) & (after["Close"] < lv["price"])]
+            else:
+                hit = after[(after["Low"] < lv["price"]) & (after["Close"] > lv["price"])]
+        else:
+            hit = after[after[hi_col] > lv["price"]] if lv["type"] == "high" else after[after[lo_col] < lv["price"]]
         breaks.append(hit.index[0] if len(hit) else pd.NaT)
     return levels.assign(broken_time=breaks)
 
