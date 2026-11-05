@@ -220,8 +220,12 @@ def _swing_prices(h1: pd.DataFrame, tfs) -> dict:
     return out
 
 
+SESSION_VALID = pd.Timedelta(days=7)   # a session high/low stays sweepable for this long after the session closes
+
+
 def session_levels(h1: pd.DataFrame, which=("ASIA", "LONDON", "NY"), min_tf=None) -> pd.DataFrame:
     """High and low of each completed session as liquidity levels (tf = session name), confirmed at the session close.
+    Each level carries an `expires` time = confirmed_time + SESSION_VALID; after that it is no longer sweepable.
     min_tf (default SESSION_MIN_TF): keep a session extreme only if it also lines up with a swing high/low on one of
     those timeframes (1H and above). min_tf=() keeps every session extreme."""
     if min_tf is None:
@@ -253,10 +257,12 @@ def session_levels(h1: pd.DataFrame, which=("ASIA", "LONDON", "NY"), min_tf=None
         end = g.apply(lambda x: x.index.max() + BAR_SIZE["1H"], include_groups=False)
         for d in hi.index:
             if is_swing(float(hi[d]), "high"):
-                rows.append({"tf": name, "type": "high", "price": float(hi[d]), "pivot_time": end[d], "confirmed_time": end[d]})
+                rows.append({"tf": name, "type": "high", "price": float(hi[d]), "pivot_time": end[d],
+                             "confirmed_time": end[d], "expires": end[d] + SESSION_VALID})
             if is_swing(float(lo[d]), "low"):
-                rows.append({"tf": name, "type": "low", "price": float(lo[d]), "pivot_time": end[d], "confirmed_time": end[d]})
-    return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time"])
+                rows.append({"tf": name, "type": "low", "price": float(lo[d]), "pivot_time": end[d],
+                             "confirmed_time": end[d], "expires": end[d] + SESSION_VALID})
+    return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time", "expires"])
 
 
 def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:
@@ -265,6 +271,9 @@ def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:
     breaks = []
     for _, lv in levels.iterrows():
         after = bars[bars.index >= lv["confirmed_time"]]
+        exp = lv.get("expires", pd.NaT) if hasattr(lv, "get") else pd.NaT
+        if pd.notna(exp):                                    # session levels: only sweepable until they expire
+            after = after[after.index <= exp]
         hit = after[after[hi_col] > lv["price"]] if lv["type"] == "high" else after[after[lo_col] < lv["price"]]
         breaks.append(hit.index[0] if len(hit) else pd.NaT)
     return levels.assign(broken_time=breaks)

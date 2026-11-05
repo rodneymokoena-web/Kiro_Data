@@ -42,6 +42,7 @@ i_showLv = input.bool(true, "Show unbroken levels", group=g1)
 i_liq4   = input.int(10, "4H swings (candles each side, 0 = off)", minval=0, maxval=30, group=g1, tooltip="Liquidity = 4H/D/W/M for BOTH models: 4H swing highs/lows with this many candles each side (only the significant ones), usable once confirmed, plus the D/W/M swings.")
 i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group=g1, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
 i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=g1)
+i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1, group=g1)
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
 i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
@@ -913,18 +914,19 @@ if new4
         while l4LP.size() > 100
             l4LP.shift()
             l4LT.shift()
-    // session liquidity (intraday): sweep, then drop broken levels
+    // session liquidity (intraday): sweep, then drop levels broken OR older than i_sessDays
     if i_sess and not useHa
         f_sweeps(lSHP, lSHT, true, "SESS", j)
         f_sweeps(lSLP, lSLT, false, "SESS", j)
+        int sessCut = B4.T(j) - i_sessDays * 24 * HOUR
         if lSHP.size() > 0
             for k = lSHP.size() - 1 to 0
-                if lSHT.get(k) <= B4.T(j) and B4.H(j) > lSHP.get(k)
+                if (lSHT.get(k) <= B4.T(j) and B4.H(j) > lSHP.get(k)) or lSHT.get(k) < sessCut
                     lSHP.remove(k)
                     lSHT.remove(k)
         if lSLP.size() > 0
             for k = lSLP.size() - 1 to 0
-                if lSLT.get(k) <= B4.T(j) and B4.L(j) < lSLP.get(k)
+                if (lSLT.get(k) <= B4.T(j) and B4.L(j) < lSLP.get(k)) or lSLT.get(k) < sessCut
                     lSLP.remove(k)
                     lSLT.remove(k)
     if SW.size() > 0
