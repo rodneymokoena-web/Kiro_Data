@@ -67,6 +67,7 @@ Short described; long is the mirror image.
 | Swing 1H displacement · inversion window · last-FVG lookback | 1 candle · 80 1H candles · 60 4H candles |
 | Intraday entry / stop / target | 5m Touch / Previous 1H candle / 3R |
 | Liquidity (both models) | **4H (10 each side) / D / W / M** |
+| 4H swing size | **10 = major swings** (default); 2 = all swings; 0 = off |
 | Intraday also | **Asia/London/NY session highs/lows (1H+ swing)** |
 | Intraday leg start / FVG into sweep / Rule 3 confirmation | Last 4H swing / on / 1H MSS (M1) |
 | Stop buffer · Breakeven | 2.0 · +1R |
