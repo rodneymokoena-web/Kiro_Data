@@ -12,16 +12,25 @@
 //|   risk, ~6-8% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.00"
+#property version   "1.10"
 #property strict
 
 #include <Trade/Trade.mqh>
 
 //------------------------------------------------------------------ inputs
 input group "Mode"
-input bool   InpLiveTrading   = false;   // false = signals/alerts only (no orders); true = place orders
+input bool   InpLiveTrading   = true;    // true = fully automatic (places/cancels/manages orders); false = alerts only
 input double InpRiskPct       = 1.0;     // risk per trade (% of account balance)
 input bool   InpUS100Only     = true;    // trade only on a US100 / NAS100 / USTEC chart
+
+input group "Automation safety"
+input bool   InpAllowRealAccount = false; // orders on a REAL account are blocked unless this is true (demo/prop-eval accounts are fine)
+input bool   InpOneTradeAtATime  = true;  // never hold more than one swing order/position
+input double InpMaxSpread        = 8.0;   // skip placing orders while spread > this (price units; 0 = off)
+input double InpDailyLossPct     = 4.0;   // stop trading for the day if equity falls this % from the day's start (0 = off)
+input double InpMaxDrawdownPct   = 8.0;   // stop trading if equity falls this % from its peak (0 = off). Stays halted until reset
+input bool   InpFlattenOnLimit   = false; // also close open positions when a loss limit is hit
+input bool   InpResetPeak        = false; // set true for one start to reset the stored equity peak (then set back to false)
 
 input group "Rule 1 - liquidity (swing sizes, candles each side)"
 input int    InpPivDWM        = 2;       // D/W/M swing size
@@ -63,6 +72,13 @@ struct Setup
   };
 Setup g_setup;
 
+int      g_dayKey     = 0;       // yyyymmdd of the current server day
+double   g_dayStartEq = 0;       // equity at the start of the day
+double   g_peakEq     = 0;       // highest equity seen (persisted)
+bool     g_haltedDay  = false;
+bool     g_haltedDD   = false;
+string   g_gvPeak, g_gvDayKey, g_gvDayEq;
+
 // a swept level waiting for the 4H FVG inversion (the tested model watches up to InpInvWindow1H candles after the sweep)
 struct Sweep
   {
@@ -85,7 +101,46 @@ int OnInit()
       Print("Not a US100 chart - EA idle. Symbol: ", g_sym);
      }
    g_setup.active = false;
+
+   long login = AccountInfoInteger(ACCOUNT_LOGIN);
+   g_gvPeak   = "ICTSWING_PEAK_"   + IntegerToString((int)login);
+   g_gvDayKey = "ICTSWING_DAYKEY_" + IntegerToString((int)login);
+   g_gvDayEq  = "ICTSWING_DAYEQ_"  + IntegerToString((int)login);
+   double eq  = AccountInfoDouble(ACCOUNT_EQUITY);
+   if(InpResetPeak) GlobalVariableDel(g_gvPeak);
+   g_peakEq = GlobalVariableCheck(g_gvPeak) ? GlobalVariableGet(g_gvPeak) : eq;
+   if(eq > g_peakEq) g_peakEq = eq;
+   GlobalVariableSet(g_gvPeak, g_peakEq);
+   if(GlobalVariableCheck(g_gvDayKey) && GlobalVariableCheck(g_gvDayEq))
+     { g_dayKey = (int)GlobalVariableGet(g_gvDayKey); g_dayStartEq = GlobalVariableGet(g_gvDayEq); }
+
+   if(InpLiveTrading && !InpAllowRealAccount &&
+      AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_REAL)
+     {
+      Print("REAL account detected and InpAllowRealAccount=false -> running in SIGNALS-ONLY mode. ",
+            "Set InpAllowRealAccount=true to allow live orders.");
+     }
+
+   // recover state after a restart: an existing order/position of ours means a setup is already in progress
+   if(HasOpenOrPending())
+     {
+      g_setup.active  = true;
+      g_setup.ordered = true;
+      g_setup.expiry  = TimeCurrent() + InpValidHours*3600;
+      g_setup.sweepExtreme = 0;
+      Print("Recovered an existing order/position (magic ", InpMagic, ") - managing it.");
+     }
+   Print("ICT Swing EA started. Mode: ", LiveAllowed() ? "AUTOMATIC" : "SIGNALS ONLY",
+         " | risk ", DoubleToString(InpRiskPct,2), "% | equity peak ", DoubleToString(g_peakEq,2));
    return(INIT_SUCCEEDED);
+  }
+
+//--- orders are only placed when live trading is on and (account is not real OR real is explicitly allowed)
+bool LiveAllowed()
+  {
+   if(!InpLiveTrading) return false;
+   if(AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_REAL && !InpAllowRealAccount) return false;
+   return true;
   }
 
 void OnDeinit(const int reason) {}
@@ -106,20 +161,91 @@ void OnTick()
   {
    if(InpUS100Only && !IsUS100()) return;
 
-   // manage any open position / pending order every tick (breakeven, expiry)
-   ManageOpen();
+   bool halted = RiskHalted();              // daily-loss / drawdown limits
+   if(halted) HandleHalt();
+
+   ManageOpen();                            // breakeven on open positions (every tick)
+   SyncSetup();                             // clear the setup once its order/position is gone
 
    datetime t1[2];
    if(CopyTime(g_sym, PERIOD_H1, 0, 2, t1) < 2) return;
-   datetime closed1H = t1[1];          // the just-closed 1H candle's open time
-   if(closed1H == g_last1H) return;    // only act on a newly completed 1H candle
+   datetime closed1H = t1[1];               // the just-closed 1H candle's open time
+   if(closed1H == g_last1H) return;         // only act on a newly completed 1H candle
    g_last1H = closed1H;
 
-   // if a setup is live but not yet filled, check retest/entry and expiry
-   if(g_setup.active) UpdateSetup();
+   if(g_setup.active) UpdateSetup();        // cancel / expire / retry a pending setup
 
-   // look for a fresh setup on this 1H close
-   if(!g_setup.active) ScanForSetup();
+   if(!g_setup.active && !halted && !(InpOneTradeAtATime && HasOpenOrPending()))
+      ScanForSetup();
+  }
+
+//--- our own position / pending order on this symbol
+bool HasPosition()
+  {
+   for(int i=PositionsTotal()-1;i>=0;i--)
+     {
+      ulong tk = PositionGetTicket(i);
+      if(tk==0) continue;
+      if(PositionGetInteger(POSITION_MAGIC)==(long)InpMagic && PositionGetString(POSITION_SYMBOL)==g_sym) return true;
+     }
+   return false;
+  }
+bool HasPending()
+  {
+   for(int i=OrdersTotal()-1;i>=0;i--)
+     {
+      ulong tk = OrderGetTicket(i);
+      if(tk==0) continue;
+      if(OrderGetInteger(ORDER_MAGIC)==(long)InpMagic && OrderGetString(ORDER_SYMBOL)==g_sym) return true;
+     }
+   return false;
+  }
+bool HasOpenOrPending() { return HasPosition() || HasPending(); }
+
+void SyncSetup()
+  {
+   if(g_setup.active && g_setup.ordered && !HasOpenOrPending())
+     {
+      g_setup.active = false;
+      Print("Setup finished (order gone / position closed).");
+     }
+  }
+
+//+------------------------------------------------------------------+
+//| loss limits. Daily limit resets each server day; the drawdown     |
+//| limit stays on until you reset the peak (InpResetPeak).           |
+//+------------------------------------------------------------------+
+bool RiskHalted()
+  {
+   double eq = AccountInfoDouble(ACCOUNT_EQUITY);
+   MqlDateTime d; TimeToStruct(TimeCurrent(), d);
+   int key = d.year*10000 + d.mon*100 + d.day;
+   if(key != g_dayKey || g_dayStartEq <= 0)
+     {
+      g_dayKey = key; g_dayStartEq = eq; g_haltedDay = false;
+      GlobalVariableSet(g_gvDayKey, key); GlobalVariableSet(g_gvDayEq, eq);
+     }
+   if(eq > g_peakEq) { g_peakEq = eq; GlobalVariableSet(g_gvPeak, g_peakEq); }
+
+   if(InpDailyLossPct > 0 && !g_haltedDay && eq <= g_dayStartEq*(1.0 - InpDailyLossPct/100.0))
+     { g_haltedDay = true; Print("DAILY LOSS LIMIT hit (", DoubleToString(InpDailyLossPct,1), "%) - no new trades today."); }
+   if(InpMaxDrawdownPct > 0 && !g_haltedDD && eq <= g_peakEq*(1.0 - InpMaxDrawdownPct/100.0))
+     { g_haltedDD = true; Print("MAX DRAWDOWN LIMIT hit (", DoubleToString(InpMaxDrawdownPct,1),
+                               "%) - EA halted. Set InpResetPeak=true for one restart to resume."); }
+   return g_haltedDay || g_haltedDD;
+  }
+
+void HandleHalt()
+  {
+   if(HasPending()) CancelPending();
+   if(g_setup.active && !HasPosition()) g_setup.active = false;
+   if(InpFlattenOnLimit)
+      for(int i=PositionsTotal()-1;i>=0;i--)
+        {
+         ulong tk = PositionGetTicket(i);
+         if(tk==0) continue;
+         if(PositionGetInteger(POSITION_MAGIC)==(long)InpMagic && PositionGetString(POSITION_SYMBOL)==g_sym) trade.PositionClose(tk);
+        }
   }
 
 //+------------------------------------------------------------------+
@@ -422,7 +548,7 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
    g_setup.fvgBot       = fvgBot;
    g_setup.sweepExtreme = ext;
    g_setup.signalTime   = t;
-   g_setup.expiry       = t + InpValidHours*3600;
+   g_setup.expiry       = t + 3600 + InpValidHours*3600;   // from the close of the signal candle
    g_setup.ordered      = false;
    g_setup.entry        = isShort ? fvgBot : fvgTop;     // limit at the 4H IFVG near edge
 
@@ -442,7 +568,7 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
    string msg = StringFormat("%s SETUP %s | limit %.2f  SL %.2f  TP %.2f  (risk %.1f pts)",
                              isShort?"SHORT":"LONG", g_sym, g_setup.entry, g_setup.stop, g_setup.target, risk/g_point);
    Print(msg); Alert(msg); SendNotification(msg);
-   if(InpLiveTrading) PlaceOrder();
+   if(LiveAllowed()) PlaceOrder();
   }
 
 //+------------------------------------------------------------------+
@@ -461,21 +587,71 @@ double LotsForRisk(double entry, double stop)
    double perLot = (dist/tickSize)*tickVal;           // $ loss per 1.0 lot at the stop
    double lots = riskMoney / perLot;
    lots = MathFloor(lots/stepLot)*stepLot;
-   return MathMax(minLot, MathMin(maxLot, lots));
+   if(lots < minLot)
+     {
+      Print("Risk budget too small for the minimum lot (", DoubleToString(minLot,2), ") - order skipped. Raise InpRiskPct or balance.");
+      return 0;
+     }
+   return MathMin(maxLot, lots);
   }
 
 void PlaceOrder()
   {
    if(g_setup.ordered) return;
-   double lots = LotsForRisk(g_setup.entry, g_setup.stop);
-   if(lots<=0){ Print("Lot size 0 - order not placed"); return; }
+   if(!LiveAllowed()) return;
+   if(RiskHalted()) return;
+   if(InpOneTradeAtATime && HasOpenOrPending()) { Print("Order skipped: a trade/order already exists."); return; }
+
+   double bid = SymbolInfoDouble(g_sym, SYMBOL_BID), ask = SymbolInfoDouble(g_sym, SYMBOL_ASK);
+   if(InpMaxSpread > 0 && (ask-bid) > InpMaxSpread)
+     { Print("Spread ", DoubleToString(ask-bid,2), " > max ", DoubleToString(InpMaxSpread,2), " - will retry on the next 1H candle."); return; }
+
    int dg = (int)SymbolInfoInteger(g_sym, SYMBOL_DIGITS);
-   double e = NormalizeDouble(g_setup.entry, dg), s = NormalizeDouble(g_setup.stop, dg), t = NormalizeDouble(g_setup.target, dg);
-   bool ok = g_setup.isShort
-       ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, g_setup.expiry, "ICT swing")
-       : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, g_setup.expiry, "ICT swing");
-   if(ok) g_setup.ordered = true;
-   else   Print("Order failed: ", trade.ResultRetcode(), " ", trade.ResultRetcodeDescription());
+   double e = NormalizeDouble(g_setup.entry,  dg);
+   double s = NormalizeDouble(g_setup.stop,   dg);
+   double t = NormalizeDouble(g_setup.target, dg);
+   double minDist = (double)SymbolInfoInteger(g_sym, SYMBOL_TRADE_STOPS_LEVEL) * g_point;
+
+   // broker rule: a limit must sit at least StopsLevel away from the market on the correct side
+   bool limitOK = g_setup.isShort ? (e >= bid + minDist) : (e <= ask - minDist);
+   bool useMarket = false;
+   if(!limitOK)
+     {
+      // price is already at/through the entry (the tested model fills on touch): enter at market if the stop is still valid
+      double px = g_setup.isShort ? bid : ask;
+      bool better = g_setup.isShort ? px >= e : px <= e;           // market price is at least as good as the limit price
+      if(!better) { Print("Entry too close to the market for a limit order - skipped."); return; }
+      e = px; useMarket = true;
+     }
+   // stop / target distance rules
+   if(MathAbs(e - s) < minDist || MathAbs(t - e) < minDist) { Print("Stop/target closer than the broker minimum - skipped."); return; }
+   if(g_setup.isShort ? (s <= e) : (s >= e))                  { Print("Stop on the wrong side after adjusting - skipped.");     return; }
+
+   double lots = LotsForRisk(e, s);
+   if(lots <= 0) return;
+
+   // margin check
+   double margin = 0;
+   if(OrderCalcMargin(g_setup.isShort ? ORDER_TYPE_SELL : ORDER_TYPE_BUY, g_sym, lots, e, margin) &&
+      margin > AccountInfoDouble(ACCOUNT_MARGIN_FREE)*0.9)
+     { Print("Not enough free margin for ", DoubleToString(lots,2), " lots - skipped."); return; }
+
+   bool ok;
+   if(useMarket)
+      ok = g_setup.isShort ? trade.Sell(lots, g_sym, 0, s, t, "ICT swing") : trade.Buy(lots, g_sym, 0, s, t, "ICT swing");
+   else
+     {
+      ok = g_setup.isShort
+           ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, g_setup.expiry, "ICT swing")
+           : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, g_setup.expiry, "ICT swing");
+      if(!ok && trade.ResultRetcode()==TRADE_RETCODE_INVALID_EXPIRATION)      // broker rejects expiry: use GTC, EA cancels it itself
+         ok = g_setup.isShort
+              ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_GTC, 0, "ICT swing")
+              : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_GTC, 0, "ICT swing");
+     }
+   if(ok) { g_setup.ordered = true; Print("Order placed: ", useMarket ? "MARKET " : "LIMIT ", DoubleToString(lots,2), " lots @ ", DoubleToString(e,dg),
+                                          " SL ", DoubleToString(s,dg), " TP ", DoubleToString(t,dg)); }
+   else   Print("Order failed (will retry next 1H candle): ", trade.ResultRetcode(), " ", trade.ResultRetcodeDescription());
   }
 
 //+------------------------------------------------------------------+
@@ -486,13 +662,18 @@ void UpdateSetup()
   {
    MqlRates h1[]; if(GetRates(PERIOD_H1, 3, h1) < 2) return;
    double o1 = h1[1].open;
-   bool beyond = g_setup.isShort ? o1 > g_setup.sweepExtreme : o1 < g_setup.sweepExtreme;
+   // a setup recovered after a restart has no stored sweep extreme (0): skip the "beyond the extreme" cancel for it
+   bool beyond = g_setup.sweepExtreme > 0 &&
+                 (g_setup.isShort ? o1 > g_setup.sweepExtreme : o1 < g_setup.sweepExtreme);
    bool expired = TimeCurrent() > g_setup.expiry;
    if(beyond || expired)
      {
-      CancelPending();
-      g_setup.active = false;
+      if(HasPending()) CancelPending();
+      if(!HasPosition()) g_setup.active = false;           // keep tracking while a position is open (it is managed by SL/TP/BE)
+      return;
      }
+   // still valid but the order was not placed yet (wide spread, margin, transient error): try again
+   if(!g_setup.ordered && LiveAllowed()) PlaceOrder();
   }
 
 void CancelPending()
