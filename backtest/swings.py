@@ -38,6 +38,7 @@ D_EQUAL_ONLY = False       # rule 1 (original): every D swing counts; True = rel
 EQ_TOL_ATR = 0.2           # "relatively equal" = within this x ATR(14) of the D candles
 EQ_LOOKBACK = 60           # D candles back to look for the matching swing
 import os as _os_b
+SWEEP_TF = _os_b.environ.get("SWEEP_TF", "1H")   # timeframe on which the sweep (rejection) is judged: 5m/15m/1H/4H
 BREAK_ON = _os_b.environ.get("BREAK_ON", "wick")   # "wick" = High/Low trades through; "close" = candle closes through;
                            # "sweep" = wick through AND close back (high: High>lvl & Close<lvl; low: Low<lvl & Close>lvl)
 TEST_START = pd.Timestamp(os.environ.get("TEST_START", "2026-01-01"), tz="UTC")   # override: TEST_START=2024-01-01
@@ -330,6 +331,17 @@ def session_levels(h1: pd.DataFrame, which=("ASIA", "LONDON", "NY"), min_tf=None
                 rows.append({"tf": name, "type": "low", "price": float(lo[d]), "pivot_time": end[d],
                              "confirmed_time": end[d], "expires": end[d] + SESSION_VALID})
     return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time", "expires"])
+
+
+def _sweep_frame(h1: pd.DataFrame, tf: str) -> pd.DataFrame:
+    """Bars for the sweep timeframe. 4H via build_htf; 5m/15m loaded from the current data source; else h1."""
+    if tf == "4H":
+        return build_htf(h1, "4H").drop(columns=["Start", "End"])
+    if tf in ("5m", "15m"):
+        import os
+        f = DATA / SYMBOLS[list(SYMBOLS)[0]][2 if tf == "5m" else 1]
+        return load(f)
+    return h1
 
 
 def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:

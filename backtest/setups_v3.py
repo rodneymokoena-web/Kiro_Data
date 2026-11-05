@@ -70,12 +70,24 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
     end4 = h4_full["End"]
     end_idx = pd.DatetimeIndex(end4)
     import swings as _S
-    parts = [find_swings(htf[tf], tf) for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
+    parts = [find_swings(htf[tf], tf) if not (tf == "4H" and ifvg.SIG_4H) else _S.significant_4h_levels(h1)
+             for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
     if ifvg.SESSION_TFS:
         parts.append(_S.session_levels(h1, ifvg.SESSION_TFS))
     levels = pd.concat(parts, ignore_index=True)
     levels = levels[levels["tf"].isin(tuple(ifvg.SWEEP_TFS) + tuple(ifvg.SESSION_TFS))]
-    levels = add_break_times(levels, h1)
+    import swings as _S
+    sweep_bars = h1 if _S.SWEEP_TF in ("1H", None) else _S._sweep_frame(h1, _S.SWEEP_TF)
+    levels = add_break_times(levels, sweep_bars)
+    if sweep_bars is not h1:                              # snap the sweep time onto the 1H candle that contains it
+        snapped = []
+        for t in levels["broken_time"]:
+            if pd.isna(t):
+                snapped.append(pd.NaT)
+            else:
+                p = int(h1.index.searchsorted(t, side="right")) - 1
+                snapped.append(h1.index[p] if p >= 0 else pd.NaT)
+        levels = levels.assign(broken_time=snapped)
     levels = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(TEST_START, h1.index[0]))]
 
     o4, hh4, ll4, c4 = (h4[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
