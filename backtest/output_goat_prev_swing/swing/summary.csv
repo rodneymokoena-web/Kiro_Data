@@ -1,0 +1,73 @@
+entry,stop,target,symbol,trades,wins,losses,breakeven,open,win_rate_%,profit_factor,total_R,avg_R,avg_planned_RR,avg_hours_held,end_balance_1%,max_dd_%
+IFVG CE,1H swing,3R,ALL,31,5,17,9,0,16.1,0.86,-2.5,-0.08,3.0,104.6,9723.44,7.06
+IFVG CE,1H swing,3R,US100,14,3,9,2,0,21.4,0.98,-0.22,-0.02,3.0,26.6,9960.17,4.98
+IFVG CE,1H swing,3R,XAUUSD,17,2,8,7,0,11.8,0.72,-2.28,-0.13,3.0,168.9,9762.32,4.03
+IFVG CE,1H swing,D/W liquidity,ALL,30,5,17,8,0,16.7,0.79,-3.63,-0.12,6.32,44.9,9615.38,7.31
+IFVG CE,1H swing,D/W liquidity,US100,14,3,9,2,0,21.4,0.85,-1.42,-0.1,6.84,26.6,9843.43,5.0
+IFVG CE,1H swing,D/W liquidity,XAUUSD,16,2,8,6,0,12.5,0.73,-2.21,-0.14,5.86,61.0,9768.32,4.03
+IFVG CE,4H extreme,3R,ALL,31,9,16,6,0,29.0,1.67,10.82,0.35,3.0,356.2,11089.73,4.92
+IFVG CE,4H extreme,3R,US100,14,4,7,3,0,28.6,1.7,4.92,0.35,3.0,446.9,10482.27,2.02
+IFVG CE,4H extreme,3R,XAUUSD,17,5,9,3,0,29.4,1.65,5.9,0.35,3.0,281.5,10579.51,3.95
+IFVG CE,4H extreme,D/W liquidity,ALL,30,12,16,2,0,40.0,0.93,-1.06,-0.04,2.14,118.0,9876.15,4.66
+IFVG CE,4H extreme,D/W liquidity,US100,14,6,7,1,0,42.9,0.97,-0.22,-0.02,2.16,98.9,9970.49,2.07
+IFVG CE,4H extreme,D/W liquidity,XAUUSD,16,6,9,1,0,37.5,0.91,-0.85,-0.05,2.12,134.6,9905.38,4.11
+IFVG CE,prev 1H swing,3R,ALL,31,6,17,8,0,19.4,1.03,0.48,0.02,3.0,110.5,10012.71,4.26
+IFVG CE,prev 1H swing,3R,US100,14,4,9,1,0,28.6,1.3,2.77,0.2,3.0,39.7,10258.44,3.01
+IFVG CE,prev 1H swing,3R,XAUUSD,17,2,8,7,0,11.8,0.72,-2.3,-0.14,3.0,168.7,9760.45,4.01
+IFVG CE,prev 1H swing,D/W liquidity,ALL,30,5,17,8,0,16.7,0.83,-3.03,-0.1,6.51,47.0,9671.83,6.87
+IFVG CE,prev 1H swing,D/W liquidity,US100,14,3,9,2,0,21.4,0.9,-0.94,-0.07,6.9,31.1,9889.89,4.55
+IFVG CE,prev 1H swing,D/W liquidity,XAUUSD,16,2,8,6,0,12.5,0.75,-2.09,-0.13,6.17,60.8,9779.52,4.01
+IFVG touch,1H swing,3R,ALL,32,5,17,10,0,15.6,0.86,-2.46,-0.08,3.0,103.3,9726.74,7.96
+IFVG touch,1H swing,3R,US100,14,2,8,4,0,14.3,0.73,-2.2,-0.16,3.0,26.4,9770.2,5.14
+IFVG touch,1H swing,3R,XAUUSD,18,3,9,6,0,16.7,0.97,-0.27,-0.01,3.0,163.2,9955.53,4.99
+IFVG touch,1H swing,D/W liquidity,ALL,31,5,17,9,0,16.1,0.72,-4.95,-0.16,5.82,47.6,9492.87,7.9
+IFVG touch,1H swing,D/W liquidity,US100,14,3,8,3,0,21.4,0.88,-0.99,-0.07,5.97,26.1,9887.14,4.97
+IFVG touch,1H swing,D/W liquidity,XAUUSD,17,2,9,6,0,11.8,0.57,-3.95,-0.23,5.7,65.4,9601.24,4.99
+IFVG touch,4H extreme,3R,ALL,32,9,16,7,0,28.1,1.67,10.82,0.34,3.0,357.2,11089.99,5.87
+IFVG touch,4H extreme,3R,US100,14,4,7,3,0,28.6,1.7,4.93,0.35,3.0,457.6,10482.65,2.01
+IFVG touch,4H extreme,3R,XAUUSD,18,5,9,4,0,27.8,1.65,5.9,0.33,3.0,279.1,10579.37,3.95
+IFVG touch,4H extreme,D/W liquidity,ALL,31,12,16,3,0,38.7,0.88,-1.9,-0.06,2.08,118.6,9794.43,5.76
+IFVG touch,4H extreme,D/W liquidity,US100,14,6,7,1,0,42.9,0.91,-0.66,-0.05,2.03,99.5,9926.56,3.03
+IFVG touch,4H extreme,D/W liquidity,XAUUSD,17,6,9,2,0,35.3,0.86,-1.24,-0.07,2.12,134.4,9866.9,4.23
+IFVG touch,prev 1H swing,3R,ALL,32,7,17,8,0,21.9,1.2,3.53,0.11,3.0,110.0,10318.85,4.02
+IFVG touch,prev 1H swing,3R,US100,14,3,8,3,0,21.4,1.1,0.82,0.06,3.0,41.4,10064.76,3.17
+IFVG touch,prev 1H swing,3R,XAUUSD,18,4,9,5,0,22.2,1.29,2.72,0.15,3.0,163.3,10252.46,2.99
+IFVG touch,prev 1H swing,D/W liquidity,ALL,31,5,17,9,0,16.1,0.75,-4.41,-0.14,5.5,50.6,9543.36,7.48
+IFVG touch,prev 1H swing,D/W liquidity,US100,14,3,8,3,0,21.4,0.93,-0.53,-0.04,4.94,30.9,9932.32,4.12
+IFVG touch,prev 1H swing,D/W liquidity,XAUUSD,17,2,9,6,0,11.8,0.58,-3.88,-0.23,5.96,66.9,9608.39,4.97
+MSS FVG CE,1H swing,3R,ALL,7,0,2,5,0,0.0,0.0,-2.15,-0.31,3.0,11.6,9786.7,2.13
+MSS FVG CE,1H swing,3R,US100,2,0,1,1,0,0.0,0.0,-1.05,-0.52,3.0,6.5,9895.27,1.05
+MSS FVG CE,1H swing,3R,XAUUSD,5,0,1,4,0,0.0,0.0,-1.1,-0.22,3.0,13.6,9890.28,1.1
+MSS FVG CE,1H swing,D/W liquidity,ALL,6,0,2,4,0,0.0,0.0,-2.12,-0.35,8.15,10.2,9789.09,2.11
+MSS FVG CE,1H swing,D/W liquidity,US100,2,0,1,1,0,0.0,0.0,-1.05,-0.52,10.59,6.5,9895.27,1.05
+MSS FVG CE,1H swing,D/W liquidity,XAUUSD,4,0,1,3,0,0.0,0.0,-1.07,-0.27,6.94,12.0,9892.7,1.07
+MSS FVG CE,4H extreme,3R,ALL,7,2,1,4,0,28.6,5.82,4.96,0.71,3.0,559.3,10498.98,1.0
+MSS FVG CE,4H extreme,3R,US100,2,0,1,1,0,0.0,0.0,-1.01,-0.51,3.0,198.5,9898.91,1.01
+MSS FVG CE,4H extreme,3R,XAUUSD,5,2,0,3,0,40.0,325.48,5.97,1.19,3.0,703.6,10606.2,0.02
+MSS FVG CE,4H extreme,D/W liquidity,ALL,6,4,1,1,0,66.7,5.01,4.05,0.67,1.68,240.3,10408.77,1.0
+MSS FVG CE,4H extreme,D/W liquidity,US100,2,0,1,1,0,0.0,0.0,-1.01,-0.51,2.51,198.5,9898.91,1.01
+MSS FVG CE,4H extreme,D/W liquidity,XAUUSD,4,4,0,0,0,100.0,inf,5.06,1.27,1.27,261.2,10515.07,0.0
+MSS FVG CE,prev 1H swing,3R,ALL,7,1,3,3,0,14.3,0.95,-0.15,-0.02,3.0,20.0,9979.44,3.09
+MSS FVG CE,prev 1H swing,3R,US100,2,1,1,0,0,50.0,2.89,1.95,0.97,3.0,4.5,10191.62,1.03
+MSS FVG CE,prev 1H swing,3R,XAUUSD,5,0,2,3,0,0.0,0.0,-2.09,-0.42,3.0,26.2,9791.81,2.08
+MSS FVG CE,prev 1H swing,D/W liquidity,ALL,6,0,3,3,0,0.0,0.0,-3.12,-0.52,8.55,20.7,9691.07,3.09
+MSS FVG CE,prev 1H swing,D/W liquidity,US100,2,0,1,1,0,0.0,0.0,-1.05,-0.53,11.9,6.5,9894.71,1.05
+MSS FVG CE,prev 1H swing,D/W liquidity,XAUUSD,4,0,2,2,0,0.0,0.0,-2.07,-0.52,6.87,27.8,9794.2,2.06
+MSS FVG touch,1H swing,3R,ALL,8,0,3,5,0,0.0,0.0,-3.13,-0.39,3.0,12.0,9690.18,3.1
+MSS FVG touch,1H swing,3R,US100,2,0,1,1,0,0.0,0.0,-1.04,-0.52,3.0,6.5,9896.19,1.04
+MSS FVG touch,1H swing,3R,XAUUSD,6,0,2,4,0,0.0,0.0,-2.09,-0.35,3.0,13.8,9791.83,2.08
+MSS FVG touch,1H swing,D/W liquidity,ALL,7,0,3,4,0,0.0,0.0,-3.11,-0.44,6.31,10.9,9692.42,3.08
+MSS FVG touch,1H swing,D/W liquidity,US100,2,0,1,1,0,0.0,0.0,-1.04,-0.52,8.38,6.5,9896.19,1.04
+MSS FVG touch,1H swing,D/W liquidity,XAUUSD,5,0,2,3,0,0.0,0.0,-2.07,-0.41,5.47,12.6,9794.09,2.06
+MSS FVG touch,4H extreme,3R,ALL,8,4,1,3,0,50.0,11.75,10.96,1.37,3.0,557.2,11138.42,1.0
+MSS FVG touch,4H extreme,3R,US100,2,0,1,1,0,0.0,0.0,-1.01,-0.51,3.0,198.5,9898.95,1.01
+MSS FVG touch,4H extreme,3R,XAUUSD,6,4,0,2,0,66.7,1245.28,11.97,2.0,3.0,676.8,11252.13,0.01
+MSS FVG touch,4H extreme,D/W liquidity,ALL,7,5,1,1,0,71.4,5.27,4.31,0.62,1.44,240.0,10436.29,1.0
+MSS FVG touch,4H extreme,D/W liquidity,US100,2,0,1,1,0,0.0,0.0,-1.01,-0.51,2.38,198.5,9898.95,1.01
+MSS FVG touch,4H extreme,D/W liquidity,XAUUSD,5,5,0,0,0,100.0,inf,5.32,1.06,1.07,256.6,10542.83,0.0
+MSS FVG touch,prev 1H swing,3R,ALL,8,1,3,4,0,12.5,0.96,-0.13,-0.02,3.0,19.5,9980.65,3.08
+MSS FVG touch,prev 1H swing,3R,US100,2,1,1,0,0,50.0,2.92,1.96,0.98,3.0,5.0,10192.66,1.02
+MSS FVG touch,prev 1H swing,3R,XAUUSD,6,0,2,4,0,0.0,0.0,-2.09,-0.35,3.0,24.3,9792.0,2.08
+MSS FVG touch,prev 1H swing,D/W liquidity,ALL,7,0,3,4,0,0.0,0.0,-3.11,-0.44,6.69,19.9,9692.13,3.08
+MSS FVG touch,prev 1H swing,D/W liquidity,US100,2,0,1,1,0,0.0,0.0,-1.04,-0.52,9.46,6.5,9895.73,1.04
+MSS FVG touch,prev 1H swing,D/W liquidity,XAUUSD,5,0,2,3,0,0.0,0.0,-2.07,-0.41,5.58,25.2,9794.26,2.06

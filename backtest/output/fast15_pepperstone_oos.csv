@@ -1,0 +1,709 @@
+source,variant,entry_time,exit,r_net
+pepperstone_oos,current 4H->1H->5m,2021-05-28 12:30:00+00:00,breakeven,-0.08119658119658245
+pepperstone_oos,current 4H->1H->5m,2021-08-12 00:05:00+00:00,stop,-1.3392857142856922
+pepperstone_oos,current 4H->1H->5m,2021-09-02 15:25:00+00:00,stop,-1.0545977011494236
+pepperstone_oos,current 4H->1H->5m,2021-09-16 18:05:00+00:00,breakeven,-0.039419087136930354
+pepperstone_oos,current 4H->1H->5m,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,current 4H->1H->5m,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,current 4H->1H->5m,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,current 4H->1H->5m,2021-12-31 01:20:00+00:00,breakeven,-0.08189655172413536
+pepperstone_oos,current 4H->1H->5m,2022-02-04 15:50:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,current 4H->1H->5m,2022-02-11 18:00:00+00:00,target,2.9759797724399495
+pepperstone_oos,current 4H->1H->5m,2022-04-22 14:30:00+00:00,target,2.988350705088903
+pepperstone_oos,current 4H->1H->5m,2022-06-23 15:00:00+00:00,stop,-1.0187932739861527
+pepperstone_oos,current 4H->1H->5m,2022-07-28 12:55:00+00:00,stop,-1.0301109350237716
+pepperstone_oos,current 4H->1H->5m,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,current 4H->1H->5m,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,current 4H->1H->5m,2022-09-08 22:15:00+00:00,target,2.8652482269503583
+pepperstone_oos,current 4H->1H->5m,2022-09-15 01:10:00+00:00,stop,-1.1016042780748723
+pepperstone_oos,current 4H->1H->5m,2022-09-20 18:30:00+00:00,breakeven,-0.04377880184331834
+pepperstone_oos,current 4H->1H->5m,2022-10-20 18:00:00+00:00,breakeven,-0.022093023255813953
+pepperstone_oos,current 4H->1H->5m,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,current 4H->1H->5m,2022-11-08 18:25:00+00:00,stop,-1.0291411042944782
+pepperstone_oos,current 4H->1H->5m,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,current 4H->1H->5m,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,current 4H->1H->5m,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,current 4H->1H->5m,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,current 4H->1H->5m,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,current 4H->1H->5m,2023-07-21 18:40:00+00:00,breakeven,-0.039748953974896
+pepperstone_oos,current 4H->1H->5m,2023-09-06 13:00:00+00:00,stop,-1.0959595959595994
+pepperstone_oos,current 4H->1H->5m,2023-10-05 12:15:00+00:00,stop,-1.0488431876606665
+pepperstone_oos,current 4H->1H->5m,2023-12-08 17:30:00+00:00,target,2.9461756373937664
+pepperstone_oos,+ fast15 (CISD+MSS),2021-04-06 19:15:00+00:00,breakeven,-0.06834532374100898
+pepperstone_oos,+ fast15 (CISD+MSS),2021-04-12 13:55:00+00:00,stop,-1.0452380952380953
+pepperstone_oos,+ fast15 (CISD+MSS),2021-04-12 19:50:00+00:00,stop,-1.0532212885154077
+pepperstone_oos,+ fast15 (CISD+MSS),2021-04-22 10:25:00+00:00,breakeven,-0.08085106382978723
+pepperstone_oos,+ fast15 (CISD+MSS),2021-04-30 16:30:00+00:00,stop,-1.0608974358974343
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-05 17:25:00+00:00,target,2.965641952983726
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-05 17:25:00+00:00,target,2.965641952983726
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-11 16:50:00+00:00,breakeven,-0.01898101898101891
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-11 16:50:00+00:00,breakeven,-0.01898101898101891
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-18 14:35:00+00:00,stop,-1.0230862697448362
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-26 11:30:00+00:00,stop,-1.0521978021978027
+pepperstone_oos,+ fast15 (CISD+MSS),2021-05-28 12:30:00+00:00,breakeven,-0.08119658119658245
+pepperstone_oos,+ fast15 (CISD+MSS),2021-06-02 15:00:00+00:00,target,2.9246031746031766
+pepperstone_oos,+ fast15 (CISD+MSS),2021-06-18 10:15:00+00:00,target,2.875816993464061
+pepperstone_oos,+ fast15 (CISD+MSS),2021-06-24 17:55:00+00:00,stop,-1.0272206303724924
+pepperstone_oos,+ fast15 (CISD+MSS),2021-07-07 15:45:00+00:00,target,2.9552941176470586
+pepperstone_oos,+ fast15 (CISD+MSS),2021-07-08 02:55:00+00:00,target,2.931159420289856
+pepperstone_oos,+ fast15 (CISD+MSS),2021-07-19 23:10:00+00:00,target,2.7865168539325755
+pepperstone_oos,+ fast15 (CISD+MSS),2021-07-27 20:00:00+00:00,stop,-1.079497907949792
+pepperstone_oos,+ fast15 (CISD+MSS),2021-08-04 12:55:00+00:00,stop,-1.0614886731391593
+pepperstone_oos,+ fast15 (CISD+MSS),2021-08-12 00:05:00+00:00,stop,-1.3392857142856922
+pepperstone_oos,+ fast15 (CISD+MSS),2021-08-18 07:40:00+00:00,stop,-1.0605095541401282
+pepperstone_oos,+ fast15 (CISD+MSS),2021-08-19 15:05:00+00:00,breakeven,-0.020719738276990432
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-02 15:25:00+00:00,stop,-1.0545977011494236
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-08 01:00:00+00:00,stop,-1.083333333333336
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-15 13:30:00+00:00,stop,-1.166666666666672
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-16 18:05:00+00:00,breakeven,-0.039419087136930354
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-21 14:55:00+00:00,stop,-1.0141685309470545
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-24 13:45:00+00:00,breakeven,-0.05705705705705518
+pepperstone_oos,+ fast15 (CISD+MSS),2021-09-24 19:00:00+00:00,target,2.935153583617746
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-04 06:30:00+00:00,target,2.968646864686468
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-06 16:00:00+00:00,stop,-1.0309446254071664
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-13 15:55:00+00:00,target,2.9628906250000004
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-21 10:55:00+00:00,stop,-1.1544715447154335
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-22 05:25:00+00:00,stop,-1.1067415730337122
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-22 17:50:00+00:00,stop,-1.0456730769230764
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-25 13:25:00+00:00,breakeven,-0.07916666666666666
+pepperstone_oos,+ fast15 (CISD+MSS),2021-10-28 09:45:00+00:00,breakeven,-0.08962264150943088
+pepperstone_oos,+ fast15 (CISD+MSS),2021-11-02 01:05:00+00:00,target,2.802083333333341
+pepperstone_oos,+ fast15 (CISD+MSS),2021-11-16 15:35:00+00:00,stop,-1.0650684931506833
+pepperstone_oos,+ fast15 (CISD+MSS),2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,+ fast15 (CISD+MSS),2021-11-25 13:55:00+00:00,stop,-1.0844444444444443
+pepperstone_oos,+ fast15 (CISD+MSS),2021-11-25 13:55:00+00:00,stop,-1.0844444444444443
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-01 03:50:00+00:00,stop,-1.218390804597683
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-09 17:45:00+00:00,target,2.9586956521739127
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-15 16:50:00+00:00,stop,-1.0156765676567656
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-16 14:45:00+00:00,target,2.9842323651452287
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-21 16:15:00+00:00,target,2.984047019311503
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,+ fast15 (CISD+MSS),2021-12-31 01:20:00+00:00,breakeven,-0.08189655172413536
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-11 00:40:00+00:00,breakeven,-0.06643356643356559
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-11 15:10:00+00:00,target,2.9855293221629857
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-11 15:10:00+00:00,target,2.9855293221629857
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-14 17:05:00+00:00,stop,-1.0198123044838374
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-14 17:05:00+00:00,stop,-1.0198123044838374
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-19 15:35:00+00:00,stop,-1.0477386934673354
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-19 16:25:00+00:00,target,2.991284403669725
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-20 07:30:00+00:00,breakeven,-0.06551724137931034
+pepperstone_oos,+ fast15 (CISD+MSS),2022-01-25 19:50:00+00:00,stop,-1.0064516129032257
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-04 15:50:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-04 07:40:00+00:00,breakeven,-0.07307692307692307
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-04 20:15:00+00:00,stop,-1.0204962243797198
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-10 16:40:00+00:00,target,2.9876462938881665
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-11 18:00:00+00:00,target,2.9759797724399495
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-11 14:55:00+00:00,breakeven,-0.039419087136930354
+pepperstone_oos,+ fast15 (CISD+MSS),2022-02-15 18:05:00+00:00,stop,-1.0266853932584274
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-01 00:55:00+00:00,stop,-1.0313014827018128
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-02 12:40:00+00:00,breakeven,-0.031404958677685946
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-03 09:00:00+00:00,stop,-1.0352504638218927
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-08 23:10:00+00:00,target,2.9408099688473524
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-23 08:30:00+00:00,target,2.955607476635515
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-23 18:15:00+00:00,stop,-1.0155610155610155
+pepperstone_oos,+ fast15 (CISD+MSS),2022-03-28 16:20:00+00:00,stop,-1.0129604365620737
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-05 13:30:00+00:00,target,2.917030567685588
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-13 04:40:00+00:00,stop,-1.0627062706270642
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-20 17:45:00+00:00,target,2.9045226130653248
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-21 14:30:00+00:00,target,2.981677917068467
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-22 14:30:00+00:00,target,2.988350705088903
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-25 17:20:00+00:00,breakeven,-0.014393939393939393
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-29 00:30:00+00:00,target,2.958785249457701
+pepperstone_oos,+ fast15 (CISD+MSS),2022-04-29 10:00:00+00:00,target,2.9005235602094164
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-10 05:20:00+00:00,target,2.9385113268608407
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-11 17:25:00+00:00,breakeven,-0.011137162954278992
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-12 15:00:00+00:00,stop,-1.006529209621993
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-18 05:00:00+00:00,stop,-1.112426035502961
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-19 13:40:00+00:00,breakeven,-0.015115354017502119
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-25 18:05:00+00:00,stop,-1.0788381742738578
+pepperstone_oos,+ fast15 (CISD+MSS),2022-05-30 22:15:00+00:00,target,2.967241379310345
+pepperstone_oos,+ fast15 (CISD+MSS),2022-06-01 12:20:00+00:00,breakeven,-0.0318257956448917
+pepperstone_oos,+ fast15 (CISD+MSS),2022-06-09 16:20:00+00:00,target,2.969551282051283
+pepperstone_oos,+ fast15 (CISD+MSS),2022-06-09 13:30:00+00:00,stop,-1.0250329380764165
+pepperstone_oos,+ fast15 (CISD+MSS),2022-06-14 13:25:00+00:00,stop,-1.0261707988980715
+pepperstone_oos,+ fast15 (CISD+MSS),2022-06-23 15:00:00+00:00,stop,-1.0187932739861527
+pepperstone_oos,+ fast15 (CISD+MSS),2022-06-24 11:55:00+00:00,stop,-1.0479797979797976
+pepperstone_oos,+ fast15 (CISD+MSS),2022-07-26 12:05:00+00:00,target,2.898395721925128
+pepperstone_oos,+ fast15 (CISD+MSS),2022-07-28 12:55:00+00:00,stop,-1.0301109350237716
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-03 00:05:00+00:00,breakeven,-0.07251908396946363
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-04 17:00:00+00:00,stop,-1.036608863198459
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-04 17:00:00+00:00,stop,-1.036608863198459
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-15 13:40:00+00:00,breakeven,-0.025132275132275613
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-17 18:35:00+00:00,target,2.9381107491856655
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-23 10:00:00+00:00,stop,-1.0659722222222239
+pepperstone_oos,+ fast15 (CISD+MSS),2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-01 17:20:00+00:00,stop,-1.01956745623069
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-01 22:15:00+00:00,stop,-1.0375494071146256
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-08 22:15:00+00:00,target,2.8652482269503583
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-15 01:10:00+00:00,stop,-1.1016042780748723
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-19 04:15:00+00:00,stop,-1.184466019417456
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-20 18:30:00+00:00,breakeven,-0.04377880184331834
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-22 18:50:00+00:00,stop,-1.041125541125542
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-26 13:05:00+00:00,breakeven,-0.027616279069767734
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-27 15:35:00+00:00,breakeven,-0.019019019019019087
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-27 22:00:00+00:00,breakeven,-0.014032496307237663
+pepperstone_oos,+ fast15 (CISD+MSS),2022-09-30 16:50:00+00:00,stop,-1.2065217391304592
+pepperstone_oos,+ fast15 (CISD+MSS),2022-10-06 12:25:00+00:00,breakeven,-0.04288939051918806
+pepperstone_oos,+ fast15 (CISD+MSS),2022-10-11 06:40:00+00:00,stop,-1.0555555555555574
+pepperstone_oos,+ fast15 (CISD+MSS),2022-10-12 16:35:00+00:00,breakeven,-0.03304347826086956
+pepperstone_oos,+ fast15 (CISD+MSS),2022-10-20 18:00:00+00:00,breakeven,-0.022093023255813953
+pepperstone_oos,+ fast15 (CISD+MSS),2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,+ fast15 (CISD+MSS),2022-10-26 16:40:00+00:00,stop,-1.069090909090909
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-08 18:25:00+00:00,stop,-1.0291411042944782
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-15 00:00:00+00:00,stop,-1.1172839506172787
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-17 20:55:00+00:00,target,2.8938547486033497
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-18 16:10:00+00:00,breakeven,-0.02435897435897436
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-23 14:30:00+00:00,stop,-1.0708955223880567
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,+ fast15 (CISD+MSS),2022-11-28 14:25:00+00:00,stop,-1.1005291005291025
+pepperstone_oos,+ fast15 (CISD+MSS),2022-12-01 14:55:00+00:00,stop,-1.02377972465582
+pepperstone_oos,+ fast15 (CISD+MSS),2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,+ fast15 (CISD+MSS),2022-12-15 08:00:00+00:00,target,2.9745649263721554
+pepperstone_oos,+ fast15 (CISD+MSS),2022-12-16 16:30:00+00:00,breakeven,-0.015236567762630222
+pepperstone_oos,+ fast15 (CISD+MSS),2022-12-19 15:20:00+00:00,breakeven,-0.019269776876267675
+pepperstone_oos,+ fast15 (CISD+MSS),2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,+ fast15 (CISD+MSS),2023-01-20 14:30:00+00:00,stop,-1.1258278145695333
+pepperstone_oos,+ fast15 (CISD+MSS),2023-01-26 05:40:00+00:00,stop,-1.2602739726027656
+pepperstone_oos,+ fast15 (CISD+MSS),2023-01-25 20:25:00+00:00,breakeven,-0.036538461538461534
+pepperstone_oos,+ fast15 (CISD+MSS),2023-01-30 17:55:00+00:00,target,2.955607476635515
+pepperstone_oos,+ fast15 (CISD+MSS),2023-02-06 13:00:00+00:00,stop,-1.0588235294117627
+pepperstone_oos,+ fast15 (CISD+MSS),2023-02-07 12:10:00+00:00,stop,-1.0570570570570552
+pepperstone_oos,+ fast15 (CISD+MSS),2023-03-01 14:40:00+00:00,breakeven,-0.024421593830333845
+pepperstone_oos,+ fast15 (CISD+MSS),2023-03-07 06:30:00+00:00,stop,-1.094059405940599
+pepperstone_oos,+ fast15 (CISD+MSS),2023-03-10 09:25:00+00:00,breakeven,-0.04042553191489361
+pepperstone_oos,+ fast15 (CISD+MSS),2023-03-17 10:20:00+00:00,breakeven,-0.07421874999999895
+pepperstone_oos,+ fast15 (CISD+MSS),2023-03-24 19:45:00+00:00,breakeven,-0.02959501557632449
+pepperstone_oos,+ fast15 (CISD+MSS),2023-03-27 13:00:00+00:00,breakeven,-0.05539358600583208
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-10 09:50:00+00:00,stop,-1.0620915032679767
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-18 18:55:00+00:00,breakeven,-0.04077253218884088
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-18 18:55:00+00:00,breakeven,-0.04077253218884088
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-21 14:10:00+00:00,stop,-1.0370370370370376
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-24 11:05:00+00:00,breakeven,-0.08837209302325581
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-26 04:05:00+00:00,breakeven,-0.10497237569060562
+pepperstone_oos,+ fast15 (CISD+MSS),2023-04-26 13:10:00+00:00,breakeven,-0.04025423728813652
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-01 18:00:00+00:00,breakeven,-0.3220338983051046
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-04 07:35:00+00:00,stop,-1.0521978021978027
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-05 00:10:00+00:00,breakeven,-0.14843750000000844
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-12 14:10:00+00:00,breakeven,-0.02831594634873308
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-17 13:45:00+00:00,stop,-1.1172839506172787
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-30 18:25:00+00:00,breakeven,-0.03571428571428523
+pepperstone_oos,+ fast15 (CISD+MSS),2023-05-30 18:25:00+00:00,breakeven,-0.03571428571428523
+pepperstone_oos,+ fast15 (CISD+MSS),2023-06-08 13:25:00+00:00,target,2.9630350194552526
+pepperstone_oos,+ fast15 (CISD+MSS),2023-06-13 10:25:00+00:00,stop,-1.0456730769230784
+pepperstone_oos,+ fast15 (CISD+MSS),2023-06-20 18:05:00+00:00,stop,-1.0483460559796425
+pepperstone_oos,+ fast15 (CISD+MSS),2023-06-29 03:05:00+00:00,breakeven,-0.1743119266055104
+pepperstone_oos,+ fast15 (CISD+MSS),2023-07-07 19:15:00+00:00,stop,-1.0412147505423006
+pepperstone_oos,+ fast15 (CISD+MSS),2023-07-20 12:50:00+00:00,stop,-1.0520547945205478
+pepperstone_oos,+ fast15 (CISD+MSS),2023-07-21 18:40:00+00:00,breakeven,-0.039748953974896
+pepperstone_oos,+ fast15 (CISD+MSS),2023-07-26 11:15:00+00:00,target,2.8288288288288346
+pepperstone_oos,+ fast15 (CISD+MSS),2023-07-28 18:20:00+00:00,stop,-1.0458937198067637
+pepperstone_oos,+ fast15 (CISD+MSS),2023-08-01 17:10:00+00:00,stop,-1.0354477611940296
+pepperstone_oos,+ fast15 (CISD+MSS),2023-08-04 11:00:00+00:00,breakeven,-0.05205479452054794
+pepperstone_oos,+ fast15 (CISD+MSS),2023-08-10 18:10:00+00:00,stop,-1.0637583892617464
+pepperstone_oos,+ fast15 (CISD+MSS),2023-08-29 13:30:00+00:00,stop,-1.6785714285711641
+pepperstone_oos,+ fast15 (CISD+MSS),2023-08-29 13:30:00+00:00,stop,-1.6785714285711641
+pepperstone_oos,+ fast15 (CISD+MSS),2023-08-31 13:45:00+00:00,target,2.9050000000000002
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-04 23:10:00+00:00,target,2.851562500000013
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-06 13:00:00+00:00,stop,-1.0959595959595994
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-06 08:05:00+00:00,target,2.9342560553633206
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-13 15:15:00+00:00,breakeven,-0.015573770491803278
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-13 22:10:00+00:00,stop,-1.1958762886597791
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-14 12:00:00+00:00,stop,-1.0892018779342676
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-19 19:25:00+00:00,stop,-1.0374753451676537
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-20 19:25:00+00:00,target,2.985294117647059
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-20 17:50:00+00:00,breakeven,-0.061889250814330776
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-27 15:00:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,+ fast15 (CISD+MSS),2023-09-27 15:00:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-02 15:35:00+00:00,stop,-1.0197505197505197
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-02 18:35:00+00:00,stop,-1.0506666666666666
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-03 14:10:00+00:00,breakeven,-0.017009847806624775
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-05 12:15:00+00:00,stop,-1.0488431876606665
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-17 11:15:00+00:00,target,2.9501312335958008
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-19 19:00:00+00:00,target,2.979936642027455
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-23 19:35:00+00:00,breakeven,-0.05757575757575757
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-26 12:45:00+00:00,stop,-1.0237500000000002
+pepperstone_oos,+ fast15 (CISD+MSS),2023-10-27 03:20:00+00:00,breakeven,-0.09047619047619047
+pepperstone_oos,+ fast15 (CISD+MSS),2023-11-03 13:35:00+00:00,target,2.979957805907173
+pepperstone_oos,+ fast15 (CISD+MSS),2023-11-08 18:00:00+00:00,stop,-1.0610932475884272
+pepperstone_oos,+ fast15 (CISD+MSS),2023-11-09 08:50:00+00:00,stop,-1.1417910447761233
+pepperstone_oos,+ fast15 (CISD+MSS),2023-11-17 12:10:00+00:00,stop,-1.081545064377685
+pepperstone_oos,+ fast15 (CISD+MSS),2023-11-22 17:50:00+00:00,stop,-1.1172839506172918
+pepperstone_oos,+ fast15 (CISD+MSS),2023-12-01 17:35:00+00:00,stop,-1.0144376899696048
+pepperstone_oos,+ fast15 (CISD+MSS),2023-12-06 08:45:00+00:00,stop,-1.1652173913043478
+pepperstone_oos,+ fast15 (CISD+MSS),2023-12-08 17:30:00+00:00,target,2.9461756373937664
+pepperstone_oos,+ fast15 (CISD+MSS),2023-12-22 20:45:00+00:00,stop,-1.0519125683060129
+pepperstone_oos,+ fast15 (CISD+MSS),2023-12-22 20:45:00+00:00,stop,-1.0519125683060129
+pepperstone_oos,fast15 only (CISD+MSS),2021-04-06 19:15:00+00:00,breakeven,-0.06834532374100898
+pepperstone_oos,fast15 only (CISD+MSS),2021-04-12 13:55:00+00:00,stop,-1.0452380952380953
+pepperstone_oos,fast15 only (CISD+MSS),2021-04-12 19:50:00+00:00,stop,-1.0532212885154077
+pepperstone_oos,fast15 only (CISD+MSS),2021-04-22 10:25:00+00:00,breakeven,-0.08085106382978723
+pepperstone_oos,fast15 only (CISD+MSS),2021-04-30 16:30:00+00:00,stop,-1.0608974358974343
+pepperstone_oos,fast15 only (CISD+MSS),2021-05-05 17:25:00+00:00,target,2.965641952983726
+pepperstone_oos,fast15 only (CISD+MSS),2021-05-05 17:25:00+00:00,target,2.965641952983726
+pepperstone_oos,fast15 only (CISD+MSS),2021-05-11 16:50:00+00:00,breakeven,-0.01898101898101891
+pepperstone_oos,fast15 only (CISD+MSS),2021-05-11 16:50:00+00:00,breakeven,-0.01898101898101891
+pepperstone_oos,fast15 only (CISD+MSS),2021-05-18 14:35:00+00:00,stop,-1.0230862697448362
+pepperstone_oos,fast15 only (CISD+MSS),2021-05-26 11:30:00+00:00,stop,-1.0521978021978027
+pepperstone_oos,fast15 only (CISD+MSS),2021-06-02 15:00:00+00:00,target,2.9246031746031766
+pepperstone_oos,fast15 only (CISD+MSS),2021-06-18 10:15:00+00:00,target,2.875816993464061
+pepperstone_oos,fast15 only (CISD+MSS),2021-06-24 17:55:00+00:00,stop,-1.0272206303724924
+pepperstone_oos,fast15 only (CISD+MSS),2021-07-07 15:45:00+00:00,target,2.9552941176470586
+pepperstone_oos,fast15 only (CISD+MSS),2021-07-08 02:55:00+00:00,target,2.931159420289856
+pepperstone_oos,fast15 only (CISD+MSS),2021-07-19 23:10:00+00:00,target,2.7865168539325755
+pepperstone_oos,fast15 only (CISD+MSS),2021-07-27 20:00:00+00:00,stop,-1.079497907949792
+pepperstone_oos,fast15 only (CISD+MSS),2021-08-04 12:55:00+00:00,stop,-1.0614886731391593
+pepperstone_oos,fast15 only (CISD+MSS),2021-08-18 07:40:00+00:00,stop,-1.0605095541401282
+pepperstone_oos,fast15 only (CISD+MSS),2021-08-19 15:05:00+00:00,breakeven,-0.020719738276990432
+pepperstone_oos,fast15 only (CISD+MSS),2021-09-08 01:00:00+00:00,stop,-1.083333333333336
+pepperstone_oos,fast15 only (CISD+MSS),2021-09-15 13:30:00+00:00,stop,-1.166666666666672
+pepperstone_oos,fast15 only (CISD+MSS),2021-09-21 14:55:00+00:00,stop,-1.0141685309470545
+pepperstone_oos,fast15 only (CISD+MSS),2021-09-24 13:45:00+00:00,breakeven,-0.05705705705705518
+pepperstone_oos,fast15 only (CISD+MSS),2021-09-24 19:00:00+00:00,target,2.935153583617746
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-04 06:30:00+00:00,target,2.968646864686468
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-06 16:00:00+00:00,stop,-1.0309446254071664
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-13 15:55:00+00:00,target,2.9628906250000004
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-21 10:55:00+00:00,stop,-1.1544715447154335
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-22 05:25:00+00:00,stop,-1.1067415730337122
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-22 17:50:00+00:00,stop,-1.0456730769230764
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-25 13:25:00+00:00,breakeven,-0.07916666666666666
+pepperstone_oos,fast15 only (CISD+MSS),2021-10-28 09:45:00+00:00,breakeven,-0.08962264150943088
+pepperstone_oos,fast15 only (CISD+MSS),2021-11-02 01:05:00+00:00,target,2.802083333333341
+pepperstone_oos,fast15 only (CISD+MSS),2021-11-16 15:35:00+00:00,stop,-1.0650684931506833
+pepperstone_oos,fast15 only (CISD+MSS),2021-11-25 13:55:00+00:00,stop,-1.0844444444444443
+pepperstone_oos,fast15 only (CISD+MSS),2021-11-25 13:55:00+00:00,stop,-1.0844444444444443
+pepperstone_oos,fast15 only (CISD+MSS),2021-12-01 03:50:00+00:00,stop,-1.218390804597683
+pepperstone_oos,fast15 only (CISD+MSS),2021-12-09 17:45:00+00:00,target,2.9586956521739127
+pepperstone_oos,fast15 only (CISD+MSS),2021-12-15 16:50:00+00:00,stop,-1.0156765676567656
+pepperstone_oos,fast15 only (CISD+MSS),2021-12-16 14:45:00+00:00,target,2.9842323651452287
+pepperstone_oos,fast15 only (CISD+MSS),2021-12-21 16:15:00+00:00,target,2.984047019311503
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-11 00:40:00+00:00,breakeven,-0.06643356643356559
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-11 15:10:00+00:00,target,2.9855293221629857
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-11 15:10:00+00:00,target,2.9855293221629857
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-14 17:05:00+00:00,stop,-1.0198123044838374
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-14 17:05:00+00:00,stop,-1.0198123044838374
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-19 15:35:00+00:00,stop,-1.0477386934673354
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-19 16:25:00+00:00,target,2.991284403669725
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-20 07:30:00+00:00,breakeven,-0.06551724137931034
+pepperstone_oos,fast15 only (CISD+MSS),2022-01-25 19:50:00+00:00,stop,-1.0064516129032257
+pepperstone_oos,fast15 only (CISD+MSS),2022-02-04 07:40:00+00:00,breakeven,-0.07307692307692307
+pepperstone_oos,fast15 only (CISD+MSS),2022-02-04 20:15:00+00:00,stop,-1.0204962243797198
+pepperstone_oos,fast15 only (CISD+MSS),2022-02-10 16:40:00+00:00,target,2.9876462938881665
+pepperstone_oos,fast15 only (CISD+MSS),2022-02-11 14:55:00+00:00,breakeven,-0.039419087136930354
+pepperstone_oos,fast15 only (CISD+MSS),2022-02-15 18:05:00+00:00,stop,-1.0266853932584274
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-01 00:55:00+00:00,stop,-1.0313014827018128
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-02 12:40:00+00:00,breakeven,-0.031404958677685946
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-03 09:00:00+00:00,stop,-1.0352504638218927
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-08 23:10:00+00:00,target,2.9408099688473524
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-23 08:30:00+00:00,target,2.955607476635515
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-23 18:15:00+00:00,stop,-1.0155610155610155
+pepperstone_oos,fast15 only (CISD+MSS),2022-03-28 16:20:00+00:00,stop,-1.0129604365620737
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-05 13:30:00+00:00,target,2.917030567685588
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-13 04:40:00+00:00,stop,-1.0627062706270642
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-20 17:45:00+00:00,target,2.9045226130653248
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-21 14:30:00+00:00,target,2.981677917068467
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-25 17:20:00+00:00,breakeven,-0.014393939393939393
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-29 00:30:00+00:00,target,2.958785249457701
+pepperstone_oos,fast15 only (CISD+MSS),2022-04-29 10:00:00+00:00,target,2.9005235602094164
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-10 05:20:00+00:00,target,2.9385113268608407
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-11 17:25:00+00:00,breakeven,-0.011137162954278992
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-12 15:00:00+00:00,stop,-1.006529209621993
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-18 05:00:00+00:00,stop,-1.112426035502961
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-19 13:40:00+00:00,breakeven,-0.015115354017502119
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-25 18:05:00+00:00,stop,-1.0788381742738578
+pepperstone_oos,fast15 only (CISD+MSS),2022-05-30 22:15:00+00:00,target,2.967241379310345
+pepperstone_oos,fast15 only (CISD+MSS),2022-06-01 12:20:00+00:00,breakeven,-0.0318257956448917
+pepperstone_oos,fast15 only (CISD+MSS),2022-06-09 16:20:00+00:00,target,2.969551282051283
+pepperstone_oos,fast15 only (CISD+MSS),2022-06-09 13:30:00+00:00,stop,-1.0250329380764165
+pepperstone_oos,fast15 only (CISD+MSS),2022-06-14 13:25:00+00:00,stop,-1.0261707988980715
+pepperstone_oos,fast15 only (CISD+MSS),2022-06-24 11:55:00+00:00,stop,-1.0479797979797976
+pepperstone_oos,fast15 only (CISD+MSS),2022-07-26 12:05:00+00:00,target,2.898395721925128
+pepperstone_oos,fast15 only (CISD+MSS),2022-08-03 00:05:00+00:00,breakeven,-0.07251908396946363
+pepperstone_oos,fast15 only (CISD+MSS),2022-08-04 17:00:00+00:00,stop,-1.036608863198459
+pepperstone_oos,fast15 only (CISD+MSS),2022-08-04 17:00:00+00:00,stop,-1.036608863198459
+pepperstone_oos,fast15 only (CISD+MSS),2022-08-15 13:40:00+00:00,breakeven,-0.025132275132275613
+pepperstone_oos,fast15 only (CISD+MSS),2022-08-17 18:35:00+00:00,target,2.9381107491856655
+pepperstone_oos,fast15 only (CISD+MSS),2022-08-23 10:00:00+00:00,stop,-1.0659722222222239
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-01 17:20:00+00:00,stop,-1.01956745623069
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-01 22:15:00+00:00,stop,-1.0375494071146256
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-19 04:15:00+00:00,stop,-1.184466019417456
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-22 18:50:00+00:00,stop,-1.041125541125542
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-26 13:05:00+00:00,breakeven,-0.027616279069767734
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-27 15:35:00+00:00,breakeven,-0.019019019019019087
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-27 22:00:00+00:00,breakeven,-0.014032496307237663
+pepperstone_oos,fast15 only (CISD+MSS),2022-09-30 16:50:00+00:00,stop,-1.2065217391304592
+pepperstone_oos,fast15 only (CISD+MSS),2022-10-06 12:25:00+00:00,breakeven,-0.04288939051918806
+pepperstone_oos,fast15 only (CISD+MSS),2022-10-11 06:40:00+00:00,stop,-1.0555555555555574
+pepperstone_oos,fast15 only (CISD+MSS),2022-10-12 16:35:00+00:00,breakeven,-0.03304347826086956
+pepperstone_oos,fast15 only (CISD+MSS),2022-10-26 16:40:00+00:00,stop,-1.069090909090909
+pepperstone_oos,fast15 only (CISD+MSS),2022-11-15 00:00:00+00:00,stop,-1.1172839506172787
+pepperstone_oos,fast15 only (CISD+MSS),2022-11-17 20:55:00+00:00,target,2.8938547486033497
+pepperstone_oos,fast15 only (CISD+MSS),2022-11-18 16:10:00+00:00,breakeven,-0.02435897435897436
+pepperstone_oos,fast15 only (CISD+MSS),2022-11-23 14:30:00+00:00,stop,-1.0708955223880567
+pepperstone_oos,fast15 only (CISD+MSS),2022-11-28 14:25:00+00:00,stop,-1.1005291005291025
+pepperstone_oos,fast15 only (CISD+MSS),2022-12-01 14:55:00+00:00,stop,-1.02377972465582
+pepperstone_oos,fast15 only (CISD+MSS),2022-12-15 08:00:00+00:00,target,2.9745649263721554
+pepperstone_oos,fast15 only (CISD+MSS),2022-12-16 16:30:00+00:00,breakeven,-0.015236567762630222
+pepperstone_oos,fast15 only (CISD+MSS),2022-12-19 15:20:00+00:00,breakeven,-0.019269776876267675
+pepperstone_oos,fast15 only (CISD+MSS),2023-01-20 14:30:00+00:00,stop,-1.1258278145695333
+pepperstone_oos,fast15 only (CISD+MSS),2023-01-26 05:40:00+00:00,stop,-1.2602739726027656
+pepperstone_oos,fast15 only (CISD+MSS),2023-01-25 20:25:00+00:00,breakeven,-0.036538461538461534
+pepperstone_oos,fast15 only (CISD+MSS),2023-01-30 17:55:00+00:00,target,2.955607476635515
+pepperstone_oos,fast15 only (CISD+MSS),2023-02-06 13:00:00+00:00,stop,-1.0588235294117627
+pepperstone_oos,fast15 only (CISD+MSS),2023-02-07 12:10:00+00:00,stop,-1.0570570570570552
+pepperstone_oos,fast15 only (CISD+MSS),2023-03-01 14:40:00+00:00,breakeven,-0.024421593830333845
+pepperstone_oos,fast15 only (CISD+MSS),2023-03-07 06:30:00+00:00,stop,-1.094059405940599
+pepperstone_oos,fast15 only (CISD+MSS),2023-03-10 09:25:00+00:00,breakeven,-0.04042553191489361
+pepperstone_oos,fast15 only (CISD+MSS),2023-03-17 10:20:00+00:00,breakeven,-0.07421874999999895
+pepperstone_oos,fast15 only (CISD+MSS),2023-03-24 19:45:00+00:00,breakeven,-0.02959501557632449
+pepperstone_oos,fast15 only (CISD+MSS),2023-03-27 13:00:00+00:00,breakeven,-0.05539358600583208
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-10 09:50:00+00:00,stop,-1.0620915032679767
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-18 18:55:00+00:00,breakeven,-0.04077253218884088
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-18 18:55:00+00:00,breakeven,-0.04077253218884088
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-21 14:10:00+00:00,stop,-1.0370370370370376
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-24 11:05:00+00:00,breakeven,-0.08837209302325581
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-26 04:05:00+00:00,breakeven,-0.10497237569060562
+pepperstone_oos,fast15 only (CISD+MSS),2023-04-26 13:10:00+00:00,breakeven,-0.04025423728813652
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-01 18:00:00+00:00,breakeven,-0.3220338983051046
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-04 07:35:00+00:00,stop,-1.0521978021978027
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-05 00:10:00+00:00,breakeven,-0.14843750000000844
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-12 14:10:00+00:00,breakeven,-0.02831594634873308
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-17 13:45:00+00:00,stop,-1.1172839506172787
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-30 18:25:00+00:00,breakeven,-0.03571428571428523
+pepperstone_oos,fast15 only (CISD+MSS),2023-05-30 18:25:00+00:00,breakeven,-0.03571428571428523
+pepperstone_oos,fast15 only (CISD+MSS),2023-06-08 13:25:00+00:00,target,2.9630350194552526
+pepperstone_oos,fast15 only (CISD+MSS),2023-06-13 10:25:00+00:00,stop,-1.0456730769230784
+pepperstone_oos,fast15 only (CISD+MSS),2023-06-20 18:05:00+00:00,stop,-1.0483460559796425
+pepperstone_oos,fast15 only (CISD+MSS),2023-06-29 03:05:00+00:00,breakeven,-0.1743119266055104
+pepperstone_oos,fast15 only (CISD+MSS),2023-07-07 19:15:00+00:00,stop,-1.0412147505423006
+pepperstone_oos,fast15 only (CISD+MSS),2023-07-20 12:50:00+00:00,stop,-1.0520547945205478
+pepperstone_oos,fast15 only (CISD+MSS),2023-07-26 11:15:00+00:00,target,2.8288288288288346
+pepperstone_oos,fast15 only (CISD+MSS),2023-07-28 18:20:00+00:00,stop,-1.0458937198067637
+pepperstone_oos,fast15 only (CISD+MSS),2023-08-01 17:10:00+00:00,stop,-1.0354477611940296
+pepperstone_oos,fast15 only (CISD+MSS),2023-08-04 11:00:00+00:00,breakeven,-0.05205479452054794
+pepperstone_oos,fast15 only (CISD+MSS),2023-08-10 18:10:00+00:00,stop,-1.0637583892617464
+pepperstone_oos,fast15 only (CISD+MSS),2023-08-29 13:30:00+00:00,stop,-1.6785714285711641
+pepperstone_oos,fast15 only (CISD+MSS),2023-08-29 13:30:00+00:00,stop,-1.6785714285711641
+pepperstone_oos,fast15 only (CISD+MSS),2023-08-31 13:45:00+00:00,target,2.9050000000000002
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-04 23:10:00+00:00,target,2.851562500000013
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-06 08:05:00+00:00,target,2.9342560553633206
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-13 15:15:00+00:00,breakeven,-0.015573770491803278
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-13 22:10:00+00:00,stop,-1.1958762886597791
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-14 12:00:00+00:00,stop,-1.0892018779342676
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-19 19:25:00+00:00,stop,-1.0374753451676537
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-20 19:25:00+00:00,target,2.985294117647059
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-20 17:50:00+00:00,breakeven,-0.061889250814330776
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-27 15:00:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,fast15 only (CISD+MSS),2023-09-27 15:00:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-02 15:35:00+00:00,stop,-1.0197505197505197
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-02 18:35:00+00:00,stop,-1.0506666666666666
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-03 14:10:00+00:00,breakeven,-0.017009847806624775
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-17 11:15:00+00:00,target,2.9501312335958008
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-19 19:00:00+00:00,target,2.979936642027455
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-23 19:35:00+00:00,breakeven,-0.05757575757575757
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-26 12:45:00+00:00,stop,-1.0237500000000002
+pepperstone_oos,fast15 only (CISD+MSS),2023-10-27 03:20:00+00:00,breakeven,-0.09047619047619047
+pepperstone_oos,fast15 only (CISD+MSS),2023-11-03 13:35:00+00:00,target,2.979957805907173
+pepperstone_oos,fast15 only (CISD+MSS),2023-11-08 18:00:00+00:00,stop,-1.0610932475884272
+pepperstone_oos,fast15 only (CISD+MSS),2023-11-09 08:50:00+00:00,stop,-1.1417910447761233
+pepperstone_oos,fast15 only (CISD+MSS),2023-11-17 12:10:00+00:00,stop,-1.081545064377685
+pepperstone_oos,fast15 only (CISD+MSS),2023-11-22 17:50:00+00:00,stop,-1.1172839506172918
+pepperstone_oos,fast15 only (CISD+MSS),2023-12-01 17:35:00+00:00,stop,-1.0144376899696048
+pepperstone_oos,fast15 only (CISD+MSS),2023-12-06 08:45:00+00:00,stop,-1.1652173913043478
+pepperstone_oos,fast15 only (CISD+MSS),2023-12-22 20:45:00+00:00,stop,-1.0519125683060129
+pepperstone_oos,fast15 only (CISD+MSS),2023-12-22 20:45:00+00:00,stop,-1.0519125683060129
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-06 18:05:00+00:00,breakeven,-0.09090909090908457
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-06 19:15:00+00:00,breakeven,-0.06834532374100898
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-12 13:55:00+00:00,stop,-1.0452380952380953
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-12 19:50:00+00:00,stop,-1.0532212885154077
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-22 10:25:00+00:00,breakeven,-0.08085106382978723
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-22 17:05:00+00:00,stop,-1.0664335664335656
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-04-30 16:30:00+00:00,stop,-1.0608974358974343
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-05 17:25:00+00:00,target,2.965641952983726
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-05 17:25:00+00:00,target,2.965641952983726
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-06 18:35:00+00:00,stop,-1.0212290502793298
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-11 16:50:00+00:00,breakeven,-0.01898101898101891
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-11 16:50:00+00:00,breakeven,-0.01898101898101891
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-13 18:20:00+00:00,target,2.9822595704948647
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-18 14:35:00+00:00,stop,-1.0230862697448362
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-05-26 11:30:00+00:00,stop,-1.0521978021978027
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-06-02 15:00:00+00:00,target,2.9246031746031766
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-06-03 09:05:00+00:00,stop,-1.1417910447761233
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-06-18 10:15:00+00:00,target,2.875816993464061
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-06-24 17:55:00+00:00,stop,-1.0272206303724924
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-07 15:45:00+00:00,target,2.9552941176470586
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-08 02:55:00+00:00,target,2.931159420289856
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-13 00:00:00+00:00,stop,-1.1386861313868724
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-19 23:10:00+00:00,target,2.7865168539325755
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-20 07:45:00+00:00,target,2.933566433566434
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-26 19:50:00+00:00,stop,-1.1130952380952306
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-26 19:50:00+00:00,stop,-1.1130952380952306
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-27 20:00:00+00:00,stop,-1.079497907949792
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-28 18:50:00+00:00,stop,-1.0284431137724548
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-29 12:55:00+00:00,breakeven,-0.4418604651163538
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-07-29 13:55:00+00:00,stop,-1.026027397260274
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-08-02 11:05:00+00:00,stop,-1.0541310541310562
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-08-04 12:55:00+00:00,stop,-1.0614886731391593
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-08-04 17:35:00+00:00,breakeven,-0.059006211180122885
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-08-18 07:40:00+00:00,stop,-1.0605095541401282
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-08-19 15:05:00+00:00,breakeven,-0.020719738276990432
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-08-25 16:10:00+00:00,stop,-1.1055555555555554
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-02 14:00:00+00:00,target,2.9224489795918367
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-03 15:55:00+00:00,breakeven,-0.06574394463667903
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-07 06:00:00+00:00,target,2.81
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-08 01:00:00+00:00,stop,-1.083333333333336
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-14 14:45:00+00:00,breakeven,-0.017790262172284462
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-15 13:30:00+00:00,stop,-1.166666666666672
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-16 16:25:00+00:00,breakeven,-0.03214890016920454
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-17 12:05:00+00:00,stop,-1.1049723756906056
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-21 14:55:00+00:00,stop,-1.0141685309470545
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-24 13:45:00+00:00,breakeven,-0.05705705705705518
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-24 19:00:00+00:00,target,2.935153583617746
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-09-27 19:20:00+00:00,stop,-1.0698529411764686
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-01 10:40:00+00:00,target,2.9269230769230767
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-04 06:30:00+00:00,target,2.968646864686468
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-06 16:00:00+00:00,stop,-1.0309446254071664
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-08 14:50:00+00:00,breakeven,-0.015820149875104033
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-11 07:45:00+00:00,stop,-1.0295031055900616
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-13 15:55:00+00:00,target,2.9628906250000004
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-15 09:45:00+00:00,stop,-1.0748031496063002
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-20 18:05:00+00:00,breakeven,-0.06129032258064516
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-21 10:55:00+00:00,stop,-1.1544715447154335
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-22 05:25:00+00:00,stop,-1.1067415730337122
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-22 13:55:00+00:00,stop,-1.0539772727272743
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-22 17:50:00+00:00,stop,-1.0456730769230764
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-25 13:25:00+00:00,breakeven,-0.07916666666666666
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-10-28 09:45:00+00:00,breakeven,-0.08962264150943088
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-11-02 01:05:00+00:00,target,2.802083333333341
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-11-16 15:35:00+00:00,stop,-1.0650684931506833
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-11-17 18:00:00+00:00,stop,-1.020452099031217
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-11-25 13:55:00+00:00,stop,-1.0844444444444443
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-11-25 13:55:00+00:00,stop,-1.0844444444444443
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-01 06:55:00+00:00,breakeven,-0.024173027989822328
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-01 03:50:00+00:00,stop,-1.218390804597683
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-03 09:15:00+00:00,target,2.9040404040404004
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-08 14:00:00+00:00,breakeven,-0.06291390728476669
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-09 17:45:00+00:00,target,2.9586956521739127
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-15 16:50:00+00:00,stop,-1.0156765676567656
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-16 14:45:00+00:00,target,2.9842323651452287
+pepperstone_oos,"fast15 only (CISD, no MSS)",2021-12-21 16:15:00+00:00,target,2.984047019311503
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-03 14:05:00+00:00,stop,-1.0331588132635257
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-11 00:40:00+00:00,breakeven,-0.06643356643356559
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-11 15:10:00+00:00,target,2.9855293221629857
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-11 15:10:00+00:00,target,2.9855293221629857
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-14 17:05:00+00:00,stop,-1.0198123044838374
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-14 17:05:00+00:00,stop,-1.0198123044838374
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-18 19:30:00+00:00,target,2.9686468646864688
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-19 15:35:00+00:00,stop,-1.0477386934673354
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-19 16:25:00+00:00,target,2.991284403669725
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-20 07:30:00+00:00,breakeven,-0.06551724137931034
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-24 19:15:00+00:00,breakeven,-0.008158007728638913
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-01-25 19:50:00+00:00,stop,-1.0064516129032257
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-02 21:05:00+00:00,stop,-1.0322033898305085
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-04 07:40:00+00:00,breakeven,-0.07307692307692307
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-04 20:15:00+00:00,stop,-1.0204962243797198
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-10 16:40:00+00:00,target,2.9876462938881665
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-11 14:55:00+00:00,breakeven,-0.039419087136930354
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-15 18:05:00+00:00,stop,-1.0266853932584274
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-02-16 20:10:00+00:00,stop,-1.0084481991996443
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-01 00:55:00+00:00,stop,-1.0313014827018128
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-02 12:40:00+00:00,breakeven,-0.031404958677685946
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-03 09:00:00+00:00,stop,-1.0352504638218927
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-08 23:10:00+00:00,target,2.9408099688473524
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-21 09:00:00+00:00,stop,-1.068840579710144
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-23 08:30:00+00:00,target,2.955607476635515
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-23 18:15:00+00:00,stop,-1.0155610155610155
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-25 16:15:00+00:00,stop,-1.0193285859613426
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-03-28 16:20:00+00:00,stop,-1.0129604365620737
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-05 13:30:00+00:00,target,2.917030567685588
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-13 04:40:00+00:00,stop,-1.0627062706270642
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-20 17:45:00+00:00,target,2.9045226130653248
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-21 14:30:00+00:00,target,2.981677917068467
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-25 17:20:00+00:00,breakeven,-0.014393939393939393
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-29 00:30:00+00:00,target,2.958785249457701
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-04-29 10:00:00+00:00,target,2.9005235602094164
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-03 12:50:00+00:00,stop,-1.0186823992133727
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-03 19:50:00+00:00,stop,-1.0267229254571026
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-06 04:20:00+00:00,breakeven,-0.07169811320754717
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-10 05:20:00+00:00,target,2.9385113268608407
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-11 17:25:00+00:00,breakeven,-0.011137162954278992
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-12 15:00:00+00:00,stop,-1.006529209621993
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-18 05:00:00+00:00,stop,-1.112426035502961
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-19 13:40:00+00:00,breakeven,-0.015115354017502119
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-20 11:45:00+00:00,stop,-1.1711711711711656
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-23 18:25:00+00:00,stop,-1.0196687370600415
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-25 18:05:00+00:00,stop,-1.0788381742738578
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-05-30 22:15:00+00:00,target,2.967241379310345
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-01 12:20:00+00:00,breakeven,-0.0318257956448917
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-09 16:20:00+00:00,target,2.969551282051283
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-09 13:30:00+00:00,stop,-1.0250329380764165
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-14 13:25:00+00:00,stop,-1.0261707988980715
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-21 20:05:00+00:00,target,2.9655797101449277
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-24 11:55:00+00:00,stop,-1.0479797979797976
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-06-29 09:45:00+00:00,stop,-1.0425055928411644
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-07-01 07:30:00+00:00,breakeven,-0.03571428571428645
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-07-01 07:55:00+00:00,breakeven,-0.046228710462286694
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-07-05 16:30:00+00:00,target,2.98838630806846
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-07-08 12:55:00+00:00,stop,-1.0173041894353372
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-07-14 15:50:00+00:00,target,2.989403234802008
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-07-26 12:05:00+00:00,target,2.898395721925128
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-01 01:10:00+00:00,stop,-1.1292517006802816
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-02 00:30:00+00:00,breakeven,-0.04449648711943718
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-03 00:05:00+00:00,breakeven,-0.07251908396946363
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-04 17:00:00+00:00,stop,-1.036608863198459
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-04 17:00:00+00:00,stop,-1.036608863198459
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-15 13:40:00+00:00,breakeven,-0.025132275132275613
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-16 17:45:00+00:00,stop,-1.0306946688206786
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-17 18:35:00+00:00,target,2.9381107491856655
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-18 19:50:00+00:00,stop,-1.0678571428571428
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-08-23 10:00:00+00:00,stop,-1.0659722222222239
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-01 17:20:00+00:00,stop,-1.01956745623069
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-01 22:15:00+00:00,stop,-1.0375494071146256
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-06 11:55:00+00:00,target,2.965328467153284
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-19 04:15:00+00:00,stop,-1.184466019417456
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-19 12:15:00+00:00,breakeven,-0.10215053763441659
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-22 18:50:00+00:00,stop,-1.041125541125542
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-26 13:05:00+00:00,breakeven,-0.027616279069767734
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-27 15:35:00+00:00,breakeven,-0.019019019019019087
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-27 22:00:00+00:00,breakeven,-0.014032496307237663
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-09-30 16:50:00+00:00,stop,-1.2065217391304592
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-05 00:30:00+00:00,target,2.9429429429429415
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-05 16:55:00+00:00,breakeven,-0.010746606334841672
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-06 12:25:00+00:00,breakeven,-0.04288939051918806
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-11 06:40:00+00:00,stop,-1.0555555555555574
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-12 07:20:00+00:00,breakeven,-0.05740181268882112
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-12 16:35:00+00:00,breakeven,-0.03304347826086956
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-13 15:45:00+00:00,breakeven,-0.004562920268972146
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-17 12:20:00+00:00,stop,-1.1144578313252986
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-18 20:15:00+00:00,stop,-1.0407725321888408
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-26 16:40:00+00:00,stop,-1.069090909090909
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-10-27 03:00:00+00:00,stop,-1.0722433460076015
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-09 11:25:00+00:00,stop,-1.0257801899592942
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-11 17:20:00+00:00,breakeven,-0.020191285866099813
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-15 00:00:00+00:00,stop,-1.1172839506172787
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-17 20:55:00+00:00,target,2.8938547486033497
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-18 16:10:00+00:00,breakeven,-0.02435897435897436
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-23 14:30:00+00:00,stop,-1.0708955223880567
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-28 14:25:00+00:00,stop,-1.1005291005291025
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-11-29 03:30:00+00:00,stop,-1.071969696969693
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-01 08:30:00+00:00,breakeven,-0.05475504322766456
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-01 14:55:00+00:00,stop,-1.02377972465582
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-14 02:25:00+00:00,stop,-1.1310344827586205
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-15 08:00:00+00:00,target,2.9745649263721554
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-16 16:30:00+00:00,breakeven,-0.015236567762630222
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-19 15:20:00+00:00,breakeven,-0.019269776876267675
+pepperstone_oos,"fast15 only (CISD, no MSS)",2022-12-21 12:00:00+00:00,stop,-1.115151515151515
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-03 11:30:00+00:00,breakeven,-0.046341463414634146
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-09 12:40:00+00:00,target,2.9476584022038557
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-10 15:20:00+00:00,target,2.9854517611026035
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-17 02:00:00+00:00,stop,-1.0591900311526472
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-18 12:50:00+00:00,breakeven,-0.062091503267973115
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-19 14:30:00+00:00,breakeven,-0.08482142857142995
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-20 14:30:00+00:00,stop,-1.1258278145695333
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-20 08:30:00+00:00,stop,-1.0431818181818182
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-20 11:50:00+00:00,breakeven,-0.04896907216494707
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-20 14:40:00+00:00,stop,-1.0610932475884236
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-26 05:40:00+00:00,stop,-1.2602739726027656
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-25 20:25:00+00:00,breakeven,-0.036538461538461534
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-27 12:50:00+00:00,stop,-1.10614525139665
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-01-30 17:55:00+00:00,target,2.955607476635515
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-02-06 13:00:00+00:00,stop,-1.0588235294117627
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-02-07 12:10:00+00:00,stop,-1.0570570570570552
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-02-20 17:25:00+00:00,target,2.878980891719737
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-01 14:40:00+00:00,breakeven,-0.024421593830333845
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-07 06:30:00+00:00,stop,-1.094059405940599
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-10 09:25:00+00:00,breakeven,-0.04042553191489361
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-13 19:20:00+00:00,stop,-1.035984848484849
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-17 10:20:00+00:00,breakeven,-0.07421874999999895
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-24 19:00:00+00:00,target,2.9372937293729358
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-24 19:45:00+00:00,breakeven,-0.02959501557632449
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-27 13:00:00+00:00,breakeven,-0.05539358600583208
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-03-29 12:45:00+00:00,stop,-1.146153846153846
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-10 09:50:00+00:00,stop,-1.0620915032679767
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-14 19:50:00+00:00,stop,-1.0232843137254901
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-18 18:55:00+00:00,breakeven,-0.04077253218884088
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-18 18:55:00+00:00,breakeven,-0.04077253218884088
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-21 14:10:00+00:00,stop,-1.0370370370370376
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-21 16:05:00+00:00,breakeven,-0.050938337801607086
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-24 11:05:00+00:00,breakeven,-0.08837209302325581
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-26 04:05:00+00:00,breakeven,-0.10497237569060562
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-04-26 13:10:00+00:00,breakeven,-0.04025423728813652
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-01 18:00:00+00:00,breakeven,-0.3220338983051046
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-04 07:35:00+00:00,stop,-1.0521978021978027
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-04 18:20:00+00:00,stop,-1.038539553752536
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-05 00:10:00+00:00,breakeven,-0.14843750000000844
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-12 14:10:00+00:00,breakeven,-0.02831594634873308
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-17 13:45:00+00:00,stop,-1.1172839506172787
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-22 14:05:00+00:00,breakeven,-0.034545454545454546
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-30 18:25:00+00:00,breakeven,-0.03571428571428523
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-05-30 18:25:00+00:00,breakeven,-0.03571428571428523
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-01 13:40:00+00:00,stop,-1.0533707865168533
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-06 06:55:00+00:00,stop,-1.0625000000000007
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-08 13:25:00+00:00,target,2.9630350194552526
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-12 12:25:00+00:00,stop,-1.0883720930232557
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-13 10:25:00+00:00,stop,-1.0456730769230784
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-20 18:05:00+00:00,stop,-1.0483460559796425
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-29 03:05:00+00:00,breakeven,-0.1743119266055104
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-06-29 20:15:00+00:00,target,2.963249516441005
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-04 00:40:00+00:00,breakeven,-0.1544715447154563
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-06 19:10:00+00:00,stop,-1.0840707964601757
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-07 19:15:00+00:00,stop,-1.0412147505423006
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-14 17:00:00+00:00,stop,-1.0347985347985345
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-20 12:50:00+00:00,stop,-1.0520547945205478
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-26 11:15:00+00:00,target,2.8288288288288346
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-28 18:20:00+00:00,stop,-1.0458937198067637
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-07-31 06:45:00+00:00,breakeven,-0.04534606205250439
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-01 17:10:00+00:00,stop,-1.0354477611940296
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-04 11:00:00+00:00,breakeven,-0.05205479452054794
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-10 18:10:00+00:00,stop,-1.0637583892617464
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-11 07:50:00+00:00,stop,-1.090047393364935
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-29 00:40:00+00:00,stop,-1.2567567567567695
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-29 13:30:00+00:00,stop,-1.6785714285711641
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-29 13:30:00+00:00,stop,-1.6785714285711641
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-08-31 13:45:00+00:00,target,2.9050000000000002
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-04 23:10:00+00:00,target,2.851562500000013
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-06 08:05:00+00:00,target,2.9342560553633206
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-12 11:00:00+00:00,stop,-1.1652173913043478
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-13 15:15:00+00:00,breakeven,-0.015573770491803278
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-13 22:10:00+00:00,stop,-1.1958762886597791
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-14 12:00:00+00:00,stop,-1.0892018779342676
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-18 16:55:00+00:00,stop,-1.0382293762575447
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-19 19:25:00+00:00,stop,-1.0374753451676537
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-20 19:25:00+00:00,target,2.985294117647059
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-20 17:50:00+00:00,breakeven,-0.061889250814330776
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-22 20:10:00+00:00,breakeven,-0.021300448430493533
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-27 15:00:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-27 15:00:00+00:00,breakeven,-0.025606469002695167
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-09-28 12:30:00+00:00,breakeven,-0.04481132075471737
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-02 15:35:00+00:00,stop,-1.0197505197505197
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-02 18:35:00+00:00,stop,-1.0506666666666666
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-03 14:10:00+00:00,breakeven,-0.017009847806624775
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-06 13:00:00+00:00,stop,-1.0091566265060241
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-17 11:15:00+00:00,target,2.9501312335958008
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-19 19:00:00+00:00,target,2.979936642027455
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-20 05:45:00+00:00,breakeven,-0.076
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-20 13:50:00+00:00,stop,-1.052631578947368
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-23 19:35:00+00:00,breakeven,-0.05757575757575757
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-26 12:45:00+00:00,stop,-1.0237500000000002
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-27 03:20:00+00:00,breakeven,-0.09047619047619047
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-27 15:30:00+00:00,stop,-1.0188118811881188
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-30 16:50:00+00:00,stop,-1.029641185647426
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-10-30 16:50:00+00:00,stop,-1.029641185647426
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-03 13:35:00+00:00,target,2.979957805907173
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-08 18:00:00+00:00,stop,-1.0610932475884272
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-09 08:50:00+00:00,stop,-1.1417910447761233
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-16 15:00:00+00:00,stop,-1.0323129251700673
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-16 19:50:00+00:00,stop,-1.0378486055776888
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-17 12:10:00+00:00,stop,-1.081545064377685
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-17 18:25:00+00:00,stop,-1.0442890442890447
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-22 17:50:00+00:00,stop,-1.1172839506172918
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-24 00:40:00+00:00,stop,-1.2835820895522851
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-11-28 02:20:00+00:00,breakeven,-0.05013192612137251
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-12-01 17:35:00+00:00,stop,-1.0144376899696048
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-12-06 08:45:00+00:00,stop,-1.1652173913043478
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-12-08 15:35:00+00:00,target,2.9796573875803
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-12-22 20:45:00+00:00,stop,-1.0519125683060129
+pepperstone_oos,"fast15 only (CISD, no MSS)",2023-12-22 20:45:00+00:00,stop,-1.0519125683060129

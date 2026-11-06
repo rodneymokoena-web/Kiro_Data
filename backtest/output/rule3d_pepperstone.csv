@@ -1,0 +1,158 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.0044023027429732,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885,25,15
+pepperstone,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132,25,15
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,15,5
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,15,5
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,15,5
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,15,5
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,15,5
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,15,5
+pepperstone,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,15,5
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885,29,14
+pepperstone,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132,29,14
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-09 09:40:00+00:00,stop,-1.008843537414966,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-01-14 19:00:00+00:00,target,2.995313626532084,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-09 08:00:00+00:00,target,2.9981044036162143,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885,36,19
+pepperstone,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132,36,19
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-07-21 01:15:00+00:00,breakeven,-0.006849315068493177,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,36,17
+pepperstone,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-07-21 01:00:00+00:00,breakeven,-0.0028248587570621425,36,17
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-09-23 11:10:00+00:00,stop,-1.0411392405063309,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-09 09:40:00+00:00,stop,-1.008843537414966,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-07-21 01:15:00+00:00,breakeven,-0.006849315068493177,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-09-23 08:00:00+00:00,stop,-1.0103174603174603,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-09 08:00:00+00:00,target,2.9981044036162143,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,45,22
+pepperstone,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-07-21 01:00:00+00:00,breakeven,-0.0028248587570621425,45,22
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,20,8
+pepperstone,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,20,8
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-09 09:40:00+00:00,stop,-1.008843537414966,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-09 08:00:00+00:00,target,2.9981044036162143,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,26,12
+pepperstone,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,26,12

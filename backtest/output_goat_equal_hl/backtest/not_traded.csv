@@ -1,0 +1,8 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,1,long,5m,touch,no retest
+US100,1,long,5m,ce,no retest
+US100,2,long,5m,touch,no retest
+US100,2,long,5m,ce,no retest
+US100,5,long,5m,touch,expired
+US100,5,long,5m,ce,expired
+XAUUSD,6,short,5m,ce,expired

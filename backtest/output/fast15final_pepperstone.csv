@@ -1,0 +1,273 @@
+source,variant,entry_time,exit,r_net
+pepperstone,intraday current,2024-01-10 00:15:00+00:00,stop,-1.0467625899280588
+pepperstone,intraday current,2024-01-26 18:55:00+00:00,stop,-1.0120036934441368
+pepperstone,intraday current,2024-02-14 18:20:00+00:00,stop,-1.0481481481481483
+pepperstone,intraday current,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday current,2024-03-14 11:25:00+00:00,stop,-1.0866666666666667
+pepperstone,intraday current,2024-06-27 16:40:00+00:00,breakeven,-0.015063731170336164
+pepperstone,intraday current,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday current,2024-09-25 12:05:00+00:00,target,2.9150326797385784
+pepperstone,intraday current,2024-10-09 10:30:00+00:00,target,2.9643835616438357
+pepperstone,intraday current,2024-10-23 00:05:00+00:00,stop,-1.0509803921568628
+pepperstone,intraday current,2024-10-24 15:55:00+00:00,stop,-1.0183098591549296
+pepperstone,intraday current,2024-12-10 19:25:00+00:00,target,2.9532374100719476
+pepperstone,intraday current,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday current,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday current,2025-03-20 19:50:00+00:00,stop,-1.0136986301369861
+pepperstone,intraday current,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday current,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday current,2025-04-16 16:10:00+00:00,target,2.9907275320970044
+pepperstone,intraday current,2025-05-16 17:50:00+00:00,breakeven,-0.0325
+pepperstone,intraday current,2025-06-05 15:05:00+00:00,stop,-1.0084306095979247
+pepperstone,intraday current,2025-06-18 13:40:00+00:00,stop,-1.0239852398523999
+pepperstone,intraday current,2025-07-03 11:40:00+00:00,stop,-1.0866666666666667
+pepperstone,intraday current,2025-07-10 12:00:00+00:00,stop,-1.0472727272727274
+pepperstone,intraday current,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday current,2025-08-08 06:35:00+00:00,target,2.9698375870069595
+pepperstone,intraday current,2025-10-15 13:55:00+00:00,stop,-1.038922155688621
+pepperstone,intraday current,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday current,2025-11-12 11:30:00+00:00,breakeven,-0.057017543859650945
+pepperstone,intraday current,2025-11-19 19:50:00+00:00,stop,-1.0133470225872692
+pepperstone,intraday current,2025-12-31 17:15:00+00:00,stop,-1.04744525547445
+pepperstone,intraday current,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday current,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday current,2026-03-13 14:50:00+00:00,breakeven,-0.006184586108468104
+pepperstone,intraday current,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday current,2026-05-28 11:50:00+00:00,target,2.972631578947368
+pepperstone,intraday current,2026-05-28 13:50:00+00:00,stop,-1.0170603674540681
+pepperstone,intraday current,2026-07-10 12:35:00+00:00,breakeven,-0.06220095693780554
+pepperstone,intraday current,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday current,2026-07-23 06:45:00+00:00,breakeven,-0.019548872180451128
+pepperstone,intraday current,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday current,2026-09-02 01:25:00+00:00,target,2.971175166297116
+pepperstone,intraday current,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday current,2026-09-29 18:00:00+00:00,stop,-1.0252918287937736
+pepperstone,intraday current,2026-10-08 09:00:00+00:00,breakeven,-0.02177554438860945
+pepperstone,intraday current,2026-10-09 19:45:00+00:00,stop,-1.0276008492568989
+pepperstone,intraday current,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-01-15 11:35:00+00:00,stop,-1.0726256983240312
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-02-01 13:30:00+00:00,breakeven,-0.03682719546742286
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-02-21 21:35:00+00:00,target,2.994963192561023
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-02-27 09:10:00+00:00,breakeven,-0.03147699757869305
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-02-27 14:50:00+00:00,breakeven,-0.020833333333334064
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-06-10 13:30:00+00:00,stop,-1.0410094637223966
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-06-14 16:25:00+00:00,target,2.9736842105263164
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-07-17 01:25:00+00:00,target,2.9371980676328526
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-08-09 05:30:00+00:00,stop,-1.017857142857143
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-08-19 08:15:00+00:00,stop,-1.0227670753064804
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-08-20 13:15:00+00:00,stop,-1.0237659963436925
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-08-28 08:05:00+00:00,breakeven,-0.06842105263157895
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-08-30 15:05:00+00:00,breakeven,-0.01021209740769841
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-09-24 14:10:00+00:00,stop,-1.010061919504644
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-10-10 14:10:00+00:00,stop,-1.0245283018867923
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-10-22 00:00:00+00:00,stop,-1.0226480836236929
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-10-22 07:20:00+00:00,stop,-1.036312849162012
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-10-28 22:35:00+00:00,breakeven,-0.05726872246695852
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2024-12-10 19:25:00+00:00,target,2.9532374100719476
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-01-08 12:35:00+00:00,breakeven,-0.006701030927835052
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-01-21 14:45:00+00:00,breakeven,-0.013815090329436983
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-01-28 14:30:00+00:00,target,2.9691943127962093
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-01-29 19:45:00+00:00,breakeven,-0.021241830065360488
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-01-30 20:50:00+00:00,stop,-1.02579365079365
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-02-04 04:20:00+00:00,stop,-1.036111111111111
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-02-07 18:00:00+00:00,breakeven,-0.01766304347826122
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-02-12 13:20:00+00:00,stop,-1.0416666666666656
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-02-13 13:30:00+00:00,stop,-1.0539419087136963
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-02-27 04:35:00+00:00,stop,-1.0294784580498875
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-02-28 14:35:00+00:00,breakeven,-0.021207177814029615
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-03-03 08:35:00+00:00,stop,-1.0140237324703343
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-03-06 15:25:00+00:00,stop,-1.0062111801242237
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-03-12 00:00:00+00:00,stop,-1.0273684210526315
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-04-22 01:40:00+00:00,stop,-1.0183875530410191
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-04-29 19:15:00+00:00,stop,-1.0085526315789475
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-05-21 19:00:00+00:00,breakeven,-0.016209476309226787
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-05-26 22:40:00+00:00,breakeven,-0.02416356877323453
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-06-12 05:50:00+00:00,stop,-1.0807453416149142
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-06-18 13:40:00+00:00,stop,-1.0239852398523999
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-07-07 16:30:00+00:00,breakeven,-0.03291139240506329
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-07-10 12:00:00+00:00,stop,-1.0448275862068965
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-09-25 15:50:00+00:00,breakeven,-0.0053874844591794615
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-10-02 15:25:00+00:00,breakeven,-0.031862745098036944
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-10-02 15:25:00+00:00,breakeven,-0.031862745098036944
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-10-03 14:15:00+00:00,breakeven,-0.016049382716049384
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-10-10 05:00:00+00:00,stop,-1.067010309278358
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-10-17 14:00:00+00:00,target,2.9910282953761214
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-10-20 11:05:00+00:00,stop,-1.0288248337028834
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-11-03 19:10:00+00:00,breakeven,-0.03266331658291517
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-12-05 04:15:00+00:00,breakeven,-0.04676258992805878
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-12-10 18:35:00+00:00,stop,-1.020967741935484
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-12-16 01:50:00+00:00,stop,-1.00758902510216
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-12-23 20:10:00+00:00,breakeven,-0.0434782608695631
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2025-12-30 03:50:00+00:00,stop,-1.0397553516819562
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-09 01:30:00+00:00,stop,-1.0226876090750439
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-13 05:25:00+00:00,stop,-1.0281385281385276
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-13 19:15:00+00:00,stop,-1.0238532110091743
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-16 12:40:00+00:00,breakeven,-0.04467353951890258
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-20 08:45:00+00:00,stop,-1.0110826939471442
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-22 20:15:00+00:00,breakeven,-0.02040816326530589
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-01-22 20:15:00+00:00,breakeven,-0.02040816326530589
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-02-19 00:30:00+00:00,stop,-1.0211382113821137
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-02-23 11:50:00+00:00,breakeven,-0.0270270270270258
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-03-30 17:35:00+00:00,breakeven,-0.007099945385035556
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-04-07 14:15:00+00:00,stop,-1.005044625533566
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-04-30 14:55:00+00:00,stop,-1.0076515597410243
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-05-14 16:25:00+00:00,stop,-1.0174029451137883
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-05-29 18:00:00+00:00,stop,-1.0158343483556633
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-06-02 00:15:00+00:00,breakeven,-0.02589641434262911
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-06-10 23:20:00+00:00,stop,-1.0152761457109285
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-06-11 11:05:00+00:00,breakeven,-0.02047244094488189
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-06-22 05:30:00+00:00,breakeven,-0.011732851985559258
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-07-02 05:15:00+00:00,stop,-1.0153301886792454
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-07-22 23:55:00+00:00,breakeven,-0.015738498789346526
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-08-03 19:55:00+00:00,breakeven,-0.021487603305785124
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-08-05 16:20:00+00:00,target,2.989779874213836
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-08-07 07:20:00+00:00,target,2.978998384491114
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-08-19 19:55:00+00:00,stop,-1.0178326474622768
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-09-08 13:50:00+00:00,breakeven,-0.009992313604919405
+pepperstone,"intraday fast15 only (5m,2.5ATR)",2026-10-01 14:10:00+00:00,breakeven,-0.008349389852279987
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-01-10 00:15:00+00:00,stop,-1.0467625899280588
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-01-15 11:35:00+00:00,stop,-1.0726256983240312
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-02-01 13:30:00+00:00,breakeven,-0.03682719546742286
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-02-21 21:35:00+00:00,target,2.994963192561023
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-02-27 09:10:00+00:00,breakeven,-0.03147699757869305
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-02-27 14:50:00+00:00,breakeven,-0.020833333333334064
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-06-10 13:30:00+00:00,stop,-1.0410094637223966
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-06-14 16:25:00+00:00,target,2.9736842105263164
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-07-17 01:25:00+00:00,target,2.9371980676328526
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-08-09 05:30:00+00:00,stop,-1.017857142857143
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-08-19 08:15:00+00:00,stop,-1.0227670753064804
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-08-20 13:15:00+00:00,stop,-1.0237659963436925
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-08-28 08:05:00+00:00,breakeven,-0.06842105263157895
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-08-30 15:05:00+00:00,breakeven,-0.01021209740769841
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-09-24 14:10:00+00:00,stop,-1.010061919504644
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-10-10 14:10:00+00:00,stop,-1.0245283018867923
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-10-22 00:00:00+00:00,stop,-1.0226480836236929
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-10-22 07:20:00+00:00,stop,-1.036312849162012
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-10-28 22:35:00+00:00,breakeven,-0.05726872246695852
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2024-12-10 19:25:00+00:00,target,2.9532374100719476
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-01-08 12:35:00+00:00,breakeven,-0.006701030927835052
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-01-21 14:45:00+00:00,breakeven,-0.013815090329436983
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-01-28 14:30:00+00:00,target,2.9691943127962093
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-01-29 19:45:00+00:00,breakeven,-0.021241830065360488
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-01-30 20:50:00+00:00,stop,-1.02579365079365
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-02-04 04:20:00+00:00,stop,-1.036111111111111
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-02-07 18:00:00+00:00,breakeven,-0.01766304347826122
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-02-12 13:20:00+00:00,stop,-1.0416666666666656
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-02-13 13:30:00+00:00,stop,-1.0539419087136963
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-02-27 04:35:00+00:00,stop,-1.0294784580498875
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-02-28 14:35:00+00:00,breakeven,-0.021207177814029615
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-03-03 08:35:00+00:00,stop,-1.0140237324703343
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-03-06 15:25:00+00:00,stop,-1.0062111801242237
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-03-12 00:00:00+00:00,stop,-1.0273684210526315
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-04-22 01:40:00+00:00,stop,-1.0183875530410191
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-04-29 19:15:00+00:00,stop,-1.0085526315789475
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-05-21 19:00:00+00:00,breakeven,-0.016209476309226787
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-05-26 22:40:00+00:00,breakeven,-0.02416356877323453
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-06-12 05:50:00+00:00,stop,-1.0807453416149142
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-06-18 13:40:00+00:00,stop,-1.0239852398523999
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-07-07 16:30:00+00:00,breakeven,-0.03291139240506329
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-07-10 12:00:00+00:00,stop,-1.0448275862068965
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-09-25 15:50:00+00:00,breakeven,-0.0053874844591794615
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-10-02 15:25:00+00:00,breakeven,-0.031862745098036944
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-10-02 15:25:00+00:00,breakeven,-0.031862745098036944
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-10-03 14:15:00+00:00,breakeven,-0.016049382716049384
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-10-10 05:00:00+00:00,stop,-1.067010309278358
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-10-17 14:00:00+00:00,target,2.9910282953761214
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-10-20 11:05:00+00:00,stop,-1.0288248337028834
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-11-03 19:10:00+00:00,breakeven,-0.03266331658291517
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-12-05 04:15:00+00:00,breakeven,-0.04676258992805878
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-12-10 18:35:00+00:00,stop,-1.020967741935484
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-12-16 01:50:00+00:00,stop,-1.00758902510216
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-12-23 20:10:00+00:00,breakeven,-0.0434782608695631
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2025-12-30 03:50:00+00:00,stop,-1.0397553516819562
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-09 01:30:00+00:00,stop,-1.0226876090750439
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-13 05:25:00+00:00,stop,-1.0281385281385276
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-13 19:15:00+00:00,stop,-1.0238532110091743
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-16 12:40:00+00:00,breakeven,-0.04467353951890258
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-20 08:45:00+00:00,stop,-1.0110826939471442
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-22 20:15:00+00:00,breakeven,-0.02040816326530589
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-01-22 20:15:00+00:00,breakeven,-0.02040816326530589
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-02-19 00:30:00+00:00,stop,-1.0211382113821137
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-02-23 11:50:00+00:00,breakeven,-0.0270270270270258
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-03-30 17:35:00+00:00,breakeven,-0.007099945385035556
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-04-07 14:15:00+00:00,stop,-1.005044625533566
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-04-30 14:55:00+00:00,stop,-1.0076515597410243
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-05-14 16:25:00+00:00,stop,-1.0174029451137883
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-05-29 18:00:00+00:00,stop,-1.0158343483556633
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-06-02 00:15:00+00:00,breakeven,-0.02589641434262911
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-06-10 23:20:00+00:00,stop,-1.0152761457109285
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-06-11 11:05:00+00:00,breakeven,-0.02047244094488189
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-06-22 05:30:00+00:00,breakeven,-0.011732851985559258
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-07-02 05:15:00+00:00,stop,-1.0153301886792454
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-07-22 23:55:00+00:00,breakeven,-0.015738498789346526
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-08-03 19:55:00+00:00,breakeven,-0.021487603305785124
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-08-05 16:20:00+00:00,target,2.989779874213836
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-08-07 07:20:00+00:00,target,2.978998384491114
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-08-19 19:55:00+00:00,stop,-1.0178326474622768
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-09-08 13:50:00+00:00,breakeven,-0.009992313604919405
+pepperstone,"intraday current + fast15 (5m,2.5ATR)",2026-10-01 14:10:00+00:00,breakeven,-0.008349389852279987
+pepperstone,swing,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,2024-05-23 19:00:00+00:00,target,0.10704055480174618
+pepperstone,swing,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095
+pepperstone,swing,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,2024-08-06 08:00:00+00:00,target,0.7161937880344531
+pepperstone,swing,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,2024-11-20 14:00:00+00:00,stop,-1.0113636363636362
+pepperstone,swing,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,2025-03-19 13:00:00+00:00,stop,-1.005825677795205
+pepperstone,swing,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,2025-05-20 13:00:00+00:00,target,0.46429906542056076
+pepperstone,swing,2025-05-21 19:00:00+00:00,target,0.3359897991711881
+pepperstone,swing,2025-05-22 14:00:00+00:00,stop,-1.0058009817045963
+pepperstone,swing,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,2025-12-01 01:00:00+00:00,target,0.3543689320388322
+pepperstone,swing,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,2026-01-28 21:00:00+00:00,target,0.532810969637625
+pepperstone,swing,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,2026-01-29 16:00:00+00:00,target,0.23113207547169867
+pepperstone,swing,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,2026-03-05 20:00:00+00:00,target,0.7314449623520911
+pepperstone,swing,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,2026-05-21 18:00:00+00:00,target,0.43774757281553733
+pepperstone,swing,2026-06-17 20:00:00+00:00,stop,-1.0014284144599495
+pepperstone,swing,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457
+pepperstone,swing,2026-09-17 13:00:00+00:00,target,0.44842221812142075
+pepperstone,swing,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,2026-09-30 17:00:00+00:00,target,0.4972217243233541
+pepperstone,swing,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,2026-10-26 16:00:00+00:00,target,2.058937341866345

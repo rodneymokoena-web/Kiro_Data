@@ -1,0 +1,7 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,1,long,5m,touch,no retest
+US100,1,long,5m,ce,no retest
+US100,3,long,5m,touch,expired
+US100,3,long,5m,ce,expired
+US100,13,short,5m,touch,no retest
+US100,13,short,5m,ce,no retest

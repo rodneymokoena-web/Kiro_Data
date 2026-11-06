@@ -1,0 +1,242 @@
+source,variant,entry_time,exit,r_net
+goat_oos,intraday current,2021-05-28 12:30:00+00:00,breakeven,-0.0425531914893617
+goat_oos,intraday current,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday current,2021-08-12 00:05:00+00:00,stop,-1.1724137931034158
+goat_oos,intraday current,2021-09-02 17:05:00+00:00,stop,-1.0520833333333364
+goat_oos,intraday current,2021-09-16 18:20:00+00:00,breakeven,-0.01703577512776863
+goat_oos,intraday current,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday current,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday current,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday current,2022-02-04 15:50:00+00:00,breakeven,-0.012836970474967967
+goat_oos,intraday current,2022-02-11 18:00:00+00:00,target,2.9874371859296485
+goat_oos,intraday current,2022-04-22 14:30:00+00:00,target,2.9939467312348667
+goat_oos,intraday current,2022-06-23 15:00:00+00:00,stop,-1.0098814229249011
+goat_oos,intraday current,2022-07-28 12:55:00+00:00,stop,-1.0159744408945686
+goat_oos,intraday current,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday current,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday current,2022-09-15 01:10:00+00:00,stop,-1.0507614213197998
+goat_oos,intraday current,2022-09-20 18:30:00+00:00,breakeven,-0.023201856148492662
+goat_oos,intraday current,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday current,2022-11-08 18:25:00+00:00,stop,-1.015220700152207
+goat_oos,intraday current,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday current,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday current,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday current,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday current,2023-02-28 15:10:00+00:00,breakeven,-0.015384615384615385
+goat_oos,intraday current,2023-03-15 17:20:00+00:00,target,2.9858156028368796
+goat_oos,intraday current,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday current,2023-10-05 12:10:00+00:00,stop,-1.0254452926208657
+goat_oos,intraday current,2023-11-28 15:55:00+00:00,breakeven,-0.01879699248120339
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-04-08 20:15:00+00:00,breakeven,-0.02666666666666667
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-05-04 08:45:00+00:00,target,2.9745547073791356
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-05-05 18:10:00+00:00,breakeven,-0.026881720430107
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-05-11 15:40:00+00:00,stop,-1.0058997050147493
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-05-11 15:40:00+00:00,stop,-1.0058997050147493
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-06-02 16:40:00+00:00,breakeven,-0.026178010471204938
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-06-18 10:15:00+00:00,target,2.9337748344370795
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-07-08 07:55:00+00:00,breakeven,-0.00998003992015979
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-07-20 20:00:00+00:00,breakeven,-0.0158227848101264
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-07-28 10:10:00+00:00,breakeven,-0.030303030303030304
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-09-01 09:30:00+00:00,stop,-1.034246575342465
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-09-03 20:15:00+00:00,stop,-1.0568181818181805
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-09-24 13:45:00+00:00,breakeven,-0.03076923076923077
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-10-13 10:45:00+00:00,breakeven,-0.06711409395973318
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-10-21 12:50:00+00:00,target,2.969788519637461
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-10-27 13:50:00+00:00,breakeven,-0.009319664492078349
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-11-02 01:40:00+00:00,breakeven,-0.06060606060606061
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-11-22 17:00:00+00:00,target,2.9945205479452053
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-11-22 17:00:00+00:00,target,2.9945205479452053
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-11-26 01:00:00+00:00,target,2.9734748010610086
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-11-26 01:00:00+00:00,target,2.9734748010610086
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-12-01 03:50:00+00:00,stop,-1.1111111111111112
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-12-01 14:45:00+00:00,stop,-1.0155763239875393
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-12-09 18:55:00+00:00,breakeven,-0.012033694344163869
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2021-12-15 20:25:00+00:00,stop,-1.0023052097740894
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-01-11 00:40:00+00:00,breakeven,-0.034722222222220905
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-01-11 15:10:00+00:00,target,2.9923254029163466
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-01-14 17:05:00+00:00,stop,-1.0101112234580385
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-01-14 17:05:00+00:00,stop,-1.0101112234580385
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-01-19 11:30:00+00:00,breakeven,-0.01897533206831159
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-01-19 19:40:00+00:00,breakeven,-0.00881057268722467
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-02-04 13:00:00+00:00,stop,-1.0101522842639594
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-02-15 18:05:00+00:00,stop,-1.0139470013947003
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-03-04 14:55:00+00:00,breakeven,-0.007272727272727273
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-03-07 21:15:00+00:00,breakeven,-0.007168458781362007
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-03-09 01:50:00+00:00,stop,-1.0141843971631206
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-04-05 13:30:00+00:00,target,2.9555555555555557
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-04-21 15:00:00+00:00,target,2.991482112436116
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-05-11 18:00:00+00:00,stop,-1.0108459869848156
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-05-18 07:20:00+00:00,target,2.9791231732776615
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-05-25 18:35:00+00:00,target,2.9925925925925925
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-06-09 17:55:00+00:00,target,2.9838709677419355
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-07-22 10:50:00+00:00,target,2.96875
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-08-23 10:00:00+00:00,stop,-1.0348432055749142
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-09-19 06:30:00+00:00,breakeven,-0.028169014084507043
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-09-21 16:40:00+00:00,breakeven,-0.017361111111111
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-09-28 12:50:00+00:00,breakeven,-0.007390983000739138
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-10-19 10:10:00+00:00,stop,-1.0144927536231885
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-11-11 20:55:00+00:00,stop,-1.0416666666666667
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-11-16 00:20:00+00:00,breakeven,-0.03676470588235441
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-11-16 00:20:00+00:00,breakeven,-0.03676470588235441
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-11-22 18:20:00+00:00,target,2.9772209567198176
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2022-12-16 17:35:00+00:00,breakeven,-0.03184713375796215
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-02-07 12:10:00+00:00,stop,-1.0300300300300307
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-03-10 11:55:00+00:00,stop,-1.0223713646532435
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-04-18 18:55:00+00:00,breakeven,-0.021141649048625304
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-04-18 18:55:00+00:00,breakeven,-0.021141649048625304
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-04-24 11:05:00+00:00,breakeven,-0.04694835680751334
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-05-30 23:00:00+00:00,target,2.9411764705882355
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-07-20 12:50:00+00:00,stop,-1.0271002710027104
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-08-04 11:00:00+00:00,breakeven,-0.027247956403269213
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-08-11 03:50:00+00:00,target,2.973890339425588
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-08-29 12:40:00+00:00,stop,-1.0335570469798665
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-09-06 07:30:00+00:00,target,2.9762470308788602
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-09-27 18:25:00+00:00,stop,-1.0350877192982457
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-09-27 18:25:00+00:00,stop,-1.0350877192982457
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-10-02 22:40:00+00:00,stop,-1.1
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-10-02 18:35:00+00:00,stop,-1.026455026455027
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-10-03 14:10:00+00:00,breakeven,-0.008849557522123894
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-10-05 18:00:00+00:00,target,2.9804687500000004
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-10-12 12:45:00+00:00,stop,-1.0201207243460761
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-10-23 15:45:00+00:00,breakeven,-0.008216926869350936
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-11-03 14:00:00+00:00,target,2.988888888888889
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-11-20 11:35:00+00:00,target,2.9593495934959355
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-11-22 09:20:00+00:00,target,2.960474308300394
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-11-22 19:45:00+00:00,breakeven,-0.015060240963855505
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-12-01 18:05:00+00:00,stop,-1.0197238658777117
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-12-18 13:20:00+00:00,breakeven,-0.0813008130081349
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-12-19 06:25:00+00:00,stop,-1.0826446280991835
+goat_oos,"intraday fast15 only (5m,2.5ATR)",2023-12-26 12:30:00+00:00,stop,-1.0613496932515227
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-04-08 20:15:00+00:00,breakeven,-0.02666666666666667
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-05-04 08:45:00+00:00,target,2.9745547073791356
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-05-05 18:10:00+00:00,breakeven,-0.026881720430107
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-05-11 15:40:00+00:00,stop,-1.0058997050147493
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-05-11 15:40:00+00:00,stop,-1.0058997050147493
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-06-02 16:40:00+00:00,breakeven,-0.026178010471204938
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-06-18 10:15:00+00:00,target,2.9337748344370795
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-07-08 07:55:00+00:00,breakeven,-0.00998003992015979
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-07-20 20:00:00+00:00,breakeven,-0.0158227848101264
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-07-28 10:10:00+00:00,breakeven,-0.030303030303030304
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-09-01 09:30:00+00:00,stop,-1.034246575342465
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-09-03 20:15:00+00:00,stop,-1.0568181818181805
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-09-24 13:45:00+00:00,breakeven,-0.03076923076923077
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-10-13 10:45:00+00:00,breakeven,-0.06711409395973318
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-10-21 12:50:00+00:00,target,2.969788519637461
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-10-27 13:50:00+00:00,breakeven,-0.009319664492078349
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-11-02 01:40:00+00:00,breakeven,-0.06060606060606061
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-11-22 17:00:00+00:00,target,2.9945205479452053
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-11-22 17:00:00+00:00,target,2.9945205479452053
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-11-26 01:00:00+00:00,target,2.9734748010610086
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-11-26 01:00:00+00:00,target,2.9734748010610086
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-12-01 03:50:00+00:00,stop,-1.1111111111111112
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-12-01 14:45:00+00:00,stop,-1.0155763239875393
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-12-09 18:55:00+00:00,breakeven,-0.012033694344163869
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2021-12-15 20:25:00+00:00,stop,-1.0023052097740894
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-01-11 00:40:00+00:00,breakeven,-0.034722222222220905
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-01-11 15:10:00+00:00,target,2.9923254029163466
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-01-14 17:05:00+00:00,stop,-1.0101112234580385
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-01-14 17:05:00+00:00,stop,-1.0101112234580385
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-01-19 11:30:00+00:00,breakeven,-0.01897533206831159
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-01-19 19:40:00+00:00,breakeven,-0.00881057268722467
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-02-04 13:00:00+00:00,stop,-1.0101522842639594
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-02-15 18:05:00+00:00,stop,-1.0139470013947003
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-03-04 14:55:00+00:00,breakeven,-0.007272727272727273
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-03-07 21:15:00+00:00,breakeven,-0.007168458781362007
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-03-09 01:50:00+00:00,stop,-1.0141843971631206
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-04-05 13:30:00+00:00,target,2.9555555555555557
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-04-21 15:00:00+00:00,target,2.991482112436116
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-05-11 18:00:00+00:00,stop,-1.0108459869848156
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-05-18 07:20:00+00:00,target,2.9791231732776615
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-05-25 18:35:00+00:00,target,2.9925925925925925
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-06-09 17:55:00+00:00,target,2.9838709677419355
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-07-22 10:50:00+00:00,target,2.96875
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-08-23 10:00:00+00:00,stop,-1.0348432055749142
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-09-19 06:30:00+00:00,breakeven,-0.028169014084507043
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-09-21 16:40:00+00:00,breakeven,-0.017361111111111
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-09-28 12:50:00+00:00,breakeven,-0.007390983000739138
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-10-19 10:10:00+00:00,stop,-1.0144927536231885
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-11-11 20:55:00+00:00,stop,-1.0416666666666667
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-11-16 00:20:00+00:00,breakeven,-0.03676470588235441
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-11-16 00:20:00+00:00,breakeven,-0.03676470588235441
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-11-22 18:20:00+00:00,target,2.9772209567198176
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-11-29 16:55:00+00:00,stop,-1.0084745762711864
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2022-12-16 17:35:00+00:00,breakeven,-0.03184713375796215
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-02-07 12:10:00+00:00,stop,-1.0300300300300307
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-03-10 11:55:00+00:00,stop,-1.0223713646532435
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-04-18 18:55:00+00:00,breakeven,-0.021141649048625304
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-04-18 18:55:00+00:00,breakeven,-0.021141649048625304
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-04-24 11:05:00+00:00,breakeven,-0.04694835680751334
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-05-30 23:00:00+00:00,target,2.9411764705882355
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-07-20 12:50:00+00:00,stop,-1.0271002710027104
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-08-04 11:00:00+00:00,breakeven,-0.027247956403269213
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-08-11 03:50:00+00:00,target,2.973890339425588
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-08-29 12:40:00+00:00,stop,-1.0335570469798665
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-09-06 07:30:00+00:00,target,2.9762470308788602
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-09-27 18:25:00+00:00,stop,-1.0350877192982457
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-09-27 18:25:00+00:00,stop,-1.0350877192982457
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-10-02 22:40:00+00:00,stop,-1.1
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-10-02 18:35:00+00:00,stop,-1.026455026455027
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-10-03 14:10:00+00:00,breakeven,-0.008849557522123894
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-10-05 18:00:00+00:00,target,2.9804687500000004
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-10-12 12:45:00+00:00,stop,-1.0201207243460761
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-10-23 15:45:00+00:00,breakeven,-0.008216926869350936
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-11-03 14:00:00+00:00,target,2.988888888888889
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-11-20 11:35:00+00:00,target,2.9593495934959355
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-11-22 09:20:00+00:00,target,2.960474308300394
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-11-22 19:45:00+00:00,breakeven,-0.015060240963855505
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-12-01 18:05:00+00:00,stop,-1.0197238658777117
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-12-18 13:20:00+00:00,breakeven,-0.0813008130081349
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-12-19 06:25:00+00:00,stop,-1.0826446280991835
+goat_oos,"intraday current + fast15 (5m,2.5ATR)",2023-12-26 12:30:00+00:00,stop,-1.0613496932515227
+goat_oos,swing,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,2021-04-14 19:00:00+00:00,stop,-1.0050735667174022
+goat_oos,swing,2021-06-02 13:00:00+00:00,target,0.6093189964157653
+goat_oos,swing,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,2021-08-09 07:00:00+00:00,target,0.7595072308516416
+goat_oos,swing,2021-08-16 20:00:00+00:00,stop,-1.0063816209317167
+goat_oos,swing,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,2021-12-16 07:00:00+00:00,target,0.05268826112169834
+goat_oos,swing,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,2022-03-03 17:00:00+00:00,target,1.8257425742574258
+goat_oos,swing,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,2022-03-25 16:00:00+00:00,stop,-1.0056274620146313
+goat_oos,swing,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,2022-06-29 14:00:00+00:00,target,0.1439263097294187
+goat_oos,swing,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,2022-09-13 13:00:00+00:00,target,0.5824037044832677
+goat_oos,swing,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,2022-11-28 10:00:00+00:00,target,0.5504623253983861
+goat_oos,swing,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,2023-01-06 14:00:00+00:00,target,0.8172242874845009
+goat_oos,swing,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,2023-05-23 12:00:00+00:00,target,0.45358649789029887
+goat_oos,swing,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,2023-12-29 16:00:00+00:00,target,0.32894736842104294

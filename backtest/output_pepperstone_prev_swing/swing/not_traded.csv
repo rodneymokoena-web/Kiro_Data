@@ -1,0 +1,127 @@
+symbol,setup,variant,reason
+US100,1,all,no 1H IFVG (no 1H IFVG)
+US100,2,MSS FVG touch,no trigger
+US100,2,MSS FVG CE,no trigger
+US100,3,all,no 1H IFVG (no 1H IFVG)
+US100,4,IFVG touch,expired
+US100,4,IFVG CE,expired
+US100,4,MSS FVG touch,no retest
+US100,4,MSS FVG CE,no retest
+US100,5,IFVG touch,expired
+US100,5,IFVG CE,expired
+US100,5,MSS FVG touch,no retest
+US100,5,MSS FVG CE,no retest
+US100,6,all,no 1H IFVG (no retest)
+US100,7,all,no 1H IFVG (no 1H IFVG)
+US100,8,MSS FVG touch,no trigger
+US100,8,MSS FVG CE,no trigger
+US100,9,MSS FVG touch,no trigger
+US100,9,MSS FVG CE,no trigger
+US100,10,all,no 1H IFVG (no retest)
+US100,11,all,no 1H IFVG (no retest)
+US100,12,all,no 1H IFVG (no retest)
+US100,13,MSS FVG touch,no trigger
+US100,13,MSS FVG CE,no trigger
+US100,14,MSS FVG touch,expired
+US100,14,MSS FVG CE,expired
+US100,15,MSS FVG touch,"trigger, no FVG"
+US100,15,MSS FVG CE,"trigger, no FVG"
+US100,16,MSS FVG touch,expired
+US100,16,MSS FVG CE,expired
+US100,17,all,no 1H IFVG (no 1H IFVG)
+US100,18,all,no 1H IFVG (no 1H IFVG)
+US100,19,IFVG touch,expired
+US100,19,IFVG CE,expired
+US100,19,MSS FVG touch,no retest
+US100,19,MSS FVG CE,no retest
+US100,20,all,no 1H IFVG (no retest)
+US100,21,all,no 1H IFVG (no retest)
+US100,22,all,no 1H IFVG (no retest)
+US100,23,MSS FVG touch,no trigger
+US100,23,MSS FVG CE,no trigger
+US100,24,all,no 1H IFVG (no 1H IFVG)
+US100,25,all,no 1H IFVG (no retest)
+US100,26,all,no 1H IFVG (no 1H IFVG)
+US100,27,MSS FVG touch,no trigger
+US100,27,MSS FVG CE,no trigger
+US100,28,MSS FVG touch,"trigger, no FVG"
+US100,28,MSS FVG CE,"trigger, no FVG"
+US100,29,all,no 1H IFVG (no retest)
+US100,30,MSS FVG touch,"trigger, no FVG"
+US100,30,MSS FVG CE,"trigger, no FVG"
+US100,31,MSS FVG touch,no trigger
+US100,31,MSS FVG CE,no trigger
+US100,32,all,no 1H IFVG (no retest)
+US100,33,all,no 1H IFVG (no 1H IFVG)
+US100,34,MSS FVG touch,no trigger
+US100,34,MSS FVG CE,no trigger
+US100,35,MSS FVG touch,expired
+US100,35,MSS FVG CE,expired
+US100,36,MSS FVG touch,no trigger
+US100,36,MSS FVG CE,no trigger
+US100,37,all,no 1H IFVG (no 1H IFVG)
+US100,38,all,no 1H IFVG (no 1H IFVG)
+US100,39,all,no 1H IFVG (no 1H IFVG)
+US100,41,all,no 1H IFVG (no 1H IFVG)
+US100,42,all,no 1H IFVG (no 1H IFVG)
+US100,43,all,no 1H IFVG (no 1H IFVG)
+US100,44,MSS FVG touch,no trigger
+US100,44,MSS FVG CE,no trigger
+US100,45,all,no 1H IFVG (no retest)
+XAUUSD,2,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,3,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,4,IFVG touch,expired
+XAUUSD,4,IFVG CE,expired
+XAUUSD,4,MSS FVG touch,no retest
+XAUUSD,4,MSS FVG CE,no retest
+XAUUSD,5,MSS FVG touch,no trigger
+XAUUSD,5,MSS FVG CE,no trigger
+XAUUSD,6,all,no 1H IFVG (no retest)
+XAUUSD,7,all,no 1H IFVG (no retest)
+XAUUSD,9,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,10,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,11,MSS FVG touch,"trigger, no FVG"
+XAUUSD,11,MSS FVG CE,"trigger, no FVG"
+XAUUSD,12,MSS FVG touch,no trigger
+XAUUSD,12,MSS FVG CE,no trigger
+XAUUSD,13,all,no 1H IFVG (no retest)
+XAUUSD,14,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,15,IFVG touch,expired
+XAUUSD,15,IFVG CE,expired
+XAUUSD,15,MSS FVG touch,no retest
+XAUUSD,15,MSS FVG CE,no retest
+XAUUSD,16,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,17,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,18,MSS FVG touch,no trigger
+XAUUSD,18,MSS FVG CE,no trigger
+XAUUSD,19,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,20,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,21,all,no 1H IFVG (no retest)
+XAUUSD,22,all,no 1H IFVG (no retest)
+XAUUSD,24,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,25,all,no 1H IFVG (no retest)
+XAUUSD,26,MSS FVG touch,no trigger
+XAUUSD,26,MSS FVG CE,no trigger
+XAUUSD,27,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,28,all,no 1H IFVG (no retest)
+XAUUSD,29,MSS FVG touch,no trigger
+XAUUSD,29,MSS FVG CE,no trigger
+XAUUSD,30,MSS FVG touch,no trigger
+XAUUSD,30,MSS FVG CE,no trigger
+XAUUSD,31,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,33,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,34,MSS FVG CE,expired
+XAUUSD,35,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,36,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,37,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,38,MSS FVG touch,no trigger
+XAUUSD,38,MSS FVG CE,no trigger
+XAUUSD,39,all,no 1H IFVG (no retest)
+XAUUSD,40,all,no 1H IFVG (no retest)
+XAUUSD,41,all,no 1H IFVG (no retest)
+XAUUSD,42,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,43,MSS FVG touch,no trigger
+XAUUSD,43,MSS FVG CE,no trigger
+XAUUSD,44,all,no 1H IFVG (no retest)
+XAUUSD,45,MSS FVG touch,no trigger
+XAUUSD,45,MSS FVG CE,no trigger

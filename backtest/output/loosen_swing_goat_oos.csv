@@ -1,0 +1,467 @@
+source,model,variant,entry_time,exit,r_net
+goat_oos,swing,baseline,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,baseline,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,baseline,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,baseline,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,baseline,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,baseline,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,baseline,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,baseline,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,baseline,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,baseline,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,baseline,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,baseline,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,baseline,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,baseline,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,baseline,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,baseline,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,baseline,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,baseline,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,baseline,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,baseline,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,baseline,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,baseline,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,baseline,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,baseline,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,baseline,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,baseline,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,baseline,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,baseline,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,baseline,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,baseline,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,baseline,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,baseline,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,baseline,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,baseline,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,baseline,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,baseline,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,baseline,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,baseline,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,baseline,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,baseline,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-06-03 14:00:00+00:00,stop,-1.0045136538027533
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-09-23 15:00:00+00:00,target,0.13076829416778468
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-10-07 12:00:00+00:00,target,0.5222103938836762
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,inversion window 80 -> 160 1H candles,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-02-28 17:00:00+00:00,target,0.05655895666203593
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-07-26 22:00:00+00:00,stop,-1.002709659937678
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-10-18 07:00:00+00:00,target,0.46213306340296345
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-11-08 17:00:00+00:00,target,0.4040507364975441
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,inversion window 80 -> 160 1H candles,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-04-06 14:00:00+00:00,stop,-1.0032663726931244
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-05-24 12:00:00+00:00,target,0.17491289198605892
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-12-07 18:00:00+00:00,target,0.2510060362173006
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,inversion window 80 -> 160 1H candles,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,retest window 48 -> 96 h,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,retest window 48 -> 96 h,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,retest window 48 -> 96 h,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,retest window 48 -> 96 h,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,retest window 48 -> 96 h,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,retest window 48 -> 96 h,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,retest window 48 -> 96 h,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,retest window 48 -> 96 h,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,retest window 48 -> 96 h,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,retest window 48 -> 96 h,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,retest window 48 -> 96 h,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,retest window 48 -> 96 h,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,retest window 48 -> 96 h,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,retest window 48 -> 96 h,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,retest window 48 -> 96 h,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,retest window 48 -> 96 h,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,retest window 48 -> 96 h,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,retest window 48 -> 96 h,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,retest window 48 -> 96 h,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,retest window 48 -> 96 h,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,retest window 48 -> 96 h,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,retest window 48 -> 96 h,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,retest window 48 -> 96 h,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,retest window 48 -> 96 h,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,retest window 48 -> 96 h,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,retest window 48 -> 96 h,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,retest window 48 -> 96 h,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,retest window 48 -> 96 h,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,retest window 48 -> 96 h,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,retest window 48 -> 96 h,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,retest window 48 -> 96 h,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,retest window 48 -> 96 h,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,retest window 48 -> 96 h,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,retest window 48 -> 96 h,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,retest window 48 -> 96 h,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,retest window 48 -> 96 h,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,retest window 48 -> 96 h,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,retest window 48 -> 96 h,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,retest window 48 -> 96 h,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,retest window 48 -> 96 h,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,no 1H MSS,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,no 1H MSS,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,no 1H MSS,2021-05-07 13:00:00+00:00,target,0.1763686763686823
+goat_oos,swing,no 1H MSS,2021-06-16 13:00:00+00:00,target,1.2027795325331796
+goat_oos,swing,no 1H MSS,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,no 1H MSS,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,no 1H MSS,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,no 1H MSS,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,no 1H MSS,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,no 1H MSS,2021-10-05 15:00:00+00:00,target,0.2747403488144247
+goat_oos,swing,no 1H MSS,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,no 1H MSS,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,no 1H MSS,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,no 1H MSS,2022-01-11 14:00:00+00:00,target,0.5630364295250833
+goat_oos,swing,no 1H MSS,2022-01-19 10:00:00+00:00,stop,-1.0056866647711118
+goat_oos,swing,no 1H MSS,2022-01-24 23:00:00+00:00,target,0.24808033077377392
+goat_oos,swing,no 1H MSS,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,no 1H MSS,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,no 1H MSS,2022-02-22 19:00:00+00:00,breakeven,-0.01282051282051282
+goat_oos,swing,no 1H MSS,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,no 1H MSS,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,no 1H MSS,2022-03-23 20:00:00+00:00,stop,-1.0046904315196998
+goat_oos,swing,no 1H MSS,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,no 1H MSS,2022-04-20 14:00:00+00:00,target,0.45941278065629787
+goat_oos,swing,no 1H MSS,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,no 1H MSS,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,no 1H MSS,2022-06-03 12:00:00+00:00,breakeven,-0.007930214115781103
+goat_oos,swing,no 1H MSS,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,no 1H MSS,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,no 1H MSS,2022-08-11 16:00:00+00:00,stop,-1.005941770647653
+goat_oos,swing,no 1H MSS,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,no 1H MSS,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,no 1H MSS,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,no 1H MSS,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,no 1H MSS,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,no 1H MSS,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,no 1H MSS,2022-09-30 08:00:00+00:00,stop,-1.0047539814594724
+goat_oos,swing,no 1H MSS,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,no 1H MSS,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,no 1H MSS,2022-11-11 15:00:00+00:00,stop,-1.0105263157894737
+goat_oos,swing,no 1H MSS,2022-11-15 19:00:00+00:00,target,0.5138996138996154
+goat_oos,swing,no 1H MSS,2022-12-08 14:00:00+00:00,target,0.18189618189617082
+goat_oos,swing,no 1H MSS,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,no 1H MSS,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,no 1H MSS,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,no 1H MSS,2023-02-03 14:00:00+00:00,stop,-1.0147601476014756
+goat_oos,swing,no 1H MSS,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,no 1H MSS,2023-03-13 08:00:00+00:00,stop,-1.0117096018735363
+goat_oos,swing,no 1H MSS,2023-03-22 09:00:00+00:00,stop,-1.029585798816567
+goat_oos,swing,no 1H MSS,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,no 1H MSS,2023-04-13 08:00:00+00:00,breakeven,-0.02587322121604164
+goat_oos,swing,no 1H MSS,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,no 1H MSS,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,no 1H MSS,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,no 1H MSS,2023-08-17 13:00:00+00:00,stop,-1.010758472296934
+goat_oos,swing,no 1H MSS,2023-08-30 10:00:00+00:00,stop,-1.014194464158978
+goat_oos,swing,no 1H MSS,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,no 1H MSS,2023-10-25 13:00:00+00:00,stop,-1.0058616647127785
+goat_oos,swing,no 1H MSS,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,no 1H MSS,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,no 1H MSS,2023-11-13 06:00:00+00:00,breakeven,-0.02042900919305459
+goat_oos,swing,no 1H MSS,2023-11-22 10:00:00+00:00,stop,-1.0113571834185122
+goat_oos,swing,no 1H MSS,2023-11-29 17:00:00+00:00,target,0.2023060796645863
+goat_oos,swing,no 1H MSS,2023-12-14 17:00:00+00:00,breakeven,-0.014015416958654091
+goat_oos,swing,no 1H MSS,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,no 1H MSS,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-10-25 00:00:00+00:00,stop,-1.0064020486555698
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-11-23 03:00:00+00:00,target,0.1970781156827692
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-29 12:00:00+00:00,target,0.40050062578223267
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-12-06 20:00:00+00:00,target,0.1727463312368965
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-08-21 12:00:00+00:00,target,0.8040251572327098
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,no displacement requirement,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,no displacement requirement,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,no displacement requirement,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,no displacement requirement,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,no displacement requirement,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,no displacement requirement,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,no displacement requirement,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,no displacement requirement,2021-10-25 00:00:00+00:00,stop,-1.0064020486555698
+goat_oos,swing,no displacement requirement,2021-11-23 03:00:00+00:00,target,0.1970781156827692
+goat_oos,swing,no displacement requirement,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,no displacement requirement,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,no displacement requirement,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,no displacement requirement,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,no displacement requirement,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,no displacement requirement,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,no displacement requirement,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,no displacement requirement,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,no displacement requirement,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,no displacement requirement,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,no displacement requirement,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,no displacement requirement,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,no displacement requirement,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,no displacement requirement,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,no displacement requirement,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,no displacement requirement,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,no displacement requirement,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,no displacement requirement,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,no displacement requirement,2022-09-29 12:00:00+00:00,target,0.40050062578223267
+goat_oos,swing,no displacement requirement,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,no displacement requirement,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,no displacement requirement,2022-12-06 20:00:00+00:00,target,0.1727463312368965
+goat_oos,swing,no displacement requirement,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,no displacement requirement,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,no displacement requirement,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,no displacement requirement,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,no displacement requirement,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,no displacement requirement,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,no displacement requirement,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,no displacement requirement,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,no displacement requirement,2023-08-21 12:00:00+00:00,target,0.8040251572327098
+goat_oos,swing,no displacement requirement,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,no displacement requirement,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,no displacement requirement,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,no displacement requirement,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,no displacement requirement,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-06-03 14:00:00+00:00,stop,-1.0045136538027533
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-09-23 15:00:00+00:00,target,0.13076829416778468
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-10-07 12:00:00+00:00,target,0.5222103938836762
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-12-09 18:00:00+00:00,target,0.29909013142546215
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,window 160 + lookback 120 + retest 96,2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-02-28 17:00:00+00:00,target,0.05655895666203593
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-07-26 22:00:00+00:00,stop,-1.002709659937678
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-10-18 07:00:00+00:00,target,0.46213306340296345
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-11-08 17:00:00+00:00,target,0.4040507364975441
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,window 160 + lookback 120 + retest 96,2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-04-06 14:00:00+00:00,stop,-1.0032663726931244
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-05-24 12:00:00+00:00,target,0.17491289198605892
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-12-07 18:00:00+00:00,target,0.2510060362173006
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,window 160 + lookback 120 + retest 96,2023-12-29 16:00:00+00:00,target,0.32894736842104294
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-04-04 23:00:00+00:00,stop,-1.0166666666666666
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-04-15 07:00:00+00:00,stop,-1.0079681274900398
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-05-07 13:00:00+00:00,target,0.1763686763686823
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-06-03 14:00:00+00:00,stop,-1.0045136538027533
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-06-08 06:00:00+00:00,breakeven,-0.02976190476190444
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-06-16 13:00:00+00:00,target,1.2027795325331796
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-07-15 18:00:00+00:00,target,0.42181818181817937
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-07-27 15:00:00+00:00,target,0.4026996625421859
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-08-06 13:00:00+00:00,target,1.0097932535364686
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-08-19 16:00:00+00:00,target,0.38099878197320697
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-09-07 13:00:00+00:00,target,0.47191011235955055
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-09-23 15:00:00+00:00,target,0.13076829416778468
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-10-05 15:00:00+00:00,target,0.2747403488144247
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-10-07 12:00:00+00:00,target,0.5222103938836762
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-10-25 00:00:00+00:00,stop,-1.0064020486555698
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-11-23 03:00:00+00:00,target,0.1970781156827692
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-09 18:00:00+00:00,target,0.29909013142546215
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-21 15:00:00+00:00,target,2.390956194064963
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-22 08:00:00+00:00,target,1.6094588713187246
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-31 01:00:00+00:00,target,0.30763285024154025
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-01-11 14:00:00+00:00,target,0.5630364295250833
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-01-19 10:00:00+00:00,stop,-1.0056866647711118
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-01-24 23:00:00+00:00,target,0.24808033077377392
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-03 21:00:00+00:00,target,0.17666948436179128
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-15 13:00:00+00:00,stop,-1.0023435669088352
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-22 19:00:00+00:00,breakeven,-0.01282051282051282
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-24 17:00:00+00:00,target,1.6247782780734108
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-28 17:00:00+00:00,target,0.05655895666203593
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-03-21 14:00:00+00:00,stop,-1.0063492063492063
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-03-23 20:00:00+00:00,stop,-1.0046904315196998
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-03-31 17:00:00+00:00,target,0.14581997006628314
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-04-20 14:00:00+00:00,target,0.45941278065629787
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-04-27 11:00:00+00:00,target,1.4607577807848402
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-05-02 20:00:00+00:00,target,1.0634285714285683
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-05-23 07:00:00+00:00,target,0.2033503955328046
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-03 12:00:00+00:00,breakeven,-0.007930214115781103
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-07 20:00:00+00:00,target,0.18102766798418685
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-15 20:00:00+00:00,target,0.19707237733802824
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-07-26 22:00:00+00:00,stop,-1.002709659937678
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-08-11 16:00:00+00:00,stop,-1.005941770647653
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-08-17 17:00:00+00:00,target,0.949193793732885
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-08-25 09:00:00+00:00,stop,-1.0054764512595837
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-01 20:00:00+00:00,target,0.4789658194566241
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-07 16:00:00+00:00,target,0.5106263982102889
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-21 19:00:00+00:00,stop,-1.0036764705882353
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-27 12:00:00+00:00,stop,-1.0046620046620047
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-29 12:00:00+00:00,target,0.40050062578223267
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-30 08:00:00+00:00,stop,-1.0047539814594724
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-05 15:00:00+00:00,stop,-1.0045413260672116
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-18 07:00:00+00:00,target,0.46213306340296345
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-26 02:00:00+00:00,target,0.24957760077238014
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-27 19:00:00+00:00,target,0.7127981189116527
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-11-08 17:00:00+00:00,target,0.4040507364975441
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-11-11 15:00:00+00:00,stop,-1.0105263157894737
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-11-15 19:00:00+00:00,target,0.5138996138996154
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-06 20:00:00+00:00,target,0.1727463312368965
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-08 14:00:00+00:00,target,0.18189618189617082
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-15 11:00:00+00:00,target,0.19324649045150308
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-30 14:00:00+00:00,target,0.5514112903225656
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-01-25 14:00:00+00:00,target,0.3157419936851591
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-01-30 12:00:00+00:00,target,0.2517665532583122
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-02-03 14:00:00+00:00,stop,-1.0147601476014756
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-02-13 19:00:00+00:00,breakeven,-0.00544662309368196
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-03-13 08:00:00+00:00,stop,-1.0117096018735363
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-03-22 09:00:00+00:00,stop,-1.029585798816567
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-04-06 15:00:00+00:00,target,0.3744192402295694
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-04-06 14:00:00+00:00,stop,-1.0032663726931244
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-04-13 08:00:00+00:00,breakeven,-0.02587322121604164
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-02 16:00:00+00:00,stop,-1.0056053811659194
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-24 12:00:00+00:00,target,0.17491289198605892
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-31 17:00:00+00:00,stop,-1.005197505197505
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-06-07 16:00:00+00:00,stop,-1.0047003525264395
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-06-16 02:00:00+00:00,stop,-1.028288543140028
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-17 13:00:00+00:00,stop,-1.010758472296934
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-21 12:00:00+00:00,target,0.8040251572327098
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-30 10:00:00+00:00,stop,-1.014194464158978
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-09-22 11:00:00+00:00,breakeven,-0.015923566878981076
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-09-28 17:00:00+00:00,target,0.27868440873713335
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-10-25 13:00:00+00:00,stop,-1.0058616647127785
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-10-30 14:00:00+00:00,target,0.4324604614985713
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-10 04:00:00+00:00,stop,-1.005824111822947
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-13 06:00:00+00:00,breakeven,-0.02042900919305459
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-22 10:00:00+00:00,stop,-1.0113571834185122
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-29 17:00:00+00:00,target,0.2023060796645863
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-07 18:00:00+00:00,target,0.2510060362173006
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-14 17:00:00+00:00,breakeven,-0.014015416958654091
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-20 20:00:00+00:00,target,0.16472694717994463
+goat_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-29 16:00:00+00:00,target,0.32894736842104294

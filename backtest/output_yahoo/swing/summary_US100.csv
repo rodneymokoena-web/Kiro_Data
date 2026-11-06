@@ -1,0 +1,25 @@
+entry,stop,target,symbol,trades,wins,losses,breakeven,open,win_rate_%,profit_factor,total_R,avg_R,avg_planned_RR,avg_hours_held,end_balance_1%,max_dd_%
+IFVG CE,1H swing,3R,US100,10,3,6,1,0,30.0,1.48,2.92,0.29,3.0,28.3,10279.72,4.95
+IFVG CE,1H swing,D/W liquidity,US100,10,4,6,0,0,40.0,1.62,3.78,0.38,5.69,26.7,10367.59,4.95
+IFVG CE,4H extreme,3R,US100,10,3,3,4,0,30.0,2.98,5.97,0.6,3.0,255.5,10599.83,1.01
+IFVG CE,4H extreme,D/W liquidity,US100,10,7,3,0,0,70.0,2.36,4.1,0.41,1.64,55.4,10412.16,1.01
+IFVG CE,prev 1H swing,3R,US100,10,3,6,1,0,30.0,1.48,2.93,0.29,3.0,53.4,10280.49,3.01
+IFVG CE,prev 1H swing,D/W liquidity,US100,10,4,6,0,0,40.0,1.76,4.59,0.46,4.95,38.7,10450.16,3.52
+IFVG touch,1H swing,3R,US100,10,3,6,1,0,30.0,1.48,2.93,0.29,3.0,28.8,10280.36,4.95
+IFVG touch,1H swing,D/W liquidity,US100,10,4,6,0,0,40.0,1.46,2.8,0.28,5.19,27.0,10268.74,4.94
+IFVG touch,4H extreme,3R,US100,10,3,3,4,0,30.0,2.98,5.97,0.6,3.0,256.5,10599.92,1.01
+IFVG touch,4H extreme,D/W liquidity,US100,10,7,3,0,0,70.0,2.22,3.68,0.37,1.57,55.7,10369.44,1.01
+IFVG touch,prev 1H swing,3R,US100,10,3,6,1,0,30.0,1.49,2.95,0.29,3.0,54.3,10282.22,2.99
+IFVG touch,prev 1H swing,D/W liquidity,US100,10,4,6,0,0,40.0,1.59,3.57,0.36,3.09,39.2,10347.45,3.54
+MSS FVG CE,1H swing,3R,US100,2,1,1,0,0,50.0,2.97,1.98,0.99,3.0,8.0,10195.25,1.01
+MSS FVG CE,1H swing,D/W liquidity,US100,1,0,0,1,0,0.0,0.0,-0.01,-0.01,5.51,13.0,9998.84,0.01
+MSS FVG CE,4H extreme,3R,US100,2,1,0,1,0,50.0,1620.37,3.0,1.5,3.0,155.0,10299.6,0.0
+MSS FVG CE,4H extreme,D/W liquidity,US100,1,1,0,0,0,100.0,inf,0.99,0.99,0.99,38.0,10099.0,0.0
+MSS FVG CE,prev 1H swing,3R,US100,2,1,1,0,0,50.0,2.97,1.98,0.99,3.0,8.0,10195.14,1.0
+MSS FVG CE,prev 1H swing,D/W liquidity,US100,1,0,0,1,0,0.0,0.0,-0.01,-0.01,7.03,13.0,9998.52,0.01
+MSS FVG touch,1H swing,3R,US100,2,0,1,1,0,0.0,0.0,-1.02,-0.51,3.0,9.5,9898.43,1.02
+MSS FVG touch,1H swing,D/W liquidity,US100,1,0,0,1,0,0.0,0.0,-0.01,-0.01,5.0,13.0,9998.93,0.01
+MSS FVG touch,4H extreme,3R,US100,2,1,0,1,0,50.0,1697.58,3.0,1.5,3.0,155.5,10299.61,0.0
+MSS FVG touch,4H extreme,D/W liquidity,US100,1,1,0,0,0,100.0,inf,0.96,0.96,0.96,38.0,10095.98,0.0
+MSS FVG touch,prev 1H swing,3R,US100,2,1,1,0,0,50.0,2.98,1.98,0.99,3.0,8.5,10195.32,1.0
+MSS FVG touch,prev 1H swing,D/W liquidity,US100,1,0,0,1,0,0.0,0.0,-0.01,-0.01,6.23,13.0,9998.66,0.01
