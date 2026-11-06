@@ -18,7 +18,9 @@ Short described; long is the mirror image.
 **Both models**
 1. **Liquidity: 4H / D / W / M** – D/W/M swing highs/lows (2 candles each side, confirmed after 2 candles) plus **4H
    swing highs/lows with 10 candles each side** (only the significant ones), from completed 4H candles. Input *4H swings
-   (candles each side)*, 0 = off.
+   (candles each side)*, 0 = off. **Also the far edge of every fresh 4H FVG** (bearish FVG top = buy-side level, bullish
+   FVG bottom = sell-side level). *Fresh* = price has not traded into the gap yet, so the level can be swept up to and
+   including the 4H candle that first enters the FVG. Input *4H FVG far edge as liquidity* (on by default).
 
 **Swing model (default, main) – "snapshot rules"** (Python: `swing_snap.py`)
 2. **Sweep:** a 1H candle trades above a 4H / D / W / M swing high **and closes back below it** (a rejection sweep; input *Swing: sweep must close back through the level*).
@@ -66,7 +68,7 @@ Short described; long is the mirror image.
 | Swing entry / stop / target | **4H IFVG Touch** / **1H OB 50%** / **1H swing low** (valid 48 h) |
 | Swing 1H displacement · inversion window · last-FVG lookback | 1 candle · 80 1H candles · 60 4H candles |
 | Intraday entry / stop / target | 5m Touch / Previous 1H candle / 3R |
-| Liquidity (both models) | **4H (10 each side) / D / W / M** |
+| Liquidity (both models) | **4H (10 each side) / D / W / M + fresh 4H FVG far edges** |
 | 4H swing size | **10 = major swings** (default); 2 = all swings; 0 = off |
 | Swing sweep | **close back through the level** (rejection); intraday uses a wick |
 | Intraday also | **Asia/London/NY session highs/lows (1H+ swing)** |
@@ -78,19 +80,20 @@ $10,000 start, 1 % risk per trade, compounded, after costs. Python backtest on M
 
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** (snapshot rules, 4H/D/W/M, close-back sweep, trailing stop) | 122 trades · win 53 % · PF 1.71 · +24.30R · $10k → $12,658 · max DD 4.8 % | 132 trades · win 56 % · PF 1.69 · +25.96R · $10k → $12,868 · max DD 7.1 % |
-| **Intraday** 4H/D/W/M + session liquidity, 5m touch | 73 trades · win 25 % · PF 1.40 · +15.28R · $10k → $11,537 · max DD 7.7 % | 76 trades · win 34 % · PF 2.23 · +42.45R · $10k → $15,092 · max DD 7.4 % |
-| **Both** (1 % each) | 195 trades · PF 1.54 · +39.57R · $10k → $14,604 · max DD 11.8 % | 208 trades · PF 1.95 · +68.42R · $10k → $19,420 · max DD 12.3 % |
+| **Swing** (snapshot rules, 4H/D/W/M + fresh 4H FVG edges, close-back sweep, trailing stop) | 225 trades · win 52 % · PF 1.52 · +33.96R · $10k → $13,884 · max DD 7.5 % | 240 trades · win 56 % · PF 1.68 · +44.52R · $10k → $15,420 · max DD 5.3 % |
+| **Intraday** 4H/D/W/M + session liquidity, 5m touch | 74 trades · win 24 % · PF 1.40 · +15.23R · $10k → $11,532 · max DD 7.7 % | 77 trades · win 35 % · PF 2.32 · +45.44R · $10k → $15,542 · max DD 7.4 % |
+| **Both** (1 % each) | 299 trades · PF 1.47 · +49.19R · $10k → $16,011 · max DD 10.2 % | 317 trades · PF 1.90 · +89.96R · $10k → $23,966 · max DD 9.6 % |
 
-2021-2023 (never used for tuning) / 2024-2026: swing +3.13R / +9.20R (GoatFunded), +6.49R / +9.47R (Pepperstone);
-intraday +16.62R / +13.41R (GoatFunded), +24.38R / +12.44R (Pepperstone). About 14 swing and 5 intraday trades per year.
+2021-2023 (never used for tuning) / 2024-2026: swing +18.21R / +15.74R (GoatFunded), +28.11R / +16.42R (Pepperstone);
+intraday +18.07R / -2.83R (GoatFunded), +27.11R / +18.33R (Pepperstone). About 40 swing and 13 intraday trades per year.
 
-Monthly view (each month starts at $10,000, 1 % risk, both models): 43-45 % of months profitable, ~30 % without
-trades, average +$65 / +$80 per month (GoatFunded / Pepperstone), worst month about -$300 (-3 %), best about +$1,150.
+Adding the fresh 4H FVG far edges lifted the swing model from 122 / 132 to 225 / 240 trades (+24.3R / +26.0R to
++34.0R / +44.5R) and left the intraday model almost unchanged. The monthly statistics of earlier versions were not
+re-computed.
 
 **4H candles differ between MT5 and TradingView** (TradingView starts US100 4H candles at the 18:00 New York session
 open, MT5 one hour later), so some 4H FVGs – and trades – differ. On TradingView's 4H candles the Python swing model
-made +11.3R (GoatFunded) / +11.6R (Pepperstone) over the same period.
+produces fewer trades and less R than on the MT5 grid (not re-measured for the FVG-edge rule).
 
 TradingView results will differ somewhat: chart history depends on your plan, D/W/4H candles follow the symbol's
 session, orders are placed at the close of the candle on which the signal is known, and the strategy cannot hold a long

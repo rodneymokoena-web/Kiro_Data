@@ -12,7 +12,7 @@
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
 //
-//  Rule 1  Liquidity = 4H / D / W / M swing highs/lows (both models). Intraday model also uses the previous Asia /
+//  Rule 1  Liquidity = 4H / D / W / M swing highs/lows + fresh 4H FVG far edges (both models). Intraday model also uses the previous Asia /
 //          London / NY SESSION highs/lows, kept only where a session extreme coincides with a 1H-or-higher swing
 //          (input "Intraday: session highs/lows"). Sessions on the New York clock: Asia 20-00, London 02-05, NY 07-10.
 //  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
@@ -43,6 +43,7 @@ i_liq4   = input.int(10, "4H swing size (candles each side): 10 = major swings, 
 i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group=g1, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
 i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=g1)
 i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1, group=g1)
+i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Both models: every 4H FVG is also sweepable liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom). It stays valid only while price has not yet traded into the gap, so a level can be swept up to and including the 4H candle that first enters the FVG. Swing: 1H close-back sweep; intraday: 4H wick.")
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
 i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
@@ -460,6 +461,11 @@ var array<bool>  haHi = array.new_bool()
 var array<string> haTf = array.new_string()
 var array<int>   haLast = array.new_int(8, 0)  // newest confirmation time merged per list (D/W/M H/L + 4H H/L)
 var array<int>   haKeys = array.new_int()      // 4H FVGs that already produced a swing setup
+var array<float> fvP = array.new_float()       // 4H FVG far-edge liquidity: level price
+var array<int>   fvT = array.new_int()         // usable from (close of the FVG's 3rd candle)
+var array<bool>  fvHi = array.new_bool()       // true = buy-side level (bearish FVG top)
+var array<float> fvE = array.new_float()       // near edge: price trading through it = "traded into the gap"
+var array<int>   fvX = array.new_int()         // -1 = fresh; else sweepable for 1H candles opening before this time; 0 = swept
 var int   nTrades = 0
 var int   nBE = 0
 var float grossW = 0.0
@@ -938,6 +944,57 @@ if new4
         while l4LP.size() > 100
             l4LP.shift()
             l4LT.shift()
+    // 4H FVG far-edge liquidity (fresh FVGs only): intraday sweeps it here on the 4H wick; swing sweeps it on 1H (3b)
+    if i_fvgLiq
+        if fvP.size() > 0
+            for k = fvP.size() - 1 to 0
+                int xk = fvX.get(k)
+                if xk != -1 and xk <= B4.T(j)
+                    fvP.remove(k)
+                    fvT.remove(k)
+                    fvHi.remove(k)
+                    fvE.remove(k)
+                    fvX.remove(k)
+        if not useHa and fvP.size() > 0
+            array<float> tHP = array.new_float()
+            array<int>   tHT = array.new_int()
+            array<float> tLP = array.new_float()
+            array<int>   tLT = array.new_int()
+            for k = 0 to fvP.size() - 1
+                if fvX.get(k) == -1
+                    if fvHi.get(k)
+                        tHP.push(fvP.get(k))
+                        tHT.push(fvT.get(k))
+                    else
+                        tLP.push(fvP.get(k))
+                        tLT.push(fvT.get(k))
+            f_sweeps(tHP, tHT, true, "4HFVG", j)
+            f_sweeps(tLP, tLT, false, "4HFVG", j)
+        if fvP.size() > 0
+            for k = 0 to fvP.size() - 1
+                if fvX.get(k) == -1 and fvT.get(k) <= B4.T(j)
+                    bool into = fvHi.get(k) ? B4.H(j) >= fvE.get(k) : B4.L(j) <= fvE.get(k)
+                    if into
+                        fvX.set(k, B4.TC(j))
+        if j - 2 >= B4.base
+            if B4.H(j) < B4.L(j - 2)
+                fvP.push(B4.L(j - 2))
+                fvT.push(B4.TC(j))
+                fvHi.push(true)
+                fvE.push(B4.H(j))
+                fvX.push(-1)
+            if B4.L(j) > B4.H(j - 2)
+                fvP.push(B4.H(j - 2))
+                fvT.push(B4.TC(j))
+                fvHi.push(false)
+                fvE.push(B4.L(j))
+                fvX.push(-1)
+        while fvP.size() > 400
+            fvP.shift()
+            fvT.shift()
+            fvHi.shift()
+            fvE.shift()
+            fvX.shift()
     // session liquidity (intraday): sweep, then drop levels broken OR older than i_sessDays
     if i_sess and not useHa
         f_sweeps(lSHP, lSHT, true, "SESS", j)
@@ -1026,6 +1083,17 @@ if new1 and useHa
     if i_liq4 > 0
         f_merge(l4HP, l4HT, true, "4H", 6)
         f_merge(l4LP, l4LT, false, "4H", 7)
+    if i_fvgLiq and fvP.size() > 0
+        for k = fvP.size() - 1 to 0
+            bool fh = fvHi.get(k)
+            float fp = fvP.get(k)
+            int fx = fvX.get(k)
+            bool live = fx == -1 or (fx > 0 and B1.T(q) < fx)
+            bool fwick = fh ? B1.H(q) > fp : B1.L(q) < fp
+            bool fback = i_swSweep ? (fh ? B1.C(q) < fp : B1.C(q) > fp) : true
+            if live and fvT.get(k) <= B1.T(q) and fwick and fback
+                SW1.push(Sweep1.new(fh ? 1 : -1, q, f_h4idx(B1.T(q)), fp, "4HFVG"))
+                fvX.set(k, 0)
     // sweeps on this 1H candle (each level once: removed when swept)
     if haP.size() > 0
         for k = haP.size() - 1 to 0
