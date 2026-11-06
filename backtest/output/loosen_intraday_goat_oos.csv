@@ -1,0 +1,167 @@
+source,model,variant,entry_time,exit,r_net
+goat_oos,intraday,baseline,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,baseline,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,baseline,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,baseline,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,baseline,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,baseline,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,baseline,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,baseline,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,baseline,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,baseline,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,baseline,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,baseline,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-02-07 14:20:00+00:00,stop,-1.021413276231264
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-06-23 15:00:00+00:00,stop,-1.0098814229249011
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-10-19 10:20:00+00:00,stop,-1.0185185185185186
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-03-13 12:20:00+00:00,breakeven,-0.009794319294808975
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-07-10 16:20:00+00:00,stop,-1.0120192307692308
+goat_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-12-08 14:50:00+00:00,breakeven,-0.009191176470588296
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-08-12 00:05:00+00:00,stop,-1.1724137931034158
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-09-10 00:00:00+00:00,stop,-1.026881720430107
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-03-01 00:45:00+00:00,stop,-1.0060350030175014
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-04-05 11:15:00+00:00,stop,-1.0416666666666667
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-11-01 07:20:00+00:00,stop,-1.0448430493273557
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,4H IFVG retest window 48 -> 96 h,2023-08-29 00:10:00+00:00,stop,-1.0526315789473684
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-08-12 00:05:00+00:00,stop,-1.1724137931034158
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-09-10 00:00:00+00:00,stop,-1.026881720430107
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-12-21 10:10:00+00:00,stop,-1.024390243902439
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,1H IFVG window 20 -> 40 1H candles,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-10-07 00:35:00+00:00,breakeven,-0.0342465753424649
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,1H IFVG retest 24 -> 48 h,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,5m trigger window 12 -> 24 h,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,5m trigger window 12 -> 24 h,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,5m trigger window 12 -> 24 h,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,5m trigger window 12 -> 24 h,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-10-27 07:10:00+00:00,target,2.9769053117782915
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,5m trigger window 12 -> 24 h,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,5m trigger window 12 -> 24 h,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,entry order valid 12 -> 24 h,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,entry order valid 12 -> 24 h,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,entry order valid 12 -> 24 h,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,entry order valid 12 -> 24 h,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-05-05 13:45:00+00:00,stop,-1.003352329869259
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,entry order valid 12 -> 24 h,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,entry order valid 12 -> 24 h,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,no 1H MSS on the 4H inversion,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,no 1H MSS on the 4H inversion,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,no 1H MSS on the 4H inversion,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-01-27 13:00:00+00:00,breakeven,-0.012787723785166122
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-04-27 17:00:00+00:00,stop,-1.0066755674232308
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,no 1H MSS on the 4H inversion,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,no 1H MSS on the 4H inversion,2023-04-26 16:35:00+00:00,stop,-1.0344827586206897
+goat_oos,intraday,no 1H MSS on the 4H inversion,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-07-21 08:40:00+00:00,stop,-1.0257731958762892
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-09-08 16:20:00+00:00,stop,-1.0154559505409582
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-11-24 11:15:00+00:00,stop,-1.0229885057471264
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-12-01 18:55:00+00:00,target,2.9942229924898904
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-05-10 15:45:00+00:00,stop,-1.034246575342465
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-09-08 22:15:00+00:00,target,2.929577464788736
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-10-26 18:50:00+00:00,target,2.987995198079232
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-11-29 03:30:00+00:00,stop,-1.0371747211895916
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-01-09 12:40:00+00:00,target,2.9722222222222223
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-02-14 09:10:00+00:00,target,2.9481865284974074
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-10-02 17:30:00+00:00,breakeven,-0.04115226337448683
+goat_oos,intraday,all windows doubled,2021-06-03 01:25:00+00:00,breakeven,-0.08196721311474921
+goat_oos,intraday,all windows doubled,2021-08-12 00:05:00+00:00,stop,-1.1724137931034158
+goat_oos,intraday,all windows doubled,2021-09-10 00:00:00+00:00,stop,-1.026881720430107
+goat_oos,intraday,all windows doubled,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,intraday,all windows doubled,2021-12-01 00:15:00+00:00,target,2.9834437086092715
+goat_oos,intraday,all windows doubled,2021-12-21 10:10:00+00:00,stop,-1.024390243902439
+goat_oos,intraday,all windows doubled,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,intraday,all windows doubled,2022-01-03 15:00:00+00:00,stop,-1.0074349442379182
+goat_oos,intraday,all windows doubled,2022-02-07 14:20:00+00:00,stop,-1.021413276231264
+goat_oos,intraday,all windows doubled,2022-03-01 00:45:00+00:00,stop,-1.0060350030175014
+goat_oos,intraday,all windows doubled,2022-04-05 11:15:00+00:00,stop,-1.0416666666666667
+goat_oos,intraday,all windows doubled,2022-05-05 13:45:00+00:00,stop,-1.003352329869259
+goat_oos,intraday,all windows doubled,2022-06-23 15:00:00+00:00,stop,-1.0098814229249011
+goat_oos,intraday,all windows doubled,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,intraday,all windows doubled,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,intraday,all windows doubled,2022-10-07 00:35:00+00:00,breakeven,-0.0342465753424649
+goat_oos,intraday,all windows doubled,2022-10-19 10:20:00+00:00,stop,-1.0185185185185186
+goat_oos,intraday,all windows doubled,2022-10-27 07:10:00+00:00,target,2.9769053117782915
+goat_oos,intraday,all windows doubled,2022-10-31 19:20:00+00:00,stop,-1.0182149362477233
+goat_oos,intraday,all windows doubled,2022-11-01 07:20:00+00:00,stop,-1.0448430493273557
+goat_oos,intraday,all windows doubled,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,intraday,all windows doubled,2022-11-29 15:30:00+00:00,target,2.9567099567099575
+goat_oos,intraday,all windows doubled,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,intraday,all windows doubled,2022-12-15 08:55:00+00:00,stop,-1.0617283950617324
+goat_oos,intraday,all windows doubled,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,intraday,all windows doubled,2023-03-13 12:20:00+00:00,breakeven,-0.009794319294808975
+goat_oos,intraday,all windows doubled,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,intraday,all windows doubled,2023-06-20 18:05:00+00:00,stop,-1.024509803921569
+goat_oos,intraday,all windows doubled,2023-07-10 16:20:00+00:00,stop,-1.0120192307692308
+goat_oos,intraday,all windows doubled,2023-08-29 00:10:00+00:00,stop,-1.0526315789473684
+goat_oos,intraday,all windows doubled,2023-12-08 14:50:00+00:00,breakeven,-0.009191176470588296

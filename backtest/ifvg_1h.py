@@ -96,9 +96,12 @@ def _accept_1h_mss(h1: pd.DataFrame, h4_full: pd.DataFrame):
 def build_4h_setups_v1(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
     htf = {tf: build_htf(h1, tf) for tf in ("D", "W", "M", "4H")}
     import swings as _S
-    _parts = [find_swings(htf[tf], tf) for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
+    _parts = [find_swings(htf[tf], tf) if not (tf == "4H" and ifvg.SIG_4H) else _S.significant_4h_levels(h1)
+              for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
     if ifvg.SESSION_TFS:
         _parts.append(_S.session_levels(h1, ifvg.SESSION_TFS))
+    if ifvg.FVG_LIQ:
+        _parts.append(_S.fvg_far_edge_levels(htf["4H"]))
     levels = pd.concat(_parts, ignore_index=True)
     h4_full = htf["4H"]
     h4 = h4_full.drop(columns=["Start", "End"])

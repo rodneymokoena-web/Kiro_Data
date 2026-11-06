@@ -26,7 +26,7 @@ OUT = HERE / "output"
 DATA_END = pd.Timestamp("2026-10-29", tz="UTC")
 assert S.DATA_SOURCE == "exness", "run with DATA_SOURCE=exness"
 SYMBOL = S.TRADE_SYMBOLS[0]                                  # US100 | XAUUSD
-T.TICK_SYMBOL = {"US100": "USTEC", "XAUUSD": "XAUUSD"}[SYMBOL]
+T.TICK_SYMBOL = {"US100": "USTEC"}.get(SYMBOL, SYMBOL)
 SUFFIX = "" if SYMBOL == "US100" else f"_{SYMBOL.lower()}"
 
 

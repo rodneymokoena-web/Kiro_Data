@@ -1,0 +1,9 @@
+variant,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26,avg stop pts
+"current 1H OB 50%, 1H swing low",goat,122,47,1.59,20.43,12172,5.9,8.1,12.3,267
+"prev 15m candle, 1H swing low",goat,106,15,0.97,-2.28,9300,19.6,-5.4,3.1,37
+"prev 15m candle, 3R",goat,107,17,0.59,-36.57,6850,32.7,-10.5,-26.0,36
+"prev 15m candle, 4H/D liquidity",goat,107,9,0.91,-7.96,8759,31.2,-27.2,19.2,36
+"current 1H OB 50%, 1H swing low",pepperstone,132,52,1.67,25.29,12769,7.6,12.9,12.4,255
+"prev 15m candle, 1H swing low",pepperstone,113,14,0.69,-27.76,7358,35.9,-0.9,-26.8,40
+"prev 15m candle, 3R",pepperstone,114,17,0.61,-35.69,6907,36.6,-9.3,-26.4,40
+"prev 15m candle, 4H/D liquidity",pepperstone,114,10,0.73,-25.19,7428,37.5,-2.7,-22.5,40

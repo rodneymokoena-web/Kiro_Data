@@ -1,0 +1,51 @@
+symbol,setup,variant,reason
+US100,1,MSS FVG touch,no trigger
+US100,1,MSS FVG CE,no trigger
+US100,2,MSS FVG touch,"trigger, no FVG"
+US100,2,MSS FVG CE,"trigger, no FVG"
+US100,3,all,no 1H IFVG (no retest)
+US100,4,MSS FVG touch,no trigger
+US100,4,MSS FVG CE,no trigger
+US100,5,all,no 1H IFVG (no retest)
+US100,6,all,no 1H IFVG (no 1H IFVG)
+US100,7,MSS FVG touch,no trigger
+US100,7,MSS FVG CE,no trigger
+US100,8,MSS FVG touch,expired
+US100,8,MSS FVG CE,expired
+US100,9,MSS FVG touch,no trigger
+US100,9,MSS FVG CE,no trigger
+US100,10,MSS FVG touch,"trigger, no FVG"
+US100,10,MSS FVG CE,"trigger, no FVG"
+US100,11,all,no 1H IFVG (no 1H IFVG)
+US100,12,all,no 1H IFVG (no 1H IFVG)
+US100,13,all,no 1H IFVG (no retest)
+US100,14,all,no 1H IFVG (no retest)
+US100,16,all,no 1H IFVG (no 1H IFVG)
+US100,17,MSS FVG touch / prev 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,17,MSS FVG touch / 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,17,MSS FVG touch / 4H extreme / D/W liquidity,no unbroken D/W level beyond entry
+US100,17,MSS FVG CE / prev 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,17,MSS FVG CE / 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,17,MSS FVG CE / 4H extreme / D/W liquidity,no unbroken D/W level beyond entry
+US100,18,all,no 1H IFVG (no 1H IFVG)
+US100,19,all,no 1H IFVG (no 1H IFVG)
+US100,20,MSS FVG touch,no trigger
+US100,20,MSS FVG CE,no trigger
+US100,21,all,no 1H IFVG (no retest)
+XAUUSD,2,MSS FVG touch,"trigger, no FVG"
+XAUUSD,2,MSS FVG CE,"trigger, no FVG"
+XAUUSD,3,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,4,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,5,MSS FVG touch,no trigger
+XAUUSD,5,MSS FVG CE,no trigger
+XAUUSD,6,MSS FVG touch,no trigger
+XAUUSD,6,MSS FVG CE,no trigger
+XAUUSD,7,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,8,MSS FVG touch,no trigger
+XAUUSD,8,MSS FVG CE,no trigger
+XAUUSD,9,all,no 1H IFVG (no retest)
+XAUUSD,10,all,no 1H IFVG (no retest)
+XAUUSD,11,MSS FVG CE,expired
+XAUUSD,12,all,no 1H IFVG (no retest)
+XAUUSD,13,MSS FVG touch,no trigger
+XAUUSD,13,MSS FVG CE,no trigger

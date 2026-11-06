@@ -81,3 +81,14 @@ Other settings: `TRADE_SYMBOLS` (default `US100`), `H4_GRID` (`mt5` default, `tr
 - `exness_*.csv` – Exness backtest with tick execution (US100 and `_xauusd`)
 - `tick_trades.csv`, `tick_summary.csv` – broker trades replayed on Exness ticks
 - `*_summary.csv` – results of each rule test
+
+## Update: fresh 4H FVG far edge as Rule 1 liquidity (default on)
+Both models also treat the **far edge of every 4H FVG** as a sweepable level (bearish FVG top = buy-side, bullish FVG
+bottom = sell-side), but only while the FVG is **fresh** (price has not traded into the gap yet; the 4H candle that first
+enters it can still sweep it). Switches: `FVG_LIQ=0|1` (`ifvg.FVG_LIQ`), `FVG_LIQ_MODE=all|intact|fresh`
+(`swings.fvg_far_edge_levels`). Tests: `fvgliq_experiments.py`, `output/fvgliq_summary*.csv`.
+2021-2026, $10k, 1% risk (GoatFunded / Pepperstone): swing 122 -> 225 / 132 -> 240 trades, +24.3R -> +34.0R / +26.0R -> +44.5R,
+max DD 4.8% -> 7.5% / 7.1% -> 5.3%; intraday almost unchanged; both models 299 / 317 trades, +49.2R / +90.0R, max DD 10.2% / 9.6%.
+Also tested and **not adopted**: a Rule 1 bias filter (`bias.py`, `bias_experiments.py`, `output/bias_summary.csv`) - it
+removed about three quarters of the swing trades and most of the profit.
+

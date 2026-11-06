@@ -1,0 +1,39 @@
+symbol,setup,variant,reason
+US100,1,all,no 1H IFVG (no 1H IFVG)
+US100,3,1H touch,expired
+US100,3,1H CE,expired
+US100,4,1H touch,expired
+US100,4,1H CE,expired
+US100,5,all,no 1H IFVG (no retest)
+US100,8,all,no 1H IFVG (no 1H IFVG)
+US100,9,1H touch,expired
+US100,9,1H CE,expired
+US100,11,all,no 1H IFVG (no retest)
+US100,14,all,no 1H IFVG (no retest)
+US100,18,all,no 1H IFVG (no retest)
+US100,22,all,no 1H IFVG (no 1H IFVG)
+US100,23,all,no 1H IFVG (no 1H IFVG)
+US100,24,all,no 1H IFVG (no retest)
+US100,26,1H touch,expired
+US100,26,1H CE,expired
+US100,27,all,no 1H IFVG (no 1H IFVG)
+US100,29,all,no 1H IFVG (no retest)
+XAUUSD,1,all,no 1H IFVG (no retest)
+XAUUSD,2,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,4,all,no 1H IFVG (no retest)
+XAUUSD,5,all,no 1H IFVG (no retest)
+XAUUSD,9,all,no 1H IFVG (no retest)
+XAUUSD,10,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,11,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,12,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,13,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,14,all,no 1H IFVG (no retest)
+XAUUSD,16,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,17,all,no 1H IFVG (no retest)
+XAUUSD,19,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,20,all,no 1H IFVG (no retest)
+XAUUSD,24,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,25,all,no 1H IFVG (no retest)
+XAUUSD,26,all,no 1H IFVG (no retest)
+XAUUSD,27,all,no 1H IFVG (no retest)
+XAUUSD,28,all,no 1H IFVG (no 1H IFVG)

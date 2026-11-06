@@ -48,6 +48,7 @@ LEG_LOOKBACK = 20      # bars before the sweep to find where the leg started ("l
 # Rule 2 (revised)
 SWEEP_TFS = ("M", "W", "D")   # rule 1 liquidity: swing levels whose sweep starts a setup; add "4H" for 4H swings
 SESSION_TFS = ()              # session liquidity (e.g. ("ASIA","LONDON","NY")); swept like swing levels
+FVG_LIQ = __import__("os").environ.get("FVG_LIQ", "1") == "1"   # True = every 4H FVG is also swept liquidity, at its far edge
 SIG_4H = False                # True = 4H liquidity = only significant 4H swings (swings.significant_4h_levels)
 import os as _os
 RULE1_4H_PIVOT = int(_os.environ.get("RULE1_4H_PIVOT", "10"))   # 4H swing size: 10 = major swings (default), 2 = all swings
@@ -126,7 +127,7 @@ def find_setups(bars: pd.DataFrame, levels: pd.DataFrame, tf: str, accept=None) 
     n = len(bars)
     fvgs = find_fvgs(bars)
     swept = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(TEST_START, bars.index[0]))
-                   & levels["tf"].isin(tuple(SWEEP_TFS) + tuple(SESSION_TFS))]
+                   & levels["tf"].isin(tuple(SWEEP_TFS) + tuple(SESSION_TFS) + (("4HFVG",) if FVG_LIQ else ()))]
 
     setups: dict[tuple, dict] = {}
     for lv in swept.itertuples(index=False):

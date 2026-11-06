@@ -1,0 +1,157 @@
+source,variant,entry_time,exit,r_net,risk_pts,stop_from
+pepperstone_oos,current: 1H OB 50%,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487,37.80000000000109,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-04-15 07:00:00+00:00,stop,-1.015224358974359,124.79999999999927,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-07-15 18:00:00+00:00,target,0.42254388666461723,162.34999999999854,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-07-27 15:00:00+00:00,target,0.35788937037981383,196.14999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-08-06 13:00:00+00:00,target,0.9370485036119772,48.44999999999891,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-08-19 16:00:00+00:00,target,0.33559991226145813,227.95000000000073,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952,123.04999999999927,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-11-22 23:00:00+00:00,target,0.4389196923627282,279.5499999999993,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-12-21 15:00:00+00:00,target,2.402863961813804,104.75000000000182,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2021-12-31 01:00:00+00:00,target,0.30604288499025195,256.5,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-02-03 21:00:00+00:00,target,0.17515475520540158,710.8000000000011,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843,428.14999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-02-24 17:00:00+00:00,target,1.510021668472381,369.1999999999989,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-03-21 14:00:00+00:00,stop,-1.012210796915167,155.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,current: 1H OB 50%,2022-03-31 17:00:00+00:00,target,0.14270363206533598,232.64999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-05-02 20:00:00+00:00,target,1.0494037478705314,352.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,current: 1H OB 50%,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-06-07 20:00:00+00:00,target,0.17487199684914934,253.90000000000146,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-06-15 20:00:00+00:00,target,0.38067427661268066,188.35000000000036,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-08-17 17:00:00+00:00,target,0.9430944324823218,162.54999999999927,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-08-25 09:00:00+00:00,target,0.940664126292869,183.70000000000073,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-09-01 20:00:00+00:00,target,0.47154471544715915,227.54999999999927,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-09-08 13:00:00+00:00,target,0.5019455252918187,179.90000000000146,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538,220.75,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-10-26 02:00:00+00:00,target,0.2447602987231927,207.5500000000011,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-12-15 11:00:00+00:00,target,0.19798136645962655,386.39999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2022-12-30 14:00:00+00:00,target,0.5243962543124784,101.44999999999891,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-01-25 14:00:00+00:00,target,0.31328036322360786,220.25,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-02-13 19:00:00+00:00,target,1.1947069943289268,185.14999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708,175.04999999999927,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103,186.40000000000146,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897,207.95000000000073,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-08-21 14:00:00+00:00,target,0.7741609891496318,198.14999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-09-15 13:00:00+00:00,target,0.8028335301062461,84.70000000000073,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-09-28 18:00:00+00:00,target,0.2767489711934106,194.39999999999964,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993,176.65000000000146,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-11-15 17:00:00+00:00,target,0.619810633648939,137.3000000000011,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,current: 1H OB 50%,2023-12-21 13:00:00+00:00,target,0.2331174838113092,108.09999999999854,1H OB of drop FVG
+pepperstone_oos,current: 1H OB 50%,2023-12-29 18:00:00+00:00,open,-0.026327336551105973,113.95000000000073,1H OB of drop FVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-04-04 23:00:00+00:00,stop,-1.0745098039215686,25.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-04-15 07:00:00+00:00,stop,-1.0478589420654902,39.70000000000073,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-07-15 18:00:00+00:00,stop,-1.022248243559719,85.39999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-07-27 15:00:00+00:00,target,1.0188679245283125,68.89999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-08-06 13:00:00+00:00,target,0.9370485036119772,48.44999999999891,1H OB of drop FVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-08-19 16:00:00+00:00,stop,-1.0175115207373273,108.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-10-26 17:00:00+00:00,stop,-1.068592057761731,27.700000000000728,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-11-22 23:00:00+00:00,breakeven,-0.095,20.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-12-21 15:00:00+00:00,target,3.6372832369941865,69.20000000000073,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2021-12-31 01:00:00+00:00,target,0.5257870060281313,149.29999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-02-03 21:00:00+00:00,stop,-1.0094199305899851,201.6999999999989,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-02-15 10:00:00+00:00,stop,-1.0073958738808875,256.89999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-02-24 17:00:00+00:00,stop,-1.053370786516856,35.599999999998545,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-03-21 14:00:00+00:00,stop,-1.0271816881258937,69.90000000000146,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-03-31 17:00:00+00:00,stop,-1.0698529411764686,27.200000000000728,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-05-02 20:00:00+00:00,target,1.5862660944206008,233.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964,1H OB of drop FVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-06-07 20:00:00+00:00,stop,-1.0236907730673315,80.20000000000073,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-06-15 20:00:00+00:00,target,0.6229365768896465,115.10000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-08-17 17:00:00+00:00,stop,-1.0386965376782074,49.100000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-08-25 09:00:00+00:00,target,1.5470008952551693,111.69999999999891,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-09-01 20:00:00+00:00,target,0.7664285714285766,140.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-09-08 13:00:00+00:00,target,0.7581863979848751,119.10000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-10-05 15:00:00+00:00,stop,-1.0308441558441557,61.600000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-10-26 02:00:00+00:00,stop,-1.0304975922953448,62.30000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-12-15 11:00:00+00:00,target,0.9183673469387791,83.29999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2022-12-30 14:00:00+00:00,target,1.057654075546704,50.30000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-01-25 14:00:00+00:00,target,0.4431599229287046,155.70000000000073,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-02-13 19:00:00+00:00,breakeven,-0.028106508875739494,67.60000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-05-02 16:00:00+00:00,stop,-1.073076923076923,26.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-05-31 13:00:00+00:00,stop,-1.0193285859613426,98.30000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-06-08 14:00:00+00:00,stop,-1.0650684931506833,29.200000000000728,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-08-21 14:00:00+00:00,target,1.6894273127753359,90.79999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-09-15 13:00:00+00:00,target,1.5999999999999912,42.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-09-28 18:00:00+00:00,target,0.83931357254288,64.10000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-11-10 01:00:00+00:00,stop,-1.0161153519932145,117.90000000000146,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-11-15 17:00:00+00:00,breakeven,-0.2375,8.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-12-21 13:00:00+00:00,stop,-1.1217948717948831,15.599999999998545,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, outside IFVG",2023-12-29 18:00:00+00:00,open,-0.06060606060603121,49.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-04-04 23:00:00+00:00,stop,-1.1338028169014187,14.199999999998909,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-04-15 07:00:00+00:00,stop,-1.0478589420654902,39.70000000000073,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-07-15 18:00:00+00:00,stop,-1.03001579778831,63.29999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-07-27 15:00:00+00:00,target,1.4385245901639632,48.79999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-08-06 13:00:00+00:00,stop,-1.0695970695970667,27.30000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-08-19 16:00:00+00:00,stop,-1.02,95.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-10-26 17:00:00+00:00,stop,-1.0909090909090846,20.900000000001455,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-11-22 23:00:00+00:00,breakeven,-0.095,20.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-12-21 15:00:00+00:00,stop,-1.0354477611940296,53.600000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2021-12-31 01:00:00+00:00,target,0.5729927007299244,137.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-02-03 21:00:00+00:00,stop,-1.009620253164557,197.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-02-15 10:00:00+00:00,stop,-1.0081058020477816,234.39999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-02-24 17:00:00+00:00,stop,-1.053370786516856,35.599999999998545,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-03-21 14:00:00+00:00,stop,-1.0287443267776095,66.10000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-03-31 17:00:00+00:00,stop,-1.0826086956521739,23.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-05-02 20:00:00+00:00,stop,-1.0124508519003932,152.60000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964,1H OB of drop FVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-06-07 20:00:00+00:00,stop,-1.0485933503836313,39.100000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-06-15 20:00:00+00:00,target,1.2895683453237063,55.600000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-08-17 17:00:00+00:00,stop,-1.0410367170626356,46.29999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-08-25 09:00:00+00:00,target,1.5470008952551693,111.69999999999891,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-09-01 20:00:00+00:00,target,1.1061855670103167,97.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-09-08 13:00:00+00:00,target,0.8224043715846813,109.80000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-10-05 15:00:00+00:00,stop,-1.0395833333333333,48.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-10-26 02:00:00+00:00,stop,-1.0304975922953448,62.30000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-12-15 11:00:00+00:00,target,0.9183673469387791,83.29999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2022-12-30 14:00:00+00:00,stop,-1.1652173913043478,11.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-01-25 14:00:00+00:00,target,0.49533381191671993,139.3000000000011,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-02-13 19:00:00+00:00,breakeven,-0.028106508875739494,67.60000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-05-02 16:00:00+00:00,stop,-1.0840707964601757,22.600000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-05-31 13:00:00+00:00,stop,-1.0249017038007862,76.30000000000109,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-06-08 14:00:00+00:00,stop,-1.0650684931506833,29.200000000000728,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-08-21 14:00:00+00:00,target,1.8459687123946882,83.10000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-09-15 13:00:00+00:00,target,2.527881040892214,26.899999999999636,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-09-28 18:00:00+00:00,target,1.0326295585412386,52.100000000000364,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-11-10 01:00:00+00:00,stop,-1.018375241779497,103.40000000000146,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-11-15 17:00:00+00:00,stop,-1.4523809523808742,4.200000000000728,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-12-21 13:00:00+00:00,stop,-1.1258278145695484,15.099999999998545,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG nearest, overlapping IFVG",2023-12-29 18:00:00+00:00,open,-0.06060606060603121,49.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-04-04 23:00:00+00:00,stop,-1.0034228067014952,555.1000000000004,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-04-15 07:00:00+00:00,stop,-1.0180780209324454,105.10000000000036,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-07-15 18:00:00+00:00,target,0.3222170032879291,212.89999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-07-27 15:00:00+00:00,target,0.3819368879216574,183.79999999999927,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-08-06 13:00:00+00:00,target,0.9370485036119772,48.44999999999891,1H OB of drop FVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-08-19 16:00:00+00:00,target,0.029303608365892752,2610.6000000000004,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-10-26 17:00:00+00:00,stop,-1.0134943181818181,140.8000000000011,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-11-22 23:00:00+00:00,target,0.432042253521128,284.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-12-21 15:00:00+00:00,target,0.09350967789872582,2691.7000000000007,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2021-12-31 01:00:00+00:00,target,0.2589050131926103,303.2000000000007,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-02-03 21:00:00+00:00,target,0.05784240847426113,2152.3999999999996,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-02-15 10:00:00+00:00,stop,-1.0012338463536594,1539.8999999999996,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-02-24 17:00:00+00:00,target,1.1118867171918665,501.39999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-03-21 14:00:00+00:00,target,0.14127598686979145,2376.2000000000007,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-03-31 17:00:00+00:00,target,0.01947785274274002,1704.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-05-02 20:00:00+00:00,target,1.5862660944206008,233.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964,1H OB of drop FVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-06-07 20:00:00+00:00,target,0.04151472650771321,1069.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-06-15 20:00:00+00:00,target,0.3210927004030371,223.3000000000011,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-08-17 17:00:00+00:00,target,0.04766791044776142,3216.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-08-25 09:00:00+00:00,target,0.08971962616822467,1926.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-09-01 20:00:00+00:00,target,0.0921742118374716,1164.1000000000004,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-09-08 13:00:00+00:00,target,0.0872548072277503,1034.9000000000015,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-10-05 15:00:00+00:00,target,0.08906358468263953,5329.9,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-10-26 02:00:00+00:00,target,0.00968319926804142,5246.200000000001,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-12-15 11:00:00+00:00,target,0.015025336842518685,5091.4,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2022-12-30 14:00:00+00:00,target,0.42088607594937116,126.39999999999964,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-01-25 14:00:00+00:00,target,0.013714422006678252,5031.200000000001,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-02-13 19:00:00+00:00,target,0.11737861501724614,1884.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-05-02 16:00:00+00:00,stop,-1.0005282913944114,3596.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-05-31 13:00:00+00:00,stop,-1.0007892987703557,2407.2000000000007,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-06-08 14:00:00+00:00,target,0.09608493696084953,2260.5,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-08-21 14:00:00+00:00,target,0.036330049261083575,4222.4,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-09-15 13:00:00+00:00,target,0.05387845654068585,1262.1000000000004,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-09-28 18:00:00+00:00,target,0.013137973137972872,4095.0,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-11-10 01:00:00+00:00,stop,-1.0012535462162697,1515.7000000000007,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-11-15 17:00:00+00:00,target,0.09985918798404121,852.2000000000007,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-12-21 13:00:00+00:00,target,0.3173803526448725,79.39999999999782,1H FVG beyond 4H IFVG
+pepperstone_oos,"1H FVG farthest, outside IFVG",2023-12-29 18:00:00+00:00,open,-0.02279635258357582,131.59999999999854,1H FVG beyond 4H IFVG

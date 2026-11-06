@@ -19,7 +19,7 @@ HERE = Path(__file__).parent
 TICKS = HERE / "data" / "exness_ticks"
 OUT = HERE / "data" / "exness"
 SYM = os.environ.get("EXNESS_SYMBOL", "USTEC")             # Exness symbol -> our symbol name
-NAME = {"USTEC": "US100", "XAUUSD": "XAUUSD"}[SYM]
+NAME = {"USTEC": "US100"}.get(SYM, SYM)                      # our symbol name (USTEC = US100, others keep the Exness name)
 
 
 def month_bars(f: Path) -> pd.DataFrame:

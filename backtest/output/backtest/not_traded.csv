@@ -1,9 +1,22 @@
 symbol,setup,signal,entry_tf,entry_mode,reason
-US100,7,long,5m,touch,no trigger
-US100,12,short,5m,touch,"trigger, no FVG"
-US100,14,long,5m,touch,no trigger
-US100,20,long,5m,touch,"trigger, no FVG"
-US100,22,long,5m,touch,cancelled (5m close back through entry FVG)
-US100,26,short,5m,touch,no trigger
-US100,32,long,5m,touch,no retest
-US100,42,long,5m,touch,cancelled (5m close back through entry FVG)
+US100,27,long,5m,touch,no trigger
+US100,49,short,5m,touch,"trigger, no FVG"
+US100,56,long,5m,touch,no trigger
+US100,61,short,5m,touch,expired
+US100,69,long,5m,touch,"trigger, no FVG"
+US100,86,long,5m,touch,expired
+US100,93,short,5m,touch,no trigger
+US100,97,short,5m,touch,no trigger
+US100,114,short,5m,touch,no trigger
+US100,128,long,5m,touch,no retest
+US100,130,short,5m,touch,no trigger
+US100,157,long,5m,touch,cancelled (5m close back through entry FVG)
+US100,161,short,5m,touch,no retest
+US100,167,short,5m,touch,no retest
+US100,180,long,5m,touch,no trigger
+US100,185,short,5m,touch,no retest
+US100,190,long,5m,touch,"trigger, no FVG"
+US100,196,long,5m,touch,no trigger
+US100,198,short,5m,touch,no retest
+US100,199,short,5m,touch,no trigger
+US100,209,short,5m,touch,"trigger, no FVG"

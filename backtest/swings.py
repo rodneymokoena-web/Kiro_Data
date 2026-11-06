@@ -205,6 +205,31 @@ def find_swings(htf: pd.DataFrame, tf: str) -> pd.DataFrame:
     return df
 
 
+def fvg_far_edge_levels(h4: pd.DataFrame) -> pd.DataFrame:
+    """Rule 1 liquidity: every 4H FVG as a sweepable level at its FAR edge (the edge farthest from price, which
+    sits on the side the FVG was left behind). Bearish FVG (price below it): its TOP is buy-side liquidity ("high").
+    Bullish FVG (price above it): its BOTTOM is sell-side liquidity ("low"). Usable from the close of the FVG's 3rd candle.
+    tf = "4HFVG"."""
+    import ifvg
+    f = ifvg.find_fvgs(h4.drop(columns=["Start", "End"]))
+    import os
+    mode = os.environ.get("FVG_LIQ_MODE", "fresh")   # all | intact (no 4H close through the far edge yet) | fresh (price never traded into the gap yet)
+    H, L, C = (h4[k].to_numpy() for k in ("High", "Low", "Close"))
+    rows = []
+    for d, i, bot, top, inv in f[["dir", "idx", "bottom", "top", "inv_idx"]].itertuples(index=False):
+        exp = pd.NaT
+        if mode == "intact" and inv >= 0:
+            exp = h4["Start"].iloc[inv] - pd.Timedelta(nanoseconds=1)
+        elif mode == "fresh":
+            later = np.arange(i + 1, len(h4))
+            hit = later[(H[later] >= bot) if d == "bear" else (L[later] <= top)]
+            if len(hit):
+                exp = h4["End"].iloc[hit[0]] - pd.Timedelta(nanoseconds=1)
+        rows.append({"tf": "4HFVG", "type": "high" if d == "bear" else "low", "price": float(top if d == "bear" else bot),
+                     "pivot_time": h4["Start"].iloc[i - 2], "confirmed_time": h4["End"].iloc[i], "expires": exp})
+    return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time", "expires"])
+
+
 SIG_TOL = 0.0003   # price-match tolerance (fraction) for "significant 4H swing" qualifiers
 SIG_4H_PIVOT = 2   # pivot size to detect 4H swings before testing them for significance
 

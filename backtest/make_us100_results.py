@@ -39,8 +39,11 @@ def run_source(src: str) -> None:
     RUNS.mkdir(parents=True, exist_ok=True)
     SN.run().assign(period=period).to_csv(RUNS / f"{src}_swing.csv", index=False)
     W.RULE3 = "4H close"
+    import ifvg
+    saved_liq, ifvg.FVG_LIQ = ifvg.FVG_LIQ, False        # swing_prev is a fixed reference model: no 4H FVG liquidity
     with contextlib.redirect_stdout(io.StringIO()):
         w, _ = W.run()
+    ifvg.FVG_LIQ = saved_liq
     w = w[(w.entry_type == "1H touch") & (w.stop_type == W.MAIN_STOP) & (w.target_type == "3R")]
     w.assign(period=period).to_csv(RUNS / f"{src}_swing_prev.csv", index=False)
     with contextlib.redirect_stdout(io.StringIO()):

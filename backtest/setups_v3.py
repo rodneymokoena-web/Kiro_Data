@@ -74,8 +74,10 @@ def build_setups(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
              for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
     if ifvg.SESSION_TFS:
         parts.append(_S.session_levels(h1, ifvg.SESSION_TFS))
+    if ifvg.FVG_LIQ:
+        parts.append(_S.fvg_far_edge_levels(h4_full))
     levels = pd.concat(parts, ignore_index=True)
-    levels = levels[levels["tf"].isin(tuple(ifvg.SWEEP_TFS) + tuple(ifvg.SESSION_TFS))]
+    levels = levels[levels["tf"].isin(tuple(ifvg.SWEEP_TFS) + tuple(ifvg.SESSION_TFS) + (("4HFVG",) if ifvg.FVG_LIQ else ()))]
     import swings as _S
     sweep_bars = h1 if _S.SWEEP_TF in ("1H", None) else _S._sweep_frame(h1, _S.SWEEP_TF)
     levels = add_break_times(levels, sweep_bars)

@@ -1,0 +1,67 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,2,short,15m,touch,no trigger
+US100,2,short,15m,ce,no trigger
+US100,4,long,15m,touch,no retest
+US100,4,long,15m,ce,no retest
+US100,4,long,5m,touch,no retest
+US100,4,long,5m,ce,no retest
+US100,5,long,15m,touch,no retest
+US100,5,long,15m,ce,no retest
+US100,5,long,5m,touch,no retest
+US100,5,long,5m,ce,no retest
+US100,9,short,15m,touch,no trigger
+US100,9,short,15m,ce,no trigger
+US100,9,short,5m,touch,no trigger
+US100,9,short,5m,ce,no trigger
+US100,14,short,15m,touch,expired
+US100,14,short,15m,ce,expired
+US100,19,short,15m,touch,no retest
+US100,19,short,15m,ce,no retest
+US100,19,short,5m,touch,no retest
+US100,19,short,5m,ce,no retest
+US100,23,short,15m,touch,no trigger
+US100,23,short,15m,ce,no trigger
+US100,27,short,15m,touch,no trigger
+US100,27,short,15m,ce,no trigger
+US100,27,short,5m,touch,no trigger
+US100,27,short,5m,ce,no trigger
+US100,28,short,15m,touch,no trigger
+US100,28,short,15m,ce,no trigger
+US100,30,short,15m,touch,"trigger, no FVG"
+US100,30,short,15m,ce,"trigger, no FVG"
+US100,31,long,15m,touch,no trigger
+US100,31,long,15m,ce,no trigger
+US100,31,long,5m,touch,no trigger
+US100,31,long,5m,ce,no trigger
+US100,34,long,15m,touch,cancelled (5m close back through entry FVG)
+US100,34,long,15m,ce,cancelled (5m close back through entry FVG)
+US100,34,long,5m,touch,"trigger, no FVG"
+US100,34,long,5m,ce,"trigger, no FVG"
+US100,35,long,15m,touch,cancelled (5m close back through entry FVG)
+US100,35,long,15m,ce,cancelled (5m close back through entry FVG)
+US100,36,short,15m,touch,no trigger
+US100,36,short,15m,ce,no trigger
+US100,44,long,15m,ce,expired
+XAUUSD,4,long,15m,touch,no retest
+XAUUSD,4,long,15m,ce,no retest
+XAUUSD,4,long,5m,touch,no retest
+XAUUSD,4,long,5m,ce,no retest
+XAUUSD,5,long,15m,touch,"trigger, no FVG"
+XAUUSD,5,long,15m,ce,"trigger, no FVG"
+XAUUSD,12,short,15m,touch,"trigger, no FVG"
+XAUUSD,12,short,15m,ce,"trigger, no FVG"
+XAUUSD,15,long,15m,touch,no retest
+XAUUSD,15,long,15m,ce,no retest
+XAUUSD,15,long,5m,touch,no retest
+XAUUSD,15,long,5m,ce,no retest
+XAUUSD,26,short,15m,ce,expired
+XAUUSD,34,short,15m,touch,expired
+XAUUSD,34,short,15m,ce,expired
+XAUUSD,38,long,5m,touch,cancelled (5m close back through entry FVG)
+XAUUSD,38,long,5m,ce,cancelled (5m close back through entry FVG)
+XAUUSD,43,long,15m,touch,no trigger
+XAUUSD,43,long,15m,ce,no trigger
+XAUUSD,43,long,5m,touch,no trigger
+XAUUSD,43,long,5m,ce,no trigger
+XAUUSD,45,long,5m,touch,"trigger, no FVG"
+XAUUSD,45,long,5m,ce,"trigger, no FVG"

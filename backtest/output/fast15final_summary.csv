@@ -1,0 +1,15 @@
+model,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+intraday current,goat,73,25,1.4,15.28,11537,7.7,18.1,-2.8
+"intraday fast15 only (5m,2.5ATR)",goat,157,20,1.37,25.68,12705,18.2,35.8,-10.1
+"intraday current + fast15 (5m,2.5ATR)",goat,160,20,1.31,22.6,12317,19.9,34.8,-12.2
+swing,goat,104,45,1.39,11.52,11155,7.9,5.9,5.6
+intraday current,pepperstone,76,34,2.23,42.45,15092,7.4,27.1,15.3
+"intraday fast15 only (5m,2.5ATR)",pepperstone,163,23,1.45,33.19,13671,26.7,52.3,-19.1
+"intraday current + fast15 (5m,2.5ATR)",pepperstone,165,22,1.41,31.13,13391,26.7,51.3,-20.2
+swing,pepperstone,111,51,1.61,18.04,11903,8.0,9.7,8.3
+BOTH: swing + intraday current,goat,177,37,1.4,26.8,12870,14.3,24.0,2.8
+BOTH: swing + intraday current,pepperstone,187,44,1.95,60.49,17964,10.5,36.8,23.6
+"BOTH: swing + intraday fast15 only (5m,2.5ATR)",goat,261,30,1.38,37.21,14173,21.8,41.7,-4.5
+"BOTH: swing + intraday fast15 only (5m,2.5ATR)",pepperstone,274,34,1.5,51.23,16273,26.3,62.1,-10.8
+"BOTH: swing + intraday current + fast15 (5m,2.5ATR)",goat,264,30,1.34,34.12,13740,23.4,40.7,-6.5
+"BOTH: swing + intraday current + fast15 (5m,2.5ATR)",pepperstone,276,34,1.47,49.17,15939,26.3,61.1,-11.9
