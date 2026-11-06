@@ -11,6 +11,7 @@
 
 //--- enums
 enum ENUM_SWEEP_TYPE { SWEEP_WICK = 0, SWEEP_CLOSE = 1, SWEEP_BOTH = 2 };
+enum ENUM_BIAS_MODE  { BIAS_4H_ONLY = 0, BIAS_4H_PLUS_1H = 1 };
 enum ENUM_TP_MODE    { TP_RR = 0, TP_STRUCTURE = 1 };
 enum ENUM_LOT_MODE   { LOT_FIXED = 0, LOT_RISK_PCT = 1 };
 enum ENUM_RR_CHOICE  { RR_2R = 0, RR_3R = 1 };
@@ -24,7 +25,7 @@ input ENUM_TIMEFRAMES InpStructTF = PERIOD_M15;  // Structure timeframe
 input ENUM_TIMEFRAMES InpEntryTF  = PERIOD_M5;   // Entry timeframe
 
 input group "Bias (4H / 1H)"
-input bool            InpUseH1      = true;       // Also apply the same bias rules on 1H
+input ENUM_BIAS_MODE InpBiasMode  = BIAS_4H_PLUS_1H; // Rule 1 bias: 4H only, or 4H + 1H
 input bool            InpUseSweep   = true;       // Bias: swing sweep
 input bool            InpUseFvg4    = true;       // Bias: price inside FVG
 input int             InpSwLen4     = 5;          // Swing length (4H and 1H)
@@ -84,7 +85,7 @@ datetime g_lastEntryBar  = 0;
 datetime g_lastStructBar = 0;
 long     g_barCount      = 0;
 
-// One slot per bias timeframe: [0] = 4H, [1] = 1H (only used when InpUseH1)
+// One slot per bias timeframe: [0] = 4H, [1] = 1H (only used when InpBiasMode = BIAS_4H_PLUS_1H)
 struct BiasTF
   {
    ENUM_TIMEFRAMES tf;
@@ -489,7 +490,7 @@ int OnInit()
       Print("Timeframes must satisfy: Bias > Structure > Entry");
       return INIT_PARAMETERS_INCORRECT;
      }
-   if(InpUseH1 && (PeriodSeconds(InpBiasTF2) <= PeriodSeconds(InpStructTF) || PeriodSeconds(InpBiasTF2) >= PeriodSeconds(InpBiasTF)))
+   if(InpBiasMode == BIAS_4H_PLUS_1H && (PeriodSeconds(InpBiasTF2) <= PeriodSeconds(InpStructTF) || PeriodSeconds(InpBiasTF2) >= PeriodSeconds(InpBiasTF)))
      {
       Print("Second bias timeframe must be above Structure and below the first bias timeframe");
       return INIT_PARAMETERS_INCORRECT;
@@ -497,7 +498,7 @@ int OnInit()
    ZeroMemory(g_bias);
    g_bias[0].tf = InpBiasTF;
    g_bias[1].tf = InpBiasTF2;
-   g_biasCount  = InpUseH1 ? 2 : 1;
+   g_biasCount  = (InpBiasMode == BIAS_4H_PLUS_1H) ? 2 : 1;
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);

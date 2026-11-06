@@ -22,7 +22,8 @@ useChartForEntry = input.bool(true, "Use chart TF for entry (recommended: run on
 tf5   = input.timeframe("5",   "Entry timeframe (5m) when above is off", group=gTf)
 
 gBias = "Bias (4H / 1H)"
-useH1    = input.bool(true, "Also apply the same bias rules on 1H", group=gBias)
+biasMode = input.string("4H + 1H", "Rule 1 bias timeframes", options=["4H", "4H + 1H"], group=gBias, tooltip="4H = sweep/FVG bias from the 4H only. 4H + 1H = the same conditions are also applied on the 1H; a hit on either sets the bias.")
+useH1    = biasMode == "4H + 1H"
 useSweep = input.bool(true, "Bias: swing sweep (4H / 1H)", group=gBias)
 useFvg4  = input.bool(true, "Bias: price inside FVG (4H / 1H)", group=gBias)
 swLen4   = input.int(5, "Swing length (4H and 1H)", minval=1, group=gBias)
