@@ -1,9 +1,9 @@
 //@version=6
-indicator("4H POI > 15m BOS > 5m FVG/iFVG Entry", shorttitle="MTF-FVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+indicator("4H/1H POI > 15m BOS > 5m FVG/iFVG Entry", shorttitle="MTF-FVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
 
 // ============================================================================
 // INDICATOR — run on the 5m chart.
-//   1) 4H bias: a 4H swing high is swept (wick above then back below, OR a
+//   1) 4H/1H bias: a 4H swing high is swept (wick above then back below, OR a
 //      confirmed close back below) -> SHORT bias; OR price is inside a 4H
 //      bearish FVG -> SHORT bias. (Mirror for longs.)
 //   2) 15m shift: while biased, a pullback breaks a prior 15m swing low (short).
@@ -16,14 +16,16 @@ indicator("4H POI > 15m BOS > 5m FVG/iFVG Entry", shorttitle="MTF-FVG", overlay=
 // ---------------------------------- Inputs ----------------------------------
 gTf   = "Timeframes"
 tf4h  = input.timeframe("240", "Bias timeframe (4H)", group=gTf)
+tf1h  = input.timeframe("60",  "Second bias timeframe (1H)", group=gTf)
 tf15  = input.timeframe("15",  "Structure timeframe (15m)", group=gTf)
 useChartForEntry = input.bool(true, "Use chart TF for entry (recommended: run on 5m)", group=gTf, tooltip="On: the 5m entry logic runs on whatever chart you load (meant for 5m). Off: it is requested from the fixed entry TF below.")
 tf5   = input.timeframe("5",   "Entry timeframe (5m) when above is off", group=gTf)
 
-gBias = "4H bias"
-useSweep = input.bool(true, "Bias: 4H swing sweep", group=gBias)
-useFvg4  = input.bool(true, "Bias: price inside 4H FVG", group=gBias)
-swLen4   = input.int(5, "4H swing length", minval=1, group=gBias)
+gBias = "Bias (4H / 1H)"
+useH1    = input.bool(true, "Also apply the same bias rules on 1H", group=gBias)
+useSweep = input.bool(true, "Bias: swing sweep (4H / 1H)", group=gBias)
+useFvg4  = input.bool(true, "Bias: price inside FVG (4H / 1H)", group=gBias)
+swLen4   = input.int(5, "Swing length (4H and 1H)", minval=1, group=gBias)
 sweepConfirm = input.string("Both", "Sweep type", options=["Wick","Close","Both"], group=gBias, tooltip="Wick = intrabar wick beyond the swing then back; Close = closes back beyond; Both = either qualifies.")
 biasBars = input.int(500, "Bias stays valid for (bars)", minval=20, group=gBias)
 
@@ -105,11 +107,42 @@ sweepLo = sweepConfirm == "Wick" ? wickSweepLo : sweepConfirm == "Close" ? close
 inFvg4Bear = not na(f4bT) and close <= f4bT and close >= f4bB
 inFvg4Bull = not na(f4uT) and close <= f4uT and close >= f4uB
 
+// ------------------------- 1H bias (same rules as 4H) ------------------------
+[h1PH, h1PL, h1bFt, h1bFb, h1uFt, h1uFb] = request.security(syminfo.tickerid, tf1h, h4(), lookahead=barmerge.lookahead_off)
+
+var float swHigh1 = na
+var float swLow1  = na
+if not na(h1PH) and h1PH != nz(h1PH[1])
+    swHigh1 := h1PH
+if not na(h1PL) and h1PL != nz(h1PL[1])
+    swLow1 := h1PL
+
+var float f1bT = na, var float f1bB = na   // active 1H bearish FVG
+var float f1uT = na, var float f1uB = na   // active 1H bullish FVG
+if not na(h1bFt) and (h1bFt != nz(h1bFt[1]) or h1bFb != nz(h1bFb[1]))
+    f1bT := h1bFt
+    f1bB := h1bFb
+if not na(h1uFt) and (h1uFt != nz(h1uFt[1]) or h1uFb != nz(h1uFb[1]))
+    f1uT := h1uFt
+    f1uB := h1uFb
+
+wickSweepHi1  = not na(swHigh1) and high > swHigh1 and close < swHigh1
+closeSweepHi1 = not na(swHigh1) and high[1] > swHigh1 and close < swHigh1
+sweepHi1 = sweepConfirm == "Wick" ? wickSweepHi1 : sweepConfirm == "Close" ? closeSweepHi1 : (wickSweepHi1 or closeSweepHi1)
+wickSweepLo1  = not na(swLow1) and low < swLow1 and close > swLow1
+closeSweepLo1 = not na(swLow1) and low[1] < swLow1 and close > swLow1
+sweepLo1 = sweepConfirm == "Wick" ? wickSweepLo1 : sweepConfirm == "Close" ? closeSweepLo1 : (wickSweepLo1 or closeSweepLo1)
+inFvg1Bear = not na(f1bT) and close <= f1bT and close >= f1bB
+inFvg1Bull = not na(f1uT) and close <= f1uT and close >= f1uB
+
+h1Short = useH1 and ((useSweep and sweepHi1) or (useFvg4 and inFvg1Bear))
+h1Long  = useH1 and ((useSweep and sweepLo1) or (useFvg4 and inFvg1Bull))
+
 var int shortBiasBar = na
 var int longBiasBar  = na
-if okBar and ((useSweep and sweepHi) or (useFvg4 and inFvg4Bear))
+if okBar and (h1Short or (useSweep and sweepHi) or (useFvg4 and inFvg4Bear))
     shortBiasBar := bar_index
-if okBar and ((useSweep and sweepLo) or (useFvg4 and inFvg4Bull))
+if okBar and (h1Long or (useSweep and sweepLo) or (useFvg4 and inFvg4Bull))
     longBiasBar := bar_index
 shortBias = not na(shortBiasBar) and bar_index - shortBiasBar <= biasBars
 longBias  = not na(longBiasBar)  and bar_index - longBiasBar  <= biasBars

@@ -18,14 +18,16 @@ enum ENUM_RISK_CHOICE{ RISK_1_PCT = 0, RISK_HALF_PCT = 1 };
 
 //--- inputs
 input group "Timeframes"
-input ENUM_TIMEFRAMES InpBiasTF   = PERIOD_H4;   // Bias timeframe
+input ENUM_TIMEFRAMES InpBiasTF   = PERIOD_H4;   // Bias timeframe (4H)
+input ENUM_TIMEFRAMES InpBiasTF2  = PERIOD_H1;   // Second bias timeframe (1H)
 input ENUM_TIMEFRAMES InpStructTF = PERIOD_M15;  // Structure timeframe
 input ENUM_TIMEFRAMES InpEntryTF  = PERIOD_M5;   // Entry timeframe
 
-input group "4H bias"
-input bool            InpUseSweep   = true;       // Bias: 4H swing sweep
-input bool            InpUseFvg4    = true;       // Bias: price inside 4H FVG
-input int             InpSwLen4     = 5;          // 4H swing length
+input group "Bias (4H / 1H)"
+input bool            InpUseH1      = true;       // Also apply the same bias rules on 1H
+input bool            InpUseSweep   = true;       // Bias: swing sweep
+input bool            InpUseFvg4    = true;       // Bias: price inside FVG
+input int             InpSwLen4     = 5;          // Swing length (4H and 1H)
 input ENUM_SWEEP_TYPE InpSweepType  = SWEEP_BOTH; // Sweep type
 input int             InpBiasBars   = 500;        // Bias valid for (entry-TF bars)
 
@@ -79,13 +81,20 @@ ulong  g_nextId = 1;
 //--- state
 CTrade   trade;
 datetime g_lastEntryBar  = 0;
-datetime g_lastBiasBar   = 0;
 datetime g_lastStructBar = 0;
 long     g_barCount      = 0;
 
-double   g_swHigh4 = 0, g_swLow4 = 0;           // latest 4H swings
-double   g_f4bT = 0, g_f4bB = 0;                // latest 4H bearish FVG
-double   g_f4uT = 0, g_f4uB = 0;                // latest 4H bullish FVG
+// One slot per bias timeframe: [0] = 4H, [1] = 1H (only used when InpUseH1)
+struct BiasTF
+  {
+   ENUM_TIMEFRAMES tf;
+   datetime lastBar;
+   double   swHigh, swLow;     // latest swings
+   double   fbT, fbB;          // latest bearish FVG
+   double   fuT, fuB;          // latest bullish FVG
+  };
+BiasTF   g_bias[2];
+int      g_biasCount = 1;
 long     g_shortBiasBar = -1, g_longBiasBar = -1;
 
 double   g_lastPL15 = 0, g_lastPH15 = 0;        // latest 15m swings
@@ -240,27 +249,29 @@ double CalcLots(double slDistance)
 //+------------------------------------------------------------------+
 //| Bias timeframe update (runs on a new bias-TF bar)                |
 //+------------------------------------------------------------------+
-void UpdateBiasTF()
+void UpdateBiasTF(int b)
   {
    const int n = 300;
    double hi[], lo[];
-   if(!LoadSeries(InpBiasTF, n, hi, lo)) return;
+   if(!LoadSeries(g_bias[b].tf, n, hi, lo)) return;
 
    double v;
-   if(FindPivotHigh(hi, n, InpSwLen4, v)) g_swHigh4 = v;
-   if(FindPivotLow(lo, n, InpSwLen4, v))  g_swLow4  = v;
+   if(FindPivotHigh(hi, n, InpSwLen4, v)) g_bias[b].swHigh = v;
+   if(FindPivotLow(lo, n, InpSwLen4, v))  g_bias[b].swLow  = v;
 
-   // Most recent 4H bearish FVG: high[s] < low[s+2]; bullish: low[s] > high[s+2]
+   // Most recent bearish FVG: high[s] < low[s+2]; bullish: low[s] > high[s+2]
    bool gotBear = false, gotBull = false;
    for(int s = 1; s < n - 3 && !(gotBear && gotBull); s++)
      {
-      if(!gotBear && hi[s] < lo[s + 2]) { g_f4bT = lo[s + 2]; g_f4bB = hi[s]; gotBear = true; }
-      if(!gotBull && lo[s] > hi[s + 2]) { g_f4uT = lo[s];     g_f4uB = hi[s + 2]; gotBull = true; }
+      if(!gotBear && hi[s] < lo[s + 2]) { g_bias[b].fbT = lo[s + 2]; g_bias[b].fbB = hi[s]; gotBear = true; }
+      if(!gotBull && lo[s] > hi[s + 2]) { g_bias[b].fuT = lo[s];     g_bias[b].fuB = hi[s + 2]; gotBull = true; }
      }
   }
 
 //+------------------------------------------------------------------+
-//| Bias flags from the last closed entry-TF bar                     |
+//| Bias flags from the last closed entry-TF bar.                    |
+//| The same rules run on every bias TF (4H, and 1H if enabled);     |
+//| a hit on any of them sets the bias.                              |
 //+------------------------------------------------------------------+
 void UpdateBias()
   {
@@ -270,19 +281,24 @@ void UpdateBias()
    double h2 = iHigh(_Symbol, InpEntryTF, 2);
    double l2 = iLow(_Symbol, InpEntryTF, 2);
 
-   bool wickHi  = (g_swHigh4 > 0 && h1 > g_swHigh4 && c1 < g_swHigh4);
-   bool closeHi = (g_swHigh4 > 0 && h2 > g_swHigh4 && c1 < g_swHigh4);
-   bool sweepHi = (InpSweepType == SWEEP_WICK) ? wickHi : (InpSweepType == SWEEP_CLOSE) ? closeHi : (wickHi || closeHi);
+   for(int b = 0; b < g_biasCount; b++)
+     {
+      double swH = g_bias[b].swHigh, swL = g_bias[b].swLow;
 
-   bool wickLo  = (g_swLow4 > 0 && l1 < g_swLow4 && c1 > g_swLow4);
-   bool closeLo = (g_swLow4 > 0 && l2 < g_swLow4 && c1 > g_swLow4);
-   bool sweepLo = (InpSweepType == SWEEP_WICK) ? wickLo : (InpSweepType == SWEEP_CLOSE) ? closeLo : (wickLo || closeLo);
+      bool wickHi  = (swH > 0 && h1 > swH && c1 < swH);
+      bool closeHi = (swH > 0 && h2 > swH && c1 < swH);
+      bool sweepHi = (InpSweepType == SWEEP_WICK) ? wickHi : (InpSweepType == SWEEP_CLOSE) ? closeHi : (wickHi || closeHi);
 
-   bool inBear = (g_f4bT > 0 && c1 <= g_f4bT && c1 >= g_f4bB);
-   bool inBull = (g_f4uT > 0 && c1 <= g_f4uT && c1 >= g_f4uB);
+      bool wickLo  = (swL > 0 && l1 < swL && c1 > swL);
+      bool closeLo = (swL > 0 && l2 < swL && c1 > swL);
+      bool sweepLo = (InpSweepType == SWEEP_WICK) ? wickLo : (InpSweepType == SWEEP_CLOSE) ? closeLo : (wickLo || closeLo);
 
-   if((InpUseSweep && sweepHi) || (InpUseFvg4 && inBear)) g_shortBiasBar = g_barCount;
-   if((InpUseSweep && sweepLo) || (InpUseFvg4 && inBull)) g_longBiasBar  = g_barCount;
+      bool inBear = (g_bias[b].fbT > 0 && c1 <= g_bias[b].fbT && c1 >= g_bias[b].fbB);
+      bool inBull = (g_bias[b].fuT > 0 && c1 <= g_bias[b].fuT && c1 >= g_bias[b].fuB);
+
+      if((InpUseSweep && sweepHi) || (InpUseFvg4 && inBear)) g_shortBiasBar = g_barCount;
+      if((InpUseSweep && sweepLo) || (InpUseFvg4 && inBull)) g_longBiasBar  = g_barCount;
+     }
   }
 
 bool ShortBias() { return g_shortBiasBar >= 0 && (g_barCount - g_shortBiasBar) <= InpBiasBars; }
@@ -445,8 +461,11 @@ void OnNewBar()
   {
    g_barCount++;
 
-   datetime bb = iTime(_Symbol, InpBiasTF, 0);
-   if(bb != g_lastBiasBar) { g_lastBiasBar = bb; UpdateBiasTF(); }
+   for(int b = 0; b < g_biasCount; b++)
+     {
+      datetime bb = iTime(_Symbol, g_bias[b].tf, 0);
+      if(bb != g_bias[b].lastBar) { g_bias[b].lastBar = bb; UpdateBiasTF(b); }
+     }
 
    UpdateBias();
 
@@ -470,6 +489,15 @@ int OnInit()
       Print("Timeframes must satisfy: Bias > Structure > Entry");
       return INIT_PARAMETERS_INCORRECT;
      }
+   if(InpUseH1 && (PeriodSeconds(InpBiasTF2) <= PeriodSeconds(InpStructTF) || PeriodSeconds(InpBiasTF2) >= PeriodSeconds(InpBiasTF)))
+     {
+      Print("Second bias timeframe must be above Structure and below the first bias timeframe");
+      return INIT_PARAMETERS_INCORRECT;
+     }
+   ZeroMemory(g_bias);
+   g_bias[0].tf = InpBiasTF;
+   g_bias[1].tf = InpBiasTF2;
+   g_biasCount  = InpUseH1 ? 2 : 1;
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);
