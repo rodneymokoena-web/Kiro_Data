@@ -1,0 +1,319 @@
+//@version=6
+indicator("4H/1H POI > 15m BOS > 5m FVG/iFVG Entry", shorttitle="MTF-FVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+
+// ============================================================================
+// INDICATOR — run on the 5m chart.
+//   1) 4H/1H bias: a 4H swing high is swept (wick above then back below, OR a
+//      confirmed close back below) -> SHORT bias; OR price is inside a 4H
+//      bearish FVG -> SHORT bias. (Mirror for longs.)
+//   2) 15m shift: while biased, a pullback breaks a prior 15m swing low (short).
+//   3) 5m zone: the first 5m bearish FVG OR bearish inverse-FVG that OVERLAPS
+//      the broken 15m swing-low level is drawn and projected to the right.
+//   4) Entry: when price taps that zone again -> "Sell". Mirror for "Buy".
+//   Zones do not expire; they are removed only when price closes through them.
+// ============================================================================
+
+// ---------------------------------- Inputs ----------------------------------
+gTf   = "Timeframes"
+tf4h  = input.timeframe("240", "Bias timeframe (4H)", group=gTf)
+tf1h  = input.timeframe("60",  "Second bias timeframe (1H)", group=gTf)
+tf15  = input.timeframe("15",  "Structure timeframe (15m)", group=gTf)
+useChartForEntry = input.bool(true, "Use chart TF for entry (recommended: run on 5m)", group=gTf, tooltip="On: the 5m entry logic runs on whatever chart you load (meant for 5m). Off: it is requested from the fixed entry TF below.")
+tf5   = input.timeframe("5",   "Entry timeframe (5m) when above is off", group=gTf)
+
+gBias = "Bias (4H / 1H)"
+biasMode = input.string("4H + 1H", "Rule 1 bias timeframes", options=["4H", "4H + 1H"], group=gBias, tooltip="4H = sweep/FVG bias from the 4H only. 4H + 1H = the same conditions are also applied on the 1H; a hit on either sets the bias.")
+useH1    = biasMode == "4H + 1H"
+useSweep = input.bool(true, "Bias: swing sweep (4H / 1H)", group=gBias)
+useFvg4  = input.bool(true, "Bias: price inside FVG (4H / 1H)", group=gBias)
+swLen4   = input.int(5, "Swing length (4H and 1H)", minval=1, group=gBias)
+sweepConfirm = input.string("Both", "Sweep type", options=["Wick","Close","Both"], group=gBias, tooltip="Wick = intrabar wick beyond the swing then back; Close = closes back beyond; Both = either qualifies.")
+biasBars = input.int(500, "Bias stays valid for (bars)", minval=20, group=gBias)
+
+gStruct = "15m structure"
+swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
+
+gEntry = "5m entry zone"
+useIFVG      = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
+confirmBars  = input.bool(true, "Only act on confirmed bars (no intrabar repaint)", group=gEntry, tooltip="Gates sweeps, FVG capture and taps to bar close so signals don't flicker intrabar.")
+
+gTrade = "Trade management"
+showTrade = input.bool(true,  "Draw entry / SL / TP lines", group=gTrade)
+slBufPct  = input.float(5.0, "SL buffer beyond zone (%)", minval=0.0, step=0.5, group=gTrade, tooltip="Percent of the zone height added beyond its far edge.")
+rrChoice  = input.string("2R", "RR target (2R or 3R)", options=["2R", "3R"], group=gTrade)
+rrMult    = rrChoice == "3R" ? 3.0 : 2.0
+tradeExt  = input.int(40,    "Trade line length (bars)", minval=5, group=gTrade)
+cEntry    = input.color(color.blue,  "Entry line",      group=gTrade)
+cSL       = input.color(color.red,   "Stop line",       group=gTrade)
+cTPs      = input.color(color.teal,  "Structure TP",    group=gTrade)
+cTPr      = input.color(color.green, "RR TP",           group=gTrade)
+
+gShow = "Display"
+showSell = input.bool(true, "Show sell setups", group=gShow)
+showBuy  = input.bool(true, "Show buy setups",  group=gShow)
+cPoi  = input.color(color.yellow, "4H POI color", group=gShow)
+cZS   = input.color(color.new(color.red, 65),   "Sell zone color", group=gShow)
+cZB   = input.color(color.new(color.green, 65), "Buy zone color",  group=gShow)
+cLine = input.color(color.aqua, "15m level color", group=gShow)
+
+tfEntry = useChartForEntry ? timeframe.period : tf5
+okBar   = not confirmBars or barstate.isconfirmed
+
+// =============================== 4H DATA =====================================
+h4() =>
+    ph = ta.pivothigh(high, swLen4, swLen4)[1]
+    pl = ta.pivotlow(low,  swLen4, swLen4)[1]
+    bFt = high[1] < low[3]  ? low[3]  : na   // bearish FVG top
+    bFb = high[1] < low[3]  ? high[1] : na   // bearish FVG bottom
+    uFt = low[1]  > high[3] ? low[1]  : na   // bullish FVG top
+    uFb = low[1]  > high[3] ? high[3] : na   // bullish FVG bottom
+    [ph, pl, bFt, bFb, uFt, uFb]
+
+[h4PH, h4PL, h4bFt, h4bFb, h4uFt, h4uFb] = request.security(syminfo.tickerid, tf4h, h4(), lookahead=barmerge.lookahead_off)
+
+// Track most recent 4H swings + 4H FVG zones
+var float swHigh4 = na
+var float swLow4  = na
+if not na(h4PH) and h4PH != nz(h4PH[1])
+    swHigh4 := h4PH
+if not na(h4PL) and h4PL != nz(h4PL[1])
+    swLow4 := h4PL
+
+var box poiSupBox = na
+var box poiDemBox = na
+var float f4bT = na, var float f4bB = na   // active 4H bearish FVG
+var float f4uT = na, var float f4uB = na   // active 4H bullish FVG
+if not na(h4bFt) and (h4bFt != nz(h4bFt[1]) or h4bFb != nz(h4bFb[1]))
+    f4bT := h4bFt
+    f4bB := h4bFb
+    if not na(poiSupBox)
+        box.delete(poiSupBox)
+    poiSupBox := box.new(bar_index, f4bT, bar_index, f4bB, xloc=xloc.bar_index, border_color=cPoi, bgcolor=color.new(cPoi, 88), extend=extend.right, text="4H FVG", text_color=cPoi, text_size=size.small)
+if not na(h4uFt) and (h4uFt != nz(h4uFt[1]) or h4uFb != nz(h4uFb[1]))
+    f4uT := h4uFt
+    f4uB := h4uFb
+    if not na(poiDemBox)
+        box.delete(poiDemBox)
+    poiDemBox := box.new(bar_index, f4uT, bar_index, f4uB, xloc=xloc.bar_index, border_color=cPoi, bgcolor=color.new(cPoi, 88), extend=extend.right, text="4H FVG", text_color=cPoi, text_size=size.small)
+
+// ----------------------------- 4H bias flags --------------------------------
+wickSweepHi  = not na(swHigh4) and high > swHigh4 and close < swHigh4
+closeSweepHi = not na(swHigh4) and high[1] > swHigh4 and close < swHigh4
+sweepHi = sweepConfirm == "Wick" ? wickSweepHi : sweepConfirm == "Close" ? closeSweepHi : (wickSweepHi or closeSweepHi)
+
+wickSweepLo  = not na(swLow4) and low < swLow4 and close > swLow4
+closeSweepLo = not na(swLow4) and low[1] < swLow4 and close > swLow4
+sweepLo = sweepConfirm == "Wick" ? wickSweepLo : sweepConfirm == "Close" ? closeSweepLo : (wickSweepLo or closeSweepLo)
+
+inFvg4Bear = not na(f4bT) and close <= f4bT and close >= f4bB
+inFvg4Bull = not na(f4uT) and close <= f4uT and close >= f4uB
+
+// ------------------------- 1H bias (same rules as 4H) ------------------------
+[h1PH, h1PL, h1bFt, h1bFb, h1uFt, h1uFb] = request.security(syminfo.tickerid, tf1h, h4(), lookahead=barmerge.lookahead_off)
+
+var float swHigh1 = na
+var float swLow1  = na
+if not na(h1PH) and h1PH != nz(h1PH[1])
+    swHigh1 := h1PH
+if not na(h1PL) and h1PL != nz(h1PL[1])
+    swLow1 := h1PL
+
+var float f1bT = na, var float f1bB = na   // active 1H bearish FVG
+var float f1uT = na, var float f1uB = na   // active 1H bullish FVG
+if not na(h1bFt) and (h1bFt != nz(h1bFt[1]) or h1bFb != nz(h1bFb[1]))
+    f1bT := h1bFt
+    f1bB := h1bFb
+if not na(h1uFt) and (h1uFt != nz(h1uFt[1]) or h1uFb != nz(h1uFb[1]))
+    f1uT := h1uFt
+    f1uB := h1uFb
+
+wickSweepHi1  = not na(swHigh1) and high > swHigh1 and close < swHigh1
+closeSweepHi1 = not na(swHigh1) and high[1] > swHigh1 and close < swHigh1
+sweepHi1 = sweepConfirm == "Wick" ? wickSweepHi1 : sweepConfirm == "Close" ? closeSweepHi1 : (wickSweepHi1 or closeSweepHi1)
+wickSweepLo1  = not na(swLow1) and low < swLow1 and close > swLow1
+closeSweepLo1 = not na(swLow1) and low[1] < swLow1 and close > swLow1
+sweepLo1 = sweepConfirm == "Wick" ? wickSweepLo1 : sweepConfirm == "Close" ? closeSweepLo1 : (wickSweepLo1 or closeSweepLo1)
+inFvg1Bear = not na(f1bT) and close <= f1bT and close >= f1bB
+inFvg1Bull = not na(f1uT) and close <= f1uT and close >= f1uB
+
+h1Short = useH1 and ((useSweep and sweepHi1) or (useFvg4 and inFvg1Bear))
+h1Long  = useH1 and ((useSweep and sweepLo1) or (useFvg4 and inFvg1Bull))
+
+var int shortBiasBar = na
+var int longBiasBar  = na
+if okBar and (h1Short or (useSweep and sweepHi) or (useFvg4 and inFvg4Bear))
+    shortBiasBar := bar_index
+if okBar and (h1Long or (useSweep and sweepLo) or (useFvg4 and inFvg4Bull))
+    longBiasBar := bar_index
+shortBias = not na(shortBiasBar) and bar_index - shortBiasBar <= biasBars
+longBias  = not na(longBiasBar)  and bar_index - longBiasBar  <= biasBars
+
+// =============================== 15m DATA ====================================
+f15() =>
+    pl = ta.pivotlow(low,  swLen15, swLen15)[1]
+    ph = ta.pivothigh(high, swLen15, swLen15)[1]
+    [pl, ph, close]
+
+[pl15, ph15, close15] = request.security(syminfo.tickerid, tf15, f15(), lookahead=barmerge.lookahead_off)
+
+var float lastPL15 = na
+var float lastPH15 = na
+if not na(pl15) and pl15 != nz(pl15[1])
+    lastPL15 := pl15
+if not na(ph15) and ph15 != nz(ph15[1])
+    lastPH15 := ph15
+
+prevClose15 = nz(close15[1], close15)
+bosDown = okBar and shortBias and not na(lastPL15) and close15 < lastPL15 and prevClose15 >= lastPL15
+bosUp   = okBar and longBias  and not na(lastPH15) and close15 > lastPH15 and prevClose15 <= lastPH15
+
+var float brokenLow15  = na
+var int   armShortBar  = na
+var bool  armShort     = false
+var float brokenHigh15 = na
+var int   armLongBar   = na
+var bool  armLong      = false
+if bosDown
+    brokenLow15 := lastPL15
+    armShort := true
+    armShortBar := bar_index
+if bosUp
+    brokenHigh15 := lastPH15
+    armLong := true
+    armLongBar := bar_index
+
+// ========================== 5m ENTRY ZONE LOGIC ==============================
+f5() =>
+    [high, low, high[2], low[2], high[1], low[1], close, open, time[2]]
+[r_h, r_l, r_h2, r_l2, r_h1, r_l1, r_c, r_o, r_t2] = request.security(syminfo.tickerid, tf5, f5(), lookahead=barmerge.lookahead_off)
+e_h  = useChartForEntry ? high    : r_h
+e_l  = useChartForEntry ? low     : r_l
+e_h2 = useChartForEntry ? high[2] : r_h2
+e_l2 = useChartForEntry ? low[2]  : r_l2
+e_h1 = useChartForEntry ? high[1] : r_h1
+e_l1 = useChartForEntry ? low[1]  : r_l1
+e_c  = useChartForEntry ? close   : r_c
+e_o  = useChartForEntry ? open    : r_o
+e_t2 = useChartForEntry ? time[2] : r_t2
+
+var array<float> zTops  = array.new<float>()
+var array<float> zBots  = array.new<float>()
+var array<int>   zDir   = array.new<int>()
+var array<box>   zBox   = array.new<box>()
+var array<bool>  zArmed = array.new<bool>()
+var array<float> zTgt   = array.new<float>()
+
+overlap(float aT, float aB, float bT, float bB) => aB <= bT and aT >= bB
+
+drawTrade(int dir, float entryP, float zTop, float zBot, float structTgt) =>
+    if showTrade
+        zh  = zTop - zBot
+        buf = zh * slBufPct / 100.0
+        float slP = dir < 0 ? zTop + buf : zBot - buf
+        risk = math.abs(entryP - slP)
+        float rrP = dir < 0 ? entryP - risk * rrMult : entryP + risk * rrMult
+        int x1 = bar_index
+        int x2 = bar_index + tradeExt
+        line.new(x1, entryP, x2, entryP, color=cEntry, width=2)
+        line.new(x1, slP,    x2, slP,    color=cSL,    width=2, style=line.style_dashed)
+        line.new(x1, rrP,    x2, rrP,    color=cTPr,   width=2)
+        label.new(x2, entryP, "Entry " + str.tostring(entryP, format.mintick), style=label.style_label_left, color=color.new(cEntry, 80), textcolor=cEntry, size=size.small)
+        label.new(x2, slP,    "SL "    + str.tostring(slP, format.mintick),    style=label.style_label_left, color=color.new(cSL, 80),    textcolor=cSL,    size=size.small)
+        label.new(x2, rrP,    str.tostring(rrMult, "#.#") + "R TP",             style=label.style_label_left, color=color.new(cTPr, 80),   textcolor=cTPr,   size=size.small)
+        bool structOk = dir < 0 ? (not na(structTgt) and structTgt < entryP) : (not na(structTgt) and structTgt > entryP)
+        if structOk
+            rrS = math.abs(entryP - structTgt) / risk
+            line.new(x1, structTgt, x2, structTgt, color=cTPs, width=2, style=line.style_dotted)
+            label.new(x2, structTgt, "Struct TP (" + str.tostring(rrS, "#.#") + "R)", style=label.style_label_left, color=color.new(cTPs, 80), textcolor=cTPs, size=size.small)
+
+addEntryZone(float t, float b, int dir, int t0, float tgt) =>
+    col = dir < 0 ? cZS : cZB
+    bx = box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text="5m FVG", text_color=color.gray, text_size=size.small)
+    zTops.push(t)
+    zBots.push(b)
+    zDir.push(dir)
+    zBox.push(bx)
+    zArmed.push(true)
+    zTgt.push(tgt)
+
+bool sellSig = false
+bool buySig  = false
+
+if okBar and showSell and armShort and not na(brokenLow15)
+    bearFvg = e_h < e_l2
+    bT = e_l2
+    bB = e_h
+    ifvgBear = useIFVG and (e_l1 > e_h2) and e_c < e_h2
+    iT = e_l1
+    iB = e_h2
+    if bearFvg and overlap(bT, bB, brokenLow15, brokenLow15)
+        addEntryZone(bT, bB, -1, e_t2, brokenLow15)
+        armShort := false
+    else if ifvgBear and overlap(iT, iB, brokenLow15, brokenLow15)
+        addEntryZone(iT, iB, -1, e_t2, brokenLow15)
+        armShort := false
+
+if okBar and showBuy and armLong and not na(brokenHigh15)
+    bullFvg = e_l > e_h2
+    uT = e_l
+    uB = e_h2
+    ifvgBull = useIFVG and (e_h1 < e_l2) and e_c > e_l2
+    juT = e_l2
+    juB = e_h1
+    if bullFvg and overlap(uT, uB, brokenHigh15, brokenHigh15)
+        addEntryZone(uT, uB, 1, e_t2, brokenHigh15)
+        armLong := false
+    else if ifvgBull and overlap(juT, juB, brokenHigh15, brokenHigh15)
+        addEntryZone(juT, juB, 1, e_t2, brokenHigh15)
+        armLong := false
+
+// --- Tap detection + mitigation ---
+if okBar and zTops.size() > 0
+    for i = zTops.size() - 1 to 0
+        t = zTops.get(i)
+        b = zBots.get(i)
+        d = zDir.get(i)
+        armed = zArmed.get(i)
+        tgt = zTgt.get(i)
+        if d < 0
+            if close > t
+                box.delete(zBox.get(i))
+                zTops.remove(i)
+                zBots.remove(i)
+                zDir.remove(i)
+                zBox.remove(i)
+                zArmed.remove(i)
+                zTgt.remove(i)
+            else if armed and high >= b
+                sellSig := true
+                zArmed.set(i, false)
+                box.set_right(zBox.get(i), time)
+                box.set_extend(zBox.get(i), extend.none)
+                drawTrade(-1, b, t, b, tgt)
+        else
+            if close < b
+                box.delete(zBox.get(i))
+                zTops.remove(i)
+                zBots.remove(i)
+                zDir.remove(i)
+                zBox.remove(i)
+                zArmed.remove(i)
+                zTgt.remove(i)
+            else if armed and low <= t
+                buySig := true
+                zArmed.set(i, false)
+                box.set_right(zBox.get(i), time)
+                box.set_extend(zBox.get(i), extend.none)
+                drawTrade(1, t, t, b, tgt)
+
+plot(armShort ? brokenLow15 : na, "Broken 15m low", color=cLine, style=plot.style_linebr, linewidth=1)
+plot(armLong ? brokenHigh15 : na, "Broken 15m high", color=cLine, style=plot.style_linebr, linewidth=1)
+
+plotshape(sellSig, "Sell", shape.triangledown, location.abovebar, color.red,   size=size.small, text="Sell", textcolor=color.red)
+plotshape(buySig,  "Buy",  shape.triangleup,   location.belowbar, color.green, size=size.small, text="Buy",  textcolor=color.green)
+
+alertcondition(sellSig,          "Sell tap",          "SELL: price tapped 5m entry zone on {{ticker}} ({{interval}})")
+alertcondition(buySig,           "Buy tap",           "BUY: price tapped 5m entry zone on {{ticker}} ({{interval}})")
+alertcondition(sellSig or buySig,"Any entry tap",     "Entry zone tapped on {{ticker}} ({{interval}})")
+alertcondition(bosDown,          "15m BOS down",      "15m break of structure DOWN on {{ticker}} ({{interval}})")
+alertcondition(bosUp,            "15m BOS up",        "15m break of structure UP on {{ticker}} ({{interval}})")
