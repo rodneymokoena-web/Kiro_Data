@@ -51,11 +51,6 @@ input ENUM_LOT_MODE   InpLotMode    = LOT_RISK_PCT;
 input double          InpFixedLots  = 0.01;       // Fixed lots
 input ENUM_RISK_CHOICE InpRiskChoice = RISK_1_PCT; // Risk per trade: 1% or 0.5% of balance
 
-input group "Stop-size filter"
-input bool            InpUseStopFilter = false;   // Stop-size filter ON/OFF
-input double          InpMinStop       = 3.0;     // Min stop distance, price units (gold: dollars)
-input double          InpMaxSpreadPct  = 0.0;     // Max spread as % of stop (0 = off)
-
 input group "Filters"
 input int             InpMaxSpreadPts = 0;        // Max spread in points (0 = off)
 input bool            InpUseSession   = false;    // Restrict to trading hours
@@ -155,18 +150,6 @@ bool Overlap(double aT, double aB, double bT, double bB) { return (aB <= bT && a
 
 double RRValue()      { return (InpRRChoice == RR_3R) ? 3.0 : 2.0; }
 double RiskPercent()  { return (InpRiskChoice == RISK_HALF_PCT) ? 0.5 : 1.0; }
-
-// Stop-size filter (toggle). Skips trades whose stop is too small to absorb the spread.
-// risk and spread are both in price units.
-bool StopFilterPass(double risk, double spread)
-  {
-   if(!InpUseStopFilter) return true;
-   if(InpMinStop > 0 && risk < InpMinStop)
-     { PrintFormat("Tap skipped: stop %s < min %s", DoubleToString(risk, _Digits), DoubleToString(InpMinStop, _Digits)); return false; }
-   if(InpMaxSpreadPct > 0 && risk > 0 && spread / risk * 100.0 > InpMaxSpreadPct)
-     { Print("Tap skipped: spread too large relative to stop"); return false; }
-   return true;
-  }
 
 bool HasPosition()
   {
@@ -429,7 +412,6 @@ void ExecuteTap(int idx)
       sl    = top + buf;
       risk  = sl - entry;
       if(risk <= 0) return;                    // price already blew through the zone
-      if(!StopFilterPass(risk, ask - bid)) return;
       if(risk < minDist) { sl = entry + minDist; risk = minDist; }
       tp = (InpTpMode == TP_STRUCTURE && tgt > 0 && tgt < entry) ? tgt : entry - risk * RRValue();
       if(entry - tp < minDist) tp = entry - minDist;
@@ -440,7 +422,6 @@ void ExecuteTap(int idx)
       sl    = bot - buf;
       risk  = entry - sl;
       if(risk <= 0) return;
-      if(!StopFilterPass(risk, ask - bid)) return;
       if(risk < minDist) { sl = entry - minDist; risk = minDist; }
       tp = (InpTpMode == TP_STRUCTURE && tgt > 0 && tgt > entry) ? tgt : entry + risk * RRValue();
       if(tp - entry < minDist) tp = entry + minDist;
