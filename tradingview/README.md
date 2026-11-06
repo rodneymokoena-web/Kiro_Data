@@ -48,7 +48,7 @@ Short described; long is the mirror image.
    cancelled on a 5m close back through the entry FVG unless re-inverted.
 6. **Stop / target:** beyond the **previous completed 1H candle** + 2 points; **3R**.
 
-**Both:** stop to **breakeven at +1R**; the strategy risks 1 % of equity per trade.
+**Both:** stop to **breakeven at +1R** (swing model then also trails to new 1H swings); the strategy risks 1 % of equity per trade.
 
 ## On the chart
 - **Entry / stop / target lines** for every pending and open trade: orange = entry, red = stop, green = target, with
@@ -78,9 +78,9 @@ $10,000 start, 1 % risk per trade, compounded, after costs. Python backtest on M
 
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** (snapshot rules, 4H/D/W/M, close-back sweep) | 122 trades · win 47 % · PF 1.59 · +20.43R · $10k → $12,172 · max DD 5.9 % | 132 trades · win 52 % · PF 1.67 · +25.29R · $10k → $12,769 · max DD 7.6 % |
+| **Swing** (snapshot rules, 4H/D/W/M, close-back sweep, trailing stop) | 122 trades · win 53 % · PF 1.71 · +24.30R · $10k → $12,658 · max DD 4.8 % | 132 trades · win 56 % · PF 1.69 · +25.96R · $10k → $12,868 · max DD 7.1 % |
 | **Intraday** 4H/D/W/M + session liquidity, 5m touch | 73 trades · win 25 % · PF 1.40 · +15.28R · $10k → $11,537 · max DD 7.7 % | 76 trades · win 34 % · PF 2.23 · +42.45R · $10k → $15,092 · max DD 7.4 % |
-| **Both** (1 % each) | 195 trades · PF 1.49 · +35.71R · $10k → $14,044 · max DD 12.6 % | 208 trades · PF 1.94 · +67.74R · $10k → $19,271 · max DD 12.8 % |
+| **Both** (1 % each) | 195 trades · PF 1.54 · +39.57R · $10k → $14,604 · max DD 11.8 % | 208 trades · PF 1.95 · +68.42R · $10k → $19,420 · max DD 12.3 % |
 
 2021-2023 (never used for tuning) / 2024-2026: swing +3.13R / +9.20R (GoatFunded), +6.49R / +9.47R (Pepperstone);
 intraday +16.62R / +13.41R (GoatFunded), +24.38R / +12.44R (Pepperstone). About 14 swing and 5 intraday trades per year.
