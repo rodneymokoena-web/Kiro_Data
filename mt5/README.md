@@ -38,7 +38,8 @@ than the firm's own limits).
 4. Make sure the chart has enough history for D/W/MN/4H/1H (Tools -> Options -> Charts -> Max bars; scroll back once).
 
 ## The rules it implements (short; long is mirrored)
-1. **Liquidity (Rule 1):** unbroken swing highs/lows on **D / W / M** (2 candles each side) and **4H** (10 each side).
+1. **Liquidity (Rule 1):** unbroken swing highs/lows on **D / W / M** (2 candles each side) and **4H** (10 each side), plus the **far edge of every fresh 4H FVG** (bearish FVG top = buy-side, bullish FVG bottom = sell-side).
+   "Fresh" = no 4H candle has traded into the gap yet, so a level can be swept up to and including the 4H candle that first enters it (`InpFvgLiquidity`).
 2. **Sweep (Rule 2):** a completed 1H candle trades through a level **and closes back** the other way.
    The sweep is remembered for up to 80 1H candles.
 3. **4H FVG & inversion (Rule 3):** the last bullish 4H FVG (within 60 4H candles, still intact) is **closed below by a
@@ -57,6 +58,7 @@ than the firm's own limits).
 | `InpCloseBackSweep` | true | sweep needs a close back through the level |
 | `InpPiv4H` | 10 | 4H swing size (10 major, 2 all, 0 off) |
 | `InpPivDWM` | 2 | D/W/M swing size |
+| `InpFvgLiquidity` | true | fresh 4H FVG far edges as extra liquidity (v1.30) |
 | `InpStopBuffer` | 2.0 | points beyond the stop level |
 | `InpBE_at_R` | 1.0 | breakeven trigger in R (0 = off) |
 

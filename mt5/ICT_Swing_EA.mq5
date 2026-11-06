@@ -12,7 +12,7 @@
 //|   risk, ~6-8% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.20"
+#property version   "1.30"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -35,6 +35,7 @@ input bool   InpResetPeak        = false; // set true for one start to reset the
 input group "Rule 1 - liquidity (swing sizes, candles each side)"
 input int    InpPivDWM        = 2;       // D/W/M swing size
 input int    InpPiv4H         = 10;      // 4H swing size (10 = major swings; 2 = all; 0 = off)
+input bool   InpFvgLiquidity  = true;    // also treat the FAR edge of every FRESH 4H FVG as liquidity (bearish FVG top / bullish FVG bottom)
 
 input group "Rule 2-3 - sweep & inversion"
 input bool   InpCloseBackSweep= true;    // sweep must close back through the level (rejection)
@@ -322,13 +323,47 @@ void CollectSwings(ENUM_TIMEFRAMES tf, int piv, double &highs[], double &lows[])
 //+------------------------------------------------------------------+
 //| gather all unbroken liquidity levels (highs and lows)             |
 //+------------------------------------------------------------------+
-void LiquidityLevels(double &highs[], double &lows[])
+//+------------------------------------------------------------------+
+//| 4H FVG far-edge liquidity. A 4H FVG (3 candles, gap between      |
+//| candle 1 and candle 3) is a level at its FAR edge: bearish FVG   |
+//| -> its TOP (buy-side), bullish FVG -> its BOTTOM (sell-side).    |
+//| FRESH only: valid while no 4H candle that CLOSED by time tj has  |
+//| traded into the gap, so the 4H candle that first enters it can   |
+//| still be swept. tj = open time of the 1H candle being scanned.   |
+//+------------------------------------------------------------------+
+void CollectFvgEdges(datetime tj, double &highs[], double &lows[])
+  {
+   MqlRates r[];
+   int got = GetRates(PERIOD_H4, 320, r);
+   if(got < 5) return;
+   int sec = PeriodSeconds(PERIOD_H4);
+   for(int i=got-3; i>=0; i--)                  // i = candle 3 (index 0 = newest/forming)
+     {
+      if(r[i].time + sec > tj) continue;        // candle 3 not yet closed when the 1H candle opened
+      bool bear = r[i].high < r[i+2].low;
+      bool bull = r[i].low  > r[i+2].high;
+      if(!bear && !bull) continue;
+      double nearEdge = bear ? r[i].high : r[i].low;       // edge price trades through first
+      bool touched = false;
+      for(int k=i-1; k>=0; k--)                 // newer candles that were already closed at tj
+        {
+         if(r[k].time + sec > tj) continue;
+         if(bear ? r[k].high >= nearEdge : r[k].low <= nearEdge) { touched=true; break; }
+        }
+      if(touched) continue;
+      if(bear) AppendIf(highs, r[i+2].low);
+      else     AppendIf(lows,  r[i+2].high);
+     }
+  }
+
+void LiquidityLevels(datetime tj, double &highs[], double &lows[])
   {
    ArrayResize(highs,0); ArrayResize(lows,0);
    CollectSwings(PERIOD_MN1, InpPivDWM, highs, lows);
    CollectSwings(PERIOD_W1,  InpPivDWM, highs, lows);
    CollectSwings(PERIOD_D1,  InpPivDWM, highs, lows);
    if(InpPiv4H>0) CollectSwings(PERIOD_H4, InpPiv4H, highs, lows);
+   if(InpFvgLiquidity) CollectFvgEdges(tj, highs, lows);
   }
 
 //+------------------------------------------------------------------+
@@ -348,7 +383,7 @@ void ScanForSetup()
 
    // 1) new sweeps on this candle
    double highs[], lows[];
-   LiquidityLevels(highs, lows);
+   LiquidityLevels(h1[j].time, highs, lows);
    for(int i=0;i<ArraySize(highs);i++)
      {
       double lvl = highs[i];
