@@ -45,6 +45,12 @@ OUT = __import__("pathlib").Path(__file__).parent / "output" / "swing_snap"
 
 LOST: dict[str, int] = {}   # why setups did not become trades (reset by the caller)
 STOP_KIND = "1H OB of drop FVG"   # "4H IFVG" = beyond the 4H IFVG far edge; "1H OB of drop FVG" (snapshot rules)
+EXTRA_ATR_MULT = 0.0       # extra buffer = this x ATR(14, 1H) of the last completed candle, added to any stop
+TRAIL_MODE = "B"           # swing stop management: "" = breakeven at +1R only; "B" = breakeven at +1R, then trail to each new confirmed 1H swing (adopted); "A" = trail from the fill
+TRAIL_PIVOT = 2            # 1H swing size for the structure trail
+IFVG_BUF_MODE = "height"   # stop "4H IFVG + buffer": buffer is IFVG_BUF_PCT % of the 4H IFVG "height" or of "price"
+IFVG_BUF_PCT = 5.0
+STOP_DISP_ATR = 2.5    # "inv candle if disp>=ATR" stop: use the inversion candle high/low when disp_atr >= this, else 1H OB 50%
 # Snapshot-2 rules (SETUPS="1H close"): rule 2 = LAST 4H FVG of the sweeping leg; rule 3 = first 1H CLOSE through it
 # after the sweep, 1H MSS (swing before the extreme) + 1H displacement of >= DISP_MIN_1H candles (>= 1 ATR).
 # STOP_KIND "1H OB of drop FVG": the first BEARISH 1H FVG formed by the drop from the sweep extreme (candle 3 after the
@@ -321,6 +327,37 @@ def plot_trade(symbol: str, tr: dict, st: dict, h1: pd.DataFrame, levels: pd.Dat
     plt.close(fig)
 
 
+def simulate_trail(h1: pd.DataFrame, q: int, short: bool, entry: float, sl: float, tp: float, mode: str,
+                   pivot: int = 2, buf: float = 2.0) -> dict:
+    """Like swing.simulate (stop checked before target on a candle; breakeven at +BE_AT_R) plus a structure trail:
+    a confirmed 1H swing high (short) / low (long) formed AFTER the fill moves the stop to it (+/- buf) when that
+    tightens the stop. mode "A": trail from the fill; mode "B": trail only after breakeven (+1R) is reached."""
+    h, l, c = h1["High"].to_numpy(), h1["Low"].to_numpy(), h1["Close"].to_numpy()
+    n = len(h1); risk = abs(entry - sl); be_r = W.BE_AT_R
+    stop, be, trailing = sl, False, (mode == "A")
+    for k in range(q, n):
+        hit_sl = h[k] >= stop if short else l[k] <= stop
+        hit_tp = (l[k] <= tp if short else h[k] >= tp) and k > q
+        if hit_sl:
+            return {"exit": "stop" if stop == sl else ("breakeven" if stop == entry else "trail"), "k": k, "price": stop, "be": be}
+        if hit_tp:
+            return {"exit": "target", "k": k, "price": tp, "be": be}
+        if k > q:
+            if be_r is not None and not be and ((short and l[k] <= entry - be_r * risk) or (not short and h[k] >= entry + be_r * risk)):
+                stop = min(stop, entry) if short else max(stop, entry)
+                be = True
+                if mode == "B":
+                    trailing = True
+            if trailing:
+                i = k - pivot
+                if i > q:
+                    if short and h[i] > h[i - pivot:i].max() and h[i] >= h[i + 1:i + 1 + pivot].max():
+                        stop = min(stop, h[i] + buf)
+                    if (not short) and l[i] < l[i - pivot:i].min() and l[i] <= l[i + 1:i + 1 + pivot].min():
+                        stop = max(stop, l[i] - buf)
+    return {"exit": "open", "k": n - 1, "price": c[-1], "be": be}
+
+
 def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET, ob_pick: str = OB_PICK,
         setups_kind: str = SETUPS, disp_min: int = DISP_MIN_1H, ob_level: str = OB_LEVEL,
         swing_4h_pivot: int | None = None, swing_1h_pivot: int | None = None,
@@ -335,6 +372,7 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
     trades = []
     for symbol, (h1_file, _, _) in SYMBOLS.items():
         h1 = load(DATA / h1_file)
+        m15 = load(DATA / SYMBOLS[symbol][1]) if stop_kind == "prev 15m candle" else None
         htf = {tf: build_htf(h1, tf) for tf in ("D", "W", "M")}
         import swings as _sw
         _sb = _sw.BREAK_ON; _sw.BREAK_ON = SWEEP_DEF
@@ -355,6 +393,8 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
                         merged.append(st)
                 setups = merged
         h1_fvgs = ifvg.find_fvgs(h1)
+        import structure as _structure
+        atr1 = _structure._arrays(h1)[4]
         o, h, l = (h1[k].to_numpy() for k in ("Open", "High", "Low"))
         idx, n = h1.index, len(h1)
         for k_st, st in enumerate(setups, 1):
@@ -375,7 +415,36 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
             if q < 0:
                 LOST[why] = LOST.get(why, 0) + 1
                 continue
-            if stop_kind == "4H IFVG":
+            buf_override = None
+            if stop_kind == "4H IFVG + buffer":
+                far = st["fvg_top"] if short else st["fvg_bottom"]
+                ref = (st["fvg_top"] - st["fvg_bottom"]) if IFVG_BUF_MODE == "height" else far
+                base, tag, buf_override = far, "4H IFVG far edge + buffer", IFVG_BUF_PCT / 100.0 * ref
+            elif stop_kind == "prev 1H candle":
+                from backtest import prev_candle
+                base = prev_candle(h1, idx[q], pd.Timedelta(hours=1), short, entry, 24); tag = "prev 1H candle"
+            elif stop_kind in ("swept level outer", "swept level near"):
+                import re as _re
+                px = [float(x) for x in _re.findall(r"\d+\.\d+", str(st["swept_levels"]))]
+                if px:
+                    outer = stop_kind.endswith("outer")
+                    base = (max(px) if short else min(px)) if outer else (min(px) if short else max(px))
+                else:
+                    base = np.nan
+                tag = stop_kind
+            elif stop_kind == "inv candle if disp>=ATR":
+                # strong displacement (>= STOP_DISP_ATR): stop at the inversion (CISD-breaking) candle's high/low;
+                # otherwise the 1H OB 50%
+                if float(st.get("disp_atr", 0)) >= STOP_DISP_ATR:
+                    j1 = int(st["x_inv_idx_1h"])
+                    base = (h[j1] if short else l[j1]); tag = f"inv candle ({st['disp_atr']} ATR)"
+                else:
+                    base, tag = _drop_ob(st, h1, h1_fvgs, anchor, q, ob_level)
+            elif stop_kind == "prev 15m candle":
+                from backtest import prev_candle
+                base = prev_candle(m15, idx[q], pd.Timedelta(minutes=15), short, entry, 48)
+                tag = "prev 15m candle"
+            elif stop_kind == "4H IFVG":
                 base, tag = (st["fvg_top"] if short else st["fvg_bottom"]), "4H IFVG far edge"
             elif stop_kind.startswith("1H FVG beyond IFVG"):
                 base, tag = _fvg_beyond_ifvg(st, h1_fvgs, anchor, q, FVG_PICK, FVG_OVERLAP)
@@ -388,7 +457,10 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
             if np.isnan(base):
                 LOST["no stop level"] = LOST.get("no stop level", 0) + 1
                 continue
-            sl = base + SL_BUFFER[symbol] if short else base - SL_BUFFER[symbol]
+            _b = SL_BUFFER[symbol] if buf_override is None else buf_override
+            if EXTRA_ATR_MULT:
+                _b += EXTRA_ATR_MULT * float(atr1[max(q - 1, 0)])
+            sl = base + _b if short else base - _b
             if (short and sl <= entry) or (not short and sl >= entry):
                 LOST["stop on the wrong side of the entry (order block below the 4H IFVG)"] = LOST.get("stop on the wrong side of the entry (order block below the 4H IFVG)", 0) + 1
                 continue
@@ -409,7 +481,8 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
                 tp, ttag = W.pick_target(levels, short, entry, idx[q])
                 if np.isnan(tp):
                     continue
-            sim = W.simulate(h1, q, short, entry, sl, tp)
+            sim = (simulate_trail(h1, q, short, entry, sl, tp, TRAIL_MODE, TRAIL_PIVOT, SL_BUFFER[symbol])
+                   if TRAIL_MODE else W.simulate(h1, q, short, entry, sl, tp))
             pnl = (entry - sim["price"]) if short else (sim["price"] - entry)
             trades.append({"symbol": symbol, "setup": k_st, "signal": st["signal"], "swept": st["swept_levels"],
                            "4h_signal_time": st["signal_time"], "4h_ifvg_bottom": st["fvg_bottom"],

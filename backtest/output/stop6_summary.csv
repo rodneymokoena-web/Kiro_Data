@@ -1,0 +1,25 @@
+stop,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26,avg stop
+0 current: 1H OB 50%,goat,122,47,1.59,20.43,12172,5.9,8.1,12.3,267
+1 4H order block,goat,122,48,1.17,5.96,10573,6.5,0.8,5.1,319
+2 previous 1H candle,goat,119,34,1.04,2.87,10127,14.7,-4.8,7.6,101
+3a OB 50% + 0.25 ATR,goat,122,47,1.37,13.0,11323,6.4,5.2,7.8,285
+3b OB 50% + 0.5 ATR,goat,122,48,1.26,9.58,10948,6.5,1.6,8.0,303
+3c OB 50% + 1.0 ATR,goat,122,45,1.11,3.82,10348,7.5,-1.0,4.9,339
+0 current: 1H OB 50%,pepperstone,132,52,1.67,25.29,12769,7.6,12.9,12.4,255
+1 4H order block,pepperstone,132,49,1.2,7.36,10718,7.4,5.3,2.1,307
+2 previous 1H candle,pepperstone,129,33,0.81,-13.47,8652,22.1,-8.0,-5.5,102
+3a OB 50% + 0.25 ATR,pepperstone,132,52,1.43,16.8,11756,7.3,10.8,6.0,273
+3b OB 50% + 0.5 ATR,pepperstone,132,51,1.27,10.6,11060,7.5,8.0,2.6,291
+3c OB 50% + 1.0 ATR,pepperstone,132,49,1.15,5.63,10537,8.3,4.2,1.4,326
+4a sweep extreme (+2 pts),goat,122,48,1.41,13.37,11377,6.0,3.2,10.2,321
+4b sweep extreme + 0.25 ATR,goat,122,48,1.21,7.37,10721,6.1,0.9,6.5,339
+5a OB 50% + BE + structure trail,goat,122,43,1.94,24.7,12721,4.0,13.1,11.6,267
+5b OB 50% + trail after +1R,goat,122,53,1.71,24.3,12658,4.8,12.7,11.6,267
+6a swept level (outermost),goat,116,44,1.13,6.07,10535,11.4,9.0,-2.9,167
+6b swept level (nearest),goat,114,43,1.07,3.36,10255,12.9,8.0,-4.6,151
+4a sweep extreme (+2 pts),pepperstone,132,50,1.41,14.67,11521,8.2,8.3,6.4,308
+4b sweep extreme + 0.25 ATR,pepperstone,132,48,1.25,8.99,10894,7.8,5.9,3.1,326
+5a OB 50% + BE + structure trail,pepperstone,132,42,1.6,18.47,11954,6.7,15.3,3.2,255
+5b OB 50% + trail after +1R,pepperstone,132,56,1.69,25.96,12868,7.1,16.0,10.0,255
+6a swept level (outermost),pepperstone,124,42,1.05,2.5,10151,11.9,10.2,-7.7,172
+6b swept level (nearest),pepperstone,123,41,1.09,4.8,10380,10.5,9.4,-4.6,154

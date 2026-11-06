@@ -69,6 +69,7 @@ i_swStop  = input.string("1H OB 50%", "Swing stop", options=["1H OB 50%", "4H sw
 i_swTgt   = input.string("1H swing low", "Swing target", options=["1H swing low", "Fixed R"], group=g0, tooltip="1H swing low = the most recent confirmed 1H swing low (2 candles each side) before the 4H FVG's middle candle, i.e. where the leg that built the 4H FVG started (swing high for a long). Fixed R = 'Target (R)'.")
 i_swValid = input.int(48, "Swing order valid (hours after the 1H inversion)", minval=1, group=g0)
 i_swSweep = input.bool(true, "Swing: sweep must close back through the level", group=g0, tooltip="On (default): a swing sweep needs a wick through the level AND a close back the other way (high: close below the level; low: close above). Off: a wick through is enough. The intraday model always uses a wick.")
+i_swTrail = input.bool(true, "Swing: trail the stop to each new 1H swing after breakeven", group=g0, tooltip="After the stop has moved to breakeven (+R below), the stop follows each newly confirmed 1H swing high (short) / low (long) formed after the fill - 2 candles each side - whenever that tightens it. Off = breakeven only. Intraday never trails.")
 i_haWin   = input.int(80, "Swing: inversion window after the sweep (1H candles)", minval=1, group=g0)
 i_haLB    = input.int(60, "Swing: last 4H FVG at most N 4H candles before the sweep", minval=1, group=g0)
 i_dMin1   = input.int(1, "Swing: 1H displacement minimum candles", minval=1, group=g0)
@@ -852,25 +853,47 @@ if SG.size() > 0
                 float exitPx = hitSL ? g.sl : g.tp
                 float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
                 float r = (pnl - i_cost) / g.risk
-                bool isBE = hitSL and g.beDone
+                bool trailWin = hitSL and g.beDone and r > 0.05          // stopped out in profit by the trailing stop
+                bool isBE = hitSL and g.beDone and not trailWin
                 nTrades += 1
-                nWins += hitSL ? 0 : 1
-                nLoss += hitSL and not isBE ? 1 : 0
+                nWins += (not hitSL or trailWin) ? 1 : 0
+                nLoss += hitSL and not g.beDone ? 1 : 0
                 nBE += isBE ? 1 : 0
                 sumR += r
                 grossW += r > 0 ? r : 0.0
                 grossL += r < 0 ? -r : 0.0
                 holdH += (time - BC.T(g.fillIdx)) / 3600000.0
                 g.state := 3
-                g.result := isBE ? "breakeven" : hitSL ? "stop" : "target"
+                g.result := trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
                 if i_showE
-                    label.new(time, exitPx, (isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                    label.new(time, exitPx, (trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                     line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
                 alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
             else if i_be and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
                 g.sl := g.entry
                 g.beDone := true
                 alert(syminfo.ticker + " stop moved to breakeven " + str.tostring(g.entry, format.mintick), alert.freq_once_per_bar_close)
+            // swing model: after breakeven, trail to the newest confirmed 1H swing (2 each side) that formed after the fill
+            if isSwing and i_swTrail and g.state == 2 and g.beDone and new1 and q >= 0
+                int ti = q - 2                                           // candle with 2 newer candles = confirmed pivot
+                if ti - 2 >= B1.base and B1.T(ti) > BC.T(g.fillIdx)
+                    float lvT = na
+                    if g.sh
+                        bool okT = true
+                        for k2 = 1 to 2
+                            if B1.H(ti - k2) >= B1.H(ti) or B1.H(ti + k2) > B1.H(ti)
+                                okT := false
+                        lvT := okT ? B1.H(ti) + i_slBuf : na
+                        if not na(lvT) and lvT < g.sl
+                            g.sl := lvT
+                    else
+                        bool okT = true
+                        for k2 = 1 to 2
+                            if B1.L(ti - k2) <= B1.L(ti) or B1.L(ti + k2) < B1.L(ti)
+                                okT := false
+                        lvT := okT ? B1.L(ti) - i_slBuf : na
+                        if not na(lvT) and lvT > g.sl
+                            g.sl := lvT
 
 // ───────────────────────────────────────────────────────────────────────────── 3. new 4H candle: sweeps -> IFVG -> quality (rules 1-4)
 if new4
@@ -1349,7 +1372,7 @@ if i_showE and tfOK and SG.size() > 0
             label.set_xy(g.lbE, time, ePx)
             label.set_text(g.lbE, side + " " + stx + "  entry " + str.tostring(ePx, format.mintick))
             label.set_xy(g.lbS, time, g.sl)
-            label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? "  (breakeven)" : ""))
+            label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
             label.set_text(g.lbT, "TP " + str.tostring(g.tp, format.mintick) + "  (" + (isSwing and i_swTgt == "1H swing low" ? "1H swing low, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
             actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
