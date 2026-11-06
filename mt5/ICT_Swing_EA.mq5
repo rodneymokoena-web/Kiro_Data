@@ -12,7 +12,7 @@
 //|   risk, ~6-8% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.10"
+#property version   "1.20"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -48,6 +48,7 @@ input int    InpRetestHours   = 48;      // retest the 4H IFVG within N hours of
 input int    InpValidHours    = 48;      // limit order valid for N hours after the signal
 input double InpStopBuffer    = 2.0;     // stop buffer in points beyond the 1H OB / sweep extreme
 input double InpBE_at_R       = 1.0;     // move stop to breakeven at +R (0 = off)
+input bool   InpTrailStructure= true;    // after breakeven, trail the stop to each new confirmed 1H swing formed after the fill
 input double InpFixedR        = 3.0;     // target if "1H swing low" not found (fallback)
 input bool   InpUseSwingLowTgt= true;    // target = 1H swing low where the leg started (else FixedR)
 input ulong  InpMagic         = 770001;  // magic number
@@ -172,6 +173,8 @@ void OnTick()
    datetime closed1H = t1[1];               // the just-closed 1H candle's open time
    if(closed1H == g_last1H) return;         // only act on a newly completed 1H candle
    g_last1H = closed1H;
+
+   ManageTrail();                           // structure trail on open positions (new 1H candle)
 
    if(g_setup.active) UpdateSetup();        // cancel / expire / retry a pending setup
 
@@ -683,6 +686,57 @@ void CancelPending()
       ulong tk = OrderGetTicket(i);
       if(tk==0) continue;
       if(OrderGetInteger(ORDER_MAGIC)==(long)InpMagic && OrderGetString(ORDER_SYMBOL)==g_sym) trade.OrderDelete(tk);
+     }
+  }
+
+//+------------------------------------------------------------------+
+//| structure trail (swing model): once the stop is at breakeven or   |
+//| better, follow the newest CONFIRMED 1H swing high (short) / low   |
+//| (long) that formed after the position opened - 2 candles each     |
+//| side - and only ever tighten the stop.                            |
+//+------------------------------------------------------------------+
+void ManageTrail()
+  {
+   if(!InpTrailStructure) return;
+   MqlRates h1[]; if(GetRates(PERIOD_H1, 60, h1) < 8) return;     // index 1 = last completed candle
+   const int p = 2;
+   for(int n=PositionsTotal()-1;n>=0;n--)
+     {
+      ulong tk = PositionGetTicket(n);
+      if(!PositionSelectByTicket(tk)) continue;
+      if(PositionGetInteger(POSITION_MAGIC)!=(long)InpMagic || PositionGetString(POSITION_SYMBOL)!=g_sym) continue;
+      bool   isBuy = PositionGetInteger(POSITION_TYPE)==POSITION_TYPE_BUY;
+      double open  = PositionGetDouble(POSITION_PRICE_OPEN);
+      double sl    = PositionGetDouble(POSITION_SL);
+      double tp    = PositionGetDouble(POSITION_TP);
+      datetime ot  = (datetime)PositionGetInteger(POSITION_TIME);
+      bool atBE = isBuy ? sl >= open - 1e-6 : sl <= open + 1e-6;       // trail only once at breakeven or better
+      if(!atBE) continue;
+      double buf = InpStopBuffer * g_point;
+      // newest confirmed swing: candle i needs p NEWER candles (i-1, i-2) and p OLDER candles (i+1, i+2)
+      for(int i=1+p; i+p<ArraySize(h1); i++)
+        {
+         if(h1[i].time <= ot) break;                                    // only swings formed after the fill
+         bool piv = true;
+         for(int k=1;k<=p;k++)
+           {
+            if(isBuy) { if(h1[i+k].low <= h1[i].low || h1[i-k].low < h1[i].low)    piv=false; }
+            else      { if(h1[i+k].high >= h1[i].high || h1[i-k].high > h1[i].high) piv=false; }
+           }
+         if(!piv) continue;
+         double cand = isBuy ? h1[i].low - buf : h1[i].high + buf;
+         bool tighter = isBuy ? cand > sl : cand < sl;
+         double px = isBuy ? SymbolInfoDouble(g_sym,SYMBOL_BID) : SymbolInfoDouble(g_sym,SYMBOL_ASK);
+         double minDist = (double)SymbolInfoInteger(g_sym, SYMBOL_TRADE_STOPS_LEVEL) * g_point;
+         bool valid = isBuy ? cand < px - minDist : cand > px + minDist;   // stop must stay beyond the market by the broker minimum
+         if(tighter && valid)
+           {
+            int dg = (int)SymbolInfoInteger(g_sym, SYMBOL_DIGITS);
+            if(trade.PositionModify(tk, NormalizeDouble(cand,dg), tp))
+               Print("Trail: stop moved to ", DoubleToString(cand,dg));
+           }
+         break;                                                          // only the newest swing matters
+        }
      }
   }
 

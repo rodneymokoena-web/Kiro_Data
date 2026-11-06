@@ -47,7 +47,7 @@ than the firm's own limits).
    sweep extreme first.
 5. **Stop:** above the **50% of the 1H order block of the drop** + buffer (fallback: beyond the sweep extreme).
 6. **Target:** the nearest confirmed **1H swing low** beyond the entry (fallback: fixed R).
-7. **Management:** stop to **breakeven at +1R**. Position size = account balance x risk % / stop distance.
+7. **Management:** stop to **breakeven at +1R**, then **trails to each newly confirmed 1H swing** formed after the fill (`InpTrailStructure`). Position size = account balance x risk % / stop distance.
 
 ## Inputs
 | Input | Default | Meaning |
