@@ -43,6 +43,10 @@ rrMult    = rrChoice == "3R" ? 3.0 : 2.0
 riskChoice = input.string("1%", "Risk per trade (1% or 0.5% of equity)", options=["1%", "0.5%"], group=gTrade)
 riskPct   = riskChoice == "0.5%" ? 0.5 : 1.0
 
+gFilt = "Stop-size filter"
+useStopFilter = input.bool(false, "Stop-size filter ON/OFF", group=gFilt, tooltip="Skip trades whose stop is smaller than the minimum below. Small stops let the spread eat the R:R.")
+minStop = input.float(3.0, "Min stop distance (price units)", minval=0.0, step=0.5, group=gFilt, tooltip="Gold: dollars. Compare to your instrument's price scale.")
+
 gRisk = "Position sizing / filters"
 allowLong   = input.bool(true, "Allow long trades",  group=gRisk)
 allowShort  = input.bool(true, "Allow short trades", group=gRisk)
@@ -277,7 +281,7 @@ if zTops.size() > 0
                 slP = t + buf
                 risk = math.abs(entryP - slP)
                 tpP = exitMode == "Structure level" and not na(tgt) and tgt < entryP ? tgt : entryP - risk * rrMult
-                if canTrade
+                if canTrade and (not useStopFilter or risk >= minStop)
                     goShort := true
                     sEntry := entryP, sSL := slP, sTP := tpP
         else
@@ -296,7 +300,7 @@ if zTops.size() > 0
                 slP = b - buf
                 risk = math.abs(entryP - slP)
                 tpP = exitMode == "Structure level" and not na(tgt) and tgt > entryP ? tgt : entryP + risk * rrMult
-                if canTrade
+                if canTrade and (not useStopFilter or risk >= minStop)
                     goLong := true
                     lEntry := entryP, lSL := slP, lTP := tpP
 

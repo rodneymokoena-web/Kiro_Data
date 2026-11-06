@@ -36,6 +36,10 @@ gEntry = "5m entry zone"
 useIFVG      = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
 confirmBars  = input.bool(true, "Only act on confirmed bars (no intrabar repaint)", group=gEntry, tooltip="Gates sweeps, FVG capture and taps to bar close so signals don't flicker intrabar.")
 
+gFilt = "Stop-size filter"
+useStopFilter = input.bool(false, "Stop-size filter ON/OFF", group=gFilt, tooltip="Hide setups whose stop is smaller than the minimum below. Small stops let the spread eat the R:R.")
+minStop = input.float(3.0, "Min stop distance (price units)", minval=0.0, step=0.5, group=gFilt, tooltip="Gold: dollars. Compare to your instrument's price scale.")
+
 gTrade = "Trade management"
 showTrade = input.bool(true,  "Draw entry / SL / TP lines", group=gTrade)
 slBufPct  = input.float(5.0, "SL buffer beyond zone (%)", minval=0.0, step=0.5, group=gTrade, tooltip="Percent of the zone height added beyond its far edge.")
@@ -284,11 +288,12 @@ if okBar and zTops.size() > 0
                 zArmed.remove(i)
                 zTgt.remove(i)
             else if armed and high >= b
-                sellSig := true
                 zArmed.set(i, false)
                 box.set_right(zBox.get(i), time)
                 box.set_extend(zBox.get(i), extend.none)
-                drawTrade(-1, b, t, b, tgt)
+                if not useStopFilter or (t + (t - b) * slBufPct / 100.0 - b) >= minStop
+                    sellSig := true
+                    drawTrade(-1, b, t, b, tgt)
         else
             if close < b
                 box.delete(zBox.get(i))
@@ -299,11 +304,12 @@ if okBar and zTops.size() > 0
                 zArmed.remove(i)
                 zTgt.remove(i)
             else if armed and low <= t
-                buySig := true
                 zArmed.set(i, false)
                 box.set_right(zBox.get(i), time)
                 box.set_extend(zBox.get(i), extend.none)
-                drawTrade(1, t, t, b, tgt)
+                if not useStopFilter or (t - (b - (t - b) * slBufPct / 100.0)) >= minStop
+                    buySig := true
+                    drawTrade(1, t, t, b, tgt)
 
 plot(armShort ? brokenLow15 : na, "Broken 15m low", color=cLine, style=plot.style_linebr, linewidth=1)
 plot(armLong ? brokenHigh15 : na, "Broken 15m high", color=cLine, style=plot.style_linebr, linewidth=1)
