@@ -67,7 +67,7 @@ INTRADAY_4H_PIVOT = ifvg.RULE1_4H_PIVOT   # 4H swing size (ifvg.RULE1_4H_PIVOT):
 # How a 4H swing sweep is traded: "4H FVG" = like D/W/M (4H FVG -> 4H IFVG -> retest -> 1H IFVG);
 # "1H FVG" = rule 1b: 1H FVG of the leg inverted -> 1H IFVG straight away (setups_v2, no 4H step).
 INTRADAY_4H_MODE = "4H FVG"
-INTRADAY_SESSION_LIQ = ("ASIA", "LONDON", "NY")   # previous-session highs/lows added to the intraday Rule 1
+INTRADAY_SESSION_LIQ = ()   # previous-session highs/lows added to the intraday Rule 1
 INTRADAY_SESSION_MIN_TF = ("1H", "4H", "D", "W", "M")   # kept only if also a swing on 1H or above
 INTRADAY_1H_PIVOT = 0   # rule 1c: 1H swing sweeps -> 1H FVG of the leg -> 1H IFVG (setups_v2), 0 = off
 # extra layers on top of the above: [(level tf, pivot)], each traded via 1H FVG -> 1H IFVG, only at a POI

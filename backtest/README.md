@@ -109,3 +109,8 @@ Each swing setup now trades two independent entries (1% risk each, same stop and
 max DD 5.6% / 3.5% -> 11.6% / 6.4%. Both models: 326 / 353 trades, +76.5R / +126.4R, $20,730 / $33,533, max DD 15.4% / 10.6%.
 The gain mostly comes from taking more risk (two trades per setup, often open together); return per unit of drawdown is about unchanged.
 
+## Update: intraday session liquidity removed (default)
+`INTRADAY_SESSION_LIQ = ()` in `backtest.py` (set `("ASIA","LONDON","NY")` to restore). Intraday 2021-2026 (GoatFunded / Pepperstone):
+74 / 77 -> 52 / 51 trades, PF 1.40 / 2.32 -> 2.02 / 2.86, R +15.2 / +45.4 -> +24.0 / +38.4, max DD 7.7% / 7.4% -> 5.2% / 4.2%.
+Both models: 304 / 327 trades, +85.2R / +119.4R, $22,660 / $31,382, max DD 13.6% / 8.7%.
+
