@@ -42,7 +42,7 @@ Short described; long is the mirror image.
    2 candles each side, before the 4H FVG's middle candle). *Fixed R* optional.
 
 **Intraday model (optional)** (Python: `backtest.py`)
-1b. **Optional (off by default): previous-session highs/lows** (Asia / London / NY, New York clock) added to Rule 1, kept only where the
+1b. **Also previous-session highs/lows** (Asia / London / NY, New York clock) added to Rule 1, kept only where the
    session extreme is also a swing on 1H or higher. Input *Intraday: previous session highs/lows*.
 2. **Sweep + leg + FVG:** a wick trades through one of the Rule 1 levels. The leg into the sweep starts at the **last 4H swing low
    / high before the sweep**. A **4H FVG formed by that leg into the sweep**.
