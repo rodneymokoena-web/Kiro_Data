@@ -44,8 +44,13 @@ than the firm's own limits).
    The sweep is remembered for up to 80 1H candles.
 3. **4H FVG & inversion (Rule 3):** the last bullish 4H FVG (within 10 4H candles, still intact) is **closed below by a
    1H candle** that also has **1H displacement** (>= 1 ATR) and a **1H MSS**.
-4. **Entry (Rule 4):** a **sell limit at the 4H IFVG bottom**, valid 48 h; cancelled if a 1H candle opens above the
-   sweep extreme first.
+4. **Entries (Rule 4):** two independent trades per setup (each risks `InpRiskPct`):
+   (a) **4H IFVG:** a **sell limit at the 4H IFVG bottom**, valid 48 h; cancelled if a 1H candle opens above the
+   sweep extreme first;
+   (b) **1H breaker FVG** (`InpBreakerEntry`, magic `InpMagic`+1): the 1H order block of the drop (last up-close 1H candle before the
+   first bearish 1H FVG of the drop) is broken by a 1H **close** below its low; the entry is a limit at the bottom of the first
+   bearish 1H FVG whose middle candle is at/after that break candle (within 24 candles). Same stop and target as (a).
+   Both can be open together, so `InpOneTradeAtATime` applies per entry kind.
 5. **Stop:** above the **50% of the 1H order block of the drop** + buffer (fallback: beyond the sweep extreme).
 6. **Target:** the nearest confirmed **1H swing low** beyond the entry (fallback: fixed R).
 7. **Management:** stop to **breakeven at +1R**, then **trails to each newly confirmed 1H swing** formed after the fill (`InpTrailStructure`). Position size = account balance x risk % / stop distance.
@@ -61,6 +66,7 @@ than the firm's own limits).
 | `InpFvgLiquidity` | true | fresh 4H FVG far edges as extra liquidity (v1.30) |
 | `InpStopBuffer` | 2.0 | points beyond the stop level |
 | `InpBE_at_R` | 1.0 | breakeven trigger in R (0 = off) |
+| `InpBreakerEntry` | true | second entry at a 1H breaker FVG (v1.40; uses magic `InpMagic`+1) |
 
 ## Known differences from the tested model
 - Sweep -> inversion timing is tracked per 1H candle, but the "last 4H FVG of the leg" is chosen as the most recent

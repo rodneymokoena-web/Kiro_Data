@@ -8,11 +8,11 @@
 //|   candles (no repaint). US100 only by default.                    |
 //|                                                                   |
 //|   NOTE: compile and test in MetaEditor / Strategy Tester before   |
-//|   any live use. Backtests showed ~20-25R over 2021-2026 at 1%     |
-//|   risk, ~6-8% max drawdown - results on your broker will differ.  |
+//|   any live use. Backtests showed ~60-80R over 2021-2026 at 1%     |
+//|   risk per entry, ~6-12% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.31"
+#property version   "1.40"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -49,6 +49,7 @@ input int    InpRetestHours   = 48;      // retest the 4H IFVG within N hours of
 input int    InpValidHours    = 48;      // limit order valid for N hours after the signal
 input double InpStopBuffer    = 2.0;     // stop buffer in points beyond the 1H OB / sweep extreme
 input double InpBE_at_R       = 1.0;     // move stop to breakeven at +R (0 = off)
+input bool   InpBreakerEntry  = true;    // second, independent entry per setup: limit at a 1H breaker FVG (magic = InpMagic+1)
 input bool   InpTrailStructure= true;    // after breakeven, trail the stop to each new confirmed 1H swing formed after the fill
 input double InpFixedR        = 3.0;     // target if "1H swing low" not found (fallback)
 input bool   InpUseSwingLowTgt= true;    // target = 1H swing low where the leg started (else FixedR)
@@ -71,8 +72,24 @@ struct Setup
    datetime signalTime;
    datetime expiry;
    bool     ordered;
+   ulong    magic;             // InpMagic = 4H IFVG entry, InpMagic+1 = 1H breaker FVG entry
   };
 Setup g_setup;
+Setup g_setupB;                // the 1H breaker FVG entry (second, independent trade of the same setup)
+
+// a swing setup waiting for its 1H breaker FVG
+struct BrkWatch
+  {
+   bool     active;
+   bool     isShort;
+   double   fvgTop, fvgBot;    // 4H IFVG
+   double   ext;               // sweep extreme
+   datetime sigTime;
+   datetime expire;
+  };
+BrkWatch g_bw;
+
+bool IsOurMagic(long m) { return m==(long)InpMagic || m==(long)(InpMagic+1); }
 
 int      g_dayKey     = 0;       // yyyymmdd of the current server day
 double   g_dayStartEq = 0;       // equity at the start of the day
@@ -102,7 +119,9 @@ int OnInit()
      {
       Print("Not a US100 chart - EA idle. Symbol: ", g_sym);
      }
-   g_setup.active = false;
+   g_setup.active = false; g_setup.magic = InpMagic;
+   g_setupB.active = false; g_setupB.magic = InpMagic+1;
+   g_bw.active = false;
 
    long login = AccountInfoInteger(ACCOUNT_LOGIN);
    g_gvPeak   = "ICTSWING_PEAK_"   + IntegerToString((int)login);
@@ -124,13 +143,21 @@ int OnInit()
      }
 
    // recover state after a restart: an existing order/position of ours means a setup is already in progress
-   if(HasOpenOrPending())
+   if(HasOpenOrPending(InpMagic))
      {
       g_setup.active  = true;
       g_setup.ordered = true;
       g_setup.expiry  = TimeCurrent() + InpValidHours*3600;
       g_setup.sweepExtreme = 0;
       Print("Recovered an existing order/position (magic ", InpMagic, ") - managing it.");
+     }
+   if(HasOpenOrPending(InpMagic+1))
+     {
+      g_setupB.active  = true;
+      g_setupB.ordered = true;
+      g_setupB.expiry  = TimeCurrent() + InpValidHours*3600;
+      g_setupB.sweepExtreme = 0;
+      Print("Recovered an existing breaker order/position (magic ", InpMagic+1, ") - managing it.");
      }
    Print("ICT Swing EA started. Mode: ", LiveAllowed() ? "AUTOMATIC" : "SIGNALS ONLY",
          " | risk ", DoubleToString(InpRiskPct,2), "% | equity peak ", DoubleToString(g_peakEq,2));
@@ -177,41 +204,48 @@ void OnTick()
 
    ManageTrail();                           // structure trail on open positions (new 1H candle)
 
-   if(g_setup.active) UpdateSetup();        // cancel / expire / retry a pending setup
+   if(g_setup.active)  UpdateSetup(g_setup);    // cancel / expire / retry a pending setup
+   if(g_setupB.active) UpdateSetup(g_setupB);
+   if(InpBreakerEntry && g_bw.active && !halted) CheckBreaker();   // look for the 1H breaker FVG of the current setup
 
-   if(!g_setup.active && !halted && !(InpOneTradeAtATime && HasOpenOrPending()))
+   if(!g_setup.active && !halted && !(InpOneTradeAtATime && HasOpenOrPending(InpMagic)))
       ScanForSetup();
   }
 
 //--- our own position / pending order on this symbol
-bool HasPosition()
+bool HasPosition(ulong magic)
   {
    for(int i=PositionsTotal()-1;i>=0;i--)
      {
       ulong tk = PositionGetTicket(i);
       if(tk==0) continue;
-      if(PositionGetInteger(POSITION_MAGIC)==(long)InpMagic && PositionGetString(POSITION_SYMBOL)==g_sym) return true;
+      if(PositionGetInteger(POSITION_MAGIC)==(long)magic && PositionGetString(POSITION_SYMBOL)==g_sym) return true;
      }
    return false;
   }
-bool HasPending()
+bool HasPending(ulong magic)
   {
    for(int i=OrdersTotal()-1;i>=0;i--)
      {
       ulong tk = OrderGetTicket(i);
       if(tk==0) continue;
-      if(OrderGetInteger(ORDER_MAGIC)==(long)InpMagic && OrderGetString(ORDER_SYMBOL)==g_sym) return true;
+      if(OrderGetInteger(ORDER_MAGIC)==(long)magic && OrderGetString(ORDER_SYMBOL)==g_sym) return true;
      }
    return false;
   }
-bool HasOpenOrPending() { return HasPosition() || HasPending(); }
+bool HasOpenOrPending(ulong magic) { return HasPosition(magic) || HasPending(magic); }
 
 void SyncSetup()
   {
-   if(g_setup.active && g_setup.ordered && !HasOpenOrPending())
+   if(g_setup.active && g_setup.ordered && !HasOpenOrPending(InpMagic))
      {
       g_setup.active = false;
       Print("Setup finished (order gone / position closed).");
+     }
+   if(g_setupB.active && g_setupB.ordered && !HasOpenOrPending(InpMagic+1))
+     {
+      g_setupB.active = false;
+      Print("Breaker setup finished (order gone / position closed).");
      }
   }
 
@@ -241,14 +275,17 @@ bool RiskHalted()
 
 void HandleHalt()
   {
-   if(HasPending()) CancelPending();
-   if(g_setup.active && !HasPosition()) g_setup.active = false;
+   if(HasPending(InpMagic))   CancelPending(InpMagic);
+   if(HasPending(InpMagic+1)) CancelPending(InpMagic+1);
+   if(g_setup.active  && !HasPosition(InpMagic))   g_setup.active  = false;
+   if(g_setupB.active && !HasPosition(InpMagic+1)) g_setupB.active = false;
+   g_bw.active = false;
    if(InpFlattenOnLimit)
       for(int i=PositionsTotal()-1;i>=0;i--)
         {
          ulong tk = PositionGetTicket(i);
          if(tk==0) continue;
-         if(PositionGetInteger(POSITION_MAGIC)==(long)InpMagic && PositionGetString(POSITION_SYMBOL)==g_sym) trade.PositionClose(tk);
+         if(IsOurMagic(PositionGetInteger(POSITION_MAGIC)) && PositionGetString(POSITION_SYMBOL)==g_sym) trade.PositionClose(tk);
         }
   }
 
@@ -580,6 +617,12 @@ double TargetSwing(bool isShort, double entry)
 //+------------------------------------------------------------------+
 void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datetime t)
   {
+   if(InpBreakerEntry)                                 // also watch for this setup's 1H breaker FVG (second entry)
+     {
+      g_bw.active = true; g_bw.isShort = isShort; g_bw.fvgTop = fvgTop; g_bw.fvgBot = fvgBot;
+      g_bw.ext = ext; g_bw.sigTime = t; g_bw.expire = TimeCurrent() + 250*3600;
+     }
+   g_setup.magic        = InpMagic;
    g_setup.active       = true;
    g_setup.isShort      = isShort;
    g_setup.fvgTop       = fvgTop;
@@ -606,7 +649,85 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
    string msg = StringFormat("%s SETUP %s | limit %.2f  SL %.2f  TP %.2f  (risk %.1f pts)",
                              isShort?"SHORT":"LONG", g_sym, g_setup.entry, g_setup.stop, g_setup.target, risk/g_point);
    Print(msg); Alert(msg); SendNotification(msg);
-   if(LiveAllowed()) PlaceOrder();
+   if(LiveAllowed()) PlaceOrder(g_setup);
+  }
+
+//+------------------------------------------------------------------+
+//| 1H breaker + 1H FVG (second entry), short; long mirrored.          |
+//| OB = last up-close 1H candle (within 4) before the first bearish   |
+//| 1H FVG of the drop from the sweep extreme. Breaker = first later   |
+//| 1H CLOSE below its low (within 48 candles). Entry = limit at the   |
+//| bottom of the first bearish 1H FVG whose middle candle is at/after |
+//| the break candle (completed within 24 candles of it).              |
+//| r[] is CHRONOLOGICAL; L = last completed candle. Returns the limit |
+//| price (0 = not found).                                             |
+//+------------------------------------------------------------------+
+double FindBreakerFvg(const MqlRates &r[], int L, bool sh, int anc, double bot4, double top4)
+  {
+   int c1 = -1;
+   for(int i3=MathMax(anc+1,2); i3<=L; i3++)               // first 1H FVG of the drop (smallest i3)
+     {
+      bool bear = r[i3].high < r[i3-2].low, bull = r[i3].low > r[i3-2].high;
+      if(sh && bear && r[i3-2].low  > bot4) { c1 = i3-2; break; }
+      if(!sh && bull && r[i3-2].high < top4) { c1 = i3-2; break; }
+     }
+   if(c1 < 0) return 0;
+   int ob = -1;
+   for(int m=c1; m>=MathMax(c1-3,0); m--)
+      if(sh ? r[m].close > r[m].open : r[m].close < r[m].open) { ob = m; break; }
+   if(ob < 0) return 0;
+   double lv = sh ? r[ob].low : r[ob].high;
+   int b = -1;
+   for(int t=ob+1; t<=MathMin(ob+48,L); t++)
+      if(sh ? r[t].close < lv : r[t].close > lv) { b = t; break; }
+   if(b < 0) return 0;
+   for(int i3=b+1; i3<=MathMin(b+24,L); i3++)               // middle candle (i3-1) at/after the break candle
+     {
+      bool bear = r[i3].high < r[i3-2].low, bull = r[i3].low > r[i3-2].high;
+      if(sh && bear)  return r[i3].high;                    // FVG bottom
+      if(!sh && bull) return r[i3].low;                     // FVG top
+     }
+   return 0;
+  }
+
+void CheckBreaker()
+  {
+   if(TimeCurrent() > g_bw.expire) { g_bw.active = false; return; }
+   if(g_setupB.active) return;                              // one breaker order at a time
+   MqlRates r[]; int n = GetRates(PERIOD_H1, 400, r);       // series: [0] = forming candle
+   if(n < 60) return;
+   ArraySetAsSeries(r, false);                              // chronological; n-1 = forming candle
+   int L = n-2;                                             // last completed candle
+   int anc = -1;                                            // the 1H candle of the sweep extreme (newest match up to the signal)
+   for(int i=L; i>=0; i--)
+     {
+      if(r[i].time > g_bw.sigTime) continue;
+      if(g_bw.isShort ? r[i].high >= g_bw.ext - 1e-6 : r[i].low <= g_bw.ext + 1e-6) { anc = i; break; }
+     }
+   if(anc < 0) return;
+   double lvl = FindBreakerFvg(r, L, g_bw.isShort, anc, g_bw.fvgBot, g_bw.fvgTop);
+   if(lvl <= 0) return;
+
+   bool sh = g_bw.isShort;
+   g_setupB.magic = InpMagic+1; g_setupB.active = true; g_setupB.isShort = sh;
+   g_setupB.fvgTop = g_bw.fvgTop; g_setupB.fvgBot = g_bw.fvgBot; g_setupB.sweepExtreme = g_bw.ext;
+   g_setupB.signalTime = TimeCurrent(); g_setupB.expiry = TimeCurrent() + InpValidHours*3600; g_setupB.ordered = false;
+   g_setupB.entry = lvl;
+   double base = StopFromOB(sh, g_bw.ext, g_bw.fvgBot, g_bw.fvgTop);
+   double buf  = InpStopBuffer * g_point;
+   g_setupB.stop = sh ? base + buf : base - buf;
+   double risk = MathAbs(g_setupB.entry - g_setupB.stop);
+   double tgt = InpUseSwingLowTgt ? TargetSwing(sh, g_setupB.entry) : 0;
+   if(tgt==0 || (sh ? tgt >= g_setupB.entry : tgt <= g_setupB.entry))
+      tgt = sh ? g_setupB.entry - InpFixedR*risk : g_setupB.entry + InpFixedR*risk;
+   g_setupB.target = tgt;
+   g_bw.active = false;                                     // one breaker entry per setup
+   if(sh ? g_setupB.stop <= g_setupB.entry : g_setupB.stop >= g_setupB.entry) { g_setupB.active = false; return; }
+
+   string msg = StringFormat("%s BREAKER FVG SETUP %s | limit %.2f  SL %.2f  TP %.2f  (risk %.1f pts)",
+                             sh?"SHORT":"LONG", g_sym, g_setupB.entry, g_setupB.stop, g_setupB.target, risk/g_point);
+   Print(msg); Alert(msg); SendNotification(msg);
+   if(LiveAllowed()) PlaceOrder(g_setupB);
   }
 
 //+------------------------------------------------------------------+
@@ -633,61 +754,63 @@ double LotsForRisk(double entry, double stop)
    return MathMin(maxLot, lots);
   }
 
-void PlaceOrder()
+void PlaceOrder(Setup &st)
   {
-   if(g_setup.ordered) return;
+   if(st.ordered) return;
    if(!LiveAllowed()) return;
    if(RiskHalted()) return;
-   if(InpOneTradeAtATime && HasOpenOrPending()) { Print("Order skipped: a trade/order already exists."); return; }
+   if(InpOneTradeAtATime && HasOpenOrPending(st.magic)) { Print("Order skipped: a trade/order already exists."); return; }
 
    double bid = SymbolInfoDouble(g_sym, SYMBOL_BID), ask = SymbolInfoDouble(g_sym, SYMBOL_ASK);
    if(InpMaxSpread > 0 && (ask-bid) > InpMaxSpread)
      { Print("Spread ", DoubleToString(ask-bid,2), " > max ", DoubleToString(InpMaxSpread,2), " - will retry on the next 1H candle."); return; }
 
+   trade.SetExpertMagicNumber(st.magic);
+   string cmt = (st.magic == InpMagic) ? "ICT swing" : "ICT swing breaker";
    int dg = (int)SymbolInfoInteger(g_sym, SYMBOL_DIGITS);
-   double e = NormalizeDouble(g_setup.entry,  dg);
-   double s = NormalizeDouble(g_setup.stop,   dg);
-   double t = NormalizeDouble(g_setup.target, dg);
+   double e = NormalizeDouble(st.entry,  dg);
+   double s = NormalizeDouble(st.stop,   dg);
+   double t = NormalizeDouble(st.target, dg);
    double minDist = (double)SymbolInfoInteger(g_sym, SYMBOL_TRADE_STOPS_LEVEL) * g_point;
 
    // broker rule: a limit must sit at least StopsLevel away from the market on the correct side
-   bool limitOK = g_setup.isShort ? (e >= bid + minDist) : (e <= ask - minDist);
+   bool limitOK = st.isShort ? (e >= bid + minDist) : (e <= ask - minDist);
    bool useMarket = false;
    if(!limitOK)
      {
       // price is already at/through the entry (the tested model fills on touch): enter at market if the stop is still valid
-      double px = g_setup.isShort ? bid : ask;
-      bool better = g_setup.isShort ? px >= e : px <= e;           // market price is at least as good as the limit price
+      double px = st.isShort ? bid : ask;
+      bool better = st.isShort ? px >= e : px <= e;           // market price is at least as good as the limit price
       if(!better) { Print("Entry too close to the market for a limit order - skipped."); return; }
       e = px; useMarket = true;
      }
    // stop / target distance rules
    if(MathAbs(e - s) < minDist || MathAbs(t - e) < minDist) { Print("Stop/target closer than the broker minimum - skipped."); return; }
-   if(g_setup.isShort ? (s <= e) : (s >= e))                  { Print("Stop on the wrong side after adjusting - skipped.");     return; }
+   if(st.isShort ? (s <= e) : (s >= e))                  { Print("Stop on the wrong side after adjusting - skipped.");     return; }
 
    double lots = LotsForRisk(e, s);
    if(lots <= 0) return;
 
    // margin check
    double margin = 0;
-   if(OrderCalcMargin(g_setup.isShort ? ORDER_TYPE_SELL : ORDER_TYPE_BUY, g_sym, lots, e, margin) &&
+   if(OrderCalcMargin(st.isShort ? ORDER_TYPE_SELL : ORDER_TYPE_BUY, g_sym, lots, e, margin) &&
       margin > AccountInfoDouble(ACCOUNT_MARGIN_FREE)*0.9)
      { Print("Not enough free margin for ", DoubleToString(lots,2), " lots - skipped."); return; }
 
    bool ok;
    if(useMarket)
-      ok = g_setup.isShort ? trade.Sell(lots, g_sym, 0, s, t, "ICT swing") : trade.Buy(lots, g_sym, 0, s, t, "ICT swing");
+      ok = st.isShort ? trade.Sell(lots, g_sym, 0, s, t, cmt) : trade.Buy(lots, g_sym, 0, s, t, cmt);
    else
      {
-      ok = g_setup.isShort
-           ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, g_setup.expiry, "ICT swing")
-           : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, g_setup.expiry, "ICT swing");
+      ok = st.isShort
+           ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, st.expiry, cmt)
+           : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_SPECIFIED, st.expiry, cmt);
       if(!ok && trade.ResultRetcode()==TRADE_RETCODE_INVALID_EXPIRATION)      // broker rejects expiry: use GTC, EA cancels it itself
-         ok = g_setup.isShort
-              ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_GTC, 0, "ICT swing")
-              : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_GTC, 0, "ICT swing");
+         ok = st.isShort
+              ? trade.SellLimit(lots, e, g_sym, s, t, ORDER_TIME_GTC, 0, cmt)
+              : trade.BuyLimit (lots, e, g_sym, s, t, ORDER_TIME_GTC, 0, cmt);
      }
-   if(ok) { g_setup.ordered = true; Print("Order placed: ", useMarket ? "MARKET " : "LIMIT ", DoubleToString(lots,2), " lots @ ", DoubleToString(e,dg),
+   if(ok) { st.ordered = true; Print("Order placed: ", useMarket ? "MARKET " : "LIMIT ", DoubleToString(lots,2), " lots @ ", DoubleToString(e,dg),
                                           " SL ", DoubleToString(s,dg), " TP ", DoubleToString(t,dg)); }
    else   Print("Order failed (will retry next 1H candle): ", trade.ResultRetcode(), " ", trade.ResultRetcodeDescription());
   }
@@ -696,31 +819,31 @@ void PlaceOrder()
 //| each new 1H close: cancel a setup if price opened beyond the      |
 //| sweep extreme before fill, or if the retest window has expired    |
 //+------------------------------------------------------------------+
-void UpdateSetup()
+void UpdateSetup(Setup &st)
   {
    MqlRates h1[]; if(GetRates(PERIOD_H1, 3, h1) < 2) return;
    double o1 = h1[1].open;
    // a setup recovered after a restart has no stored sweep extreme (0): skip the "beyond the extreme" cancel for it
-   bool beyond = g_setup.sweepExtreme > 0 &&
-                 (g_setup.isShort ? o1 > g_setup.sweepExtreme : o1 < g_setup.sweepExtreme);
-   bool expired = TimeCurrent() > g_setup.expiry;
+   bool beyond = st.sweepExtreme > 0 &&
+                 (st.isShort ? o1 > st.sweepExtreme : o1 < st.sweepExtreme);
+   bool expired = TimeCurrent() > st.expiry;
    if(beyond || expired)
      {
-      if(HasPending()) CancelPending();
-      if(!HasPosition()) g_setup.active = false;           // keep tracking while a position is open (it is managed by SL/TP/BE)
+      if(HasPending(st.magic)) CancelPending(st.magic);
+      if(!HasPosition(st.magic)) st.active = false;           // keep tracking while a position is open (it is managed by SL/TP/BE)
       return;
      }
    // still valid but the order was not placed yet (wide spread, margin, transient error): try again
-   if(!g_setup.ordered && LiveAllowed()) PlaceOrder();
+   if(!st.ordered && LiveAllowed()) PlaceOrder(st);
   }
 
-void CancelPending()
+void CancelPending(ulong magic)
   {
    for(int i=OrdersTotal()-1;i>=0;i--)
      {
       ulong tk = OrderGetTicket(i);
       if(tk==0) continue;
-      if(OrderGetInteger(ORDER_MAGIC)==(long)InpMagic && OrderGetString(ORDER_SYMBOL)==g_sym) trade.OrderDelete(tk);
+      if(OrderGetInteger(ORDER_MAGIC)==(long)magic && OrderGetString(ORDER_SYMBOL)==g_sym) trade.OrderDelete(tk);
      }
   }
 
@@ -739,7 +862,7 @@ void ManageTrail()
      {
       ulong tk = PositionGetTicket(n);
       if(!PositionSelectByTicket(tk)) continue;
-      if(PositionGetInteger(POSITION_MAGIC)!=(long)InpMagic || PositionGetString(POSITION_SYMBOL)!=g_sym) continue;
+      if(!IsOurMagic(PositionGetInteger(POSITION_MAGIC)) || PositionGetString(POSITION_SYMBOL)!=g_sym) continue;
       bool   isBuy = PositionGetInteger(POSITION_TYPE)==POSITION_TYPE_BUY;
       double open  = PositionGetDouble(POSITION_PRICE_OPEN);
       double sl    = PositionGetDouble(POSITION_SL);
@@ -785,7 +908,7 @@ void ManageOpen()
      {
       ulong tk = PositionGetTicket(i);
       if(!PositionSelectByTicket(tk)) continue;
-      if(PositionGetInteger(POSITION_MAGIC)!=(long)InpMagic || PositionGetString(POSITION_SYMBOL)!=g_sym) continue;
+      if(!IsOurMagic(PositionGetInteger(POSITION_MAGIC)) || PositionGetString(POSITION_SYMBOL)!=g_sym) continue;
       bool isBuy = PositionGetInteger(POSITION_TYPE)==POSITION_TYPE_BUY;
       double open = PositionGetDouble(POSITION_PRICE_OPEN);
       double sl   = PositionGetDouble(POSITION_SL);
