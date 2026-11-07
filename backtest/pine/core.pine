@@ -4,10 +4,12 @@
 //  Generated from pine/core.pine by pine/build.py - edit core.pine, then rebuild both scripts.
 //
 //  US100 ONLY (default): trades only on a US100 / NAS100 / USTEC chart.
-//  MODEL "Swing" (default, main): 5m chart recommended (1H works). Snapshot rules: the LAST 4H FVG of the leg that swept
-//          the D/W/M level is inverted by a 1H CLOSE (1H displacement >= 1 candle + 1H MSS); limit at the 4H IFVG near
-//          edge (valid 48 h), stop above the 50% of the 1H order block of the drop, target the 1H swing low where the
-//          leg that built the 4H FVG started.
+//  MODEL "Swing" (default, main): 5m chart recommended (1H works). Snapshot rules: a Rule 1 level is swept by a 1H candle that
+//          wicks through AND closes back; the LAST 4H FVG of the sweeping leg (formed into the sweep, within 10 4H candles
+//          of it, intact) is inverted by a 1H CLOSE (1H displacement >= 1 candle + 1H MSS). TWO entries per setup: a limit
+//          at the 4H IFVG near edge, and a limit at a 1H breaker FVG (the 1H order block of the drop broken by a 1H close,
+//          entry at the first 1H FVG after the break). Both valid 48 h. Stop above the 50% of the 1H order block of the
+//          drop, target the 1H swing low before the 4H FVG's middle candle, breakeven at +1R then trail to each new 1H swing.
 //  MODEL "Intraday (5m entry)" (optional): 5m chart. 5m Touch (default) / 5m 50% CE at the MSS FVG (rule 6),
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
