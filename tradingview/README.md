@@ -31,7 +31,7 @@ Short described; long is the mirror image.
    before the sweep extreme, 2 candles each side).
 5. **Entries (two independent trades per setup):** (a) sell limit at the **4H IFVG bottom** (*4H IFVG Touch*; 50% CE optional), valid **48 h** after the 1H
    inversion; cancelled if a candle opens above the sweep extreme before the fill. (b) **second entry at a 1H breaker FVG**
-   (input *Swing: second entry at a 1H breaker FVG*, on by default): the 1H order block of the drop (last up-close 1H candle
+   (input *Swing: second entry at a 1H breaker FVG*, on by default): the 1H order block of the drop (last up-close 1H candle, looking back 8 candles,
    before the first bearish 1H FVG of the drop) is broken by a 1H **close** below its low; sell limit at the bottom of the
    first bearish 1H FVG whose middle candle is at/after the break candle (within 24 candles). Long = mirror. Same stop and
    target; both trades can be open together (the strategy uses pyramiding 5).
@@ -84,14 +84,14 @@ $10,000 start, 1 % risk per trade, compounded, after costs. Python backtest on M
 
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
-| **Swing** (snapshot rules, 4H/D/W/M + fresh 4H FVG edges, close-back sweep, trailing stop) | 252 trades · win 47 % · PF 1.69 · +61.26R · $10k → $17,976 · max DD 11.6 % | 276 trades · win 49 % · PF 1.85 · +80.95R · $10k → $21,575 · max DD 6.4 % |
+| **Swing** (snapshot rules, 4H/D/W/M + fresh 4H FVG edges, close-back sweep, trailing stop) | 253 trades · win 47 % · PF 1.70 · +61.95R · $10k → $18,099 · max DD 11.0 % | 277 trades · win 49 % · PF 1.86 · +81.60R · $10k → $21,717 · max DD 6.1 % |
 | **Intraday** 4H/D/W/M + session liquidity, 5m touch | 74 trades · win 24 % · PF 1.40 · +15.23R · $10k → $11,532 · max DD 7.7 % | 77 trades · win 35 % · PF 2.32 · +45.44R · $10k → $15,542 · max DD 7.4 % |
-| **Both** (1 % each) | 326 trades · PF 1.60 · +76.50R · $10k → $20,730 · max DD 15.4 % | 353 trades · PF 1.98 · +126.38R · $10k → $33,533 · max DD 10.6 % |
+| **Both** (1 % each) | 327 trades · PF 1.61 · +77.18R · $10k → $20,872 · max DD 14.8 % | 354 trades · PF 1.98 · +127.04R · $10k → $33,753 · max DD 10.6 % |
 
-2021-2023 (never used for tuning) / 2024-2026: swing +36.45R / +24.81R (GoatFunded), +23.73R / +57.22R (Pepperstone);
+2021-2023 (never used for tuning) / 2024-2026: swing +36.45R / +25.49R (GoatFunded), +23.73R / +57.87R (Pepperstone);
 intraday +18.07R / -2.83R (GoatFunded), +27.11R / +18.33R (Pepperstone). About 55 swing and 13 intraday trades per year.
 
-Adding the fresh 4H FVG far edges lifted the swing model from 122 / 132 trades (+24.3R / +26.0R) to 162 / 175 trades (+35.6R / +43.8R, with the 10-candle FVG lookback) and left the intraday model almost unchanged. The second entry at the 1H breaker FVG then took the swing model to 252 / 276 trades (+61.3R / +81.0R) at about twice the drawdown (11.6 % / 6.4 %). The monthly statistics of earlier versions were not
+Adding the fresh 4H FVG far edges lifted the swing model from 122 / 132 trades (+24.3R / +26.0R) to 162 / 175 trades (+35.6R / +43.8R, with the 10-candle FVG lookback) and left the intraday model almost unchanged. The second entry at the 1H breaker FVG then took the swing model to 253 / 277 trades (+62.0R / +81.6R) at about twice the drawdown (11.6 % / 6.4 %). The monthly statistics of earlier versions were not
 re-computed.
 
 **4H candles differ between MT5 and TradingView** (TradingView starts US100 4H candles at the 18:00 New York session
