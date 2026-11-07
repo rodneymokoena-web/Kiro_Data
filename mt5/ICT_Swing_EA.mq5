@@ -12,7 +12,7 @@
 //|   risk per entry, ~6-12% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.41"
+#property version   "1.50"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -72,6 +72,8 @@ struct Setup
    datetime signalTime;
    datetime expiry;
    bool     ordered;
+   datetime extTime;           // 1H open time of the sweep-extreme candle
+   datetime fvgMid;            // open time of the 4H FVG's middle candle (target anchor)
    ulong    magic;             // InpMagic = 4H IFVG entry, InpMagic+1 = 1H breaker FVG entry
   };
 Setup g_setup;
@@ -84,6 +86,7 @@ struct BrkWatch
    bool     isShort;
    double   fvgTop, fvgBot;    // 4H IFVG
    double   ext;               // sweep extreme
+   datetime extTime, fvgMid;
    datetime sigTime;
    datetime expire;
   };
@@ -298,6 +301,23 @@ int GetRates(ENUM_TIMEFRAMES tf, int count, MqlRates &r[])
    return CopyRates(g_sym, tf, 0, count, r);   // index 0 = current (forming) candle
   }
 
+int GetChrono(ENUM_TIMEFRAMES tf, int count, MqlRates &r[])
+  {
+   ArraySetAsSeries(r, false);                 // oldest first; the LAST element is the forming candle
+   return CopyRates(g_sym, tf, 0, count, r);
+  }
+
+double ATR14c(const MqlRates &r[], int idx)    // mean true range of the 14 candles ending at idx (chronological array)
+  {
+   double sum=0; int cnt=0;
+   for(int i=idx; i>idx-14 && i>=1; i--)
+     {
+      sum += MathMax(r[i].high-r[i].low, MathMax(MathAbs(r[i].high-r[i-1].close), MathAbs(r[i].low-r[i-1].close)));
+      cnt++;
+     }
+   return cnt>0 ? sum/cnt : 0;
+  }
+
 double ATR14(ENUM_TIMEFRAMES tf, int shift)
   {
    MqlRates r[];
@@ -320,18 +340,49 @@ void AppendIf(double &a[], double v)
   }
 
 //+------------------------------------------------------------------+
-//| unbroken D/W/M/4H swing levels (confirmed pivots, not yet broken) |
-//| fills arrays of highs and lows; uses completed candles only.      |
+//| 1H history used to decide whether a level was already swept       |
+//| (a 1H candle that wicked through it AND closed back = consumed).   |
 //+------------------------------------------------------------------+
-void CollectSwings(ENUM_TIMEFRAMES tf, int piv, double &highs[], double &lows[])
+MqlRates g_h1c[];
+int      g_n1c = 0;
+
+void LoadH1Cache()
+  {
+   ArraySetAsSeries(g_h1c, false);
+   int want[3] = {45000, 20000, 5000};
+   g_n1c = 0;
+   for(int a=0;a<3;a++) { g_n1c = CopyRates(g_sym, PERIOD_H1, 0, want[a], g_h1c); if(g_n1c > 0) break; }
+  }
+
+int LowerBoundTime(datetime t)                 // first index in g_h1c with time >= t
+  {
+   int lo=0, hi=g_n1c;
+   while(lo<hi) { int mid=(lo+hi)/2; if(g_h1c[mid].time < t) lo=mid+1; else hi=mid; }
+   return lo;
+  }
+
+bool LevelAlive(double lvl, bool isHigh, datetime ct, datetime tj)
+  {
+   for(int k=LowerBoundTime(ct); k<g_n1c && g_h1c[k].time < tj; k++)
+      if(isHigh ? (g_h1c[k].high > lvl && g_h1c[k].close < lvl) : (g_h1c[k].low < lvl && g_h1c[k].close > lvl)) return false;
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//| D/W/M/4H swing levels (confirmed pivots) that no 1H candle has     |
+//| swept yet (wick through AND close back), as of the 1H candle that  |
+//| opened at tj. Uses completed candles only.                         |
+//+------------------------------------------------------------------+
+void CollectSwings(ENUM_TIMEFRAMES tf, int piv, datetime tj, double &highs[], double &lows[])
   {
    if(piv <= 0) return;
    MqlRates r[];
    int need = 300 + 2*piv;
    int got = GetRates(tf, need, r);
    if(got < 2*piv+2) return;
-   // r[0] is forming; use confirmed candles from index 1. A pivot at i needs piv candles each side (i-piv..i+piv),
-   // all with larger index = older. Pivot confirmed once i-piv >= 1 (piv newer candles exist).
+   int sec = PeriodSeconds(tf);
+   // r[0] is forming. A pivot at i needs piv newer candles (i-1..i-piv) and piv older (i+1..i+piv); it is confirmed at
+   // the close of candle i-piv. Older side strictly beyond, newer side may be equal (as in the backtest).
    for(int i=got-piv-1; i>=1+piv; i--)
      {
       bool isHigh=true, isLow=true;
@@ -340,22 +391,12 @@ void CollectSwings(ENUM_TIMEFRAMES tf, int piv, double &highs[], double &lows[])
          if(r[i+k].high >= r[i].high || r[i-k].high >  r[i].high) isHigh=false;
          if(r[i+k].low  <= r[i].low  || r[i-k].low  <  r[i].low ) isLow=false;
         }
-      if(isHigh)
-        {
-         // keep only if not yet traded above by a later (newer, lower-index) candle
-         bool broken=false;
-         for(int j=i-1;j>=0;j--) if(r[j].high > r[i].high){broken=true;break;}
-         if(!broken) AppendIf(highs, r[i].high);
-        }
-      if(isLow)
-        {
-         bool broken=false;
-         for(int j=i-1;j>=0;j--) if(r[j].low < r[i].low){broken=true;break;}
-         if(!broken) AppendIf(lows, r[i].low);
-        }
+      datetime ct = r[i-piv].time + sec;
+      if(ct > tj) continue;
+      if(isHigh && LevelAlive(r[i].high, true,  ct, tj)) AppendIf(highs, r[i].high);
+      if(isLow  && LevelAlive(r[i].low,  false, ct, tj)) AppendIf(lows,  r[i].low);
      }
   }
-
 
 //+------------------------------------------------------------------+
 //| gather all unbroken liquidity levels (highs and lows)             |
@@ -396,10 +437,10 @@ void CollectFvgEdges(datetime tj, double &highs[], double &lows[])
 void LiquidityLevels(datetime tj, double &highs[], double &lows[])
   {
    ArrayResize(highs,0); ArrayResize(lows,0);
-   CollectSwings(PERIOD_MN1, InpPivDWM, highs, lows);
-   CollectSwings(PERIOD_W1,  InpPivDWM, highs, lows);
-   CollectSwings(PERIOD_D1,  InpPivDWM, highs, lows);
-   if(InpPiv4H>0) CollectSwings(PERIOD_H4, InpPiv4H, highs, lows);
+   CollectSwings(PERIOD_MN1, InpPivDWM, tj, highs, lows);
+   CollectSwings(PERIOD_W1, InpPivDWM, tj, highs, lows);
+   CollectSwings(PERIOD_D1, InpPivDWM, tj, highs, lows);
+   if(InpPiv4H>0) CollectSwings(PERIOD_H4, InpPiv4H, tj, highs, lows);
    if(InpFvgLiquidity) CollectFvgEdges(tj, highs, lows);
   }
 
@@ -415,6 +456,7 @@ void ScanForSetup()
   {
    MqlRates h1[];
    if(GetRates(PERIOD_H1, InpInvWindow1H+20, h1) < 5) return;
+   LoadH1Cache();
    int j = 1;                                   // the just-closed 1H candle
    double hi = h1[j].high, lo = h1[j].low, cl = h1[j].close;
 
@@ -440,8 +482,7 @@ void ScanForSetup()
       else                    g_sweeps[s].extreme = MathMin(g_sweeps[s].extreme, lo);
       if(g_sweeps[s].age > InpInvWindow1H) { RemoveSweep(s); continue; }
 
-      bool ok = g_sweeps[s].isShort ? TryBuildShort(g_sweeps[s].level, g_sweeps[s].extreme, j)
-                                    : TryBuildLong (g_sweeps[s].level, g_sweeps[s].extreme, j);
+      bool ok = TryBuild(g_sweeps[s].isShort, g_sweeps[s].extreme, g_sweeps[s].time);
       if(ok) { RemoveSweep(s); return; }       // one setup at a time
      }
   }
@@ -462,165 +503,143 @@ void RemoveSweep(int idx)
   }
 
 //+------------------------------------------------------------------+
-//| find the last bullish 4H FVG of the sweeping leg, intact at the   |
-//| sweep, inverted by this 1H close; require 1H displacement + MSS.  |
-//| (LONG mirrored in TryBuildLong)                                   |
+//| Rules 2-3 for the sweep registered at sweepTime (short; long       |
+//| mirrored). Called on every newly closed 1H candle while the sweep  |
+//| is alive.                                                          |
+//|  - the 4H FVG: the NEWEST bullish 4H FVG whose middle candle is at |
+//|    or before the 4H candle of the sweep, starting at most          |
+//|    InpLegLookback4H 4H candles before it, complete when this 1H    |
+//|    candle opened, and intact (no 1H close below it between its     |
+//|    completion and the sweep candle);                               |
+//|  - this 1H candle CLOSES below it (inversion);                     |
+//|  - 1H displacement (consecutive bearish closes, >= InpDispATR ATR);|
+//|  - 1H MSS: a close (from the sweep extreme on) below the last      |
+//|    confirmed 1H swing low that formed before the extreme.          |
 //+------------------------------------------------------------------+
-bool TryBuildShort(double sweptLevel, double sweepExt, int j1)
+bool TryBuild(bool sh, double sweepExt, datetime sweepTime)
   {
-   MqlRates h4[]; if(GetRates(PERIOD_H4, InpLegLookback4H+10, h4) < 6) return false;
-   MqlRates h1[]; if(GetRates(PERIOD_H1, 200, h1) < 10) return false;
+   MqlRates h4[]; int n4 = GetChrono(PERIOD_H4, InpLegLookback4H+60, h4); if(n4 < 12) return false;
+   MqlRates h1[]; int n1 = GetChrono(PERIOD_H1, 600, h1);                if(n1 < 80) return false;
+   int L = n1-2;                                          // the just-closed 1H candle (n1-1 is still forming)
+   int sec4 = PeriodSeconds(PERIOD_H4);
+   int s4 = -1, s1 = -1;
+   for(int k=n4-2;k>=0;k--) if(h4[k].time <= sweepTime) { s4=k; break; }
+   for(int k=L;k>=0;k--)    if(h1[k].time <= sweepTime) { s1=k; break; }
+   if(s4 < 0 || s1 < 0) return false;
+   int origin = MathMax(0, s4 - InpLegLookback4H);
 
-   // last bullish 4H FVG (gap up): low[i] > high[i+2], scanning newest->older within the lookback
-   double fvgBot=0, fvgTop=0; bool found=false;
-   for(int i=1; i<InpLegLookback4H && i+2<ArraySize(h4); i++)
+   int fi=-1; double bot=0, top=0;
+   for(int i=MathMin(s4+1, n4-2); i>=origin+2 && i>=2; i--)        // i = candle 3 of the FVG; middle candle i-1 <= s4
      {
-      if(h4[i].low > h4[i+2].high)              // bullish FVG; zone = [high(i+2) .. low(i)]
+      datetime end4 = h4[i].time + sec4;
+      if(end4 > h1[L].time) continue;                              // not complete when this 1H candle opened
+      bool bull = h4[i].low  > h4[i-2].high;
+      bool bear = h4[i].high < h4[i-2].low;
+      if(sh ? !bull : !bear) continue;
+      double b_ = sh ? h4[i-2].high : h4[i].high;
+      double t_ = sh ? h4[i].low    : h4[i-2].low;
+      bool intact = true;
+      for(int k=0; k<s1 && intact; k++)
         {
-         double bot = h4[i+2].high, top = h4[i].low;
-         // intact: no 4H close below bot before now (candles i-1..1, newer)
-         bool intact=true;
-         for(int k=i-1;k>=1;k--) if(h4[k].close < bot){intact=false;break;}
-         if(intact){ fvgBot=bot; fvgTop=top; found=true; break; }
+         if(h1[k].time < end4) continue;
+         if(sh ? h1[k].close < b_ : h1[k].close > t_) intact = false;
         }
+      if(!intact) continue;
+      fi=i; bot=b_; top=t_; break;                                 // newest first
      }
-   if(!found) return false;
+   if(fi < 0) return false;
 
-   // this 1H close must be below the FVG bottom (the inversion)
-   if(h1[j1].close >= fvgBot) return false;
+   if(sh ? h1[L].close >= bot : h1[L].close <= top) return false;  // the inversion
 
-   // 1H displacement: run of consecutive bearish closes ending at j1, moving >= ATR
-   double atr = ATR14(PERIOD_H1, j1);
-   int run=0; double runOpen=h1[j1].open;
-   for(int k=j1;k<ArraySize(h1);k++){ if(h1[k].close < h1[k].open){run++; runOpen=h1[k].open;} else break; }
-   double move = runOpen - h1[j1].close;
+   double atr = ATR14c(h1, L);
+   int run=0; double runOpen=h1[L].open;
+   for(int k=L;k>=0;k--)
+     {
+      if(sh ? h1[k].close < h1[k].open : h1[k].close > h1[k].open) { run++; runOpen=h1[k].open; } else break;
+     }
+   double move = sh ? runOpen - h1[L].close : h1[L].close - runOpen;
    if(run < 1 || move < InpDispATR*atr) return false;
 
-   // 1H MSS: close below the last confirmed 1H swing low before the sweep extreme
-   if(!MSS_Short(h1, j1)) return false;
+   int ext = s1;                                                   // the sweep extreme candle (running extreme s1..L)
+   for(int k=s1;k<=L;k++) if(sh ? h1[k].high > h1[ext].high : h1[k].low < h1[ext].low) ext = k;
+   int p = InpMssPivot, pv = -1;
+   for(int i=p; i<=L-p && i<ext; i++)                              // last confirmed 1H swing before the extreme
+     {
+      bool ok = true;
+      for(int k=1;k<=p && ok;k++)
+        {
+         if(sh) { if(!(h1[i].low  < h1[i-k].low)  || !(h1[i].low  <= h1[i+k].low))  ok=false; }
+         else   { if(!(h1[i].high > h1[i-k].high) || !(h1[i].high >= h1[i+k].high)) ok=false; }
+        }
+      if(ok) pv = i;
+     }
+   if(pv < 0) return false;
+   double mssLv = sh ? h1[pv].low : h1[pv].high;
+   bool mss = false;
+   for(int t=MathMax(ext, pv+p+1); t<=L; t++)
+      if(sh ? h1[t].close < mssLv : h1[t].close > mssLv) { mss = true; break; }
+   if(!mss) return false;
 
-   RegisterSetup(true, fvgTop, fvgBot, sweepExt, h1[j1].time);
+   RegisterSetup(sh, top, bot, sweepExt, h1[L].time, h1[ext].time, h4[fi-1].time);
    return true;
   }
 
-bool TryBuildLong(double sweptLevel, double sweepExt, int j1)
-  {
-   MqlRates h4[]; if(GetRates(PERIOD_H4, InpLegLookback4H+10, h4) < 6) return false;
-   MqlRates h1[]; if(GetRates(PERIOD_H1, 200, h1) < 10) return false;
-   double fvgBot=0, fvgTop=0; bool found=false;
-   for(int i=1; i<InpLegLookback4H && i+2<ArraySize(h4); i++)
-     {
-      if(h4[i].high < h4[i+2].low)              // bearish FVG; zone = [high(i) .. low(i+2)]
-        {
-         double bot = h4[i].high, top = h4[i+2].low;
-         bool intact=true;
-         for(int k=i-1;k>=1;k--) if(h4[k].close > top){intact=false;break;}
-         if(intact){ fvgBot=bot; fvgTop=top; found=true; break; }
-        }
-     }
-   if(!found) return false;
-   if(h1[j1].close <= fvgTop) return false;
-   double atr = ATR14(PERIOD_H1, j1);
-   int run=0; double runOpen=h1[j1].open;
-   for(int k=j1;k<ArraySize(h1);k++){ if(h1[k].close > h1[k].open){run++; runOpen=h1[k].open;} else break; }
-   double move = h1[j1].close - runOpen;
-   if(run < 1 || move < InpDispATR*atr) return false;
-   if(!MSS_Long(h1, j1)) return false;
-   RegisterSetup(false, fvgTop, fvgBot, sweepExt, h1[j1].time);
-   return true;
-  }
-
 //+------------------------------------------------------------------+
-//| 1H MSS: a close through the last confirmed 1H swing (opposite)    |
+//| STOP: 50% of the 1H order block of the drop. FVG of the drop = the |
+//| FIRST bearish 1H FVG after the sweep extreme whose top is above the|
+//| 4H IFVG bottom; OB = last up-close 1H candle within 4 candles back |
+//| from its first candle. Fallback: the sweep extreme. (long mirrored)|
 //+------------------------------------------------------------------+
-bool MSS_Short(MqlRates &h1[], int j1)
+double StopFromOB(bool sh, datetime extTime, double ext, double bot4, double top4)
   {
-   int p=InpMssPivot;
-   for(int i=j1+p; i+p<ArraySize(h1); i++)
+   MqlRates r[]; int n = GetChrono(PERIOD_H1, 600, r); if(n < 40) return ext;
+   int L = n-2, anc = -1;
+   for(int k=L;k>=0;k--) if(r[k].time == extTime) { anc = k; break; }
+   if(anc < 0) return ext;
+   for(int i3=MathMax(anc+1,2); i3<=L; i3++)
      {
-      bool piv=true;
-      for(int k=1;k<=p;k++) if(h1[i+k].low <= h1[i].low || h1[i-k].low < h1[i].low) piv=false;
-      if(piv) { for(int k=j1;k<=i-p;k++) if(h1[k].close < h1[i].low) return true; return false; }
-     }
-   return false;
-  }
-bool MSS_Long(MqlRates &h1[], int j1)
-  {
-   int p=InpMssPivot;
-   for(int i=j1+p; i+p<ArraySize(h1); i++)
-     {
-      bool piv=true;
-      for(int k=1;k<=p;k++) if(h1[i+k].high >= h1[i].high || h1[i-k].high > h1[i].high) piv=false;
-      if(piv) { for(int k=j1;k<=i-p;k++) if(h1[k].close > h1[i].high) return true; return false; }
-     }
-   return false;
-  }
-
-//+------------------------------------------------------------------+
-//| STOP: 50% of the 1H order block of the drop. OB = the last up-    |
-//| close 1H candle before the first bearish 1H FVG formed after the  |
-//| sweep extreme. Fallback: beyond the sweep extreme.  (short; long  |
-//| mirrored)                                                         |
-//+------------------------------------------------------------------+
-double StopFromOB(bool isShort, double sweepExtreme, double fvgBot, double fvgTop)
-  {
-   MqlRates h1[]; if(GetRates(PERIOD_H1, 150, h1) < 10) return sweepExtreme;
-   // find the first FVG of the drop (bearish for a short) scanning from the extreme toward now (older->newer)
-   int extIdx=-1;
-   for(int i=1;i<ArraySize(h1);i++)
-     {
-      if(isShort ? (h1[i].high >= sweepExtreme-1e-6) : (h1[i].low <= sweepExtreme+1e-6)) { extIdx=i; break; }
-     }
-   if(extIdx<0) return sweepExtreme;
-   for(int c3 = extIdx-1; c3>=1; c3--)           // candle 3 of the FVG (newer than the extreme)
-     {
-      int c1 = c3+2;                              // candle 1 (older)
-      if(c1 >= ArraySize(h1)) continue;
-      bool fvg = isShort ? (h1[c3].high < h1[c1].low)    // bearish FVG
-                         : (h1[c3].low  > h1[c1].high);  // bullish FVG
+      bool fvg = sh ? (r[i3].high < r[i3-2].low && r[i3-2].low  > bot4)
+                    : (r[i3].low  > r[i3-2].high && r[i3-2].high < top4);
       if(!fvg) continue;
-      // OB = last opposite-close candle at/before candle 1 (up-close for a short), up to 3 back
-      for(int o=c1; o<=c1+3 && o<ArraySize(h1); o++)
-        {
-         bool opp = isShort ? (h1[o].close > h1[o].open) : (h1[o].close < h1[o].open);
-         if(opp) return (h1[o].high + h1[o].low)/2.0;
-        }
+      int c1 = i3-2;
+      for(int m=c1; m>=MathMax(c1-3,0); m--)
+         if(sh ? r[m].close > r[m].open : r[m].close < r[m].open) return (r[m].high + r[m].low)/2.0;
       break;
      }
-   return sweepExtreme;
+   return ext;
   }
 
 //+------------------------------------------------------------------+
-//| TARGET: most recent confirmed 1H swing low (short) / high (long)  |
-//| before the 4H FVG's formation - approximated by the most recent   |
-//| confirmed 1H swing beyond the entry.                              |
+//| TARGET: the most recent confirmed 1H swing low (short) / high      |
+//| (long), 2 candles each side, BEFORE the 4H FVG's middle candle.    |
+//| 0 = none beyond the entry (the trade is skipped, as in the test).  |
 //+------------------------------------------------------------------+
-double TargetSwing(bool isShort, double entry)
+double TargetSwing(bool sh, datetime fvgMid, double entry)
   {
-   MqlRates h1[]; if(GetRates(PERIOD_H1, 400, h1) < 20) return 0;
-   int p=2;
-   for(int i=1+p; i+p<ArraySize(h1); i++)
+   MqlRates r[]; int n = GetChrono(PERIOD_H1, 800, r); if(n < 40) return 0;
+   int L = n-2, b = -1;
+   for(int k=0;k<=L;k++) if(r[k].time >= fvgMid) { b = k; break; }
+   if(b < 0) return 0;
+   const int p = 2;
+   for(int i=b-1; i>=p; i--)
      {
-      bool piv=true;
-      for(int k=1;k<=p;k++)
-        {
-         if(isShort){ if(h1[i+k].low <= h1[i].low || h1[i-k].low < h1[i].low) piv=false; }
-         else       { if(h1[i+k].high >= h1[i].high || h1[i-k].high > h1[i].high) piv=false; }
-        }
+      if(i+p > L) continue;
+      double v = sh ? r[i].low : r[i].high;
+      bool piv = true;
+      for(int k=i-p;k<=i+p;k++) if(sh ? r[k].low < v : r[k].high > v) { piv = false; break; }
       if(!piv) continue;
-      double v = isShort ? h1[i].low : h1[i].high;
-      if(isShort ? v < entry : v > entry) return v;
+      return (sh ? v < entry : v > entry) ? v : 0;
      }
    return 0;
   }
 
 //+------------------------------------------------------------------+
-void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datetime t)
+void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datetime t, datetime extTime, datetime fvgMid)
   {
    if(InpBreakerEntry)                                 // also watch for this setup's 1H breaker FVG (second entry)
      {
       g_bw.active = true; g_bw.isShort = isShort; g_bw.fvgTop = fvgTop; g_bw.fvgBot = fvgBot;
-      g_bw.ext = ext; g_bw.sigTime = t; g_bw.expire = TimeCurrent() + 250*3600;
+      g_bw.ext = ext; g_bw.extTime = extTime; g_bw.fvgMid = fvgMid; g_bw.sigTime = t; g_bw.expire = TimeCurrent() + 250*3600;
      }
    g_setup.magic        = InpMagic;
    g_setup.active       = true;
@@ -628,23 +647,27 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
    g_setup.fvgTop       = fvgTop;
    g_setup.fvgBot       = fvgBot;
    g_setup.sweepExtreme = ext;
+   g_setup.extTime      = extTime;
+   g_setup.fvgMid       = fvgMid;
    g_setup.signalTime   = t;
    g_setup.expiry       = t + 3600 + InpValidHours*3600;   // from the close of the signal candle
    g_setup.ordered      = false;
    g_setup.entry        = isShort ? fvgBot : fvgTop;     // limit at the 4H IFVG near edge
 
-   double base = StopFromOB(isShort, ext, fvgBot, fvgTop);
+   double base = StopFromOB(isShort, extTime, ext, fvgBot, fvgTop);
    double buf  = InpStopBuffer * g_point;
    g_setup.stop = isShort ? base + buf : base - buf;
    double risk = MathAbs(g_setup.entry - g_setup.stop);
+   if(isShort ? g_setup.stop <= g_setup.entry : g_setup.stop >= g_setup.entry) { g_setup.active=false; return; }   // stop on the wrong side
 
-   double tgt = InpUseSwingLowTgt ? TargetSwing(isShort, g_setup.entry) : 0;
-   if(tgt==0 || (isShort ? tgt >= g_setup.entry : tgt <= g_setup.entry))
-      tgt = isShort ? g_setup.entry - InpFixedR*risk : g_setup.entry + InpFixedR*risk;
+   double tgt;
+   if(InpUseSwingLowTgt)
+     {
+      tgt = TargetSwing(isShort, fvgMid, g_setup.entry);
+      if(tgt == 0) { Print("No 1H swing-low target beyond the entry - 4H IFVG entry skipped."); g_setup.active=false; return; }
+     }
+   else tgt = isShort ? g_setup.entry - InpFixedR*risk : g_setup.entry + InpFixedR*risk;
    g_setup.target = tgt;
-
-   // stop must be on the correct side of the entry
-   if(isShort ? g_setup.stop <= g_setup.entry : g_setup.stop >= g_setup.entry) { g_setup.active=false; return; }
 
    string msg = StringFormat("%s SETUP %s | limit %.2f  SL %.2f  TP %.2f  (risk %.1f pts)",
                              isShort?"SHORT":"LONG", g_sym, g_setup.entry, g_setup.stop, g_setup.target, risk/g_point);
@@ -698,31 +721,32 @@ void CheckBreaker()
    if(n < 60) return;
    ArraySetAsSeries(r, false);                              // chronological; n-1 = forming candle
    int L = n-2;                                             // last completed candle
-   int anc = -1;                                            // the 1H candle of the sweep extreme (newest match up to the signal)
-   for(int i=L; i>=0; i--)
-     {
-      if(r[i].time > g_bw.sigTime) continue;
-      if(g_bw.isShort ? r[i].high >= g_bw.ext - 1e-6 : r[i].low <= g_bw.ext + 1e-6) { anc = i; break; }
-     }
+   int anc = -1;                                            // the 1H candle of the sweep extreme
+   for(int i=L; i>=0; i--) if(r[i].time == g_bw.extTime) { anc = i; break; }
    if(anc < 0) return;
    double lvl = FindBreakerFvg(r, L, g_bw.isShort, anc, g_bw.fvgBot, g_bw.fvgTop);
    if(lvl <= 0) return;
 
    bool sh = g_bw.isShort;
    g_setupB.magic = InpMagic+1; g_setupB.active = true; g_setupB.isShort = sh;
+   g_setupB.extTime = g_bw.extTime; g_setupB.fvgMid = g_bw.fvgMid;
    g_setupB.fvgTop = g_bw.fvgTop; g_setupB.fvgBot = g_bw.fvgBot; g_setupB.sweepExtreme = g_bw.ext;
    g_setupB.signalTime = TimeCurrent(); g_setupB.expiry = TimeCurrent() + InpValidHours*3600; g_setupB.ordered = false;
    g_setupB.entry = lvl;
-   double base = StopFromOB(sh, g_bw.ext, g_bw.fvgBot, g_bw.fvgTop);
+   double base = StopFromOB(sh, g_bw.extTime, g_bw.ext, g_bw.fvgBot, g_bw.fvgTop);
    double buf  = InpStopBuffer * g_point;
    g_setupB.stop = sh ? base + buf : base - buf;
    double risk = MathAbs(g_setupB.entry - g_setupB.stop);
-   double tgt = InpUseSwingLowTgt ? TargetSwing(sh, g_setupB.entry) : 0;
-   if(tgt==0 || (sh ? tgt >= g_setupB.entry : tgt <= g_setupB.entry))
-      tgt = sh ? g_setupB.entry - InpFixedR*risk : g_setupB.entry + InpFixedR*risk;
-   g_setupB.target = tgt;
    g_bw.active = false;                                     // one breaker entry per setup
    if(sh ? g_setupB.stop <= g_setupB.entry : g_setupB.stop >= g_setupB.entry) { g_setupB.active = false; return; }
+   double tgt;
+   if(InpUseSwingLowTgt)
+     {
+      tgt = TargetSwing(sh, g_bw.fvgMid, g_setupB.entry);
+      if(tgt == 0) { Print("No 1H swing-low target beyond the breaker entry - skipped."); g_setupB.active = false; return; }
+     }
+   else tgt = sh ? g_setupB.entry - InpFixedR*risk : g_setupB.entry + InpFixedR*risk;
+   g_setupB.target = tgt;
 
    string msg = StringFormat("%s BREAKER FVG SETUP %s | limit %.2f  SL %.2f  TP %.2f  (risk %.1f pts)",
                              sh?"SHORT":"LONG", g_sym, g_setupB.entry, g_setupB.stop, g_setupB.target, risk/g_point);
