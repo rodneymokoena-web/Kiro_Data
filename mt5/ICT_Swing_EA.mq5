@@ -12,7 +12,7 @@
 //|   risk per entry, ~6-12% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.50"
+#property version   "1.51"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -588,14 +588,25 @@ bool TryBuild(bool sh, double sweepExt, datetime sweepTime)
 //| STOP: 50% of the 1H order block of the drop. FVG of the drop = the |
 //| FIRST bearish 1H FVG after the sweep extreme whose top is above the|
 //| 4H IFVG bottom; OB = last up-close 1H candle within 4 candles back |
-//| from its first candle. Fallback: the sweep extreme. (long mirrored)|
+//| from its first candle. No OB: the previous 1H candle high/low     |
+//| beyond the entry (24 candles back). (long mirrored)                |
 //+------------------------------------------------------------------+
-double StopFromOB(bool sh, datetime extTime, double ext, double bot4, double top4)
+double PrevCandleStop(const MqlRates &r[], int L, bool sh, double entry, double fallback)   // previous completed 1H candle high/low beyond the entry (24 candles back)
+  {
+   for(int k=L; k>L-24 && k>=0; k--)
+     {
+      double v = sh ? r[k].high : r[k].low;
+      if(sh ? v > entry : v < entry) return v;
+     }
+   return fallback;
+  }
+
+double StopFromOB(bool sh, datetime extTime, double ext, double bot4, double top4, double entry)
   {
    MqlRates r[]; int n = GetChrono(PERIOD_H1, 600, r); if(n < 40) return ext;
    int L = n-2, anc = -1;
    for(int k=L;k>=0;k--) if(r[k].time == extTime) { anc = k; break; }
-   if(anc < 0) return ext;
+   if(anc < 0) return PrevCandleStop(r, L, sh, entry, ext);
    for(int i3=MathMax(anc+1,2); i3<=L; i3++)
      {
       bool fvg = sh ? (r[i3].high < r[i3-2].low && r[i3-2].low  > bot4)
@@ -606,7 +617,7 @@ double StopFromOB(bool sh, datetime extTime, double ext, double bot4, double top
          if(sh ? r[m].close > r[m].open : r[m].close < r[m].open) return (r[m].high + r[m].low)/2.0;
       break;
      }
-   return ext;
+   return PrevCandleStop(r, L, sh, entry, ext);       // no order block: previous 1H candle high/low
   }
 
 //+------------------------------------------------------------------+
@@ -654,7 +665,7 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
    g_setup.ordered      = false;
    g_setup.entry        = isShort ? fvgBot : fvgTop;     // limit at the 4H IFVG near edge
 
-   double base = StopFromOB(isShort, extTime, ext, fvgBot, fvgTop);
+   double base = StopFromOB(isShort, extTime, ext, fvgBot, fvgTop, g_setup.entry);
    double buf  = InpStopBuffer * g_point;
    g_setup.stop = isShort ? base + buf : base - buf;
    double risk = MathAbs(g_setup.entry - g_setup.stop);
@@ -733,7 +744,7 @@ void CheckBreaker()
    g_setupB.fvgTop = g_bw.fvgTop; g_setupB.fvgBot = g_bw.fvgBot; g_setupB.sweepExtreme = g_bw.ext;
    g_setupB.signalTime = TimeCurrent(); g_setupB.expiry = TimeCurrent() + InpValidHours*3600; g_setupB.ordered = false;
    g_setupB.entry = lvl;
-   double base = StopFromOB(sh, g_bw.extTime, g_bw.ext, g_bw.fvgBot, g_bw.fvgTop);
+   double base = StopFromOB(sh, g_bw.extTime, g_bw.ext, g_bw.fvgBot, g_bw.fvgTop, g_setupB.entry);
    double buf  = InpStopBuffer * g_point;
    g_setupB.stop = sh ? base + buf : base - buf;
    double risk = MathAbs(g_setupB.entry - g_setupB.stop);

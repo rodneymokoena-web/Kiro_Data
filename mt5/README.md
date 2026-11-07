@@ -55,7 +55,7 @@ than the firm's own limits).
    Both can be open together, so `InpOneTradeAtATime` applies per entry kind.
 5. **Stop:** above the **50% of the 1H order block of the drop** + buffer. The drop FVG is the first bearish 1H FVG after the sweep extreme
    (its top above the 4H IFVG bottom); the order block is the last up-close 1H candle within 4 candles back from its first candle
-   (fallback: beyond the sweep extreme).
+   (no order block: the previous completed 1H candle high/low beyond the entry, up to 24 candles back; the stop is fixed when the order is placed).
 6. **Target:** the most recent confirmed **1H swing low** (2 candles each side) **before the 4H FVG's middle candle**. If it is not beyond
    the entry, the trade is **skipped** (as in the backtest); `InpUseSwingLowTgt=false` uses a fixed `InpFixedR` instead.
 7. **Management:** stop to **breakeven at +1R**, then **trails to each newly confirmed 1H swing** formed after the fill (`InpTrailStructure`). Position size = account balance x risk % / stop distance.
