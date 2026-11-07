@@ -71,7 +71,7 @@ i_swValid = input.int(48, "Swing order valid (hours after the 1H inversion)", mi
 i_swSweep = input.bool(true, "Swing: sweep must close back through the level", group=g0, tooltip="On (default): a swing sweep needs a wick through the level AND a close back the other way (high: close below the level; low: close above). Off: a wick through is enough. The intraday model always uses a wick.")
 i_swTrail = input.bool(true, "Swing: trail the stop to each new 1H swing after breakeven", group=g0, tooltip="After the stop has moved to breakeven (+R below), the stop follows each newly confirmed 1H swing high (short) / low (long) formed after the fill - 2 candles each side - whenever that tightens it. Off = breakeven only. Intraday never trails.")
 i_haWin   = input.int(80, "Swing: inversion window after the sweep (1H candles)", minval=1, group=g0)
-i_haLB    = input.int(60, "Swing: last 4H FVG at most N 4H candles before the sweep", minval=1, group=g0)
+i_haLB    = input.int(10, "Swing: last 4H FVG at most N 4H candles before the sweep", minval=1, group=g0)
 i_dMin1   = input.int(1, "Swing: 1H displacement minimum candles", minval=1, group=g0)
 
 g4 = "Rule 6 - intraday entry (5m chart)"
