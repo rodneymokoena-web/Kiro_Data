@@ -223,6 +223,7 @@ BREAKER_OB_BEFORE = __import__("os").environ.get("BREAKER_OB_BEFORE", "0") == "1
 BREAKER_SWING_BREAK = __import__("os").environ.get("BREAKER_SWING_BREAK", "0") == "1" # the breaking close must also be beyond the last confirmed 1H swing low/high
 BREAKER_OB_LB = int(__import__("os").environ.get("BREAKER_OB_LB", "8"))           # candles back from the drop FVG to look for the order block
 BREAKER_BREAK_BARS = int(__import__("os").environ.get("BREAKER_BREAK_BARS", "48")) # candles after the order block in which it must be broken
+SWING_STOP_BUF = float(__import__("os").environ.get("SWING_BUF", "0"))   # price units beyond the swing stop level (initial stop only)
 OB_FALLBACK = __import__("os").environ.get("OB_FALLBACK", "prev 1H candle")   # stop when there is no order block: "prev 1H candle" | "sweep extreme"
 BREAKER_FVG_BARS = 24    # the 1H FVG must form within this many 1H candles after the breaker is confirmed
 
@@ -553,7 +554,7 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
             if np.isnan(base):
                 LOST["no stop level"] = LOST.get("no stop level", 0) + 1
                 continue
-            _b = SL_BUFFER[symbol] if buf_override is None else buf_override
+            _b = SWING_STOP_BUF if buf_override is None else buf_override      # swing initial stop: no buffer (the trailing stop keeps SL_BUFFER)
             if EXTRA_ATR_MULT:
                 _b += EXTRA_ATR_MULT * float(atr1[max(q - 1, 0)])
             sl = base + _b if short else base - _b

@@ -124,3 +124,9 @@ It applies to about 27-32 trades per broker. Test: `obfb_experiments.py`, `outpu
 2021-2026 swing (GoatFunded / Pepperstone): 253 / 277 trades, PF 1.70 / 1.86 -> 1.66 / 1.79, +62.0R / +81.6R -> +60.7R / +77.4R, max DD 11.0% / 6.1% -> 10.3% / 6.3%.
 Both models: 327 / 354 trades, +75.9R / +122.8R, $20,577 / $32,332, max DD 12.2% / 10.7%.
 
+## Update: swing initial stop has no buffer (default)
+`SWING_STOP_BUF = 0` in `swing_snap.py` (env `SWING_BUF`): the stop is exactly at 50% of the 1H order block (or the previous 1H candle high/low when there is
+none). The trailing stop keeps its 2-point buffer (`SL_BUFFER`); the intraday model is unchanged. Test: `buf_experiments.py`.
+2021-2026 swing (GoatFunded / Pepperstone): PF 1.66 / 1.79 -> 1.68 / 1.84, +60.7R / +77.4R -> +64.5R / +82.1R, max DD 10.3% / 6.3% -> 10.2% / 6.3%.
+Both models: 327 / 354 trades, +79.8R / +127.5R, $21,291 / $33,750, max DD 11.9% / 10.8%.
+

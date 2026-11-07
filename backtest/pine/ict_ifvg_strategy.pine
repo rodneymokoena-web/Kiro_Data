@@ -89,7 +89,8 @@ i_ct      = input.bool(true, "Cancel order on a 5m close back through the entry 
 
 g5 = "Rule 7 - risk"
 i_inStop = input.string("Previous 1H candle", "Intraday stop", options=["Previous 1H candle", "4H sweep extreme"], group=g5)
-i_slBuf = input.float(2.0, "Stop buffer beyond the stop level (price units: ~2 US100, ~0.5 gold)", minval=0, group=g5)
+i_slBuf = input.float(2.0, "Stop buffer beyond the stop level (price units: ~2 US100, ~0.5 gold): intraday stop and the swing trailing stop", minval=0, group=g5)
+i_swBuf = input.float(0.0, "Swing: buffer beyond the initial stop (price units; 0 = exactly at the 1H OB 50% / previous 1H candle)", minval=0, group=g5)
 i_pcLB  = input.int(24, "Previous 1H/4H candle: look back up to N candles for one beyond the entry", minval=1, group=g5)
 i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
 i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
@@ -898,7 +899,8 @@ if SG.size() > 0
                     g.state := 3
                     g.result := "no valid stop beyond entry"
                     continue
-                g.sl := g.sh ? pc1 + i_slBuf : pc1 - i_slBuf
+                float bufS = isSwing ? i_swBuf : i_slBuf
+                g.sl := g.sh ? pc1 + bufS : pc1 - bufS
                 g.risk := math.abs(g.entry - g.sl)
                 g.tp := g.sh ? g.entry - i_tgtR * g.risk : g.entry + i_tgtR * g.risk
                 if isSwing and i_swTgt == "1H swing low"
@@ -1485,7 +1487,8 @@ if tfOK and SG.size() > 0
                 if isSwing and i_swStop == "1H OB 50%"
                     g.ob := f_dropOb(sh, g.anc, g.bot, g.top)
                 float pc0 = f_stopBase(sh, g.lvl, g.ext, g.ob)
-                g.sl := na(pc0) ? na : sh ? pc0 + i_slBuf : pc0 - i_slBuf
+                float bufP = isSwing ? i_swBuf : i_slBuf
+                g.sl := na(pc0) ? na : sh ? pc0 + bufP : pc0 - bufP
                 g.tp := na(pc0) ? na : sh ? g.lvl - i_tgtR * (g.sl - g.lvl) : g.lvl + i_tgtR * (g.lvl - g.sl)
                 if isSwing and i_swTgt == "1H swing low"
                     g.tp := g.tpFix
