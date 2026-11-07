@@ -76,7 +76,7 @@ SESSION_MIN_TF = ("1H",)   # a session level counts only if it is also a swing o
 LIQ_TFS = ("4H",)
 LIQ_4H_PIVOT = 2
 LIQ_MIN_RR = 0.0
-LEG_LOOKBACK_4H = 60    # the 4H FVG may be at most this many 4H candles before the sweep
+LEG_LOOKBACK_4H = int(__import__("os").environ.get("LEG_LB", 10))    # the 4H FVG may be at most this many 4H candles before the sweep
 REQUIRE_MSS = "mss"     # "mss" (1H MSS required) | "none"
 SWING_1H_PIVOT = 0      # rule 1c: 1H swing sweeps -> 1H FVG -> 1H IFVG (0 = off)
 DISP_MIN_1H = 1

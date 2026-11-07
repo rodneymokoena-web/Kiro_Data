@@ -44,7 +44,7 @@ Other settings: `TRADE_SYMBOLS` (default `US100`), `H4_GRID` (`mt5` default, `tr
 ## Current rules (defaults)
 **Swing model** – `swing_snap.py` ("snapshot rules", short described, long mirrored)
 1. A 1H wick trades above a **D/W/M swing high** (2 candles each side).
-2. The **last bullish 4H FVG of the leg** that swept it (within 60 4H candles, no 1H close below it before the sweep).
+2. The **last bullish 4H FVG of the leg** that swept it (within 10 4H candles, no 1H close below it before the sweep).
 3. The **first 1H close below it** within 80 1H candles, with 1H displacement (≥ 1 candle, ≥ 1 ATR) + 1H MSS.
 4. **Entry:** sell limit at the 4H IFVG bottom, valid 48 h; cancelled if a candle opens above the sweep extreme.
 5. **Stop:** above the 50% of the 1H order block of the drop (+ buffer). **Target:** the 1H swing low where the leg
@@ -91,4 +91,9 @@ enters it can still sweep it). Switches: `FVG_LIQ=0|1` (`ifvg.FVG_LIQ`), `FVG_LI
 max DD 4.8% -> 7.5% / 7.1% -> 5.3%; intraday almost unchanged; both models 299 / 317 trades, +49.2R / +90.0R, max DD 10.2% / 9.6%.
 Also tested and **not adopted**: a Rule 1 bias filter (`bias.py`, `bias_experiments.py`, `output/bias_summary.csv`) - it
 removed about three quarters of the swing trades and most of the profit.
+
+## Update: swing Rule 2 lookback 60 -> 10 4H candles (default)
+The last 4H FVG of the sweeping leg must be within 10 4H candles of the sweep (`LEG_LOOKBACK_4H`, env `LEG_LB`).
+2021-2026 swing (GoatFunded / Pepperstone): 225 / 240 -> 162 / 175 trades, PF 1.52 / 1.68 -> 1.84 / 2.05, R +34.0 / +44.5 -> +35.6 / +43.8,
+max DD 7.5% / 5.3% -> 5.6% / 3.5%. Both models: +50.8R / +89.3R, $16,318 / $23,863. Results: `output/lb_summary.csv`.
 
