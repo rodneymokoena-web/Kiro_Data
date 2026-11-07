@@ -56,6 +56,18 @@ Short described; long is the mirror image.
 
 **Both:** stop to **breakeven at +1R** (swing model then also trails to new 1H swings); the strategy risks 1 % of equity per trade.
 
+## Alerts (entry alerts)
+Add the **indicator** to a chart (5m recommended), then *Alert -> Condition: ICT IFVG*:
+- **"Any alert() function call"** - one alert that sends every message with the details (symbol, long/short, entry type, entry / SL / TP):
+  - `... ENTRY ORDER (4H IFVG | 1H breaker FVG) limit <price> | SL <price> | TP <price>` - when a limit order is placed;
+  - `... ENTRY FILLED (<entry type>) @ <price> | SL <price> | TP <price> | risk <pts>` - when it fills;
+  - `... stop moved to breakeven ...` and `... trade closed: <target|stop|breakeven|trailed> <R>`;
+  - plus the setup messages (4H / swing setup, 1H IFVG signal, 1H breaker FVG entry found).
+- **Ready-made conditions** (pick them in the Condition list): *Long entry order placed*, *Short entry order placed*, *Long entry filled*,
+  *Short entry filled*, *Any entry filled*, *Trade closed*. These carry a fixed text; use "Any alert() function call" if you want the prices.
+Set the alert to **Once per bar close**. Alerts only fire on live (real-time) bars; the strategy script sends the same `alert()` messages and its
+orders can also be alerted from the Strategy Tester (*Order fills only*). Alerts work on a 5m chart for both models.
+
 ## On the chart
 - **Entry / stop / target lines** for every pending and open trade: orange = entry, red = stop, green = target, with
   price labels on the right ("LONG PENDING entry …", "SL … (breakeven)" after the stop moves, "TP … (1H swing low, 4.2R)").
