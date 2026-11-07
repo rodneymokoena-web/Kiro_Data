@@ -117,3 +117,10 @@ swing, lookback 2, break window 24/96): `output/breaker_variants_summary.csv`; t
 2021-2026 swing (GoatFunded / Pepperstone): 253 / 277 trades, PF 1.70 / 1.86, +62.0R / +81.6R, max DD 11.0% / 6.1%. Both models: 327 / 354 trades,
 +77.2R / +127.0R, $20,872 / $33,753, max DD 14.8% / 10.6%.
 
+## Update: swing stop without an order block = previous 1H candle high/low (default)
+`OB_FALLBACK = "prev 1H candle"` in `swing_snap.py` (env `OB_FALLBACK`, `sweep extreme` restores the old fallback): when the drop has no 1H order block,
+the stop is the previous completed 1H candle high (short) / low (long) beyond the entry (up to 24 candles back), plus the 2-point buffer.
+It applies to about 27-32 trades per broker. Test: `obfb_experiments.py`, `output/ob_fallback_summary.csv`.
+2021-2026 swing (GoatFunded / Pepperstone): 253 / 277 trades, PF 1.70 / 1.86 -> 1.66 / 1.79, +62.0R / +81.6R -> +60.7R / +77.4R, max DD 11.0% / 6.1% -> 10.3% / 6.3%.
+Both models: 327 / 354 trades, +75.9R / +122.8R, $20,577 / $32,332, max DD 12.2% / 10.7%.
+

@@ -9,7 +9,7 @@
 //          of it, intact) is inverted by a 1H CLOSE (1H displacement >= 1 candle + 1H MSS). TWO entries per setup: a limit
 //          at the 4H IFVG near edge, and a limit at a 1H breaker FVG (the 1H order block of the drop broken by a 1H close,
 //          entry at the first 1H FVG after the break). Both valid 48 h. Stop above the 50% of the 1H order block of the
-//          drop, target the 1H swing low before the 4H FVG's middle candle, breakeven at +1R then trail to each new 1H swing.
+//          drop (none: previous 1H candle high/low), target the 1H swing low before the 4H FVG's middle candle, breakeven at +1R then trail to each new 1H swing.
 //  MODEL "Intraday (5m entry)" (optional): 5m chart. 5m Touch (default) / 5m 50% CE at the MSS FVG (rule 6),
 //          stop beyond the previous completed 1H candle.
 //  D/W/M, 4H and 1H data come from request.security() using COMPLETED candles only (no repainting).
@@ -29,7 +29,7 @@
 //          cancels the order unless the next 5m candle re-inverts it.
 //  Rule 7  Intraday stop: previous COMPLETED 1H candle high/low (or 4H sweep extreme), target 3R.
 //          Swing stop: above the 50% of the 1H order block of the drop (first candle of the first bearish 1H FVG formed
-//          by the drop from the sweep extreme; none -> sweep extreme), target the 1H swing low (Fixed R optional).
+//          by the drop from the sweep extreme; none -> previous completed 1H candle high/low), target the 1H swing low (Fixed R optional).
 //          Both models: + buffer, breakeven at +1R.
 // =====================================================================================================
 strategy("ICT Sweep > IFVG > MSS Strategy (rules 1-7)", shorttitle="ICT IFVG Strategy", overlay=true, pyramiding=5, initial_capital=10000, default_qty_type=strategy.fixed, commission_type=strategy.commission.cash_per_contract, commission_value=0, slippage=0, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
@@ -666,7 +666,7 @@ f_ob4(int start, bool sh) =>
 
 // swing stop: 50% of the 1H order block of the drop = first candle (last up-close 1H candle, short) of the first bearish
 // 1H FVG formed by the drop from the sweep extreme (candle 3 after the extreme, candle 1 at or after the candle before
-// it, complete, top above the 4H IFVG bottom). na = none (stop falls back to the sweep extreme)
+// it, complete, top above the 4H IFVG bottom). na = none (stop falls back to the previous completed 1H candle high/low beyond the entry)
 // session end: is the completed-session extreme `price` a swing high/low on B1 (i_sessPiv each side)? 1H+ filter
 f_sessSwing(float price, bool isHi) =>
     bool ok = false
@@ -772,7 +772,7 @@ f_swLow(int t, bool sh) =>
 // stop level (before the buffer) for the selected model / stop option; na = no valid stop
 f_stopBase(bool sh, float px, float ext, float ob) =>
     string mode = isSwing ? i_swStop : i_inStop
-    float base = mode == "Previous 1H candle" ? f_prev1h(sh, px) : mode == "Previous 4H candle" ? f_prev4h(sh, px) : mode == "4H order block" ? ob : mode == "1H OB 50%" ? (na(ob) ? ext : ob) : ext
+    float base = mode == "Previous 1H candle" ? f_prev1h(sh, px) : mode == "Previous 4H candle" ? f_prev4h(sh, px) : mode == "4H order block" ? ob : mode == "1H OB 50%" ? (na(ob) ? (na(f_prev1h(sh, px)) ? ext : f_prev1h(sh, px)) : ob) : ext
     bool ok = not na(base) and (sh ? base > px : base < px)
     ok ? base : na
 

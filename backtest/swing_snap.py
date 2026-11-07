@@ -223,6 +223,7 @@ BREAKER_OB_BEFORE = __import__("os").environ.get("BREAKER_OB_BEFORE", "0") == "1
 BREAKER_SWING_BREAK = __import__("os").environ.get("BREAKER_SWING_BREAK", "0") == "1" # the breaking close must also be beyond the last confirmed 1H swing low/high
 BREAKER_OB_LB = int(__import__("os").environ.get("BREAKER_OB_LB", "8"))           # candles back from the drop FVG to look for the order block
 BREAKER_BREAK_BARS = int(__import__("os").environ.get("BREAKER_BREAK_BARS", "48")) # candles after the order block in which it must be broken
+OB_FALLBACK = __import__("os").environ.get("OB_FALLBACK", "prev 1H candle")   # stop when there is no order block: "prev 1H candle" | "sweep extreme"
 BREAKER_FVG_BARS = 24    # the 1H FVG must form within this many 1H candles after the breaker is confirmed
 
 
@@ -542,6 +543,11 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
                     base, tag = _drop_ob(st, h1, h1_fvgs, anchor, q, ob_level)
             elif stop_kind == "1H OB of drop FVG":
                 base, tag = _drop_ob(st, h1, h1_fvgs, anchor, q, ob_level)
+                if OB_FALLBACK == "prev 1H candle" and tag.startswith("sweep extreme"):      # no order block: previous 1H candle high/low beyond the entry
+                    from backtest import prev_candle
+                    pcb = prev_candle(h1, idx[q], pd.Timedelta(hours=1), short, entry, 24)
+                    if not np.isnan(pcb):
+                        base, tag = pcb, "prev 1H candle (no OB)"
             else:
                 base, tag = stop_level(stop_kind, st, h1, h1_fvgs, h4, anchor, ob_type, ob_pick)
             if np.isnan(base):

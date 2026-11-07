@@ -1,21 +1,21 @@
 broker,model,period,trades,W,L,BE,PF,R,account,maxDD%
-GoatFunded,swing,tuned,122,56,43,23,1.58,25.49,12759,11.0
-GoatFunded,swing,unseen,131,64,43,24,1.83,36.45,14185,7.2
-GoatFunded,swing,2021-26,253,120,86,47,1.7,61.95,18099,11.0
+GoatFunded,swing,tuned,122,54,45,23,1.58,26.81,12912,10.3
+GoatFunded,swing,unseen,131,63,45,23,1.73,33.86,13819,7.2
+GoatFunded,swing,2021-26,253,117,90,46,1.66,60.67,17843,10.3
 GoatFunded,intraday,tuned,45,8,25,12,0.89,-2.83,9674,7.7
 GoatFunded,intraday,unseen,29,10,11,8,2.55,18.07,11921,3.3
 GoatFunded,intraday,2021-26,74,18,36,20,1.4,15.23,11532,7.7
 GoatFunded,swing (previous model),tuned,14,5,3,6,4.93,11.94,11242,1.0
 GoatFunded,swing (previous model),unseen,14,6,5,3,3.57,12.94,11348,2.0
 GoatFunded,swing (previous model),2021-26,28,11,8,9,4.08,24.87,12757,2.0
-GoatFunded,both (1% each),2021-26,327,138,122,67,1.61,77.18,20872,14.8
-Pepperstone,swing,tuned,149,68,51,30,2.11,57.87,17329,5.9
-Pepperstone,swing,unseen,128,68,41,19,1.56,23.73,12532,6.0
-Pepperstone,swing,2021-26,277,136,92,49,1.86,81.6,21717,6.1
+GoatFunded,both (1% each),2021-26,327,135,126,66,1.58,75.9,20577,12.2
+Pepperstone,swing,tuned,149,65,53,31,2.02,55.5,16913,6.3
+Pepperstone,swing,unseen,128,66,42,20,1.5,21.87,12300,5.9
+Pepperstone,swing,2021-26,277,131,95,51,1.79,77.37,20803,6.3
 Pepperstone,intraday,tuned,47,14,22,11,1.79,18.33,11925,7.4
 Pepperstone,intraday,unseen,30,13,10,7,3.44,27.11,13034,3.5
 Pepperstone,intraday,2021-26,77,27,32,18,2.32,45.44,15542,7.4
 Pepperstone,swing (previous model),tuned,15,6,4,5,4.45,13.94,11464,1.0
 Pepperstone,swing (previous model),unseen,15,6,6,3,2.95,11.87,11228,2.0
 Pepperstone,swing (previous model),2021-26,30,12,10,8,3.55,25.82,12871,3.0
-Pepperstone,both (1% each),2021-26,354,163,124,67,1.98,127.04,33753,10.6
+Pepperstone,both (1% each),2021-26,354,158,127,69,1.93,122.8,32332,10.7
