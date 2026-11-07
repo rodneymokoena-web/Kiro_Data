@@ -12,7 +12,7 @@
 //|   risk, ~6-8% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.30"
+#property version   "1.31"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -39,7 +39,7 @@ input bool   InpFvgLiquidity  = true;    // also treat the FAR edge of every FRE
 
 input group "Rule 2-3 - sweep & inversion"
 input bool   InpCloseBackSweep= true;    // sweep must close back through the level (rejection)
-input int    InpLegLookback4H = 60;      // 4H FVG at most N 4H candles before the sweep
+input int    InpLegLookback4H = 10;      // 4H FVG at most N 4H candles before the sweep
 input int    InpInvWindow1H   = 80;      // inversion within N 1H candles of the sweep
 input double InpDispATR       = 1.0;     // 1H displacement >= this * ATR(14)
 input int    InpMssPivot      = 2;       // 1H MSS swing size

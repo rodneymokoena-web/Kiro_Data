@@ -42,7 +42,7 @@ than the firm's own limits).
    "Fresh" = no 4H candle has traded into the gap yet, so a level can be swept up to and including the 4H candle that first enters it (`InpFvgLiquidity`).
 2. **Sweep (Rule 2):** a completed 1H candle trades through a level **and closes back** the other way.
    The sweep is remembered for up to 80 1H candles.
-3. **4H FVG & inversion (Rule 3):** the last bullish 4H FVG (within 60 4H candles, still intact) is **closed below by a
+3. **4H FVG & inversion (Rule 3):** the last bullish 4H FVG (within 10 4H candles, still intact) is **closed below by a
    1H candle** that also has **1H displacement** (>= 1 ATR) and a **1H MSS**.
 4. **Entry (Rule 4):** a **sell limit at the 4H IFVG bottom**, valid 48 h; cancelled if a 1H candle opens above the
    sweep extreme first.
