@@ -12,7 +12,7 @@
 //|   risk per entry, ~6-12% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.40"
+#property version   "1.41"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -654,7 +654,7 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
 
 //+------------------------------------------------------------------+
 //| 1H breaker + 1H FVG (second entry), short; long mirrored.          |
-//| OB = last up-close 1H candle (within 4) before the first bearish   |
+//| OB = last up-close 1H candle (within 8) before the first bearish   |
 //| 1H FVG of the drop from the sweep extreme. Breaker = first later   |
 //| 1H CLOSE below its low (within 48 candles). Entry = limit at the   |
 //| bottom of the first bearish 1H FVG whose middle candle is at/after |
@@ -673,7 +673,7 @@ double FindBreakerFvg(const MqlRates &r[], int L, bool sh, int anc, double bot4,
      }
    if(c1 < 0) return 0;
    int ob = -1;
-   for(int m=c1; m>=MathMax(c1-3,0); m--)
+   for(int m=c1; m>=MathMax(c1-7,0); m--)
       if(sh ? r[m].close > r[m].open : r[m].close < r[m].open) { ob = m; break; }
    if(ob < 0) return 0;
    double lv = sh ? r[ob].low : r[ob].high;

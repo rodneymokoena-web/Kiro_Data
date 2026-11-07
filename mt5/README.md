@@ -47,7 +47,7 @@ than the firm's own limits).
 4. **Entries (Rule 4):** two independent trades per setup (each risks `InpRiskPct`):
    (a) **4H IFVG:** a **sell limit at the 4H IFVG bottom**, valid 48 h; cancelled if a 1H candle opens above the
    sweep extreme first;
-   (b) **1H breaker FVG** (`InpBreakerEntry`, magic `InpMagic`+1): the 1H order block of the drop (last up-close 1H candle before the
+   (b) **1H breaker FVG** (`InpBreakerEntry`, magic `InpMagic`+1): the 1H order block of the drop (last up-close 1H candle, looking back 8 candles, before the
    first bearish 1H FVG of the drop) is broken by a 1H **close** below its low; the entry is a limit at the bottom of the first
    bearish 1H FVG whose middle candle is at/after that break candle (within 24 candles). Same stop and target as (a).
    Both can be open together, so `InpOneTradeAtATime` applies per entry kind.
