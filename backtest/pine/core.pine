@@ -69,6 +69,7 @@ i_swEntry = input.string("4H IFVG Touch", "Swing entry: limit at the 4H IFVG", o
 i_swStop  = input.string("1H OB 50%", "Swing stop", options=["1H OB 50%", "4H sweep extreme", "Previous 4H candle"], group=g0, tooltip="1H OB 50% = above the middle of the 1H order block of the drop: the first candle (last up-close 1H candle) of the first bearish 1H FVG formed by the drop from the sweep extreme (short; long mirrored). No such FVG -> the sweep extreme.")
 i_swTgt   = input.string("1H swing low", "Swing target", options=["1H swing low", "Fixed R"], group=g0, tooltip="1H swing low = the most recent confirmed 1H swing low (2 candles each side) before the 4H FVG's middle candle, i.e. where the leg that built the 4H FVG started (swing high for a long). Fixed R = 'Target (R)'.")
 i_swValid = input.int(48, "Swing order valid (hours after the 1H inversion)", minval=1, group=g0)
+i_brk = input.bool(true, "Swing: second entry at a 1H breaker FVG", group=g0, tooltip="Swing model: besides the limit at the 4H IFVG, each setup also gets a second, independent limit order at a 1H breaker FVG. Breaker (short): the 1H order block of the drop (last up-close candle before the first bearish 1H FVG of the drop from the sweep extreme) is broken by a 1H CLOSE below its low; the entry is a limit at the bottom of the first bearish 1H FVG whose middle candle is at/after the break candle (within 24 candles). Long: mirrored. Same stop rule and target as the 4H IFVG entry, valid for the swing order hours. Both trades can be open together.")
 i_swSweep = input.bool(true, "Swing: sweep must close back through the level", group=g0, tooltip="On (default): a swing sweep needs a wick through the level AND a close back the other way (high: close below the level; low: close above). Off: a wick through is enough. The intraday model always uses a wick.")
 i_swTrail = input.bool(true, "Swing: trail the stop to each new 1H swing after breakeven", group=g0, tooltip="After the stop has moved to breakeven (+R below), the stop follows each newly confirmed 1H swing high (short) / low (long) formed after the fill - 2 candles each side - whenever that tightens it. Off = breakeven only. Intraday never trails.")
 i_haWin   = input.int(80, "Swing: inversion window after the sweep (1H candles)", minval=1, group=g0)
@@ -212,6 +213,8 @@ type Sig
     float     ob = na      // swing stop level (1H OB 50%)
     int       anc = -1     // swing: 1H index of the sweep extreme
     float     tpFix = na   // swing: target = 1H swing low
+    bool      brk = false  // swing: second entry at a 1H breaker FVG
+    float     brkLvl = na  // its limit price (FVG near edge)
 
 // ───────────────────────────────────────────────────────────────────────────── Bars helpers
 method size(Bars b) => b.base + b.o.size()
@@ -462,6 +465,7 @@ var array<bool>  haHi = array.new_bool()
 var array<string> haTf = array.new_string()
 var array<int>   haLast = array.new_int(8, 0)  // newest confirmation time merged per list (D/W/M H/L + 4H H/L)
 var array<int>   haKeys = array.new_int()      // 4H FVGs that already produced a swing setup
+var array<Sig>   BW = array.new<Sig>()       // swing setups waiting for a 1H breaker FVG
 var array<float> fvP = array.new_float()       // 4H FVG far-edge liquidity: level price
 var array<int>   fvT = array.new_int()         // usable from (close of the FVG's 3rd candle)
 var array<bool>  fvHi = array.new_bool()       // true = buy-side level (bearish FVG top)
@@ -694,6 +698,52 @@ f_dropOb(bool sh, int anc, float bot4, float top4) =>
                 if sh ? B1.C(m) > B1.O(m) : B1.C(m) < B1.O(m)
                     res := (B1.H(m) + B1.L(m)) / 2
                     break
+    res
+
+// swing second entry: 1H breaker + 1H FVG for a swing setup (short; long mirrored). Returns the limit price (FVG near edge) or na.
+// OB = last up-close candle (within 4) before the first drop FVG; breaker = first later 1H CLOSE below its low (within 48 candles);
+// FVG = first bearish 1H FVG whose middle candle is at/after the break candle (completed within 24 candles of it).
+f_brk(bool sh, int anc, float bot4, float top4) =>
+    float res = na
+    int best = -1
+    if F1.size() > 0 and anc >= 0
+        for m = 0 to F1.size() - 1
+            Fvg f = F1.get(m)
+            if f.dir == (sh ? -1 : 1) and f.i3 > anc and f.i3 - 2 >= anc - 1 and (sh ? f.top > bot4 : f.bot < top4)
+                if best < 0
+                    best := m
+                else if f.i3 < F1.get(best).i3
+                    best := m
+    int ob = -1
+    if best >= 0
+        int c1 = F1.get(best).i3 - 2
+        int lo = math.max(c1 - 3, B1.base)
+        if c1 >= lo
+            for m = c1 to lo
+                if sh ? B1.C(m) > B1.O(m) : B1.C(m) < B1.O(m)
+                    ob := m
+                    break
+    int b = -1
+    if ob >= 0
+        float lv = sh ? B1.L(ob) : B1.H(ob)
+        int last = math.min(ob + 48, B1.size() - 1)
+        if ob + 1 <= last
+            for t = ob + 1 to last
+                if sh ? B1.C(t) < lv : B1.C(t) > lv
+                    b := t
+                    break
+    if b >= 0 and F1.size() > 0
+        int gi = -1
+        for m = 0 to F1.size() - 1
+            Fvg f = F1.get(m)
+            if f.dir == (sh ? -1 : 1) and f.i3 - 1 >= b and f.i3 <= b + 24
+                if gi < 0
+                    gi := m
+                else if f.i3 < F1.get(gi).i3
+                    gi := m
+        if gi >= 0
+            Fvg fg = F1.get(gi)
+            res := sh ? fg.bot : fg.top
     res
 
 // swing target: most recent confirmed 1H swing low (short; high for a long), 2 candles each side, before time t
@@ -1158,12 +1208,33 @@ if new1 and useHa
                         nsw.anc := e1
                         nsw.tpFix := f_swLow(B4.T(f.i3 - 1), sh)        // 1H swing low before the 4H FVG's middle candle
                         SG.push(nsw)
+                        if i_brk
+                            BW.push(nsw)
                         n4 += 1
                         n1 += 1
                         if i_show4
                             box.new(B4.T(f.i3 - 2), f.top, B1.TC(q) + 48 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG", text_size=size.tiny, text_color=color.gray)
                             label.new(B1.TC(q), sh ? B1.H(q) : B1.L(q), "SWING " + (sh ? "short" : "long") + "\n" + info, xloc=xloc.bar_time, style=sh ? label.style_label_down : label.style_label_up, color=sh ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                         alert(syminfo.ticker + " SWING setup " + (sh ? "SHORT" : "LONG") + ": " + info, alert.freq_once_per_bar_close)
+
+// ───────────────────────────────────────────────────────────────────────────── 3c. swing second entry: 1H breaker FVG
+if new1 and useHa and i_brk and BW.size() > 0
+    for k = BW.size() - 1 to 0
+        Sig par = BW.get(k)
+        if par.state == 3 or q - par.anc > 250
+            BW.remove(k)
+            continue
+        float bl = f_brk(par.sh, par.anc, par.bot, par.top)
+        if not na(bl)
+            string sidB = (par.sh ? "BS" : "BL") + str.tostring(B1.TC(q))
+            Sig cs = Sig.new(par.sh, par.top, par.bot, B1.TC(q), par.ext, par.info + "\n1H breaker FVG entry", sidB, 0, -1, -1, -10, array.new<Rt>())
+            cs.anc := par.anc
+            cs.tpFix := par.tpFix
+            cs.brk := true
+            cs.brkLvl := bl
+            SG.push(cs)
+            BW.remove(k)
+            alert(syminfo.ticker + " SWING " + (par.sh ? "SHORT" : "LONG") + " 1H breaker FVG entry @ " + str.tostring(bl, format.mintick), alert.freq_once_per_bar_close)
 
 // ───────────────────────────────────────────────────────────────────────────── 4. rule 5 on the new 1H candle
 if new1 and ST.size() > 0
@@ -1247,11 +1318,11 @@ if tfOK and SG.size() > 0
             g.sPre := BC.firstAtOrAfter(g.sigT - HOUR)
         // ── SWING model: limit at the 1H IFVG straight after the 1H signal (no rule 6)
         if isSwing and g.state == 0
-            g.lvl := i_swEntry == "4H IFVG Touch" ? (sh ? g.bot : g.top) : (g.top + g.bot) / 2
+            g.lvl := g.brk ? g.brkLvl : (i_swEntry == "4H IFVG Touch" ? (sh ? g.bot : g.top) : (g.top + g.bot) / 2)
             g.hiPx := g.ext
             g.trig := p
             g.trigT := g.sigT
-            g.trigBy := "4H IFVG"
+            g.trigBy := g.brk ? "1H breaker FVG" : "4H IFVG"
             g.fI3 := p
             g.fTop := g.top
             g.fBot := g.bot
@@ -1259,7 +1330,7 @@ if tfOK and SG.size() > 0
             g.state := 1
             if i_showE
                 line.new(time, g.lvl, g.sigT + i_swValid * HOUR, g.lvl, xloc=xloc.bar_time, color=color.orange, width=2)
-                label.new(time, g.lvl, "swing " + i_swEntry, xloc=xloc.bar_time, style=label.style_none, textcolor=color.orange, size=size.tiny)
+                label.new(time, g.lvl, g.brk ? "swing 1H breaker FVG" : "swing " + i_swEntry, xloc=xloc.bar_time, style=label.style_none, textcolor=color.orange, size=size.tiny)
         // ── INTRADAY model: retest + trigger
         if g.state == 0 and not isSwing
             if sh ? high > g.ext : low < g.ext

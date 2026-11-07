@@ -97,3 +97,15 @@ The last 4H FVG of the sweeping leg must be within 10 4H candles of the sweep (`
 2021-2026 swing (GoatFunded / Pepperstone): 225 / 240 -> 162 / 175 trades, PF 1.52 / 1.68 -> 1.84 / 2.05, R +34.0 / +44.5 -> +35.6 / +43.8,
 max DD 7.5% / 5.3% -> 5.6% / 3.5%. Both models: +50.8R / +89.3R, $16,318 / $23,863. Results: `output/lb_summary.csv`.
 
+## Update: swing model takes BOTH entries (4H IFVG + 1H breaker FVG) - default
+Each swing setup now trades two independent entries (1% risk each, same stop and target):
+1. limit at the 4H IFVG near edge (as before), and
+2. limit at a **1H breaker FVG**: the 1H order block of the drop (last up-close 1H candle before the first bearish 1H FVG of the
+   drop from the sweep extreme) is broken by a 1H **close** below its low; entry = bottom of the first bearish 1H FVG whose middle
+   candle is at/after the break candle (within 24 candles). Long = mirror. Switches: `ENTRY_KIND=both|4h|breaker|either`,
+   `BREAKER_BREAK=close|wick`, `BREAKER_FVG=first|any` (`swing_snap.py`). Tests: `entrykind_experiments.py`,
+   `output/entrykind_summary.csv`, `output/entrykind_both_summary.csv`; monthly view: `output/monthly_both_entries.csv`.
+2021-2026, $10k, 1% risk (GoatFunded / Pepperstone): swing 162 / 175 -> 252 / 276 trades, +35.6R / +43.8R -> +61.3R / +81.0R, PF 1.84 / 2.05 -> 1.69 / 1.85,
+max DD 5.6% / 3.5% -> 11.6% / 6.4%. Both models: 326 / 353 trades, +76.5R / +126.4R, $20,730 / $33,533, max DD 15.4% / 10.6%.
+The gain mostly comes from taking more risk (two trades per setup, often open together); return per unit of drawdown is about unchanged.
+

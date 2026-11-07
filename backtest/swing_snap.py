@@ -215,6 +215,55 @@ def _drop_ob(st: dict, h1: pd.DataFrame, h1_fvgs: pd.DataFrame, anchor: int, q: 
     return float(h[anchor] if short else l[anchor]), "sweep extreme (no up-close OB)"
 
 
+ENTRY_KIND = __import__("os").environ.get("ENTRY_KIND", "both")   # "4h" = limit at the 4H IFVG | "breaker" = 1H breaker + 1H FVG touch | "either" = first fill of the two
+BREAKER_BREAK = __import__("os").environ.get("BREAKER_BREAK", "close")   # "close" = a 1H close beyond the OB | "wick" = a 1H wick beyond it
+BREAKER_FVG = __import__("os").environ.get("BREAKER_FVG", "first")       # "first" = first FVG right after the break | "any" = every FVG after the break (earliest fill wins)
+BREAKER_FVG_BARS = 24    # the 1H FVG must form within this many 1H candles after the breaker is confirmed
+
+
+def _breaker_fvg(st: dict, h1: pd.DataFrame, h1_fvgs: pd.DataFrame, anchor: int):
+    """1H breaker + 1H FVG (short; long mirrored). OB = last up-close 1H candle before the first bearish 1H FVG of the drop
+    from the sweep extreme (as for the stop). Breaker = the first later 1H candle that CLOSES below the OB low. Then the
+    first bearish 1H FVG whose middle candle is at or after that break candle (within BREAKER_FVG_BARS) is the entry zone.
+    Returns (entry level = FVG near edge, index at whose close the FVG is known) or None."""
+    short = st["signal"] == "short"
+    o, h, l, c = (h1[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
+    n = len(c)
+    f = h1_fvgs[(h1_fvgs["dir"] == ("bear" if short else "bull")) & (h1_fvgs["idx"] > anchor) & (h1_fvgs["idx"] - 2 >= anchor - 1)]
+    f = f[f["top"] > st["fvg_bottom"]] if short else f[f["bottom"] < st["fvg_top"]]
+    if f.empty:
+        return None
+    c1 = int(f.sort_values("idx").iloc[0]["idx"]) - 2
+    ob = -1
+    for i in range(c1, max(c1 - 4, -1), -1):
+        if (short and c[i] > o[i]) or (not short and c[i] < o[i]):
+            ob = i
+            break
+    if ob < 0:
+        return None
+    lvl = l[ob] if short else h[ob]
+    b = -1
+    for t in range(ob + 1, min(ob + 1 + 48, n)):
+        beyond = (l[t] < lvl or c[t] < lvl) if short else (h[t] > lvl or c[t] > lvl)
+        if BREAKER_BREAK == "close":
+            beyond = (c[t] < lvl) if short else (c[t] > lvl)
+        if beyond:
+            b = t
+            break
+    if b < 0:
+        return None
+    if BREAKER_FVG == "any":
+        g = h1_fvgs[(h1_fvgs["dir"] == ("bear" if short else "bull")) & (h1_fvgs["idx"] > b) & (h1_fvgs["idx"] <= b + 96)]
+    else:
+        g = h1_fvgs[(h1_fvgs["dir"] == ("bear" if short else "bull")) & (h1_fvgs["idx"] - 1 >= b) & (h1_fvgs["idx"] <= b + BREAKER_FVG_BARS)]
+    if g.empty:
+        return None
+    g = g.sort_values("idx")
+    if BREAKER_FVG != "any":
+        g = g.iloc[:1]
+    return [(float(r["bottom"] if short else r["top"]), int(r["idx"])) for _, r in g.iterrows()]
+
+
 def _swing_low_target(st: dict, h1: pd.DataFrame, h4: pd.DataFrame, q: int) -> float:
     """Most recent confirmed 1H swing low (short) before the 4H FVG's middle candle."""
     short = st["signal"] == "short"
@@ -397,7 +446,11 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
         atr1 = _structure._arrays(h1)[4]
         o, h, l = (h1[k].to_numpy() for k in ("Open", "High", "Low"))
         idx, n = h1.index, len(h1)
+        jobs = []
         for k_st, st in enumerate(setups, 1):
+            for ek_ in (("4h", "breaker") if ENTRY_KIND == "both" else (ENTRY_KIND,)):   # "both": every setup can trade both entries
+                jobs.append((k_st, st, ek_))
+        for k_st, st, ek in jobs:
             short = st["signal"] == "short"
             anchor = _anchor(st, h1)
             extreme = h[anchor] if short else l[anchor]
@@ -405,13 +458,35 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
             q0, q1 = idx.searchsorted(st["signal_time"]), min(idx.searchsorted(st["signal_time"] + RETEST_WINDOW), n)
             q, entry = -1, np.nan
             why = "never retested the 4H IFVG within 48 h"
-            for i in range(q0, q1):
-                if (short and o[i] > extreme) or (not short and o[i] < extreme):
-                    why = "cancelled: price opened beyond the sweep extreme before the retest"
-                    break                                               # rule 4 cancellation
-                if (short and h[i] >= level) or (not short and l[i] <= level):
-                    q, entry = i, (max(level, o[i]) if short else min(level, o[i]))
-                    break
+            entry_kind = "4H IFVG"
+            if ek in ("4h", "either"):
+                for i in range(q0, q1):
+                    if (short and o[i] > extreme) or (not short and o[i] < extreme):
+                        why = "cancelled: price opened beyond the sweep extreme before the retest"
+                        break                                               # rule 4 cancellation
+                    if (short and h[i] >= level) or (not short and l[i] <= level):
+                        q, entry = i, (max(level, o[i]) if short else min(level, o[i]))
+                        break
+            if ek in ("breaker", "either"):
+                bf = _breaker_fvg(st, h1, h1_fvgs, anchor)
+                if bf is None:
+                    if ek == "breaker":
+                        why = "no 1H breaker + 1H FVG"
+                else:
+                    for blevel, bidx in bf:
+                        b0 = max(q0, bidx + 1)                             # the FVG is known at the close of its 3rd candle
+                        b1 = min(idx.searchsorted(max(st["signal_time"], idx[bidx]) + RETEST_WINDOW), n)
+                        for i in range(b0, b1):
+                            if (short and o[i] > extreme) or (not short and o[i] < extreme):
+                                if ek == "breaker":
+                                    why = "cancelled: price opened beyond the sweep extreme before the 1H FVG touch"
+                                break
+                            if (short and h[i] >= blevel) or (not short and l[i] <= blevel):
+                                if q < 0 or i < q:                          # the earlier fill wins
+                                    q, entry, entry_kind = i, (max(blevel, o[i]) if short else min(blevel, o[i])), "1H breaker FVG"
+                                break
+            if ek == "breaker" and entry_kind == "4H IFVG" and q >= 0:
+                q = -1
             if q < 0:
                 LOST[why] = LOST.get(why, 0) + 1
                 continue
@@ -487,7 +562,7 @@ def run(stop_kind: str = STOP_KIND, ob_type: str = OB_TYPE, target: str = TARGET
             trades.append({"symbol": symbol, "setup": k_st, "signal": st["signal"], "swept": st["swept_levels"],
                            "4h_signal_time": st["signal_time"], "4h_ifvg_bottom": st["fvg_bottom"],
                            "4h_ifvg_top": st["fvg_top"], "extreme": extreme, "entry_time": idx[q], "entry": entry,
-                           "stop": sl, "stop_from": tag, "target": tp, "target_level": ttag, "risk_pts": risk,
+                           "stop": sl, "stop_from": tag, "entry_kind": entry_kind, "target": tp, "target_level": ttag, "risk_pts": risk,
                            "planned_rr": abs(tp - entry) / risk, "exit": sim["exit"], "exit_time": idx[sim["k"]],
                            "exit_price": sim["price"], "pnl_pts": pnl, "r_net": (pnl - COST[symbol]) / risk})
             if PLOT:
