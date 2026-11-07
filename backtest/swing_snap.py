@@ -218,6 +218,11 @@ def _drop_ob(st: dict, h1: pd.DataFrame, h1_fvgs: pd.DataFrame, anchor: int, q: 
 ENTRY_KIND = __import__("os").environ.get("ENTRY_KIND", "both")   # "4h" = limit at the 4H IFVG | "breaker" = 1H breaker + 1H FVG touch | "either" = first fill of the two
 BREAKER_BREAK = __import__("os").environ.get("BREAKER_BREAK", "close")   # "close" = a 1H close beyond the OB | "wick" = a 1H wick beyond it
 BREAKER_FVG = __import__("os").environ.get("BREAKER_FVG", "first")       # "first" = first FVG right after the break | "any" = every FVG after the break (earliest fill wins)
+BREAKER_ENTRY = __import__("os").environ.get("BREAKER_ENTRY", "fvg")             # "fvg" = limit at the 1H FVG after the break | "block" = limit at the breaker block itself (retest)
+BREAKER_OB_BEFORE = __import__("os").environ.get("BREAKER_OB_BEFORE", "0") == "1"   # the order block must be a candle BEFORE the sweep extreme
+BREAKER_SWING_BREAK = __import__("os").environ.get("BREAKER_SWING_BREAK", "0") == "1" # the breaking close must also be beyond the last confirmed 1H swing low/high
+BREAKER_OB_LB = int(__import__("os").environ.get("BREAKER_OB_LB", "8"))           # candles back from the drop FVG to look for the order block
+BREAKER_BREAK_BARS = int(__import__("os").environ.get("BREAKER_BREAK_BARS", "48")) # candles after the order block in which it must be broken
 BREAKER_FVG_BARS = 24    # the 1H FVG must form within this many 1H candles after the breaker is confirmed
 
 
@@ -235,23 +240,33 @@ def _breaker_fvg(st: dict, h1: pd.DataFrame, h1_fvgs: pd.DataFrame, anchor: int)
         return None
     c1 = int(f.sort_values("idx").iloc[0]["idx"]) - 2
     ob = -1
-    for i in range(c1, max(c1 - 4, -1), -1):
+    for i in range(c1, max(c1 - BREAKER_OB_LB, -1), -1):
         if (short and c[i] > o[i]) or (not short and c[i] < o[i]):
             ob = i
             break
-    if ob < 0:
+    if ob < 0 or (BREAKER_OB_BEFORE and ob >= anchor):
         return None
     lvl = l[ob] if short else h[ob]
     b = -1
-    for t in range(ob + 1, min(ob + 1 + 48, n)):
+    for t in range(ob + 1, min(ob + 1 + BREAKER_BREAK_BARS, n)):
         beyond = (l[t] < lvl or c[t] < lvl) if short else (h[t] > lvl or c[t] > lvl)
         if BREAKER_BREAK == "close":
             beyond = (c[t] < lvl) if short else (c[t] > lvl)
+        if beyond and BREAKER_SWING_BREAK:                      # also beyond the last confirmed 1H swing low (short) / high (long)
+            sw = np.nan
+            for i in range(t - 3, 1, -1):
+                if short and l[i] < l[i - 2:i].min() and l[i] <= l[i + 1:i + 3].min():
+                    sw = l[i]; break
+                if (not short) and h[i] > h[i - 2:i].max() and h[i] >= h[i + 1:i + 3].max():
+                    sw = h[i]; break
+            beyond = (not np.isnan(sw)) and ((c[t] < sw) if short else (c[t] > sw))
         if beyond:
             b = t
             break
     if b < 0:
         return None
+    if BREAKER_ENTRY == "block":
+        return [(float(lvl), b)]                                 # retest of the breaker block itself (known at the break close)
     if BREAKER_FVG == "any":
         g = h1_fvgs[(h1_fvgs["dir"] == ("bear" if short else "bull")) & (h1_fvgs["idx"] > b) & (h1_fvgs["idx"] <= b + 96)]
     else:

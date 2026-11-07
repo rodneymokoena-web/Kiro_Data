@@ -698,7 +698,7 @@ f_dropOb(bool sh, int anc, float bot4, float top4) =>
     res
 
 // swing second entry: 1H breaker + 1H FVG for a swing setup (short; long mirrored). Returns the limit price (FVG near edge) or na.
-// OB = last up-close candle (within 4) before the first drop FVG; breaker = first later 1H CLOSE below its low (within 48 candles);
+// OB = last up-close candle (within 8) before the first drop FVG; breaker = first later 1H CLOSE below its low (within 48 candles);
 // FVG = first bearish 1H FVG whose middle candle is at/after the break candle (completed within 24 candles of it).
 f_brk(bool sh, int anc, float bot4, float top4) =>
     float res = na
@@ -714,7 +714,7 @@ f_brk(bool sh, int anc, float bot4, float top4) =>
     int ob = -1
     if best >= 0
         int c1 = F1.get(best).i3 - 2
-        int lo = math.max(c1 - 3, B1.base)
+        int lo = math.max(c1 - 7, B1.base)
         if c1 >= lo
             for m = c1 to lo
                 if sh ? B1.C(m) > B1.O(m) : B1.C(m) < B1.O(m)

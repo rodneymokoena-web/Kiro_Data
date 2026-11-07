@@ -109,3 +109,11 @@ Each swing setup now trades two independent entries (1% risk each, same stop and
 max DD 5.6% / 3.5% -> 11.6% / 6.4%. Both models: 326 / 353 trades, +76.5R / +126.4R, $20,730 / $33,533, max DD 15.4% / 10.6%.
 The gain mostly comes from taking more risk (two trades per setup, often open together); return per unit of drawdown is about unchanged.
 
+## Update: breaker order block looks back 8 candles (was 4) - default
+`BREAKER_OB_LB = 8` in `swing_snap.py` (env `BREAKER_OB_LB`): the order block is the last up-close 1H candle within 8 candles before the first
+bearish 1H FVG of the drop. Other breaker definitions tested and NOT adopted (entry at the block, OB before the sweep, break must take a 1H
+swing, lookback 2, break window 24/96): `output/breaker_variants_summary.csv`; their switches (`BREAKER_ENTRY`, `BREAKER_OB_BEFORE`,
+`BREAKER_SWING_BREAK`, `BREAKER_BREAK_BARS`) stay off by default.
+2021-2026 swing (GoatFunded / Pepperstone): 253 / 277 trades, PF 1.70 / 1.86, +62.0R / +81.6R, max DD 11.0% / 6.1%. Both models: 327 / 354 trades,
++77.2R / +127.0R, $20,872 / $33,753, max DD 14.8% / 10.6%.
+
