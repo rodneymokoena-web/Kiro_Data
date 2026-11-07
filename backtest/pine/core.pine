@@ -821,6 +821,13 @@ f_ctScan(float bot, float top, bool sh, int tStart) =>
         k += 1
     [cancelled, pending]
 
+// ───────────────────────────────────────────────────────────────────────────── alert event flags (reset every bar)
+bool evLongOrder  = false     // an entry order (limit) was placed this bar
+bool evShortOrder = false
+bool evLongFill   = false     // an entry order filled this bar
+bool evShortFill  = false
+bool evClosed     = false     // a trade closed this bar (target / stop / breakeven / trail)
+
 // ───────────────────────────────────────────────────────────────────────────── 0. chart candle
 BC.add(open, high, low, close, time, time_close, 4000)
 int p = bar_index
@@ -903,7 +910,11 @@ if SG.size() > 0
                     continue
                 g.fillIdx := p
                 g.state := 2
-                alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " filled @ " + str.tostring(g.entry, format.mintick), alert.freq_once_per_bar_close)
+                if g.sh
+                    evShortFill := true
+                else
+                    evLongFill := true
+                alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
         if g.state == 2
             bool hitSL = g.sh ? high >= g.sl : low <= g.sl
             bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx
@@ -926,6 +937,7 @@ if SG.size() > 0
                 if i_showE
                     label.new(time, exitPx, (trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                     line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
+                evClosed := true
                 alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
             else if i_be and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
                 g.sl := g.entry
@@ -1461,7 +1473,11 @@ if tfOK and SG.size() > 0
                         g.liveFrom := math.max(g.trig, f.i3) + 1
                         if i_showE
                             box.new(BC.T(f.i3 - 2), f.top, BC.TC(f.i3) + i_fillHrs * HOUR, f.bot, xloc=xloc.bar_time, border_color=color.orange, bgcolor=color.new(color.orange, 80), text="entry FVG", text_size=size.tiny, text_color=color.orange)
-                        alert(syminfo.ticker + " " + (sh ? "SHORT" : "LONG") + " order " + str.tostring(g.lvl, format.mintick) + " SL " + str.tostring(g.sl, format.mintick) + " TP " + str.tostring(g.tp, format.mintick) + " (" + g.trigBy + ")", alert.freq_once_per_bar_close)
+                        if sh
+                            evShortOrder := true
+                        else
+                            evLongOrder := true
+                        alert(syminfo.ticker + " " + (sh ? "SHORT" : "LONG") + " ENTRY ORDER " + str.tostring(g.lvl, format.mintick) + " SL " + str.tostring(g.sl, format.mintick) + " TP " + str.tostring(g.tp, format.mintick) + " (" + g.trigBy + ")", alert.freq_once_per_bar_close)
             else if g.fI3 < 0
                 g.state := 3
                 g.result := "trigger, no FVG"
@@ -1475,7 +1491,11 @@ if tfOK and SG.size() > 0
                 if isSwing and i_swTgt == "1H swing low"
                     g.tp := g.tpFix
             if isSwing and g.state == 1 and p == g.trig and not na(g.sl)
-                alert(syminfo.ticker + " SWING " + (sh ? "SHORT" : "LONG") + " order " + str.tostring(g.lvl, format.mintick) + " SL " + str.tostring(g.sl, format.mintick) + " TP " + str.tostring(g.tp, format.mintick), alert.freq_once_per_bar_close)
+                if sh
+                    evShortOrder := true
+                else
+                    evLongOrder := true
+                alert(syminfo.ticker + " SWING " + (sh ? "SHORT" : "LONG") + " ENTRY ORDER (" + g.trigBy + ") limit " + str.tostring(g.lvl, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick), alert.freq_once_per_bar_close)
             // close-back-through rule on 5m closes (state for the NEXT candle) - intraday only
             if g.fI3 >= 0 and g.state == 1
                 g.blocked := false
@@ -1605,3 +1625,13 @@ if barstate.islast and i_table
     table.cell(tb, 1, 10, (isSwing ? i_swStop : i_inStop) + " / " + (isSwing and i_swTgt == "1H swing low" ? "1H swing low" : str.tostring(i_tgtR) + "R") + (i_be ? ", BE +" + str.tostring(i_beR) + "R" : ""), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 11, "Active trade", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 11, actTxt, text_color=actTxt == "-" ? color.white : color.yellow, text_size=size.small)
+
+// ───────────────────────────────────────────────────────────────────────────── 9. alerts
+// alert() messages above carry the details (entry / SL / TP / entry type): create an alert with the condition
+// "Any alert() function call". The conditions below are for the indicator's alert dialog.
+//#I alertcondition(evLongOrder,  "Long entry order placed",  "{{ticker}} LONG entry order placed - see chart for entry / SL / TP")
+//#I alertcondition(evShortOrder, "Short entry order placed", "{{ticker}} SHORT entry order placed - see chart for entry / SL / TP")
+//#I alertcondition(evLongFill,   "Long entry filled",        "{{ticker}} LONG entry FILLED")
+//#I alertcondition(evShortFill,  "Short entry filled",       "{{ticker}} SHORT entry FILLED")
+//#I alertcondition(evLongFill or evShortFill, "Any entry filled", "{{ticker}} entry FILLED")
+//#I alertcondition(evClosed,     "Trade closed",             "{{ticker}} trade closed (target / stop / breakeven / trail)")
