@@ -53,7 +53,7 @@ than the firm's own limits).
    first bearish 1H FVG of the drop) is broken by a 1H **close** below its low; the entry is a limit at the bottom of the first
    bearish 1H FVG whose middle candle is at/after that break candle (within 24 candles). Same stop and target as (a).
    Both can be open together, so `InpOneTradeAtATime` applies per entry kind.
-5. **Stop:** above the **50% of the 1H order block of the drop** + buffer. The drop FVG is the first bearish 1H FVG after the sweep extreme
+5. **Stop:** above the **50% of the 1H order block of the drop**, no buffer (`InpSwingStopBuffer`, default 0; the trail keeps `InpStopBuffer`). The drop FVG is the first bearish 1H FVG after the sweep extreme
    (its top above the 4H IFVG bottom); the order block is the last up-close 1H candle within 4 candles back from its first candle
    (no order block: the previous completed 1H candle high/low beyond the entry, up to 24 candles back; the stop is fixed when the order is placed).
 6. **Target:** the most recent confirmed **1H swing low** (2 candles each side) **before the 4H FVG's middle candle**. If it is not beyond
@@ -69,7 +69,8 @@ than the firm's own limits).
 | `InpPiv4H` | 10 | 4H swing size (10 major, 2 all, 0 off) |
 | `InpPivDWM` | 2 | D/W/M swing size |
 | `InpFvgLiquidity` | true | fresh 4H FVG far edges as extra liquidity (v1.30) |
-| `InpStopBuffer` | 2.0 | points beyond the stop level |
+| `InpStopBuffer` | 2.0 | points beyond the trailing stop level |
+| `InpSwingStopBuffer` | 0.0 | points beyond the initial stop (v1.52) |
 | `InpBE_at_R` | 1.0 | breakeven trigger in R (0 = off) |
 | `InpBreakerEntry` | true | second entry at a 1H breaker FVG (v1.40; uses magic `InpMagic`+1) |
 

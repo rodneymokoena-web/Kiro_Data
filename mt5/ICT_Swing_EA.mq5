@@ -12,7 +12,7 @@
 //|   risk per entry, ~6-12% max drawdown - results on your broker will differ.  |
 //+------------------------------------------------------------------+
 #property copyright "ICT Swing EA"
-#property version   "1.51"
+#property version   "1.52"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -47,7 +47,8 @@ input int    InpMssPivot      = 2;       // 1H MSS swing size
 input group "Rule 4-7 - entry / risk"
 input int    InpRetestHours   = 48;      // retest the 4H IFVG within N hours of the signal
 input int    InpValidHours    = 48;      // limit order valid for N hours after the signal
-input double InpStopBuffer    = 2.0;     // stop buffer in points beyond the 1H OB / sweep extreme
+input double InpStopBuffer    = 2.0;     // buffer in points used by the structure TRAIL (the initial stop uses InpSwingStopBuffer)
+input double InpSwingStopBuffer = 0.0;   // buffer in points beyond the initial stop (1H OB 50% / previous 1H candle); 0 = exactly at the level
 input double InpBE_at_R       = 1.0;     // move stop to breakeven at +R (0 = off)
 input bool   InpBreakerEntry  = true;    // second, independent entry per setup: limit at a 1H breaker FVG (magic = InpMagic+1)
 input bool   InpTrailStructure= true;    // after breakeven, trail the stop to each new confirmed 1H swing formed after the fill
@@ -666,7 +667,7 @@ void RegisterSetup(bool isShort, double fvgTop, double fvgBot, double ext, datet
    g_setup.entry        = isShort ? fvgBot : fvgTop;     // limit at the 4H IFVG near edge
 
    double base = StopFromOB(isShort, extTime, ext, fvgBot, fvgTop, g_setup.entry);
-   double buf  = InpStopBuffer * g_point;
+   double buf  = InpSwingStopBuffer * g_point;
    g_setup.stop = isShort ? base + buf : base - buf;
    double risk = MathAbs(g_setup.entry - g_setup.stop);
    if(isShort ? g_setup.stop <= g_setup.entry : g_setup.stop >= g_setup.entry) { g_setup.active=false; return; }   // stop on the wrong side
@@ -745,7 +746,7 @@ void CheckBreaker()
    g_setupB.signalTime = TimeCurrent(); g_setupB.expiry = TimeCurrent() + InpValidHours*3600; g_setupB.ordered = false;
    g_setupB.entry = lvl;
    double base = StopFromOB(sh, g_bw.extTime, g_bw.ext, g_bw.fvgBot, g_bw.fvgTop, g_setupB.entry);
-   double buf  = InpStopBuffer * g_point;
+   double buf  = InpSwingStopBuffer * g_point;
    g_setupB.stop = sh ? base + buf : base - buf;
    double risk = MathAbs(g_setupB.entry - g_setupB.stop);
    g_bw.active = false;                                     // one breaker entry per setup
