@@ -18,7 +18,7 @@
 //          London / NY SESSION highs/lows, kept only where a session extreme coincides with a 1H-or-higher swing
 //          (input "Intraday: session highs/lows"). Sessions on the New York clock: Asia 20-00, London 02-05, NY 07-10.
 //  Rule 2  (intraday, 5m chart) A Rule 1 level is swept on 5m candles: a 5m candle wicks through it and closes back, or 1-2 5m candles close beyond it and are followed by two displacement candles.
-//          (Input "Intraday: judge the sweep on 5m candles"; off = a 4H wick.) A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
+//          A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
 //          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
 //  Rule 3  (M1, default) The 4H inversion needs 4H displacement (>= 2 candles, >= 1 ATR) AND a 1H MSS: a 1H close
 //          through the last 1H swing low (short) / high (long) before the sweep extreme, by the close of the 4H
@@ -48,7 +48,9 @@ i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/
 i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=g1)
 i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1, group=g1)
 i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Both models: every 4H FVG is also sweepable liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom). It stays valid only while price has not yet traded into the gap, so a level can be swept up to and including the 4H candle that first enters the FVG. Swing: 1H close-back sweep; intraday: 4H wick.")
-i_sw5m = input.bool(true, "Intraday: judge the sweep on 5m candles", group=g1, tooltip="Intraday model only (5m chart). A Rule 1 level is swept when (A) a 5m candle wicks through it AND closes back, or (B) 1 or 2 5m candles close beyond it and are immediately followed by two strong displacement 5m candles in the reversal direction (together >= 1 ATR14); the second one closes beyond the low (high) of the last sweeping candle. The first sweep event uses the level up. Off = a 4H wick through the level.")
+i_inv5 = input.bool(true, "Intraday: 5m inversion chain (replaces the 4H inversion / 4H retest / 1H IFVG)", group=g1, tooltip="Intraday model, with the 5m sweep. After a 5m sweep: the bullish 5m FVG (short) of the leg from the last 5m swing low (2 each side), formed into the sweep and still intact, is inverted by a 5m CLOSE within 5 5m candles, with 5m displacement (>= 2 candles, >= 1 ATR) and a 5m MSS. A 5m candle must then retest that 5m IFVG within 30 minutes (cancelled if price trades beyond the sweep extreme first); then, within 30 minutes, a 15m CISD or a 5m MSS with displacement, and a limit at the 5m MSS FVG or 5m volume imbalance (valid 30 minutes, cancelled by a 5m close back through it). Stop and target are unchanged.")
+i_trg5 = input.int(30, "Intraday 5m chain: trigger window (minutes after the 5m IFVG retest)", minval=5, group=g1, tooltip="5m chain only: a 15m CISD or a 5m MSS with displacement must happen within this many minutes of the 5m IFVG retest.")
+i_fill5 = input.int(30, "Intraday 5m chain: entry order valid (minutes after the trigger)", minval=5, group=g1, tooltip="5m chain only: the limit at the 5m MSS FVG or 5m volume imbalance stays live this long after the trigger.")
 i_liq1h = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group=g1, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
 i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=g1, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
 
@@ -70,7 +72,7 @@ i_inv1   = input.int(20, "1H inversion window (1H candles after the retest)", mi
 
 g0 = "Model"
 i_us100   = input.bool(true, "Trade US100 only (NAS100 / US100 / USTEC / NDX)", group=g0)
-i_model   = input.string("Swing (1H entry)", "Model", options=["Swing (1H entry)", "Intraday (5m entry)"], group=g0, tooltip="Swing (main): snapshot rules - 4H FVG inverted by a 1H close, entry at the 4H IFVG, stop above the 1H OB 50%, target the 1H swing low. Intraday: rules 1-6, entry at the 5m MSS FVG, short holds.")
+// the model is fixed per script (pine/build.py builds a swing and an intraday version)
 i_swEntry = input.string("4H IFVG Touch", "Swing entry: limit at the 4H IFVG", options=["4H IFVG Touch", "4H IFVG 50% CE"], group=g0, tooltip="Touch = limit at the 4H IFVG near edge (bottom for a short). 50% CE = its midpoint.")
 i_swStop  = input.string("1H OB 50%", "Swing stop", options=["1H OB 50%", "4H sweep extreme", "Previous 4H candle"], group=g0, tooltip="1H OB 50% = above the middle of the 1H order block of the drop: the first candle (last up-close 1H candle) of the first bearish 1H FVG formed by the drop from the sweep extreme (short; long mirrored). No such FVG -> the sweep extreme.")
 i_swTgt   = input.string("1H swing low", "Swing target", options=["1H swing low", "Fixed R"], group=g0, tooltip="1H swing low = the most recent confirmed 1H swing low (2 candles each side) before the 4H FVG's middle candle, i.e. where the leg that built the 4H FVG started (swing high for a long). Fixed R = 'Target (R)'.")
@@ -115,8 +117,9 @@ cBull = color.new(color.teal, 70)
 cBear = color.new(color.red, 70)
 isM5  = timeframe.period == "5"
 isM15 = timeframe.period == "15"
-isSwing = i_model == "Swing (1H entry)"
-sw5     = i_sw5m and not isSwing      // intraday: sweeps judged on 5m candles
+//#W isSwing = true
+//#N isSwing = false
+sw5     = not isSwing      // intraday: sweeps are judged on 5m candles (section 2b)
 useHa   = isSwing      // swing model = snapshot rules on 1H (section 3b); intraday = 4H rules (section 3)
 useM1   = i_conf == "1H MSS (M1)"
 string symU = str.upper(syminfo.ticker)
@@ -145,6 +148,14 @@ type Sweep
     int    dir         // 1 = swing high taken (short idea), -1 = swing low taken (long idea)
     int    s           // 4H index of the sweep candle
     int    origin      // 4H index where the leg into the sweep started
+    float  price
+    string tf
+    bool   done = false
+
+type Sweep5                 // intraday 5m chain: a level swept on 5m
+    int    dir         // 1 = high taken (short idea), -1 = low taken (long idea)
+    int    s           // chart (5m) index of the candle that confirmed the sweep
+    int    origin      // chart index of the last 5m swing low (short) / high (long) before it
     float  price
     string tf
     bool   done = false
@@ -221,6 +232,7 @@ type Sig
     float     ob = na      // swing stop level (1H OB 50%)
     int       anc = -1     // swing: 1H index of the sweep extreme
     float     tpFix = na   // swing: target = 1H swing low
+    int       rtMin = 0    // intraday 5m chain: retest window in minutes (0 = i_rt1Hrs hours)
     bool      brk = false  // swing: second entry at a 1H breaker FVG
     float     brkLvl = na  // its limit price (FVG near edge)
 
@@ -324,25 +336,6 @@ method mssHit(Bars b, int ext, int j, bool sh) =>
                     break
     mss
 
-// MSS "most recent swing": from candle s to j, the first close through the most recent swing low (short) / high (long)
-// already confirmed at that candle (pivot + i_mssPiv < t), formed before or after the sweep
-method mssAny(Bars b, int s, int j, bool sh) =>
-    bool mss = false
-    if j >= s
-        for t = s to j
-            int pv = -1
-            int top = t - i_mssPiv - 1
-            if top >= b.base + i_mssPiv
-                for k = top to b.base + i_mssPiv
-                    if sh ? b.pivLoAt(k, i_mssPiv, true) : b.pivHiAt(k, i_mssPiv, true)
-                        pv := k
-                        break
-            if pv >= 0
-                float lv = sh ? b.L(pv) : b.H(pv)
-                if sh ? b.C(t) < lv : b.C(t) > lv
-                    mss := true
-                    break
-    mss
 
 method firstAtOrAfter(Bars b, int t) =>
     int k = b.size() - 1
@@ -355,12 +348,11 @@ method firstAtOrAfter(Bars b, int t) =>
 
 // FVG bookkeeping on a new candle j: mark first opposite close-throughs, add the new FVG
 updFvgs(array<Fvg> F, Bars b, int j, int maxn) =>
-    if F.size() > 0
-        for k = 0 to F.size() - 1
-            Fvg f = F.get(k)
-            if f.inv < 0 and f.i3 < j
-                if (f.dir == 1 and b.C(j) < f.bot) or (f.dir == -1 and b.C(j) > f.top)
-                    f.inv := j
+    for [k, _e1] in F
+        Fvg f = F.get(k)
+        if f.inv < 0 and f.i3 < j
+            if (f.dir == 1 and b.C(j) < f.bot) or (f.dir == -1 and b.C(j) > f.top)
+                f.inv := j
     if j - 2 >= b.base
         if b.L(j) > b.H(j - 2)
             F.push(Fvg.new(1, b.L(j), b.H(j - 2), j))
@@ -443,6 +435,12 @@ a5t = request.security_lower_tf(syminfo.tickerid, ltfStr, time)
 var Bars BC = newBars()      // chart timeframe (index == bar_index)
 var Bars B1 = newBars()      // 1H
 var Bars B4 = newBars()      // 4H
+var Bars B15 = newBars()     // 15m, built from the 5m chart candles (5m chain CISD)
+var float a15o = na
+var float a15h = na
+var float a15l = na
+var int   a15t = 0
+var array<Fvg> VC = array.new<Fvg>()    // 5m volume imbalances (i3 = 2nd candle)
 var array<Fvg>   FC = array.new<Fvg>()
 var array<Fvg>   F1 = array.new<Fvg>()
 var array<Fvg>   F4 = array.new<Fvg>()
@@ -456,6 +454,8 @@ var array<Sweep> SW = array.new<Sweep>()
 var array<Setup> ST = array.new<Setup>()
 var array<Sig>   SG = array.new<Sig>()
 var array<Sweep1> SW1 = array.new<Sweep1>()   // swing model sweeps
+var array<Sweep5> SW5 = array.new<Sweep5>()   // intraday 5m chain sweeps
+var array<int>    k5  = array.new_int()       // 5m FVGs that already produced a 5m-chain signal
 var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing highs (price / confirmation time)
 var array<int>   l4HT = array.new_int()
 var array<float> l4LP = array.new_float()     // intraday: unbroken 4H swing lows
@@ -500,51 +500,7 @@ var int   n4 = 0
 var int   n1 = 0
 
 // ───────────────────────────────────────────────────────────────────────────── helpers using state
-// rule 2: sweep detection for one level list on 4H candle j
-f_sweeps(array<float> lvP, array<int> lvT, bool isHigh, string tf, int j) =>
-    if not na(lvP)
-        if lvP.size() > 0
-            for k = 0 to lvP.size() - 1
-                float p = lvP.get(k)
-                int   ct = lvT.get(k)
-                bool hit = isHigh ? B4.H(j) > p : B4.L(j) < p
-                if ct <= B4.T(j) and hit
-                    bool seen = false
-                    if sweptP.size() > 0
-                        for m = 0 to sweptP.size() - 1
-                            if sweptP.get(m) == p and sweptT.get(m) == ct
-                                seen := true
-                                break
-                    if not seen
-                        sweptP.push(p)
-                        sweptT.push(ct)
-                        int org = -1
-                        if i_legMode == "Last 4H swing"
-                            // last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep candle j
-                            int top = j - i_legPiv
-                            int bot = B4.base + i_legPiv
-                            if top >= bot
-                                for m = top to bot
-                                    bool isPiv = true
-                                    for q2 = m - i_legPiv to m + i_legPiv
-                                        if isHigh ? B4.L(q2) < B4.L(m) : B4.H(q2) > B4.H(m)
-                                            isPiv := false
-                                            break
-                                    if isPiv
-                                        org := m
-                                        break
-                        else
-                            int lo = math.max(j - i_legLB, B4.base)
-                            org := lo
-                            for m = lo to j
-                                if isHigh ? B4.L(m) < B4.L(org) : B4.H(m) > B4.H(org)
-                                    org := m
-                        if org >= 0
-                            SW.push(Sweep.new(isHigh ? 1 : -1, j, org, p, tf))
-    while sweptP.size() > 400
-        sweptP.shift()
-        sweptT.shift()
-
+//#{N
 // rule 4: displacement AND (CISD or MSS) for an inversion at 4H candle j after a sweep at s
 f_quality(int s, int j, bool sh) =>
     [dOk, dN, dAtr] = B4.disp(j, sh)
@@ -610,6 +566,7 @@ f_quality(int s, int j, bool sh) =>
         conf := mss1 ? "1H MSS" : "-"
         passed := dOk and mss1
     [passed, dN, dAtr, conf, ext]
+//#}
 
 // 4H index of the candle containing time t (B4.size() = the candle still forming)
 f_h4idx(int t) =>
@@ -624,6 +581,7 @@ f_h4idx(int t) =>
                     break
     r
 
+//#{W
 // swing: add newly confirmed D/W/M levels to the 1H level list (levels are confirmed in time order)
 f_merge(array<float> P, array<int> T, bool isHi, string tf, int slot) =>
     if not na(P)
@@ -641,6 +599,7 @@ f_merge(array<float> P, array<int> T, bool isHi, string tf, int slot) =>
         haT.shift()
         haHi.shift()
         haTf.shift()
+//#}
 
 // rule 7: high (short) / low (long) of the previous COMPLETED 1H candle beyond the price (looks back i_pcLB candles)
 f_prev1h(bool sh, float px) =>
@@ -668,6 +627,7 @@ f_prev4h(bool sh, float px) =>
                 break
     res
 
+//#{N
 // 4H order block: high (short) of the last up-close 4H candle at or before 4H index `start` (low of the last
 // down-close candle for a long), searching up to 30 candles back
 f_ob4(int start, bool sh) =>
@@ -679,7 +639,9 @@ f_ob4(int start, bool sh) =>
                 res := sh ? B4.H(m) : B4.L(m)
                 break
     res
+//#}
 
+//#{N
 // swing stop: 50% of the 1H order block of the drop = first candle (last up-close 1H candle, short) of the first bearish
 // 1H FVG formed by the drop from the sweep extreme (candle 3 after the extreme, candle 1 at or after the candle before
 // it, complete, top above the 4H IFVG bottom). na = none (stop falls back to the previous completed 1H candle high/low beyond the entry)
@@ -695,7 +657,9 @@ f_sessSwing(float price, bool isHi) =>
                 ok := true
                 break
     ok
+//#}
 
+//#{W
 f_dropOb(bool sh, int anc, float bot4, float top4) =>
     float res = na
     int best = -1
@@ -708,15 +672,17 @@ f_dropOb(bool sh, int anc, float bot4, float top4) =>
                 else if f.i3 < F1.get(best).i3
                     best := m
     if best >= 0
-        int c1 = F1.get(best).i3 - 2
-        int lo = math.max(c1 - 3, B1.base)
-        if c1 >= lo
-            for m = c1 to lo
+        int cF = F1.get(best).i3 - 2
+        int lo = math.max(cF - 3, B1.base)
+        if cF >= lo
+            for m = cF to lo
                 if sh ? B1.C(m) > B1.O(m) : B1.C(m) < B1.O(m)
                     res := (B1.H(m) + B1.L(m)) / 2
                     break
     res
+//#}
 
+//#{W
 // swing second entry: 1H breaker + 1H FVG for a swing setup (short; long mirrored). Returns the limit price (FVG near edge) or na.
 // OB = last up-close candle (within 8) before the first drop FVG; breaker = first later 1H CLOSE below its low (within 48 candles);
 // FVG = first bearish 1H FVG whose middle candle is at/after the break candle (completed within 24 candles of it).
@@ -733,10 +699,10 @@ f_brk(bool sh, int anc, float bot4, float top4) =>
                     best := m
     int ob = -1
     if best >= 0
-        int c1 = F1.get(best).i3 - 2
-        int lo = math.max(c1 - 7, B1.base)
-        if c1 >= lo
-            for m = c1 to lo
+        int cF = F1.get(best).i3 - 2
+        int lo = math.max(cF - 7, B1.base)
+        if cF >= lo
+            for m = cF to lo
                 if sh ? B1.C(m) > B1.O(m) : B1.C(m) < B1.O(m)
                     ob := m
                     break
@@ -762,7 +728,9 @@ f_brk(bool sh, int anc, float bot4, float top4) =>
             Fvg fg = F1.get(gi)
             res := sh ? fg.bot : fg.top
     res
+//#}
 
+//#{W
 // swing target: most recent confirmed 1H swing low (short; high for a long), 2 candles each side, before time t
 f_swLow(int t, bool sh) =>
     float res = na
@@ -784,6 +752,7 @@ f_swLow(int t, bool sh) =>
                 res := sh ? B1.L(i) : B1.H(i)
                 break
     res
+//#}
 
 // stop level (before the buffer) for the selected model / stop option; na = no valid stop
 f_stopBase(bool sh, float px, float ext, float ob) =>
@@ -791,6 +760,22 @@ f_stopBase(bool sh, float px, float ext, float ob) =>
     float base = mode == "Previous 1H candle" ? f_prev1h(sh, px) : mode == "Previous 4H candle" ? f_prev4h(sh, px) : mode == "4H order block" ? ob : mode == "1H OB 50%" ? (na(ob) ? (na(f_prev1h(sh, px)) ? ext : f_prev1h(sh, px)) : ob) : ext
     bool ok = not na(base) and (sh ? base > px : base < px)
     ok ? base : na
+
+//#{N
+// intraday 5m chain stop: high of the last COMPLETED bearish 5m candle (short) whose open AND close are above px
+// (long: low of the last bullish candle opening and closing below px), up to 48 candles back. na = none.
+f_prev5(bool sh, float px) =>
+    float res = na
+    int last = BC.size() - 2                                   // the candle before the current one = last completed
+    if last >= BC.base
+        int first = math.max(BC.base, last - 47)
+        for m = last to first
+            bool okC = sh ? (BC.C(m) < BC.O(m) and BC.O(m) > px and BC.C(m) > px) : (BC.C(m) > BC.O(m) and BC.O(m) < px and BC.C(m) < px)
+            if okC
+                res := sh ? BC.H(m) : BC.L(m)
+                break
+    res
+//#}
 
 // entry / stop / target lines of a signal: stop extending, gray + dotted if the order never filled
 method finishLines(Sig g) =>
@@ -805,6 +790,7 @@ method finishLines(Sig g) =>
         label.delete(g.lbS)
         label.delete(g.lbT)
 
+//#{N
 // close-back-through scan of the entry FVG on 5m closes from tStart: [cancelled, pending]
 f_ctScan(float bot, float top, bool sh, int tStart) =>
     bool cancelled = false
@@ -835,6 +821,7 @@ f_ctScan(float bot, float top, bool sh, int tStart) =>
             break
         k += 1
     [cancelled, pending]
+//#}
 
 // ───────────────────────────────────────────────────────────────────────────── alert event flags (reset every bar)
 bool evLongOrder  = false     // an entry order (limit) was placed this bar
@@ -847,19 +834,55 @@ bool evClosed     = false     // a trade closed this bar (target / stop / breake
 BC.add(open, high, low, close, time, time_close, 4000)
 int p = bar_index
 updFvgs(FC, BC, p, 300)          // FVG completed by this candle is known at its close
+//#{N
+// 5m volume imbalance between candles p-1 and p: same-direction candles whose bodies do not overlap but whose wicks do,
+// or whose 2nd candle opens beyond the 1st candle's close (bearish: open above the previous close; zone = previous close .. open)
+bool new15 = false
+if isM5
+    if p - 1 >= BC.base
+        float b1lo = math.min(BC.O(p - 1), BC.C(p - 1))
+        float b1hi = math.max(BC.O(p - 1), BC.C(p - 1))
+        float b2lo = math.min(open, close)
+        float b2hi = math.max(open, close)
+        if BC.C(p - 1) < BC.O(p - 1) and close < open and b1lo > b2hi and high >= BC.L(p - 1)
+            VC.push(Fvg.new(-1, b1lo, b2hi, p))
+        if BC.C(p - 1) > BC.O(p - 1) and close > open and b1hi < b2lo and low <= BC.H(p - 1)
+            VC.push(Fvg.new(1, b2lo, b1hi, p))
+        // also: two same-direction candles where the 2nd opens beyond the 1st's close (bearish: open above the previous close)
+        if BC.C(p - 1) < BC.O(p - 1) and close < open and open > BC.C(p - 1)
+            VC.push(Fvg.new(-1, open, BC.C(p - 1), p))
+        if BC.C(p - 1) > BC.O(p - 1) and close > open and open < BC.C(p - 1)
+            VC.push(Fvg.new(1, BC.C(p - 1), open, p))
+        while VC.size() > 300
+            VC.shift()
+    // 15m candles from the 5m chart (boundaries on the 15-minute clock); a candle is complete at the close of this 5m candle
+    if time % (15 * 60000) == 0 or na(a15o)
+        a15o := open
+        a15h := high
+        a15l := low
+        a15t := time - time % (15 * 60000)
+    else
+        a15h := math.max(a15h, high)
+        a15l := math.min(a15l, low)
+    if time_close % (15 * 60000) == 0
+        B15.add(a15o, a15h, a15l, close, a15t, time_close, 600)
+        new15 := true
+        a15o := na
+//#}
 
+//#{N
 if isM15
     if not na(a5c)
-        if a5c.size() > 0
-            for k = 0 to a5c.size() - 1
-                ctC.push(a5c.get(k))
-                ctT.push(a5t.get(k))
+        for [k, _e2] in a5c
+            ctC.push(a5c.get(k))
+            ctT.push(a5t.get(k))
 else
     ctC.push(close)
     ctT.push(time)
 while ctC.size() > 3000
     ctC.shift()
     ctT.shift()
+//#}
 
 // ───────────────────────────────────────────────────────────────────────────── 1. new 1H candle (before fills: the 1H candle that just closed counts for the stop)
 int q = -1
@@ -867,6 +890,7 @@ if new1
     B1.add(o1, h1, l1, c1, t1, tc1, 1500)
     q := B1.size() - 1
     updFvgs(F1, B1, q, 150)
+//#{N
     // ----- 1H swings (intraday liquidity): a pivot with i_liq4 candles each side is confirmed at the close of candle q
     if i_liq1h and not isSwing and i_liq4 > 0
         int pv1 = q - i_liq4
@@ -883,13 +907,14 @@ if new1
         while l1LP.size() > 150
             l1LP.shift()
             l1LT.shift()
+//#}
+//#{N
     // ----- fresh 1H FVG far edges (intraday): mark FVGs that this 1H candle traded into, then add the FVG completed by it
     if i_fvgLiq1h and not isSwing
-        if v1P.size() > 0
-            for k = 0 to v1P.size() - 1
-                if v1X.get(k) == -1 and v1T.get(k) <= B1.T(q)
-                    if v1Hi.get(k) ? B1.H(q) >= v1E.get(k) : B1.L(q) <= v1E.get(k)
-                        v1X.set(k, B1.TC(q))
+        for [k, _e3] in v1P
+            if v1X.get(k) == -1 and v1T.get(k) <= B1.T(q)
+                if v1Hi.get(k) ? B1.H(q) >= v1E.get(k) : B1.L(q) <= v1E.get(k)
+                    v1X.set(k, B1.TC(q))
         if q - 2 >= B1.base
             if B1.H(q) < B1.L(q - 2)
                 v1P.push(B1.L(q - 2))
@@ -909,6 +934,8 @@ if new1
             v1Hi.shift()
             v1E.shift()
             v1X.shift()
+//#}
+//#{N
     // ----- session highs/lows (intraday only): track the open session, push its extreme at the close (1H+ swing)
     if i_sess and not isSwing
         int nyh = hour(B1.T(q), "America/New_York")
@@ -933,96 +960,102 @@ if new1
         else if cur >= 0
             sesHi := math.max(sesHi, B1.H(q))
             sesLo := math.min(sesLo, B1.L(q))
+//#}
 
 // ───────────────────────────────────────────────────────────────────────────── 2. virtual fills / exits (orders were set on the previous candle)
-if SG.size() > 0
-    for k = 0 to SG.size() - 1
-        Sig g = SG.get(k)
-        if g.state == 1 and p >= g.liveFrom and g.liveFrom >= 0
-            bool expired = time >= g.trigT + (isSwing ? i_swValid : i_fillHrs) * HOUR
-            bool gapOut = g.sh ? open > g.hiPx : open < g.hiPx
-            if expired or g.cancelled
+for [k, _e4] in SG
+    Sig g = SG.get(k)
+    if g.state == 1 and p >= g.liveFrom and g.liveFrom >= 0
+        bool expired = time >= g.trigT + (isSwing ? i_swValid * HOUR : g.rtMin > 0 ? i_fill5 * 60000 : i_fillHrs * HOUR)
+        bool gapOut = g.sh ? open > g.hiPx : open < g.hiPx
+        if expired or g.cancelled
+            g.state := 3
+            g.result := expired ? "expired" : "cancelled"
+        else if gapOut
+            g.state := 3
+            g.result := "cancelled (gap beyond retest extreme)"
+        else if not g.blocked and (g.sh ? high >= g.lvl : low <= g.lvl)
+            g.entry := g.sh ? math.max(g.lvl, open) : math.min(g.lvl, open)
+//#{W
+            if isSwing and i_swStop == "1H OB 50%"
+                g.ob := f_dropOb(g.sh, g.anc, g.bot, g.top)
+//#}
+//#W             float pc1 = f_stopBase(g.sh, g.entry, g.ext, g.ob)
+//#N             float pc1 = g.rtMin > 0 ? f_prev5(g.sh, g.entry) : f_stopBase(g.sh, g.entry, g.ext, g.ob)
+            if na(pc1)
                 g.state := 3
-                g.result := expired ? "expired" : "cancelled"
-            else if gapOut
+                g.result := "no valid stop beyond entry"
+                continue
+            float bufS = isSwing ? i_swBuf : i_slBuf
+            g.sl := g.sh ? pc1 + bufS : pc1 - bufS
+            g.risk := math.abs(g.entry - g.sl)
+            g.tp := g.sh ? g.entry - i_tgtR * g.risk : g.entry + i_tgtR * g.risk
+            if isSwing and i_swTgt == "1H swing low"
+                g.tp := g.tpFix
+            if na(g.tp) or (g.sh ? g.tp >= g.entry : g.tp <= g.entry)
                 g.state := 3
-                g.result := "cancelled (gap beyond retest extreme)"
-            else if not g.blocked and (g.sh ? high >= g.lvl : low <= g.lvl)
-                g.entry := g.sh ? math.max(g.lvl, open) : math.min(g.lvl, open)
-                if isSwing and i_swStop == "1H OB 50%"
-                    g.ob := f_dropOb(g.sh, g.anc, g.bot, g.top)
-                float pc1 = f_stopBase(g.sh, g.entry, g.ext, g.ob)
-                if na(pc1)
-                    g.state := 3
-                    g.result := "no valid stop beyond entry"
-                    continue
-                float bufS = isSwing ? i_swBuf : i_slBuf
-                g.sl := g.sh ? pc1 + bufS : pc1 - bufS
-                g.risk := math.abs(g.entry - g.sl)
-                g.tp := g.sh ? g.entry - i_tgtR * g.risk : g.entry + i_tgtR * g.risk
-                if isSwing and i_swTgt == "1H swing low"
-                    g.tp := g.tpFix
-                if na(g.tp) or (g.sh ? g.tp >= g.entry : g.tp <= g.entry)
-                    g.state := 3
-                    g.result := "no 1H swing low target beyond entry"
-                    continue
-                g.fillIdx := p
-                g.state := 2
+                g.result := "no 1H swing low target beyond entry"
+                continue
+            g.fillIdx := p
+            g.state := 2
+            if g.sh
+                evShortFill := true
+            else
+                evLongFill := true
+            alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
+    if g.state == 2
+        bool hitSL = g.sh ? high >= g.sl : low <= g.sl
+        bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx
+        if hitSL or hitTP
+            float exitPx = hitSL ? g.sl : g.tp
+            float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
+            float r = (pnl - i_cost) / g.risk
+            bool trailWin = hitSL and g.beDone and r > 0.05          // stopped out in profit by the trailing stop
+            bool isBE = hitSL and g.beDone and not trailWin
+            nTrades += 1
+            nWins += (not hitSL or trailWin) ? 1 : 0
+            nLoss += hitSL and not g.beDone ? 1 : 0
+            nBE += isBE ? 1 : 0
+            sumR += r
+            grossW += r > 0 ? r : 0.0
+            grossL += r < 0 ? -r : 0.0
+            holdH += (time - BC.T(g.fillIdx)) / 3600000.0
+            g.state := 3
+            g.result := trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
+            if i_showE
+                label.new(time, exitPx, (trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
+            evClosed := true
+            alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
+        else if i_be and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
+            g.sl := g.entry
+            g.beDone := true
+            alert(syminfo.ticker + " stop moved to breakeven " + str.tostring(g.entry, format.mintick), alert.freq_once_per_bar_close)
+//#{W
+        // swing model: after breakeven, trail to the newest confirmed 1H swing (2 each side) that formed after the fill
+        if isSwing and i_swTrail and g.state == 2 and g.beDone and new1 and q >= 0
+            int ti = q - 2                                           // candle with 2 newer candles = confirmed pivot
+            if ti - 2 >= B1.base and B1.T(ti) > BC.T(g.fillIdx)
+                float lvT = na
                 if g.sh
-                    evShortFill := true
+                    bool okT = true
+                    for k2 = 1 to 2
+                        if B1.H(ti - k2) >= B1.H(ti) or B1.H(ti + k2) > B1.H(ti)
+                            okT := false
+                    lvT := okT ? B1.H(ti) + i_slBuf : na
+                    if not na(lvT) and lvT < g.sl
+                        g.sl := lvT
                 else
-                    evLongFill := true
-                alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
-        if g.state == 2
-            bool hitSL = g.sh ? high >= g.sl : low <= g.sl
-            bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx
-            if hitSL or hitTP
-                float exitPx = hitSL ? g.sl : g.tp
-                float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
-                float r = (pnl - i_cost) / g.risk
-                bool trailWin = hitSL and g.beDone and r > 0.05          // stopped out in profit by the trailing stop
-                bool isBE = hitSL and g.beDone and not trailWin
-                nTrades += 1
-                nWins += (not hitSL or trailWin) ? 1 : 0
-                nLoss += hitSL and not g.beDone ? 1 : 0
-                nBE += isBE ? 1 : 0
-                sumR += r
-                grossW += r > 0 ? r : 0.0
-                grossL += r < 0 ? -r : 0.0
-                holdH += (time - BC.T(g.fillIdx)) / 3600000.0
-                g.state := 3
-                g.result := trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
-                if i_showE
-                    label.new(time, exitPx, (trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
-                    line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
-                evClosed := true
-                alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
-            else if i_be and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
-                g.sl := g.entry
-                g.beDone := true
-                alert(syminfo.ticker + " stop moved to breakeven " + str.tostring(g.entry, format.mintick), alert.freq_once_per_bar_close)
-            // swing model: after breakeven, trail to the newest confirmed 1H swing (2 each side) that formed after the fill
-            if isSwing and i_swTrail and g.state == 2 and g.beDone and new1 and q >= 0
-                int ti = q - 2                                           // candle with 2 newer candles = confirmed pivot
-                if ti - 2 >= B1.base and B1.T(ti) > BC.T(g.fillIdx)
-                    float lvT = na
-                    if g.sh
-                        bool okT = true
-                        for k2 = 1 to 2
-                            if B1.H(ti - k2) >= B1.H(ti) or B1.H(ti + k2) > B1.H(ti)
-                                okT := false
-                        lvT := okT ? B1.H(ti) + i_slBuf : na
-                        if not na(lvT) and lvT < g.sl
-                            g.sl := lvT
-                    else
-                        bool okT = true
-                        for k2 = 1 to 2
-                            if B1.L(ti - k2) <= B1.L(ti) or B1.L(ti + k2) < B1.L(ti)
-                                okT := false
-                        lvT := okT ? B1.L(ti) - i_slBuf : na
-                        if not na(lvT) and lvT > g.sl
-                            g.sl := lvT
+                    bool okT = true
+                    for k2 = 1 to 2
+                        if B1.L(ti - k2) <= B1.L(ti) or B1.L(ti + k2) < B1.L(ti)
+                            okT := false
+                    lvT := okT ? B1.L(ti) - i_slBuf : na
+                    if not na(lvT) and lvT > g.sl
+                        g.sl := lvT
+//#}
 
+//#{N
 // leg origin for a sweep in 4H candle j (j may be the forming candle): last confirmed 4H swing before it / lowest-highest of N
 f_org(bool isHigh, int j) =>
     int org = -1
@@ -1047,7 +1080,9 @@ f_org(bool isHigh, int j) =>
             if isHigh ? B4.H(m) > B4.H(org) : B4.L(m) < B4.L(org)
                 org := m
     org
+//#}
 
+//#{N
 // 5m sweep event on chart candle pc for level lv (ct = the level's confirmation time):
 //  (A) the candle wicks through the level AND closes back (high level: high > lv, close < lv);
 //  (B) 1 or 2 candles closed beyond the level (not 3+), immediately followed by two displacement candles in the reversal direction
@@ -1063,45 +1098,68 @@ f_ev5(float lv, bool isHigh, int pc, int ct) =>
         if not ev and pc - 4 >= BC.base and ct <= BC.T(pc - 2)
             ev := BC.C(pc - 2) < lv and not (BC.C(pc - 3) < lv and BC.C(pc - 4) < lv) and BC.C(pc - 1) > BC.O(pc - 1) and BC.C(pc) > BC.O(pc) and BC.C(pc) > BC.H(pc - 2) and (BC.C(pc) - BC.O(pc - 1)) >= i_dAtr * BC.atr(pc)
     ev
+//#}
 
+//#{N
 // register a 5m sweep (once per level) as an intraday Sweep in the 4H candle that contains it
 f_reg5(float lv, int ct, bool isHigh, string tf, int pc) =>
     bool seen = false
-    if sweptP.size() > 0
-        for m = 0 to sweptP.size() - 1
-            if sweptP.get(m) == lv and sweptT.get(m) == ct
-                seen := true
-                break
+    for [m, _e5] in sweptP
+        if sweptP.get(m) == lv and sweptT.get(m) == ct
+            seen := true
+            break
     if not seen
         sweptP.push(lv)
         sweptT.push(ct)
-        int sI = f_h4idx(BC.T(pc))
-        if sI >= 0
-            int org = f_org(isHigh, sI)
-            if org >= 0
-                SW.push(Sweep.new(isHigh ? 1 : -1, sI, org, lv, tf))
+        if i_inv5
+            // leg origin on 5m: the last confirmed 5m swing low (high sweep) / high (low sweep), 2 candles each side, before pc
+            int org5 = -1
+            int topM = pc - 2
+            int botM = math.max(BC.base + 2, pc - 400)
+            if topM >= botM
+                for m = topM to botM
+                    bool pv = true
+                    for q2 = m - 2 to m + 2
+                        if isHigh ? BC.L(q2) < BC.L(m) : BC.H(q2) > BC.H(m)
+                            pv := false
+                            break
+                    if pv
+                        org5 := m
+                        break
+            if org5 >= 0
+                SW5.push(Sweep5.new(isHigh ? 1 : -1, pc, org5, lv, tf))
+        else
+            int sI = f_h4idx(BC.T(pc))
+            if sI >= 0
+                int org = f_org(isHigh, sI)
+                if org >= 0
+                    SW.push(Sweep.new(isHigh ? 1 : -1, sI, org, lv, tf))
     while sweptP.size() > 400
         sweptP.shift()
         sweptT.shift()
+//#}
 
+//#{N
 f_scan5(array<float> P, array<int> T, bool isHigh, string tf, int pc) =>
     if not na(P)
-        if P.size() > 0
-            for k = 0 to P.size() - 1
-                float lv = P.get(k)
-                int ct = T.get(k)
-                if ct <= BC.T(pc) and f_ev5(lv, isHigh, pc, ct)
-                    f_reg5(lv, ct, isHigh, tf, pc)
+        for [k, _e6] in P
+            float lv = P.get(k)
+            int ct = T.get(k)
+            if ct <= BC.T(pc) and f_ev5(lv, isHigh, pc, ct)
+                f_reg5(lv, ct, isHigh, tf, pc)
+//#}
 
+//#{N
 f_scan5fvg(array<float> P, array<int> T, array<bool> Hi, array<int> X, string tf, int pc) =>
-    if P.size() > 0
-        for k = 0 to P.size() - 1
-            if X.get(k) == -1 and T.get(k) <= BC.T(pc)
-                bool hi = Hi.get(k)
-                float lv = P.get(k)
-                if f_ev5(lv, hi, pc, T.get(k))
-                    f_reg5(lv, T.get(k), hi, tf, pc)
+    for [k, _e7] in P
+        if X.get(k) == -1 and T.get(k) <= BC.T(pc)
+            bool hi = Hi.get(k)
+            float lv = P.get(k)
+            if f_ev5(lv, hi, pc, T.get(k))
+                f_reg5(lv, T.get(k), hi, tf, pc)
+//#}
 
+//#{N
 // ───────────────────────────────────────────────────────────────────────────── 2b. intraday: 5m sweeps of the Rule 1 levels (on the chart candle)
 if sw5 and isM5 and symOK and p >= BC.base + 2
     if i_useD
@@ -1126,35 +1184,70 @@ if sw5 and isM5 and symOK and p >= BC.base + 2
         f_scan5fvg(fvP, fvT, fvHi, fvX, "4HFVG", p)
     if i_fvgLiq1h
         f_scan5fvg(v1P, v1T, v1Hi, v1X, "1HFVG", p)
+//#}
+
+//#{N
+// ───────────────────────────────────────────────────────────────────────────── 2c. intraday 5m chain: 5m FVG of the leg inverted by a 5m close
+if sw5 and i_inv5 and isM5 and symOK and SW5.size() > 0
+    for k = SW5.size() - 1 to 0
+        Sweep5 sw = SW5.get(k)
+        if sw.done or p - sw.s > 5
+            SW5.remove(k)
+            continue
+        bool sh = sw.dir == 1
+        int want = sh ? 1 : -1                                     // short: a bullish FVG gets inverted
+        int pick = -1
+        for [m, _e8] in FC
+            Fvg f = FC.get(m)
+            if f.dir == want and f.inv == p and f.i3 < p and f.i3 - 2 >= sw.origin and f.i3 - 1 <= sw.s and not k5.includes(want * (f.i3 + 1))
+                if pick < 0
+                    pick := m
+                else
+                    Fvg fb = FC.get(pick)
+                    if sh ? f.bot < fb.bot : f.top > fb.top            // same candle: nearest to price
+                        pick := m
+        if pick >= 0
+            Fvg f = FC.get(pick)
+            [dOk, dN, dAtr] = BC.disp(p, sh)
+            int e5 = sw.s
+            for m = sw.s to p
+                if sh ? BC.H(m) > BC.H(e5) : BC.L(m) < BC.L(e5)
+                    e5 := m
+            bool mss5 = BC.mssHit(e5, p, sh)
+            if dOk and mss5
+                sw.done := true
+                k5.push(want * (f.i3 + 1))
+                while k5.size() > 300
+                    k5.shift()
+                float ext5 = sh ? BC.H(e5) : BC.L(e5)
+                string info5 = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept (5m) | 5m FVG inverted + 5m MSS | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
+                string sid5 = (sh ? "S5" : "L5") + str.tostring(BC.TC(p))
+                Sig n5 = Sig.new(sh, f.top, f.bot, BC.TC(p), ext5, info5, sid5, 0, -1, -1, -10, array.new<Rt>())
+                n5.rtMin := 30
+                SG.push(n5)
+                n4 += 1
+                n1 += 1
+                if i_show1
+                    box.new(BC.T(f.i3 - 2), f.top, BC.TC(p) + 30 * 60000, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=color.new(sh ? color.red : color.teal, 70), text="5m IFVG", text_size=size.tiny, text_color=color.white)
+                alert(syminfo.ticker + " 5m IFVG " + (sh ? "SHORT" : "LONG") + " signal: " + info5, alert.freq_once_per_bar_close)
+//#}
 
 // ───────────────────────────────────────────────────────────────────────────── 3. new 4H candle: sweeps -> IFVG -> quality (rules 1-4)
 if new4
     B4.add(o4, h4, l4, c4, t4, tc4, 600)
     int j = B4.size() - 1
     updFvgs(F4, B4, j, 120)
-    if i_useD and not useHa and not sw5
-        f_sweeps(dHp, dHt, true, "D", j)
-        f_sweeps(dLp, dLt, false, "D", j)
-    if i_useW and not useHa and not sw5
-        f_sweeps(wHp, wHt, true, "W", j)
-        f_sweeps(wLp, wLt, false, "W", j)
-    if i_useM and not useHa and not sw5
-        f_sweeps(mHp, mHt, true, "M", j)
-        f_sweeps(mLp, mLt, false, "M", j)
-    // 4H liquidity: intraday sweeps these 4H levels here (swing sweeps them on 1H in section 3b). Either way, keep the
-    // l4HP/l4LP list current: drop levels broken by this 4H candle, then add a swing confirmed now.
+    // 4H liquidity: swing sweeps these levels on 1H (3b), intraday on 5m (2b). Swing: drop levels broken by this 4H candle;
+    // both: add a swing confirmed now.
     if i_liq4 > 0
-        if not useHa and not sw5
-            f_sweeps(l4HP, l4HT, true, "4H", j)
-            f_sweeps(l4LP, l4LT, false, "4H", j)
         if l4HP.size() > 0
             for k = l4HP.size() - 1 to 0
-                if (useHa or not sw5) and l4HT.get(k) <= B4.T(j) and B4.H(j) > l4HP.get(k)
+                if useHa and l4HT.get(k) <= B4.T(j) and B4.H(j) > l4HP.get(k)
                     l4HP.remove(k)
                     l4HT.remove(k)
         if l4LP.size() > 0
             for k = l4LP.size() - 1 to 0
-                if (useHa or not sw5) and l4LT.get(k) <= B4.T(j) and B4.L(j) < l4LP.get(k)
+                if useHa and l4LT.get(k) <= B4.T(j) and B4.L(j) < l4LP.get(k)
                     l4LP.remove(k)
                     l4LT.remove(k)
         int pv4 = j - i_liq4
@@ -1182,27 +1275,11 @@ if new4
                     fvHi.remove(k)
                     fvE.remove(k)
                     fvX.remove(k)
-        if not useHa and not sw5 and fvP.size() > 0
-            array<float> tHP = array.new_float()
-            array<int>   tHT = array.new_int()
-            array<float> tLP = array.new_float()
-            array<int>   tLT = array.new_int()
-            for k = 0 to fvP.size() - 1
-                if fvX.get(k) == -1
-                    if fvHi.get(k)
-                        tHP.push(fvP.get(k))
-                        tHT.push(fvT.get(k))
-                    else
-                        tLP.push(fvP.get(k))
-                        tLT.push(fvT.get(k))
-            f_sweeps(tHP, tHT, true, "4HFVG", j)
-            f_sweeps(tLP, tLT, false, "4HFVG", j)
-        if fvP.size() > 0
-            for k = 0 to fvP.size() - 1
-                if fvX.get(k) == -1 and fvT.get(k) <= B4.T(j)
-                    bool into = fvHi.get(k) ? B4.H(j) >= fvE.get(k) : B4.L(j) <= fvE.get(k)
-                    if into
-                        fvX.set(k, B4.TC(j))
+        for [k, _e9] in fvP
+            if fvX.get(k) == -1 and fvT.get(k) <= B4.T(j)
+                bool into = fvHi.get(k) ? B4.H(j) >= fvE.get(k) : B4.L(j) <= fvE.get(k)
+                if into
+                    fvX.set(k, B4.TC(j))
         if j - 2 >= B4.base
             if B4.H(j) < B4.L(j - 2)
                 fvP.push(B4.L(j - 2))
@@ -1222,65 +1299,22 @@ if new4
             fvHi.shift()
             fvE.shift()
             fvX.shift()
-    // 1H swings (intraday): swept by this 4H wick, then dropped when broken by it
-    if i_liq1h and not useHa and not sw5 and i_liq4 > 0
-        f_sweeps(l1HP, l1HT, true, "1H", j)
-        f_sweeps(l1LP, l1LT, false, "1H", j)
-        if l1HP.size() > 0
-            for k = l1HP.size() - 1 to 0
-                if l1HT.get(k) <= B4.T(j) and B4.H(j) > l1HP.get(k)
-                    l1HP.remove(k)
-                    l1HT.remove(k)
-        if l1LP.size() > 0
-            for k = l1LP.size() - 1 to 0
-                if l1LT.get(k) <= B4.T(j) and B4.L(j) < l1LP.get(k)
-                    l1LP.remove(k)
-                    l1LT.remove(k)
-    // fresh 1H FVG far edges (intraday): a 1H FVG is sweepable by 4H candles that open after it is complete and before price first
-    // trades into the gap on 1H (the 4H candle containing that entry can still sweep it)
-    if i_fvgLiq1h and not useHa and not sw5 and F1.size() > 0
-        array<float> uHP = array.new_float()
-        array<int>   uHT = array.new_int()
-        array<float> uLP = array.new_float()
-        array<int>   uLT = array.new_int()
-        for m = 0 to F1.size() - 1
-            Fvg ff = F1.get(m)
-            int cT = B1.TC(ff.i3)
-            if cT <= B4.T(j)
-                bool entered = false
-                int lastB1 = B1.size() - 1
-                if ff.i3 + 1 <= lastB1
-                    for r = ff.i3 + 1 to lastB1
-                        if B1.T(r) >= B4.T(j)
-                            break
-                        if ff.dir == -1 ? B1.H(r) >= ff.bot : B1.L(r) <= ff.top
-                            entered := true
-                            break
-                if not entered
-                    if ff.dir == -1
-                        uHP.push(ff.top)
-                        uHT.push(cT)
-                    else
-                        uLP.push(ff.bot)
-                        uLT.push(cT)
-        f_sweeps(uHP, uHT, true, "1HFVG", j)
-        f_sweeps(uLP, uLT, false, "1HFVG", j)
-    // session liquidity (intraday): sweep, then drop levels broken OR older than i_sessDays
+//#{N
+    // session liquidity (intraday, swept on 5m in 2b): drop levels older than i_sessDays
     if i_sess and not useHa
-        if not sw5
-            f_sweeps(lSHP, lSHT, true, "SESS", j)
-            f_sweeps(lSLP, lSLT, false, "SESS", j)
         int sessCut = B4.T(j) - i_sessDays * 24 * HOUR
         if lSHP.size() > 0
             for k = lSHP.size() - 1 to 0
-                if (not sw5 and lSHT.get(k) <= B4.T(j) and B4.H(j) > lSHP.get(k)) or lSHT.get(k) < sessCut
+                if lSHT.get(k) < sessCut
                     lSHP.remove(k)
                     lSHT.remove(k)
         if lSLP.size() > 0
             for k = lSLP.size() - 1 to 0
-                if (not sw5 and lSLT.get(k) <= B4.T(j) and B4.L(j) < lSLP.get(k)) or lSLT.get(k) < sessCut
+                if lSLT.get(k) < sessCut
                     lSLP.remove(k)
                     lSLT.remove(k)
+//#}
+//#{N
     if SW.size() > 0
         for k = SW.size() - 1 to 0
             Sweep sw = SW.get(k)
@@ -1291,11 +1325,10 @@ if new4
             int want = sh ? 1 : -1
             // candidates: FVGs of the leg inverted on this candle, nearest to price first
             array<int> cand = array.new_int()
-            if F4.size() > 0
-                for m = 0 to F4.size() - 1
-                    Fvg f = F4.get(m)
-                    if f.dir == want and f.inv == j and f.i3 - 2 >= sw.origin and (not i_fvgInto or f.i3 - 1 <= sw.s)
-                        cand.push(m)
+            for [m, _e10] in F4
+                Fvg f = F4.get(m)
+                if f.dir == want and f.inv == j and f.i3 - 2 >= sw.origin and (not i_fvgInto or f.i3 - 1 <= sw.s)
+                    cand.push(m)
             while cand.size() > 0 and not sw.done
                 int bi = 0
                 for m = 0 to cand.size() - 1
@@ -1310,11 +1343,10 @@ if new4
                     sw.done := true
                     // skip if this IFVG already produced a setup (several levels swept by one leg)
                     bool dup = false
-                    if ST.size() > 0
-                        for m = 0 to ST.size() - 1
-                            Setup o = ST.get(m)
-                            if o.sigT == B4.TC(j) and o.top == f.top and o.bot == f.bot
-                                dup := true
+                    for [m, _e11] in ST
+                        Setup o = ST.get(m)
+                        if o.sigT == B4.TC(j) and o.top == f.top and o.bot == f.bot
+                            dup := true
                     if not dup
                         // locate the sweep extreme on 1H
                         int extT = B4.T(ext)
@@ -1339,7 +1371,9 @@ if new4
                                 box.new(B4.T(f.i3 - 2), f.top, B4.TC(j) + 24 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG", text_size=size.tiny, text_color=color.gray)
                                 label.new(B4.TC(j), sh ? B4.H(j) : B4.L(j), "4H " + (sh ? "short" : "long") + "\n" + info, xloc=xloc.bar_time, style=sh ? label.style_label_down : label.style_label_up, color=sh ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                             alert(syminfo.ticker + " 4H setup " + (sh ? "SHORT" : "LONG") + ": " + info, alert.freq_once_per_bar_close)
+//#}
 
+//#{W
 // ───────────────────────────────────────────────────────────────────────────── 3b. SWING model (snapshot rules) on the new 1H candle
 if new1 and useHa
     if i_useD
@@ -1436,7 +1470,9 @@ if new1 and useHa
                             box.new(B4.T(f.i3 - 2), f.top, B1.TC(q) + 48 * HOUR, f.bot, xloc=xloc.bar_time, border_color=sh ? color.red : color.teal, bgcolor=sh ? cBear : cBull, text="4H IFVG", text_size=size.tiny, text_color=color.gray)
                             label.new(B1.TC(q), sh ? B1.H(q) : B1.L(q), "SWING " + (sh ? "short" : "long") + "\n" + info, xloc=xloc.bar_time, style=sh ? label.style_label_down : label.style_label_up, color=sh ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                         alert(syminfo.ticker + " SWING setup " + (sh ? "SHORT" : "LONG") + ": " + info, alert.freq_once_per_bar_close)
+//#}
 
+//#{W
 // ───────────────────────────────────────────────────────────────────────────── 3c. swing second entry: 1H breaker FVG
 if new1 and useHa and i_brk and BW.size() > 0
     for k = BW.size() - 1 to 0
@@ -1455,7 +1491,9 @@ if new1 and useHa and i_brk and BW.size() > 0
             SG.push(cs)
             BW.remove(k)
             alert(syminfo.ticker + " SWING " + (par.sh ? "SHORT" : "LONG") + " 1H breaker FVG entry @ " + str.tostring(bl, format.mintick), alert.freq_once_per_bar_close)
+//#}
 
+//#{N
 // ───────────────────────────────────────────────────────────────────────────── 4. rule 5 on the new 1H candle
 if new1 and ST.size() > 0
     for k = ST.size() - 1 to 0
@@ -1523,6 +1561,7 @@ if new1 and ST.size() > 0
                 alert(syminfo.ticker + " 1H IFVG " + (sh ? "SHORT" : "LONG") + " signal", alert.freq_once_per_bar_close)
         if st.state == 0 and not inWin and not anyOpen
             st.state := 2
+//#}
 
 // ───────────────────────────────────────────────────────────────────────────── 5. rule 6 on the chart candle
 if tfOK and SG.size() > 0
@@ -1536,6 +1575,7 @@ if tfOK and SG.size() > 0
         if g.s0 < 0
             g.s0 := p
             g.sPre := BC.firstAtOrAfter(g.sigT - HOUR)
+//#{W
         // ── SWING model: limit at the 1H IFVG straight after the 1H signal (no rule 6)
         if isSwing and g.state == 0
             g.lvl := g.brk ? g.brkLvl : (i_swEntry == "4H IFVG Touch" ? (sh ? g.bot : g.top) : (g.top + g.bot) / 2)
@@ -1551,13 +1591,15 @@ if tfOK and SG.size() > 0
             if i_showE
                 line.new(time, g.lvl, g.sigT + i_swValid * HOUR, g.lvl, xloc=xloc.bar_time, color=color.orange, width=2)
                 label.new(time, g.lvl, g.brk ? "swing 1H breaker FVG" : "swing " + i_swEntry, xloc=xloc.bar_time, style=label.style_none, textcolor=color.orange, size=size.tiny)
+//#}
+//#{N
         // ── INTRADAY model: retest + trigger
         if g.state == 0 and not isSwing
             if sh ? high > g.ext : low < g.ext
                 g.state := 3
                 g.result := "invalidated"
                 continue
-            bool inWin = time < g.sigT + i_rt1Hrs * HOUR
+            bool inWin = time < g.sigT + (g.rtMin > 0 ? g.rtMin * 60000 : i_rt1Hrs * HOUR)
             float edge = sh ? g.bot : g.top
             bool touch = inWin and (sh ? high >= edge : low <= edge)
             if touch and g.lastTouch != p - 1
@@ -1565,7 +1607,7 @@ if tfOK and SG.size() > 0
                 for m = g.sPre to p
                     if sh ? BC.L(m) < BC.L(org) : BC.H(m) > BC.H(org)
                         org := m
-                g.rts.push(Rt.new(p, org, p, time + i_trgHrs * HOUR))
+                g.rts.push(Rt.new(p, org, p, time + (g.rtMin > 0 ? i_trg5 * 60000 : i_trgHrs * HOUR)))
             if touch
                 g.lastTouch := p
             int trigIdx = -1
@@ -1574,7 +1616,7 @@ if tfOK and SG.size() > 0
             float trigLv = na
             int trigR = -1
             // (a) 1H CISD - the 1H candle that just completed is known at the open of this chart candle
-            if i_cisd and new1 and g.rts.size() > 0
+            if i_cisd and new1 and g.rtMin == 0 and g.rts.size() > 0
                 for r = 0 to g.rts.size() - 1
                     Rt rt = g.rts.get(r)
                     if rt.q0 < 0 and B1.T(q) >= BC.T(rt.r) - BC.T(rt.r) % HOUR
@@ -1601,6 +1643,37 @@ if tfOK and SG.size() > 0
                                     trigIdx := p - 1
                                     trigT := B1.TC(q)
                                     trigBy := "1H CISD"
+                                    trigLv := lv
+                                    trigR := rt.r
+            // (a') 5m chain: 15m CISD - the 15m candle completed at the close of this 5m candle
+            if i_cisd and new15 and g.rtMin > 0 and trigIdx < 0 and g.rts.size() > 0
+                int q15 = B15.size() - 1
+                for r = 0 to g.rts.size() - 1
+                    Rt rt = g.rts.get(r)
+                    if rt.q0 < 0 and B15.TC(q15) > BC.T(rt.r)
+                        rt.q0 := q15
+                        rt.e := q15
+                    if rt.q0 >= 0 and B15.T(q15) < rt.tEnd and trigIdx < 0
+                        if sh ? B15.H(q15) > B15.H(rt.e) : B15.L(q15) < B15.L(rt.e)
+                            rt.e := q15
+                        else
+                            int e = rt.e
+                            bool bullE = sh ? B15.C(e) > B15.O(e) : B15.C(e) < B15.O(e)
+                            int d = bullE ? e : e - 1
+                            int m = d
+                            while m >= B15.base
+                                bool bm = sh ? B15.C(m) > B15.O(m) : B15.C(m) < B15.O(m)
+                                if bm
+                                    m -= 1
+                                else
+                                    break
+                            if d >= B15.base and m < d
+                                float lv = B15.O(m + 1)
+                                [dOk15, dN15, dA15] = B15.disp(q15, sh)
+                                if (sh ? B15.C(q15) < lv : B15.C(q15) > lv) and dOk15
+                                    trigIdx := p
+                                    trigT := time_close
+                                    trigBy := "15m CISD"
                                     trigLv := lv
                                     trigR := rt.r
             // (b) MSS on the chart timeframe
@@ -1654,23 +1727,34 @@ if tfOK and SG.size() > 0
             else if not inWin and g.rts.size() == 0
                 g.state := 3
                 g.result := "no retest"
+//#}
         // ── entry FVG + order (state 1, not filled yet)
         if g.state == 1
             // choose / refine the entry FVG while it may still complete (up to i_fvgAft candles after the trigger)
+//#{N
             if not isSwing and p <= g.trig + i_fvgAft
                 int want = sh ? -1 : 1
                 int best = -1
                 int bestD = 0
-                if FC.size() > 0
-                    for m = 0 to FC.size() - 1
-                        Fvg f = FC.get(m)
-                        if f.dir == want and f.i3 - 2 >= g.hi and f.i3 <= g.trig + i_fvgAft and f.i3 <= p
-                            int dd = math.abs(f.i3 - 1 - g.trig)
-                            if best < 0 or dd < bestD
+                for [m, _e12] in FC
+                    Fvg f = FC.get(m)
+                    if f.dir == want and f.i3 - 2 >= g.hi and f.i3 <= g.trig + i_fvgAft and f.i3 <= p
+                        int dd = math.abs(f.i3 - 1 - g.trig)
+                        if best < 0 or dd < bestD
+                            best := m
+                            bestD := dd
+                bool bestVI = false
+                if g.rtMin > 0 and VC.size() > 0              // 5m chain: a 5m volume imbalance can also be the entry zone
+                    for m = 0 to VC.size() - 1
+                        Fvg v = VC.get(m)
+                        if v.dir == want and v.i3 - 1 >= g.hi and v.i3 <= g.trig + i_fvgAft and v.i3 <= p
+                            int dd = math.abs(v.i3 - g.trig)
+                            if (best < 0 and not bestVI) or dd < bestD
                                 best := m
                                 bestD := dd
+                                bestVI := true
                 if best >= 0
-                    Fvg f = FC.get(best)
+                    Fvg f = bestVI ? VC.get(best) : FC.get(best)
                     if f.i3 != g.fI3
                         g.fI3 := f.i3
                         g.fTop := f.top
@@ -1678,7 +1762,7 @@ if tfOK and SG.size() > 0
                         g.lvl := i_entry == "5m Touch" ? (sh ? f.bot : f.top) : (f.top + f.bot) / 2
                         g.liveFrom := math.max(g.trig, f.i3) + 1
                         if i_showE
-                            box.new(BC.T(f.i3 - 2), f.top, BC.TC(f.i3) + i_fillHrs * HOUR, f.bot, xloc=xloc.bar_time, border_color=color.orange, bgcolor=color.new(color.orange, 80), text="entry FVG", text_size=size.tiny, text_color=color.orange)
+                            box.new(BC.T(f.i3 - (bestVI ? 1 : 2)), f.top, BC.TC(f.i3) + (g.rtMin > 0 ? i_fill5 * 60000 : i_fillHrs * HOUR), f.bot, xloc=xloc.bar_time, border_color=color.orange, bgcolor=color.new(color.orange, 80), text=bestVI ? "entry VI" : "entry FVG", text_size=size.tiny, text_color=color.orange)
                         if sh
                             evShortOrder := true
                         else
@@ -1687,22 +1771,29 @@ if tfOK and SG.size() > 0
             else if g.fI3 < 0
                 g.state := 3
                 g.result := "trigger, no FVG"
+//#}
             // preliminary stop / target for the pending order (final values are set at the fill)
             if g.fI3 >= 0 and g.state == 1
+//#{W
                 if isSwing and i_swStop == "1H OB 50%"
                     g.ob := f_dropOb(sh, g.anc, g.bot, g.top)
-                float pc0 = f_stopBase(sh, g.lvl, g.ext, g.ob)
+//#}
+//#W                 float pc0 = f_stopBase(sh, g.lvl, g.ext, g.ob)
+//#N                 float pc0 = g.rtMin > 0 ? f_prev5(sh, g.lvl) : f_stopBase(sh, g.lvl, g.ext, g.ob)
                 float bufP = isSwing ? i_swBuf : i_slBuf
                 g.sl := na(pc0) ? na : sh ? pc0 + bufP : pc0 - bufP
                 g.tp := na(pc0) ? na : sh ? g.lvl - i_tgtR * (g.sl - g.lvl) : g.lvl + i_tgtR * (g.lvl - g.sl)
                 if isSwing and i_swTgt == "1H swing low"
                     g.tp := g.tpFix
+//#{W
             if isSwing and g.state == 1 and p == g.trig and not na(g.sl)
                 if sh
                     evShortOrder := true
                 else
                     evLongOrder := true
                 alert(syminfo.ticker + " SWING " + (sh ? "SHORT" : "LONG") + " ENTRY ORDER (" + g.trigBy + ") limit " + str.tostring(g.lvl, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick), alert.freq_once_per_bar_close)
+//#}
+//#{N
             // close-back-through rule on 5m closes (state for the NEXT candle) - intraday only
             if g.fI3 >= 0 and g.state == 1
                 g.blocked := false
@@ -1710,6 +1801,7 @@ if tfOK and SG.size() > 0
                     [cx, pend] = f_ctScan(g.fBot, g.fTop, sh, BC.TC(g.fI3))
                     g.cancelled := cx
                     g.blocked := pend
+//#}
 
 // ───────────────────────────────────────────────────────────────────────────── 5b. entry / stop / target levels on the chart
 var string actTxt = "-"
@@ -1762,7 +1854,7 @@ while PHc.size() > 400
 //#S     for k = 0 to SG.size() - 1
 //#S         Sig g = SG.get(k)
 //#S         if g.state == 1 and g.fI3 >= 0
-//#S             bool liveNext = p + 1 >= g.liveFrom and not g.cancelled and not g.blocked and time_close < g.trigT + (isSwing ? i_swValid : i_fillHrs) * HOUR and not na(g.sl)
+//#S             bool liveNext = p + 1 >= g.liveFrom and not g.cancelled and not g.blocked and time_close < g.trigT + (isSwing ? i_swValid * HOUR : g.rtMin > 0 ? i_fill5 * 60000 : i_fillHrs * HOUR) and not na(g.sl)
 //#S             if liveNext
 //#S                 float riskPx = math.abs(g.lvl - g.sl)
 //#S                 float qty = math.floor(strategy.equity * i_risk / 100 / (riskPx * syminfo.pointvalue) / i_qtyStep) * i_qtyStep
@@ -1781,9 +1873,8 @@ while PHc.size() > 400
 var array<line> lvLines = array.new<line>()
 f_drawLv(array<float> P, array<int> T, color col, string tag) =>
     if not na(P)
-        if P.size() > 0
-            for k = 0 to P.size() - 1
-                lvLines.push(line.new(T.get(k), P.get(k), time + 1, P.get(k), xloc=xloc.bar_time, extend=extend.right, color=col, width=tag == "M" ? 3 : tag == "W" ? 2 : 1))
+        for [k, _e13] in P
+            lvLines.push(line.new(T.get(k), P.get(k), time + 1, P.get(k), xloc=xloc.bar_time, extend=extend.right, color=col, width=tag == "M" ? 3 : tag == "W" ? 2 : 1))
 
 if barstate.islast
     for ln in lvLines
