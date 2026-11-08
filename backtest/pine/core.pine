@@ -17,7 +17,8 @@
 //  Rule 1  Liquidity = 4H / D / W / M swing highs/lows + fresh 4H FVG far edges (both models). Intraday model also uses the previous Asia /
 //          London / NY SESSION highs/lows, kept only where a session extreme coincides with a 1H-or-higher swing
 //          (input "Intraday: session highs/lows"). Sessions on the New York clock: Asia 20-00, London 02-05, NY 07-10.
-//  Rule 2  A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
+//  Rule 2  (intraday, 5m chart) A Rule 1 level is swept on 5m candles: a 5m candle wicks through it and closes back.
+//          (Input "Intraday: judge the sweep on 5m candles"; off = a 4H wick.) A D/W/M swing level is swept (wick). The leg into the sweep starts at the last 4H swing low/high
 //          before the sweep; a 4H FVG formed by that leg INTO the sweep gets inverted by a 4H close.
 //  Rule 3  (M1, default) The 4H inversion needs 4H displacement (>= 2 candles, >= 1 ATR) AND a 1H MSS: a 1H close
 //          through the last 1H swing low (short) / high (long) before the sweep extreme, by the close of the 4H
@@ -47,6 +48,7 @@ i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/
 i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=g1)
 i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1, group=g1)
 i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Both models: every 4H FVG is also sweepable liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom). It stays valid only while price has not yet traded into the gap, so a level can be swept up to and including the 4H candle that first enters the FVG. Swing: 1H close-back sweep; intraday: 4H wick.")
+i_sw5m = input.bool(true, "Intraday: judge the sweep on 5m candles", group=g1, tooltip="Intraday model only (5m chart). A Rule 1 level is swept when a 5m candle wicks through it AND closes back (high level: high above, close below). The first sweep event uses the level up. Off = a 4H wick through the level (previous behaviour).")
 i_liq1h = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group=g1, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
 i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=g1, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
 
@@ -114,6 +116,7 @@ cBear = color.new(color.red, 70)
 isM5  = timeframe.period == "5"
 isM15 = timeframe.period == "15"
 isSwing = i_model == "Swing (1H entry)"
+sw5     = i_sw5m and not isSwing      // intraday: sweeps judged on 5m candles
 useHa   = isSwing      // swing model = snapshot rules on 1H (section 3b); intraday = 4H rules (section 3)
 useM1   = i_conf == "1H MSS (M1)"
 string symU = str.upper(syminfo.ticker)
@@ -457,6 +460,11 @@ var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing hig
 var array<int>   l4HT = array.new_int()
 var array<float> l4LP = array.new_float()     // intraday: unbroken 4H swing lows
 var array<int>   l4LT = array.new_int()
+var array<float> v1P = array.new_float()       // intraday: fresh 1H FVG far edges (price, completion time, buy-side?, near edge, entered-at time)
+var array<int>   v1T = array.new_int()
+var array<bool>  v1Hi = array.new_bool()
+var array<float> v1E = array.new_float()
+var array<int>   v1X = array.new_int()
 var array<float> l1HP = array.new_float()     // intraday: unbroken 1H swing highs (size = 4H swing size)
 var array<int>   l1HT = array.new_int()
 var array<float> l1LP = array.new_float()
@@ -875,6 +883,32 @@ if new1
         while l1LP.size() > 150
             l1LP.shift()
             l1LT.shift()
+    // ----- fresh 1H FVG far edges (intraday): mark FVGs that this 1H candle traded into, then add the FVG completed by it
+    if i_fvgLiq1h and not isSwing
+        if v1P.size() > 0
+            for k = 0 to v1P.size() - 1
+                if v1X.get(k) == -1 and v1T.get(k) <= B1.T(q)
+                    if v1Hi.get(k) ? B1.H(q) >= v1E.get(k) : B1.L(q) <= v1E.get(k)
+                        v1X.set(k, B1.TC(q))
+        if q - 2 >= B1.base
+            if B1.H(q) < B1.L(q - 2)
+                v1P.push(B1.L(q - 2))
+                v1T.push(B1.TC(q))
+                v1Hi.push(true)
+                v1E.push(B1.H(q))
+                v1X.push(-1)
+            if B1.L(q) > B1.H(q - 2)
+                v1P.push(B1.H(q - 2))
+                v1T.push(B1.TC(q))
+                v1Hi.push(false)
+                v1E.push(B1.L(q))
+                v1X.push(-1)
+        while v1P.size() > 300
+            v1P.shift()
+            v1T.shift()
+            v1Hi.shift()
+            v1E.shift()
+            v1X.shift()
     // ----- session highs/lows (intraday only): track the open session, push its extreme at the close (1H+ swing)
     if i_sess and not isSwing
         int nyh = hour(B1.T(q), "America/New_York")
@@ -989,34 +1023,126 @@ if SG.size() > 0
                         if not na(lvT) and lvT > g.sl
                             g.sl := lvT
 
+// leg origin for a sweep in 4H candle j (j may be the forming candle): last confirmed 4H swing before it / lowest-highest of N
+f_org(bool isHigh, int j) =>
+    int org = -1
+    if i_legMode == "Last 4H swing"
+        int top = math.min(j - i_legPiv, B4.size() - 1 - i_legPiv)
+        int bot = B4.base + i_legPiv
+        if top >= bot
+            for m = top to bot
+                bool isPiv = true
+                for q2 = m - i_legPiv to m + i_legPiv
+                    if isHigh ? B4.L(q2) < B4.L(m) : B4.H(q2) > B4.H(m)
+                        isPiv := false
+                        break
+                if isPiv
+                    org := m
+                    break
+    else
+        int hiJ = math.min(j, B4.size() - 1)
+        int lo = math.max(hiJ - i_legLB, B4.base)
+        org := lo
+        for m = lo to hiJ
+            if isHigh ? B4.H(m) > B4.H(org) : B4.L(m) < B4.L(org)
+                org := m
+    org
+
+// 5m sweep event on chart candle pc for level lv: the candle wicks through the level AND closes back (high: high > lv, close < lv)
+f_ev5(float lv, bool isHigh, int pc) =>
+    isHigh ? (BC.H(pc) > lv and BC.C(pc) < lv) : (BC.L(pc) < lv and BC.C(pc) > lv)
+
+// register a 5m sweep (once per level) as an intraday Sweep in the 4H candle that contains it
+f_reg5(float lv, int ct, bool isHigh, string tf, int pc) =>
+    bool seen = false
+    if sweptP.size() > 0
+        for m = 0 to sweptP.size() - 1
+            if sweptP.get(m) == lv and sweptT.get(m) == ct
+                seen := true
+                break
+    if not seen
+        sweptP.push(lv)
+        sweptT.push(ct)
+        int sI = f_h4idx(BC.T(pc))
+        if sI >= 0
+            int org = f_org(isHigh, sI)
+            if org >= 0
+                SW.push(Sweep.new(isHigh ? 1 : -1, sI, org, lv, tf))
+    while sweptP.size() > 400
+        sweptP.shift()
+        sweptT.shift()
+
+f_scan5(array<float> P, array<int> T, bool isHigh, string tf, int pc) =>
+    if not na(P)
+        if P.size() > 0
+            for k = 0 to P.size() - 1
+                float lv = P.get(k)
+                int ct = T.get(k)
+                if ct <= BC.T(pc) and f_ev5(lv, isHigh, pc)
+                    f_reg5(lv, ct, isHigh, tf, pc)
+
+f_scan5fvg(array<float> P, array<int> T, array<bool> Hi, array<int> X, string tf, int pc) =>
+    if P.size() > 0
+        for k = 0 to P.size() - 1
+            if X.get(k) == -1 and T.get(k) <= BC.T(pc)
+                bool hi = Hi.get(k)
+                float lv = P.get(k)
+                if f_ev5(lv, hi, pc)
+                    f_reg5(lv, T.get(k), hi, tf, pc)
+
+// ───────────────────────────────────────────────────────────────────────────── 2b. intraday: 5m sweeps of the Rule 1 levels (on the chart candle)
+if sw5 and isM5 and symOK and p >= BC.base + 2
+    if i_useD
+        f_scan5(dHp, dHt, true, "D", p)
+        f_scan5(dLp, dLt, false, "D", p)
+    if i_useW
+        f_scan5(wHp, wHt, true, "W", p)
+        f_scan5(wLp, wLt, false, "W", p)
+    if i_useM
+        f_scan5(mHp, mHt, true, "M", p)
+        f_scan5(mLp, mLt, false, "M", p)
+    if i_liq4 > 0
+        f_scan5(l4HP, l4HT, true, "4H", p)
+        f_scan5(l4LP, l4LT, false, "4H", p)
+        if i_liq1h
+            f_scan5(l1HP, l1HT, true, "1H", p)
+            f_scan5(l1LP, l1LT, false, "1H", p)
+    if i_sess
+        f_scan5(lSHP, lSHT, true, "SESS", p)
+        f_scan5(lSLP, lSLT, false, "SESS", p)
+    if i_fvgLiq
+        f_scan5fvg(fvP, fvT, fvHi, fvX, "4HFVG", p)
+    if i_fvgLiq1h
+        f_scan5fvg(v1P, v1T, v1Hi, v1X, "1HFVG", p)
+
 // ───────────────────────────────────────────────────────────────────────────── 3. new 4H candle: sweeps -> IFVG -> quality (rules 1-4)
 if new4
     B4.add(o4, h4, l4, c4, t4, tc4, 600)
     int j = B4.size() - 1
     updFvgs(F4, B4, j, 120)
-    if i_useD and not useHa
+    if i_useD and not useHa and not sw5
         f_sweeps(dHp, dHt, true, "D", j)
         f_sweeps(dLp, dLt, false, "D", j)
-    if i_useW and not useHa
+    if i_useW and not useHa and not sw5
         f_sweeps(wHp, wHt, true, "W", j)
         f_sweeps(wLp, wLt, false, "W", j)
-    if i_useM and not useHa
+    if i_useM and not useHa and not sw5
         f_sweeps(mHp, mHt, true, "M", j)
         f_sweeps(mLp, mLt, false, "M", j)
     // 4H liquidity: intraday sweeps these 4H levels here (swing sweeps them on 1H in section 3b). Either way, keep the
     // l4HP/l4LP list current: drop levels broken by this 4H candle, then add a swing confirmed now.
     if i_liq4 > 0
-        if not useHa
+        if not useHa and not sw5
             f_sweeps(l4HP, l4HT, true, "4H", j)
             f_sweeps(l4LP, l4LT, false, "4H", j)
         if l4HP.size() > 0
             for k = l4HP.size() - 1 to 0
-                if l4HT.get(k) <= B4.T(j) and B4.H(j) > l4HP.get(k)
+                if (useHa or not sw5) and l4HT.get(k) <= B4.T(j) and B4.H(j) > l4HP.get(k)
                     l4HP.remove(k)
                     l4HT.remove(k)
         if l4LP.size() > 0
             for k = l4LP.size() - 1 to 0
-                if l4LT.get(k) <= B4.T(j) and B4.L(j) < l4LP.get(k)
+                if (useHa or not sw5) and l4LT.get(k) <= B4.T(j) and B4.L(j) < l4LP.get(k)
                     l4LP.remove(k)
                     l4LT.remove(k)
         int pv4 = j - i_liq4
@@ -1044,7 +1170,7 @@ if new4
                     fvHi.remove(k)
                     fvE.remove(k)
                     fvX.remove(k)
-        if not useHa and fvP.size() > 0
+        if not useHa and not sw5 and fvP.size() > 0
             array<float> tHP = array.new_float()
             array<int>   tHT = array.new_int()
             array<float> tLP = array.new_float()
@@ -1085,7 +1211,7 @@ if new4
             fvE.shift()
             fvX.shift()
     // 1H swings (intraday): swept by this 4H wick, then dropped when broken by it
-    if i_liq1h and not useHa and i_liq4 > 0
+    if i_liq1h and not useHa and not sw5 and i_liq4 > 0
         f_sweeps(l1HP, l1HT, true, "1H", j)
         f_sweeps(l1LP, l1LT, false, "1H", j)
         if l1HP.size() > 0
@@ -1100,7 +1226,7 @@ if new4
                     l1LT.remove(k)
     // fresh 1H FVG far edges (intraday): a 1H FVG is sweepable by 4H candles that open after it is complete and before price first
     // trades into the gap on 1H (the 4H candle containing that entry can still sweep it)
-    if i_fvgLiq1h and not useHa and F1.size() > 0
+    if i_fvgLiq1h and not useHa and not sw5 and F1.size() > 0
         array<float> uHP = array.new_float()
         array<int>   uHT = array.new_int()
         array<float> uLP = array.new_float()
@@ -1129,17 +1255,18 @@ if new4
         f_sweeps(uLP, uLT, false, "1HFVG", j)
     // session liquidity (intraday): sweep, then drop levels broken OR older than i_sessDays
     if i_sess and not useHa
-        f_sweeps(lSHP, lSHT, true, "SESS", j)
-        f_sweeps(lSLP, lSLT, false, "SESS", j)
+        if not sw5
+            f_sweeps(lSHP, lSHT, true, "SESS", j)
+            f_sweeps(lSLP, lSLT, false, "SESS", j)
         int sessCut = B4.T(j) - i_sessDays * 24 * HOUR
         if lSHP.size() > 0
             for k = lSHP.size() - 1 to 0
-                if (lSHT.get(k) <= B4.T(j) and B4.H(j) > lSHP.get(k)) or lSHT.get(k) < sessCut
+                if (not sw5 and lSHT.get(k) <= B4.T(j) and B4.H(j) > lSHP.get(k)) or lSHT.get(k) < sessCut
                     lSHP.remove(k)
                     lSHT.remove(k)
         if lSLP.size() > 0
             for k = lSLP.size() - 1 to 0
-                if (lSLT.get(k) <= B4.T(j) and B4.L(j) < lSLP.get(k)) or lSLT.get(k) < sessCut
+                if (not sw5 and lSLT.get(k) <= B4.T(j) and B4.L(j) < lSLP.get(k)) or lSLT.get(k) < sessCut
                     lSLP.remove(k)
                     lSLT.remove(k)
     if SW.size() > 0

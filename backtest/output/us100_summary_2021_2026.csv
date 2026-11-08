@@ -3,19 +3,19 @@ GoatFunded,swing,tuned,122,55,45,22,1.62,28.6,13134,10.2
 GoatFunded,swing,unseen,131,62,47,22,1.75,35.93,14056,7.1
 GoatFunded,swing,2021-26,253,117,92,44,1.68,64.52,18462,10.2
 GoatFunded,intraday,tuned,47,8,27,12,0.83,-4.95,9471,7.7
-GoatFunded,intraday,unseen,29,10,11,8,2.55,18.07,11921,3.3
-GoatFunded,intraday,2021-26,76,18,38,20,1.32,13.12,11290,9.6
+GoatFunded,intraday,unseen,31,10,12,9,2.33,17.0,11793,3.3
+GoatFunded,intraday,2021-26,78,18,39,21,1.29,12.05,11169,10.6
 GoatFunded,swing (previous model),tuned,14,5,3,6,4.93,11.94,11242,1.0
-GoatFunded,swing (previous model),unseen,14,6,5,3,3.57,12.94,11348,2.0
-GoatFunded,swing (previous model),2021-26,28,11,8,9,4.08,24.87,12757,2.0
-GoatFunded,both (1% each),2021-26,329,135,130,64,1.58,77.65,20843,11.9
+GoatFunded,swing (previous model),unseen,15,6,6,3,2.97,11.93,11234,2.0
+GoatFunded,swing (previous model),2021-26,29,11,9,9,3.63,23.87,12628,2.0
+GoatFunded,both (1% each),2021-26,331,135,131,65,1.56,76.57,20620,12.3
 Pepperstone,swing,tuned,149,64,52,33,2.06,56.68,17090,6.3
 Pepperstone,swing,unseen,128,66,42,20,1.58,25.37,12706,5.8
 Pepperstone,swing,2021-26,277,130,94,53,1.84,82.05,21715,6.3
-Pepperstone,intraday,tuned,50,14,25,11,1.58,15.26,11562,7.4
-Pepperstone,intraday,unseen,30,13,10,7,3.44,27.11,13034,3.5
-Pepperstone,intraday,2021-26,80,27,35,18,2.13,42.36,15070,7.4
-Pepperstone,swing (previous model),tuned,15,6,4,5,4.45,13.94,11464,1.0
-Pepperstone,swing (previous model),unseen,15,6,6,3,2.95,11.87,11228,2.0
-Pepperstone,swing (previous model),2021-26,30,12,10,8,3.55,25.82,12871,3.0
-Pepperstone,both (1% each),2021-26,357,157,129,71,1.92,124.41,32724,11.7
+Pepperstone,intraday,tuned,50,14,24,12,1.64,16.27,11680,7.4
+Pepperstone,intraday,unseen,35,14,12,9,3.08,27.78,13114,4.3
+Pepperstone,intraday,2021-26,85,28,36,21,2.14,44.04,15318,7.6
+Pepperstone,swing (previous model),tuned,16,7,4,5,5.2,16.94,11807,1.0
+Pepperstone,swing (previous model),unseen,16,6,7,3,2.53,10.86,11113,2.0
+Pepperstone,swing (previous model),2021-26,32,13,11,8,3.5,27.8,13122,3.0
+Pepperstone,both (1% each),2021-26,362,158,130,74,1.93,126.09,33262,12.7

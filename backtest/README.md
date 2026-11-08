@@ -138,3 +138,10 @@ Asia / London / NY highs and lows (kept only if also a 1H+ swing, valid 7 days).
 max DD 7.7% / 7.4% -> 9.6% / 7.4% (1H swings and 1H FVG edges each add about one trade and slightly lower the profit factor).
 Both models: 329 / 357 trades, +77.7R / +124.4R, $20,843 / $32,724, max DD 11.9% / 11.7%.
 
+## Update: intraday sweep judged on 5m candles (default)
+`INTRADAY_SWEEP = "5m"` in `ifvg_1h.py` (env `INTRADAY_SWEEP=4h` restores the 4H wick): a Rule 1 level is swept when a **5m candle wicks through it and closes back**
+(`SWEEP5M_MODE=a`, default; `ab` adds a close-beyond + two-displacement-candles case that was tested and not adopted). The first event uses the level up; the setup
+continues on the 4H candle containing the confirmation. Implemented in `swings.add_break_times_5m`. Test: `sw5_experiments.py`.
+2021-2026 intraday (GoatFunded / Pepperstone): 76 / 80 -> 78 / 85 trades, PF 1.32 / 2.13 -> 1.29 / 2.14, +13.1R / +42.4R -> +12.1R / +44.0R, max DD 9.6% / 7.4% -> 10.6% / 7.6%.
+Both models: 331 / 362 trades, +76.6R / +126.1R, $20,620 / $33,262, max DD 12.3% / 12.7%.
+

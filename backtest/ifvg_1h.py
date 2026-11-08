@@ -43,6 +43,7 @@ RETEST_WINDOW = pd.Timedelta(hours=48)   # 4H IFVG must be retested within this 
 # False = no cancellation: retests after such a break still count, and the sweep extreme moves with price (highest high
 #         from the sweep extreme to the 1H IFVG signal candle, for a short) - it is the swing stop / invalidation level.
 RETEST_CANCEL = True
+INTRADAY_SWEEP = __import__("os").environ.get("INTRADAY_SWEEP", "5m")   # "4h" = a 4H wick through the level (current) | "5m" = 5m sweep definition (swings.add_break_times_5m)
 FVG_LIQ_1H = __import__("os").environ.get("FVG_LIQ_1H", "1") == "1"   # intraday: fresh 1H FVG far edges as Rule 1 liquidity too
 INVERT_WINDOW_1H = 20                    # 1H candles after the retest for the 1H FVG to be inverted
 
@@ -124,7 +125,12 @@ def build_4h_setups_v1(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
     h4_full = htf["4H"]
     h4 = h4_full.drop(columns=["Start", "End"])
     accept = structure.quality if CONFIRM_4H == "CISD or MSS" else _accept_1h_mss(h1, h4_full)
-    setups = ifvg.find_setups(h4, add_break_times(levels, h4), "4H", accept=accept)
+    if INTRADAY_SWEEP == "5m":                # sweep judged on 5m candles (swings.add_break_times_5m)
+        m5 = _S.load(_S.DATA / _S.SYMBOLS[list(_S.SYMBOLS)[0]][2])
+        lv_b = _S.add_break_times_5m(levels, m5, pd.DatetimeIndex(h4.index))
+    else:
+        lv_b = add_break_times(levels, h4)
+    setups = ifvg.find_setups(h4, lv_b, "4H", accept=accept)
     out = []
     for st in setups.to_dict("records"):
         j = st["x_inv_idx"]

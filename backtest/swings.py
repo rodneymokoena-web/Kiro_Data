@@ -392,6 +392,59 @@ def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:
     return levels.assign(broken_time=breaks)
 
 
+
+SWEEP5M_MODE = _os_b.environ.get("SWEEP5M_MODE", "a")   # "a" = 5m wick + close back | "ab" = also a 5m close beyond the level followed by two displacement candles
+SWEEP5M_DISP_ATR = float(_os_b.environ.get("SWEEP5M_DISP_ATR", "1.0"))   # the two displacement candles must move >= this x ATR14 (5m)
+
+
+def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.DatetimeIndex) -> pd.DataFrame:
+    """Intraday sweep judged on 5m candles; broken_time = the 4H candle (open time) that contains the confirmation.
+    (A) a 5m candle wicks through the level and CLOSES back (high level: high > level, close < level);
+    (B) a 5m candle CLOSES beyond the level and the next two 5m candles are strong displacement candles (consecutive, same
+        direction as the reversal, moving >= SWEEP5M_DISP_ATR x ATR14 from the first one's open to the second one's close),
+        the SECOND one closing beyond the SWEEPING candle's low (high level) / high (low level).
+    Confirmed at the close of the last candle of (A) or (B). Session levels only count until they expire."""
+    o, h, l, c = (m5[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
+    n = len(c)
+    pc = np.r_[c[0], c[:-1]]
+    tr = np.maximum.reduce([h - l, np.abs(h - pc), np.abs(l - pc)])
+    atr = pd.Series(tr).rolling(14, min_periods=1).mean().to_numpy()
+    bear, bull = c < o, c > o
+    dS = np.zeros(n, dtype=bool); dL = np.zeros(n, dtype=bool)
+    if n > 2:
+        dS[:-2] = bear[1:-1] & bear[2:] & (c[2:] < l[:-2]) & ((o[1:-1] - c[2:]) >= SWEEP5M_DISP_ATR * atr[2:])      # only the SECOND candle must close beyond the sweeping candle
+        dL[:-2] = bull[1:-1] & bull[2:] & (c[2:] > h[:-2]) & ((c[2:] - o[1:-1]) >= SWEEP5M_DISP_ATR * atr[2:])
+    idx5 = pd.DatetimeIndex(m5.index).as_unit("ns")
+    h4_index = pd.DatetimeIndex(h4_index).as_unit("ns")
+    out = []
+    for lv in levels.itertuples(index=False):
+        a0 = int(idx5.searchsorted(pd.Timestamp(lv.confirmed_time).as_unit("ns"), side="left"))
+        exp = getattr(lv, "expires", pd.NaT)
+        a1 = int(idx5.searchsorted(pd.Timestamp(exp).as_unit("ns"), side="right")) if pd.notna(exp) else n
+        if a0 >= a1:
+            out.append(pd.NaT); continue
+        hi_l = lv.type == "high"
+        H_, L_, C_ = h[a0:a1], l[a0:a1], c[a0:a1]
+        if hi_l:
+            A = (H_ > lv.price) & (C_ < lv.price)
+            B = (C_ > lv.price) & dS[a0:a1] if SWEEP5M_MODE == "ab" else None
+        else:
+            A = (L_ < lv.price) & (C_ > lv.price)
+            B = (C_ < lv.price) & dL[a0:a1] if SWEEP5M_MODE == "ab" else None
+        best = None
+        if A.any():
+            best = int(np.argmax(A))
+        if B is not None and B.any():
+            kb = int(np.argmax(B)) + 2
+            best = kb if best is None else min(best, kb)
+        if best is None:
+            out.append(pd.NaT); continue
+        t = idx5[a0 + best]
+        pos = int(h4_index.searchsorted(t, side="right")) - 1
+        out.append(h4_index[pos] if pos >= 0 else pd.NaT)
+    return levels.assign(broken_time=out)
+
+
 def refine_breaks(levels: pd.DataFrame, fine: pd.DataFrame) -> pd.DataFrame:
     """Re-time breaks on finer data, but only where the fine data actually covers the break.
     Levels broken before the fine data starts keep their 1H break time."""
