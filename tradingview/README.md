@@ -1,16 +1,20 @@
 # ICT Sweep > IFVG > MSS – TradingView scripts (US100 forward-test version)
 
+The two models are separate scripts (one model per script):
+
 | File | What it is |
 |---|---|
-| `ict_ifvg_strategy.pine` | **Strategy** – places limit / stop / target orders, Strategy Tester report |
-| `ict_ifvg_indicator.pine` | **Indicator** – same logic, draws everything, sends alerts, stats table (no orders) |
+| `ict_swing_indicator.pine` | **Swing indicator** – draws the swing setups, entries, stop / target, sends alerts, stats table (no orders) |
+| `ict_swing_strategy.pine` | **Swing strategy** – same swing logic, places the orders, Strategy Tester report |
+| `ict_intraday_indicator.pine` | **Intraday indicator** – the intraday model (5m chart), alerts, stats table (no orders) |
+| `ict_intraday_strategy.pine` | **Intraday strategy** – same intraday logic, places the orders, Strategy Tester report |
 
 Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 
 ## Install
 1. TradingView → **Pine Editor** → select all, delete → paste the whole file (normal paste) → **Add to chart**.
-2. Open a **5m chart of US100** (e.g. `PEPPERSTONE:NAS100`, `CAPITALCOM:US100`, or your broker's NAS100 / US100 / USTEC).
-3. Strategy: **Strategy Tester** tab for the report. Indicator: *Alert → Condition: ICT IFVG → "Any alert() function call"*.
+2. Open a **5m chart of US100** (swing also works on 1m–1H; intraday needs 5m) (e.g. `PEPPERSTONE:NAS100`, `CAPITALCOM:US100`, or your broker's NAS100 / US100 / USTEC).
+3. Strategy: **Strategy Tester** tab for the report. Indicator: *Alert → Condition: ICT Swing* (or *ICT Intraday*) *→ "Any alert() function call"*. Add both indicators to the chart to watch both models.
 
 ## Rules (identical to the Python backtest)
 Short described; long is the mirror image.
@@ -84,7 +88,6 @@ orders can also be alerted from the Strategy Tester (*Order fills only*). Alerts
 | Input | Default |
 |---|---|
 | Trade US100 only | **on** (other symbols: no trades, warning in the table) |
-| Model | **Swing** |
 | Swing entry / stop / target | **4H IFVG Touch + 1H breaker FVG (second entry)** / **1H OB 50%** / **1H swing low** (valid 48 h) |
 | Swing 1H displacement · inversion window · last-FVG lookback | 1 candle · 80 1H candles · 10 4H candles |
 | Intraday entry / stop / target | 5m Touch / Previous 1H candle / 3R |
