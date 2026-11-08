@@ -393,7 +393,7 @@ def add_break_times(levels: pd.DataFrame, bars: pd.DataFrame) -> pd.DataFrame:
 
 
 
-SWEEP5M_MODE = _os_b.environ.get("SWEEP5M_MODE", "a")   # "a" = 5m wick + close back | "ab" = also a 5m close beyond the level followed by two displacement candles
+SWEEP5M_MODE = _os_b.environ.get("SWEEP5M_MODE", "ab12")   # "a" = 5m wick + close back | "ab" = also a 5m close beyond the level followed by two displacement candles
 SWEEP5M_DISP_ATR = float(_os_b.environ.get("SWEEP5M_DISP_ATR", "1.0"))   # the two displacement candles must move >= this x ATR14 (5m)
 
 
@@ -425,12 +425,16 @@ def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.Date
             out.append(pd.NaT); continue
         hi_l = lv.type == "high"
         H_, L_, C_ = h[a0:a1], l[a0:a1], c[a0:a1]
+        thr = (C_ > lv.price) if hi_l else (C_ < lv.price)                  # closed beyond the level
+        if SWEEP5M_MODE == "ab12":                                           # the sweep is 1 or 2 candles closing beyond the level (not 3+)
+            p1 = np.r_[False, thr[:-1]]; p2 = np.r_[False, False, thr[:-2]]
+            thr = thr & ~(p1 & p2)
         if hi_l:
             A = (H_ > lv.price) & (C_ < lv.price)
-            B = (C_ > lv.price) & dS[a0:a1] if SWEEP5M_MODE == "ab" else None
+            B = thr & dS[a0:a1] if SWEEP5M_MODE in ("ab", "ab12") else None
         else:
             A = (L_ < lv.price) & (C_ > lv.price)
-            B = (C_ < lv.price) & dL[a0:a1] if SWEEP5M_MODE == "ab" else None
+            B = thr & dL[a0:a1] if SWEEP5M_MODE in ("ab", "ab12") else None
         best = None
         if A.any():
             best = int(np.argmax(A))

@@ -145,3 +145,10 @@ continues on the 4H candle containing the confirmation. Implemented in `swings.a
 2021-2026 intraday (GoatFunded / Pepperstone): 76 / 80 -> 78 / 85 trades, PF 1.32 / 2.13 -> 1.29 / 2.14, +13.1R / +42.4R -> +12.1R / +44.0R, max DD 9.6% / 7.4% -> 10.6% / 7.6%.
 Both models: 331 / 362 trades, +76.6R / +126.1R, $20,620 / $33,262, max DD 12.3% / 12.7%.
 
+## Update: intraday 5m sweep - case B added (default `SWEEP5M_MODE = "ab12"`)
+A Rule 1 level is swept when (A) a 5m candle wicks through it and closes back, or (B) 1 or 2 5m candles close beyond it (not 3+) and are immediately followed by two
+strong displacement 5m candles in the reversal direction (together >= 1 ATR14), the second one closing beyond the low (high level) / high (low level) of the last
+sweeping candle. (`a` = case A only; `ab` = case B with a single sweeping candle.) Results are identical to case A only on both brokers: when price closes beyond a level
+and is reversed by two strong candles, a wick-and-close-back of the same level almost always confirms first, so case B adds no new setups.
+2021-2026 intraday (GoatFunded / Pepperstone): 78 / 85 trades, PF 1.29 / 2.14, +12.1R / +44.0R, max DD 10.6% / 7.6%. Both models: +76.6R / +126.1R, $20,620 / $33,262.
+
