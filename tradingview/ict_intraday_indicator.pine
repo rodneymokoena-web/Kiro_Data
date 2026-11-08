@@ -380,8 +380,8 @@ var array<int>   ctT = array.new_int()     // 5m candle open times
 var array<float> sweptP = array.new_float()
 var array<int>   sweptT = array.new_int()
 var array<Sig>   SG = array.new<Sig>()
-var int    bias5 = 0                         // intraday bias: -1 bearish (last Rule 1 swing sweep was a high), +1 bullish, 0 none
-var string biasTx = "-"
+var array<int>    biasA = array.from(0)    // intraday bias (an array so functions can update it): -1 bearish, +1 bullish, 0 none
+var array<string> biasS = array.from("-")
 var array<Sweep5> SW5 = array.new<Sweep5>()   // intraday 5m chain sweeps
 var array<int>    k5  = array.new_int()       // 5m FVGs that already produced a 5m-chain signal
 var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing highs (price / confirmation time)
@@ -694,8 +694,8 @@ f_reg5(float lv, int ct, bool isHigh, string tf, int pc) =>
         sweptP.push(lv)
         sweptT.push(ct)
         if tf == "D" or tf == "W" or tf == "M" or tf == "4H" or tf == "1H"     // Rule 1 swing sweep -> bias
-            bias5 := isHigh ? -1 : 1
-            biasTx := (isHigh ? "Bearish (" + tf + " high " : "Bullish (" + tf + " low ") + str.tostring(lv, format.mintick) + ")"
+            biasA.set(0, isHigh ? -1 : 1)
+            biasS.set(0, (isHigh ? "Bearish (" + tf + " high " : "Bullish (" + tf + " low ") + str.tostring(lv, format.mintick) + ")")
         // leg origin on 5m = the lowest low (high sweep) / highest high (low sweep) between the previous 5m swing high (low),
         // 2 candles each side and formed before the sweep extreme, and the extreme = where the leg into the sweep started
         int ext0 = math.max(pc - 3, BC.base)
@@ -812,7 +812,7 @@ if sw5 and isM5 and symOK and SW5.size() > 0
                 sw.done := true
                 [dOk, dN, dAtr] = BC.disp(p, sh)
                 bool single = (sh ? open - close : close - open) >= i_dAtr * BC.atr(p)
-                bool biasOk = not i_bias5 or (sh ? bias5 == -1 : bias5 == 1)
+                bool biasOk = not i_bias5 or (sh ? biasA.get(0) == -1 : biasA.get(0) == 1)
                 if (dOk or single) and biasOk
                     string info5 = sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " swept (5m) | 5m IFVG + 5m break of structure | disp " + str.tostring(dN) + "c " + str.tostring(dAtr, "0.0") + " ATR"
                     string sid5 = (sh ? "S5" : "L5") + str.tostring(BC.TC(p))
@@ -1046,7 +1046,7 @@ if barstate.islast and i_table
     table.cell(tb, 0, 10, "Stop / target", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be ? ", BE +" + str.tostring(i_beR) + "R" : ""), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 12, "Bias (last Rule 1 swing sweep)" + (i_bias5 ? "" : " - filter off"), text_color=color.white, text_size=size.small)
-    table.cell(tb, 1, 12, biasTx, text_color=bias5 < 0 ? color.red : bias5 > 0 ? color.lime : color.white, text_size=size.small)
+    table.cell(tb, 1, 12, biasS.get(0), text_color=biasA.get(0) < 0 ? color.red : biasA.get(0) > 0 ? color.lime : color.white, text_size=size.small)
     table.cell(tb, 0, 7, "Watching sweeps / orders", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 7, str.tostring(SW5.size()) + " / " + str.tostring(SG.size()), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 3, "Trades (W / L / BE)", text_color=color.white, text_size=size.small)
