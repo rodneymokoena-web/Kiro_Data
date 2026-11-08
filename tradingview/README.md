@@ -41,6 +41,8 @@ Short described; long is the mirror image.
    2 candles each side, before the 4H FVG's middle candle). *Fixed R* optional.
 
 **Intraday model (optional)** (Python: `backtest.py`)
+0. **Intraday sweep (5m chart):** a Rule 1 level is swept when a **5m candle wicks through it and closes back** (high level: high above, close below). The first sweep
+   event uses the level up (input *Intraday: judge the sweep on 5m candles*; off = a 4H wick). The rest of the chain is unchanged.
 1a. **Intraday model only, also:** **1H swings** (same size as the 4H swings, 10 candles each side) and the far edge of every **fresh 1H FVG**
    (inputs *Intraday: 1H swings*, *Intraday: fresh 1H FVG far edges*; both are swept by 4H wicks).
 1b. **Also previous-session highs/lows** (Asia / London / NY, New York clock) added to Rule 1, kept only where the
@@ -98,8 +100,8 @@ $10,000 start, 1 % risk per trade, compounded, after costs. Python backtest on M
 | Model | GoatFunded | Pepperstone |
 |---|---|---|
 | **Swing** (snapshot rules, 4H/D/W/M + fresh 4H FVG edges, close-back sweep, trailing stop) | 253 trades · win 46 % · PF 1.68 · +64.52R · $10k → $18,462 · max DD 10.2 % | 277 trades · win 47 % · PF 1.84 · +82.05R · $10k → $21,715 · max DD 6.3 % |
-| **Intraday** D/W/M + 4H/1H swings + 4H/1H fresh FVG edges + session liquidity, 5m touch | 76 trades · win 24 % · PF 1.32 · +13.12R · $10k → $11,290 · max DD 9.6 % | 80 trades · win 34 % · PF 2.13 · +42.36R · $10k → $15,070 · max DD 7.4 % |
-| **Both** (1 % each) | 329 trades · PF 1.58 · +77.65R · $10k → $20,843 · max DD 11.9 % | 357 trades · PF 1.92 · +124.41R · $10k → $32,724 · max DD 11.7 % |
+| **Intraday** D/W/M + 4H/1H swings + 4H/1H fresh FVG edges + session liquidity, 5m touch | 78 trades · win 23 % · PF 1.29 · +12.05R · $10k → $11,169 · max DD 10.6 % | 85 trades · win 33 % · PF 2.14 · +44.04R · $10k → $15,318 · max DD 7.6 % |
+| **Both** (1 % each) | 331 trades · PF 1.56 · +76.57R · $10k → $20,620 · max DD 12.3 % | 362 trades · PF 1.93 · +126.09R · $10k → $33,262 · max DD 12.7 % |
 
 2021-2023 (never used for tuning) / 2024-2026: swing +36.45R / +25.49R (GoatFunded), +23.73R / +57.87R (Pepperstone);
 intraday +18.07R / -2.83R (GoatFunded), +27.11R / +18.33R (Pepperstone). About 55 swing and 13 intraday trades per year.
