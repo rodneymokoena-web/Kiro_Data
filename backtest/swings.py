@@ -205,7 +205,7 @@ def find_swings(htf: pd.DataFrame, tf: str) -> pd.DataFrame:
     return df
 
 
-def fvg_far_edge_levels(h4: pd.DataFrame) -> pd.DataFrame:
+def fvg_far_edge_levels(h4: pd.DataFrame, label: str = "4HFVG") -> pd.DataFrame:
     """Rule 1 liquidity: every 4H FVG as a sweepable level at its FAR edge (the edge farthest from price, which
     sits on the side the FVG was left behind). Bearish FVG (price below it): its TOP is buy-side liquidity ("high").
     Bullish FVG (price above it): its BOTTOM is sell-side liquidity ("low"). Usable from the close of the FVG's 3rd candle.
@@ -225,7 +225,7 @@ def fvg_far_edge_levels(h4: pd.DataFrame) -> pd.DataFrame:
             hit = later[(H[later] >= bot) if d == "bear" else (L[later] <= top)]
             if len(hit):
                 exp = h4["End"].iloc[hit[0]] - pd.Timedelta(nanoseconds=1)
-        rows.append({"tf": "4HFVG", "type": "high" if d == "bear" else "low", "price": float(top if d == "bear" else bot),
+        rows.append({"tf": label, "type": "high" if d == "bear" else "low", "price": float(top if d == "bear" else bot),
                      "pivot_time": h4["Start"].iloc[i - 2], "confirmed_time": h4["End"].iloc[i], "expires": exp})
     return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time", "expires"])
 

@@ -62,7 +62,7 @@ COST = json.loads(_costs.read_text()) if DATA_SOURCE != "yahoo" and _costs.exist
 # previous intraday rule 7.
 # Rule 1 for the intraday model: liquidity = 4H swings (INTRADAY_4H_PIVOT candles each side, only the significant 4H
 # highs/lows) + D/W/M swings (2 each side). The swing model keeps D/W/M (ifvg.SWEEP_TFS).
-INTRADAY_LIQ_TFS = ("M", "W", "D", "4H")
+INTRADAY_LIQ_TFS = tuple(__import__("os").environ.get("INTRADAY_LIQ_TFS", "M,W,D,4H,1H").split(","))   # D/W/M swings (2), 4H and 1H swings (10)
 INTRADAY_4H_PIVOT = ifvg.RULE1_4H_PIVOT   # 4H swing size (ifvg.RULE1_4H_PIVOT): 10 = major swings, 2 = all swings
 # How a 4H swing sweep is traded: "4H FVG" = like D/W/M (4H FVG -> 4H IFVG -> retest -> 1H IFVG);
 # "1H FVG" = rule 1b: 1H FVG of the leg inverted -> 1H IFVG straight away (setups_v2, no 4H step).

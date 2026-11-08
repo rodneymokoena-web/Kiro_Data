@@ -46,6 +46,8 @@ i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/
 i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=g1)
 i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1, group=g1)
 i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Both models: every 4H FVG is also sweepable liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom). It stays valid only while price has not yet traded into the gap, so a level can be swept up to and including the 4H candle that first enters the FVG. Swing: 1H close-back sweep; intraday: 4H wick.")
+i_liq1h = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group=g1, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
+i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=g1, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
 
 g2 = "Rules 2-4 - 4H sweep > FVG > IFVG"
 i_legMode = input.string("Last 4H swing", "Leg start", options=["Last 4H swing", "Lowest/highest of N 4H candles"], group=g2, tooltip="Last 4H swing = the leg into the sweep starts at the last confirmed 4H swing low (high sweep) / swing high (low sweep) before the sweep.")
@@ -452,6 +454,10 @@ var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing hig
 var array<int>   l4HT = array.new_int()
 var array<float> l4LP = array.new_float()     // intraday: unbroken 4H swing lows
 var array<int>   l4LT = array.new_int()
+var array<float> l1HP = array.new_float()     // intraday: unbroken 1H swing highs (size = 4H swing size)
+var array<int>   l1HT = array.new_int()
+var array<float> l1LP = array.new_float()
+var array<int>   l1LT = array.new_int()
 var array<float> lSHP = array.new_float()     // intraday: unbroken session highs (1H+ swing filtered)
 var array<int>   lSHT = array.new_int()
 var array<float> lSLP = array.new_float()     // intraday: unbroken session lows
@@ -850,6 +856,22 @@ if new1
     B1.add(o1, h1, l1, c1, t1, tc1, 1500)
     q := B1.size() - 1
     updFvgs(F1, B1, q, 150)
+    // ----- 1H swings (intraday liquidity): a pivot with i_liq4 candles each side is confirmed at the close of candle q
+    if i_liq1h and not isSwing and i_liq4 > 0
+        int pv1 = q - i_liq4
+        if pv1 - i_liq4 >= B1.base
+            if B1.pivHiAt(pv1, i_liq4, true)
+                l1HP.push(B1.H(pv1))
+                l1HT.push(B1.TC(q))
+            if B1.pivLoAt(pv1, i_liq4, true)
+                l1LP.push(B1.L(pv1))
+                l1LT.push(B1.TC(q))
+        while l1HP.size() > 150
+            l1HP.shift()
+            l1HT.shift()
+        while l1LP.size() > 150
+            l1LP.shift()
+            l1LT.shift()
     // ----- session highs/lows (intraday only): track the open session, push its extreme at the close (1H+ swing)
     if i_sess and not isSwing
         int nyh = hour(B1.T(q), "America/New_York")
@@ -1059,6 +1081,49 @@ if new4
             fvHi.shift()
             fvE.shift()
             fvX.shift()
+    // 1H swings (intraday): swept by this 4H wick, then dropped when broken by it
+    if i_liq1h and not useHa and i_liq4 > 0
+        f_sweeps(l1HP, l1HT, true, "1H", j)
+        f_sweeps(l1LP, l1LT, false, "1H", j)
+        if l1HP.size() > 0
+            for k = l1HP.size() - 1 to 0
+                if l1HT.get(k) <= B4.T(j) and B4.H(j) > l1HP.get(k)
+                    l1HP.remove(k)
+                    l1HT.remove(k)
+        if l1LP.size() > 0
+            for k = l1LP.size() - 1 to 0
+                if l1LT.get(k) <= B4.T(j) and B4.L(j) < l1LP.get(k)
+                    l1LP.remove(k)
+                    l1LT.remove(k)
+    // fresh 1H FVG far edges (intraday): a 1H FVG is sweepable by 4H candles that open after it is complete and before price first
+    // trades into the gap on 1H (the 4H candle containing that entry can still sweep it)
+    if i_fvgLiq1h and not useHa and F1.size() > 0
+        array<float> uHP = array.new_float()
+        array<int>   uHT = array.new_int()
+        array<float> uLP = array.new_float()
+        array<int>   uLT = array.new_int()
+        for m = 0 to F1.size() - 1
+            Fvg ff = F1.get(m)
+            int cT = B1.TC(ff.i3)
+            if cT <= B4.T(j)
+                bool entered = false
+                int lastB1 = B1.size() - 1
+                if ff.i3 + 1 <= lastB1
+                    for r = ff.i3 + 1 to lastB1
+                        if B1.T(r) >= B4.T(j)
+                            break
+                        if ff.dir == -1 ? B1.H(r) >= ff.bot : B1.L(r) <= ff.top
+                            entered := true
+                            break
+                if not entered
+                    if ff.dir == -1
+                        uHP.push(ff.top)
+                        uHT.push(cT)
+                    else
+                        uLP.push(ff.bot)
+                        uLT.push(cT)
+        f_sweeps(uHP, uHT, true, "1HFVG", j)
+        f_sweeps(uLP, uLT, false, "1HFVG", j)
     // session liquidity (intraday): sweep, then drop levels broken OR older than i_sessDays
     if i_sess and not useHa
         f_sweeps(lSHP, lSHT, true, "SESS", j)

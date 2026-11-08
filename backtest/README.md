@@ -130,3 +130,11 @@ none). The trailing stop keeps its 2-point buffer (`SL_BUFFER`); the intraday mo
 2021-2026 swing (GoatFunded / Pepperstone): PF 1.66 / 1.79 -> 1.68 / 1.84, +60.7R / +77.4R -> +64.5R / +82.1R, max DD 10.3% / 6.3% -> 10.2% / 6.3%.
 Both models: 327 / 354 trades, +79.8R / +127.5R, $21,291 / $33,750, max DD 11.9% / 10.8%.
 
+## Update: intraday Rule 1 also uses 1H swings and fresh 1H FVG far edges (default)
+Intraday liquidity is now D/W/M swings (2 candles each side), **4H and 1H swings (10 each side)**, fresh **4H and 1H** FVG far edges, and the previous
+Asia / London / NY highs and lows (kept only if also a 1H+ swing, valid 7 days). Switches: `INTRADAY_LIQ_TFS` (`backtest.py`, default `M,W,D,4H,1H`) and
+`FVG_LIQ_1H` (`ifvg_1h.py`). Swing model unchanged. Test: `intliq_experiments.py`.
+2021-2026 intraday (GoatFunded / Pepperstone): 74 / 77 -> 76 / 80 trades, PF 1.40 / 2.32 -> 1.32 / 2.13, +15.2R / +45.4R -> +13.1R / +42.4R,
+max DD 7.7% / 7.4% -> 9.6% / 7.4% (1H swings and 1H FVG edges each add about one trade and slightly lower the profit factor).
+Both models: 329 / 357 trades, +77.7R / +124.4R, $20,843 / $32,724, max DD 11.9% / 11.7%.
+

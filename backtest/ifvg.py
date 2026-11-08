@@ -127,7 +127,7 @@ def find_setups(bars: pd.DataFrame, levels: pd.DataFrame, tf: str, accept=None) 
     n = len(bars)
     fvgs = find_fvgs(bars)
     swept = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(TEST_START, bars.index[0]))
-                   & levels["tf"].isin(tuple(SWEEP_TFS) + tuple(SESSION_TFS) + (("4HFVG",) if FVG_LIQ else ()))]
+                   & levels["tf"].isin(tuple(SWEEP_TFS) + tuple(SESSION_TFS) + (("4HFVG", "1HFVG") if FVG_LIQ else ()))]
 
     setups: dict[tuple, dict] = {}
     for lv in swept.itertuples(index=False):

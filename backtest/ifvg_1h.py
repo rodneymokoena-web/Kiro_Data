@@ -43,6 +43,7 @@ RETEST_WINDOW = pd.Timedelta(hours=48)   # 4H IFVG must be retested within this 
 # False = no cancellation: retests after such a break still count, and the sweep extreme moves with price (highest high
 #         from the sweep extreme to the 1H IFVG signal candle, for a short) - it is the swing stop / invalidation level.
 RETEST_CANCEL = True
+FVG_LIQ_1H = __import__("os").environ.get("FVG_LIQ_1H", "1") == "1"   # intraday: fresh 1H FVG far edges as Rule 1 liquidity too
 INVERT_WINDOW_1H = 20                    # 1H candles after the retest for the 1H FVG to be inverted
 
 OUT = Path(__file__).parent / "output" / "ifvg_1h"
@@ -95,13 +96,30 @@ def _accept_1h_mss(h1: pd.DataFrame, h4_full: pd.DataFrame):
 
 def build_4h_setups_v1(h1: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
     htf = {tf: build_htf(h1, tf) for tf in ("D", "W", "M", "4H")}
+    f1 = h1.assign(Start=h1.index, End=h1.index + pd.Timedelta(hours=1))
+    htf["1H"] = f1
     import swings as _S
-    _parts = [find_swings(htf[tf], tf) if not (tf == "4H" and ifvg.SIG_4H) else _S.significant_4h_levels(h1)
-              for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
+    def _lv(tf):
+        if tf == "4H" and ifvg.SIG_4H:
+            return _S.significant_4h_levels(h1)
+        if tf == "1H":                      # 1H liquidity swings use the 4H size (10); the session filter keeps its own 1H size
+            saved = _S.PIVOT_BY_TF.get("1H")
+            _S.PIVOT_BY_TF["1H"] = ifvg.RULE1_4H_PIVOT
+            try:
+                return find_swings(htf[tf], tf)
+            finally:
+                if saved is None:
+                    _S.PIVOT_BY_TF.pop("1H", None)
+                else:
+                    _S.PIVOT_BY_TF["1H"] = saved
+        return find_swings(htf[tf], tf)
+    _parts = [_lv(tf) for tf in ifvg.SWEEP_TFS]       # rule 1 liquidity
     if ifvg.SESSION_TFS:
         _parts.append(_S.session_levels(h1, ifvg.SESSION_TFS))
     if ifvg.FVG_LIQ:
         _parts.append(_S.fvg_far_edge_levels(htf["4H"]))
+    if ifvg.FVG_LIQ and FVG_LIQ_1H:
+        _parts.append(_S.fvg_far_edge_levels(f1, "1HFVG"))        # fresh 1H FVG far edges (intraday)
     levels = pd.concat(_parts, ignore_index=True)
     h4_full = htf["4H"]
     h4 = h4_full.drop(columns=["Start", "End"])
