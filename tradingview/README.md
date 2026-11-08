@@ -41,8 +41,9 @@ Short described; long is the mirror image.
    2 candles each side, before the 4H FVG's middle candle). *Fixed R* optional.
 
 **Intraday model (optional)** (Python: `backtest.py`)
-0. **Intraday sweep (5m chart):** a Rule 1 level is swept when a **5m candle wicks through it and closes back** (high level: high above, close below). The first sweep
-   event uses the level up (input *Intraday: judge the sweep on 5m candles*; off = a 4H wick). The rest of the chain is unchanged.
+0. **Intraday sweep (5m chart):** a Rule 1 level is swept when (A) a **5m candle wicks through it and closes back** (high level: high above, close below), or
+   (B) **1 or 2 5m candles close beyond it** and are immediately followed by **two strong displacement 5m candles** in the reversal direction (together >= 1 ATR14),
+   the second closing beyond the low (high) of the last sweeping candle. The first sweep event uses the level up (input *Intraday: judge the sweep on 5m candles*; off = a 4H wick). The rest of the chain is unchanged.
 1a. **Intraday model only, also:** **1H swings** (same size as the 4H swings, 10 candles each side) and the far edge of every **fresh 1H FVG**
    (inputs *Intraday: 1H swings*, *Intraday: fresh 1H FVG far edges*; both are swept by 4H wicks).
 1b. **Also previous-session highs/lows** (Asia / London / NY, New York clock) added to Rule 1, kept only where the
