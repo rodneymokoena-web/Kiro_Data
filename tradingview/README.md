@@ -120,3 +120,11 @@ produces fewer trades and less R than on the MT5 grid (not re-measured for the F
 TradingView results will differ somewhat: chart history depends on your plan, D/W/4H candles follow the symbol's
 session, orders are placed at the close of the candle on which the signal is known, and the strategy cannot hold a long
 and a short at the same time.
+
+## Intraday scripts (current rules)
+The intraday indicator / strategy follow the snapshot rules: 5m sweep of a Rule 1 level -> 5m IFVG + 5m break of structure within N 5m candles
+(with displacement) -> limit at the latest bearish 5m FVG or 5m volume imbalance of the drop (valid 60 min) -> stop at the 5m breaker high ->
+fixed 3R or major 5m swing, breakeven +1R. Only in the direction of the bias (last Rule 1 swing sweep: high swept = bearish, low swept =
+bullish; input *Intraday: only trade in the direction of the bias*). The chart table shows setups, windows, stop / target, the current bias and
+the trade stats. **In the Python backtest these rules lose money (about -313R / -347R over 2021-2026 with the bias filter) - forward-test only.**
+
