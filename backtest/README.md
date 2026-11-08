@@ -152,3 +152,25 @@ sweeping candle. (`a` = case A only; `ab` = case B with a single sweeping candle
 and is reversed by two strong candles, a wick-and-close-back of the same level almost always confirms first, so case B adds no new setups.
 2021-2026 intraday (GoatFunded / Pepperstone): 78 / 85 trades, PF 1.29 / 2.14, +12.1R / +44.0R, max DD 10.6% / 7.6%. Both models: +76.6R / +126.1R, $20,620 / $33,262.
 
+## Update: new intraday model from the snapshots (`intraday_snap.py`, default `INTRADAY_MODEL = "snap"`)
+Rules (short; long mirrored): Rule 1 intraday liquidity -> 5m sweep (wick + close back, or 1-2 closes beyond + two displacement candles) ->
+5m IFVG (intact bullish 5m FVG nearest below the sweep, last 48 5m candles) + 5m break of structure (lowest low between the previous 5m swing
+high and the sweep extreme) within N = 30 5m candles, with displacement (2 candles >= 1 ATR or 1 candle body >= 1 ATR) -> sell limit at the
+bottom of the latest bearish 5m FVG or 5m volume imbalance in the drop, valid 60 min -> stop at the 5m breaker high (no buffer) -> fixed 3R or
+the major 5m swing (else 3R), breakeven +1R. Bias filter (`BIAS_5M`, on): only trade with the last Rule 1 swing sweep (D/W/M/4H/1H; high
+swept = bearish, low swept = bullish). The previous intraday chains stay available with `INTRADAY_MODEL=chains`.
+
+**Backtest 2021-2026, $10k, 1% risk (`output/intraday_snap_summary.csv`) - NOT viable:**
+
+| Broker | Variant | Trades | PF | R | Max DD |
+|---|---|---|---|---|---|
+| GoatFunded | no bias, 3R | 2,501 | 0.69 | -537.4 | 99.7% |
+| GoatFunded | bias, 3R | 1,467 | 0.68 | -313.0 | 96.8% |
+| GoatFunded | bias, major 5m swing | 1,467 | 0.55 | -330.0 | 97.0% |
+| Pepperstone | no bias, 3R | 2,656 | 0.68 | -589.1 | 99.8% |
+| Pepperstone | bias, 3R | 1,565 | 0.68 | -347.3 | 97.7% |
+| Pepperstone | bias, major 5m swing | 1,565 | 0.46 | -454.4 | 99.1% |
+
+Most of the loss is spread on ~22-point median stops. The `output/us100_*` summary files were NOT regenerated with this model; they still hold
+the previous intraday (4H-chain) results (+12.1R / +44.0R).
+

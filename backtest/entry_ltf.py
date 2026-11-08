@@ -69,6 +69,10 @@ CLOSE_THROUGH_TF = "5m"                     # ... checked on this timeframe's cl
 REINVERT_BARS = 1                           # ... unless re-inverted within this many CLOSE_THROUGH_TF candles
                                             # (not applied to the 1H IFVG)
 
+CISD_FRAME = None                           # candles for the CISD trigger (None = 1H); the 5m chain uses 15m
+CISD_BAR = pd.Timedelta(hours=1)
+CISD_LABEL = "1H CISD"
+
 OUT = Path(__file__).parent / "output" / "entry"
 H1 = pd.Timedelta(hours=1)
 NEVER = pd.Timestamp.max.tz_localize("UTC")
@@ -139,11 +143,13 @@ def _blocked(t: pd.Timestamp, susp: list) -> bool:
 
 
 # ----------------------------------------------------------------------------- triggers
-def h1_cisd(h1: pd.DataFrame, short: bool, t_touch: pd.Timestamp, t_end: pd.Timestamp, susp: list = ()) -> tuple:
-    """First 1H CISD with displacement after the touch. Returns (close_time, level) or (NaT, nan)."""
+def h1_cisd(h1: pd.DataFrame, short: bool, t_touch: pd.Timestamp, t_end: pd.Timestamp, susp: list = (),
+            bar: pd.Timedelta = H1) -> tuple:
+    """First CISD with displacement after the touch on the candles `h1` (1H by default; bar = their length).
+    Returns (close_time, level) or (NaT, nan)."""
     o, h, l, c = (h1[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
     idx = h1.index
-    q0 = idx.searchsorted(t_touch.floor("h"))
+    q0 = idx.searchsorted(t_touch.floor(bar))
     q1 = idx.searchsorted(t_end)
     if q0 >= len(h1):
         return pd.NaT, np.nan
@@ -162,9 +168,38 @@ def h1_cisd(h1: pd.DataFrame, short: bool, t_touch: pd.Timestamp, t_end: pd.Time
             continue
         lvl = o[m + 1]
         if ((short and c[q] < lvl) or (not short and c[q] > lvl)) and structure.displacement(h1, q, short)[0] \
-                and not _blocked(idx[q] + H1, susp):
-            return idx[q] + H1, lvl
+                and not _blocked(idx[q] + bar, susp):
+            return idx[q] + bar, lvl
     return pd.NaT, np.nan
+
+
+def volume_imbalances(df: pd.DataFrame) -> pd.DataFrame:
+    """5m volume imbalances in the same table format as ifvg.find_fvgs (idx = 2nd candle, start = 1st candle).
+    Bearish: two consecutive bearish candles whose BODIES do not overlap (body bottom of candle 1 above the body top of
+    candle 2) while their wicks do (high of candle 2 >= low of candle 1). Zone = [body top of 2, body bottom of 1].
+    Also bearish: two consecutive bearish candles where candle 2 OPENS ABOVE candle 1's close. Zone = [close of 1, open of 2].
+    Bullish = mirror (two bullish candles; candle 2 opens below candle 1's close, zone = [open of 2, close of 1])."""
+    o, h, l, c = (df[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
+    rows = []
+    for i in range(1, len(c)):
+        b1lo, b1hi = min(o[i - 1], c[i - 1]), max(o[i - 1], c[i - 1])
+        b2lo, b2hi = min(o[i], c[i]), max(o[i], c[i])
+        if c[i - 1] < o[i - 1] and c[i] < o[i] and b1lo > b2hi and h[i] >= l[i - 1]:
+            rows.append(("bear", i, i - 1, b2hi, b1lo))
+        if c[i - 1] > o[i - 1] and c[i] > o[i] and b1hi < b2lo and l[i] <= h[i - 1]:
+            rows.append(("bull", i, i - 1, b1hi, b2lo))
+        if c[i - 1] < o[i - 1] and c[i] < o[i] and o[i] > c[i - 1]:          # bearish: open of 2 above the close of 1
+            rows.append(("bear", i, i - 1, c[i - 1], o[i]))
+        if c[i - 1] > o[i - 1] and c[i] > o[i] and o[i] < c[i - 1]:          # bullish: open of 2 below the close of 1
+            rows.append(("bull", i, i - 1, o[i], c[i - 1]))
+    return pd.DataFrame(rows, columns=["dir", "idx", "start", "bottom", "top"])
+
+
+def with_volume_imbalances(fvgs: pd.DataFrame, df: pd.DataFrame) -> pd.DataFrame:
+    """FVGs (start = candle 1) plus volume imbalances, as one table of entry zones."""
+    f = fvgs.assign(start=fvgs["idx"] - 2, kind="FVG")[["dir", "idx", "start", "bottom", "top", "kind"]]
+    v = volume_imbalances(df).assign(kind="VI")
+    return pd.concat([f, v], ignore_index=True)
 
 
 def find_entry(st: dict, r5: dict, h1: pd.DataFrame, ltf: pd.DataFrame, fvgs: pd.DataFrame, mode: str,
@@ -221,10 +256,11 @@ def find_entry(st: dict, r5: dict, h1: pd.DataFrame, ltf: pd.DataFrame, fvgs: pd
                 break
         mss_t = idx[mss_i] + bar if mss_i is not None else pd.NaT
         # (a) CISD on 1H
-        cisd_t, cisd_lvl = h1_cisd(h1, short, idx[r], idx[tend - 1] + bar if tend > r else idx[r], susp)
+        cisd_t, cisd_lvl = h1_cisd(CISD_FRAME if CISD_FRAME is not None else h1, short, idx[r],
+                                   idx[tend - 1] + bar if tend > r else idx[r], susp, CISD_BAR)
         if pd.notna(cisd_t) and cisd_t > cancel_t:
             cisd_t = pd.NaT
-        options = [(t, k, v) for t, k, v in ((mss_t, "MSS", mss_lvl), (cisd_t, "1H CISD", cisd_lvl)) if pd.notna(t)]
+        options = [(t, k, v) for t, k, v in ((mss_t, "MSS", mss_lvl), (cisd_t, CISD_LABEL, cisd_lvl)) if pd.notna(t)]
         if not options:
             continue
         trig_t, trig, trig_lvl = min(options, key=lambda x: x[0])
@@ -236,7 +272,8 @@ def find_entry(st: dict, r5: dict, h1: pd.DataFrame, ltf: pd.DataFrame, fvgs: pd
         # entry FVG formed in the leg from the retest extreme through the trigger
         want = "bear" if short else "bull"
         # the breaking candle is usually candle 2 of the FVG -> allow the FVG to complete shortly after
-        fv = fvgs[(fvgs["dir"] == want) & (fvgs["idx"] - 2 >= hi_i) & (fvgs["idx"] <= trig_i + FVG_AFTER_TRIGGER)]
+        first = fvgs["start"] if "start" in fvgs.columns else fvgs["idx"] - 2      # first candle of the zone (VI: 2-candle zones)
+        fv = fvgs[(fvgs["dir"] == want) & (first >= hi_i) & (fvgs["idx"] <= trig_i + FVG_AFTER_TRIGGER)]
         if fv.empty:
             return res
         fv = fv.assign(dist=(fv["idx"] - 1 - trig_i).abs()).sort_values("idx")
@@ -254,7 +291,7 @@ def find_entry(st: dict, r5: dict, h1: pd.DataFrame, ltf: pd.DataFrame, fvgs: pd
 
         def record(f) -> None:
             lvl, c_t, _, sp = use_fvg(f)
-            res.update(fvg_time=idx[int(f["idx"]) - 2], fvg_bottom=f["bottom"], fvg_top=f["top"],
+            res.update(fvg_time=idx[int(f["start"]) if "start" in f.index else int(f["idx"]) - 2], fvg_bottom=f["bottom"], fvg_top=f["top"],
                        cancel_time=c_t if c_t < NEVER else pd.NaT, reinversions=len(sp))
             res["x"].update(fvg=int(f["idx"]), susp=sp)
 

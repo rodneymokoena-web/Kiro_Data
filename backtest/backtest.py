@@ -76,6 +76,12 @@ INTRADAY_POI_LAYERS: list = []
 # Fast intraday path: sweep -> 15m FVG inverted (15m IFVG) + 15m CISD -> retest + 5m entry (setups_15m). "" = off,
 # "add" = run alongside the 4H->1H->5m setups, "only" = use the fast path alone.
 INTRADAY_FAST15 = ""
+# 5m inversion path (setups_5m): 5m sweep -> 5m FVG of the leg inverted by a 5m close (5m displacement + 5m MSS) -> retest + 5m entry.
+# "" = off, "add" = alongside the 4H path, "only" = replaces the 4H inversion path.
+INTRADAY_5M = __import__("os").environ.get("INTRADAY_5M", "only")
+# Intraday model: "snap" (default) = snapshot rules (intraday_snap.py: 5m sweep -> 5m IFVG + 5m break of structure -> limit at the
+# 5m FVG of the displacement, stop at the 5m breaker high, fixed R or major 5m swing target); "chains" = the previous chains above.
+INTRADAY_MODEL = __import__("os").environ.get("INTRADAY_MODEL", "snap")
 STOP_MODE = "prev_1h_candle"                   # "prev_1h_candle" = beyond the previous completed 1H candle's high/low
                                                # "prev_swing" = beyond the previous 5m/15m swing (entry TF)
                                                # "4h_extreme" = beyond the 4H sweep extreme | "fvg" = beyond the entry FVG
@@ -103,6 +109,20 @@ def prev_candle(htf: pd.DataFrame, t_fill: pd.Timestamp, bar: pd.Timedelta, shor
         px = htf["High"].iat[i] if short else htf["Low"].iat[i]
         if (short and px > entry) or (not short and px < entry):
             return float(px)
+    return np.nan
+
+
+def prev_5m_candle(m5: pd.DataFrame, t_fill: pd.Timestamp, short: bool, entry: float, lookback: int = 48) -> float:
+    """5m chain stop: the most recent COMPLETED 5m candle at t_fill that is bearish (short) with BOTH its open and close above
+    the entry -> its high. Long: the most recent completed bullish candle with open and close below the entry -> its low.
+    Searches up to `lookback` candles back; nan = none."""
+    o, h, l, c = (m5[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
+    k = int(m5.index.searchsorted(t_fill - pd.Timedelta(minutes=5), side="right")) - 1     # last candle with close <= t_fill
+    for i in range(k, max(k - lookback, -1), -1):
+        if short and c[i] < o[i] and o[i] > entry and c[i] > entry:
+            return float(h[i])
+        if (not short) and c[i] > o[i] and o[i] < entry and c[i] < entry:
+            return float(l[i])
     return np.nan
 
 
@@ -181,7 +201,11 @@ def _intraday_setups(h1: pd.DataFrame):
     split = INTRADAY_4H_MODE == "1H FVG" and "4H" in INTRADAY_LIQ_TFS
     ifvg.SWEEP_TFS = tuple(t for t in INTRADAY_LIQ_TFS if t != "4H") if split else INTRADAY_LIQ_TFS
     try:
-        h4, setups = ([], []) if INTRADAY_FAST15 == "only" else build_4h_setups(h1)
+        h4, setups = ([], []) if INTRADAY_FAST15 == "only" or INTRADAY_5M == "only" else build_4h_setups(h1)
+        if INTRADAY_5M in ("add", "only"):
+            import setups_5m
+            f5 = setups_5m.build_setups(h1, load(DATA / SYMBOLS[list(SYMBOLS)[0]][2]))
+            setups = sorted(list(setups) + f5, key=lambda d: d["signal_time"])
         if INTRADAY_FAST15 in ("add", "only"):
             import setups_15m
             m15 = load(DATA / SYMBOLS[list(SYMBOLS)[0]][1]) if len(SYMBOLS) == 1 else None
@@ -228,6 +252,32 @@ def _intraday_setups(h1: pd.DataFrame):
 
 
 def run() -> pd.DataFrame:
+    if INTRADAY_MODEL == "snap":
+        return run_snap()
+    return run_chains()
+
+
+def run_snap() -> pd.DataFrame:
+    """Intraday snapshot rules (intraday_snap.py) with the intraday Rule 1 liquidity."""
+    import intraday_snap
+    import swings
+    (OUT / "trades").mkdir(parents=True, exist_ok=True)
+    saved = (ifvg.SWEEP_TFS, dict(swings.PIVOT_BY_TF), ifvg.SESSION_TFS)
+    ifvg.SESSION_TFS = INTRADAY_SESSION_LIQ
+    swings.SESSION_MIN_TF = INTRADAY_SESSION_MIN_TF
+    swings.PIVOT_BY_TF = {**swings.PIVOT_BY_TF, "4H": INTRADAY_4H_PIVOT}
+    ifvg.SWEEP_TFS = INTRADAY_LIQ_TFS
+    try:
+        parts = [intraday_snap.build_trades(load(DATA / h1f), load(DATA / m5f), sym) for sym, (h1f, _, m5f) in SYMBOLS.items()]
+    finally:
+        ifvg.SWEEP_TFS, swings.PIVOT_BY_TF, ifvg.SESSION_TFS = saved
+    t = pd.concat([x for x in parts if len(x)], ignore_index=True) if any(len(x) for x in parts) else pd.DataFrame()
+    if not t.empty:
+        t.to_csv(OUT / "trades.csv", index=False)
+    return t
+
+
+def run_chains() -> pd.DataFrame:
     (OUT / "trades").mkdir(parents=True, exist_ok=True)
     for old in (OUT / "trades").glob("*.png"):
         old.unlink()
@@ -250,13 +300,35 @@ def run() -> pd.DataFrame:
             for tf in entry_ltf.selected_tfs():
                 ltf = ltfs[tf]                              # fills + exits simulated on the entry timeframe
                 for mode in entry_ltf.selected_modes(tf):
-                    e = find_entry(st, r5, h1, ltf, ltf_fvgs[tf], mode, ltfs.get(entry_ltf.CLOSE_THROUGH_TF))
+                    _saved = (entry_ltf.RETEST_WINDOW_1H, entry_ltf.TRIGGER_WINDOW, entry_ltf.FILL_WINDOW,
+                              entry_ltf.CISD_FRAME, entry_ltf.CISD_BAR, entry_ltf.CISD_LABEL)
+                    zones = ltf_fvgs[tf]
+                    if st.get("fast5"):                         # 5m chain: 30-min retest, 15m CISD or 5m MSS within 30 min,
+                        import setups_5m                        # entry at a 5m MSS FVG or volume imbalance, valid 30 min
+                        entry_ltf.RETEST_WINDOW_1H = setups_5m.RETEST_5M
+                        entry_ltf.TRIGGER_WINDOW, entry_ltf.FILL_WINDOW = setups_5m.TRIGGER_5M, setups_5m.FILL_5M
+                        entry_ltf.CISD_FRAME, entry_ltf.CISD_BAR, entry_ltf.CISD_LABEL = ltfs["15m"], pd.Timedelta(minutes=15), "15m CISD"
+                        if tf == "5m":
+                            if "_z5" not in ltf_fvgs:
+                                ltf_fvgs["_z5"] = entry_ltf.with_volume_imbalances(ltf_fvgs["5m"], ltfs["5m"])
+                            zones = ltf_fvgs["_z5"]
+                    try:
+                        e = find_entry(st, r5, h1, ltf, zones, mode, ltfs.get(entry_ltf.CLOSE_THROUGH_TF))
+                    finally:
+                        (entry_ltf.RETEST_WINDOW_1H, entry_ltf.TRIGGER_WINDOW, entry_ltf.FILL_WINDOW,
+                         entry_ltf.CISD_FRAME, entry_ltf.CISD_BAR, entry_ltf.CISD_LABEL) = _saved
                     base = {"symbol": symbol, "setup": n, "signal": st["signal"], "entry_tf": tf, "entry_mode": mode}
                     if e["status"] != "filled":
                         skipped.append({**base, "reason": e["status"]})
                         continue
                     entry, q = e["entry_price"], e["x"]["entry"]
-                    if STOP_MODE == "prev_1h_candle":
+                    if st.get("fast5"):                       # 5m chain: last bearish (short) 5m candle opening and closing above the entry
+                        pc = prev_5m_candle(ltfs["5m"], e["entry_time"], short, entry)
+                        if np.isnan(pc):
+                            skipped.append({**base, "reason": "no previous 5m candle beyond entry"})
+                            continue
+                        sl = pc + SL_BUFFER[symbol] if short else pc - SL_BUFFER[symbol]
+                    elif STOP_MODE == "prev_1h_candle":
                         pc = prev_candle(h1, e["entry_time"], pd.Timedelta(hours=1), short, entry, PREV_CANDLE_LOOKBACK)
                         if np.isnan(pc):
                             skipped.append({**base, "reason": "no previous 1H candle beyond entry"})

@@ -63,8 +63,8 @@ def build(kind: str, model: str) -> str:
     text = "\n".join(out) + "\n"
     title, label = TITLES[(kind, model)]
     text = text.replace(OLD_TITLE[kind], title)
-    return text.replace("Generated from pine/core.pine by pine/build.py",
-                        f"{label} - generated from pine/core.pine by pine/build.py")
+    return text.replace("//  Generated from pine/core.pine by pine/build.py",
+                        f"//  {label} - generated from pine/core.pine by pine/build.py")
 
 
 def main() -> None:

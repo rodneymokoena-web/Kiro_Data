@@ -397,12 +397,13 @@ SWEEP5M_MODE = _os_b.environ.get("SWEEP5M_MODE", "ab12")   # "a" = 5m wick + clo
 SWEEP5M_DISP_ATR = float(_os_b.environ.get("SWEEP5M_DISP_ATR", "1.0"))   # the two displacement candles must move >= this x ATR14 (5m)
 
 
-def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.DatetimeIndex) -> pd.DataFrame:
+def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.DatetimeIndex | None) -> pd.DataFrame:
     """Intraday sweep judged on 5m candles; broken_time = the 4H candle (open time) that contains the confirmation.
     (A) a 5m candle wicks through the level and CLOSES back (high level: high > level, close < level);
     (B) a 5m candle CLOSES beyond the level and the next two 5m candles are strong displacement candles (consecutive, same
         direction as the reversal, moving >= SWEEP5M_DISP_ATR x ATR14 from the first one's open to the second one's close),
-        the SECOND one closing beyond the SWEEPING candle's low (high level) / high (low level).
+        the SECOND one closing beyond the low (high level) / high (low level) of the sweeping candle - of the FIRST
+        sweeping candle when two candles closed beyond the level (ab12: 1 or 2 candles, not 3+).
     Confirmed at the close of the last candle of (A) or (B). Session levels only count until they expire."""
     o, h, l, c = (m5[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
     n = len(c)
@@ -410,12 +411,15 @@ def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.Date
     tr = np.maximum.reduce([h - l, np.abs(h - pc), np.abs(l - pc)])
     atr = pd.Series(tr).rolling(14, min_periods=1).mean().to_numpy()
     bear, bull = c < o, c > o
-    dS = np.zeros(n, dtype=bool); dL = np.zeros(n, dtype=bool)
+    # dS[k]: candles k+1, k+2 are two strong bearish displacement candles (together >= SWEEP5M_DISP_ATR x ATR14);
+    # c2[k] = close of the second one (compared below with the low of the first sweeping candle)
+    dS = np.zeros(n, dtype=bool); dL = np.zeros(n, dtype=bool); c2 = np.full(n, np.nan)
     if n > 2:
-        dS[:-2] = bear[1:-1] & bear[2:] & (c[2:] < l[:-2]) & ((o[1:-1] - c[2:]) >= SWEEP5M_DISP_ATR * atr[2:])      # only the SECOND candle must close beyond the sweeping candle
-        dL[:-2] = bull[1:-1] & bull[2:] & (c[2:] > h[:-2]) & ((c[2:] - o[1:-1]) >= SWEEP5M_DISP_ATR * atr[2:])
+        dS[:-2] = bear[1:-1] & bear[2:] & ((o[1:-1] - c[2:]) >= SWEEP5M_DISP_ATR * atr[2:])
+        dL[:-2] = bull[1:-1] & bull[2:] & ((c[2:] - o[1:-1]) >= SWEEP5M_DISP_ATR * atr[2:])
+        c2[:-2] = c[2:]
     idx5 = pd.DatetimeIndex(m5.index).as_unit("ns")
-    h4_index = pd.DatetimeIndex(h4_index).as_unit("ns")
+    h4_index = pd.DatetimeIndex(h4_index).as_unit("ns") if h4_index is not None else None
     out = []
     for lv in levels.itertuples(index=False):
         a0 = int(idx5.searchsorted(pd.Timestamp(lv.confirmed_time).as_unit("ns"), side="left"))
@@ -426,15 +430,22 @@ def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.Date
         hi_l = lv.type == "high"
         H_, L_, C_ = h[a0:a1], l[a0:a1], c[a0:a1]
         thr = (C_ > lv.price) if hi_l else (C_ < lv.price)                  # closed beyond the level
+        p1 = np.r_[False, thr[:-1]]                                          # the candle before also closed beyond
         if SWEEP5M_MODE == "ab12":                                           # the sweep is 1 or 2 candles closing beyond the level (not 3+)
-            p1 = np.r_[False, thr[:-1]]; p2 = np.r_[False, False, thr[:-2]]
+            p2 = np.r_[False, False, thr[:-2]]
             thr = thr & ~(p1 & p2)
+        else:
+            p1 = np.zeros_like(thr)
+        # reference candle: the sweeping candle (1-candle sweep) or the FIRST of the two sweeping candles (2-candle sweep)
+        L1, H1_ = np.r_[np.nan, L_[:-1]], np.r_[np.nan, H_[:-1]]
+        refL, refH = np.where(p1, L1, L_), np.where(p1, H1_, H_)
+        C2 = c2[a0:a1]
         if hi_l:
             A = (H_ > lv.price) & (C_ < lv.price)
-            B = thr & dS[a0:a1] if SWEEP5M_MODE in ("ab", "ab12") else None
+            B = thr & dS[a0:a1] & (C2 < refL) if SWEEP5M_MODE in ("ab", "ab12") else None
         else:
             A = (L_ < lv.price) & (C_ > lv.price)
-            B = thr & dL[a0:a1] if SWEEP5M_MODE in ("ab", "ab12") else None
+            B = thr & dL[a0:a1] & (C2 > refH) if SWEEP5M_MODE in ("ab", "ab12") else None
         best = None
         if A.any():
             best = int(np.argmax(A))
@@ -444,6 +455,8 @@ def add_break_times_5m(levels: pd.DataFrame, m5: pd.DataFrame, h4_index: pd.Date
         if best is None:
             out.append(pd.NaT); continue
         t = idx5[a0 + best]
+        if h4_index is None:                       # pin to the 5m candle that confirms the sweep
+            out.append(t); continue
         pos = int(h4_index.searchsorted(t, side="right")) - 1
         out.append(h4_index[pos] if pos >= 0 else pd.NaT)
     return levels.assign(broken_time=out)
