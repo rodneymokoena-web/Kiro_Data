@@ -860,7 +860,7 @@ if sw5 and isM5 and symOK and SW5.size() > 0
             string pTf = "5m"
             for [m, _e8] in FC
                 Fvg f = FC.get(m)
-                if f.dir == want and f.i3 < sw.s and f.i3 >= sw.s - i_ifvgLB and (f.inv < 0 or f.inv >= sw.s)
+                if f.dir == want and f.i3 < sw.s and f.i3 >= sw.s - i_ifvgLB and f.i3 - 2 >= BC.base and (f.inv < 0 or f.inv >= sw.s)
                     if not found or (sh ? f.bot > pBot : f.top < pTop)
                         found := true
                         pTop := f.top
@@ -870,7 +870,8 @@ if sw5 and isM5 and symOK and SW5.size() > 0
             if i_ifvg15
                 for [m, _f15] in F15
                     Fvg f = F15.get(m)
-                    if f.dir == want
+                    // the FVG list keeps more history than the 15m candle buffer: skip FVGs whose candles were already trimmed
+                    if f.dir == want and f.i3 - 2 >= B15.base
                         int k5 = BC.firstAtOrAfter(B15.TC(f.i3)) - 1       // the 5m candle at whose close the 15m FVG completes
                         if k5 < sw.s and k5 >= sw.s - i_ifvgLB
                             bool intact = true
