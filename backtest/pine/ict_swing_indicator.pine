@@ -1006,7 +1006,7 @@ f_drawLv(array<float> P, array<int> T, color col, string tag, bool isHigh) =>
                     break
             color c2 = used ? color.new(color.gray, 55) : col
             lvLines.push(line.new(ct, lv, time + 1, lv, xloc=xloc.bar_time, extend=extend.right, color=c2, style=used ? line.style_dotted : line.style_solid, width=tag == "M" ? 3 : tag == "W" ? 2 : 1))
-            lvLabels.push(label.new(bar_index + 3, lv, tag + (isHigh ? " H " : " L ") + str.tostring(lv, format.mintick) + (used ? " (swept)" : ""), style=label.style_label_left, color=color.new(color.black, 100), textcolor=c2, size=size.tiny))
+            lvLabels.push(label.new(bar_index + 3, lv, tag + (isHigh ? " H" : " L") + (used ? " (swept)" : ""), style=label.style_label_left, color=color.new(color.black, 100), textcolor=c2, size=size.tiny))
 
 if barstate.islast
     for ln in lvLines
