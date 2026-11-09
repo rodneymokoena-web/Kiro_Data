@@ -19,7 +19,7 @@ i_piv    = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, gr
 i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
 i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
-i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) from the candle that formed it, with a label at the right edge: e.g. '4H H 28,300.0'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
+i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) from the candle that formed it, with a label at the right edge: e.g. '4H H'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
 i_liq4   = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group=g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
 i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
 
