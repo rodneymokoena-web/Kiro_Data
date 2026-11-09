@@ -19,7 +19,7 @@ i_piv    = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, gr
 i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
 i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
-i_showLv = input.bool(true, "Show unbroken levels", group=g1)
+i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) from the candle that formed it, with a label at the right edge: e.g. '4H H 28,300.0'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
 i_liq4   = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group=g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
 i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
 
@@ -988,29 +988,46 @@ if i_showE and tfOK and SG.size() > 0
 // ───────────────────────────────────────────────────────────────────────────── 7. broker orders (strategy only)
 
 // ───────────────────────────────────────────────────────────────────────────── 8. levels + table
-var array<line> lvLines = array.new<line>()
-f_drawLv(array<float> P, array<int> T, color col, string tag) =>
+var array<line>  lvLines = array.new<line>()
+var array<label> lvLabels = array.new<label>()
+// draw + label one Rule 1 level list (price P, confirmation time T). isHigh = swing highs. Swept levels (already used by a sweep)
+// are drawn dotted gray. Only the newest 25 levels per list are drawn (TradingView object limit).
+f_drawLv(array<float> P, array<int> T, color col, string tag, bool isHigh) =>
     if not na(P)
-        for [k, _e13] in P
-            lvLines.push(line.new(T.get(k), P.get(k), time + 1, P.get(k), xloc=xloc.bar_time, extend=extend.right, color=col, width=tag == "M" ? 3 : tag == "W" ? 2 : 1))
+        int nP = P.size()
+        int first = math.max(0, nP - 25)
+        for k = first to nP - 1
+            float lv = P.get(k)
+            int ct = T.get(k)
+            bool used = false
+            for [m, _ex] in sweptP
+                if sweptP.get(m) == lv and sweptT.get(m) == ct
+                    used := true
+                    break
+            color c2 = used ? color.new(color.gray, 55) : col
+            lvLines.push(line.new(ct, lv, time + 1, lv, xloc=xloc.bar_time, extend=extend.right, color=c2, style=used ? line.style_dotted : line.style_solid, width=tag == "M" ? 3 : tag == "W" ? 2 : 1))
+            lvLabels.push(label.new(bar_index + 3, lv, tag + (isHigh ? " H " : " L ") + str.tostring(lv, format.mintick) + (used ? " (swept)" : ""), style=label.style_label_left, color=color.new(color.black, 100), textcolor=c2, size=size.tiny))
 
 if barstate.islast
     for ln in lvLines
         line.delete(ln)
     lvLines.clear()
+    for lb in lvLabels
+        label.delete(lb)
+    lvLabels.clear()
     if i_showLv
         if i_useM
-            f_drawLv(mHp, mHt, color.new(color.purple, 20), "M")
-            f_drawLv(mLp, mLt, color.new(color.purple, 20), "M")
+            f_drawLv(mHp, mHt, color.new(color.purple, 20), "M", true)
+            f_drawLv(mLp, mLt, color.new(color.purple, 20), "M", false)
         if i_useW
-            f_drawLv(wHp, wHt, color.new(color.blue, 30), "W")
-            f_drawLv(wLp, wLt, color.new(color.blue, 30), "W")
+            f_drawLv(wHp, wHt, color.new(color.blue, 30), "W", true)
+            f_drawLv(wLp, wLt, color.new(color.blue, 30), "W", false)
         if i_useD
-            f_drawLv(dHp, dHt, color.new(color.orange, 40), "D")
-            f_drawLv(dLp, dLt, color.new(color.orange, 40), "D")
+            f_drawLv(dHp, dHt, color.new(color.orange, 40), "D", true)
+            f_drawLv(dLp, dLt, color.new(color.orange, 40), "D", false)
         if i_liq4 > 0
-            f_drawLv(l4HP, l4HT, color.new(color.gray, 40), "4H")
-            f_drawLv(l4LP, l4LT, color.new(color.gray, 40), "4H")
+            f_drawLv(l4HP, l4HT, color.new(color.gray, 20), "4H", true)
+            f_drawLv(l4LP, l4LT, color.new(color.gray, 20), "4H", false)
 
 var table tb = table.new(position.top_right, 2, 13, bgcolor=color.new(color.black, 20), border_width=1)
 if barstate.islast and i_table
