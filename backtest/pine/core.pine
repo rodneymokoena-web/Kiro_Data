@@ -1461,8 +1461,8 @@ var array<label> lvLabels = array.new<label>()
 // draw + label one Rule 1 level list (price P, confirmation time T). isHigh = swing highs. Swept levels (already used by a sweep)
 // are drawn dotted gray. Only the newest 25 levels per list are drawn (TradingView object limit).
 f_drawLv(array<float> P, array<int> T, color col, string tag, bool isHigh) =>
-    if not na(P)
-        int nP = P.size()
+    int nP = na(P) ? 0 : P.size()
+    if nP > 0                                     // an empty list would make "for k = 0 to -1" run once (Pine loops count down)
         int first = math.max(0, nP - 25)
         for k = first to nP - 1
             float lv = P.get(k)
