@@ -11,6 +11,10 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
                  The 5m FVG to invert = the intact bullish 5m FVG nearest below the sweep (highest bottom) among those completed in the
                  IFVG_LOOKBACK_5M 5m candles before the sweep candle; intact = no 5m close below its bottom before the sweep.
                  The 5m order block (-> breaker) = the last bearish 5m candle at or before the origin (up to OB_LOOKBACK candles back).
+    LIQUIDITY+   (MACRO_LIQ) the high / low of every completed ICT macro window (MACROS, New York time), valid MACRO_VALID.
+    IFVG         (IFVG_15M) a 5m or a 15m FVG.
+    BREAK        a close below the leg origin low, or (MSS_BOS) below the last 5m swing low formed after the sweep extreme;
+                 the breaker is the last bearish candle at or before the low that was broken.
     4 REVERSAL   within REVERSAL_5M 5m candles of the sweep: 5m closes below the FVG's bottom (5m IFVG) AND below the origin low
                  (5m break of structure); the candle completing the second of the two needs 5m displacement: >= DISP_5M bearish
                  candles moving >= 1 ATR14, or a single bearish candle whose body is >= 1 ATR14.
@@ -37,12 +41,19 @@ import ifvg
 import structure
 import swings as S
 
-REVERSAL_5M = int(os.environ.get("REVERSAL_5M", "30"))      # N: 5m candles allowed between the sweep and the reversal
+REVERSAL_5M = int(os.environ.get("REVERSAL_5M", "48"))      # N: 5m candles allowed between the sweep and the reversal
 ENTRY_VALID = pd.Timedelta(minutes=int(os.environ.get("ENTRY_VALID_MIN", "60")))
 TARGET_MODE = os.environ.get("TARGET_5M", "R")             # "R" = fixed R | "swing" = major 5m swing (fallback fixed R)
 TARGET_R = float(os.environ.get("TARGET_R_5M", "3"))
 BIAS_FILTER = os.environ.get("BIAS_5M", "1") == "1"        # only trade in the direction of the last Rule 1 swing sweep
 BIAS_TFS = ("D", "W", "M", "4H", "1H")                     # Rule 1 swing levels that set the bias
+IFVG_15M = os.environ.get("IFVG_15M", "1") == "1"         # the IFVG may be a 5m OR a 15m FVG
+MSS_BOS = os.environ.get("MSS_BOS", "1") == "1"           # the break may also be a post-sweep 5m MSS (close below the last 5m swing low after the extreme)
+MACRO_LIQ = os.environ.get("MACRO_LIQ", "1") == "1"       # ICT macro-time highs/lows as Rule 1 liquidity
+MACRO_VALID = pd.Timedelta(hours=float(os.environ.get("MACRO_VALID_H", "24")))
+# ICT macro windows, New York time (start, end); the high and low of each completed window are liquidity levels (tf "MACRO")
+MACROS = (("02:33", "03:00"), ("04:03", "04:30"), ("08:50", "09:10"), ("09:50", "10:10"), ("10:50", "11:10"),
+          ("11:50", "12:10"), ("13:10", "13:40"), ("15:15", "15:45"), ("19:50", "20:10"), ("20:50", "21:10"))
 MAJOR_PIVOT = 10                                            # major 5m swing: candles each side
 LEG_PIVOT = 2
 DISP_5M = 2
@@ -68,19 +79,61 @@ def _major_swing(h, l, q, short, entry):
     return best
 
 
+def macro_levels(m5: pd.DataFrame) -> pd.DataFrame:
+    """High and low of every completed ICT macro window (MACROS, New York time) on the 5m candles. Usable from the window end,
+    sweepable until MACRO_VALID after it."""
+    ny = m5.index.tz_convert("America/New_York")
+    mins = ny.hour * 60 + ny.minute
+    day = ny.normalize()
+    rows = []
+    for a, b in MACROS:
+        sa = int(a[:2]) * 60 + int(a[3:]); sb = int(b[:2]) * 60 + int(b[3:])
+        sa5 = sa - sa % 5                                       # the 5m candle containing the window start
+        inb = (mins >= sa5) & (mins < sb)
+        if not inb.any():
+            continue
+        sub = m5[inb].assign(_d=day[inb])
+        g = sub.groupby("_d")
+        for d, hi, lo in zip(g["High"].max().index, g["High"].max().to_numpy(), g["Low"].min().to_numpy()):
+            end = (d + pd.Timedelta(minutes=sb)).tz_convert("UTC")
+            for kind, price in (("high", float(hi)), ("low", float(lo))):
+                rows.append({"tf": "MACRO", "type": kind, "price": price, "pivot_time": end, "confirmed_time": end,
+                             "expires": end + MACRO_VALID})
+    return pd.DataFrame(rows, columns=["tf", "type", "price", "pivot_time", "confirmed_time", "expires"])
+
+
+def _fvgs_5m_15m(bars: pd.DataFrame, fv5: pd.DataFrame) -> pd.DataFrame:
+    """5m FVGs plus 15m FVGs (15m candles built from the 5m candles), all indexed by the 5m candle at whose close they complete."""
+    out = fv5.assign(tf="5m")[["dir", "idx", "bottom", "top", "tf"]]
+    if not IFVG_15M:
+        return out
+    m15 = bars.resample("15min", label="left", closed="left").agg({"Open": "first", "High": "max", "Low": "min", "Close": "last"}).dropna()
+    f15 = ifvg.find_fvgs(m15)
+    if f15.empty:
+        return out
+    end15 = m15.index[f15["idx"].to_numpy()] + pd.Timedelta(minutes=15)
+    i5 = bars.index.searchsorted(end15) - 1                     # the last 5m candle of the 15m candle 3
+    f = f15.assign(idx=i5, tf="15m")[["dir", "idx", "bottom", "top", "tf"]]
+    return pd.concat([out, f[f["idx"] >= 0]], ignore_index=True)
+
+
 def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> pd.DataFrame:
     import backtest as B
     import setups_5m
     bars = m5[["Open", "High", "Low", "Close"]]
     o, h, l, c = (bars[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
     idx, n = bars.index, len(bars)
-    levels = S.add_break_times_5m(setups_5m._levels(h1), bars, None)
+    lv0 = setups_5m._levels(h1)
+    if MACRO_LIQ:
+        lv0 = pd.concat([lv0, macro_levels(bars)], ignore_index=True)
+    levels = S.add_break_times_5m(lv0, bars, None)
     levels = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(S.TEST_START, idx[0]))]
     # bias timeline: sweeps of Rule 1 swing levels, in time order (+1 = a low swept -> bullish, -1 = a high swept -> bearish)
     bl = levels[levels["tf"].isin(BIAS_TFS)].sort_values("broken_time")
     bias_t = pd.DatetimeIndex(bl["broken_time"]).as_unit("ns")
     bias_v = np.where(bl["type"].to_numpy() == "high", -1, 1)
     fv = ifvg.find_fvgs(bars)
+    fvi = _fvgs_5m_15m(bars, fv)                              # IFVG candidates: 5m and (IFVG_15M) 15m FVGs
     import entry_ltf
     zones = entry_ltf.with_volume_imbalances(fv, bars)       # entry zones: FVGs (start = candle 1) + volume imbalances
     atr = structure._arrays(bars)[4]
@@ -111,7 +164,7 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
             origin = ph + int(np.argmin(seg) if short else np.argmax(seg))
             # rule 3: bullish FVG of the leg, formed into the sweep, intact at the sweep
             want = "bull" if short else "bear"
-            cand = fv[(fv["dir"] == want) & (fv["idx"] < s) & (fv["idx"] >= s - IFVG_LOOKBACK_5M)]
+            cand = fvi[(fvi["dir"] == want) & (fvi["idx"] < s) & (fvi["idx"] >= s - IFVG_LOOKBACK_5M)]
             f = None
             for r in cand.itertuples(index=False):
                 pre = c[int(r.idx) + 1:s]
@@ -121,29 +174,46 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
                     f = r                                             # nearest to the sweep
             if f is None:
                 continue
-            # order block -> breaker: last bearish (short) candle at or before the origin
-            ob = -1
-            for k in range(origin, max(origin - OB_LOOKBACK, -1), -1):
-                if (short and c[k] < o[k]) or (not short and c[k] > o[k]):
-                    ob = k
-                    break
-            if ob < 0:
-                continue
-            stop = h[ob] if short else l[ob]
-            # rule 4: IFVG + break of structure within REVERSAL_5M candles, displacement at the completing candle
+            # rule 4: IFVG + break of structure within REVERSAL_5M candles, displacement at the completing candle.
+            # Break = a close below the leg origin low, or (MSS_BOS) below the last confirmed 5m swing low formed after the
+            # running sweep extreme (a post-sweep market structure shift).
             olow = l[origin] if short else h[origin]
-            inv = bos = False
+            inv = False
+            brk = -1                                                   # index of the low that was broken (origin or MSS low)
             j = -1
+            ex = s
+            msI = -1
+            p_ = LEG_PIVOT
             for t in range(s, min(s + REVERSAL_5M, n - 1) + 1):
+                if (short and h[t] > h[ex]) or (not short and l[t] < l[ex]):
+                    ex, msI = t, -1
+                i = t - 1 - p_
+                if MSS_BOS and i > ex:
+                    w = l[i - p_:i + p_ + 1] if short else h[i - p_:i + p_ + 1]
+                    if (short and l[i] == w.min()) or (not short and h[i] == w.max()):
+                        msI = i
                 inv = inv or ((c[t] < f.bottom) if short else (c[t] > f.top))
-                bos = bos or ((c[t] < olow) if short else (c[t] > olow))
-                if inv and bos:
+                if brk < 0:
+                    if (c[t] < olow) if short else (c[t] > olow):
+                        brk = origin
+                    elif msI >= 0 and ((c[t] < l[msI]) if short else (c[t] > h[msI])):
+                        brk = msI
+                if inv and brk >= 0:
                     body = (o[t] - c[t]) if short else (c[t] - o[t])
                     if structure.displacement(bars, t, short)[0] or body >= structure.DISP_MIN_ATR * atr[t]:
                         j = t
                     break
             if j < 0:
                 continue
+            # order block -> breaker: last bearish (short) candle at or before the low that was broken
+            ob = -1
+            for k in range(brk, max(brk - OB_LOOKBACK, -1), -1):
+                if (short and c[k] < o[k]) or (not short and c[k] > o[k]):
+                    ob = k
+                    break
+            if ob < 0:
+                continue
+            stop = h[ob] if short else l[ob]
             if BIAS_FILTER:                                   # the bias at the reversal candle must match the direction
                 k_ = int(bias_t.searchsorted(pd.Timestamp(idx[j]).as_unit("ns"), side="right")) - 1
                 if k_ < 0 or bias_v[k_] != (-1 if short else 1):
@@ -187,7 +257,8 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
             pnl = (entry - sim["exit_price"]) if short else (sim["exit_price"] - entry)
             trades.append({"symbol": symbol, "signal": "short" if short else "long", "swept": f"{lv.tf} {lv.price:.2f}",
                            "sweep_time": idx[s], "reversal_time": idx[j] + M5, "fvg_bottom": e["bottom"], "fvg_top": e["top"],
-                           "entry_zone": e["kind"], "bos_level": olow,
+                           "entry_zone": e["kind"], "bos_level": (l[brk] if short else h[brk]),
+                           "bos_kind": "leg origin" if brk == origin else "5m MSS", "ifvg_tf": f.tf,
                            "entry_tf": "5m", "entry_mode": "touch", "entry_time": idx[q], "entry_price": entry,
                            "stop": stop, "target": tp, "target_level": ttag, "risk_pts": risk,
                            "planned_rr": abs(tp - entry) / risk, "exit": sim["exit"], "exit_time": idx[sim["exit_idx"]],

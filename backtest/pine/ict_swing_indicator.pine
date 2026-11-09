@@ -103,10 +103,13 @@ type Sweep5                 // intraday: a Rule 1 level swept on 5m (snapshot ru
     bool   init = false
     float  fTop = na   // the 5m FVG of the leg (bullish for a short)
     float  fBot = na
-    int    fI3 = -1
+    int    fT0 = 0     // time of the FVG's first candle (5m or 15m)
+    string fTf = "5m"
     float  obX = na    // 5m breaker (order block) high (short) / low (long) = the stop
     bool   inv = false // closed beyond the FVG (5m IFVG)
-    bool   bos = false // closed beyond the leg's origin swing (5m break of structure)
+    int    ex = -1     // running sweep extreme (chart index)
+    int    msI = -1    // last confirmed 5m swing low (short) formed after the extreme (post-sweep MSS level)
+    int    bI = -1     // chart index of the low that was broken (leg origin or MSS low)
 
 type Sweep1                 // swing model: a D/W/M level swept on 1H
     int    dir         // 1 = swing high taken (short idea), -1 = swing low taken (long idea)
@@ -370,11 +373,6 @@ a5t = request.security_lower_tf(syminfo.tickerid, ltfStr, time)
 var Bars BC = newBars()      // chart timeframe (index == bar_index)
 var Bars B1 = newBars()      // 1H
 var Bars B4 = newBars()      // 4H
-var Bars B15 = newBars()     // 15m, built from the 5m chart candles (5m chain CISD)
-var float a15o = na
-var float a15h = na
-var float a15l = na
-var int   a15t = 0
 var array<Fvg> VC = array.new<Fvg>()    // 5m volume imbalances (i3 = 2nd candle)
 var array<Fvg>   FC = array.new<Fvg>()
 var array<Fvg>   F1 = array.new<Fvg>()
