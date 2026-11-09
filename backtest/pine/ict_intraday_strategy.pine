@@ -25,7 +25,7 @@ i_piv    = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, gr
 i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
 i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
-i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) from the candle that formed it, with a label at the right edge: e.g. '4H H'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
+i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) and the fresh 4H (intraday also 1H) FVG far edges (dashed, e.g. \'4H FVG H\' = a bearish FVG\'s top) from the candle that formed it, with a label at the right edge: e.g. '4H H'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
 i_liq4   = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group=g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
 i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
 
@@ -1047,6 +1047,21 @@ f_drawLv(array<float> P, array<int> T, color col, string tag, bool isHigh) =>
             color c2 = used ? color.new(color.gray, 55) : col
             lvLines.push(line.new(ct, lv, time + 1, lv, xloc=xloc.bar_time, extend=extend.right, color=c2, style=used ? line.style_dotted : line.style_solid, width=tag == "M" ? 3 : tag == "W" ? 2 : 1))
             lvLabels.push(label.new(bar_index + 3, lv, tag + (isHigh ? " H" : " L") + (used ? " (swept)" : ""), style=label.style_label_left, color=color.new(color.black, 100), textcolor=c2, size=size.tiny))
+// draw + label the fresh FVG far edges of one list (price P, completion time T, buy-side? Hi, state X: -1 = fresh). Only fresh
+// edges are drawn (price has not traded into the gap yet) - the newest 25. Label e.g. "4H FVG H" (bearish FVG top = buy-side).
+f_drawFvg(array<float> P, array<int> T, array<bool> Hi, array<int> X, color col, string tag) =>
+    int nP = P.size()
+    int cnt = 0
+    if nP > 0
+        for k = nP - 1 to 0
+            if cnt >= 25
+                break
+            if X.get(k) == -1
+                cnt += 1
+                float lv = P.get(k)
+                bool hi = Hi.get(k)
+                lvLines.push(line.new(T.get(k), lv, time + 1, lv, xloc=xloc.bar_time, extend=extend.right, color=col, style=line.style_dashed, width=1))
+                lvLabels.push(label.new(bar_index + 3, lv, tag + (hi ? " H" : " L"), style=label.style_label_left, color=color.new(color.black, 100), textcolor=col, size=size.tiny))
 
 if barstate.islast
     for ln in lvLines
@@ -1071,6 +1086,10 @@ if barstate.islast
         if i_liq1h and i_liq4 > 0
             f_drawLv(l1HP, l1HT, color.new(color.silver, 30), "1H", true)
             f_drawLv(l1LP, l1LT, color.new(color.silver, 30), "1H", false)
+        if i_fvgLiq
+            f_drawFvg(fvP, fvT, fvHi, fvX, color.new(color.fuchsia, 25), "4H FVG")
+        if i_fvgLiq1h
+            f_drawFvg(v1P, v1T, v1Hi, v1X, color.new(color.fuchsia, 50), "1H FVG")
         if i_sess
             f_drawLv(lSHP, lSHT, color.new(color.teal, 30), "SESS", true)
             f_drawLv(lSLP, lSLT, color.new(color.teal, 30), "SESS", false)
