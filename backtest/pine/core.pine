@@ -783,10 +783,19 @@ if isM5 and i_macro
         macHi := math.max(macHi, high)
         macLo := math.min(macLo, low)
     int mcut = time - i_macroHrs * HOUR
-    while lMHT.size() > 0 and lMHT.get(0) < mcut
+    // (Pine v5 "and" evaluates both sides, so the size check must come first, on its own)
+    for _i = 1 to 60
+        if lMHT.size() == 0
+            break
+        if lMHT.get(0) >= mcut
+            break
         lMHP.shift()
         lMHT.shift()
-    while lMLT.size() > 0 and lMLT.get(0) < mcut
+    for _i = 1 to 60
+        if lMLT.size() == 0
+            break
+        if lMLT.get(0) >= mcut
+            break
         lMLP.shift()
         lMLT.shift()
 //#}
@@ -1154,8 +1163,9 @@ if sw5 and isM5 and symOK and SW5.size() > 0
             if sw.bI < 0
                 if sh ? close < olv : close > olv
                     sw.bI := sw.origin
-                else if sw.msI >= 0 and (sh ? close < BC.L(sw.msI) : close > BC.H(sw.msI))
-                    sw.bI := sw.msI
+                else if sw.msI >= 0
+                    if sh ? close < BC.L(sw.msI) : close > BC.H(sw.msI)
+                        sw.bI := sw.msI
             if sw.inv and sw.bI >= 0
                 sw.done := true
                 // the 5m breaker: last bearish (short) candle at or before the low that was broken (up to 10 back)
@@ -1165,7 +1175,9 @@ if sw5 and isM5 and symOK and SW5.size() > 0
                     if sh ? BC.C(m) < BC.O(m) : BC.C(m) > BC.O(m)
                         obI := m
                         break
-                sw.obX := obI >= 0 ? (sh ? BC.H(obI) : BC.L(obI)) : na
+                sw.obX := na
+                if obI >= 0
+                    sw.obX := sh ? BC.H(obI) : BC.L(obI)
                 float blv = sh ? BC.L(sw.bI) : BC.H(sw.bI)
                 string bTx = sw.bI == sw.origin ? "BOS" : "MSS"
                 [dOk, dN, dAtr] = BC.disp(p, sh)
@@ -1455,7 +1467,11 @@ if tfOK and SG.size() > 0
                             bestD := v.i3
                             bestVI := true
                 if best >= 0
-                    Fvg f = bestVI ? VC.get(best) : FC.get(best)
+                    Fvg f = na
+                    if bestVI
+                        f := VC.get(best)
+                    else
+                        f := FC.get(best)
                     if f.i3 != g.fI3
                         g.fI3 := f.i3
                         g.fTop := f.top
