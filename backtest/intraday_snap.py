@@ -13,7 +13,8 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
                  The 5m order block (-> breaker) = the last bearish 5m candle at or before the origin (up to OB_LOOKBACK candles back).
     LIQUIDITY+   (MACRO_LIQ) the high / low of every completed ICT macro window (MACROS, New York time), valid MACRO_VALID.
     IFVG         (IFVG_15M) a 5m or a 15m FVG.
-    BREAK        a close below the leg origin low, or (MSS_BOS) below the last 5m swing low formed after the sweep extreme;
+    BREAK        a 5m close - or (BOS_WICK) a 5m wick - below the leg origin low, or (MSS_BOS) below the last 5m swing low formed
+                 after the sweep extreme;
                  the breaker is the last bearish candle at or before the low that was broken.
     4 REVERSAL   within REVERSAL_5M 5m candles of the sweep: 5m closes below the FVG's bottom (5m IFVG) AND below the origin low
                  (5m break of structure); the candle completing the second of the two needs 5m displacement: >= DISP_5M bearish
@@ -49,6 +50,7 @@ BIAS_FILTER = os.environ.get("BIAS_5M", "1") == "1"        # only trade in the d
 BIAS_TFS = ("D", "W", "M", "4H", "1H")                     # Rule 1 swing levels that set the bias
 IFVG_15M = os.environ.get("IFVG_15M", "1") == "1"         # the IFVG may be a 5m OR a 15m FVG
 MSS_BOS = os.environ.get("MSS_BOS", "1") == "1"           # the break may also be a post-sweep 5m MSS (close below the last 5m swing low after the extreme)
+BOS_WICK = os.environ.get("BOS_WICK", "1") == "1"         # the break may be a body close OR a wick through the level (0 = close only)
 MACRO_LIQ = os.environ.get("MACRO_LIQ", "1") == "1"       # ICT macro-time highs/lows as Rule 1 liquidity
 MACRO_VALID = pd.Timedelta(hours=float(os.environ.get("MACRO_VALID_H", "24")))
 # ICT macro windows, New York time (start, end); the high and low of each completed window are liquidity levels (tf "MACRO")
@@ -194,9 +196,10 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
                         msI = i
                 inv = inv or ((c[t] < f.bottom) if short else (c[t] > f.top))
                 if brk < 0:
-                    if (c[t] < olow) if short else (c[t] > olow):
+                    bx = (l[t] if short else h[t]) if BOS_WICK else c[t]   # BOS_WICK: a wick through is enough
+                    if (bx < olow) if short else (bx > olow):
                         brk = origin
-                    elif msI >= 0 and ((c[t] < l[msI]) if short else (c[t] > h[msI])):
+                    elif msI >= 0 and ((bx < l[msI]) if short else (bx > h[msI])):
                         brk = msI
                 if inv and brk >= 0:
                     body = (o[t] - c[t]) if short else (c[t] - o[t])
