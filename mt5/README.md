@@ -1,3 +1,60 @@
+# ICT Intraday EA (MetaTrader 5) - `ICT_Intraday_EA.mq5`
+
+An Expert Advisor for the **intraday model only** (US100, 5m), with the same rules as the intraday TradingView scripts and
+the Python backtest (`backtest/intraday_snap.py`). The swing EA is described further down.
+
+## Status - read this first
+- **Not compiled or tested here** (no MetaEditor / Strategy Tester in this environment). Brackets and calls were checked
+  by script only. Compile it in MetaEditor (F7), send me any compiler errors, then run it in the Strategy Tester and on demo.
+- **The model loses money in the backtest** (Exness US100, Oct 2026: 58 trades, -21.6R after costs; 2024-2026 with the bias
+  filter: about -313R / -347R). Do not run it live on these rules.
+- Fully automatic by default; REAL accounts stay signals-only unless `InpAllowRealAccount = true`.
+
+## Install
+1. Copy `ICT_Intraday_EA.mq5` to `MQL5/Experts/`, open it in MetaEditor, press F7.
+2. Attach it to a **US100** chart (any timeframe; it reads M5 and H1 itself). Make sure the terminal has enough M5 and H1
+   history (Tools -> Options -> Charts -> Max bars; scroll the H1 chart back).
+3. **Set `InpServerGMT`** to your broker's server offset from UTC (Exness = 0; most brokers that close the day at
+   17:00 New York = 2 in winter / 3 in summer). Live it is detected automatically (`InpAutoGMT`), but the **Strategy Tester
+   uses `InpServerGMT`**. Sessions, ICT macro windows and the D/W/M/4H candles are all on New York time, so a wrong offset
+   shifts every one of them.
+4. Strategy Tester: symbol US100, any timeframe, "Every tick" or "1 minute OHLC".
+
+## What it does on every completed 5m candle (short; long mirrored)
+1. **Liquidity:** D/W/M swings (2 each side), 4H and 1H swings (10 each side), fresh 4H and 1H FVG far edges, Asia
+   (20-24 NY) / London (2-5) / NY (7-10) session highs/lows that are also 1H+ swings (valid 7 days), ICT macro window
+   highs/lows (valid 24 h). D/W/M/4H candles are built from 1H on New York time (day rolls 17:00 NY, 4H grid NY+7h), like the backtest.
+2. **Sweep (5m):** (A) wick through + close back, or (B) 1-2 closes beyond then two displacement candles (>= 1 ATR14), the
+   second closing beyond the first sweeping candle's low. A level is used up by its first sweep.
+3. **Bias:** the last D/W/M/4H/1H swing sweep (high swept = shorts only). Sessions, FVG edges and macros don't set it.
+4. **IFVG:** the intact 5m or 15m FVG nearest to the sweep, completed in the 48 5m candles before it.
+5. **Reversal within 48 candles:** a 5m close through the FVG **and** a break (close or wick) of the leg-origin low or the
+   post-sweep 5m MSS low, with displacement (2 candles >= 1 ATR, or one body >= 1 ATR) on the completing candle.
+6. **Stop:** the high of the 5m breaker (last bearish candle at/before the broken low, 10 back), no buffer, no minimum.
+7. **Entry:** sell limit at the bottom of the latest bearish 5m FVG or volume imbalance of the drop from the sweep extreme
+   (may complete up to 2 candles after the reversal; a newer zone replaces the order while it is unfilled). Valid 60 min
+   after the reversal close; cancelled when a 5m candle opens above the stop. If price is already through the limit it enters
+   at market. One trade per entry zone / price.
+8. **Exit:** 3R target (or the major 5m swing, `InpTargetSwing`); stop to breakeven once a completed 5m candle after the fill
+   reaches +1R (if price is already back through the entry, the position is closed at market).
+
+At start it replays the 1H history (levels already swept = a 1H wick through + close back) and the last `InpWarmupDays`
+(30) of 5m candles without trading, so the bias, used-up levels and any still-valid order are known; an existing pending
+order with the same comment (`ICTi S/L <reversal time>`) is adopted. The chart comment shows the bias, live levels,
+waiting sweeps, pending/open model trades and the model's R since start. Safety inputs (daily loss, max drawdown, max
+spread, real-account lock, `InpMaxOpen`) work as in the swing EA. Netting accounts: one order/position at a time.
+
+## Known differences from the Python backtest
+- Before the 5m warm-up, levels count as swept by a 1H wick + close back (the backtest uses 5m candles throughout).
+- Session highs/lows: the backtest checks the 1H+ swing filter against all swings, including later ones; the EA activates a
+  session level only once a matching swing exists (up to 7 days).
+- The entry zone is refined live: if the first zone fills before a newer one completes (up to 2 candles), the EA keeps the
+  first fill; the backtest uses the final zone.
+- Breakeven is set after the candle closes; the broker may also hit the target on the fill candle (the backtest does not).
+- Spread / slippage are real; the backtest used a fixed cost per trade.
+
+---
+
 # ICT Swing EA (MetaTrader 5)
 
 `ICT_Swing_EA.mq5` — an Expert Advisor for the **swing model** (US100). It follows the same rules as the TradingView
