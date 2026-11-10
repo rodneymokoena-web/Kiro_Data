@@ -48,6 +48,8 @@ i_mssBos = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", g
 i_bosWick = input.bool(true, "Intraday: break may be a body close OR a wick", group=gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
 i_bosAlert = input.bool(true, "Intraday: alert on every 5m BOS / MSS", group=gR, tooltip="Fires an alert() when a 5m break of structure (leg-origin BOS or post-sweep MSS, close or wick) happens after a swept Rule 1 level, before the full setup is complete. With the bias filter on, only breaks in the bias direction alert. Create the alert with 'Any alert() function call' (indicator or strategy), or pick 'Intraday bullish / bearish / any BOS' (indicator).")
 i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
+i_minStop = input.float(15.0, "Intraday: minimum stop size (points)", minval=0, step=1, group=gR, tooltip="A setup whose stop (breaker high / low) is closer than this to the fill price is skipped. 0 = off.")
+i_onePer = input.bool(true, "Intraday: one trade per entry price", group=gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
 i_tgt5 = input.string("Fixed R", "Intraday target", options=["Fixed R", "Major 5m swing"], group=gR, tooltip="Fixed R = 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
 
 
@@ -689,6 +691,20 @@ for [k, _e4] in SG
             float bufS = 0.0
             g.sl := g.sh ? pc1 + bufS : pc1 - bufS
             g.risk := math.abs(g.entry - g.sl)
+            if g.risk < i_minStop                                    // minimum stop size
+                g.state := 3
+                g.result := "stop below minimum (" + str.tostring(g.risk, format.mintick) + " pts)"
+                continue
+            if i_onePer                                              // one trade per entry: same direction, entry zone and price
+                bool dupE = false
+                for [k2, g2] in SG
+                    if k2 != k and g2.fillIdx >= 0 and g2.sh == g.sh and g2.fTop == g.fTop and g2.fBot == g.fBot and g2.entry == g.entry
+                        dupE := true
+                        break
+                if dupE
+                    g.state := 3
+                    g.result := "duplicate entry (one trade per entry)"
+                    continue
             g.tp := g.sh ? g.entry - i_tgtR * g.risk : g.entry + i_tgtR * g.risk
             if i_tgt5 == "Major 5m swing"
                 float sw5v = f_major5(g.sh, g.entry)
