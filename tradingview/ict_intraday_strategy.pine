@@ -44,7 +44,8 @@ i_rev5 = input.int(48, "Intraday: max 5m candles from the sweep to the reversal 
 i_fvgAft  = input.int(2, "Entry FVG / volume imbalance may complete N candles after the reversal", minval=0, group=gR)
 i_fill5 = input.int(60, "Intraday: entry order valid (minutes after the reversal)", minval=5, group=gR)
 i_ifvg15 = input.bool(true, "Intraday: IFVG may also be a 15m FVG", group=gR, tooltip="The FVG to invert = the intact bullish (short) 5m OR 15m FVG nearest below the sweep (15m candles built from the 5m chart).")
-i_mssBos = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group=gR, tooltip="Break of structure = a 5m close below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
+i_mssBos = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group=gR, tooltip="Break of structure = a 5m close (or wick, see the next option) below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
+i_bosWick = input.bool(true, "Intraday: break may be a body close OR a wick", group=gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
 i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
 i_tgt5 = input.string("Fixed R", "Intraday target", options=["Fixed R", "Major 5m swing"], group=gR, tooltip="Fixed R = 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
 
@@ -905,10 +906,11 @@ if sw5 and isM5 and symOK and SW5.size() > 0
             sw.inv := sw.inv or (sh ? close < sw.fBot : close > sw.fTop)
             float olv = sh ? BC.L(sw.origin) : BC.H(sw.origin)
             if sw.bI < 0
-                if sh ? close < olv : close > olv
+                float bx = i_bosWick ? (sh ? low : high) : close             // body close, or (option) a wick through the level
+                if sh ? bx < olv : bx > olv
                     sw.bI := sw.origin
                 else if sw.msI >= 0
-                    if sh ? close < BC.L(sw.msI) : close > BC.H(sw.msI)
+                    if sh ? bx < BC.L(sw.msI) : bx > BC.H(sw.msI)
                         sw.bI := sw.msI
             if sw.inv and sw.bI >= 0
                 sw.done := true
