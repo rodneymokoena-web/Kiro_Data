@@ -28,7 +28,7 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
     BIAS         (BIAS_FILTER) the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule) sets the
                  bias: a swing HIGH swept = bearish, a swing LOW swept = bullish. A setup is only taken in the direction of the bias at
                  its reversal candle (session levels and FVG edges do not change the bias).
-    6b FILTERS   MIN_STOP_PTS: skip a setup whose stop is closer than this to the entry. ONE_PER_ENTRY: several setups with
+    6b FILTERS   no minimum stop (MIN_STOP_PTS = 0, experiments only). ONE_PER_ENTRY: several setups with
                  the same direction and entry zone / limit price -> one trade (the first signal).
     7 TARGET     TARGET_MODE "R" = TARGET_R x risk; "swing" = the nearest confirmed major 5m swing low (MAJOR_PIVOT candles each side,
                  confirmed before the fill) below the entry, else TARGET_R x risk. Breakeven at +1R (backtest.BE_AT_R).
@@ -52,7 +52,7 @@ BIAS_FILTER = os.environ.get("BIAS_5M", "1") == "1"        # only trade in the d
 BIAS_TFS = ("D", "W", "M", "4H", "1H")                     # Rule 1 swing levels that set the bias
 IFVG_15M = os.environ.get("IFVG_15M", "1") == "1"         # the IFVG may be a 5m OR a 15m FVG
 MSS_BOS = os.environ.get("MSS_BOS", "1") == "1"           # the break may also be a post-sweep 5m MSS (close below the last 5m swing low after the extreme)
-MIN_STOP = float(os.environ.get("MIN_STOP_PTS", "15"))    # skip a setup whose stop is closer than this many points to the entry (0 = off)
+MIN_STOP = float(os.environ.get("MIN_STOP_PTS", "0"))     # removed (0 = no minimum stop); kept only for experiments
 ONE_PER_ENTRY = os.environ.get("ONE_PER_ENTRY", "1") == "1"   # one trade per direction + entry zone/price (first signal wins)
 BOS_WICK = os.environ.get("BOS_WICK", "1") == "1"         # the break may be a body close OR a wick through the level (0 = close only)
 MACRO_LIQ = os.environ.get("MACRO_LIQ", "1") == "1"       # ICT macro-time highs/lows as Rule 1 liquidity

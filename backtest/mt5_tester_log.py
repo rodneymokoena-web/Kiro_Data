@@ -151,7 +151,7 @@ put("CS", "Symbols", f"{SYMBOL}: history synchronized from {(start - pd.Timedelt
 put("CS", "Tester", f"{SYMBOL},M5 (Exness-MT5Real): 1 minute OHLC ticks generating")
 put("CS", "Tester", f"{SYMBOL},M5: testing of Experts\\{EXPERT}.ex5 from {start.strftime('%Y.%m.%d %H:%M')} to {end.strftime('%Y.%m.%d %H:%M')} started")
 put("CS", f"{EXPERT} ({SYMBOL},M5)", "inputs: bias filter=true, IFVG 5m/15m, BOS close or wick + post-sweep MSS, reversal 48 candles, entry valid 60 min, target 3R, breakeven +1R, macro liquidity=true, "
-    f"min stop {os.environ.get('MIN_STOP_PTS', '15')} pts, one trade per entry={os.environ.get('ONE_PER_ENTRY', '1') == '1'}", sim=start)
+    f"min stop {os.environ.get('MIN_STOP_PTS', '0')} pts, one trade per entry={os.environ.get('ONE_PER_ENTRY', '1') == '1'}", sim=start)
 for (sim, _o, _tk, kind, msg) in events:
     put("KS" if kind == "TRD" else "CS", "Trade" if kind == "TRD" else f"{EXPERT} ({SYMBOL},M5)", msg, sim=sim, ms=3)
 wins = sum(1 for r in rows if r["profit"] > 0)
