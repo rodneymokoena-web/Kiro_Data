@@ -47,6 +47,7 @@ i_ifvg15 = input.bool(true, "Intraday: IFVG may also be a 15m FVG", group=gR, to
 i_mssBos = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group=gR, tooltip="Break of structure = a 5m close (or wick, see the next option) below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
 i_bosWick = input.bool(true, "Intraday: break may be a body close OR a wick", group=gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
 i_bosAlert = input.bool(true, "Intraday: alert on every 5m BOS / MSS", group=gR, tooltip="Fires an alert() when a 5m break of structure (leg-origin BOS or post-sweep MSS, close or wick) happens after a swept Rule 1 level, before the full setup is complete. With the bias filter on, only breaks in the bias direction alert. Create the alert with 'Any alert() function call' (indicator or strategy), or pick 'Intraday bullish / bearish / any BOS' (indicator).")
+i_bosLim = input.bool(true, "Intraday: limit order alert on the first 5m FVG / VI after a BOS", group=gR, tooltip="After every 5m BOS / MSS (bias direction when the bias filter is on): the first 5m FVG or volume imbalance in the break direction that completes after the breaking candle is drawn (magenta box) and an alert gives a limit at its near edge (bottom for a short), SL = 5m breaker high / low, TP = Target (R). Skipped (box marked 'no order') if the stop is not beyond the limit or is smaller than the minimum stop. This alert is separate from the model's own entry.")
 i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
 i_minStop = input.float(15.0, "Intraday: minimum stop size (points)", minval=0, step=1, group=gR, tooltip="A setup whose stop (breaker high / low) is closer than this to the fill price is skipped. 0 = off.")
 i_onePer = input.bool(true, "Intraday: one trade per entry price", group=gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
@@ -71,6 +72,7 @@ i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units
 g6 = "Display"
 i_show1 = input.bool(true, "5m IFVG + BOS signals", group=g6)
 i_showE = input.bool(true, "Entries and trades", group=g6)
+i_showPrev = input.bool(true, "Intraday: show every 5m FVG / VI of the drop before the entry (kept on the chart)", group=g6, tooltip="All 5m FVGs and volume imbalances formed in the move from the sweep extreme to the entry are drawn as grey dotted boxes with their prices and never deleted by the script. The chosen entry stays orange. TradingView keeps at most 500 boxes per script - the oldest are dropped by TradingView beyond that.")
 i_table = input.bool(true, "Stats table", group=g6)
 
 HOUR = 3600000
@@ -124,6 +126,12 @@ type Sweep5                 // intraday: a Rule 1 level swept on 5m (snapshot ru
     int    msI = -1    // last confirmed 5m swing low (short) formed after the extreme (post-sweep MSS level)
     int    bI = -1     // chart index of the low that was broken (leg origin or MSS low)
 
+type BosW                   // intraday: a 5m BOS / MSS waiting for the first 5m FVG / volume imbalance after it (limit order alert)
+    bool   sh
+    int    bP          // chart index of the candle that broke structure
+    float  stop        // 5m breaker high (short) / low (long)
+    string info
+
 
 
 type Rt
@@ -175,6 +183,8 @@ type Sig
     label     lbT = na
     float     ob = na      // stop level
     bool      snap = false // intraday snapshot rules: entry FVG of the displacement, breaker stop
+    int       drF = -1     // intraday: last 5m FVG (i3) of the drop already drawn
+    int       drV = -1     // intraday: last 5m volume imbalance (i3) of the drop already drawn
 
 // ───────────────────────────────────────────────────────────────────────────── Bars helpers
 method size(Bars b) => b.base + b.o.size()
@@ -404,6 +414,7 @@ var array<Sig>   SG = array.new<Sig>()
 var array<int>    biasA = array.from(0)    // intraday bias (an array so functions can update it): -1 bearish, +1 bullish, 0 none
 var array<string> biasS = array.from("-")
 var array<Sweep5> SW5 = array.new<Sweep5>()   // intraday 5m chain sweeps
+var array<BosW> BW = array.new<BosW>()       // intraday: breaks of structure waiting for their first 5m FVG / VI
 var array<int>    k5  = array.new_int()       // 5m FVGs that already produced a 5m-chain signal
 var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing highs (price / confirmation time)
 var array<int>   l4HT = array.new_int()
@@ -522,6 +533,8 @@ bool evShortFill  = false
 bool evClosed     = false     // a trade closed this bar (target / stop / breakeven / trail)
 bool evBosLong  = false  // intraday: a bullish 5m BOS / MSS after a Rule 1 sweep this bar
 bool evBosShort = false
+bool evBosLimLong  = false  // intraday: limit order on the first 5m FVG / VI after a BOS
+bool evBosLimShort = false
 
 // ───────────────────────────────────────────────────────────────────────────── 0. chart candle
 BC.add(open, high, low, close, time, time_close, 4000)
@@ -938,6 +951,16 @@ if sw5 and isM5 and symOK and SW5.size() > 0
                     else
                         evBosLong := true
                     alert(syminfo.ticker + " 5m " + bKind + (sh ? " BEARISH" : " BULLISH") + " @ " + str.tostring(bLv, format.mintick) + " after " + sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " sweep | IFVG (" + sw.fTf + ") " + (sw.inv ? "inverted" : "not inverted yet"), alert.freq_once_per_bar_close)
+                // watch for the first 5m FVG / volume imbalance after this break -> limit order alert
+                if sw.bI >= 0 and i_bosLim and (not i_bias5 or (sh ? biasA.get(0) == -1 : biasA.get(0) == 1))
+                    int wOb = -1
+                    for m = sw.bI to math.max(BC.base, sw.bI - 10)
+                        if sh ? BC.C(m) < BC.O(m) : BC.C(m) > BC.O(m)
+                            wOb := m
+                            break
+                    if wOb >= 0
+                        string wTx = (sw.bI == sw.origin ? "BOS" : "MSS") + " @ " + str.tostring(sh ? BC.L(sw.bI) : BC.H(sw.bI), format.mintick) + " after " + sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " sweep"
+                        BW.push(BosW.new(sh, p, sh ? BC.H(wOb) : BC.L(wOb), wTx))
             if sw.inv and sw.bI >= 0
                 sw.done := true
                 // the 5m breaker: last bearish (short) candle at or before the low that was broken (up to 10 back)
@@ -978,6 +1001,46 @@ if sw5 and isM5 and symOK and SW5.size() > 0
                         line.new(BC.T(sw.bI), blv, BC.TC(p), blv, xloc=xloc.bar_time, color=color.purple, style=line.style_dashed)
                         label.new(BC.TC(p), blv, "5m " + bTx, xloc=xloc.bar_time, style=label.style_label_left, color=color.new(color.black, 100), textcolor=color.purple, size=size.tiny)
                     alert(syminfo.ticker + " " + sw.fTf + " IFVG + " + bTx + " " + (sh ? "SHORT" : "LONG") + " signal: " + info5, alert.freq_once_per_bar_close)
+
+// ───────────────────────────────────────────────────────────────────────────── 2d. intraday: limit order alert on the first 5m FVG / VI after a BOS
+// For every 5m BOS / MSS (bias direction when the bias filter is on): the first bearish (short) 5m FVG or volume imbalance that
+// completes AFTER the breaking candle -> limit at its near edge (bottom for a short), stop = 5m breaker high, target = Target (R).
+// An FVG is preferred over a VI completing on the same candle. Watched for the reversal window (i_rev5 candles).
+if isM5 and symOK and BW.size() > 0
+    for k = BW.size() - 1 to 0
+        BosW w = BW.get(k)
+        if p - w.bP > i_rev5
+            BW.remove(k)
+            continue
+        if p > w.bP
+            int want = w.sh ? -1 : 1
+            Fvg z = na
+            string zTx = ""
+            if FC.size() > 0
+                Fvg f = FC.last()
+                if f.i3 == p and f.dir == want
+                    z := f
+                    zTx := "FVG"
+            if na(z) and VC.size() > 0
+                Fvg v = VC.last()
+                if v.i3 == p and v.dir == want
+                    z := v
+                    zTx := "VI"
+            if not na(z)
+                BW.remove(k)
+                float lim = w.sh ? z.bot : z.top
+                float rk = w.sh ? w.stop - lim : lim - w.stop
+                float tpL = w.sh ? lim - i_tgtR * rk : lim + i_tgtR * rk
+                bool okL = rk > 0 and rk >= i_minStop
+                if i_showE
+                    int z0 = BC.T(math.max(z.i3 - (zTx == "VI" ? 1 : 2), BC.base))
+                    box.new(z0, z.top, BC.TC(p) + i_fill5 * 60000, z.bot, xloc=xloc.bar_time, border_color=color.fuchsia, border_width=2, bgcolor=color.new(color.fuchsia, 85), text="1st 5m " + zTx + " after BOS " + str.tostring(z.bot, format.mintick) + "-" + str.tostring(z.top, format.mintick) + (okL ? "" : " (no order: stop)"), text_size=size.tiny, text_color=color.fuchsia, text_halign=text.align_left, text_valign=text.align_top)
+                if okL
+                    if w.sh
+                        evBosLimShort := true
+                    else
+                        evBosLimLong := true
+                    alert(syminfo.ticker + " " + (w.sh ? "SELL LIMIT " : "BUY LIMIT ") + str.tostring(lim, format.mintick) + " | SL " + str.tostring(w.stop, format.mintick) + " | TP " + str.tostring(tpL, format.mintick) + " (" + str.tostring(i_tgtR) + "R, risk " + str.tostring(rk, format.mintick) + " pts) | first 5m " + zTx + " " + str.tostring(z.bot, format.mintick) + "-" + str.tostring(z.top, format.mintick) + " after 5m " + w.info, alert.freq_once_per_bar_close)
 
 // ───────────────────────────────────────────────────────────────────────────── 3. new 4H candle: sweeps -> IFVG -> quality (rules 1-4)
 if new4
@@ -1072,12 +1135,20 @@ if tfOK and SG.size() > 0
                 int best = -1
                 int bestD = 0
                 bool bestVI = false
+                int drF0 = g.drF
+                int drV0 = g.drV
+                string zl = ""                                       // all 5m FVGs / VIs of the drop (printed in the order alert)
                 for [m, _e12] in FC                                  // latest bearish (short) 5m FVG in the drop from the sweep extreme
                     Fvg f = FC.get(m)
                     if f.dir == want and f.i3 - 2 >= g.hi and f.i3 <= g.trig + i_fvgAft and f.i3 <= p
                         if best < 0 or f.i3 > bestD
                             best := m
                             bestD := f.i3
+                        // every 5m FVG of the drop stays on the chart (grey box with its prices), drawn once
+                        zl += (zl == "" ? "" : ", ") + "FVG " + str.tostring(f.bot, format.mintick) + "-" + str.tostring(f.top, format.mintick)
+                        if i_showPrev and f.i3 > drF0
+                            box.new(BC.T(f.i3 - 2), f.top, BC.TC(f.i3) + i_fill5 * 60000, f.bot, xloc=xloc.bar_time, border_color=color.gray, border_style=line.style_dotted, bgcolor=color.new(color.gray, 88), text="5m FVG " + str.tostring(f.bot, format.mintick) + "-" + str.tostring(f.top, format.mintick), text_size=size.tiny, text_color=color.gray, text_halign=text.align_left, text_valign=text.align_bottom)
+                            g.drF := math.max(g.drF, f.i3)
                 for [m, _e13] in VC                                  // ... or a later 5m volume imbalance (i3 = its 2nd candle)
                     Fvg v = VC.get(m)
                     if v.dir == want and v.i3 - 1 >= g.hi and v.i3 <= g.trig + i_fvgAft and v.i3 <= p
@@ -1085,6 +1156,10 @@ if tfOK and SG.size() > 0
                             best := m
                             bestD := v.i3
                             bestVI := true
+                        zl += (zl == "" ? "" : ", ") + "VI " + str.tostring(v.bot, format.mintick) + "-" + str.tostring(v.top, format.mintick)
+                        if i_showPrev and v.i3 > drV0
+                            box.new(BC.T(v.i3 - 1), v.top, BC.TC(v.i3) + i_fill5 * 60000, v.bot, xloc=xloc.bar_time, border_color=color.gray, border_style=line.style_dotted, bgcolor=color.new(color.gray, 88), text="5m VI " + str.tostring(v.bot, format.mintick) + "-" + str.tostring(v.top, format.mintick), text_size=size.tiny, text_color=color.gray, text_halign=text.align_left, text_valign=text.align_bottom)
+                            g.drV := math.max(g.drV, v.i3)
                 if best >= 0
                     Fvg f = na
                     if bestVI
@@ -1103,7 +1178,7 @@ if tfOK and SG.size() > 0
                             evShortOrder := true
                         else
                             evLongOrder := true
-                        alert(syminfo.ticker + " " + (sh ? "SHORT" : "LONG") + " ENTRY ORDER " + str.tostring(g.lvl, format.mintick) + " SL " + str.tostring(g.sl, format.mintick) + " TP " + str.tostring(g.tp, format.mintick) + " (" + g.trigBy + ")", alert.freq_once_per_bar_close)
+                        alert(syminfo.ticker + " " + (sh ? "SHORT" : "LONG") + " ENTRY ORDER " + str.tostring(g.lvl, format.mintick) + " SL " + str.tostring(g.sl, format.mintick) + " TP " + str.tostring(g.tp, format.mintick) + " (" + g.trigBy + ") | 5m FVG/VI of the drop: " + zl, alert.freq_once_per_bar_close)
             else if g.fI3 < 0
                 g.state := 3
                 g.result := "trigger, no FVG"
@@ -1264,4 +1339,6 @@ alertcondition(evLongFill or evShortFill, "Any entry filled", "{{ticker}} entry 
 alertcondition(evBosLong,  "Intraday bullish BOS", "{{ticker}} 5m BULLISH BOS / MSS after a Rule 1 low sweep")
 alertcondition(evBosShort, "Intraday bearish BOS", "{{ticker}} 5m BEARISH BOS / MSS after a Rule 1 high sweep")
 alertcondition(evBosLong or evBosShort, "Intraday any BOS", "{{ticker}} 5m BOS / MSS after a Rule 1 sweep")
+alertcondition(evBosLimLong,  "Intraday BUY LIMIT (1st 5m FVG/VI after BOS)",  "{{ticker}} BUY LIMIT at the first 5m FVG / VI after a bullish BOS - see chart")
+alertcondition(evBosLimShort, "Intraday SELL LIMIT (1st 5m FVG/VI after BOS)", "{{ticker}} SELL LIMIT at the first 5m FVG / VI after a bearish BOS - see chart")
 alertcondition(evClosed,     "Trade closed",             "{{ticker}} trade closed (target / stop / breakeven / trail)")
