@@ -111,6 +111,7 @@ type Sweep5                 // intraday: a Rule 1 level swept on 5m (snapshot ru
     int    msI = -1    // last confirmed 5m swing low (short) formed after the extreme (post-sweep MSS level)
     int    bI = -1     // chart index of the low that was broken (leg origin or MSS low)
 
+
 type Sweep1                 // swing model: a D/W/M level swept on 1H
     int    dir         // 1 = swing high taken (short idea), -1 = swing low taken (long idea)
     int    s1          // 1H index of the sweep candle
@@ -171,6 +172,8 @@ type Sig
     int       anc = -1     // swing: 1H index of the sweep extreme
     float     tpFix = na   // swing: target = 1H swing low
     bool      snap = false // intraday snapshot rules: entry FVG of the displacement, breaker stop
+    int       drF = -1     // intraday: last 5m FVG (i3) of the drop already drawn
+    int       drV = -1     // intraday: last 5m volume imbalance (i3) of the drop already drawn
     bool      brk = false  // swing: second entry at a 1H breaker FVG
     float     brkLvl = na  // its limit price (FVG near edge)
 
@@ -710,6 +713,7 @@ for [k, _e4] in SG
                     lvT := okT ? B1.L(ti) - i_slBuf : na
                     if not na(lvT) and lvT > g.sl
                         g.sl := lvT
+
 
 
 
