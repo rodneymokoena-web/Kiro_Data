@@ -46,6 +46,7 @@ i_fill5 = input.int(60, "Intraday: entry order valid (minutes after the reversal
 i_ifvg15 = input.bool(true, "Intraday: IFVG may also be a 15m FVG", group=gR, tooltip="The FVG to invert = the intact bullish (short) 5m OR 15m FVG nearest below the sweep (15m candles built from the 5m chart).")
 i_mssBos = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group=gR, tooltip="Break of structure = a 5m close (or wick, see the next option) below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
 i_bosWick = input.bool(true, "Intraday: break may be a body close OR a wick", group=gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
+i_bosAlert = input.bool(true, "Intraday: alert on every 5m BOS / MSS", group=gR, tooltip="Fires an alert() when a 5m break of structure (leg-origin BOS or post-sweep MSS, close or wick) happens after a swept Rule 1 level, before the full setup is complete. With the bias filter on, only breaks in the bias direction alert. Create the alert with 'Any alert() function call' (indicator or strategy), or pick 'Intraday bullish / bearish / any BOS' (indicator).")
 i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
 i_tgt5 = input.string("Fixed R", "Intraday target", options=["Fixed R", "Major 5m swing"], group=gR, tooltip="Fixed R = 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
 
@@ -519,6 +520,8 @@ bool evShortOrder = false
 bool evLongFill   = false     // an entry order filled this bar
 bool evShortFill  = false
 bool evClosed     = false     // a trade closed this bar (target / stop / breakeven / trail)
+bool evBosLong  = false  // intraday: a bullish 5m BOS / MSS after a Rule 1 sweep this bar
+bool evBosShort = false
 
 // ───────────────────────────────────────────────────────────────────────────── 0. chart candle
 BC.add(open, high, low, close, time, time_close, 4000)
@@ -912,6 +915,15 @@ if sw5 and isM5 and symOK and SW5.size() > 0
                 else if sw.msI >= 0
                     if sh ? bx < BC.L(sw.msI) : bx > BC.H(sw.msI)
                         sw.bI := sw.msI
+                // BOS alert: the break of structure after a Rule 1 sweep (in the bias direction when the bias filter is on)
+                if sw.bI >= 0 and i_bosAlert and (not i_bias5 or (sh ? biasA.get(0) == -1 : biasA.get(0) == 1))
+                    float bLv = sh ? BC.L(sw.bI) : BC.H(sw.bI)
+                    string bKind = (sw.bI == sw.origin ? "BOS" : "MSS") + ((sh ? close < bLv : close > bLv) ? " (close)" : " (wick)")
+                    if sh
+                        evBosShort := true
+                    else
+                        evBosLong := true
+                    alert(syminfo.ticker + " 5m " + bKind + (sh ? " BEARISH" : " BULLISH") + " @ " + str.tostring(bLv, format.mintick) + " after " + sw.tf + (sh ? "H " : "L ") + str.tostring(sw.price, format.mintick) + " sweep | IFVG (" + sw.fTf + ") " + (sw.inv ? "inverted" : "not inverted yet"), alert.freq_once_per_bar_close)
             if sw.inv and sw.bI >= 0
                 sw.done := true
                 // the 5m breaker: last bearish (short) candle at or before the low that was broken (up to 10 back)
