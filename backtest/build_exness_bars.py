@@ -57,7 +57,7 @@ def main() -> None:
     m1.to_csv(OUT / f"{NAME}_1m.csv")
     for rule, name in (("5min", "5m"), ("15min", "15m"), ("1h", "1h")):
         resample(m1, rule).to_csv(OUT / f"{NAME}_{name}.csv")
-    cost = round(float(m1["Spread"].median()), 2)
+    cost = round(float(m1["Spread"].median()), 4)
     cf = OUT / "costs.json"
     costs = json.loads(cf.read_text()) if cf.exists() else {}
     costs[NAME] = cost

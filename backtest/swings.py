@@ -60,7 +60,7 @@ _SOURCES = {
     "exness": (Path(__file__).parent / "data" / "exness", {                        # Exness USTEC / XAUUSD, built from ticks
         "US100": ("US100_1h.csv", "US100_15m.csv", "US100_5m.csv"),
         "XAUUSD": ("XAUUSD_1h.csv", "XAUUSD_15m.csv", "XAUUSD_5m.csv"),
-        **{s: (f"{s}_1h.csv", f"{s}_15m.csv", f"{s}_5m.csv") for s in ("US500", "US30", "DE30", "UK100", "JP225")},
+        **{s: (f"{s}_1h.csv", f"{s}_15m.csv", f"{s}_5m.csv") for s in ("US500", "US30", "DE30", "UK100", "JP225", "DXY")},
     }),
     "pepperstone_oos": (Path(__file__).parent / "data" / "pepperstone_oos", {      # Pepperstone 2021-2023 (out of sample)
         "US100": ("US100_1h.csv", "US100_15m.csv", "US100_5m.csv"),
