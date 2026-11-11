@@ -30,8 +30,13 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
                  its reversal candle (session levels and FVG edges do not change the bias).
     6b FILTERS   no minimum stop (MIN_STOP_PTS = 0, experiments only). ONE_PER_ENTRY: several setups with
                  the same direction and entry zone / limit price -> one trade (the first signal).
-    7 TARGET     TARGET_MODE "R" = TARGET_R x risk; "swing" = the nearest confirmed major 5m swing low (MAJOR_PIVOT candles each side,
-                 confirmed before the fill) below the entry, else TARGET_R x risk. Breakeven at +1R (backtest.BE_AT_R).
+    7 TARGET     TARGET_MODE "partial" (default): close PARTIAL_PCT (half) at TARGET_R x risk (3R) and move the stop on the rest
+                 to breakeven; the rest runs to the NEXT RULE 1 SWING = the nearest D / W / M / 4H / 1H swing low (short) below the
+                 first target that is confirmed and not yet swept (5m sweep rule) at the fill. No such swing -> everything closes
+                 at the first target. The runner target is checked from the candle after the first target.
+                 BE_BEFORE_TP1=1 also moves the stop to breakeven at +1R before the first target (off by default).
+                 "R" = everything at TARGET_R x risk; "swing" = the nearest confirmed major 5m swing low (MAJOR_PIVOT candles each
+                 side, confirmed before the fill) below the entry, else TARGET_R x risk. "R" / "swing": breakeven at +1R (backtest.BE_AT_R).
 """
 from __future__ import annotations
 
@@ -46,7 +51,9 @@ import swings as S
 
 REVERSAL_5M = int(os.environ.get("REVERSAL_5M", "48"))      # N: 5m candles allowed between the sweep and the reversal
 ENTRY_VALID = pd.Timedelta(minutes=int(os.environ.get("ENTRY_VALID_MIN", "60")))
-TARGET_MODE = os.environ.get("TARGET_5M", "R")             # "R" = fixed R | "swing" = major 5m swing (fallback fixed R)
+TARGET_MODE = os.environ.get("TARGET_5M", "partial")       # "partial" = half at R, rest at the next Rule 1 swing | "R" = fixed R | "swing" = major 5m swing
+PARTIAL_PCT = float(os.environ.get("PARTIAL_PCT", "50")) / 100.0   # share closed at the first target
+BE_BEFORE_TP1 = os.environ.get("BE_BEFORE_TP1", "0") == "1"        # partial mode: also breakeven at +BE_AT_R before the first target
 TARGET_R = float(os.environ.get("TARGET_R_5M", "3"))
 BIAS_FILTER = os.environ.get("BIAS_5M", "1") == "1"        # only trade in the direction of the last Rule 1 swing sweep
 BIAS_TFS = ("D", "W", "M", "4H", "1H")                     # Rule 1 swing levels that set the bias
@@ -83,6 +90,39 @@ def _major_swing(h, l, q, short, entry):
         if q - 1 - i > 2000:
             break
     return best
+
+
+def simulate_partial(bars: pd.DataFrame, q: int, short: bool, entry: float, sl: float, tp1: float, tp2: float) -> dict:
+    """Partial exit: PARTIAL_PCT closes at tp1 and the stop on the rest moves to the entry; the rest runs to tp2 (from the next
+    candle). tp2 = nan -> everything closes at tp1. The stop is checked before a target on the same candle (as backtest.simulate).
+    Returns exit kind (stop / breakeven / target / tp1+be / tp1+tp2 / open), exit index and price of the last part, tp1 index,
+    and pnl_pts = the size-weighted price move of both parts."""
+    import backtest as B
+    h, l, c = bars["High"].to_numpy(), bars["Low"].to_numpy(), bars["Close"].to_numpy()
+    risk = abs(entry - sl)
+    stop, be, half = sl, False, -1
+    mv = (lambda x: entry - x) if short else (lambda x: x - entry)
+    w1 = PARTIAL_PCT
+
+    def done(kind, k, px):
+        pnl = w1 * mv(tp1) + (1 - w1) * mv(px) if half >= 0 else mv(px)
+        return {"exit": kind, "exit_idx": k, "exit_price": px, "tp1_idx": half, "pnl_pts": pnl}
+
+    for k in range(q, len(bars)):
+        if (h[k] >= stop) if short else (l[k] <= stop):
+            return done("tp1+be" if half >= 0 else ("breakeven" if be else "stop"), k, stop)
+        if half < 0:
+            if k > q and ((l[k] <= tp1) if short else (h[k] >= tp1)):
+                if np.isnan(tp2):
+                    return done("target", k, tp1)
+                half, stop = k, entry                       # half closed, the rest at breakeven, runner from the next candle
+                continue
+            if BE_BEFORE_TP1 and B.BE_AT_R is not None and not be and k > q and \
+                    ((l[k] <= entry - B.BE_AT_R * risk) if short else (h[k] >= entry + B.BE_AT_R * risk)):
+                stop, be = entry, True
+        elif k > half and ((l[k] <= tp2) if short else (h[k] >= tp2)):
+            return done("tp1+tp2", k, tp2)
+    return done("open", len(bars) - 1, float(c[-1]))
 
 
 def macro_levels(m5: pd.DataFrame) -> pd.DataFrame:
@@ -133,6 +173,26 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
     if MACRO_LIQ:
         lv0 = pd.concat([lv0, macro_levels(bars)], ignore_index=True)
     levels = S.add_break_times_5m(lv0, bars, None)
+    # runner targets: Rule 1 swing levels (D / W / M / 4H / 1H) with the time they become usable and the time they are swept
+    rs = levels[levels["tf"].isin(BIAS_TFS)]
+    NEVER = np.iinfo(np.int64).max
+    run_lv = {}
+    for kind in ("high", "low"):
+        x = rs[rs["type"] == kind]
+        brk_ns = pd.DatetimeIndex(x["broken_time"]).as_unit("ns").asi8
+        run_lv[kind] = (x["price"].to_numpy(float), pd.DatetimeIndex(x["confirmed_time"]).as_unit("ns").asi8,
+                        np.where(x["broken_time"].isna().to_numpy(), NEVER, brk_ns), x["tf"].to_numpy())
+
+    def runner(short_: bool, beyond: float, t) -> tuple[float, str]:
+        """Nearest Rule 1 swing low (short) below `beyond` / high (long) above it, confirmed and not swept at time t."""
+        px, ct, bt, tfs = run_lv["low" if short_ else "high"]
+        tn = pd.Timestamp(t).as_unit("ns").value
+        m = (ct <= tn) & (bt > tn) & ((px < beyond) if short_ else (px > beyond))
+        if not m.any():
+            return np.nan, ""
+        k = np.flatnonzero(m)[int(np.argmax(px[m]) if short_ else np.argmin(px[m]))]
+        return float(px[k]), f"{tfs[k]} swing"
+
     levels = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(S.TEST_START, idx[0]))]
     # bias timeline: sweeps of Rule 1 swing levels, in time order (+1 = a low swept -> bullish, -1 = a high swept -> bearish)
     bl = levels[levels["tf"].isin(BIAS_TFS)].sort_values("broken_time")
@@ -258,19 +318,30 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
             if risk < MIN_STOP:                               # minimum stop size
                 continue
             tp, ttag = (entry - TARGET_R * risk if short else entry + TARGET_R * risk), f"{TARGET_R:g}R"
+            tp2, t2tag = np.nan, ""
             if TARGET_MODE == "swing":
                 sw = _major_swing(h, l, q, short, entry)
                 if not np.isnan(sw):
                     tp, ttag = float(sw), "major 5m swing"
-            sim = B.simulate(bars, q, short, entry, stop, tp)
-            pnl = (entry - sim["exit_price"]) if short else (sim["exit_price"] - entry)
+            if TARGET_MODE == "partial":
+                tp2, t2tag = runner(short, tp, idx[q])
+                sim = simulate_partial(bars, q, short, entry, stop, tp, tp2)
+                pnl = sim["pnl_pts"]
+            else:
+                sim = B.simulate(bars, q, short, entry, stop, tp)
+                pnl = (entry - sim["exit_price"]) if short else (sim["exit_price"] - entry)
             trades.append({"symbol": symbol, "signal": "short" if short else "long", "swept": f"{lv.tf} {lv.price:.2f}",
                            "sweep_time": idx[s], "reversal_time": idx[j] + M5, "fvg_bottom": e["bottom"], "fvg_top": e["top"],
                            "entry_zone": e["kind"], "bos_level": (l[brk] if short else h[brk]),
                            "bos_kind": "leg origin" if brk == origin else "5m MSS", "ifvg_tf": f.tf,
                            "entry_tf": "5m", "entry_mode": "touch", "entry_time": idx[q], "entry_price": entry,
                            "stop": stop, "target": tp, "target_level": ttag, "risk_pts": risk,
-                           "planned_rr": abs(tp - entry) / risk, "exit": sim["exit"], "exit_time": idx[sim["exit_idx"]],
+                           "planned_rr": abs(tp - entry) / risk,
+                           "target2": tp2, "target2_level": t2tag,
+                           "planned_rr2": (abs(tp2 - entry) / risk) if not np.isnan(tp2) else np.nan,
+                           "partial_pct": PARTIAL_PCT if TARGET_MODE == "partial" else np.nan,
+                           "tp1_time": idx[sim["tp1_idx"]] if sim.get("tp1_idx", -1) >= 0 else pd.NaT,
+                           "exit": sim["exit"], "exit_time": idx[sim["exit_idx"]],
                            "exit_price": sim["exit_price"], "pnl_pts": pnl, "r_gross": pnl / risk,
                            "r_net": (pnl - B.COST[symbol]) / risk})
     finally:

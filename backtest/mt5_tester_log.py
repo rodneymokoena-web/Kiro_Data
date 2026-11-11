@@ -18,6 +18,7 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 SRC, OUT = sys.argv[1], sys.argv[2]
@@ -30,6 +31,8 @@ COST = json.loads(Path(f"data/{SOURCE}/costs.json").read_text())[SYMBOL]
 BE_AT_R = 1.0
 
 t = pd.read_csv(SRC, parse_dates=["reversal_time", "entry_time", "exit_time", "sweep_time"])
+if "tp1_time" in t.columns:
+    t["tp1_time"] = pd.to_datetime(t["tp1_time"], utc=True)
 t = t[t.entry_time.notna()].sort_values(["entry_time", "reversal_time"]).reset_index(drop=True)
 bars = pd.read_csv(f"data/{SOURCE}/{SYMBOL}_5m.csv", parse_dates=["Datetime"], index_col="Datetime")
 bars = bars[(bars.index >= t.reversal_time.min() - pd.Timedelta(days=1)) & (bars.index <= t.exit_time.max() + pd.Timedelta(days=1))]
@@ -65,7 +68,14 @@ def resim(r) -> tuple[pd.Timestamp | None, str, pd.Timestamp]:
 events, balance, mism = [], DEPOSIT, 0
 ticket = 1
 trades = []
+def is_partial(r) -> bool:
+    return pd.notna(getattr(r, "target2", np.nan)) and pd.notna(getattr(r, "partial_pct", np.nan))
+
+
 for r in t.itertuples(index=False):
+    if is_partial(r):                     # partial trades (intraday_snap TARGET_5M=partial): exits come from the trade list
+        trades.append((r, None, r.exit))
+        continue
     be_t, kind, ex_t = resim(r)
     if kind != r.exit or ex_t != r.exit_time:
         mism += 1
@@ -81,9 +91,13 @@ for row in rows:
     r = row["r"]
     bal = DEPOSIT + sum(p for (xt, p) in done_profit if xt <= r.entry_time)
     vol = max(math.floor(bal * RISK_PCT / 100 / r.risk_pts * 100) / 100, 0.01)
-    gross = (r.exit_price - r.entry_price) * (-1 if r.signal == "short" else 1) * vol
+    sgn = -1 if r.signal == "short" else 1
+    v1 = 0.0
+    if is_partial(r) and pd.notna(r.tp1_time):          # first part closed at target 1, the rest at the exit
+        v1 = min(max(math.floor(vol * r.partial_pct * 100 + 1e-9) / 100, 0.01), round(vol - 0.01, 2)) if vol >= 0.02 else 0.0
+    gross = (r.target - r.entry_price) * sgn * v1 + (r.exit_price - r.entry_price) * sgn * (vol - v1)
     profit = round(gross - COST * vol, 2)
-    row.update(vol=vol, profit=profit, bal_fill=bal)
+    row.update(vol=vol, v1=v1, profit=profit, bal_fill=bal)
     done_profit.append((r.exit_time, profit))
 
 for row in rows:
@@ -94,9 +108,11 @@ for row in rows:
     k = max(int(IDX.searchsorted(r.reversal_time)) - 1, 0)           # the reversal candle
     bid = C[k] if k < len(C) else r.entry_price
     ask = bid + (SP[k] if k < len(SP) else COST)
-    o_tk, d_tk, c_tk = ticket, ticket + 1, ticket + 2
-    ticket += 3
-    sl, tp = px(r.stop), px(r.target)
+    v1 = row["v1"]
+    part = is_partial(r)
+    o_tk, d_tk, c_tk, p_tk = ticket, ticket + 1, ticket + 2, ticket + 3
+    ticket += 4 if v1 > 0 else 3
+    sl, tp = px(r.stop), px(r.target2 if part else r.target)
     info = (f"{'SHORT' if short else 'LONG'} signal: {r.swept} swept {mt(r.sweep_time)} | {r.ifvg_tf} IFVG + "
             f"{r.bos_kind} @ {px(r.bos_level)} | entry {r.entry_zone} {px(r.entry_price)} risk {r.risk_pts:.2f} pts | "
             f"balance {row['bal_fill']:.2f}")
@@ -114,13 +130,27 @@ for row in rows:
         cur_sl = px(r.entry_price)
         ev += [(row["be_t"], 7, "EXP", f"breakeven: +{BE_AT_R:g}R reached, stop -> entry #{o_tk}"),
                (row["be_t"], 8, "TRD", f"position modified [#{o_tk} {side} {vol:.2f} {SYMBOL} {px(r.entry_price)} sl: {cur_sl} tp: {tp}]")]
-    trig = "take profit" if r.exit == "target" else "stop loss"
+    rest = vol
+    if v1 > 0:                                          # partial close at the first target (EA: market close of part + breakeven)
+        h_t, t1 = r.tp1_time, px(r.target)
+        rest = round(vol - v1, 2)
+        cur_sl = px(r.entry_price)
+        ev += [
+            (h_t, 7.1, "EXP", f"first target {t1} ({r.planned_rr:g}R): closing {v1:.2f} of {vol:.2f} lots #{o_tk}, stop -> breakeven, rest to {tp} ({r.target2_level})"),
+            (h_t, 7.2, "TRD", f"market {cside} {v1:.2f} {SYMBOL}, close #{o_tk} ({t1} / {t1} / {t1})"),
+            (h_t, 7.3, "TRD", f"deal #{p_tk} {cside} {v1:.2f} {SYMBOL} at {t1} done (based on order #{p_tk})"),
+            (h_t, 7.4, "TRD", f"deal performed [#{p_tk} {cside} {v1:.2f} {SYMBOL} at {t1}]"),
+            (h_t, 7.5, "TRD", f"order performed {cside} {v1:.2f} at {t1} [#{p_tk} {cside} {v1:.2f} {SYMBOL} at {t1}]"),
+            (h_t, 7.6, "TRD", f"position modified [#{o_tk} {side} {rest:.2f} {SYMBOL} {px(r.entry_price)} sl: {cur_sl} tp: {tp}]"),
+        ]
+    trig = "take profit" if r.exit in ("target", "tp1+tp2") else "stop loss"
+    xk = r.exit.replace("+", "_").upper()
     ev += [
-        (r.exit_time, 9, "TRD", f"{trig} triggered #{o_tk} {side} {vol:.2f} {SYMBOL} {px(r.entry_price)} sl: {cur_sl} tp: {tp} [#{c_tk} {cside} {vol:.2f} {SYMBOL} at {px(r.exit_price)}]"),
-        (r.exit_time, 10, "TRD", f"deal #{c_tk + 0} {cside} {vol:.2f} {SYMBOL} at {px(r.exit_price)} done (based on order #{c_tk})"),
-        (r.exit_time, 11, "TRD", f"deal performed [#{c_tk} {cside} {vol:.2f} {SYMBOL} at {px(r.exit_price)}]"),
-        (r.exit_time, 12, "TRD", f"order performed {cside} {vol:.2f} at {px(r.exit_price)} [#{c_tk} {cside} {vol:.2f} {SYMBOL} at {px(r.exit_price)}]"),
-        (r.exit_time, 13, "EXP", f"closed #{o_tk} {r.exit.upper()} profit {row['profit']:+.2f} USD (spread {COST:g} pts) | {r.r_net:+.2f}R net"),
+        (r.exit_time, 9, "TRD", f"{trig} triggered #{o_tk} {side} {rest:.2f} {SYMBOL} {px(r.entry_price)} sl: {cur_sl} tp: {tp} [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)}]"),
+        (r.exit_time, 10, "TRD", f"deal #{c_tk + 0} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)} done (based on order #{c_tk})"),
+        (r.exit_time, 11, "TRD", f"deal performed [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)}]"),
+        (r.exit_time, 12, "TRD", f"order performed {cside} {rest:.2f} at {px(r.exit_price)} [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)}]"),
+        (r.exit_time, 13, "EXP", f"closed #{o_tk} {xk} profit {row['profit']:+.2f} USD (spread {COST:g} pts) | {r.r_net:+.2f}R net"),
     ]
     # phase within a candle: exits of trades filled on an earlier candle, then orders / fills, then exits on the fill candle
     events += [(a, b, o_tk, c, d, 0 if (b >= 9 and a > r.entry_time) else (2 if b >= 9 else 1)) for (a, b, c, d) in ev]
@@ -151,7 +181,10 @@ put("CS", "Symbols", f"{SYMBOL}: symbol to be synchronized")
 put("CS", "Symbols", f"{SYMBOL}: history synchronized from {(start - pd.Timedelta(days=365)).strftime('%Y.%m.%d')} to {end.strftime('%Y.%m.%d')}")
 put("CS", "Tester", f"{SYMBOL},M5 (Exness-MT5Real): 1 minute OHLC ticks generating")
 put("CS", "Tester", f"{SYMBOL},M5: testing of Experts\\{EXPERT}.ex5 from {start.strftime('%Y.%m.%d %H:%M')} to {end.strftime('%Y.%m.%d %H:%M')} started")
-put("CS", f"{EXPERT} ({SYMBOL},M5)", "inputs: bias filter=true, IFVG 5m/15m, BOS close or wick + post-sweep MSS, reversal 48 candles, entry valid 60 min, target 3R, breakeven +1R, macro liquidity=true, "
+_part = "target2" in t.columns and t["partial_pct"].notna().any()
+_tgt = (f"{t['partial_pct'].dropna().iloc[0] * 100:g}% at {t['planned_rr'].iloc[0]:g}R + breakeven, rest at the next Rule 1 swing" if _part
+        else "target 3R, breakeven +1R")
+put("CS", f"{EXPERT} ({SYMBOL},M5)", f"inputs: bias filter=true, IFVG 5m/15m, BOS close or wick + post-sweep MSS, reversal 48 candles, entry valid 60 min, {_tgt}, macro liquidity=true, "
     f"min stop {os.environ.get('MIN_STOP_PTS', '0')} pts, one trade per entry={os.environ.get('ONE_PER_ENTRY', '1') == '1'}", sim=start)
 for (sim, _o, _tk, kind, msg, _ph) in events:
     put("KS" if kind == "TRD" else "CS", "Trade" if kind == "TRD" else f"{EXPERT} ({SYMBOL},M5)", msg, sim=sim, ms=3)

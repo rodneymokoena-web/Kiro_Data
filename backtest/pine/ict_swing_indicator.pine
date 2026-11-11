@@ -53,6 +53,7 @@ g5 = "Target / risk"
 i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
 i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
 i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
+partPct = 50.0
 i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group=g5)
 
 g6 = "Display"
@@ -169,6 +170,10 @@ type Sig
     label     lbS = na
     label     lbT = na
     float     ob = na      // stop level
+    float     tp1 = na     // intraday partial: first target (part closed there)
+    float     tp2 = na     // intraday partial: runner target = next Rule 1 swing (na = everything at tp1)
+    string    tp2Tx = ""
+    int       halfIdx = -1 // candle where the partial close happened
     int       anc = -1     // swing: 1H index of the sweep extreme
     float     tpFix = na   // swing: target = 1H swing low
     bool      snap = false // intraday snapshot rules: entry FVG of the displacement, breaker stop
@@ -593,6 +598,7 @@ f_stopBase(bool sh, float px, float ext, float ob) =>
 
 // entry / stop / target lines of a signal: stop extending, gray + dotted if the order never filled
 
+
 method finishLines(Sig g) =>
     if not na(g.lnE)
         bool filled = g.fillIdx >= 0
@@ -663,18 +669,31 @@ for [k, _e4] in SG
                 evShortFill := true
             else
                 evLongFill := true
-            alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
+            alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + (na(g.tp2) ? "" : " (" + g.tp2Tx + "), " + str.tostring(partPct) + "% at TP1 " + str.tostring(g.tp1, format.mintick)) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
     if g.state == 2
         bool hitSL = g.sh ? high >= g.sl : low <= g.sl
-        bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx
+        // partial: first target (part closed, stop -> entry); the runner target counts from the candle after it
+        bool part = not na(g.tp2)
+        bool hitT1 = part and g.halfIdx < 0 and not hitSL and p > g.fillIdx and (g.sh ? low <= g.tp1 : high >= g.tp1)
+        bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx and (not part or (g.halfIdx >= 0 and p > g.halfIdx))
+        if hitT1
+            g.halfIdx := p
+            g.sl := g.entry
+            g.beDone := true
+            if i_showE
+                label.new(time, g.tp1, "TP1 " + str.tostring(partPct) + "%", xloc=xloc.bar_time, style=label.style_label_left, color=color.teal, textcolor=color.white, size=size.tiny)
+            alert(syminfo.ticker + " " + str.tostring(partPct) + "% closed at TP1 " + str.tostring(g.tp1, format.mintick) + " - stop to breakeven " + str.tostring(g.entry, format.mintick) + ", runner to " + str.tostring(g.tp2, format.mintick) + " (" + g.tp2Tx + ")", alert.freq_once_per_bar_close)
         if hitSL or hitTP
             float exitPx = hitSL ? g.sl : g.tp
             float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
+            bool half = g.halfIdx >= 0
+            if half                                                  // size-weighted: part at TP1 + the rest at this exit
+                pnl := partPct / 100.0 * (g.sh ? g.entry - g.tp1 : g.tp1 - g.entry) + (1 - partPct / 100.0) * pnl
             float r = (pnl - i_cost) / g.risk
-            bool trailWin = hitSL and g.beDone and r > 0.05          // stopped out in profit by the trailing stop
-            bool isBE = hitSL and g.beDone and not trailWin
+            bool trailWin = hitSL and g.beDone and r > 0.05 and not half  // stopped out in profit by the trailing stop
+            bool isBE = hitSL and g.beDone and not trailWin and not half
             nTrades += 1
-            nWins += (not hitSL or trailWin) ? 1 : 0
+            nWins += (not hitSL or trailWin or half) ? 1 : 0
             nLoss += hitSL and not g.beDone ? 1 : 0
             nBE += isBE ? 1 : 0
             sumR += r
@@ -682,9 +701,9 @@ for [k, _e4] in SG
             grossL += r < 0 ? -r : 0.0
             holdH += (time - BC.T(g.fillIdx)) / 3600000.0
             g.state := 3
-            g.result := trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
+            g.result := half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
             if i_showE
-                label.new(time, exitPx, (trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                label.new(time, exitPx, (half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                 line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
             evClosed := true
             alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)

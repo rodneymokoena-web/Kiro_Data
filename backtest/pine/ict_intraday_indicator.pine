@@ -50,7 +50,10 @@ i_bosAlert = input.bool(true, "Intraday: alert on every 5m BOS / MSS", group=gR,
 i_bosLim = input.bool(true, "Intraday: limit order alert on the first 5m FVG / VI after a BOS", group=gR, tooltip="After every 5m BOS / MSS (bias direction when the bias filter is on): the first 5m FVG or volume imbalance in the break direction that completes after the breaking candle is drawn (magenta box) and an alert gives a limit at its near edge (bottom for a short), SL = 5m breaker high / low, TP = Target (R). Never skipped: if the breaker is not beyond the limit, the stop is the high (short) / low (long) of the zone's first candle. This alert is separate from the model's own entry.")
 i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
 i_onePer = input.bool(true, "Intraday: one trade per entry price", group=gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
-i_tgt5 = input.string("Fixed R", "Intraday target", options=["Fixed R", "Major 5m swing"], group=gR, tooltip="Fixed R = 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+PARTIAL = "Partial: half at R, rest at next Rule 1 swing"
+i_tgt5 = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group=gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+i_partPct = input.float(50.0, "Partial close % at the first target", minval=1, maxval=99, step=5, group=gR)
+i_beFirst = input.bool(false, "Partial: also move the stop to breakeven at +R (below) before the first target", group=gR, tooltip="Off (default): the stop stays at the breaker until the first target; it moves to breakeven when half is closed. On: the 'Move stop to breakeven at +R' rule also applies before the first target.")
 
 
 gS = "Displacement / MSS"
@@ -66,6 +69,7 @@ g5 = "Target / risk"
 i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
 i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
 i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
+partPct = i_partPct
 i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group=g5)
 
 g6 = "Display"
@@ -181,6 +185,10 @@ type Sig
     label     lbS = na
     label     lbT = na
     float     ob = na      // stop level
+    float     tp1 = na     // intraday partial: first target (part closed there)
+    float     tp2 = na     // intraday partial: runner target = next Rule 1 swing (na = everything at tp1)
+    string    tp2Tx = ""
+    int       halfIdx = -1 // candle where the partial close happened
     bool      snap = false // intraday snapshot rules: entry FVG of the displacement, breaker stop
     int       drF = -1     // intraday: last 5m FVG (i3) of the drop already drawn
     int       drV = -1     // intraday: last 5m volume imbalance (i3) of the drop already drawn
@@ -492,6 +500,53 @@ f_sessSwing(float price, bool isHi) =>
 
 
 // entry / stop / target lines of a signal: stop extending, gray + dotted if the order never filled
+// intraday partial runner: the nearest Rule 1 swing level (D / W / M / 4H / 1H) beyond px - below it for a short (swing lows),
+// above it for a long (swing highs) - that has not been swept yet (not registered as a 5m sweep in sweptP)
+f_swept(float v, int t) =>
+    bool r = false
+    for [m, _sp] in sweptP
+        if sweptP.get(m) == v and sweptT.get(m) == t
+            r := true
+            break
+    r
+
+f_r1(array<float> P, array<int> T, bool sh, float px, float best, string bestTx, string tf) =>
+    float b = best
+    string bt = bestTx
+    if not na(P)
+        for [k, _rp] in P
+            float v = P.get(k)
+            if (sh ? v < px : v > px) and (na(b) or (sh ? v > b : v < b))
+                if not f_swept(v, T.get(k))
+                    b := v
+                    bt := tf + " swing"
+    [b, bt]
+
+f_runner(bool sh, float px) =>
+    float b = na
+    string bt = ""
+    if i_useD
+        [rb1, rt1] = f_r1(sh ? dLp : dHp, sh ? dLt : dHt, sh, px, b, bt, "D")
+        b := rb1
+        bt := rt1
+    if i_useW
+        [rb2, rt2] = f_r1(sh ? wLp : wHp, sh ? wLt : wHt, sh, px, b, bt, "W")
+        b := rb2
+        bt := rt2
+    if i_useM
+        [rb3, rt3] = f_r1(sh ? mLp : mHp, sh ? mLt : mHt, sh, px, b, bt, "M")
+        b := rb3
+        bt := rt3
+    if i_liq4 > 0
+        [rb4, rt4] = f_r1(sh ? l4LP : l4HP, sh ? l4LT : l4HT, sh, px, b, bt, "4H")
+        b := rb4
+        bt := rt4
+        if i_liq1h
+            [rb5, rt5] = f_r1(sh ? l1LP : l1HP, sh ? l1LT : l1HT, sh, px, b, bt, "1H")
+            b := rb5
+            bt := rt5
+    [b, bt]
+
 // intraday target: nearest confirmed major 5m swing low (short) below px / high (long) above px, 10 candles each side,
 // confirmed by the previous candle; searched up to 600 candles back. na = none (the target stays at R).
 f_major5(bool sh, float px) =>
@@ -718,6 +773,13 @@ for [k, _e4] in SG
                 float sw5v = f_major5(g.sh, g.entry)
                 if not na(sw5v)
                     g.tp := sw5v
+            g.tp2 := na
+            if i_tgt5 == PARTIAL
+                g.tp1 := g.tp
+                [rv, rtx] = f_runner(g.sh, g.tp1)
+                g.tp2 := rv
+                g.tp2Tx := rtx
+                g.tp := na(rv) ? g.tp1 : rv
             if na(g.tp) or (g.sh ? g.tp >= g.entry : g.tp <= g.entry)
                 g.state := 3
                 g.result := "no 1H swing low target beyond entry"
@@ -728,18 +790,31 @@ for [k, _e4] in SG
                 evShortFill := true
             else
                 evLongFill := true
-            alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
+            alert(syminfo.ticker + " " + (g.sh ? "SHORT" : "LONG") + " ENTRY FILLED (" + g.trigBy + ") @ " + str.tostring(g.entry, format.mintick) + " | SL " + str.tostring(g.sl, format.mintick) + " | TP " + str.tostring(g.tp, format.mintick) + (na(g.tp2) ? "" : " (" + g.tp2Tx + "), " + str.tostring(partPct) + "% at TP1 " + str.tostring(g.tp1, format.mintick)) + " | risk " + str.tostring(g.risk, format.mintick) + " pts", alert.freq_once_per_bar_close)
     if g.state == 2
         bool hitSL = g.sh ? high >= g.sl : low <= g.sl
-        bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx
+        // partial: first target (part closed, stop -> entry); the runner target counts from the candle after it
+        bool part = not na(g.tp2)
+        bool hitT1 = part and g.halfIdx < 0 and not hitSL and p > g.fillIdx and (g.sh ? low <= g.tp1 : high >= g.tp1)
+        bool hitTP = (g.sh ? low <= g.tp : high >= g.tp) and p > g.fillIdx and (not part or (g.halfIdx >= 0 and p > g.halfIdx))
+        if hitT1
+            g.halfIdx := p
+            g.sl := g.entry
+            g.beDone := true
+            if i_showE
+                label.new(time, g.tp1, "TP1 " + str.tostring(partPct) + "%", xloc=xloc.bar_time, style=label.style_label_left, color=color.teal, textcolor=color.white, size=size.tiny)
+            alert(syminfo.ticker + " " + str.tostring(partPct) + "% closed at TP1 " + str.tostring(g.tp1, format.mintick) + " - stop to breakeven " + str.tostring(g.entry, format.mintick) + ", runner to " + str.tostring(g.tp2, format.mintick) + " (" + g.tp2Tx + ")", alert.freq_once_per_bar_close)
         if hitSL or hitTP
             float exitPx = hitSL ? g.sl : g.tp
             float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
+            bool half = g.halfIdx >= 0
+            if half                                                  // size-weighted: part at TP1 + the rest at this exit
+                pnl := partPct / 100.0 * (g.sh ? g.entry - g.tp1 : g.tp1 - g.entry) + (1 - partPct / 100.0) * pnl
             float r = (pnl - i_cost) / g.risk
-            bool trailWin = hitSL and g.beDone and r > 0.05          // stopped out in profit by the trailing stop
-            bool isBE = hitSL and g.beDone and not trailWin
+            bool trailWin = hitSL and g.beDone and r > 0.05 and not half  // stopped out in profit by the trailing stop
+            bool isBE = hitSL and g.beDone and not trailWin and not half
             nTrades += 1
-            nWins += (not hitSL or trailWin) ? 1 : 0
+            nWins += (not hitSL or trailWin or half) ? 1 : 0
             nLoss += hitSL and not g.beDone ? 1 : 0
             nBE += isBE ? 1 : 0
             sumR += r
@@ -747,13 +822,13 @@ for [k, _e4] in SG
             grossL += r < 0 ? -r : 0.0
             holdH += (time - BC.T(g.fillIdx)) / 3600000.0
             g.state := 3
-            g.result := trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
+            g.result := half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
             if i_showE
-                label.new(time, exitPx, (trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                label.new(time, exitPx, (half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                 line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
             evClosed := true
             alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
-        else if i_be and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
+        else if not hitT1 and i_be and (not part or i_beFirst) and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
             g.sl := g.entry
             g.beDone := true
             alert(syminfo.ticker + " stop moved to breakeven " + str.tostring(g.entry, format.mintick), alert.freq_once_per_bar_close)
@@ -1195,6 +1270,13 @@ if tfOK and SG.size() > 0
                     float sw5p = f_major5(sh, g.lvl)
                     if not na(sw5p)
                         g.tp := sw5p
+                g.tp2 := na
+                if i_tgt5 == PARTIAL and not na(g.sl)
+                    g.tp1 := g.tp
+                    [rvp, rtxp] = f_runner(sh, g.tp1)
+                    g.tp2 := rvp
+                    g.tp2Tx := rtxp
+                    g.tp := na(rvp) ? g.tp1 : rvp
 
 // ───────────────────────────────────────────────────────────────────────────── 5b. entry / stop / target levels on the chart
 var string actTxt = "-"
@@ -1227,7 +1309,7 @@ if i_showE and tfOK and SG.size() > 0
             label.set_xy(g.lbS, time, g.sl)
             label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
-            label.set_text(g.lbT, "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
+            label.set_text(g.lbT, not na(g.tp2) ? "TP2 " + str.tostring(g.tp2, format.mintick) + "  (" + g.tp2Tx + ")  |  TP1 " + str.tostring(g.tp1, format.mintick) + "  (" + str.tostring(i_tgtR) + "R, " + str.tostring(partPct) + "%" + (g.halfIdx >= 0 ? " done" : "") + ")" : "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
             actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
 
 // ───────────────────────────────────────────────────────────────────────────── 7. broker orders (strategy only)
@@ -1311,7 +1393,7 @@ if barstate.islast and i_table
     table.cell(tb, 0, 2, "Reversal window / entry valid", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 2, str.tostring(i_rev5) + " x 5m / " + str.tostring(i_fill5) + " min", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 10, "Stop / target", text_color=color.white, text_size=size.small)
-    table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be ? ", BE +" + str.tostring(i_beR) + "R" : ""), text_color=color.white, text_size=size.small)
+    table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == PARTIAL ? str.tostring(partPct) + "% at " + str.tostring(i_tgtR) + "R + BE, rest at next Rule 1 swing" + (i_beFirst and i_be ? " (BE +" + str.tostring(i_beR) + "R before TP1)" : "") : i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be and i_tgt5 != PARTIAL ? ", BE +" + str.tostring(i_beR) + "R" : ""), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 12, "Bias (last Rule 1 swing sweep)" + (i_bias5 ? "" : " - filter off"), text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 12, biasS.get(0), text_color=biasA.get(0) < 0 ? color.red : biasA.get(0) > 0 ? color.lime : color.white, text_size=size.small)
     table.cell(tb, 0, 7, "Watching sweeps / orders", text_color=color.white, text_size=size.small)
