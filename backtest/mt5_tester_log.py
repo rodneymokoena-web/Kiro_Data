@@ -90,8 +90,8 @@ for row in rows:
     r, vol = row["r"], row["vol"]
     short = r.signal == "short"
     oside, side, cside = ("sell limit", "sell", "buy") if short else ("buy limit", "buy", "sell")
-    place_t = r.reversal_time + pd.Timedelta(minutes=5)              # reversal candle close
-    k = IDX.searchsorted(r.reversal_time)
+    place_t = r.reversal_time                                        # reversal candle close (reversal_time = its close time)
+    k = max(int(IDX.searchsorted(r.reversal_time)) - 1, 0)           # the reversal candle
     bid = C[k] if k < len(C) else r.entry_price
     ask = bid + (SP[k] if k < len(SP) else COST)
     o_tk, d_tk, c_tk = ticket, ticket + 1, ticket + 2
@@ -122,9 +122,10 @@ for row in rows:
         (r.exit_time, 12, "TRD", f"order performed {cside} {vol:.2f} at {px(r.exit_price)} [#{c_tk} {cside} {vol:.2f} {SYMBOL} at {px(r.exit_price)}]"),
         (r.exit_time, 13, "EXP", f"closed #{o_tk} {r.exit.upper()} profit {row['profit']:+.2f} USD (spread {COST:g} pts) | {r.r_net:+.2f}R net"),
     ]
-    events += [(a, b, o_tk, c, d) for (a, b, c, d) in ev]
+    # phase within a candle: exits of trades filled on an earlier candle, then orders / fills, then exits on the fill candle
+    events += [(a, b, o_tk, c, d, 0 if (b >= 9 and a > r.entry_time) else (2 if b >= 9 else 1)) for (a, b, c, d) in ev]
 
-events.sort(key=lambda e: (e[0], e[2] if e[1] < 9 else -1, e[1]))  # same candle: exits of older trades first
+events.sort(key=lambda e: (e[0], e[5], e[2], e[1]))  # each trade's lines stay together
 
 # ---- write the journal -------------------------------------------------------------------------------------------------
 start = pd.Timestamp(t.reversal_time.min()).normalize().replace(day=1)
@@ -152,7 +153,7 @@ put("CS", "Tester", f"{SYMBOL},M5 (Exness-MT5Real): 1 minute OHLC ticks generati
 put("CS", "Tester", f"{SYMBOL},M5: testing of Experts\\{EXPERT}.ex5 from {start.strftime('%Y.%m.%d %H:%M')} to {end.strftime('%Y.%m.%d %H:%M')} started")
 put("CS", f"{EXPERT} ({SYMBOL},M5)", "inputs: bias filter=true, IFVG 5m/15m, BOS close or wick + post-sweep MSS, reversal 48 candles, entry valid 60 min, target 3R, breakeven +1R, macro liquidity=true, "
     f"min stop {os.environ.get('MIN_STOP_PTS', '0')} pts, one trade per entry={os.environ.get('ONE_PER_ENTRY', '1') == '1'}", sim=start)
-for (sim, _o, _tk, kind, msg) in events:
+for (sim, _o, _tk, kind, msg, _ph) in events:
     put("KS" if kind == "TRD" else "CS", "Trade" if kind == "TRD" else f"{EXPERT} ({SYMBOL},M5)", msg, sim=sim, ms=3)
 wins = sum(1 for r in rows if r["profit"] > 0)
 put("CS", f"{EXPERT} ({SYMBOL},M5)", f"summary: {len(rows)} trades, {wins} profitable, net {final - DEPOSIT:+.2f} USD, {t.r_net.sum():+.2f}R", sim=end)
