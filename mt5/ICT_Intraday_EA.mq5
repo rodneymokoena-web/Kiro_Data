@@ -4,7 +4,8 @@
 //|   the TradingView intraday scripts / Python intraday_snap.py:     |
 //|   Rule 1 level swept on 5m -> 5m/15m IFVG + 5m BOS/MSS with       |
 //|   displacement -> limit at the latest 5m FVG / volume imbalance   |
-//|   of the drop -> stop at the 5m breaker, target 3R, BE at +1R.    |
+//|   of the drop -> stop at the 5m breaker; half closed at 3R + stop |
+//|   to breakeven, the rest runs to the next Rule 1 swing (v1.10).   |
 //|                                                                   |
 //|   SHORT described in the comments; LONG is the mirror image.      |
 //|   Works on COMPLETED 5m candles only (no repaint). Attach to any  |
@@ -15,7 +16,7 @@
 //|   backtest of these rules LOSES money (US100 Oct 2026: -21.6R).   |
 //+------------------------------------------------------------------+
 #property copyright "ICT Intraday EA"
-#property version   "1.00"
+#property version   "1.10"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -70,9 +71,12 @@ input group "Entry / exit"
 input int    InpFvgAfter         = 2;       // entry FVG / VI may complete N candles after the reversal
 input int    InpEntryValidMin    = 60;      // limit order valid N minutes after the reversal candle close
 input bool   InpOnePerEntry      = true;    // one trade per direction + entry zone / price
-input double InpTargetR          = 3.0;     // target in R
-input bool   InpTargetSwing      = false;   // target = nearest major 5m swing (10 each side) beyond the entry, else InpTargetR
-input double InpBE_at_R          = 1.0;     // stop to breakeven at +R, judged on completed 5m candles after the fill (0 = off)
+input bool   InpPartial          = true;    // close InpPartialPct at InpTargetR, stop to breakeven, rest runs to the next Rule 1 swing
+input double InpPartialPct       = 50.0;    // % of the position closed at the first target
+input double InpTargetR          = 3.0;     // first target in R (the only target when InpPartial = false)
+input bool   InpTargetSwing      = false;   // InpPartial = false only: target = nearest major 5m swing (10 each side), else InpTargetR
+input double InpBE_at_R          = 1.0;     // stop to breakeven at +R on completed 5m candles after the fill (0 = off). With InpPartial
+input bool   InpBEBeforeTP1      = false;   // ... it is used only if this is true (else the stop moves to breakeven at the first target)
 input ulong  InpMagic            = 770101;  // magic number
 
 //------------------------------------------------------------------ small helpers
@@ -257,6 +261,8 @@ struct Sg
    int      state;              // 0 waiting for the entry zone, 1 order, 2 filled (model), 3 done
    double   entry, tp, vstop, risk;
    bool     be;
+   double   tp1, tp2;           // partial: first target / runner target (0 = none -> everything at tp1)
+   int      halfIdx;            // candle where the model closed the first part (-1 = not yet)
    int      fillIdx;
    ulong    ticket;             // real pending order (0 = none)
    bool     want;               // a real order should be working
@@ -394,6 +400,7 @@ void OnTick()
    g_halted = RiskHalted();
    if(g_halted) HandleHalt();
 
+   ManagePartial();                             // per tick: first target -> partial close + breakeven
    // per tick: expire pending orders
    for(int k = 0; k < ArraySize(g_sg); k++)
       if(g_sg[k].ticket > 0 && g_sg[k].want && TimeCurrent() >= g_sg[k].expiry) { CancelReal(k); }
@@ -857,6 +864,7 @@ void CreateSetup(int k, int j)
    g_sg[n].stop = stop; g_sg[n].ext = ext; g_sg[n].fIdx = g_sw[k].fIdx; g_sg[n].f15 = g_sw[k].f15;
    g_sg[n].zTop = 0; g_sg[n].zBot = 0; g_sg[n].zIdx = -1; g_sg[n].zVI = false; g_sg[n].level = 0; g_sg[n].liveFrom = -1;
    g_sg[n].state = 0; g_sg[n].entry = 0; g_sg[n].tp = 0; g_sg[n].vstop = 0; g_sg[n].risk = 0; g_sg[n].be = false;
+   g_sg[n].tp1 = 0; g_sg[n].tp2 = 0; g_sg[n].halfIdx = -1;
    g_sg[n].fillIdx = -1; g_sg[n].ticket = 0; g_sg[n].want = false;
    g_sg[n].id = (sh ? "ICTi S " : "ICTi L ") + TimeToString(T5(j), TIME_DATE | TIME_MINUTES);
    g_sg[n].info = TFN[g_sw[k].tf] + (sh ? " H " : " L ") + DoubleToString(g_sw[k].px, _Digits) + " swept " +
@@ -942,6 +950,25 @@ double MajorSwing(int q, bool sh, double entry)     // nearest major 5m swing (1
   }
 
 //+------------------------------------------------------------------+
+//| runner target: the nearest Rule 1 swing (D / W / M / 4H / 1H)      |
+//| low (short) below `beyond` / high (long) above it that is          |
+//| confirmed and not swept yet. 0 = none.                             |
+//+------------------------------------------------------------------+
+double Runner(bool sh, double beyond, string &tx)
+  {
+   datetime now = g5cnt > 0 ? T5(N5() - 1) + 300 : TimeCurrent();
+   double best = 0; bool got = false; tx = "";
+   for(int li = 0; li < ArraySize(g_lv); li++)
+     {
+      if(g_lv[li].used || g_lv[li].tf > 4 || g_lv[li].hi == sh || g_lv[li].ct > now) continue;   // short -> swing lows
+      double v = g_lv[li].px;
+      if(sh ? v >= beyond : v <= beyond) continue;
+      if(!got || (sh ? v > best : v < best)) { best = v; got = true; tx = TFN[g_lv[li].tf] + " swing"; }
+     }
+   return got ? best : 0;
+  }
+
+//+------------------------------------------------------------------+
 //| the model's own fills / exits on completed candles (as the         |
 //| backtest): used for one-per-entry, refinement and the statistics.  |
 //| Real orders are filled and closed by the broker.                   |
@@ -961,7 +988,9 @@ void SignalsModel(int i)
             if(sh ? g_sg[k].stop <= e : g_sg[k].stop >= e) { DropSignal(k, "no stop beyond the fill"); continue; }
             double risk = MathAbs(e - g_sg[k].stop);
             double tp = sh ? e - InpTargetR * risk : e + InpTargetR * risk;
-            if(InpTargetSwing) { double sw = MajorSwing(i, sh, e); if(sw > 0) tp = sw; }
+            g_sg[k].tp1 = tp; g_sg[k].tp2 = 0; g_sg[k].halfIdx = -1;
+            if(InpPartial) { string tx; g_sg[k].tp2 = Runner(sh, tp, tx); if(g_sg[k].tp2 > 0) tp = g_sg[k].tp2; }
+            else if(InpTargetSwing) { double sw = MajorSwing(i, sh, e); if(sw > 0) tp = sw; }
             g_sg[k].entry = e; g_sg[k].risk = risk; g_sg[k].tp = tp; g_sg[k].vstop = g_sg[k].stop; g_sg[k].be = false;
             g_sg[k].fillIdx = i; g_sg[k].state = 2;
             if(sh ? H5(i) >= g_sg[k].vstop : L5(i) <= g_sg[k].vstop) { ModelExit(k, g_sg[k].vstop, "stop"); continue; }
@@ -970,9 +999,17 @@ void SignalsModel(int i)
         }
       if(g_sg[k].state == 2 && i > g_sg[k].fillIdx)
         {
-         if(sh ? H5(i) >= g_sg[k].vstop : L5(i) <= g_sg[k].vstop) { ModelExit(k, g_sg[k].vstop, g_sg[k].be ? "breakeven" : "stop"); continue; }
-         if(sh ? L5(i) <= g_sg[k].tp : H5(i) >= g_sg[k].tp)       { ModelExit(k, g_sg[k].tp, "target"); continue; }
-         if(InpBE_at_R > 0 && !g_sg[k].be &&
+         bool half = g_sg[k].halfIdx >= 0, part = InpPartial && g_sg[k].tp2 > 0;
+         if(sh ? H5(i) >= g_sg[k].vstop : L5(i) <= g_sg[k].vstop)
+           { ModelExit(k, g_sg[k].vstop, half ? "TP1 + breakeven" : g_sg[k].be ? "breakeven" : "stop"); continue; }
+         if(part && !half)
+           {
+            if(sh ? L5(i) <= g_sg[k].tp1 : H5(i) >= g_sg[k].tp1)          // first part closed, the rest at breakeven
+              { g_sg[k].halfIdx = i; g_sg[k].vstop = g_sg[k].entry; g_sg[k].be = true; continue; }
+           }
+         else if((!part || i > g_sg[k].halfIdx) && (sh ? L5(i) <= g_sg[k].tp : H5(i) >= g_sg[k].tp))
+           { ModelExit(k, g_sg[k].tp, half ? "TP1 + TP2" : "target"); continue; }
+         if(InpBE_at_R > 0 && !g_sg[k].be && (!InpPartial || InpBEBeforeTP1) &&
             (sh ? L5(i) <= g_sg[k].entry - InpBE_at_R * g_sg[k].risk : H5(i) >= g_sg[k].entry + InpBE_at_R * g_sg[k].risk))
            { g_sg[k].vstop = g_sg[k].entry; g_sg[k].be = true; }
         }
@@ -981,7 +1018,13 @@ void SignalsModel(int i)
 
 void ModelExit(int k, double px, string why)
   {
-   double r = (g_sg[k].sh ? g_sg[k].entry - px : px - g_sg[k].entry) / g_sg[k].risk;
+   double mv = g_sg[k].sh ? g_sg[k].entry - px : px - g_sg[k].entry;
+   if(g_sg[k].halfIdx >= 0)                                          // size-weighted: first part at tp1 + the rest at px
+     {
+      double w = InpPartialPct / 100.0;
+      mv = w * (g_sg[k].sh ? g_sg[k].entry - g_sg[k].tp1 : g_sg[k].tp1 - g_sg[k].entry) + (1 - w) * mv;
+     }
+   double r = mv / g_sg[k].risk;
    g_sg[k].state = 3;
    g_vTrades++; g_vR += r; if(r > 0.05) g_vWins++;
    if(g_live) Print("Model trade ", g_sg[k].id, " closed: ", why, " ", DoubleToString(r, 2), "R (before costs)");
@@ -1108,7 +1151,9 @@ void PlaceReal(int k)
    if(sh ? s <= e + minDist : s >= e - minDist) { Print("Stop not beyond the entry - ", g_sg[k].id, " skipped."); g_sg[k].want = false; return; }
    double risk = MathAbs(e - s);
    double t = sh ? e - InpTargetR * risk : e + InpTargetR * risk;
-   if(InpTargetSwing) { double sw = MajorSwing(N5(), sh, e); if(sw > 0) t = sw; }
+   string rtx = "";
+   if(InpPartial) { double r2 = Runner(sh, t, rtx); if(r2 > 0) t = r2; }   // broker TP = the runner; the EA closes the first part
+   else if(InpTargetSwing) { double sw = MajorSwing(N5(), sh, e); if(sw > 0) t = sw; }
    t = NormalizeDouble(t, dg);
    double lots = LotsForRisk(e, s);
    if(lots <= 0) { g_sg[k].want = false; return; }
@@ -1133,7 +1178,9 @@ void PlaceReal(int k)
       g_sg[k].ticket = trade.ResultOrder();
       if(mkt) g_sg[k].want = false;
       Print("Order placed: ", mkt ? "MARKET " : "LIMIT ", (sh ? "SELL " : "BUY "), DoubleToString(lots, 2), " @ ", DoubleToString(e, dg),
-            " SL ", DoubleToString(s, dg), " TP ", DoubleToString(t, dg), " | ", cmt);
+            " SL ", DoubleToString(s, dg), " TP ", DoubleToString(t, dg),
+            (InpPartial ? (rtx != "" ? " (" + rtx + "), " + DoubleToString(InpPartialPct, 0) + "% at " + DoubleToString(InpTargetR, 1) + "R"
+                                     : " (no Rule 1 swing beyond " + DoubleToString(InpTargetR, 1) + "R: everything there)") : ""), " | ", cmt);
      }
    else Print("Order failed (retry next candle): ", trade.ResultRetcode(), " ", trade.ResultRetcodeDescription());
   }
@@ -1159,7 +1206,7 @@ void NewBarMaintenance()
       if(g_sg[k].ticket > 0 && fo > 0 && (g_sg[k].sh ? fo > g_sg[k].stop : fo < g_sg[k].stop)) { CancelReal(k); continue; }
       if(g_sg[k].ticket == 0 && !g_halted) PlaceReal(k);
      }
-   if(InpBE_at_R <= 0 || g5cnt == 0) return;
+   if(InpBE_at_R <= 0 || g5cnt == 0 || (InpPartial && !InpBEBeforeTP1)) return;
    int i = N5() - 1;
    for(int n = PositionsTotal() - 1; n >= 0; n--)
      {
@@ -1181,6 +1228,58 @@ void NewBarMaintenance()
       bool valid = isBuy ? open < bid - minDist : open > ask + minDist;
       if(valid) { if(trade.PositionModify(tk, open, tp)) Print("Stop moved to breakeven ", DoubleToString(open, _Digits)); }
       else      { if(trade.PositionClose(tk)) Print("Breakeven level already passed - position closed at market."); }
+     }
+  }
+
+//+------------------------------------------------------------------+
+//| partial close (every tick): when price reaches the first target    |
+//| (entry +/- InpTargetR x the initial stop distance) close           |
+//| InpPartialPct of the position and move the stop to breakeven; the  |
+//| rest keeps its broker TP (the runner swing). The first target is   |
+//| stored per position in a terminal global variable (survives a      |
+//| restart). A position whose TP already is the first target (no      |
+//| runner swing) is left to the broker.                               |
+//+------------------------------------------------------------------+
+void ManagePartial()
+  {
+   if(!InpPartial) return;
+   double bid = SymbolInfoDouble(g_sym, SYMBOL_BID), ask = SymbolInfoDouble(g_sym, SYMBOL_ASK);
+   double stepLot = SymbolInfoDouble(g_sym, SYMBOL_VOLUME_STEP), minLot = SymbolInfoDouble(g_sym, SYMBOL_VOLUME_MIN);
+   double minDist = (double)SymbolInfoInteger(g_sym, SYMBOL_TRADE_STOPS_LEVEL) * g_point;
+   for(int n = PositionsTotal() - 1; n >= 0; n--)
+     {
+      ulong tk = PositionGetTicket(n);
+      if(!PositionSelectByTicket(tk)) continue;
+      if(PositionGetInteger(POSITION_MAGIC) != (long)InpMagic || PositionGetString(POSITION_SYMBOL) != g_sym) continue;
+      bool   isBuy = PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY;
+      double open = PositionGetDouble(POSITION_PRICE_OPEN), sl = PositionGetDouble(POSITION_SL), tp = PositionGetDouble(POSITION_TP);
+      double vol  = PositionGetDouble(POSITION_VOLUME);
+      string gv = "ICTINTRA_TP1_" + IntegerToString((long)tk);
+      if(!GlobalVariableCheck(gv))
+        {
+         double risk = MathAbs(open - sl);
+         if(sl <= 0 || risk <= 0) continue;
+         double t1 = isBuy ? open + InpTargetR * risk : open - InpTargetR * risk;
+         bool noRunner = tp <= 0 || MathAbs(tp - t1) <= 2 * g_point || (isBuy ? tp < t1 : tp > t1);
+         GlobalVariableSet(gv, noRunner ? 0 : t1);
+        }
+      double tp1 = GlobalVariableGet(gv);
+      if(tp1 <= 0) continue;                                             // done, or no runner (broker TP = first target)
+      if(isBuy ? bid < tp1 : ask > tp1) continue;
+      int dg = (int)SymbolInfoInteger(g_sym, SYMBOL_DIGITS);
+      double part = stepLot > 0 ? MathFloor(vol * InpPartialPct / 100.0 / stepLot + 1e-9) * stepLot : vol;
+      if(part < minLot - 1e-9 || vol - part < minLot - 1e-9)
+        {
+         if(trade.PositionClose(tk)) { GlobalVariableSet(gv, 0); Notify("First target " + DoubleToString(tp1, dg) + ": volume too small to split - position closed."); }
+         continue;
+        }
+      if(!trade.PositionClosePartial(tk, part)) { Print("Partial close failed: ", trade.ResultRetcode(), " ", trade.ResultRetcodeDescription()); continue; }
+      GlobalVariableSet(gv, 0);
+      bool valid = isBuy ? open < bid - minDist : open > ask + minDist;
+      if(valid && PositionSelectByTicket(tk)) trade.PositionModify(tk, open, tp);
+      else if(!valid && PositionSelectByTicket(tk)) trade.PositionClose(tk);       // breakeven already passed: close the rest
+      Notify(DoubleToString(part, 2) + " lots closed at the first target " + DoubleToString(tp1, dg) + " - stop to breakeven " +
+             DoubleToString(open, dg) + ", rest to " + DoubleToString(tp, dg));
      }
   }
 

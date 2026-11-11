@@ -55,6 +55,7 @@ canvas{width:100%;display:block}
 .tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;background:#25304a}
 .tag.TP{background:#164a45;color:#7fe3d6}.tag.SL{background:#4d1f22;color:#ff9c9a}.tag.BE{background:#30384c;color:#c3cad8}
 .tag.Trail{background:#173a5c;color:#9cc8ff}
+.tag[class*="Partial"]{background:#3b3416;color:#f3d77a}
 #warnings li{color:var(--amber)}
 .hidden{display:none}
 .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
@@ -96,6 +97,7 @@ footer{color:var(--muted);font-size:12px;padding:0 24px 24px;max-width:1440px;ma
       <label>Breakeven tolerance (R)
         <input id="beTol" type="number" step="0.01" min="0" value="0.05">
       </label>
+      <label style="flex-direction:row;align-items:center;gap:6px"><input id="merge" type="checkbox" checked> Partial closes of a position = one trade</label>
       <button id="rerun">Recalculate</button>
       <span id="vppNote" class="hint"></span>
     </div>
@@ -152,7 +154,8 @@ footer{color:var(--muted);font-size:12px;padding:0 24px 24px;max-width:1440px;ma
   the value per lot (guessed from the symbol - check it) minus a cost per lot, which is solved so the total matches the log's <i>final balance</i>
   (spread, commission, swap). Logs from <code>mt5_tester_log.py</code> and HTML reports carry their own profit. R = profit / money at risk at the
   initial stop (journal) or price move / stop distance (report), where the stop is known.
-  Breakeven = stopped at the entry (within the tolerance). Win rate counts breakeven trades as neither wins nor losses in
+  Partial closes of one position count as one trade (exit marked *, size-weighted; reason e.g. <i>Partial+BE</i> = part closed at the
+  first target, rest at breakeven) unless the box is unticked. Breakeven = stopped at the entry (within the tolerance). Win rate counts breakeven trades as neither wins nor losses in
   &ldquo;excl. BE&rdquo;.
 </footer>
 
@@ -341,9 +344,9 @@ const Core = (() => {
         const c = custom.get(String(tr.ticket).split('.')[0]);
         if (!c) { missing++; continue; }
         const share = tr.vol / volByTicket[tr.ticket];
-        tr.profit = c.profit * share; tr.rGiven = c.r;
+        tr.profit = c.profit * share; tr.rGiven = c.r != null ? c.r * share : null;
         const rs = c.reason.toUpperCase();
-        if (rs === 'BREAKEVEN') tr.reason = 'BE';
+        if (rs === 'BREAKEVEN' || rs === 'TP1_BE') tr.reason = 'BE';
       }
       if (missing) { out.profitGiven = false; out.warnings.push(missing + ' trades had no "closed ... profit" line - profit computed from price x lots for all trades.'); for (const tr of out.trades) delete tr.profit; }
     }
@@ -459,10 +462,30 @@ const Core = (() => {
     return { vpp: v, cost: 0, note: 'no final balance in the file - enter your cost per lot' };
   }
 
+  // partial closes of one position (same ticket) -> one trade: size-weighted exit / points, summed profit and R, last exit reason
+  function mergeParts(list) {
+    const by = new Map(), keys = [];
+    for (const t of list) { if (!by.has(t.ticket)) { by.set(t.ticket, []); keys.push(t.ticket); } by.get(t.ticket).push(t); }
+    return keys.map(k => {
+      const a = by.get(k).sort((x, y) => x.exitTime - y.exitTime);
+      if (a.length === 1) return Object.assign({ parts: 1 }, a[0]);
+      const last = a[a.length - 1], vol = a.reduce((s, x) => s + x.vol, 0);
+      const m = Object.assign({}, last, { parts: a.length, vol, sl0: a[0].sl0, tp0: a[0].tp0,
+        entryTime: Math.min(...a.map(x => x.entryTime)),
+        exit: a.reduce((s, x) => s + x.exit * x.vol, 0) / vol, pts: a.reduce((s, x) => s + x.pts * x.vol, 0) / vol,
+        firstExit: a[0].exit, firstExitTime: a[0].exitTime });
+      if (a.every(x => x.profit != null)) m.profit = a.reduce((s, x) => s + x.profit, 0); else delete m.profit;
+      m.rGiven = a.some(x => x.rGiven != null) ? a.reduce((s, x) => s + (x.rGiven || 0), 0) : null;
+      return m;
+    });
+  }
+
   function stats(parsed, cfg) {
     const vpp = cfg.vpp, cost = cfg.cost || 0, beTol = cfg.beTol != null ? cfg.beTol : 0.05;
     const deposit = cfg.deposit != null ? cfg.deposit : parsed.deposit;
-    const tr = parsed.trades.map(t => Object.assign({}, t)).sort((a, b) => a.exitTime - b.exitTime || a.entryTime - b.entryTime);
+    const base0 = parsed.trades.map(t => Object.assign({}, t));
+    const tr = (cfg.merge === false ? base0.map(t => Object.assign({ parts: 1 }, t)) : mergeParts(base0))
+      .sort((a, b) => a.exitTime - b.exitTime || a.entryTime - b.entryTime);
     for (const t of tr) {
       const computed = !(parsed.profitGiven && t.profit != null);
       if (computed) t.profit = t.pts * t.vol * vpp - cost * t.vol;
@@ -477,6 +500,7 @@ const Core = (() => {
         const d = (sl - t.entry) * (t.side === 'long' ? 1 : -1);
         if (Math.abs(d) <= tol) t.reason = 'BE'; else if (d > tol) t.reason = 'Trail';
       }
+      if (t.parts > 1) t.reason = 'Partial+' + t.reason;              // e.g. Partial+BE = part at the first target, rest at breakeven
       const beByR = t.r != null && Math.abs(t.r) <= beTol && t.reason !== 'TP';
       t.res = (t.reason === 'BE' || beByR || t.profit === 0) ? 'be' : t.profit > 0 ? 'win' : 'loss';
       t.holdMin = (t.exitTime - t.entryTime) / 60000;
@@ -567,7 +591,7 @@ const Core = (() => {
     const parsed = kind === 'report' ? parseReport(text, opt) : parseJournal(text, opt);
     return parsed;
   }
-  return { decode, detect, parseJournal, parseReport, calibrate, guessVpp, stats, analyze, parseTime };
+  return { decode, detect, parseJournal, parseReport, calibrate, guessVpp, mergeParts, stats, analyze, parseTime };
 })();
 /*CORE-END*/
 
@@ -598,7 +622,7 @@ const Core = (() => {
     $('vpp').disabled = $('cost').disabled = PARSED.profitGiven;
     $('vppNote').textContent = PARSED.profitGiven ? 'Profit per trade taken from the file.' : (userCost ? 'manual cost per lot' : cal.note);
     const dep = $('dep').value === '' ? null : +$('dep').value;
-    S = Core.stats(PARSED, { vpp: +$('vpp').value || 1, cost: +$('cost').value || 0, beTol: +$('beTol').value, deposit: dep });
+    S = Core.stats(PARSED, { vpp: +$('vpp').value || 1, cost: +$('cost').value || 0, beTol: +$('beTol').value, deposit: dep, merge: $('merge').checked });
     render();
   }
 
@@ -675,7 +699,7 @@ const Core = (() => {
       ['Exit time', 'exitTime'], ['Exit', 'exit'], ['Exit reason', 'reason'], ['Hold', 'holdMin'], ['Points', 'pts'], ['R', 'r'], ['Profit', 'profit'], ['Balance', 'balance']];
     $('trades').innerHTML = '<tr>' + H.map(h => `<th class="${h[1] ? 'sortable' : ''}" data-k="${h[1] || ''}">${h[0]}${sortKey === h[1] ? (sortDir > 0 ? ' &#9650;' : ' &#9660;') : ''}</th>`).join('') + '</tr>' +
       rows.map((t, i) => `<tr><td>${i + 1}</td><td>${t.ticket}</td><td>${t.side}</td><td>${fmtN(t.vol)}</td><td>${dt(t.entryTime)}</td><td>${fmtN(t.entry, dg)}</td>` +
-        `<td>${t.sl0 != null ? fmtN(t.sl0, dg) : '&ndash;'}</td><td>${dt(t.exitTime)}</td><td>${fmtN(t.exit, dg)}</td><td><span class="tag ${t.reason}">${t.reason}</span></td>` +
+        `<td>${t.sl0 != null ? fmtN(t.sl0, dg) : '&ndash;'}</td><td>${dt(t.exitTime)}</td><td title="${t.parts > 1 ? 'size-weighted exit of ' + t.parts + ' closes; first close ' + fmtN(t.firstExit, dg) + ' at ' + dt(t.firstExitTime) : ''}">${fmtN(t.exit, dg)}${t.parts > 1 ? ' *' : ''}</td><td><span class="tag ${t.reason}">${t.reason}</span></td>` +
         `<td>${dur(t.holdMin)}</td><td class="${cls(t.pts)}">${fmtN(t.pts, dg)}</td><td class="${cls(t.r)}">${rfmt(t.r)}</td>` +
         `<td class="${t.res === 'be' ? 'be' : cls(t.profit)}">${money(t.profit)}</td><td>${fmtN(t.balance)}</td></tr>`).join('');
     $('tcount').textContent = rows.length + ' of ' + S.n + ' trades';
@@ -776,7 +800,7 @@ const Core = (() => {
   $('cost').oninput = () => { userCost = true; };
   $('cost').onchange = run;
   $('rerun').onclick = run;
-  ['mode', 'beTol', 'dep'].forEach(id => $(id).onchange = run);
+  ['mode', 'beTol', 'dep', 'merge'].forEach(id => $(id).onchange = run);
   $('vpp').onchange = run;
   $('fSide').onchange = renderTrades; $('fRes').onchange = renderTrades;
   $('csv').onclick = exportCsv;

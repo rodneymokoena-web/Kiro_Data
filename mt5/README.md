@@ -54,8 +54,13 @@ the Python backtest (`backtest/intraday_snap.py`). The swing EA is described fur
    (may complete up to 2 candles after the reversal; a newer zone replaces the order while it is unfilled). Valid 60 min
    after the reversal close; cancelled when a 5m candle opens above the stop. If price is already through the limit it enters
    at market. One trade per entry zone / price.
-8. **Exit:** 3R target (or the major 5m swing, `InpTargetSwing`); stop to breakeven once a completed 5m candle after the fill
-   reaches +1R (if price is already back through the entry, the position is closed at market).
+8. **Exit (v1.10, `InpPartial`, default on):** the broker TP is the **next Rule 1 swing** - the nearest D/W/M/4H/1H swing low
+   (short) below the 3R price that is not swept yet. When price reaches **3R** (`InpTargetR`) the EA closes **50 %**
+   (`InpPartialPct`) at market and moves the stop on the rest to **breakeven**; the rest runs to that swing. No such swing ->
+   the TP is 3R and everything closes there. If the volume can't be split (minimum lot), the whole position is closed at 3R.
+   The +1R breakeven is **off** in this mode unless `InpBEBeforeTP1 = true`. The first target is stored per position in a
+   terminal global variable (`ICTINTRA_TP1_<ticket>`), so a restart keeps it. `InpPartial = false` = the old exits
+   (everything at 3R or the major 5m swing, breakeven at +1R).
 
 At start it replays the 1H history (levels already swept = a 1H wick through + close back) and the last `InpWarmupDays`
 (30) of 5m candles without trading, so the bias, used-up levels and any still-valid order are known; an existing pending
