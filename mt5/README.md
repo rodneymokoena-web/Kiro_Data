@@ -61,6 +61,10 @@ the Python backtest (`backtest/intraday_snap.py`). The swing EA is described fur
    The +1R breakeven is **off** in this mode unless `InpBEBeforeTP1 = true`. The first target is stored per position in a
    terminal global variable (`ICTINTRA_TP1_<ticket>`), so a restart keeps it. `InpPartial = false` = the old exits
    (everything at 3R or the major 5m swing, breakeven at +1R).
+9. **End of day (v1.20, `InpEODClose`, default on):** from **15 min before the market close** (`InpEODMin`, close time
+   `InpEODCloseNY` = 17:00 New York, the US100 CFD daily close, every day incl. Friday) the EA closes all its positions at
+   market, cancels its pending orders and places no new ones until the market reopens. Use "16:00" for the cash close.
+   Needs the right `InpServerGMT` in the Strategy Tester (the cutoff is on New York time).
 
 At start it replays the 1H history (levels already swept = a 1H wick through + close back) and the last `InpWarmupDays`
 (30) of 5m candles without trading, so the bias, used-up levels and any still-valid order are known; an existing pending

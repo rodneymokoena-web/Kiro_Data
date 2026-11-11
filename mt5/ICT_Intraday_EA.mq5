@@ -6,6 +6,7 @@
 //|   displacement -> limit at the latest 5m FVG / volume imbalance   |
 //|   of the drop -> stop at the 5m breaker; half closed at 3R + stop |
 //|   to breakeven, the rest runs to the next Rule 1 swing (v1.10).   |
+//|   Flat 15 min before the 17:00 New York close, every day (v1.20). |
 //|                                                                   |
 //|   SHORT described in the comments; LONG is the mirror image.      |
 //|   Works on COMPLETED 5m candles only (no repaint). Attach to any  |
@@ -16,7 +17,7 @@
 //|   backtest of these rules LOSES money (US100 Oct 2026: -21.6R).   |
 //+------------------------------------------------------------------+
 #property copyright "ICT Intraday EA"
-#property version   "1.10"
+#property version   "1.20"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -77,6 +78,9 @@ input double InpTargetR          = 3.0;     // first target in R (the only targe
 input bool   InpTargetSwing      = false;   // InpPartial = false only: target = nearest major 5m swing (10 each side), else InpTargetR
 input double InpBE_at_R          = 1.0;     // stop to breakeven at +R on completed 5m candles after the fill (0 = off). With InpPartial
 input bool   InpBEBeforeTP1      = false;   // ... it is used only if this is true (else the stop moves to breakeven at the first target)
+input bool   InpEODClose         = true;    // close all trades InpEODMin minutes before the market close; no entries from then to the reopen
+input string InpEODCloseNY       = "17:00"; // market close, New York time (US100 CFD daily close 17:00; cash market 16:00)
+input int    InpEODMin           = 15;      // minutes before the close
 input ulong  InpMagic            = 770101;  // magic number
 
 //------------------------------------------------------------------ small helpers
@@ -272,6 +276,23 @@ struct Sg
 Sg g_sg[];
 
 int    g_vTrades = 0, g_vWins = 0;
+long   g_eodDay = -1;                    // NY day of the last end-of-day flatten
+
+// end of day: minutes of the New York day; NYMin = New York minute of a server time
+int  EODClose() { return (int)StringToInteger(StringSubstr(InpEODCloseNY, 0, 2)) * 60 + (int)StringToInteger(StringSubstr(InpEODCloseNY, 3, 2)); }
+int  NYMin(datetime srv) { return (int)((NYL(srv) % 86400) / 60); }
+bool InEOD(datetime srv)                 // from the cutoff (close - InpEODMin) to the close: flat, no entries
+  {
+   if(!InpEODClose) return false;
+   int m = NYMin(srv), c = EODClose();
+   return m >= c - InpEODMin && m < c;
+  }
+bool EODCandle(datetime start5)          // 5m candle ending at / after the cutoff -> the model closes at its close
+  {
+   if(!InpEODClose) return false;
+   int m = NYMin(start5), c = EODClose();
+   return m + 5 >= c - InpEODMin && m < c;
+  }
 double g_vR = 0;
 int    g_steps = 0, g_h1steps = 0;
 
@@ -400,7 +421,8 @@ void OnTick()
    g_halted = RiskHalted();
    if(g_halted) HandleHalt();
 
-   ManagePartial();                             // per tick: first target -> partial close + breakeven
+   if(InEOD(TimeCurrent())) FlattenEOD();       // per tick: flat from the cutoff to the market close
+   else ManagePartial();                        // per tick: first target -> partial close + breakeven
    // per tick: expire pending orders
    for(int k = 0; k < ArraySize(g_sg); k++)
       if(g_sg[k].ticket > 0 && g_sg[k].want && TimeCurrent() >= g_sg[k].expiry) { CancelReal(k); }
@@ -981,6 +1003,7 @@ void SignalsModel(int i)
       if(g_sg[k].state == 1 && i >= g_sg[k].liveFrom)
         {
          if(T5(i) >= g_sg[k].expiry) { DropSignal(k, "expired"); continue; }
+         if(InEOD(T5(i))) { DropSignal(k, "end of day - no entries before the market close"); continue; }
          if(sh ? O5(i) > g_sg[k].stop : O5(i) < g_sg[k].stop) { DropSignal(k, "a candle opened beyond the stop"); continue; }
          if(sh ? H5(i) >= g_sg[k].level : L5(i) <= g_sg[k].level)
            {
@@ -1009,6 +1032,8 @@ void SignalsModel(int i)
            }
          else if((!part || i > g_sg[k].halfIdx) && (sh ? L5(i) <= g_sg[k].tp : H5(i) >= g_sg[k].tp))
            { ModelExit(k, g_sg[k].tp, half ? "TP1 + TP2" : "target"); continue; }
+         if(EODCandle(T5(i)))                                             // end of day: the rest closes at this candle's close
+           { ModelExit(k, C5(i), g_sg[k].halfIdx >= 0 ? "TP1 + end of day" : "end of day"); continue; }
          if(InpBE_at_R > 0 && !g_sg[k].be && (!InpPartial || InpBEBeforeTP1) &&
             (sh ? L5(i) <= g_sg[k].entry - InpBE_at_R * g_sg[k].risk : H5(i) >= g_sg[k].entry + InpBE_at_R * g_sg[k].risk))
            { g_sg[k].vstop = g_sg[k].entry; g_sg[k].be = true; }
@@ -1124,6 +1149,7 @@ double LotsForRisk(double entry, double stop)
 void PlaceReal(int k)
   {
    if(!LiveAllowed() || g_halted || !g_sg[k].want || g_sg[k].state != 1) return;
+   if(InEOD(TimeCurrent())) return;                                      // no entries in the last minutes before the close
    if(g_sg[k].ticket > 0)
      {
       if(OrderSelect(g_sg[k].ticket)) { trade.OrderDelete(g_sg[k].ticket); g_sg[k].ticket = 0; }   // replace (newer entry zone)
@@ -1280,6 +1306,38 @@ void ManagePartial()
       else if(!valid && PositionSelectByTicket(tk)) trade.PositionClose(tk);       // breakeven already passed: close the rest
       Notify(DoubleToString(part, 2) + " lots closed at the first target " + DoubleToString(tp1, dg) + " - stop to breakeven " +
              DoubleToString(open, dg) + ", rest to " + DoubleToString(tp, dg));
+     }
+  }
+
+//+------------------------------------------------------------------+
+//| end of day: close every position of this EA at market and cancel  |
+//| its pending orders (from close - InpEODMin to the close)           |
+//+------------------------------------------------------------------+
+void FlattenEOD()
+  {
+   int closed = 0, cancelled = 0;
+   for(int n = PositionsTotal() - 1; n >= 0; n--)
+     {
+      ulong tk = PositionGetTicket(n);
+      if(tk == 0 || !PositionSelectByTicket(tk)) continue;
+      if(PositionGetInteger(POSITION_MAGIC) != (long)InpMagic || PositionGetString(POSITION_SYMBOL) != g_sym) continue;
+      if(trade.PositionClose(tk)) closed++;
+      else Print("End-of-day close failed: ", trade.ResultRetcode(), " ", trade.ResultRetcodeDescription());
+     }
+   for(int i = OrdersTotal() - 1; i >= 0; i--)
+     {
+      ulong tk = OrderGetTicket(i);
+      if(tk == 0) continue;
+      if(OrderGetInteger(ORDER_MAGIC) == (long)InpMagic && OrderGetString(ORDER_SYMBOL) == g_sym && trade.OrderDelete(tk)) cancelled++;
+     }
+   for(int k = 0; k < ArraySize(g_sg); k++) if(g_sg[k].state == 1) { g_sg[k].want = false; g_sg[k].ticket = 0; }
+   long day = NYL(TimeCurrent()) / 86400;
+   if((closed > 0 || cancelled > 0) || day != g_eodDay)
+     {
+      if(closed > 0 || cancelled > 0)
+         Notify("End of day (" + IntegerToString(InpEODMin) + " min before the " + InpEODCloseNY + " NY close): " + IntegerToString(closed) +
+                " position(s) closed, " + IntegerToString(cancelled) + " pending order(s) cancelled.");
+      g_eodDay = day;
      }
   }
 

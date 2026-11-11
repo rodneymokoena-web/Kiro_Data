@@ -347,6 +347,7 @@ const Core = (() => {
         tr.profit = c.profit * share; tr.rGiven = c.r != null ? c.r * share : null;
         const rs = c.reason.toUpperCase();
         if (rs === 'BREAKEVEN' || rs === 'TP1_BE') tr.reason = 'BE';
+        else if (rs === 'EOD' || rs === 'TP1_EOD') tr.reason = 'EOD';
       }
       if (missing) { out.profitGiven = false; out.warnings.push(missing + ' trades had no "closed ... profit" line - profit computed from price x lots for all trades.'); for (const tr of out.trades) delete tr.profit; }
     }
