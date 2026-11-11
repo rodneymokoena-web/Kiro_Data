@@ -634,6 +634,12 @@ if new1
     q := B1.size() - 1
     updFvgs(F1, B1, q, 150)
 
+// end of day (intraday): eodExit = this 5m candle ends at / after the cutoff (close - N min) -> open trades close at its close;
+// eodNoFill = the candle starts at / after the cutoff -> no entry fills; eodNext = the NEXT candle is in the no-fill window
+bool eodExit = false
+bool eodNoFill = false
+bool eodNext = false
+
 // ───────────────────────────────────────────────────────────────────────────── 2. virtual fills / exits (orders were set on the previous candle)
 for [k, _e4] in SG
     Sig g = SG.get(k)
@@ -646,6 +652,9 @@ for [k, _e4] in SG
         else if gapOut
             g.state := 3
             g.result := "cancelled (gap beyond retest extreme)"
+        else if eodNoFill
+            g.state := 3
+            g.result := "cancelled (end of day)"
         else if not g.blocked and (g.sh ? high >= g.lvl : low <= g.lvl)
             g.entry := g.sh ? math.max(g.lvl, open) : math.min(g.lvl, open)
             if isSwing and i_swStop == "1H OB 50%"
@@ -685,8 +694,9 @@ for [k, _e4] in SG
             if i_showE
                 label.new(time, g.tp1, "TP1 " + str.tostring(partPct) + "%", xloc=xloc.bar_time, style=label.style_label_left, color=color.teal, textcolor=color.white, size=size.tiny)
             alert(syminfo.ticker + " " + str.tostring(partPct) + "% closed at TP1 " + str.tostring(g.tp1, format.mintick) + " - stop to breakeven " + str.tostring(g.entry, format.mintick) + ", runner to " + str.tostring(g.tp2, format.mintick) + " (" + g.tp2Tx + ")", alert.freq_once_per_bar_close)
-        if hitSL or hitTP
-            float exitPx = hitSL ? g.sl : g.tp
+        bool hitEOD = eodExit and not hitSL and not hitTP             // end of day: the rest closes at this candle's close
+        if hitSL or hitTP or hitEOD
+            float exitPx = hitSL ? g.sl : hitTP ? g.tp : close
             float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
             bool half = g.halfIdx >= 0
             if half                                                  // size-weighted: part at TP1 + the rest at this exit
@@ -695,17 +705,20 @@ for [k, _e4] in SG
             bool trailWin = hitSL and g.beDone and r > 0.05 and not half  // stopped out in profit by the trailing stop
             bool isBE = hitSL and g.beDone and not trailWin and not half
             nTrades += 1
-            nWins += (not hitSL or trailWin or half) ? 1 : 0
-            nLoss += hitSL and not g.beDone ? 1 : 0
+            bool winX = hitEOD ? r > 0.05 : (not hitSL or trailWin or half)
+            bool lossX = hitEOD ? r < -0.05 : (hitSL and not g.beDone)
+            isBE := hitEOD ? not winX and not lossX : isBE
+            nWins += winX ? 1 : 0
+            nLoss += lossX ? 1 : 0
             nBE += isBE ? 1 : 0
             sumR += r
             grossW += r > 0 ? r : 0.0
             grossL += r < 0 ? -r : 0.0
             holdH += (time - BC.T(g.fillIdx)) / 3600000.0
             g.state := 3
-            g.result := half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
+            g.result := hitEOD ? (half ? "TP1 + end of day" : "end of day") : half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
             if i_showE
-                label.new(time, exitPx, (half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                label.new(time, exitPx, (hitEOD ? (half ? "TP1+EOD " : "EOD ") : half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                 line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
             evClosed := true
             alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
@@ -1013,7 +1026,7 @@ if SG.size() > 0
     for k = 0 to SG.size() - 1
         Sig g = SG.get(k)
         if g.state == 1 and g.fI3 >= 0
-            bool liveNext = p + 1 >= g.liveFrom and not g.cancelled and not g.blocked and time_close < g.trigT + (isSwing ? i_swValidMs : i_fill5Ms) and not na(g.sl)
+            bool liveNext = p + 1 >= g.liveFrom and not g.cancelled and not g.blocked and not eodNext and time_close < g.trigT + (isSwing ? i_swValidMs : i_fill5Ms) and not na(g.sl)
             if liveNext
                 float riskPx = math.abs(g.lvl - g.sl)
                 float qty = math.floor(strategy.equity * i_risk / 100 / (riskPx * syminfo.pointvalue) / i_qtyStep) * i_qtyStep
@@ -1031,6 +1044,8 @@ if SG.size() > 0
             strategy.exit(g.id + " x", from_entry=g.id, stop=g.sl, limit=g.tp)
         else if g.state == 3
             strategy.cancel(g.id)
+            if eodExit and g.fillIdx >= 0
+                strategy.close(g.id, comment="end of day")       // flat before the market close (fills at the next open = cutoff)
 
 // ───────────────────────────────────────────────────────────────────────────── 8. levels + table
 var array<line>  lvLines = array.new<line>()

@@ -28,6 +28,9 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
     BIAS         (BIAS_FILTER) the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule) sets the
                  bias: a swing HIGH swept = bearish, a swing LOW swept = bullish. A setup is only taken in the direction of the bias at
                  its reversal candle (session levels and FVG edges do not change the bias).
+    6c END OF DAY (EOD_EXIT) open trades are closed at the close of the 5m candle ending EOD_MIN minutes before the market close
+                 (EOD_CLOSE_NY, New York time; 16:45 for the 17:00 close), also on Fridays; no limit order fills from that time until
+                 the market reopens. A 5m candle followed by a gap of more than 30 minutes (holiday / early close) also ends the trade.
     6b FILTERS   no minimum stop (MIN_STOP_PTS = 0, experiments only). ONE_PER_ENTRY: several setups with
                  the same direction and entry zone / limit price -> one trade (the first signal).
     7 TARGET     TARGET_MODE "partial" (default): close PARTIAL_PCT (half) at TARGET_R x risk (3R) and move the stop on the rest
@@ -54,6 +57,9 @@ ENTRY_VALID = pd.Timedelta(minutes=int(os.environ.get("ENTRY_VALID_MIN", "60")))
 TARGET_MODE = os.environ.get("TARGET_5M", "partial")       # "partial" = half at R, rest at the next Rule 1 swing | "R" = fixed R | "swing" = major 5m swing
 PARTIAL_PCT = float(os.environ.get("PARTIAL_PCT", "50")) / 100.0   # share closed at the first target
 BE_BEFORE_TP1 = os.environ.get("BE_BEFORE_TP1", "0") == "1"        # partial mode: also breakeven at +BE_AT_R before the first target
+EOD_EXIT = os.environ.get("EOD_EXIT", "1") == "1"          # close open trades EOD_MIN minutes before the market close (no fills after that)
+EOD_CLOSE_NY = os.environ.get("EOD_CLOSE_NY", "17:00")    # market close, New York time (US100 CFD daily close 17:00; cash close 16:00)
+EOD_MIN = int(os.environ.get("EOD_MIN", "15"))
 TARGET_R = float(os.environ.get("TARGET_R_5M", "3"))
 BIAS_FILTER = os.environ.get("BIAS_5M", "1") == "1"        # only trade in the direction of the last Rule 1 swing sweep
 BIAS_TFS = ("D", "W", "M", "4H", "1H")                     # Rule 1 swing levels that set the bias
@@ -92,21 +98,51 @@ def _major_swing(h, l, q, short, entry):
     return best
 
 
-def simulate_partial(bars: pd.DataFrame, q: int, short: bool, entry: float, sl: float, tp1: float, tp2: float) -> dict:
+_EOD_CACHE: dict = {}
+
+
+def eod_flags(bars: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
+    """(exit_at_close[k], no_fill[k]) for the 5m candles. exit: the candle ends at / after the cutoff (close - EOD_MIN) and starts
+    before the close, or the next candle starts > 30 min later. no_fill: the candle starts at / after the cutoff and before the close."""
+    key = id(bars)
+    hit = _EOD_CACHE.get(key)
+    if hit is not None and hit[0] is bars:
+        return hit[1]
+    n = len(bars)
+    if not EOD_EXIT:
+        out = (np.zeros(n, bool), np.zeros(n, bool))
+    else:
+        ny = bars.index.tz_convert("America/New_York")
+        mins = (ny.hour * 60 + ny.minute).to_numpy()
+        close = int(EOD_CLOSE_NY[:2]) * 60 + int(EOD_CLOSE_NY[3:])
+        cut = close - EOD_MIN
+        gap = np.r_[np.diff(bars.index.asi8) > 30 * 60 * 10**9, False]
+        out = (((mins + 5 >= cut) & (mins < close)) | gap, (mins >= cut) & (mins < close))
+    if len(_EOD_CACHE) > 4:
+        _EOD_CACHE.clear()
+    _EOD_CACHE[key] = (bars, out)
+    return out
+
+
+def simulate_partial(bars: pd.DataFrame, q: int, short: bool, entry: float, sl: float, tp1: float, tp2: float,
+                     be_always: bool = False) -> dict:
     """Partial exit: PARTIAL_PCT closes at tp1 and the stop on the rest moves to the entry; the rest runs to tp2 (from the next
     candle). tp2 = nan -> everything closes at tp1. The stop is checked before a target on the same candle (as backtest.simulate).
-    Returns exit kind (stop / breakeven / target / tp1+be / tp1+tp2 / open), exit index and price of the last part, tp1 index,
-    and pnl_pts = the size-weighted price move of both parts."""
+    End of day (EOD_EXIT): whatever is still open is closed at the close of the candle ending EOD_MIN minutes before the market
+    close (eod / tp1+eod). be_always: the +BE_AT_R breakeven applies (fixed-R / swing targets).
+    Returns exit kind (stop / breakeven / target / tp1+be / tp1+tp2 / eod / tp1+eod / open), exit index and price of the last
+    part, tp1 index, breakeven index, and pnl_pts = the size-weighted price move of both parts."""
     import backtest as B
     h, l, c = bars["High"].to_numpy(), bars["Low"].to_numpy(), bars["Close"].to_numpy()
     risk = abs(entry - sl)
-    stop, be, half = sl, False, -1
+    stop, be, half, be_k = sl, False, -1, -1
+    eod = eod_flags(bars)[0]
     mv = (lambda x: entry - x) if short else (lambda x: x - entry)
     w1 = PARTIAL_PCT
 
     def done(kind, k, px):
         pnl = w1 * mv(tp1) + (1 - w1) * mv(px) if half >= 0 else mv(px)
-        return {"exit": kind, "exit_idx": k, "exit_price": px, "tp1_idx": half, "pnl_pts": pnl}
+        return {"exit": kind, "exit_idx": k, "exit_price": px, "tp1_idx": half, "be_idx": be_k, "pnl_pts": pnl}
 
     for k in range(q, len(bars)):
         if (h[k] >= stop) if short else (l[k] <= stop):
@@ -116,12 +152,13 @@ def simulate_partial(bars: pd.DataFrame, q: int, short: bool, entry: float, sl: 
                 if np.isnan(tp2):
                     return done("target", k, tp1)
                 half, stop = k, entry                       # half closed, the rest at breakeven, runner from the next candle
-                continue
-            if BE_BEFORE_TP1 and B.BE_AT_R is not None and not be and k > q and \
+            elif (BE_BEFORE_TP1 or be_always) and B.BE_AT_R is not None and not be and k > q and \
                     ((l[k] <= entry - B.BE_AT_R * risk) if short else (h[k] >= entry + B.BE_AT_R * risk)):
-                stop, be = entry, True
+                stop, be, be_k = entry, True, k
         elif k > half and ((l[k] <= tp2) if short else (h[k] >= tp2)):
             return done("tp1+tp2", k, tp2)
+        if eod[k]:                                           # end of day: close the rest at this candle's close
+            return done("tp1+eod" if half >= 0 else "eod", k, float(c[k]))
     return done("open", len(bars) - 1, float(c[-1]))
 
 
@@ -303,7 +340,10 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
             q0 = max(j, int(e["idx"])) + 1
             q1 = min(int(idx.searchsorted(idx[j] + M5 + ENTRY_VALID)), n)
             q = -1
+            no_fill = eod_flags(bars)[1]
             for i in range(q0, q1):
+                if no_fill[i]:                                # last EOD_MIN minutes before the close: the order is cancelled
+                    break
                 if (short and o[i] > stop) or (not short and o[i] < stop):
                     break
                 if (short and h[i] >= level) or (not short and l[i] <= level):
@@ -328,8 +368,8 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
                 sim = simulate_partial(bars, q, short, entry, stop, tp, tp2)
                 pnl = sim["pnl_pts"]
             else:
-                sim = B.simulate(bars, q, short, entry, stop, tp)
-                pnl = (entry - sim["exit_price"]) if short else (sim["exit_price"] - entry)
+                sim = simulate_partial(bars, q, short, entry, stop, tp, np.nan, be_always=True)
+                pnl = sim["pnl_pts"]
             trades.append({"symbol": symbol, "signal": "short" if short else "long", "swept": f"{lv.tf} {lv.price:.2f}",
                            "sweep_time": idx[s], "reversal_time": idx[j] + M5, "fvg_bottom": e["bottom"], "fvg_top": e["top"],
                            "entry_zone": e["kind"], "bos_level": (l[brk] if short else h[brk]),
@@ -341,6 +381,7 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
                            "planned_rr2": (abs(tp2 - entry) / risk) if not np.isnan(tp2) else np.nan,
                            "partial_pct": PARTIAL_PCT if TARGET_MODE == "partial" else np.nan,
                            "tp1_time": idx[sim["tp1_idx"]] if sim.get("tp1_idx", -1) >= 0 else pd.NaT,
+                           "be_time": idx[sim["be_idx"]] if sim.get("be_idx", -1) >= 0 else pd.NaT,
                            "exit": sim["exit"], "exit_time": idx[sim["exit_idx"]],
                            "exit_price": sim["exit_price"], "pnl_pts": pnl, "r_gross": pnl / risk,
                            "r_net": (pnl - B.COST[symbol]) / risk})

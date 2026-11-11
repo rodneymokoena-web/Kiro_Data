@@ -67,6 +67,10 @@ i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g
 //#N i_onePer = input.bool(true, "Intraday: one trade per entry price", group=gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
 //#N PARTIAL = "Partial: half at R, rest at next Rule 1 swing"
 //#N i_tgt5 = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group=gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+//#N i_eod = input.bool(true, "Intraday: close trades before the market close", group=gR, tooltip="Open trades are closed at the close of the 5m candle ending 'minutes before' the market close (New York time), every day including Friday, and no entry order fills from then until the market reopens. Default: US100 CFD daily close 17:00 NY -> flat at 16:45 NY. Use 16:00 for the cash-market close.")
+//#N i_eodH = input.int(17, "Market close (New York) hour", minval=0, maxval=23, inline="eod", group=gR)
+//#N i_eodM = input.int(0, "min", minval=0, maxval=59, inline="eod", group=gR)
+//#N i_eodMin = input.int(15, "Close trades N minutes before the market close", minval=5, step=5, group=gR)
 //#N i_partPct = input.float(50.0, "Partial close % at the first target", minval=1, maxval=99, step=5, group=gR)
 //#N i_beFirst = input.bool(false, "Partial: also move the stop to breakeven at +R (below) before the first target", group=gR, tooltip="Off (default): the stop stays at the breaker until the first target; it moves to breakeven when half is closed. On: the 'Move stop to breakeven at +R' rule also applies before the first target.")
 
@@ -957,6 +961,18 @@ if new1
             sesLo := math.min(sesLo, B1.L(q))
 //#}
 
+// end of day (intraday): eodExit = this 5m candle ends at / after the cutoff (close - N min) -> open trades close at its close;
+// eodNoFill = the candle starts at / after the cutoff -> no entry fills; eodNext = the NEXT candle is in the no-fill window
+//#W bool eodExit = false
+//#W bool eodNoFill = false
+//#W bool eodNext = false
+//#N int nyMin = hour(time, "America/New_York") * 60 + minute(time, "America/New_York")
+//#N int eodCut = i_eodH * 60 + i_eodM - i_eodMin
+//#N int eodEnd = i_eodH * 60 + i_eodM
+//#N bool eodExit = i_eod and isM5 and nyMin + 5 >= eodCut and nyMin < eodEnd
+//#N bool eodNoFill = i_eod and isM5 and nyMin >= eodCut and nyMin < eodEnd
+//#N bool eodNext = i_eod and isM5 and nyMin + 5 >= eodCut and nyMin + 5 < eodEnd
+
 // ───────────────────────────────────────────────────────────────────────────── 2. virtual fills / exits (orders were set on the previous candle)
 for [k, _e4] in SG
     Sig g = SG.get(k)
@@ -970,6 +986,9 @@ for [k, _e4] in SG
         else if gapOut
             g.state := 3
             g.result := "cancelled (gap beyond retest extreme)"
+        else if eodNoFill
+            g.state := 3
+            g.result := "cancelled (end of day)"
         else if not g.blocked and (g.sh ? high >= g.lvl : low <= g.lvl)
             g.entry := g.sh ? math.max(g.lvl, open) : math.min(g.lvl, open)
 //#{W
@@ -1036,8 +1055,9 @@ for [k, _e4] in SG
             if i_showE
                 label.new(time, g.tp1, "TP1 " + str.tostring(partPct) + "%", xloc=xloc.bar_time, style=label.style_label_left, color=color.teal, textcolor=color.white, size=size.tiny)
             alert(syminfo.ticker + " " + str.tostring(partPct) + "% closed at TP1 " + str.tostring(g.tp1, format.mintick) + " - stop to breakeven " + str.tostring(g.entry, format.mintick) + ", runner to " + str.tostring(g.tp2, format.mintick) + " (" + g.tp2Tx + ")", alert.freq_once_per_bar_close)
-        if hitSL or hitTP
-            float exitPx = hitSL ? g.sl : g.tp
+        bool hitEOD = eodExit and not hitSL and not hitTP             // end of day: the rest closes at this candle's close
+        if hitSL or hitTP or hitEOD
+            float exitPx = hitSL ? g.sl : hitTP ? g.tp : close
             float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
             bool half = g.halfIdx >= 0
             if half                                                  // size-weighted: part at TP1 + the rest at this exit
@@ -1046,17 +1066,20 @@ for [k, _e4] in SG
             bool trailWin = hitSL and g.beDone and r > 0.05 and not half  // stopped out in profit by the trailing stop
             bool isBE = hitSL and g.beDone and not trailWin and not half
             nTrades += 1
-            nWins += (not hitSL or trailWin or half) ? 1 : 0
-            nLoss += hitSL and not g.beDone ? 1 : 0
+            bool winX = hitEOD ? r > 0.05 : (not hitSL or trailWin or half)
+            bool lossX = hitEOD ? r < -0.05 : (hitSL and not g.beDone)
+            isBE := hitEOD ? not winX and not lossX : isBE
+            nWins += winX ? 1 : 0
+            nLoss += lossX ? 1 : 0
             nBE += isBE ? 1 : 0
             sumR += r
             grossW += r > 0 ? r : 0.0
             grossL += r < 0 ? -r : 0.0
             holdH += (time - BC.T(g.fillIdx)) / 3600000.0
             g.state := 3
-            g.result := half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
+            g.result := hitEOD ? (half ? "TP1 + end of day" : "end of day") : half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
             if i_showE
-                label.new(time, exitPx, (half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
+                label.new(time, exitPx, (hitEOD ? (half ? "TP1+EOD " : "EOD ") : half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
                 line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
             evClosed := true
             alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
@@ -1757,7 +1780,7 @@ if i_showE and tfOK and SG.size() > 0
 //#S     for k = 0 to SG.size() - 1
 //#S         Sig g = SG.get(k)
 //#S         if g.state == 1 and g.fI3 >= 0
-//#S             bool liveNext = p + 1 >= g.liveFrom and not g.cancelled and not g.blocked and time_close < g.trigT + (isSwing ? i_swValidMs : i_fill5Ms) and not na(g.sl)
+//#S             bool liveNext = p + 1 >= g.liveFrom and not g.cancelled and not g.blocked and not eodNext and time_close < g.trigT + (isSwing ? i_swValidMs : i_fill5Ms) and not na(g.sl)
 //#S             if liveNext
 //#S                 float riskPx = math.abs(g.lvl - g.sl)
 //#S                 float qty = math.floor(strategy.equity * i_risk / 100 / (riskPx * syminfo.pointvalue) / i_qtyStep) * i_qtyStep
@@ -1775,6 +1798,8 @@ if i_showE and tfOK and SG.size() > 0
 //#S             strategy.exit(g.id + " x", from_entry=g.id, stop=g.sl, limit=g.tp)
 //#S         else if g.state == 3
 //#S             strategy.cancel(g.id)
+//#S             if eodExit and g.fillIdx >= 0
+//#S                 strategy.close(g.id, comment="end of day")       // flat before the market close (fills at the next open = cutoff)
 
 // ───────────────────────────────────────────────────────────────────────────── 8. levels + table
 var array<line>  lvLines = array.new<line>()
@@ -1868,7 +1893,7 @@ if barstate.islast and i_table
     table.cell(tb, 0, 2, "Reversal window / entry valid", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 2, str.tostring(i_rev5) + " x 5m / " + str.tostring(i_fill5) + " min", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 10, "Stop / target", text_color=color.white, text_size=size.small)
-    table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == PARTIAL ? str.tostring(partPct) + "% at " + str.tostring(i_tgtR) + "R + BE, rest at next Rule 1 swing" + (i_beFirst and i_be ? " (BE +" + str.tostring(i_beR) + "R before TP1)" : "") : i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be and i_tgt5 != PARTIAL ? ", BE +" + str.tostring(i_beR) + "R" : ""), text_color=color.white, text_size=size.small)
+    table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == PARTIAL ? str.tostring(partPct) + "% at " + str.tostring(i_tgtR) + "R + BE, rest at next Rule 1 swing" + (i_beFirst and i_be ? " (BE +" + str.tostring(i_beR) + "R before TP1)" : "") : i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be and i_tgt5 != PARTIAL ? ", BE +" + str.tostring(i_beR) + "R" : "") + (i_eod ? "; flat " + str.tostring(i_eodMin) + " min before the " + str.format("{0,number,00}:{1,number,00}", i_eodH, i_eodM) + " NY close" : ""), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 12, "Bias (last Rule 1 swing sweep)" + (i_bias5 ? "" : " - filter off"), text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 12, biasS.get(0), text_color=biasA.get(0) < 0 ? color.red : biasA.get(0) > 0 ? color.lime : color.white, text_size=size.small)
     table.cell(tb, 0, 7, "Watching sweeps / orders", text_color=color.white, text_size=size.small)

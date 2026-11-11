@@ -31,8 +31,9 @@ COST = json.loads(Path(f"data/{SOURCE}/costs.json").read_text())[SYMBOL]
 BE_AT_R = 1.0
 
 t = pd.read_csv(SRC, parse_dates=["reversal_time", "entry_time", "exit_time", "sweep_time"])
-if "tp1_time" in t.columns:
-    t["tp1_time"] = pd.to_datetime(t["tp1_time"], utc=True)
+for _c in ("tp1_time", "be_time"):
+    if _c in t.columns:
+        t[_c] = pd.to_datetime(t[_c], utc=True)
 t = t[t.entry_time.notna()].sort_values(["entry_time", "reversal_time"]).reset_index(drop=True)
 bars = pd.read_csv(f"data/{SOURCE}/{SYMBOL}_5m.csv", parse_dates=["Datetime"], index_col="Datetime")
 bars = bars[(bars.index >= t.reversal_time.min() - pd.Timedelta(days=1)) & (bars.index <= t.exit_time.max() + pd.Timedelta(days=1))]
@@ -73,8 +74,9 @@ def is_partial(r) -> bool:
 
 
 for r in t.itertuples(index=False):
-    if is_partial(r):                     # partial trades (intraday_snap TARGET_5M=partial): exits come from the trade list
-        trades.append((r, None, r.exit))
+    if is_partial(r) or "be_time" in t.columns:   # newer trade lists carry every exit time: use them (incl. end-of-day exits)
+        be = getattr(r, "be_time", pd.NaT)
+        trades.append((r, be if pd.notna(be) else None, r.exit))
         continue
     be_t, kind, ex_t = resim(r)
     if kind != r.exit or ex_t != r.exit_time:
@@ -145,7 +147,18 @@ for row in rows:
         ]
     trig = "take profit" if r.exit in ("target", "tp1+tp2") else "stop loss"
     xk = r.exit.replace("+", "_").upper()
-    ev += [
+    x_t = r.exit_time + pd.Timedelta(minutes=5) if "eod" in r.exit else r.exit_time   # EOD: at the close of the candle
+    if "eod" in r.exit:                                  # end of day: the EA closes the rest at market 15 min before the close
+        xp = px(r.exit_price)
+        ev += [
+            (x_t, 8.9, "EXP", f"end of day: closing #{o_tk} {rest:.2f} lots at market before the market close"),
+            (x_t, 9, "TRD", f"market {cside} {rest:.2f} {SYMBOL}, close #{o_tk} ({xp} / {xp} / {xp})"),
+            (x_t, 10, "TRD", f"deal #{c_tk} {cside} {rest:.2f} {SYMBOL} at {xp} done (based on order #{c_tk})"),
+            (x_t, 11, "TRD", f"deal performed [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {xp}]"),
+            (x_t, 12, "TRD", f"order performed {cside} {rest:.2f} at {xp} [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {xp}]"),
+            (x_t, 13, "EXP", f"closed #{o_tk} {xk} profit {row['profit']:+.2f} USD (spread {COST:g} pts) | {r.r_net:+.2f}R net"),
+        ]
+    else: ev += [
         (r.exit_time, 9, "TRD", f"{trig} triggered #{o_tk} {side} {rest:.2f} {SYMBOL} {px(r.entry_price)} sl: {cur_sl} tp: {tp} [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)}]"),
         (r.exit_time, 10, "TRD", f"deal #{c_tk + 0} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)} done (based on order #{c_tk})"),
         (r.exit_time, 11, "TRD", f"deal performed [#{c_tk} {cside} {rest:.2f} {SYMBOL} at {px(r.exit_price)}]"),
@@ -153,7 +166,7 @@ for row in rows:
         (r.exit_time, 13, "EXP", f"closed #{o_tk} {xk} profit {row['profit']:+.2f} USD (spread {COST:g} pts) | {r.r_net:+.2f}R net"),
     ]
     # phase within a candle: exits of trades filled on an earlier candle, then orders / fills, then exits on the fill candle
-    events += [(a, b, o_tk, c, d, 0 if (b >= 9 and a > r.entry_time) else (2 if b >= 9 else 1)) for (a, b, c, d) in ev]
+    events += [(a, b, o_tk, c, d, 0 if (b >= 8.9 and a > r.entry_time) else (2 if b >= 8.9 else 1)) for (a, b, c, d) in ev]
 
 events.sort(key=lambda e: (e[0], e[5], e[2], e[1]))  # each trade's lines stay together
 
@@ -184,6 +197,8 @@ put("CS", "Tester", f"{SYMBOL},M5: testing of Experts\\{EXPERT}.ex5 from {start.
 _part = "target2" in t.columns and t["partial_pct"].notna().any()
 _tgt = (f"{t['partial_pct'].dropna().iloc[0] * 100:g}% at {t['planned_rr'].iloc[0]:g}R + breakeven, rest at the next Rule 1 swing" if _part
         else "target 3R, breakeven +1R")
+if t["exit"].astype(str).str.contains("eod").any() or os.environ.get("EOD_EXIT", "1") == "1":
+    _tgt += f", close {os.environ.get('EOD_MIN', '15')} min before the {os.environ.get('EOD_CLOSE_NY', '17:00')} NY close"
 put("CS", f"{EXPERT} ({SYMBOL},M5)", f"inputs: bias filter=true, IFVG 5m/15m, BOS close or wick + post-sweep MSS, reversal 48 candles, entry valid 60 min, {_tgt}, macro liquidity=true, "
     f"min stop {os.environ.get('MIN_STOP_PTS', '0')} pts, one trade per entry={os.environ.get('ONE_PER_ENTRY', '1') == '1'}", sim=start)
 for (sim, _o, _tk, kind, msg, _ph) in events:
