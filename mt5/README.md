@@ -1,3 +1,22 @@
+# MT5 Backtest Analyzer - `MT5_Backtest_Analyzer.html`
+
+A single HTML file (no install, no internet, nothing uploaded). Download it, open it in a browser and drop in:
+- an MT5 **Strategy Tester journal log** (`Tester\logs\*.log` or `Tester\Agent-*\logs\*.log`, UTF-16 or UTF-8; or paste the Journal
+  tab text), or the tester-style logs from `backtest/mt5_tester_log.py`, or
+- an MT5 **Strategy Tester report** saved as HTML (Backtest tab -> right-click -> Report -> HTML).
+
+It rebuilds every trade from the deals and shows: net PnL, return %, final balance, win rate (also excluding breakeven),
+profit factor, expectancy, average win / loss and payoff, largest win / loss, streaks, max drawdown (money, % and duration),
+recovery factor, Sharpe per trade, total / average R, max drawdown in R, SQN, trades per weekday, holding time; long vs short,
+exit reasons (TP / SL / BE / trail / close), monthly, by entry hour and by weekday; balance + drawdown chart, monthly and hourly
+bars, R distribution; a sortable, filterable trade list with CSV export.
+
+Journal logs have no money per deal, so profit = price move x lots x *value per lot per 1.0 move* (guessed from the symbol:
+indices 1, gold 100, xxxUSD FX 100000 - check it) minus a *cost per lot* solved so the total matches the log's final balance.
+HTML reports and `mt5_tester_log.py` logs carry their own profit. Account type (hedging / netting) and breakeven tolerance can be set.
+
+---
+
 # ICT Intraday EA (MetaTrader 5) - `ICT_Intraday_EA.mq5`
 
 An Expert Advisor for the **intraday model only** (US100, 5m), with the same rules as the intraday TradingView scripts and
