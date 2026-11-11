@@ -5,7 +5,8 @@
 #property copyright "MTF-FVG"
 #property version   "1.00"
 #property description "4H bias (swing sweep / inside 4H FVG) -> 15m break of structure ->"
-#property description "first overlapping 5m FVG / inverse FVG -> market entry when price taps the zone."
+#property description "first overlapping 5m FVG / inverse FVG -> limit order resting at the zone edge"
+#property description "(placed before price touches it), with an alert when the order is placed."
 
 #include <Trade/Trade.mqh>
 
@@ -16,6 +17,7 @@ enum ENUM_TP_MODE    { TP_RR = 0, TP_STRUCTURE = 1 };
 enum ENUM_LOT_MODE   { LOT_FIXED = 0, LOT_RISK_PCT = 1 };
 enum ENUM_RR_CHOICE  { RR_2R = 0, RR_3R = 1 };
 enum ENUM_RISK_CHOICE{ RISK_1_PCT = 0, RISK_HALF_PCT = 1 };
+enum ENUM_ENTRY_TYPE { ENTRY_LIMIT = 0, ENTRY_MARKET_ON_TOUCH = 1 };
 
 //--- inputs
 input group "Timeframes"
@@ -47,6 +49,15 @@ input ENUM_TP_MODE    InpTpMode     = TP_RR;      // Take-profit mode
 input ENUM_RR_CHOICE  InpRRChoice   = RR_2R;      // RR target: 2R or 3R
 input bool            InpOneAtATime = true;       // One open position at a time
 
+input group "Entry order"
+input ENUM_ENTRY_TYPE InpEntryType  = ENTRY_LIMIT; // Limit order at entry (before touch), or market on touch
+input bool            InpCancelOnRemove = true;  // Delete this EA's pending orders when the EA is removed
+
+input group "Alerts"
+input bool            InpAlertPopup = true;       // Popup + sound in MT5 when a limit order is placed
+input bool            InpAlertPush  = false;      // Push to MT5 mobile app (needs MetaQuotes ID in Options)
+input bool            InpAlertEmail = false;      // Email (needs email set up in Options)
+
 input group "Position sizing"
 input ENUM_LOT_MODE   InpLotMode    = LOT_RISK_PCT;
 input double          InpFixedLots  = 0.01;       // Fixed lots
@@ -72,9 +83,11 @@ struct Zone
    double bot;
    double tgt;     // structure target (broken 15m swing)
    int    dir;     // -1 sell, +1 buy
-   bool   armed;   // true until first tap
+   bool   armed;   // true until traded (filled / tapped) or skipped
    ulong  id;
    datetime t0;
+   ulong  ticket;  // resting limit order ticket (0 = none)
+   datetime lastTry; // last time a limit placement was attempted
   };
 Zone   g_zones[];
 ulong  g_nextId = 1;
@@ -152,6 +165,22 @@ bool Overlap(double aT, double aB, double bT, double bB) { return (aB <= bT && a
 double RRValue()      { return (InpRRChoice == RR_3R) ? 3.0 : 2.0; }
 double RiskPercent()  { return (InpRiskChoice == RISK_HALF_PCT) ? 0.5 : 1.0; }
 
+void SendAlert(const string msg)
+  {
+   if(InpAlertPopup) Alert(msg);
+   if(InpAlertPush)  SendNotification(msg);
+   if(InpAlertEmail) SendMail("MTF-FVG " + _Symbol, msg);
+   Print(msg);
+  }
+
+bool OrderIsPending(ulong ticket) { return ticket != 0 && OrderSelect(ticket); }
+
+void CancelOrder(ulong ticket)
+  {
+   if(OrderIsPending(ticket) && !trade.OrderDelete(ticket))
+      PrintFormat("Could not delete order %I64u: retcode=%d (%s)", ticket, trade.ResultRetcode(), trade.ResultRetcodeDescription());
+  }
+
 bool HasPosition()
   {
    for(int i = PositionsTotal() - 1; i >= 0; i--)
@@ -169,6 +198,15 @@ bool InTradingWindow()
    TimeToStruct(TimeCurrent(), dt);
    if(InpStartHour <= InpEndHour) return (dt.hour >= InpStartHour && dt.hour < InpEndHour);
    return (dt.hour >= InpStartHour || dt.hour < InpEndHour); // overnight window
+  }
+
+bool TradeAllowedNow(int dir)
+  {
+   if(dir < 0 && !InpAllowShort) return false;
+   if(dir > 0 && !InpAllowLong)  return false;
+   if(!InTradingWindow()) return false;
+   if(InpMaxSpreadPts > 0 && SymbolInfoInteger(_Symbol, SYMBOL_SPREAD) > InpMaxSpreadPts) return false;
+   return true;
   }
 
 string ZoneName(ulong id) { return PFX + (string)id; }
@@ -202,6 +240,11 @@ void RemoveZone(int idx)
    int n = ArraySize(g_zones);
    if(idx < 0 || idx >= n) return;
    if(InpDrawZones) ObjectDelete(0, ZoneName(g_zones[idx].id));
+   if(g_zones[idx].ticket != 0)
+     {
+      CancelOrder(g_zones[idx].ticket);
+      PrintFormat("Zone removed: limit order %I64u cancelled", g_zones[idx].ticket);
+     }
    for(int i = idx; i < n - 1; i++)
       g_zones[i] = g_zones[i + 1];
    ArrayResize(g_zones, n - 1);
@@ -220,6 +263,8 @@ void AddZone(double top, double bot, int dir, datetime t0, double tgt)
    g_zones[n].armed = true;
    g_zones[n].id    = g_nextId++;
    g_zones[n].t0    = t0;
+   g_zones[n].ticket  = 0;
+   g_zones[n].lastTry = 0;
    DrawZone(g_zones[n]);
    PrintFormat("New %s zone [%s - %s] target %s", dir < 0 ? "SELL" : "BUY",
                DoubleToString(bot, _Digits), DoubleToString(top, _Digits), DoubleToString(tgt, _Digits));
@@ -385,73 +430,163 @@ void CaptureZones()
   }
 
 //+------------------------------------------------------------------+
-//| Execute a tapped zone                                            |
+//| SL / TP for a zone given an entry price                          |
 //+------------------------------------------------------------------+
-void ExecuteTap(int idx)
+bool CalcLevels(int idx, double entry, double &sl, double &tp, double &risk)
   {
-   g_zones[idx].armed = false;                 // a zone is only ever traded once
-   FinishZoneDrawing(g_zones[idx]);
-
-   int dir = g_zones[idx].dir;
-   if(dir < 0 && !InpAllowShort) return;
-   if(dir > 0 && !InpAllowLong)  return;
-   if(!InTradingWindow()) return;
-   if(InpOneAtATime && HasPosition()) return;
-   if(InpMaxSpreadPts > 0 && SymbolInfoInteger(_Symbol, SYMBOL_SPREAD) > InpMaxSpreadPts)
-     { Print("Tap skipped: spread too wide"); return; }
-
+   int    dir = g_zones[idx].dir;
    double top = g_zones[idx].top, bot = g_zones[idx].bot, tgt = g_zones[idx].tgt;
    double buf = (top - bot) * InpSlBufPct / 100.0;
-   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
-   double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
    double minDist = (double)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL) * _Point;
-
-   double entry, sl, tp, risk;
    if(dir < 0)
      {
-      entry = bid;
-      sl    = top + buf;
-      risk  = sl - entry;
-      if(risk <= 0) return;                    // price already blew through the zone
+      sl   = top + buf;
+      risk = sl - entry;
+      if(risk <= 0) return false;              // price already beyond the stop
       if(risk < minDist) { sl = entry + minDist; risk = minDist; }
       tp = (InpTpMode == TP_STRUCTURE && tgt > 0 && tgt < entry) ? tgt : entry - risk * RRValue();
       if(entry - tp < minDist) tp = entry - minDist;
      }
    else
      {
-      entry = ask;
-      sl    = bot - buf;
-      risk  = entry - sl;
-      if(risk <= 0) return;
+      sl   = bot - buf;
+      risk = entry - sl;
+      if(risk <= 0) return false;
       if(risk < minDist) { sl = entry - minDist; risk = minDist; }
       tp = (InpTpMode == TP_STRUCTURE && tgt > 0 && tgt > entry) ? tgt : entry + risk * RRValue();
       if(tp - entry < minDist) tp = entry + minDist;
      }
-
    sl = NormalizeDouble(sl, _Digits);
    tp = NormalizeDouble(tp, _Digits);
+   return true;
+  }
+
+double RoundToTick(double price)
+  {
+   double ts = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_SIZE);
+   if(ts > 0) price = MathRound(price / ts) * ts;
+   return NormalizeDouble(price, _Digits);
+  }
+
+//+------------------------------------------------------------------+
+//| Place a resting limit order at the zone's near edge              |
+//|  Sell limit at the zone bottom, buy limit at the zone top.       |
+//+------------------------------------------------------------------+
+void PlaceLimit(int idx)
+  {
+   g_zones[idx].lastTry = TimeCurrent();
+   int    dir   = g_zones[idx].dir;
+   double entry = RoundToTick(dir < 0 ? g_zones[idx].bot : g_zones[idx].top);
+   double bid   = SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double ask   = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+   double minDist = (double)MathMax(SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL),
+                                    SymbolInfoInteger(_Symbol, SYMBOL_TRADE_FREEZE_LEVEL)) * _Point;
+
+   // A limit must sit on the far side of the current price; if price is too close, wait.
+   if(dir < 0 && entry - bid < minDist + _Point) return;
+   if(dir > 0 && ask - entry < minDist + _Point) return;
+
+   double sl, tp, risk;
+   if(!CalcLevels(idx, entry, sl, tp, risk)) return;
+   double lots = CalcLots(risk);
+
+   ENUM_ORDER_TYPE_TIME tt = ORDER_TIME_GTC;
+   if((SymbolInfoInteger(_Symbol, SYMBOL_EXPIRATION_MODE) & SYMBOL_EXPIRATION_GTC) == 0) tt = ORDER_TIME_DAY;
+
+   trade.SetTypeFilling(ORDER_FILLING_RETURN);          // pending orders
+   bool ok = (dir < 0) ? trade.SellLimit(lots, entry, _Symbol, sl, tp, tt, 0, "MTF-FVG sell limit")
+                       : trade.BuyLimit(lots, entry, _Symbol, sl, tp, tt, 0, "MTF-FVG buy limit");
+   trade.SetTypeFillingBySymbol(_Symbol);               // back to market-order filling
+
+   if(ok && trade.ResultOrder() > 0)
+     {
+      g_zones[idx].ticket = trade.ResultOrder();
+      SendAlert(StringFormat("MTF-FVG %s: %s LIMIT placed @ %s | SL %s | TP %s | %.2f lots | %s target",
+                _Symbol, dir < 0 ? "SELL" : "BUY",
+                DoubleToString(entry, _Digits), DoubleToString(sl, _Digits), DoubleToString(tp, _Digits),
+                lots, InpTpMode == TP_STRUCTURE ? "structure" : (InpRRChoice == RR_3R ? "3R" : "2R")));
+     }
+   else
+      PrintFormat("Limit order failed: retcode=%d (%s)", trade.ResultRetcode(), trade.ResultRetcodeDescription());
+  }
+
+//+------------------------------------------------------------------+
+//| Market entry on touch (used in market mode, or as a fallback     |
+//| when a limit could not rest before price reached the zone)       |
+//+------------------------------------------------------------------+
+void MarketEntry(int idx)
+  {
+   g_zones[idx].armed = false;                 // a zone is only ever traded once
+   FinishZoneDrawing(g_zones[idx]);
+
+   int dir = g_zones[idx].dir;
+   if(!TradeAllowedNow(dir)) return;
+   if(InpOneAtATime && HasPosition()) return;
+
+   double entry = (dir < 0) ? SymbolInfoDouble(_Symbol, SYMBOL_BID) : SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+   double sl, tp, risk;
+   if(!CalcLevels(idx, entry, sl, tp, risk)) return;
    double lots = CalcLots(risk);
 
    bool ok = (dir < 0) ? trade.Sell(lots, _Symbol, 0.0, sl, tp, "MTF-FVG sell")
                        : trade.Buy(lots, _Symbol, 0.0, sl, tp, "MTF-FVG buy");
    if(ok)
-      PrintFormat("%s %.2f lots @ %s SL %s TP %s", dir < 0 ? "SELL" : "BUY", lots,
+      PrintFormat("%s %.2f lots @ market %s SL %s TP %s", dir < 0 ? "SELL" : "BUY", lots,
                   DoubleToString(entry, _Digits), DoubleToString(sl, _Digits), DoubleToString(tp, _Digits));
    else
       PrintFormat("Order failed: retcode=%d (%s)", trade.ResultRetcode(), trade.ResultRetcodeDescription());
   }
 
-void CheckTaps()
+//+------------------------------------------------------------------+
+//| Per-tick management of zones and their orders                    |
+//+------------------------------------------------------------------+
+void ManageZones()
   {
    int n = ArraySize(g_zones);
    if(n == 0) return;
-   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
-   double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+   double bid  = SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double ask  = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+   bool   busy = InpOneAtATime && HasPosition();
+
    for(int i = n - 1; i >= 0; i--)
      {
       if(!g_zones[i].armed) continue;
-      if(g_zones[i].dir < 0 && bid >= g_zones[i].bot)      ExecuteTap(i);
-      else if(g_zones[i].dir > 0 && ask <= g_zones[i].top) ExecuteTap(i);
+      int  dir     = g_zones[i].dir;
+      bool touched = (dir < 0) ? (bid >= g_zones[i].bot) : (ask <= g_zones[i].top);
+
+      // 1) A limit order is (or was) resting for this zone
+      if(g_zones[i].ticket != 0)
+        {
+         ulong tk = g_zones[i].ticket;
+         if(OrderIsPending(tk))
+           {
+            // Pull the order while another trade is open or trading is not allowed right now.
+            if(busy || !TradeAllowedNow(dir))
+              {
+               CancelOrder(tk);
+               g_zones[i].ticket = 0;
+              }
+            continue;
+           }
+         if(!HistoryOrderSelect(tk)) continue;  // history not updated yet; check next tick
+         ENUM_ORDER_STATE st = (ENUM_ORDER_STATE)HistoryOrderGetInteger(tk, ORDER_STATE);
+         g_zones[i].ticket = 0;
+         if(st == ORDER_STATE_EXPIRED) continue;   // re-place later
+         g_zones[i].armed = false;                 // filled, or cancelled by you
+         FinishZoneDrawing(g_zones[i]);
+         PrintFormat("Limit order %I64u %s", tk, st == ORDER_STATE_FILLED || st == ORDER_STATE_PARTIAL ? "filled" : "closed (not re-placed)");
+         continue;
+        }
+
+      // 2) No order resting
+      if(touched)
+        {
+         // Market mode, or the limit could not be placed in time -> enter at market (or skip if blocked)
+         MarketEntry(i);
+         continue;
+        }
+      if(InpEntryType == ENTRY_LIMIT && !busy && TradeAllowedNow(dir) && TimeCurrent() - g_zones[i].lastTry >= 30)
+         PlaceLimit(i);
      }
   }
 
@@ -509,6 +644,16 @@ int OnInit()
 void OnDeinit(const int reason)
   {
    ObjectsDeleteAll(0, PFX);
+   if(InpCancelOnRemove)
+     {
+      for(int i = OrdersTotal() - 1; i >= 0; i--)
+        {
+         ulong tk = OrderGetTicket(i);
+         if(tk == 0) continue;
+         if(OrderGetString(ORDER_SYMBOL) == _Symbol && (ulong)OrderGetInteger(ORDER_MAGIC) == InpMagic)
+            trade.OrderDelete(tk);
+        }
+     }
   }
 
 void OnTick()
@@ -520,6 +665,6 @@ void OnTick()
       g_lastEntryBar = bt;
       OnNewBar();
      }
-   CheckTaps();
+   ManageZones();
   }
 //+------------------------------------------------------------------+
