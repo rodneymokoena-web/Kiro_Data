@@ -1,5 +1,5 @@
 //@version=6
-indicator("D/4H/1H POI > 15m BOS > 5m FVG/iFVG Entry", shorttitle="MTF-FVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+indicator("D/4H/1H POI > 15m BOS > 1m FVG/iFVG Entry", shorttitle="MTF-FVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
 
 // ============================================================================
 // INDICATOR — run on the 5m chart.
@@ -19,8 +19,8 @@ tfD   = input.timeframe("D",   "Bias timeframe (Daily)", group=gTf)
 tf4h  = input.timeframe("240", "Bias timeframe (4H)", group=gTf)
 tf1h  = input.timeframe("60",  "Second bias timeframe (1H)", group=gTf)
 tf15  = input.timeframe("15",  "Structure timeframe (15m)", group=gTf)
-useChartForEntry = input.bool(true, "Use chart TF for entry (recommended: run on 5m)", group=gTf, tooltip="On: the 5m entry logic runs on whatever chart you load (meant for 5m). Off: it is requested from the fixed entry TF below.")
-tf5   = input.timeframe("5",   "Entry timeframe (5m) when above is off", group=gTf)
+zoneTF = input.timeframe("1", "Rule 3 entry-zone timeframe = run the chart on this", options=["1", "5"], group=gTf, tooltip="Zones are built from the chart's own bars. Put the chart on 1m for Rule 3 (1m zones), or 5m for the old behaviour. A warning shows if the chart doesn't match.")
+tfBiasChk = input.timeframe("5", "Rule 1 bias-check timeframe (5m)", group=gTf, tooltip="Bias sweeps / FVG closes are checked on closed bars of this timeframe, and the bias duration is counted in these bars, whatever the chart timeframe.")
 
 gBias = "Bias (D / 4H / 1H)"
 biasMode = input.string("D + 4H + 1H", "Rule 1 bias timeframes", options=["D + 4H + 1H", "D + 4H", "4H + 1H", "D", "4H", "1H"], group=gBias, tooltip="Pick which timeframes the bias conditions (swing sweep / close inside FVG) are checked on. A hit on any selected timeframe sets the bias.")
@@ -36,7 +36,7 @@ biasBars = input.int(500, "Bias stays valid for (bars)", minval=20, group=gBias)
 gStruct = "15m structure"
 swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
 
-gEntry = "5m entry zone"
+gEntry = "Entry zone (Rule 3)"
 useIFVG      = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
 confirmBars  = input.bool(true, "Only act on confirmed bars (no intrabar repaint)", group=gEntry, tooltip="Gates sweeps, FVG capture and taps to bar close so signals don't flicker intrabar.")
 
@@ -59,7 +59,6 @@ cZS   = input.color(color.new(color.red, 65),   "Sell zone color", group=gShow)
 cZB   = input.color(color.new(color.green, 65), "Buy zone color",  group=gShow)
 cLine = input.color(color.aqua, "15m level color", group=gShow)
 
-tfEntry = useChartForEntry ? timeframe.period : tf5
 okBar   = not confirmBars or barstate.isconfirmed
 
 // =============================== 4H DATA =====================================
@@ -99,17 +98,30 @@ if not na(h4uFt) and (h4uFt != nz(h4uFt[1]) or h4uFb != nz(h4uFb[1]))
         box.delete(poiDemBox)
     poiDemBox := box.new(bar_index, f4uT, bar_index, f4uB, xloc=xloc.bar_index, border_color=cPoi, bgcolor=color.new(cPoi, 88), extend=extend.right, text="4H FVG", text_color=cPoi, text_size=size.small)
 
+// ------------------- Rule 1 bias-check bars (5m, closed) ---------------------
+// On a 5m chart these are the chart's own bars. On a 1m chart they are the last
+// closed 5m bar (lookahead_on + [1] = no repaint), evaluated once per new 5m bar.
+chartIsChk = timeframe.period == tfBiasChk
+[rH, rL, rC, rH1, rL1] = request.security(syminfo.tickerid, tfBiasChk, [high[1], low[1], close[1], high[2], low[2]], lookahead=barmerge.lookahead_on)
+bH  = chartIsChk ? high    : rH
+bL  = chartIsChk ? low     : rL
+bC  = chartIsChk ? close   : rC
+bH1 = chartIsChk ? high[1] : rH1
+bL1 = chartIsChk ? low[1]  : rL1
+biasTick = chartIsChk or ta.change(time(tfBiasChk)) != 0
+biasMs   = biasBars * timeframe.in_seconds(tfBiasChk) * 1000
+
 // ----------------------------- 4H bias flags --------------------------------
-wickSweepHi  = not na(swHigh4) and high > swHigh4 and close < swHigh4
-closeSweepHi = not na(swHigh4) and high[1] > swHigh4 and close < swHigh4
+wickSweepHi  = not na(swHigh4) and bH > swHigh4 and bC < swHigh4
+closeSweepHi = not na(swHigh4) and bH1 > swHigh4 and bC < swHigh4
 sweepHi = sweepConfirm == "Wick" ? wickSweepHi : sweepConfirm == "Close" ? closeSweepHi : (wickSweepHi or closeSweepHi)
 
-wickSweepLo  = not na(swLow4) and low < swLow4 and close > swLow4
-closeSweepLo = not na(swLow4) and low[1] < swLow4 and close > swLow4
+wickSweepLo  = not na(swLow4) and bL < swLow4 and bC > swLow4
+closeSweepLo = not na(swLow4) and bL1 < swLow4 and bC > swLow4
 sweepLo = sweepConfirm == "Wick" ? wickSweepLo : sweepConfirm == "Close" ? closeSweepLo : (wickSweepLo or closeSweepLo)
 
-inFvg4Bear = not na(f4bT) and close <= f4bT and close >= f4bB
-inFvg4Bull = not na(f4uT) and close <= f4uT and close >= f4uB
+inFvg4Bear = not na(f4bT) and bC <= f4bT and bC >= f4bB
+inFvg4Bull = not na(f4uT) and bC <= f4uT and bC >= f4uB
 
 // ------------------------- 1H bias (same rules as 4H) ------------------------
 [h1PH, h1PL, h1bFt, h1bFb, h1uFt, h1uFb] = request.security(syminfo.tickerid, tf1h, h4(), lookahead=barmerge.lookahead_off)
@@ -130,14 +142,14 @@ if not na(h1uFt) and (h1uFt != nz(h1uFt[1]) or h1uFb != nz(h1uFb[1]))
     f1uT := h1uFt
     f1uB := h1uFb
 
-wickSweepHi1  = not na(swHigh1) and high > swHigh1 and close < swHigh1
-closeSweepHi1 = not na(swHigh1) and high[1] > swHigh1 and close < swHigh1
+wickSweepHi1  = not na(swHigh1) and bH > swHigh1 and bC < swHigh1
+closeSweepHi1 = not na(swHigh1) and bH1 > swHigh1 and bC < swHigh1
 sweepHi1 = sweepConfirm == "Wick" ? wickSweepHi1 : sweepConfirm == "Close" ? closeSweepHi1 : (wickSweepHi1 or closeSweepHi1)
-wickSweepLo1  = not na(swLow1) and low < swLow1 and close > swLow1
-closeSweepLo1 = not na(swLow1) and low[1] < swLow1 and close > swLow1
+wickSweepLo1  = not na(swLow1) and bL < swLow1 and bC > swLow1
+closeSweepLo1 = not na(swLow1) and bL1 < swLow1 and bC > swLow1
 sweepLo1 = sweepConfirm == "Wick" ? wickSweepLo1 : sweepConfirm == "Close" ? closeSweepLo1 : (wickSweepLo1 or closeSweepLo1)
-inFvg1Bear = not na(f1bT) and close <= f1bT and close >= f1bB
-inFvg1Bull = not na(f1uT) and close <= f1uT and close >= f1uB
+inFvg1Bear = not na(f1bT) and bC <= f1bT and bC >= f1bB
+inFvg1Bull = not na(f1uT) and bC <= f1uT and bC >= f1uB
 
 h1Short = useH1 and ((useSweep and sweepHi1) or (useFvg4 and inFvg1Bear))
 h1Long  = useH1 and ((useSweep and sweepLo1) or (useFvg4 and inFvg1Bull))
@@ -161,28 +173,28 @@ if not na(duFt) and (duFt != nz(duFt[1]) or duFb != nz(duFb[1]))
     fDuT := duFt
     fDuB := duFb
 
-wickSweepHiD  = not na(swHighD) and high > swHighD and close < swHighD
-closeSweepHiD = not na(swHighD) and high[1] > swHighD and close < swHighD
+wickSweepHiD  = not na(swHighD) and bH > swHighD and bC < swHighD
+closeSweepHiD = not na(swHighD) and bH1 > swHighD and bC < swHighD
 sweepHiD = sweepConfirm == "Wick" ? wickSweepHiD : sweepConfirm == "Close" ? closeSweepHiD : (wickSweepHiD or closeSweepHiD)
-wickSweepLoD  = not na(swLowD) and low < swLowD and close > swLowD
-closeSweepLoD = not na(swLowD) and low[1] < swLowD and close > swLowD
+wickSweepLoD  = not na(swLowD) and bL < swLowD and bC > swLowD
+closeSweepLoD = not na(swLowD) and bL1 < swLowD and bC > swLowD
 sweepLoD = sweepConfirm == "Wick" ? wickSweepLoD : sweepConfirm == "Close" ? closeSweepLoD : (wickSweepLoD or closeSweepLoD)
-inFvgDBear = not na(fDbT) and close <= fDbT and close >= fDbB
-inFvgDBull = not na(fDuT) and close <= fDuT and close >= fDuB
+inFvgDBear = not na(fDbT) and bC <= fDbT and bC >= fDbB
+inFvgDBull = not na(fDuT) and bC <= fDuT and bC >= fDuB
 
 dShort  = useD and ((useSweep and sweepHiD) or (useFvg4 and inFvgDBear))
 dLong   = useD and ((useSweep and sweepLoD) or (useFvg4 and inFvgDBull))
 h4Short = use4H and ((useSweep and sweepHi) or (useFvg4 and inFvg4Bear))
 h4Long  = use4H and ((useSweep and sweepLo) or (useFvg4 and inFvg4Bull))
 
-var int shortBiasBar = na
-var int longBiasBar  = na
-if okBar and (dShort or h4Short or h1Short)
-    shortBiasBar := bar_index
-if okBar and (dLong or h4Long or h1Long)
-    longBiasBar := bar_index
-shortBias = not na(shortBiasBar) and bar_index - shortBiasBar <= biasBars
-longBias  = not na(longBiasBar)  and bar_index - longBiasBar  <= biasBars
+var int shortBiasTime = na
+var int longBiasTime  = na
+if okBar and biasTick and (dShort or h4Short or h1Short)
+    shortBiasTime := time
+if okBar and biasTick and (dLong or h4Long or h1Long)
+    longBiasTime := time
+shortBias = not na(shortBiasTime) and time - shortBiasTime <= biasMs
+longBias  = not na(longBiasTime)  and time - longBiasTime  <= biasMs
 
 // =============================== 15m DATA ====================================
 f15() =>
@@ -218,19 +230,16 @@ if bosUp
     armLong := true
     armLongBar := bar_index
 
-// ========================== 5m ENTRY ZONE LOGIC ==============================
-f5() =>
-    [high, low, high[2], low[2], high[1], low[1], close, open, time[2]]
-[r_h, r_l, r_h2, r_l2, r_h1, r_l1, r_c, r_o, r_t2] = request.security(syminfo.tickerid, tf5, f5(), lookahead=barmerge.lookahead_off)
-e_h  = useChartForEntry ? high    : r_h
-e_l  = useChartForEntry ? low     : r_l
-e_h2 = useChartForEntry ? high[2] : r_h2
-e_l2 = useChartForEntry ? low[2]  : r_l2
-e_h1 = useChartForEntry ? high[1] : r_h1
-e_l1 = useChartForEntry ? low[1]  : r_l1
-e_c  = useChartForEntry ? close   : r_c
-e_o  = useChartForEntry ? open    : r_o
-e_t2 = useChartForEntry ? time[2] : r_t2
+// ===================== ENTRY ZONE LOGIC (Rule 3, chart TF) ===================
+e_h  = high
+e_l  = low
+e_h2 = high[2]
+e_l2 = low[2]
+e_h1 = high[1]
+e_l1 = low[1]
+e_c  = close
+e_o  = open
+e_t2 = time[2]
 
 var array<float> zTops  = array.new<float>()
 var array<float> zBots  = array.new<float>()
@@ -264,7 +273,7 @@ drawTrade(int dir, float entryP, float zTop, float zBot, float structTgt) =>
 
 addEntryZone(float t, float b, int dir, int t0, float tgt) =>
     col = dir < 0 ? cZS : cZB
-    bx = box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text="5m FVG", text_color=color.gray, text_size=size.small)
+    bx = box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=zoneTF + "m FVG", text_color=color.gray, text_size=size.small)
     zTops.push(t)
     zBots.push(b)
     zDir.push(dir)
@@ -353,3 +362,9 @@ alertcondition(buySig,           "Buy tap",           "BUY: price tapped 5m entr
 alertcondition(sellSig or buySig,"Any entry tap",     "Entry zone tapped on {{ticker}} ({{interval}})")
 alertcondition(bosDown,          "15m BOS down",      "15m break of structure DOWN on {{ticker}} ({{interval}})")
 alertcondition(bosUp,            "15m BOS up",        "15m break of structure UP on {{ticker}} ({{interval}})")
+
+// ------------------------- chart timeframe check -----------------------------
+if barstate.islast and timeframe.period != zoneTF
+    var label warnLbl = na
+    label.delete(warnLbl)
+    warnLbl := label.new(bar_index, high, "Rule 3 zones are set to " + zoneTF + "m: put the chart on " + zoneTF + "m (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)

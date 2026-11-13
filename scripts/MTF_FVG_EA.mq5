@@ -1,11 +1,11 @@
 //+------------------------------------------------------------------+
 //|                                                  MTF_FVG_EA.mq5  |
-//|  4H POI -> 15m BOS -> 5m FVG/iFVG entry (port of the Pine model) |
+//|  D/4H/1H POI -> 15m BOS -> 1m FVG/iFVG entry                     |
 //+------------------------------------------------------------------+
 #property copyright "MTF-FVG"
 #property version   "1.00"
 #property description "D/4H/1H bias (swing sweep / inside FVG) -> 15m break of structure ->"
-#property description "first overlapping 5m FVG / inverse FVG -> limit order resting at the zone edge"
+#property description "first overlapping 1m FVG / inverse FVG -> limit order resting at the zone edge"
 #property description "(placed before price touches it), with an alert when the order is placed."
 
 #include <Trade/Trade.mqh>
@@ -33,7 +33,8 @@ input ENUM_TIMEFRAMES InpBiasTFD  = PERIOD_D1;   // Bias timeframe (Daily)
 input ENUM_TIMEFRAMES InpBiasTF   = PERIOD_H4;   // Bias timeframe (4H)
 input ENUM_TIMEFRAMES InpBiasTF2  = PERIOD_H1;   // Second bias timeframe (1H)
 input ENUM_TIMEFRAMES InpStructTF = PERIOD_M15;  // Structure timeframe
-input ENUM_TIMEFRAMES InpEntryTF  = PERIOD_M5;   // Entry timeframe
+input ENUM_TIMEFRAMES InpEntryTF  = PERIOD_M5;   // Bias-check timeframe (Rule 1 bars, 5m)
+input ENUM_TIMEFRAMES InpZoneTF   = PERIOD_M1;   // Rule 3 entry-zone timeframe (1m; 5m = old behaviour)
 
 input group "Bias (D / 4H / 1H)"
 input ENUM_BIAS_MODE InpBiasMode  = BIAS_D_4H_1H; // Rule 1 bias timeframes
@@ -46,7 +47,7 @@ input int             InpBiasBars   = 500;        // Bias valid for (entry-TF ba
 input group "15m structure"
 input int             InpSwLen15    = 3;          // 15m swing length
 
-input group "5m entry zone"
+input group "Entry zone (Rule 3)"
 input bool            InpUseIFVG    = true;       // Allow inverse-FVG zones
 input int             InpMaxZones   = 30;         // Max stored zones (oldest dropped)
 
@@ -105,6 +106,7 @@ ulong  g_nextId = 1;
 CTrade   trade;
 datetime g_lastEntryBar  = 0;
 datetime g_lastStructBar = 0;
+datetime g_lastZoneBar   = 0;
 long     g_barCount      = 0;
 
 // One slot per selected bias timeframe (Daily / 4H / 1H, chosen by InpBiasMode)
@@ -232,7 +234,8 @@ void DrawZone(const Zone &z)
    ObjectSetInteger(0, nm, OBJPROP_BACK, true);
    ObjectSetInteger(0, nm, OBJPROP_RAY_RIGHT, true);
    ObjectSetInteger(0, nm, OBJPROP_SELECTABLE, false);
-   ObjectSetString(0, nm, OBJPROP_TEXT, z.dir < 0 ? "5m FVG (sell)" : "5m FVG (buy)");
+   string tfn = StringSubstr(EnumToString(InpZoneTF), 7);   // e.g. "M1"
+   ObjectSetString(0, nm, OBJPROP_TEXT, tfn + (z.dir < 0 ? " FVG (sell)" : " FVG (buy)"));
   }
 
 void FinishZoneDrawing(const Zone &z)
@@ -399,7 +402,7 @@ void UpdateStructure()
 //+------------------------------------------------------------------+
 void MitigateZones()
   {
-   double c1 = iClose(_Symbol, InpEntryTF, 1);
+   double c1 = iClose(_Symbol, InpZoneTF, 1);
    for(int i = ArraySize(g_zones) - 1; i >= 0; i--)
      {
       if(g_zones[i].dir < 0 && c1 > g_zones[i].top) RemoveZone(i);
@@ -408,16 +411,16 @@ void MitigateZones()
   }
 
 //+------------------------------------------------------------------+
-//| Capture first overlapping FVG / iFVG after a BOS                 |
+//| Capture first overlapping FVG / iFVG after a BOS (zone TF, 1m)  |
 //|  Pine [0],[1],[2] -> MQL closed shifts 1,2,3                     |
 //+------------------------------------------------------------------+
 void CaptureZones()
   {
-   double h1 = iHigh(_Symbol, InpEntryTF, 1), l1 = iLow(_Symbol, InpEntryTF, 1);
-   double h2 = iHigh(_Symbol, InpEntryTF, 2), l2 = iLow(_Symbol, InpEntryTF, 2);
-   double h3 = iHigh(_Symbol, InpEntryTF, 3), l3 = iLow(_Symbol, InpEntryTF, 3);
-   double c1 = iClose(_Symbol, InpEntryTF, 1);
-   datetime t3 = iTime(_Symbol, InpEntryTF, 3);
+   double h1 = iHigh(_Symbol, InpZoneTF, 1), l1 = iLow(_Symbol, InpZoneTF, 1);
+   double h2 = iHigh(_Symbol, InpZoneTF, 2), l2 = iLow(_Symbol, InpZoneTF, 2);
+   double h3 = iHigh(_Symbol, InpZoneTF, 3), l3 = iLow(_Symbol, InpZoneTF, 3);
+   double c1 = iClose(_Symbol, InpZoneTF, 1);
+   datetime t3 = iTime(_Symbol, InpZoneTF, 3);
 
    if(InpAllowShort && g_armShort && g_brokenLow15 > 0)
      {
@@ -619,6 +622,13 @@ void OnNewBar()
    datetime sb = iTime(_Symbol, InpStructTF, 0);
    if(sb != g_lastStructBar) { g_lastStructBar = sb; UpdateStructure(); }
 
+  }
+
+//+------------------------------------------------------------------+
+//| New zone-TF bar (1m by default): Rule 3 zone deletion + capture  |
+//+------------------------------------------------------------------+
+void OnNewZoneBar()
+  {
    MitigateZones();
    CaptureZones();
   }
@@ -631,9 +641,9 @@ int OnInit()
       Print("Invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
      }
-   if(PeriodSeconds(InpStructTF) <= PeriodSeconds(InpEntryTF))
+   if(PeriodSeconds(InpStructTF) <= PeriodSeconds(InpEntryTF) || PeriodSeconds(InpZoneTF) > PeriodSeconds(InpEntryTF))
      {
-      Print("Timeframes must satisfy: Structure > Entry");
+      Print("Timeframes must satisfy: Structure > Bias-check TF >= Zone TF");
       return INIT_PARAMETERS_INCORRECT;
      }
    bool useD  = (InpBiasMode == BIAS_D_4H_1H || InpBiasMode == BIAS_D_4H || InpBiasMode == BIAS_D);
@@ -681,7 +691,13 @@ void OnTick()
    if(bt != g_lastEntryBar)
      {
       g_lastEntryBar = bt;
-      OnNewBar();
+      OnNewBar();                 // Rule 1 bias + Rule 2 structure
+     }
+   datetime zt = iTime(_Symbol, InpZoneTF, 0);
+   if(zt != 0 && zt != g_lastZoneBar)
+     {
+      g_lastZoneBar = zt;
+      OnNewZoneBar();             // Rule 3 zones
      }
    ManageZones();
   }
