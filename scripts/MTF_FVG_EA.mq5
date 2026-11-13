@@ -92,6 +92,14 @@ input bool            InpDrawZones  = true;       // Draw zones on chart
 input color           InpColSell    = clrTomato;
 input color           InpColBuy     = clrMediumSeaGreen;
 
+input group "Chart drawings"
+input bool            InpShowBos    = true;       // Show 15m BOS (line + label)
+input bool            InpShowLegFvg = true;       // Show last 1m FVG on the BOS leg
+input int             InpMaxBos     = 10;         // Keep the last N BOS drawings
+input color           InpColBosDn   = clrRed;
+input color           InpColBosUp   = clrLime;
+input color           InpColLegFvg  = clrOrange;
+
 //--- zone storage
 struct Zone
   {
@@ -134,6 +142,8 @@ int      g_biasCount = 1;
 long     g_shortBiasBar = -1, g_longBiasBar = -1;
 
 double   g_lastPL15 = 0, g_lastPH15 = 0;        // latest 15m swings
+datetime g_lastPL15T = 0, g_lastPH15T = 0;      // their candle times (for drawing)
+long     g_bosId = 0;
 double   g_brokenLow15 = 0, g_brokenHigh15 = 0;
 // Setup building, per side: [0] = short, [1] = long.
 // After a 15m BOS both searches arm; a setup is complete when both pieces exist.
@@ -172,6 +182,31 @@ bool FindPivotHigh(const double &h[], int n, int L, double &val)
          if(h[s] <= h[s + k]) ok = false;   // left side must be lower
         }
       if(ok) { val = h[s]; return true; }
+     }
+   return false;
+  }
+
+// Same as FindPivotHigh/Low, also returning the pivot's bar shift.
+bool FindPivotHighS(const double &h[], int n, int L, double &val, int &shift)
+  {
+   for(int s = L + 1; s < n - L; s++)
+     {
+      bool ok = true;
+      for(int k = 1; k <= L && ok; k++)
+        { if(h[s] < h[s - k] || h[s] <= h[s + k]) ok = false; }
+      if(ok) { val = h[s]; shift = s; return true; }
+     }
+   return false;
+  }
+
+bool FindPivotLowS(const double &l[], int n, int L, double &val, int &shift)
+  {
+   for(int s = L + 1; s < n - L; s++)
+     {
+      bool ok = true;
+      for(int k = 1; k <= L && ok; k++)
+        { if(l[s] > l[s - k] || l[s] >= l[s + k]) ok = false; }
+      if(ok) { val = l[s]; shift = s; return true; }
      }
    return false;
   }
@@ -407,6 +442,75 @@ bool ShortBias() { return g_shortBiasBar >= 0 && (g_barCount - g_shortBiasBar) <
 bool LongBias()  { return g_longBiasBar  >= 0 && (g_barCount - g_longBiasBar)  <= InpBiasBars; }
 
 //+------------------------------------------------------------------+
+//| Chart drawings: 15m BOS + last 1m FVG on the leg of the break     |
+//|  Leg (bearish): from the highest high since the broken swing low  |
+//|  formed, down to the break. Mirror for bullish.                   |
+//+------------------------------------------------------------------+
+bool LegFvg(int dir, datetime fromT, double &top, double &bot, datetime &t0)
+  {
+   ENUM_TIMEFRAMES tf = InpEntryFvgTF;
+   int sp = iBarShift(_Symbol, tf, fromT, false);
+   if(sp < 3) return false;
+   int n = MathMin(sp, 1000) + 1;
+   double hi[], lo[]; datetime tm[];
+   ArraySetAsSeries(hi, true); ArraySetAsSeries(lo, true); ArraySetAsSeries(tm, true);
+   if(CopyHigh(_Symbol, tf, 0, n, hi) < n || CopyLow(_Symbol, tf, 0, n, lo) < n || CopyTime(_Symbol, tf, 0, n, tm) < n)
+      return false;
+   // leg start = extreme between the swing and the last closed bar (shift 1)
+   int ext = -1;
+   for(int s = 1; s < n; s++)
+      if(ext < 0 || (dir < 0 ? hi[s] > hi[ext] : lo[s] < lo[ext])) ext = s;
+   // most recent FVG inside the leg (shifts 1 .. ext)
+   for(int s = 1; s + 2 <= ext; s++)
+     {
+      if(dir < 0 && hi[s] < lo[s + 2]) { top = lo[s + 2]; bot = hi[s]; t0 = tm[s + 2]; return true; }
+      if(dir > 0 && lo[s] > hi[s + 2]) { top = lo[s];     bot = hi[s + 2]; t0 = tm[s + 2]; return true; }
+     }
+   return false;
+  }
+
+void DrawBos(int dir, double lvl, datetime fromT)
+  {
+   g_bosId++;
+   string id = (string)g_bosId;
+   datetime now = TimeCurrent();
+   color col = dir < 0 ? InpColBosDn : InpColBosUp;
+   if(InpShowBos && fromT > 0)
+     {
+      string ln = PFX + "BOS_" + id, lb = PFX + "BOSL_" + id;
+      ObjectCreate(0, ln, OBJ_TREND, 0, fromT, lvl, now, lvl);
+      ObjectSetInteger(0, ln, OBJPROP_COLOR, col);
+      ObjectSetInteger(0, ln, OBJPROP_WIDTH, 2);
+      ObjectSetInteger(0, ln, OBJPROP_RAY_RIGHT, false);
+      ObjectSetInteger(0, ln, OBJPROP_SELECTABLE, false);
+      ObjectCreate(0, lb, OBJ_TEXT, 0, now, lvl);
+      ObjectSetString(0, lb, OBJPROP_TEXT, "BOS");
+      ObjectSetInteger(0, lb, OBJPROP_COLOR, col);
+      ObjectSetInteger(0, lb, OBJPROP_ANCHOR, dir < 0 ? ANCHOR_LEFT_UPPER : ANCHOR_LEFT_LOWER);
+      ObjectSetInteger(0, lb, OBJPROP_SELECTABLE, false);
+     }
+   double t, b; datetime t0;
+   if(InpShowLegFvg && fromT > 0 && LegFvg(dir, fromT, t, b, t0))
+     {
+      string bx = PFX + "LEG_" + id;
+      ObjectCreate(0, bx, OBJ_RECTANGLE, 0, t0, t, now, b);
+      ObjectSetInteger(0, bx, OBJPROP_COLOR, InpColLegFvg);
+      ObjectSetInteger(0, bx, OBJPROP_FILL, false);
+      ObjectSetInteger(0, bx, OBJPROP_WIDTH, 1);
+      ObjectSetInteger(0, bx, OBJPROP_STYLE, STYLE_DOT);
+      ObjectSetInteger(0, bx, OBJPROP_RAY_RIGHT, true);
+      ObjectSetInteger(0, bx, OBJPROP_SELECTABLE, false);
+      ObjectSetString(0, bx, OBJPROP_TEXT, StringSubstr(EnumToString(InpEntryFvgTF), 7) + " FVG (BOS leg)");
+     }
+   // keep only the last N
+   string old = (string)(g_bosId - InpMaxBos);
+   ObjectDelete(0, PFX + "BOS_" + old);
+   ObjectDelete(0, PFX + "BOSL_" + old);
+   ObjectDelete(0, PFX + "LEG_" + old);
+   ChartRedraw();
+  }
+
+//+------------------------------------------------------------------+
 //| Structure TF update + BOS detection (runs on a new 15m bar)      |
 //+------------------------------------------------------------------+
 void UpdateStructure()
@@ -416,8 +520,9 @@ void UpdateStructure()
    if(!LoadSeries(InpStructTF, n, hi, lo)) return;
 
    double v;
-   if(FindPivotLow(lo, n, InpSwLen15, v))  g_lastPL15 = v;
-   if(FindPivotHigh(hi, n, InpSwLen15, v)) g_lastPH15 = v;
+   int sh;
+   if(FindPivotLowS(lo, n, InpSwLen15, v, sh))  { g_lastPL15 = v; g_lastPL15T = iTime(_Symbol, InpStructTF, sh); }
+   if(FindPivotHighS(hi, n, InpSwLen15, v, sh)) { g_lastPH15 = v; g_lastPH15T = iTime(_Symbol, InpStructTF, sh); }
 
    double c1 = iClose(_Symbol, InpStructTF, 1);
    double c2 = iClose(_Symbol, InpStructTF, 2);
@@ -430,12 +535,14 @@ void UpdateStructure()
       g_brokenLow15 = g_lastPL15;
       StartSetup(0);
       PrintFormat("15m BOS DOWN through %s", DoubleToString(g_brokenLow15, _Digits));
+      DrawBos(-1, g_brokenLow15, g_lastPL15T);
      }
    if(bosUp)
      {
       g_brokenHigh15 = g_lastPH15;
       StartSetup(1);
       PrintFormat("15m BOS UP through %s", DoubleToString(g_brokenHigh15, _Digits));
+      DrawBos(1, g_brokenHigh15, g_lastPH15T);
      }
   }
 
@@ -787,7 +894,7 @@ void OnNewEntryFvgBar()
 //+------------------------------------------------------------------+
 int OnInit()
   {
-   if(InpSwLen4 < 1 || InpSwLen15 < 1 || InpMaxZones < 1 || InpSwingLen1 < 1 || InpSwingLookback < 10)
+   if(InpSwLen4 < 1 || InpSwLen15 < 1 || InpMaxZones < 1 || InpSwingLen1 < 1 || InpSwingLookback < 10 || InpMaxBos < 1)
      {
       Print("Invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
