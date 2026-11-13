@@ -39,7 +39,8 @@ swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
 
 gEntry = "Zone (Rule 3) / entry FVG (Rule 4)"
 useIFVG = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
-useVI   = input.bool(true, "Rule 4: a 1m volume imbalance can also be the entry", group=gEntry, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
+useSB   = input.bool(true, "Rule 4: a 1m suspension block can be the entry", group=gEntry, tooltip="One candle with a volume imbalance on each side of its body. Zone = body + both volume imbalances.")
+useVI   = input.bool(true, "Rule 4: a 1m volume imbalance (only when no suspension block)", group=gEntry, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
 
 gTrade = "Trade management"
 stopMode  = input.string("1m swing", "Rule 5 stop", options=["1m swing", "5m zone"], group=gTrade, tooltip="1m swing = beyond the previous 1m swing high (sell) / low (buy) above / below the entry. 5m zone = beyond the 5m zone's far edge + buffer %.")
@@ -380,14 +381,14 @@ var array<int>   zPlaced = array.new<int>()    // bar the limit was (re)placed, 
 
 overlap(float aT, float aB, float bT, float bB) => aB <= bT and aT >= bB
 
-addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et, float eb, int et0, float slSw) =>
+addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et, float eb, int et0, float slSw, string ekind) =>
     box bx = na
     box ebx = na
     if drawZones
         col = dir < 0 ? cZS : cZB
         bx := box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=tfZone + "m zone", text_color=color.gray, text_size=size.small)
         if entryTF != tfZone
-            ebx := box.new(et0, et, et0 + fvgMin * 60000, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), text=entryTF + "m entry FVG/VI", text_color=color.blue, text_size=size.tiny)
+            ebx := box.new(et0, et, et0 + fvgMin * 60000, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), text=entryTF + "m " + (ekind == "SB" ? "suspension block" : ekind == "VI" ? "entry VI" : "entry FVG"), text_color=color.blue, text_size=size.tiny)
     zBox.push(bx)
     zEBox.push(ebx)
     zTops.push(t)
@@ -440,10 +441,14 @@ var bool  arm5L = false
 var bool  arm1L = false
 var float p5LT = na, var float p5LB = na, var int p5LT0 = na
 var float p1LT = na, var float p1LB = na, var int p1LT0 = na
+var float pviST = na, var float pviSB = na, var int pviST0 = na    // 1m volume imbalance waiting one candle
+var float pviLT = na, var float pviLB = na, var int pviLT0 = na
+var string p1SK = ""                                                // entry type: FVG / SB / VI
+var string p1LK = ""
 if bosDown
-    arm5S := true, arm1S := true, p5ST := na, p1ST := na
+    arm5S := true, arm1S := true, p5ST := na, p1ST := na, pviST := na
 if bosUp
-    arm5L := true, arm1L := true, p5LT := na, p1LT := na
+    arm5L := true, arm1L := true, p5LT := na, p1LT := na, pviLT := na
 
 // Rule 3: zone piece, once per closed zone-TF bar
 if zoneTick
@@ -478,42 +483,97 @@ viFind(int sd, float lvl, float o1, float h1, float l1, float c1, float o2, floa
             f := true, t := bot1, b := top2
     [f, t, b]
 
-// Rule 4: entry FVG piece, on every new closed 1m bar from the feed
+// Suspension block on bars A (oldest), B, C (newest): B's body is isolated by a volume
+// imbalance on each side (bodies don't overlap, wicks do). Zone = from C's body edge to
+// A's body edge (both volume imbalances + B's body). sd -1 = bearish, +1 = bullish.
+sbFind(int sd, float lvl, float oA, float hA, float lA, float cA, float oB, float hB, float lB, float cB, float oC, float hC, float lC, float cC) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        botA = math.min(oA, cA)
+        topB = math.max(oB, cB)
+        botB = math.min(oB, cB)
+        topC = math.max(oC, cC)
+        if topB < botA and topC < botB and hB >= lA and hC >= lB and topC <= lvl and lvl <= botA
+            f := true, t := botA, b := topC
+    else
+        topA = math.max(oA, cA)
+        botB = math.min(oB, cB)
+        topB = math.max(oB, cB)
+        botC = math.min(oC, cC)
+        if botB > topA and botC > topB and lB <= hA and lC <= hB and topA <= lvl and lvl <= botC
+            f := true, t := botC, b := topA
+    [f, t, b]
+
+// Rule 4: 1m entry piece, on every new closed 1m bar from the feed
 if newCount > 0
     for i = mH.size() - newCount to mH.size() - 1
         if i >= 2
             c1m = mC.get(i)
             if not na(p1ST) and c1m > p1ST
-                p1ST := na, arm1S := arm5S or not na(p5ST)    // look for a new entry FVG
+                p1ST := na, arm1S := arm5S or not na(p5ST)    // look for a new entry
             if not na(p1LT) and c1m < p1LB
                 p1LT := na, arm1L := arm5L or not na(p5LT)
+            if not na(pviST) and c1m > pviST
+                pviST := na                                   // waiting volume imbalance closed through
             if showSell and arm1S and not na(brokenLow15)
-                [fC0, tC0, bC0] = fvgFind(-1, brokenLow15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
-                [fCv, tCv, bCv] = viFind(-1, brokenLow15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
-                fC  = fC0 or (useVI and fCv)
-                tC  = fC0 ? tC0 : tCv
-                bC_ = fC0 ? bC0 : bCv
-                if fC
-                    p1ST := tC, p1SB := bC_, p1ST0 := mT.get(fC0 ? i - 2 : i - 1), arm1S := false
+                [fF, tF, bF] = fvgFind(-1, brokenLow15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fS, tS, bS] = sbFind(-1, brokenLow15, mO.get(i - 2), mH.get(i - 2), mL.get(i - 2), mC.get(i - 2), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1), mO.get(i), mH.get(i), mL.get(i), mC.get(i))
+                [fV, tV, bV] = viFind(-1, brokenLow15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(i - 2), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(i - 2), nK := "SB"
+                else if useVI and not na(pviST)
+                    nT := pviST, nB := pviSB, nT0 := pviST0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviST := tV, pviSB := bV, pviST0 := mT.get(i - 1)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(i - 1), nK := "VI"
+                if not na(nT)
+                    p1ST := nT, p1SB := nB, p1ST0 := nT0, p1SK := nK, arm1S := false, pviST := na
+            if not na(pviLT) and c1m < pviLB
+                pviLT := na                                   // waiting volume imbalance closed through
             if showBuy and arm1L and not na(brokenHigh15)
-                [fD0, tD0, bD0] = fvgFind(1, brokenHigh15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
-                [fDv, tDv, bDv] = viFind(1, brokenHigh15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
-                fD = fD0 or (useVI and fDv)
-                tD = fD0 ? tD0 : tDv
-                bD = fD0 ? bD0 : bDv
-                if fD
-                    p1LT := tD, p1LB := bD, p1LT0 := mT.get(fD0 ? i - 2 : i - 1), arm1L := false
+                [fF, tF, bF] = fvgFind(1, brokenHigh15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fS, tS, bS] = sbFind(1, brokenHigh15, mO.get(i - 2), mH.get(i - 2), mL.get(i - 2), mC.get(i - 2), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1), mO.get(i), mH.get(i), mL.get(i), mC.get(i))
+                [fV, tV, bV] = viFind(1, brokenHigh15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(i - 2), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(i - 2), nK := "SB"
+                else if useVI and not na(pviLT)
+                    nT := pviLT, nB := pviLB, nT0 := pviLT0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviLT := tV, pviLB := bV, pviLT0 := mT.get(i - 1)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(i - 1), nK := "VI"
+                if not na(nT)
+                    p1LT := nT, p1LB := nB, p1LT0 := nT0, p1LK := nK, arm1L := false, pviLT := na
 
 // Pair: both pieces -> tradable setup (entry at the 1m entry FVG near edge; stop = 1m swing or 5m zone)
 if not na(p5ST) and not na(p1ST)
     swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
     if stopMode == "5m zone" or not na(swS)          // no 1m swing above the entry -> setup skipped
-        addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS)
+        addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS, p1SK)
     p5ST := na, p1ST := na
 if not na(p5LT) and not na(p1LT)
     swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
     if stopMode == "5m zone" or not na(swL)
-        addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL)
+        addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL, p1LK)
     p5LT := na, p1LT := na
 armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
 armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)

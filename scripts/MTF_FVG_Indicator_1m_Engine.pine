@@ -9,7 +9,8 @@ indicator("MTF-FVG 1m engine: D/4H/1H > 15m BOS > 5m zone + 1m FVG", shorttitle=
 //   Rule 1  bias: D / 4H / 1H swing sweep, or a 5m close inside a D/4H/1H FVG
 //   Rule 2  15m BOS while biased
 //   Rule 3  first 5m FVG / iFVG that contains the broken level (zone)
-//   Rule 4  first 1m FVG / iFVG / volume imbalance containing the broken level (entry);
+//   Rule 4  first 1m FVG / iFVG, else suspension block, else volume imbalance,
+//           containing the broken level (entry);
 //           limit at its near edge once both exist
 //   Rule 5  stop beyond the previous 1m swing (or the 5m zone)
 //   Rule 6  2R / 3R target (or the broken 15m level); one trade at a time
@@ -36,7 +37,8 @@ swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
 
 gZone = "Rules 3-4: 5m zone + 1m entry FVG"
 useIFVG  = input.bool(true, "Allow inverse FVGs", group=gZone)
-useVI    = input.bool(true, "Rule 4: a 1m volume imbalance can also be the entry", group=gZone, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
+useSB    = input.bool(true, "Rule 4: a 1m suspension block can be the entry", group=gZone, tooltip="One candle with a volume imbalance on each side of its body. Zone = body + both volume imbalances.")
+useVI    = input.bool(true, "Rule 4: a 1m volume imbalance (only when no suspension block)", group=gZone, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
 maxZones = input.int(30, "Max stored setups", minval=1, maxval=100, group=gZone)
 
 gStop = "Rule 5: stop"
@@ -174,6 +176,10 @@ var int   p5LT0 = na
 var float p1LT = na
 var float p1LB = na
 var int   p1LT0 = na
+var float pviST = na, var float pviSB = na, var int pviST0 = na    // 1m volume imbalance waiting one candle
+var float pviLT = na, var float pviLB = na, var int pviLT0 = na
+var string p1SK = ""                                                // entry type: FVG / SB / VI
+var string p1LK = ""
 
 // Setups (5m zone + entry), oldest first
 var array<float>  zT      = array.new<float>()   // 5m zone top
@@ -244,6 +250,29 @@ viFind(int sd, float lvl, float o1, float h1, float l1, float c1, float o2, floa
         top2 = math.max(o2, c2)
         if bot1 > top2 and l1 <= h2 and top2 <= lvl and lvl <= bot1
             f := true, t := bot1, b := top2
+    [f, t, b]
+
+// Suspension block on bars A (oldest), B, C (newest): B's body is isolated by a volume
+// imbalance on each side (bodies don't overlap, wicks do). Zone = from C's body edge to
+// A's body edge (both volume imbalances + B's body). sd -1 = bearish, +1 = bullish.
+sbFind(int sd, float lvl, float oA, float hA, float lA, float cA, float oB, float hB, float lB, float cB, float oC, float hC, float lC, float cC) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        botA = math.min(oA, cA)
+        topB = math.max(oB, cB)
+        botB = math.min(oB, cB)
+        topC = math.max(oC, cC)
+        if topB < botA and topC < botB and hB >= lA and hC >= lB and topC <= lvl and lvl <= botA
+            f := true, t := botA, b := topC
+    else
+        topA = math.max(oA, cA)
+        botB = math.min(oB, cB)
+        topB = math.max(oB, cB)
+        botC = math.min(oC, cC)
+        if botB > topA and botC > topB and lB <= hA and lC <= hB and topA <= lvl and lvl <= botC
+            f := true, t := botC, b := topA
     [f, t, b]
 
 stopFor(int dir, float t, float b, float slSw) =>
@@ -317,7 +346,7 @@ limitMark(int dir, int t, float e) =>
         label.new(t, e, dir < 0 ? "Sell lim" : "Buy lim", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(dir < 0 ? color.red : color.green, 70), textcolor=color.white, size=size.tiny)
 
 // Store a complete setup; returns true if its limit is placed now (flat).
-addSetup(int d, float zTop, float zBot, int zT0, float tgt, float eTop, float eBot, int eT0, float sl, int t) =>
+addSetup(int d, float zTop, float zBot, int zT0, float tgt, float eTop, float eBot, int eT0, float sl, int t, string ekind) =>
     trig = d < 0 ? eBot : eTop
     if zT.size() >= maxZones
         ob = zBox.shift()
@@ -328,7 +357,7 @@ addSetup(int d, float zTop, float zBot, int zT0, float tgt, float eTop, float eB
     if showZones
         bx := box.new(zT0, zTop, t + 60000, zBot, xloc=xloc.bar_time, border_color=color.new(d < 0 ? color.red : color.green, 30), bgcolor=d < 0 ? cZS : cZB, extend=extend.right, text="5m zone", text_color=color.gray, text_size=size.small)
     if showEntry
-        box.new(eT0, eTop, eT0 + fvgMin * 60000, eBot, xloc=xloc.bar_time, border_color=cEntryFvg, border_width=2, bgcolor=color.new(cEntryFvg, 88), text="1m entry FVG/VI", text_color=cEntryFvg, text_size=size.tiny)
+        box.new(eT0, eTop, eT0 + fvgMin * 60000, eBot, xloc=xloc.bar_time, border_color=cEntryFvg, border_width=2, bgcolor=color.new(cEntryFvg, 88), text="1m " + (ekind == "SB" ? "suspension block" : ekind == "VI" ? "entry VI" : "entry FVG"), text_color=cEntryFvg, text_size=size.tiny)
     placed = trDir == 0
     zT.push(zTop), zB.push(zBot), zD.push(d), zTg.push(tgt), zTrig.push(trig), zStop.push(sl)
     zArmed.push(true), zPlaced.push(placed), zBox.push(bx), zId.push((d < 0 ? "S" : "L") + str.tostring(t))
@@ -515,14 +544,14 @@ if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
                         bosT = cur15T + 900000
                         if shortBias and not na(lastPL) and cA < lastPL and cB >= lastPL
                             brokenLow := lastPL
-                            arm5S := true, arm1S := true, p5ST := na, p1ST := na
+                            arm5S := true, arm1S := true, p5ST := na, p1ST := na, pviST := na
                             evBosDn := true
                             drawBos(-1, brokenLow, lastPLT, bosT)
                             msgs.push("MTF-FVG " + syminfo.ticker + ": 15m BOS DOWN through " + str.tostring(brokenLow, format.mintick))
                             keys.push("BD" + str.tostring(bosT))
                         if longBias and not na(lastPH) and cA > lastPH and cB <= lastPH
                             brokenHigh := lastPH
-                            arm5L := true, arm1L := true, p5LT := na, p1LT := na
+                            arm5L := true, arm1L := true, p5LT := na, p1LT := na, pviLT := na
                             evBosUp := true
                             drawBos(1, brokenHigh, lastPHT, bosT)
                             msgs.push("MTF-FVG " + syminfo.ticker + ": 15m BOS UP through " + str.tostring(brokenHigh, format.mintick))
@@ -555,37 +584,75 @@ if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
                             p5LT := tB, p5LB := bB, p5LT0 := t5.get(n5 - 3), arm5L := false
                 cur5T := na
 
-        // ---- (D) Rule 4: 1m entry FVG piece ----
+        // ---- (D) Rule 4: 1m entry piece (FVG / iFVG, suspension block, volume imbalance) ----
         nm = mH.size()
         if nm >= 3
             if not na(p1ST) and c > p1ST
                 p1ST := na, arm1S := arm5S or not na(p5ST)
             if not na(p1LT) and c < p1LB
                 p1LT := na, arm1L := arm5L or not na(p5LT)
+            if not na(pviST) and c > pviST
+                pviST := na                                   // waiting volume imbalance closed through
             if allowShort and arm1S and not na(brokenLow)
-                [fC0, tC0, bC0] = fvgFind(-1, brokenLow, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
-                [fCv, tCv, bCv] = viFind(-1, brokenLow, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
-                if fC0 or (useVI and fCv)
-                    p1ST := fC0 ? tC0 : tCv, p1SB := fC0 ? bC0 : bCv, p1ST0 := mT.get(fC0 ? nm - 3 : nm - 2), arm1S := false
+                [fF, tF, bF] = fvgFind(-1, brokenLow, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
+                [fS, tS, bS] = sbFind(-1, brokenLow, mO.get(nm - 3), mH.get(nm - 3), mL.get(nm - 3), mC.get(nm - 3), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2), mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1))
+                [fV, tV, bV] = viFind(-1, brokenLow, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(nm - 3), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(nm - 3), nK := "SB"
+                else if useVI and not na(pviST)
+                    nT := pviST, nB := pviSB, nT0 := pviST0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviST := tV, pviSB := bV, pviST0 := mT.get(nm - 2)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(nm - 2), nK := "VI"
+                if not na(nT)
+                    p1ST := nT, p1SB := nB, p1ST0 := nT0, p1SK := nK, arm1S := false, pviST := na
+            if not na(pviLT) and c < pviLB
+                pviLT := na                                   // waiting volume imbalance closed through
             if allowLong and arm1L and not na(brokenHigh)
-                [fD0, tD0, bD0] = fvgFind(1, brokenHigh, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
-                [fDv, tDv, bDv] = viFind(1, brokenHigh, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
-                if fD0 or (useVI and fDv)
-                    p1LT := fD0 ? tD0 : tDv, p1LB := fD0 ? bD0 : bDv, p1LT0 := mT.get(fD0 ? nm - 3 : nm - 2), arm1L := false
+                [fF, tF, bF] = fvgFind(1, brokenHigh, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
+                [fS, tS, bS] = sbFind(1, brokenHigh, mO.get(nm - 3), mH.get(nm - 3), mL.get(nm - 3), mC.get(nm - 3), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2), mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1))
+                [fV, tV, bV] = viFind(1, brokenHigh, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(nm - 3), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(nm - 3), nK := "SB"
+                else if useVI and not na(pviLT)
+                    nT := pviLT, nB := pviLB, nT0 := pviLT0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviLT := tV, pviLB := bV, pviLT0 := mT.get(nm - 2)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(nm - 2), nK := "VI"
+                if not na(nT)
+                    p1LT := nT, p1LB := nB, p1LT0 := nT0, p1LK := nK, arm1L := false, pviLT := na
 
         // ---- (E) pair: 5m zone + 1m entry FVG -> setup, stop from the 1m swing ----
         if not na(p5ST) and not na(p1ST)
             swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
             if stopMode == "5m zone" or not na(swS)          // no 1m swing above the entry -> skipped
                 slS = stopFor(-1, p5ST, p5SB, swS)
-                if addSetup(-1, p5ST, p5SB, p5ST0, brokenLow, p1ST, p1SB, p1ST0, slS, t)
+                if addSetup(-1, p5ST, p5SB, p5ST0, brokenLow, p1ST, p1SB, p1ST0, slS, t, p1SK)
                     evLimS := true
             p5ST := na, p1ST := na
         if not na(p5LT) and not na(p1LT)
             swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
             if stopMode == "5m zone" or not na(swL)
                 slL = stopFor(1, p5LT, p5LB, swL)
-                if addSetup(1, p5LT, p5LB, p5LT0, brokenHigh, p1LT, p1LB, p1LT0, slL, t)
+                if addSetup(1, p5LT, p5LB, p5LT0, brokenHigh, p1LT, p1LB, p1LT0, slL, t, p1LK)
                     evLimL := true
             p5LT := na, p1LT := na
 

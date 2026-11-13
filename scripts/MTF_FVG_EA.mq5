@@ -51,7 +51,8 @@ input int             InpSwLen15    = 3;          // 15m swing length
 
 input group "Entry zone (Rule 3)"
 input bool            InpUseIFVG    = true;       // Allow inverse-FVG zones
-input bool            InpUseVI      = true;       // Rule 4: a 1m volume imbalance can also be the entry
+input bool            InpUseSB      = true;       // Rule 4: a 1m suspension block can be the entry
+input bool            InpUseVI      = true;       // Rule 4: a 1m volume imbalance (only when no suspension block)
 input int             InpMaxZones   = 30;         // Max stored zones (oldest dropped)
 
 input group "Trade management"
@@ -111,6 +112,7 @@ struct Zone
    double etop;    // Rule 4 entry FVG (1m): limit price is its near edge
    double ebot;
    datetime et0;
+   int    ekind;   // entry type (see Piece.kind)
    double tgt;     // structure target (broken 15m swing)
    double swingSL; // 1m swing used for the stop (0 = 5m-zone mode)
    int    dir;     // -1 sell, +1 buy
@@ -155,8 +157,10 @@ struct Piece
    bool     has;
    double   top, bot;
    datetime t0;
+   int      kind;      // entry type: 0 FVG / iFVG, 1 suspension block, 2 volume imbalance
   };
-Piece    g_p5[2], g_p1[2];        // 5m zone piece, 1m entry-FVG piece
+Piece    g_p5[2], g_p1[2];        // 5m zone piece, 1m entry piece
+Piece    g_pvi[2];                // 1m volume imbalance waiting one candle to see if it becomes a suspension block
 bool     g_arm5[2], g_arm1[2];    // searches armed
 
 const string PFX = "MTFFVG_";
@@ -322,7 +326,7 @@ void DrawZone(const Zone &z)
    ObjectSetString(0, nm, OBJPROP_TEXT, tfn + (z.dir < 0 ? " zone (sell)" : " zone (buy)"));
    if(InpEntryFvgTF != InpZoneTF)
       Make1mFvgBox(nm + "e", z.et0, z.etop, z.ebot, clrDodgerBlue, STYLE_SOLID, 2,
-                   StringSubstr(EnumToString(InpEntryFvgTF), 7) + " entry FVG/VI");
+                   StringSubstr(EnumToString(InpEntryFvgTF), 7) + (z.ekind == 1 ? " suspension block" : z.ekind == 2 ? " entry VI" : " entry FVG"));
   }
 
 void FinishZoneDrawing(const Zone &z)
@@ -349,7 +353,7 @@ void RemoveZone(int idx)
    ArrayResize(g_zones, n - 1);
   }
 
-void AddZone(double top, double bot, int dir, datetime t0, double tgt, double etop, double ebot, datetime et0, double swingSL)
+void AddZone(double top, double bot, int dir, datetime t0, double tgt, double etop, double ebot, datetime et0, double swingSL, int ekind)
   {
    if(ArraySize(g_zones) >= InpMaxZones)
       RemoveZone(0);
@@ -360,6 +364,7 @@ void AddZone(double top, double bot, int dir, datetime t0, double tgt, double et
    g_zones[n].etop  = etop;
    g_zones[n].ebot  = ebot;
    g_zones[n].et0   = et0;
+   g_zones[n].ekind = ekind;
    g_zones[n].swingSL = swingSL;
    g_zones[n].tgt   = tgt;
    g_zones[n].dir   = dir;
@@ -578,6 +583,7 @@ void StartSetup(int sd)
    g_arm1[sd] = true;
    g_p5[sd].has = false;
    g_p1[sd].has = false;
+   g_pvi[sd].has = false;
   }
 
 // First FVG / inverse FVG on tf (closed bars 1..3) that contains the level.
@@ -646,11 +652,28 @@ bool FindVI(ENUM_TIMEFRAMES tf, int sd, double level, double &top, double &bot, 
    return false;
   }
 
-// Rule 4 entry: FVG, then inverse FVG, then (optionally) volume imbalance.
-bool FindEntry(int sd, double level, double &top, double &bot, datetime &t0)
+// Suspension block on closed bars 3 (A), 2 (B), 1 (C): B's body is isolated by a volume
+// imbalance on each side (bodies don't overlap, wicks do). Zone = from C's body edge to
+// A's body edge (both volume imbalances + B's body). sd 0 = bearish, 1 = bullish.
+bool FindSB(ENUM_TIMEFRAMES tf, int sd, double level, double &top, double &bot, datetime &t0)
   {
-   if(FindFvg(InpEntryFvgTF, sd, level, top, bot, t0)) return true;
-   return InpUseVI && FindVI(InpEntryFvgTF, sd, level, top, bot, t0);
+   double oA = iOpen(_Symbol, tf, 3), hA = iHigh(_Symbol, tf, 3), lA = iLow(_Symbol, tf, 3), cA = iClose(_Symbol, tf, 3);
+   double oB = iOpen(_Symbol, tf, 2), hB = iHigh(_Symbol, tf, 2), lB = iLow(_Symbol, tf, 2), cB = iClose(_Symbol, tf, 2);
+   double oC = iOpen(_Symbol, tf, 1), hC = iHigh(_Symbol, tf, 1), lC = iLow(_Symbol, tf, 1), cC = iClose(_Symbol, tf, 1);
+   t0 = iTime(_Symbol, tf, 3);
+   if(sd == 0)
+     {
+      double botA = MathMin(oA, cA), topB = MathMax(oB, cB), botB = MathMin(oB, cB), topC = MathMax(oC, cC);
+      if(topB < botA && topC < botB && hB >= lA && hC >= lB && topC <= level && level <= botA)
+        { top = botA; bot = topC; return true; }
+     }
+   else
+     {
+      double topA = MathMax(oA, cA), botB = MathMin(oB, cB), topB = MathMax(oB, cB), botC = MathMin(oC, cC);
+      if(botB > topA && botC > topB && lB <= hA && lC <= hB && topA <= level && level <= botC)
+        { top = botC; bot = topA; return true; }
+     }
+   return false;
   }
 
 // New entry-FVG-TF (1m) bar: drop a pending 1m piece price closed through (and re-arm), then search.
@@ -662,40 +685,39 @@ void CaptureEntryPieces()
       if(g_p1[sd].has && ((sd == 0 && c1 > g_p1[sd].top) || (sd == 1 && c1 < g_p1[sd].bot)))
         {
          g_p1[sd].has = false;
-         g_arm1[sd] = (g_arm5[sd] || g_p5[sd].has);   // look for a new entry FVG while the setup lives
+         g_arm1[sd] = (g_arm5[sd] || g_p5[sd].has);   // look for a new entry while the setup lives
         }
+      if(g_pvi[sd].has && ((sd == 0 && c1 > g_pvi[sd].top) || (sd == 1 && c1 < g_pvi[sd].bot)))
+         g_pvi[sd].has = false;                        // waiting volume imbalance closed through
       double level = SideLevel(sd);
       if(!SideAllowed(sd) || !g_arm1[sd] || level <= 0) continue;
       double t, b; datetime t0;
-      if(FindEntry(sd, level, t, b, t0))
+      int kind = -1;
+      // order: FVG / inverse FVG, then suspension block, then volume imbalance
+      if(FindFvg(InpEntryFvgTF, sd, level, t, b, t0))                 kind = 0;
+      else if(InpUseSB && FindSB(InpEntryFvgTF, sd, level, t, b, t0)) kind = 1;
+      else if(InpUseVI && g_pvi[sd].has)
         {
-         g_p1[sd].has = true; g_p1[sd].top = t; g_p1[sd].bot = b; g_p1[sd].t0 = t0;
+         // no suspension block formed with the next candle -> use the waiting volume imbalance
+         t = g_pvi[sd].top; b = g_pvi[sd].bot; t0 = g_pvi[sd].t0; kind = 2;
+        }
+      else if(InpUseVI && FindVI(InpEntryFvgTF, sd, level, t, b, t0))
+        {
+         if(InpUseSB)
+           {
+            // wait one candle: it may become a suspension block
+            g_pvi[sd].has = true; g_pvi[sd].top = t; g_pvi[sd].bot = b; g_pvi[sd].t0 = t0;
+           }
+         else
+            kind = 2;
+        }
+      if(kind >= 0)
+        {
+         g_p1[sd].has = true; g_p1[sd].top = t; g_p1[sd].bot = b; g_p1[sd].t0 = t0; g_p1[sd].kind = kind;
          g_arm1[sd] = false;
+         g_pvi[sd].has = false;
         }
      }
-  }
-
-// Most recent confirmed 1m swing high above price (sd 0, sell) or swing low below price (sd 1, buy).
-bool FindStopSwing(int sd, double price, double &val)
-  {
-   int L = InpSwingLen1;
-   int n = MathMin(InpSwingLookback + L + 1, Bars(_Symbol, InpEntryFvgTF));
-   if(n < 2 * L + 3) return false;
-   double hi[], lo[];
-   if(!LoadSeries(InpEntryFvgTF, n, hi, lo)) return false;
-   for(int s = L + 1; s < n - L; s++)              // shift 0 = forming bar; L+1 = newest confirmed
-     {
-      bool ok = true;
-      for(int k = 1; k <= L && ok; k++)
-        {
-         if(sd == 0) { if(hi[s] < hi[s - k] || hi[s] <= hi[s + k]) ok = false; }
-         else        { if(lo[s] > lo[s - k] || lo[s] >= lo[s + k]) ok = false; }
-        }
-      if(!ok) continue;
-      if(sd == 0 && hi[s] > price) { val = hi[s]; return true; }
-      if(sd == 1 && lo[s] < price) { val = lo[s]; return true; }
-     }
-   return false;
   }
 
 // Both pieces present -> one tradable setup.
@@ -717,7 +739,7 @@ void PairPieces()
            }
         }
       AddZone(g_p5[sd].top, g_p5[sd].bot, sd == 0 ? -1 : 1, g_p5[sd].t0, SideLevel(sd),
-              g_p1[sd].top, g_p1[sd].bot, g_p1[sd].t0, swingSL);
+              g_p1[sd].top, g_p1[sd].bot, g_p1[sd].t0, swingSL, g_p1[sd].kind);
       g_p5[sd].has = false;
       g_p1[sd].has = false;
      }
@@ -973,7 +995,7 @@ int OnInit()
       ObjectsDeleteAll(0, PFX);
       ArrayResize(g_fvgObjs, 0);
       ArrayResize(g_zones, 0);
-      ZeroMemory(g_p5); ZeroMemory(g_p1);
+      ZeroMemory(g_p5); ZeroMemory(g_p1); ZeroMemory(g_pvi);
       ArrayInitialize(g_arm5, false); ArrayInitialize(g_arm1, false);
      }
    g_sym = _Symbol;
