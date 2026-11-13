@@ -17,7 +17,7 @@
 //|   backtest of these rules LOSES money (US100 Oct 2026: -21.6R).   |
 //+------------------------------------------------------------------+
 #property copyright "ICT Intraday EA"
-#property version   "1.20"
+#property version   "1.30"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -54,6 +54,7 @@ input bool   InpSessions         = true;    // Asia / London / NY session highs 
 input int    InpSessionDays      = 7;       // session level stays sweepable for N days
 input bool   InpFvgLiq4H         = true;    // far edge of every FRESH 4H FVG
 input bool   InpFvgLiq1H         = true;    // far edge of every FRESH 1H FVG
+input bool   InpFvgLiqD          = true;    // far edge of every FRESH D FVG (v1.30)
 input bool   InpMacro            = true;    // ICT macro window highs / lows (NY: 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10)
 input int    InpMacroHours       = 24;      // macro level stays sweepable for N hours
 
@@ -172,7 +173,7 @@ CHtf g_M, g_W, g_D, g_4, g_1;
 //------------------------------------------------------------------ Rule 1 levels
 struct Lvl
   {
-   int      tf;                 // 0 M,1 W,2 D,3 4H,4 1H,5 ASIA,6 LONDON,7 NY,8 4HFVG,9 1HFVG,10 MACRO
+   int      tf;                 // 0 M,1 W,2 D,3 4H,4 1H,5 ASIA,6 LONDON,7 NY,8 4HFVG,9 1HFVG,10 MACRO,11 DFVG
    bool     hi;                 // true = buy-side level (high)
    double   px;
    datetime ct;                 // sweepable by 5m candles opening at / after this time
@@ -182,7 +183,7 @@ struct Lvl
    int      fIdx;               // FVG levels: candle-3 index on its timeframe
   };
 Lvl    g_lv[];
-string TFN[11] = {"M", "W", "D", "4H", "1H", "ASIA", "LONDON", "NY", "4HFVG", "1HFVG", "MACRO"};
+string TFN[12] = {"M", "W", "D", "4H", "1H", "ASIA", "LONDON", "NY", "4HFVG", "1HFVG", "MACRO", "DFVG"};
 
 void AddLevel(int tf, bool hi, double px, datetime ct, datetime ex, double nearE = 0, int fIdx = -1)
   {
@@ -509,8 +510,8 @@ bool PivLo(const double &a[], int i, int p)
 
 void OnCandle(CHtf &x, int i)
   {
-   bool fvgOn = (x.id == 3 && InpFvgLiq4H) || (x.id == 4 && InpFvgLiq1H);
-   int  ftf = x.id == 3 ? 8 : 9;
+   bool fvgOn = (x.id == 3 && InpFvgLiq4H) || (x.id == 4 && InpFvgLiq1H) || (x.id == 2 && InpFvgLiqD);
+   int  ftf = x.id == 3 ? 8 : (x.id == 4 ? 9 : 11);
    // freshness: a later candle trading into the gap ends the FVG level after this candle
    if(fvgOn)
       for(int k = 0; k < ArraySize(g_lv); k++)

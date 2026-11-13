@@ -40,7 +40,7 @@ the Python backtest (`backtest/intraday_snap.py`). The swing EA is described fur
 4. Strategy Tester: symbol US100, any timeframe, "Every tick" or "1 minute OHLC".
 
 ## What it does on every completed 5m candle (short; long mirrored)
-1. **Liquidity:** D/W/M swings (2 each side), 4H and 1H swings (10 each side), fresh 4H and 1H FVG far edges, Asia
+1. **Liquidity:** D/W/M swings (2 each side), 4H and 1H swings (10 each side), fresh D, 4H and 1H FVG far edges (D added in v1.30, `InpFvgLiqD`), Asia
    (20-24 NY) / London (2-5) / NY (7-10) session highs/lows that are also 1H+ swings (valid 7 days), ICT macro window
    highs/lows (valid 24 h). D/W/M/4H candles are built from 1H on New York time (day rolls 17:00 NY, 4H grid NY+7h), like the backtest.
 2. **Sweep (5m):** (A) wick through + close back, or (B) 1-2 closes beyond then two displacement candles (>= 1 ATR14), the
