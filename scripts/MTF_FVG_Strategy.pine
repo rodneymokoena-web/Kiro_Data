@@ -3,7 +3,7 @@ strategy("D/4H/1H POI > 15m BOS > 5m zone + 1m FVG entry Strategy", shorttitle="
      max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=1000,
      default_qty_type=strategy.percent_of_equity, default_qty_value=10,
      initial_capital=10000, commission_type=strategy.commission.percent, commission_value=0.02,
-     calc_on_order_fills=false, process_orders_on_close=true)
+     calc_on_order_fills=false, process_orders_on_close=false)
 
 // ============================================================================
 // STRATEGY — same model as the indicator, but places real orders so you can
@@ -319,6 +319,8 @@ var array<float> zTgt   = array.new<float>()
 var array<float> zTrig  = array.new<float>()   // entry price = near edge of the 1m entry FVG
 var array<box>   zEBox  = array.new<box>()
 var array<float> zSL    = array.new<float>()   // 1m swing stop (na = 5m-zone stop)
+var array<string> zId   = array.new<string>()  // strategy order id for this setup
+var array<int>   zPlaced = array.new<int>()    // bar the limit was (re)placed, na = not resting
 
 // Confirmed 1m swings from the chart bars (chart on 1m)
 phv = ta.pivothigh(high, swingLen1, swingLen1)
@@ -370,6 +372,8 @@ addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et,
     zTgt.push(tgt)
     zTrig.push(trig)
     zSL.push(slSw)
+    zId.push(str.tostring(bar_index) + (dir < 0 ? "S" : "L"))
+    zPlaced.push(na)
 
 // First FVG / inverse FVG (bars 1..3, newest first) that contains the level.
 fvgFind(int sd, float lvl, float h1, float l1, float h2, float l2, float h3, float l3, float c1) =>
@@ -459,13 +463,25 @@ if not na(p5LT) and not na(p1LT)
 armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
 armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)
 
-// --- Tap detection, mitigation, and order placement ---
-bool goShort = false
-bool goLong  = false
-float sEntry = na, float sSL = na, float sTP = na
-float lEntry = na, float lSL = na, float lTP = na
+// --- Resting limit orders (Rule 4): placed as soon as the setup forms ---
+// Risk-based sizing: qty = (equity * risk%) / (stop distance * point value)
+riskQty(float entryP, float slP) =>
+    dist = math.abs(entryP - slP)
+    q = dist > 0 ? strategy.equity * riskPct / 100.0 / (dist * syminfo.pointvalue) : 0.0
+    math.max(q, 0.0)
+
+stopFor(int dir, float t, float b, float slSw) =>
+    buf = (t - b) * slBufPct / 100.0
+    not na(slSw) ? (dir < 0 ? slSw + stopBuf : slSw - stopBuf) : (dir < 0 ? t + buf : b - buf)
+
+tpFor(int dir, float entryP, float slP, float tgt) =>
+    risk = math.abs(entryP - slP)
+    useS = exitMode == "Structure level" and not na(tgt) and (dir < 0 ? tgt < entryP : tgt > entryP)
+    useS ? tgt : (dir < 0 ? entryP - risk * rrMult : entryP + risk * rrMult)
 
 canTrade = inWindow and (not oneAtATime or strategy.position_size == 0)
+bool limitS = false
+bool limitL = false
 
 if zTops.size() > 0
     for i = zTops.size() - 1 to 0
@@ -478,76 +494,58 @@ if zTops.size() > 0
         slSw = zSL.get(i)
         ebx = zEBox.get(i)
         bx = zBox.get(i)
-        if d < 0
-            if zoneTick and zC1 > t          // 5m zone closed through
-                if drawZones and not na(bx)
-                    box.delete(bx)
-                if not na(ebx)
-                    box.delete(ebx)
-                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i), zSL.remove(i)
-            else if armed and high >= trig
-                zArmed.set(i, false)
-                if drawZones and not na(bx)
-                    box.set_right(bx, time)
-                    box.set_extend(bx, extend.none)
-                if not na(ebx)
-                    box.set_right(ebx, time)
-                    box.set_extend(ebx, extend.none)
-                zh  = t - b
-                buf = zh * slBufPct / 100.0
-                entryP = trig
-                slP = not na(slSw) ? slSw + stopBuf : t + buf
-                risk = math.abs(entryP - slP)
-                tpP = exitMode == "Structure level" and not na(tgt) and tgt < entryP ? tgt : entryP - risk * rrMult
-                if canTrade
-                    goShort := true
-                    sEntry := entryP, sSL := slP, sTP := tpP
-        else
-            if zoneTick and zC1 < b
-                if drawZones and not na(bx)
-                    box.delete(bx)
-                if not na(ebx)
-                    box.delete(ebx)
-                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i), zSL.remove(i)
-            else if armed and low <= trig
-                zArmed.set(i, false)
-                if drawZones and not na(bx)
-                    box.set_right(bx, time)
-                    box.set_extend(bx, extend.none)
-                if not na(ebx)
-                    box.set_right(ebx, time)
-                    box.set_extend(ebx, extend.none)
-                zh  = t - b
-                buf = zh * slBufPct / 100.0
-                entryP = trig
-                slP = not na(slSw) ? slSw - stopBuf : b - buf
-                risk = math.abs(entryP - slP)
-                tpP = exitMode == "Structure level" and not na(tgt) and tgt > entryP ? tgt : entryP + risk * rrMult
-                if canTrade
-                    goLong := true
-                    lEntry := entryP, lSL := slP, lTP := tpP
-
-// --- Orders ---
-// Risk-based sizing: qty = (equity * risk%) / (stop distance * point value)
-riskQty(float entryP, float slP) =>
-    dist = math.abs(entryP - slP)
-    q = dist > 0 ? strategy.equity * riskPct / 100.0 / (dist * syminfo.pointvalue) : 0.0
-    math.max(q, 0.0)
-
-if goShort
-    qS = riskQty(sEntry, sSL)
-    if qS > 0
-        strategy.entry("Short", strategy.short, qty=qS)
-        strategy.exit("Short X", from_entry="Short", stop=sSL, limit=sTP)
-if goLong
-    qL = riskQty(lEntry, lSL)
-    if qL > 0
-        strategy.entry("Long", strategy.long, qty=qL)
-        strategy.exit("Long X", from_entry="Long", stop=lSL, limit=lTP)
+        oid = zId.get(i)
+        placed = zPlaced.get(i)
+        // 5m zone closed through -> cancel the resting order and drop the setup
+        if zoneTick and (d < 0 ? zC1 > t : zC1 < b)
+            strategy.cancel(oid)
+            if not na(bx)
+                box.delete(bx)
+            if not na(ebx)
+                box.delete(ebx)
+            zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i), zSL.remove(i), zId.remove(i), zPlaced.remove(i)
+            continue
+        if not armed
+            continue
+        touched = d < 0 ? high >= trig : low <= trig
+        if touched and not na(placed) and placed < bar_index
+            // the resting limit was live -> filled at the entry; the setup is done
+            zArmed.set(i, false)
+            if not na(bx)
+                box.set_right(bx, time)
+                box.set_extend(bx, extend.none)
+            if not na(ebx)
+                box.set_right(ebx, time)
+                box.set_extend(ebx, extend.none)
+            continue
+        if touched and na(placed)
+            // price reached the entry while no order was resting (blocked) -> setup skipped
+            zArmed.set(i, false)
+            continue
+        if canTrade
+            slP = stopFor(d, t, b, slSw)
+            tpP = tpFor(d, trig, slP, tgt)
+            q = riskQty(trig, slP)
+            if q > 0 and (d < 0 ? slP > trig : slP < trig)
+                strategy.entry(oid, d < 0 ? strategy.short : strategy.long, qty=q, limit=trig)
+                strategy.exit("X" + oid, from_entry=oid, stop=slP, limit=tpP)
+                if na(placed)
+                    zPlaced.set(i, bar_index)
+                    if d < 0
+                        limitS := true
+                    else
+                        limitL := true
+                    alert("MTF-FVG " + syminfo.ticker + ": " + (d < 0 ? "SELL" : "BUY") + " LIMIT placed @ " + str.tostring(trig, format.mintick) + " | SL " + str.tostring(slP, format.mintick) + " | TP " + str.tostring(tpP, format.mintick) + " | qty " + str.tostring(q, "#.###") + " | " + (exitMode == "Structure level" ? "structure" : rrChoice) + " target", alert.freq_once_per_bar_close)
+        else if not na(placed)
+            // another trade is open / outside hours -> pull the order; re-placed later
+            strategy.cancel(oid)
+            zPlaced.set(i, na)
 
 // --------------------------------- Plots -------------------------------------
-plotshape(goShort, "Short entry", shape.triangledown, location.abovebar, color.red,   size=size.small)
-plotshape(goLong,  "Long entry",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(limitS, "Sell limit placed", shape.triangledown, location.abovebar, color.red,   size=size.tiny, text="Sell lim", textcolor=color.red)
+plotshape(limitL, "Buy limit placed",  shape.triangleup,   location.belowbar, color.green, size=size.tiny, text="Buy lim", textcolor=color.green)
+alertcondition(limitS, "Sell limit placed", "SELL LIMIT placed at the 1m entry FVG on {{ticker}} ({{interval}})")
+alertcondition(limitL, "Buy limit placed",  "BUY LIMIT placed at the 1m entry FVG on {{ticker}} ({{interval}})")
 
 // ------------------------- chart timeframe check -----------------------------
 if barstate.islast and timeframe.period != entryTF

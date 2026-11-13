@@ -470,15 +470,33 @@ if okBar
             p1LT := tD, p1LB := bD, p1LT0 := e_t2, arm1L := false
 
 // Pair: both pieces -> tradable setup (entry at the 1m entry FVG near edge; stop = 1m swing or 5m zone)
+// Stop / RR target for a setup (same rules as the strategy and EA)
+stopFor(int dir, float t, float b, float slSw) =>
+    buf = (t - b) * slBufPct / 100.0
+    not na(slSw) ? (dir < 0 ? slSw + stopBuf : slSw - stopBuf) : (dir < 0 ? t + buf : b - buf)
+
+limitMsg(int dir, float entryP, float slP) =>
+    risk = math.abs(entryP - slP)
+    tpP = dir < 0 ? entryP - risk * rrMult : entryP + risk * rrMult
+    "MTF-FVG " + syminfo.ticker + ": " + (dir < 0 ? "SELL" : "BUY") + " LIMIT placed @ " + str.tostring(entryP, format.mintick) + " | SL " + str.tostring(slP, format.mintick) + " | TP " + str.tostring(tpP, format.mintick) + " | " + rrChoice + " target"
+
+bool limitSellSig = false
+bool limitBuySig  = false
 if not na(p5ST) and not na(p1ST)
     swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
     if stopMode == "5m zone" or not na(swS)          // no 1m swing above the entry -> setup skipped
         addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS)
+        limitSellSig := showSell
+        if showSell
+            alert(limitMsg(-1, p1SB, stopFor(-1, p5ST, p5SB, swS)), alert.freq_once_per_bar_close)
     p5ST := na, p1ST := na
 if not na(p5LT) and not na(p1LT)
     swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
     if stopMode == "5m zone" or not na(swL)
         addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL)
+        limitBuySig := showBuy
+        if showBuy
+            alert(limitMsg(1, p1LT, stopFor(1, p5LT, p5LB, swL)), alert.freq_once_per_bar_close)
     p5LT := na, p1LT := na
 armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
 armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)
@@ -544,12 +562,17 @@ if okBar and zTops.size() > 0
 plot(armShort ? brokenLow15 : na, "Broken 15m low", color=cLine, style=plot.style_linebr, linewidth=1)
 plot(armLong ? brokenHigh15 : na, "Broken 15m high", color=cLine, style=plot.style_linebr, linewidth=1)
 
+plotshape(limitSellSig, "Sell limit placed", shape.xcross, location.abovebar, color.red, size=size.tiny, text="Sell lim", textcolor=color.red)
+plotshape(limitBuySig,  "Buy limit placed",  shape.xcross, location.belowbar, color.green, size=size.tiny, text="Buy lim", textcolor=color.green)
 plotshape(sellSig, "Sell", shape.triangledown, location.abovebar, color.red,   size=size.small, text="Sell", textcolor=color.red)
 plotshape(buySig,  "Buy",  shape.triangleup,   location.belowbar, color.green, size=size.small, text="Buy",  textcolor=color.green)
 
-alertcondition(sellSig,          "Sell tap",          "SELL: price tapped 5m entry zone on {{ticker}} ({{interval}})")
-alertcondition(buySig,           "Buy tap",           "BUY: price tapped 5m entry zone on {{ticker}} ({{interval}})")
-alertcondition(sellSig or buySig,"Any entry tap",     "Entry zone tapped on {{ticker}} ({{interval}})")
+alertcondition(limitSellSig,     "Sell limit placed", "SELL LIMIT placed at the 1m entry FVG near edge on {{ticker}} ({{interval}})")
+alertcondition(limitBuySig,      "Buy limit placed",  "BUY LIMIT placed at the 1m entry FVG near edge on {{ticker}} ({{interval}})")
+alertcondition(limitSellSig or limitBuySig, "Any limit placed", "Limit order placed at the 1m entry FVG on {{ticker}} ({{interval}})")
+alertcondition(sellSig,          "Sell limit filled", "SELL: price reached the 1m entry FVG (sell limit filled) on {{ticker}} ({{interval}})")
+alertcondition(buySig,           "Buy limit filled",  "BUY: price reached the 1m entry FVG (buy limit filled) on {{ticker}} ({{interval}})")
+alertcondition(sellSig or buySig,"Any limit filled",  "Entry reached / limit filled on {{ticker}} ({{interval}})")
 alertcondition(bosDown,          "15m BOS down",      "15m break of structure DOWN on {{ticker}} ({{interval}})")
 alertcondition(bosUp,            "15m BOS up",        "15m break of structure UP on {{ticker}} ({{interval}})")
 
