@@ -36,6 +36,7 @@ i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1,
 i_macro = input.bool(true, "Intraday: ICT macro-time highs/lows as liquidity", group=gN, tooltip="High and low of each completed ICT macro window (New York time): 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10. Labelled MAC H / MAC L.")
 i_macroHrs = input.int(24, "Macro level stays sweepable for N hours", minval=1, group=gN)
 i_liq1h = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group=gN, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
+i_fvgLiqD = input.bool(true, "Intraday: fresh D FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh daily FVG (bearish FVG top = buy-side, bullish FVG bottom = sell-side) is swept liquidity while no daily candle has traded into the gap; the day that first enters it can still sweep it. Labelled D FVG H / L. Does not set the bias.")
 i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
 
 gR = "Intraday rules 2-7 (5m chart)"
@@ -388,6 +389,9 @@ f_prev() => [open[1], high[1], low[1], close[1], time[1], time_close[1]]
 [o1, h1, l1, c1, t1, tc1] = request.security(syminfo.tickerid, "60", f_prev(), lookahead=barmerge.lookahead_on)
 new4 = not na(t4) and t4 != nz(t4[1])
 new1 = not na(t1) and t1 != nz(t1[1])
+f_prevD() => [high[1], low[1], high[3], low[3], time[1], time_close[1]]
+[hD1, lD1, hD3, lD3, tD1, tcD1] = request.security(syminfo.tickerid, "D", f_prevD(), lookahead=barmerge.lookahead_on)
+newD = not na(tD1) and tD1 != nz(tD1[1])
 
 // 5m closes for the close-back-through rule (chart closes on a 5m chart, lower-TF data on a 15m chart)
 ltfStr = timeframe.in_seconds() >= 300 ? "5" : timeframe.period
@@ -433,6 +437,11 @@ var array<float> l4HP = array.new_float()     // intraday: unbroken 4H swing hig
 var array<int>   l4HT = array.new_int()
 var array<float> l4LP = array.new_float()     // intraday: unbroken 4H swing lows
 var array<int>   l4LT = array.new_int()
+var array<float> dvP = array.new_float()    // intraday: fresh D FVG far edges (price, completion time, buy-side?, near edge, entered-at time)
+var array<int>   dvT = array.new_int()
+var array<bool>  dvHi = array.new_bool()
+var array<float> dvE = array.new_float()
+var array<int>   dvX = array.new_int()
 var array<float> v1P = array.new_float()       // intraday: fresh 1H FVG far edges (price, completion time, buy-side?, near edge, entered-at time)
 var array<int>   v1T = array.new_int()
 var array<bool>  v1Hi = array.new_bool()
@@ -742,6 +751,32 @@ if new1
             sesHi := math.max(sesHi, B1.H(q))
             sesLo := math.min(sesLo, B1.L(q))
 
+// ----- fresh D FVG far edges (intraday): on each new daily candle mark the FVGs the completed day traded into, then add the
+// FVG that day completed (candle 3 = the completed day, candle 1 = two days before it)
+if newD and i_fvgLiqD and not na(hD3)
+    for [k, _eD] in dvP
+        if dvX.get(k) == -1 and dvT.get(k) <= tD1
+            if dvHi.get(k) ? hD1 >= dvE.get(k) : lD1 <= dvE.get(k)
+                dvX.set(k, tcD1)
+    if hD1 < lD3
+        dvP.push(lD3)
+        dvT.push(tcD1)
+        dvHi.push(true)
+        dvE.push(hD1)
+        dvX.push(-1)
+    if lD1 > hD3
+        dvP.push(hD3)
+        dvT.push(tcD1)
+        dvHi.push(false)
+        dvE.push(lD1)
+        dvX.push(-1)
+    while dvP.size() > 200
+        dvP.shift()
+        dvT.shift()
+        dvHi.shift()
+        dvE.shift()
+        dvX.shift()
+
 // end of day (intraday): eodExit = this 5m candle ends at / after the cutoff (close - N min) -> open trades close at its close;
 // eodNoFill = the candle starts at / after the cutoff -> no entry fills; eodNext = the NEXT candle is in the no-fill window
 int nyMin = hour(time, "America/New_York") * 60 + minute(time, "America/New_York")
@@ -958,6 +993,8 @@ if sw5 and isM5 and symOK and p >= BC.base + 2
         f_scan5fvg(fvP, fvT, fvHi, fvX, "4HFVG", p)
     if i_fvgLiq1h
         f_scan5fvg(v1P, v1T, v1Hi, v1X, "1HFVG", p)
+    if i_fvgLiqD
+        f_scan5fvg(dvP, dvT, dvHi, dvX, "DFVG", p)
     if i_macro
         f_scan5(lMHP, lMHT, true, "MACRO", p)
         f_scan5(lMLP, lMLT, false, "MACRO", p)
@@ -1423,6 +1460,8 @@ if barstate.islast
             f_drawFvg(fvP, fvT, fvHi, fvX, color.new(color.fuchsia, 25), "4H FVG")
         if i_fvgLiq1h
             f_drawFvg(v1P, v1T, v1Hi, v1X, color.new(color.fuchsia, 50), "1H FVG")
+        if i_fvgLiqD
+            f_drawFvg(dvP, dvT, dvHi, dvX, color.new(color.purple, 10), "D FVG")
         if i_macro
             f_drawLv(lMHP, lMHT, color.new(color.yellow, 25), "MAC", true)
             f_drawLv(lMLP, lMLT, color.new(color.yellow, 25), "MAC", false)
