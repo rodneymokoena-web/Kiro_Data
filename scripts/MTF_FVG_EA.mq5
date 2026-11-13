@@ -51,6 +51,7 @@ input int             InpSwLen15    = 3;          // 15m swing length
 
 input group "Entry zone (Rule 3)"
 input bool            InpUseIFVG    = true;       // Allow inverse-FVG zones
+input bool            InpUseVI      = true;       // Rule 4: a 1m volume imbalance can also be the entry
 input int             InpMaxZones   = 30;         // Max stored zones (oldest dropped)
 
 input group "Trade management"
@@ -321,7 +322,7 @@ void DrawZone(const Zone &z)
    ObjectSetString(0, nm, OBJPROP_TEXT, tfn + (z.dir < 0 ? " zone (sell)" : " zone (buy)"));
    if(InpEntryFvgTF != InpZoneTF)
       Make1mFvgBox(nm + "e", z.et0, z.etop, z.ebot, clrDodgerBlue, STYLE_SOLID, 2,
-                   StringSubstr(EnumToString(InpEntryFvgTF), 7) + " entry FVG");
+                   StringSubstr(EnumToString(InpEntryFvgTF), 7) + " entry FVG/VI");
   }
 
 void FinishZoneDrawing(const Zone &z)
@@ -625,6 +626,33 @@ void CaptureZonePieces()
      }
   }
 
+// Volume imbalance on closed bars 1 (newer) and 2: bodies don't overlap, wicks do.
+// Zone = gap between the bodies. sd 0 = bearish, 1 = bullish.
+bool FindVI(ENUM_TIMEFRAMES tf, int sd, double level, double &top, double &bot, datetime &t0)
+  {
+   double o1 = iOpen(_Symbol, tf, 1), h1 = iHigh(_Symbol, tf, 1), l1 = iLow(_Symbol, tf, 1), c1 = iClose(_Symbol, tf, 1);
+   double o2 = iOpen(_Symbol, tf, 2), h2 = iHigh(_Symbol, tf, 2), l2 = iLow(_Symbol, tf, 2), c2 = iClose(_Symbol, tf, 2);
+   t0 = iTime(_Symbol, tf, 2);
+   if(sd == 0)
+     {
+      double top1 = MathMax(o1, c1), bot2 = MathMin(o2, c2);
+      if(top1 < bot2 && h1 >= l2 && top1 <= level && level <= bot2) { top = bot2; bot = top1; return true; }
+     }
+   else
+     {
+      double bot1 = MathMin(o1, c1), top2 = MathMax(o2, c2);
+      if(bot1 > top2 && l1 <= h2 && top2 <= level && level <= bot1) { top = bot1; bot = top2; return true; }
+     }
+   return false;
+  }
+
+// Rule 4 entry: FVG, then inverse FVG, then (optionally) volume imbalance.
+bool FindEntry(int sd, double level, double &top, double &bot, datetime &t0)
+  {
+   if(FindFvg(InpEntryFvgTF, sd, level, top, bot, t0)) return true;
+   return InpUseVI && FindVI(InpEntryFvgTF, sd, level, top, bot, t0);
+  }
+
 // New entry-FVG-TF (1m) bar: drop a pending 1m piece price closed through (and re-arm), then search.
 void CaptureEntryPieces()
   {
@@ -639,7 +667,7 @@ void CaptureEntryPieces()
       double level = SideLevel(sd);
       if(!SideAllowed(sd) || !g_arm1[sd] || level <= 0) continue;
       double t, b; datetime t0;
-      if(FindFvg(InpEntryFvgTF, sd, level, t, b, t0))
+      if(FindEntry(sd, level, t, b, t0))
         {
          g_p1[sd].has = true; g_p1[sd].top = t; g_p1[sd].bot = b; g_p1[sd].t0 = t0;
          g_arm1[sd] = false;

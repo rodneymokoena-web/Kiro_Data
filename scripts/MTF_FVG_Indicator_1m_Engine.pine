@@ -9,7 +9,7 @@ indicator("MTF-FVG 1m engine: D/4H/1H > 15m BOS > 5m zone + 1m FVG", shorttitle=
 //   Rule 1  bias: D / 4H / 1H swing sweep, or a 5m close inside a D/4H/1H FVG
 //   Rule 2  15m BOS while biased
 //   Rule 3  first 5m FVG / iFVG that contains the broken level (zone)
-//   Rule 4  first 1m FVG / iFVG that contains the broken level (entry);
+//   Rule 4  first 1m FVG / iFVG / volume imbalance containing the broken level (entry);
 //           limit at its near edge once both exist
 //   Rule 5  stop beyond the previous 1m swing (or the 5m zone)
 //   Rule 6  2R / 3R target (or the broken 15m level); one trade at a time
@@ -36,6 +36,7 @@ swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
 
 gZone = "Rules 3-4: 5m zone + 1m entry FVG"
 useIFVG  = input.bool(true, "Allow inverse FVGs", group=gZone)
+useVI    = input.bool(true, "Rule 4: a 1m volume imbalance can also be the entry", group=gZone, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
 maxZones = input.int(30, "Max stored setups", minval=1, maxval=100, group=gZone)
 
 gStop = "Rule 5: stop"
@@ -116,6 +117,7 @@ feedTF = timeframe.in_seconds() >= 60 ? "1" : timeframe.period
 
 // ============================ Engine state ===================================
 // 1m buffer + confirmed 1m swings
+var array<float> mO = array.new<float>()
 var array<float> mH = array.new<float>()
 var array<float> mL = array.new<float>()
 var array<float> mC = array.new<float>()
@@ -226,6 +228,24 @@ fvgFind(int sd, float lvl, float h1, float l1, float h2, float l2, float h3, flo
             f := true, t := l3, b := h2
     [f, t, b]
 
+// Volume imbalance on bars 1 (newer) and 2: bodies don't overlap, wicks do.
+// Zone = gap between the bodies. sd -1 = bearish, +1 = bullish.
+viFind(int sd, float lvl, float o1, float h1, float l1, float c1, float o2, float h2, float l2, float c2) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        top1 = math.max(o1, c1)
+        bot2 = math.min(o2, c2)
+        if top1 < bot2 and h1 >= l2 and top1 <= lvl and lvl <= bot2
+            f := true, t := bot2, b := top1
+    else
+        bot1 = math.min(o1, c1)
+        top2 = math.max(o2, c2)
+        if bot1 > top2 and l1 <= h2 and top2 <= lvl and lvl <= bot1
+            f := true, t := bot1, b := top2
+    [f, t, b]
+
 stopFor(int dir, float t, float b, float slSw) =>
     buf = (t - b) * slBufPct / 100.0
     not na(slSw) ? (dir < 0 ? slSw + stopBuf : slSw - stopBuf) : (dir < 0 ? t + buf : b - buf)
@@ -308,7 +328,7 @@ addSetup(int d, float zTop, float zBot, int zT0, float tgt, float eTop, float eB
     if showZones
         bx := box.new(zT0, zTop, t + 60000, zBot, xloc=xloc.bar_time, border_color=color.new(d < 0 ? color.red : color.green, 30), bgcolor=d < 0 ? cZS : cZB, extend=extend.right, text="5m zone", text_color=color.gray, text_size=size.small)
     if showEntry
-        box.new(eT0, eTop, eT0 + fvgMin * 60000, eBot, xloc=xloc.bar_time, border_color=cEntryFvg, border_width=2, bgcolor=color.new(cEntryFvg, 88), text="1m entry FVG", text_color=cEntryFvg, text_size=size.tiny)
+        box.new(eT0, eTop, eT0 + fvgMin * 60000, eBot, xloc=xloc.bar_time, border_color=cEntryFvg, border_width=2, bgcolor=color.new(cEntryFvg, 88), text="1m entry FVG/VI", text_color=cEntryFvg, text_size=size.tiny)
     placed = trDir == 0
     zT.push(zTop), zB.push(zBot), zD.push(d), zTg.push(tgt), zTrig.push(trig), zStop.push(sl)
     zArmed.push(true), zPlaced.push(placed), zBox.push(bx), zId.push((d < 0 ? "S" : "L") + str.tostring(t))
@@ -400,7 +420,7 @@ if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
         b15 = t - t % 900000
         for pass = 0 to 1
             if pass == 1
-                mH.push(h), mL.push(l), mC.push(c), mT.push(t)
+                mO.push(o), mH.push(h), mL.push(l), mC.push(c), mT.push(t)
                 m1Seq += 1
                 n1 = mH.size()
                 if n1 >= 2 * swingLen1 + 1
@@ -543,13 +563,15 @@ if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
             if not na(p1LT) and c < p1LB
                 p1LT := na, arm1L := arm5L or not na(p5LT)
             if allowShort and arm1S and not na(brokenLow)
-                [fC, tC, bC] = fvgFind(-1, brokenLow, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
-                if fC
-                    p1ST := tC, p1SB := bC, p1ST0 := mT.get(nm - 3), arm1S := false
+                [fC0, tC0, bC0] = fvgFind(-1, brokenLow, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
+                [fCv, tCv, bCv] = viFind(-1, brokenLow, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
+                if fC0 or (useVI and fCv)
+                    p1ST := fC0 ? tC0 : tCv, p1SB := fC0 ? bC0 : bCv, p1ST0 := mT.get(fC0 ? nm - 3 : nm - 2), arm1S := false
             if allowLong and arm1L and not na(brokenHigh)
-                [fD, tD, bD] = fvgFind(1, brokenHigh, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
-                if fD
-                    p1LT := tD, p1LB := bD, p1LT0 := mT.get(nm - 3), arm1L := false
+                [fD0, tD0, bD0] = fvgFind(1, brokenHigh, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
+                [fDv, tDv, bDv] = viFind(1, brokenHigh, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
+                if fD0 or (useVI and fDv)
+                    p1LT := fD0 ? tD0 : tDv, p1LB := fD0 ? bD0 : bDv, p1LT0 := mT.get(fD0 ? nm - 3 : nm - 2), arm1L := false
 
         // ---- (E) pair: 5m zone + 1m entry FVG -> setup, stop from the 1m swing ----
         if not na(p5ST) and not na(p1ST)
@@ -587,7 +609,7 @@ if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
 
 // ---------------------------- trim buffers -----------------------------------
 while mH.size() > 1500
-    mH.shift(), mL.shift(), mC.shift(), mT.shift()
+    mO.shift(), mH.shift(), mL.shift(), mC.shift(), mT.shift()
 while swHv.size() > 200
     swHv.shift(), swHi.shift()
 while swLv.size() > 200

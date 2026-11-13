@@ -39,6 +39,7 @@ swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
 
 gEntry = "Zone (Rule 3) / entry FVG (Rule 4)"
 useIFVG = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
+useVI   = input.bool(true, "Rule 4: a 1m volume imbalance can also be the entry", group=gEntry, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
 
 gTrade = "Trade management"
 stopMode  = input.string("1m swing", "Rule 5 stop", options=["1m swing", "5m zone"], group=gTrade, tooltip="1m swing = beyond the previous 1m swing high (sell) / low (buy) above / below the entry. 5m zone = beyond the 5m zone's far edge + buffer %.")
@@ -252,7 +253,8 @@ if bosUp
 // Feeds the 1m FVGs, 1m swings and BOS-leg scan from actual 1m bars, so they are
 // the same on a 1m or a 5m chart.
 feedTF = timeframe.in_seconds(entryTF) > timeframe.in_seconds() ? timeframe.period : entryTF
-[ltH, ltL, ltC, ltT] = request.security_lower_tf(syminfo.tickerid, feedTF, [high, low, close, time])
+[ltO, ltH, ltL, ltC, ltT] = request.security_lower_tf(syminfo.tickerid, feedTF, [open, high, low, close, time])
+var array<float> mO = array.new<float>()
 var array<float> mH = array.new<float>()
 var array<float> mL = array.new<float>()
 var array<float> mC = array.new<float>()
@@ -266,7 +268,7 @@ int newCount = 0
 if barstate.isconfirmed and ltH.size() > 0
     newCount := ltH.size()
     for j = 0 to ltH.size() - 1
-        mH.push(ltH.get(j)), mL.push(ltL.get(j)), mC.push(ltC.get(j)), mT.push(ltT.get(j))
+        mO.push(ltO.get(j)), mH.push(ltH.get(j)), mL.push(ltL.get(j)), mC.push(ltC.get(j)), mT.push(ltT.get(j))
         m1Seq += 1
         n = mH.size()
         if n >= 2 * swingLen1 + 1
@@ -385,7 +387,7 @@ addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et,
         col = dir < 0 ? cZS : cZB
         bx := box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=tfZone + "m zone", text_color=color.gray, text_size=size.small)
         if entryTF != tfZone
-            ebx := box.new(et0, et, et0 + fvgMin * 60000, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), text=entryTF + "m entry FVG", text_color=color.blue, text_size=size.tiny)
+            ebx := box.new(et0, et, et0 + fvgMin * 60000, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), text=entryTF + "m entry FVG/VI", text_color=color.blue, text_size=size.tiny)
     zBox.push(bx)
     zEBox.push(ebx)
     zTops.push(t)
@@ -458,6 +460,24 @@ if zoneTick
         if fB
             p5LT := tB, p5LB := bB, p5LT0 := zT3, arm5L := false
 
+// Volume imbalance on bars 1 (newer) and 2: bodies don't overlap, wicks do.
+// Zone = gap between the bodies. sd -1 = bearish, +1 = bullish.
+viFind(int sd, float lvl, float o1, float h1, float l1, float c1, float o2, float h2, float l2, float c2) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        top1 = math.max(o1, c1)
+        bot2 = math.min(o2, c2)
+        if top1 < bot2 and h1 >= l2 and top1 <= lvl and lvl <= bot2
+            f := true, t := bot2, b := top1
+    else
+        bot1 = math.min(o1, c1)
+        top2 = math.max(o2, c2)
+        if bot1 > top2 and l1 <= h2 and top2 <= lvl and lvl <= bot1
+            f := true, t := bot1, b := top2
+    [f, t, b]
+
 // Rule 4: entry FVG piece, on every new closed 1m bar from the feed
 if newCount > 0
     for i = mH.size() - newCount to mH.size() - 1
@@ -468,13 +488,21 @@ if newCount > 0
             if not na(p1LT) and c1m < p1LB
                 p1LT := na, arm1L := arm5L or not na(p5LT)
             if showSell and arm1S and not na(brokenLow15)
-                [fC, tC, bC_] = fvgFind(-1, brokenLow15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fC0, tC0, bC0] = fvgFind(-1, brokenLow15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fCv, tCv, bCv] = viFind(-1, brokenLow15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
+                fC  = fC0 or (useVI and fCv)
+                tC  = fC0 ? tC0 : tCv
+                bC_ = fC0 ? bC0 : bCv
                 if fC
-                    p1ST := tC, p1SB := bC_, p1ST0 := mT.get(i - 2), arm1S := false
+                    p1ST := tC, p1SB := bC_, p1ST0 := mT.get(fC0 ? i - 2 : i - 1), arm1S := false
             if showBuy and arm1L and not na(brokenHigh15)
-                [fD, tD, bD] = fvgFind(1, brokenHigh15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fD0, tD0, bD0] = fvgFind(1, brokenHigh15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fDv, tDv, bDv] = viFind(1, brokenHigh15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
+                fD = fD0 or (useVI and fDv)
+                tD = fD0 ? tD0 : tDv
+                bD = fD0 ? bD0 : bDv
                 if fD
-                    p1LT := tD, p1LB := bD, p1LT0 := mT.get(i - 2), arm1L := false
+                    p1LT := tD, p1LB := bD, p1LT0 := mT.get(fD0 ? i - 2 : i - 1), arm1L := false
 
 // Pair: both pieces -> tradable setup (entry at the 1m entry FVG near edge; stop = 1m swing or 5m zone)
 if not na(p5ST) and not na(p1ST)
@@ -571,7 +599,7 @@ alertcondition(limitL, "Buy limit placed",  "BUY LIMIT placed at the 1m entry FV
 
 // --------------------------- trim the 1m buffer ------------------------------
 while mH.size() > 1500
-    mH.shift(), mL.shift(), mC.shift(), mT.shift()
+    mO.shift(), mH.shift(), mL.shift(), mC.shift(), mT.shift()
 
 // ------------------------- chart timeframe check -----------------------------
 if barstate.islast and timeframe.period != "1" and timeframe.period != "5"
