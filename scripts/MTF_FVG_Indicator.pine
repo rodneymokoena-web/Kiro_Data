@@ -1,0 +1,690 @@
+//@version=6
+indicator("D/4H/1H POI > 15m BOS > 5m zone + 1m FVG entry", shorttitle="MTF-FVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=1000)
+
+// ============================================================================
+// INDICATOR — run on the 5m chart.
+//   1) D/4H/1H bias: a 4H swing high is swept (wick above then back below, OR a
+//      confirmed close back below) -> SHORT bias; OR price is inside a 4H
+//      bearish FVG -> SHORT bias. (Mirror for longs.)
+//   2) 15m shift: while biased, a pullback breaks a prior 15m swing low (short).
+//   3) 5m zone: the first 5m bearish FVG OR bearish inverse-FVG that OVERLAPS
+//      the broken 15m swing-low level is drawn and projected to the right.
+//   4) Entry: when price taps that zone again -> "Sell". Mirror for "Buy".
+//   Zones do not expire; they are removed only when price closes through them.
+// ============================================================================
+
+// ---------------------------------- Inputs ----------------------------------
+gTf   = "Timeframes"
+tfD   = input.timeframe("D",   "Bias timeframe (Daily)", group=gTf)
+tf4h  = input.timeframe("240", "Bias timeframe (4H)", group=gTf)
+tf1h  = input.timeframe("60",  "Second bias timeframe (1H)", group=gTf)
+tf15  = input.timeframe("15",  "Structure timeframe (15m)", group=gTf)
+tfZone  = input.timeframe("5", "Rule 3 zone timeframe (sets the stop)", group=gTf, tooltip="The zone that must contain the broken 15m level. The stop goes beyond its far edge + buffer.")
+entryTF = input.timeframe("1", "Rule 4 entry FVG timeframe", options=["1", "5"], group=gTf, tooltip="1m FVGs are read from real 1m bars, so they are exact on a 1m or 5m chart. 5 = enter at the 5m zone edge (old behaviour).")
+tfBiasChk = input.timeframe("5", "Rule 1 bias-check timeframe (5m)", group=gTf, tooltip="Bias sweeps / FVG closes are checked on closed bars of this timeframe, and the bias duration is counted in these bars, whatever the chart timeframe.")
+
+gBias = "Bias (D / 4H / 1H)"
+biasMode = input.string("D + 4H + 1H", "Rule 1 bias timeframes", options=["D + 4H + 1H", "D + 4H", "4H + 1H", "D", "4H", "1H"], group=gBias, tooltip="Pick which timeframes the bias conditions (swing sweep / close inside FVG) are checked on. A hit on any selected timeframe sets the bias.")
+useD     = str.contains(biasMode, "D")
+use4H    = str.contains(biasMode, "4H")
+useH1    = str.contains(biasMode, "1H")
+useSweep = input.bool(true, "Bias: swing sweep (4H / 1H)", group=gBias)
+useFvg4  = input.bool(true, "Bias: price inside FVG (4H / 1H)", group=gBias)
+swLen4   = input.int(5, "Swing length (D, 4H and 1H)", minval=1, group=gBias)
+sweepConfirm = input.string("Both", "Sweep type", options=["Wick","Close","Both"], group=gBias, tooltip="Wick = intrabar wick beyond the swing then back; Close = closes back beyond; Both = either qualifies.")
+biasBars = input.int(500, "Bias stays valid for (bars)", minval=20, group=gBias)
+
+gStruct = "15m structure"
+swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
+
+gEntry = "Zone (Rule 3) / entry FVG (Rule 4)"
+useIFVG      = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
+useSB   = input.bool(true, "Rule 4: a 1m suspension block can be the entry", group=gEntry, tooltip="One candle with a volume imbalance on each side of its body. Zone = body + both volume imbalances.")
+useVI   = input.bool(true, "Rule 4: a 1m volume imbalance (only when no suspension block)", group=gEntry, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
+confirmBars  = input.bool(true, "Only act on confirmed bars (no intrabar repaint)", group=gEntry, tooltip="Gates sweeps, FVG capture and taps to bar close so signals don't flicker intrabar.")
+
+gTrade = "Trade management"
+showTrade = input.bool(true,  "Draw entry / SL / TP lines", group=gTrade)
+stopMode  = input.string("1m swing", "Rule 5 stop", options=["1m swing", "5m zone"], group=gTrade, tooltip="1m swing = beyond the previous 1m swing high (sell) / low (buy) above / below the entry. 5m zone = beyond the 5m zone's far edge + buffer %.")
+swingLen1 = input.int(3, "1m swing length (bars each side)", minval=1, group=gTrade)
+swingLook = input.int(300, "1m swing lookback (bars)", minval=10, group=gTrade)
+stopBuf   = input.float(0.0, "Extra distance beyond the 1m swing (price units)", minval=0.0, group=gTrade)
+slBufPct  = input.float(5.0, "5m-zone stop: buffer beyond zone (%)", minval=0.0, step=0.5, group=gTrade, tooltip="Percent of the zone height added beyond its far edge.")
+rrChoice  = input.string("2R", "RR target (2R or 3R)", options=["2R", "3R"], group=gTrade)
+rrMult    = rrChoice == "3R" ? 3.0 : 2.0
+tradeExt  = input.int(40,    "Trade line length (bars)", minval=5, group=gTrade)
+cEntry    = input.color(color.blue,  "Entry line",      group=gTrade)
+cSL       = input.color(color.red,   "Stop line",       group=gTrade)
+cTPs      = input.color(color.teal,  "Structure TP",    group=gTrade)
+cTPr      = input.color(color.green, "RR TP",           group=gTrade)
+
+gShow = "Display"
+showBos    = input.bool(true, "Show 15m BOS", group=gShow)
+showLegFvg = input.bool(true, "Show last FVG on the BOS leg (chart TF, 1m)", group=gShow)
+maxBos     = input.int(10, "Keep the last N BOS drawings", minval=1, maxval=100, group=gShow)
+legLook    = input.int(600, "Leg scan limit (chart bars)", minval=20, maxval=990, group=gShow)
+cBosDn     = input.color(color.red,    "BOS down color", group=gShow)
+cBosUp     = input.color(color.green,  "BOS up color",   group=gShow)
+cLegFvg    = input.color(color.orange, "Leg FVG color",  group=gShow)
+fvgMin     = input.int(60, "1m FVG box length (minutes)", minval=1, group=gShow, tooltip="1m FVG boxes (entry FVG and BOS-leg FVG) are drawn this long and stay on the chart.")
+showSell = input.bool(true, "Show sell setups", group=gShow)
+showBuy  = input.bool(true, "Show buy setups",  group=gShow)
+cPoi  = input.color(color.yellow, "4H POI color", group=gShow)
+cZS   = input.color(color.new(color.red, 65),   "Sell zone color", group=gShow)
+cZB   = input.color(color.new(color.green, 65), "Buy zone color",  group=gShow)
+cLine = input.color(color.aqua, "15m level color", group=gShow)
+
+okBar   = not confirmBars or barstate.isconfirmed
+
+// =============================== 4H DATA =====================================
+h4() =>
+    ph = ta.pivothigh(high, swLen4, swLen4)[1]
+    pl = ta.pivotlow(low,  swLen4, swLen4)[1]
+    bFt = high[1] < low[3]  ? low[3]  : na   // bearish FVG top
+    bFb = high[1] < low[3]  ? high[1] : na   // bearish FVG bottom
+    uFt = low[1]  > high[3] ? low[1]  : na   // bullish FVG top
+    uFb = low[1]  > high[3] ? high[3] : na   // bullish FVG bottom
+    [ph, pl, bFt, bFb, uFt, uFb]
+
+[h4PH, h4PL, h4bFt, h4bFb, h4uFt, h4uFb] = request.security(syminfo.tickerid, tf4h, h4(), lookahead=barmerge.lookahead_off)
+
+// Track most recent 4H swings + 4H FVG zones
+var float swHigh4 = na
+var float swLow4  = na
+if not na(h4PH) and h4PH != nz(h4PH[1])
+    swHigh4 := h4PH
+if not na(h4PL) and h4PL != nz(h4PL[1])
+    swLow4 := h4PL
+
+var box poiSupBox = na
+var box poiDemBox = na
+var float f4bT = na, var float f4bB = na   // active 4H bearish FVG
+var float f4uT = na, var float f4uB = na   // active 4H bullish FVG
+if not na(h4bFt) and (h4bFt != nz(h4bFt[1]) or h4bFb != nz(h4bFb[1]))
+    f4bT := h4bFt
+    f4bB := h4bFb
+    if not na(poiSupBox)
+        box.delete(poiSupBox)
+    poiSupBox := box.new(bar_index, f4bT, bar_index, f4bB, xloc=xloc.bar_index, border_color=cPoi, bgcolor=color.new(cPoi, 88), extend=extend.right, text="4H FVG", text_color=cPoi, text_size=size.small)
+if not na(h4uFt) and (h4uFt != nz(h4uFt[1]) or h4uFb != nz(h4uFb[1]))
+    f4uT := h4uFt
+    f4uB := h4uFb
+    if not na(poiDemBox)
+        box.delete(poiDemBox)
+    poiDemBox := box.new(bar_index, f4uT, bar_index, f4uB, xloc=xloc.bar_index, border_color=cPoi, bgcolor=color.new(cPoi, 88), extend=extend.right, text="4H FVG", text_color=cPoi, text_size=size.small)
+
+// ------------------- Rule 1 bias-check bars (5m, closed) ---------------------
+// On a 5m chart these are the chart's own bars. On a 1m chart they are the last
+// closed 5m bar (lookahead_on + [1] = no repaint), evaluated once per new 5m bar.
+chartIsChk = timeframe.period == tfBiasChk
+[rH, rL, rC, rH1, rL1] = request.security(syminfo.tickerid, tfBiasChk, [high[1], low[1], close[1], high[2], low[2]], lookahead=barmerge.lookahead_on)
+bH  = chartIsChk ? high    : rH
+bL  = chartIsChk ? low     : rL
+bC  = chartIsChk ? close   : rC
+bH1 = chartIsChk ? high[1] : rH1
+bL1 = chartIsChk ? low[1]  : rL1
+biasTick = chartIsChk or ta.change(time(tfBiasChk)) != 0
+biasMs   = biasBars * timeframe.in_seconds(tfBiasChk) * 1000
+
+// ----------------------------- 4H bias flags --------------------------------
+wickSweepHi  = not na(swHigh4) and bH > swHigh4 and bC < swHigh4
+closeSweepHi = not na(swHigh4) and bH1 > swHigh4 and bC < swHigh4
+sweepHi = sweepConfirm == "Wick" ? wickSweepHi : sweepConfirm == "Close" ? closeSweepHi : (wickSweepHi or closeSweepHi)
+
+wickSweepLo  = not na(swLow4) and bL < swLow4 and bC > swLow4
+closeSweepLo = not na(swLow4) and bL1 < swLow4 and bC > swLow4
+sweepLo = sweepConfirm == "Wick" ? wickSweepLo : sweepConfirm == "Close" ? closeSweepLo : (wickSweepLo or closeSweepLo)
+
+inFvg4Bear = not na(f4bT) and bC <= f4bT and bC >= f4bB
+inFvg4Bull = not na(f4uT) and bC <= f4uT and bC >= f4uB
+
+// ------------------------- 1H bias (same rules as 4H) ------------------------
+[h1PH, h1PL, h1bFt, h1bFb, h1uFt, h1uFb] = request.security(syminfo.tickerid, tf1h, h4(), lookahead=barmerge.lookahead_off)
+
+var float swHigh1 = na
+var float swLow1  = na
+if not na(h1PH) and h1PH != nz(h1PH[1])
+    swHigh1 := h1PH
+if not na(h1PL) and h1PL != nz(h1PL[1])
+    swLow1 := h1PL
+
+var float f1bT = na, var float f1bB = na   // active 1H bearish FVG
+var float f1uT = na, var float f1uB = na   // active 1H bullish FVG
+if not na(h1bFt) and (h1bFt != nz(h1bFt[1]) or h1bFb != nz(h1bFb[1]))
+    f1bT := h1bFt
+    f1bB := h1bFb
+if not na(h1uFt) and (h1uFt != nz(h1uFt[1]) or h1uFb != nz(h1uFb[1]))
+    f1uT := h1uFt
+    f1uB := h1uFb
+
+wickSweepHi1  = not na(swHigh1) and bH > swHigh1 and bC < swHigh1
+closeSweepHi1 = not na(swHigh1) and bH1 > swHigh1 and bC < swHigh1
+sweepHi1 = sweepConfirm == "Wick" ? wickSweepHi1 : sweepConfirm == "Close" ? closeSweepHi1 : (wickSweepHi1 or closeSweepHi1)
+wickSweepLo1  = not na(swLow1) and bL < swLow1 and bC > swLow1
+closeSweepLo1 = not na(swLow1) and bL1 < swLow1 and bC > swLow1
+sweepLo1 = sweepConfirm == "Wick" ? wickSweepLo1 : sweepConfirm == "Close" ? closeSweepLo1 : (wickSweepLo1 or closeSweepLo1)
+inFvg1Bear = not na(f1bT) and bC <= f1bT and bC >= f1bB
+inFvg1Bull = not na(f1uT) and bC <= f1uT and bC >= f1uB
+
+h1Short = useH1 and ((useSweep and sweepHi1) or (useFvg4 and inFvg1Bear))
+h1Long  = useH1 and ((useSweep and sweepLo1) or (useFvg4 and inFvg1Bull))
+
+// ------------------------ Daily bias (same rules as 4H) -----------------------
+[dPH, dPL, dbFt, dbFb, duFt, duFb] = request.security(syminfo.tickerid, tfD, h4(), lookahead=barmerge.lookahead_off)
+
+var float swHighD = na
+var float swLowD  = na
+if not na(dPH) and dPH != nz(dPH[1])
+    swHighD := dPH
+if not na(dPL) and dPL != nz(dPL[1])
+    swLowD := dPL
+
+var float fDbT = na, var float fDbB = na   // active Daily bearish FVG
+var float fDuT = na, var float fDuB = na   // active Daily bullish FVG
+if not na(dbFt) and (dbFt != nz(dbFt[1]) or dbFb != nz(dbFb[1]))
+    fDbT := dbFt
+    fDbB := dbFb
+if not na(duFt) and (duFt != nz(duFt[1]) or duFb != nz(duFb[1]))
+    fDuT := duFt
+    fDuB := duFb
+
+wickSweepHiD  = not na(swHighD) and bH > swHighD and bC < swHighD
+closeSweepHiD = not na(swHighD) and bH1 > swHighD and bC < swHighD
+sweepHiD = sweepConfirm == "Wick" ? wickSweepHiD : sweepConfirm == "Close" ? closeSweepHiD : (wickSweepHiD or closeSweepHiD)
+wickSweepLoD  = not na(swLowD) and bL < swLowD and bC > swLowD
+closeSweepLoD = not na(swLowD) and bL1 < swLowD and bC > swLowD
+sweepLoD = sweepConfirm == "Wick" ? wickSweepLoD : sweepConfirm == "Close" ? closeSweepLoD : (wickSweepLoD or closeSweepLoD)
+inFvgDBear = not na(fDbT) and bC <= fDbT and bC >= fDbB
+inFvgDBull = not na(fDuT) and bC <= fDuT and bC >= fDuB
+
+dShort  = useD and ((useSweep and sweepHiD) or (useFvg4 and inFvgDBear))
+dLong   = useD and ((useSweep and sweepLoD) or (useFvg4 and inFvgDBull))
+h4Short = use4H and ((useSweep and sweepHi) or (useFvg4 and inFvg4Bear))
+h4Long  = use4H and ((useSweep and sweepLo) or (useFvg4 and inFvg4Bull))
+
+var int shortBiasTime = na
+var int longBiasTime  = na
+if okBar and biasTick and (dShort or h4Short or h1Short)
+    shortBiasTime := time
+if okBar and biasTick and (dLong or h4Long or h1Long)
+    longBiasTime := time
+shortBias = not na(shortBiasTime) and time - shortBiasTime <= biasMs
+longBias  = not na(longBiasTime)  and time - longBiasTime  <= biasMs
+
+// =============================== 15m DATA ====================================
+f15() =>
+    pl = ta.pivotlow(low,  swLen15, swLen15)[1]
+    ph = ta.pivothigh(high, swLen15, swLen15)[1]
+    [pl, ph, close, time[swLen15 + 1]]
+
+[pl15, ph15, close15, pvT15] = request.security(syminfo.tickerid, tf15, f15(), lookahead=barmerge.lookahead_off)
+
+var float lastPL15 = na
+var float lastPH15 = na
+var int   lastPL15T = na      // time of the 15m swing candle (for drawing the BOS line)
+var int   lastPH15T = na
+if not na(pl15) and pl15 != nz(pl15[1])
+    lastPL15 := pl15
+    lastPL15T := pvT15
+if not na(ph15) and ph15 != nz(ph15[1])
+    lastPH15 := ph15
+    lastPH15T := pvT15
+
+prevClose15 = nz(close15[1], close15)
+bosDown = okBar and shortBias and not na(lastPL15) and close15 < lastPL15 and prevClose15 >= lastPL15
+bosUp   = okBar and longBias  and not na(lastPH15) and close15 > lastPH15 and prevClose15 <= lastPH15
+
+var float brokenLow15  = na
+var int   armShortBar  = na
+var bool  armShort     = false
+var float brokenHigh15 = na
+var int   armLongBar   = na
+var bool  armLong      = false
+if bosDown
+    brokenLow15 := lastPL15
+    armShort := true
+    armShortBar := bar_index
+if bosUp
+    brokenHigh15 := lastPH15
+    armLong := true
+    armLongBar := bar_index
+
+// ---------------------- 1m bar feed (real 1m bars) ---------------------------
+// Feeds the 1m FVGs, 1m swings and BOS-leg scan from actual 1m bars, so they are
+// the same on a 1m or a 5m chart.
+feedTF = timeframe.in_seconds(entryTF) > timeframe.in_seconds() ? timeframe.period : entryTF
+[ltO, ltH, ltL, ltC, ltT] = request.security_lower_tf(syminfo.tickerid, feedTF, [open, high, low, close, time])
+var array<float> mO = array.new<float>()
+var array<float> mH = array.new<float>()
+var array<float> mL = array.new<float>()
+var array<float> mC = array.new<float>()
+var array<int>   mT = array.new<int>()
+var int m1Seq = 0
+var array<float> swHv = array.new<float>()     // confirmed 1m swing highs
+var array<int>   swHi = array.new<int>()       // ... their 1m sequence number
+var array<float> swLv = array.new<float>()
+var array<int>   swLi = array.new<int>()
+int newCount = 0
+if barstate.isconfirmed and ltH.size() > 0
+    newCount := ltH.size()
+    for j = 0 to ltH.size() - 1
+        mO.push(ltO.get(j)), mH.push(ltH.get(j)), mL.push(ltL.get(j)), mC.push(ltC.get(j)), mT.push(ltT.get(j))
+        m1Seq += 1
+        n = mH.size()
+        if n >= 2 * swingLen1 + 1
+            pp = n - 1 - swingLen1
+            vH = mH.get(pp)
+            vL = mL.get(pp)
+            bool isH = true
+            bool isL = true
+            for k = 1 to swingLen1
+                if not (vH > mH.get(pp - k) and vH >= mH.get(pp + k))
+                    isH := false
+                if not (vL < mL.get(pp - k) and vL <= mL.get(pp + k))
+                    isL := false
+            if isH
+                swHv.push(vH), swHi.push(m1Seq - swingLen1)
+            if isL
+                swLv.push(vL), swLi.push(m1Seq - swingLen1)
+    while swHv.size() > 200
+        swHv.shift(), swHi.shift()
+    while swLv.size() > 200
+        swLv.shift(), swLi.shift()
+
+// Most recent 1m swing high above price (dir -1) / swing low below price (dir +1)
+findStopSwing(int dir, float price) =>
+    float v = na
+    vals = dir < 0 ? swHv : swLv
+    idxs = dir < 0 ? swHi : swLi
+    if vals.size() > 0
+        for i = vals.size() - 1 to 0
+            if m1Seq - idxs.get(i) > swingLook
+                break
+            x = vals.get(i)
+            if (dir < 0 and x > price) or (dir > 0 and x < price)
+                v := x
+                break
+    v
+
+// --------------- 15m BOS + last FVG on the break leg (display only) ----------
+// Leg of a bearish break: from the highest high since the broken 15m swing low formed,
+// down to the break. The drawn FVG is the most recent bearish FVG inside that leg.
+legFvg(int dir, int fromT, int maxLook) =>
+    int n = mH.size()
+    int ext = -1
+    if n > 0
+        for i = n - 1 to 0
+            if mT.get(i) < fromT or n - 1 - i > maxLook
+                break
+            if ext < 0 or (dir < 0 ? mH.get(i) > mH.get(ext) : mL.get(i) < mL.get(ext))
+                ext := i
+    bool f = false
+    float ft = na
+    float fb = na
+    int ft0 = na
+    if ext >= 0 and n - 1 >= ext + 2
+        for j = n - 1 to ext + 2
+            if dir < 0 and mH.get(j) < mL.get(j - 2)
+                f := true, ft := mL.get(j - 2), fb := mH.get(j), ft0 := mT.get(j - 2)
+                break
+            if dir > 0 and mL.get(j) > mH.get(j - 2)
+                f := true, ft := mL.get(j), fb := mH.get(j - 2), ft0 := mT.get(j - 2)
+                break
+    [f, ft, fb, ft0]
+
+var array<line>  bosLines  = array.new<line>()
+var array<label> bosLabels = array.new<label>()
+var array<box>   legBoxes  = array.new<box>()
+
+drawBos(int dir, float lvl, int fromT) =>
+    col = dir < 0 ? cBosDn : cBosUp
+    if showBos
+        bosLines.push(line.new(nz(fromT, time), lvl, time, lvl, xloc=xloc.bar_time, color=col, width=2))
+        bosLabels.push(label.new(time, lvl, "BOS", xloc=xloc.bar_time, style=dir < 0 ? label.style_label_up : label.style_label_down, color=color.new(col, 20), textcolor=color.white, size=size.small))
+        while bosLines.size() > maxBos
+            line.delete(bosLines.shift())
+        while bosLabels.size() > maxBos
+            label.delete(bosLabels.shift())
+    if showLegFvg and not na(fromT)
+        [f, ft, fb, ft0] = legFvg(dir, fromT, legLook)
+        if f
+            legBoxes.push(box.new(ft0, ft, ft0 + fvgMin * 60000, fb, xloc=xloc.bar_time, border_color=cLegFvg, border_width=1, bgcolor=color.new(cLegFvg, 80), text=entryTF + "m FVG (BOS leg)", text_color=cLegFvg, text_size=size.tiny, text_halign=text.align_left))
+
+if bosDown
+    drawBos(-1, brokenLow15, lastPL15T)
+if bosUp
+    drawBos(1, brokenHigh15, lastPH15T)
+
+// ===================== ENTRY ZONE LOGIC (Rule 3, chart TF) ===================
+e_h  = high
+e_l  = low
+e_h2 = high[2]
+e_l2 = low[2]
+e_h1 = high[1]
+e_l1 = low[1]
+e_c  = close
+e_o  = open
+e_t2 = time[2]
+
+var array<float> zTops  = array.new<float>()   // Rule 3 zone (5m): stop side
+var array<float> zBots  = array.new<float>()
+var array<int>   zDir   = array.new<int>()
+var array<box>   zBox   = array.new<box>()
+var array<bool>  zArmed = array.new<bool>()
+var array<float> zTgt   = array.new<float>()
+var array<float> zTrig  = array.new<float>()   // entry price = near edge of the 1m entry FVG
+var array<box>   zEBox  = array.new<box>()
+var array<float> zSL    = array.new<float>()   // 1m swing stop (na = 5m-zone stop)
+
+
+overlap(float aT, float aB, float bT, float bB) => aB <= bT and aT >= bB
+
+drawTrade(int dir, float entryP, float zTop, float zBot, float structTgt, float slSw) =>
+    if showTrade
+        zh  = zTop - zBot
+        buf = zh * slBufPct / 100.0
+        float slP = not na(slSw) ? (dir < 0 ? slSw + stopBuf : slSw - stopBuf) : (dir < 0 ? zTop + buf : zBot - buf)
+        risk = math.abs(entryP - slP)
+        float rrP = dir < 0 ? entryP - risk * rrMult : entryP + risk * rrMult
+        int x1 = bar_index
+        int x2 = bar_index + tradeExt
+        line.new(x1, entryP, x2, entryP, color=cEntry, width=2)
+        line.new(x1, slP,    x2, slP,    color=cSL,    width=2, style=line.style_dashed)
+        line.new(x1, rrP,    x2, rrP,    color=cTPr,   width=2)
+        label.new(x2, entryP, "Entry " + str.tostring(entryP, format.mintick), style=label.style_label_left, color=color.new(cEntry, 80), textcolor=cEntry, size=size.small)
+        label.new(x2, slP,    "SL "    + str.tostring(slP, format.mintick),    style=label.style_label_left, color=color.new(cSL, 80),    textcolor=cSL,    size=size.small)
+        label.new(x2, rrP,    str.tostring(rrMult, "#.#") + "R TP",             style=label.style_label_left, color=color.new(cTPr, 80),   textcolor=cTPr,   size=size.small)
+        bool structOk = dir < 0 ? (not na(structTgt) and structTgt < entryP) : (not na(structTgt) and structTgt > entryP)
+        if structOk
+            rrS = math.abs(entryP - structTgt) / risk
+            line.new(x1, structTgt, x2, structTgt, color=cTPs, width=2, style=line.style_dotted)
+            label.new(x2, structTgt, "Struct TP (" + str.tostring(rrS, "#.#") + "R)", style=label.style_label_left, color=color.new(cTPs, 80), textcolor=cTPs, size=size.small)
+
+addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et, float eb, int et0, float slSw, string ekind) =>
+    box bx = na
+    box ebx = na
+    if showSell or showBuy
+        col = dir < 0 ? cZS : cZB
+        bx := box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=tfZone + "m zone", text_color=color.gray, text_size=size.small)
+        if entryTF != tfZone
+            ebx := box.new(et0, et, et0 + fvgMin * 60000, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), text=entryTF + "m " + (ekind == "SB" ? "suspension block" : ekind == "VI" ? "entry VI" : "entry FVG"), text_color=color.blue, text_size=size.tiny)
+    zBox.push(bx)
+    zEBox.push(ebx)
+    zTops.push(t)
+    zBots.push(b)
+    zDir.push(dir)
+    zArmed.push(true)
+    zTgt.push(tgt)
+    zTrig.push(trig)
+    zSL.push(slSw)
+
+// First FVG / inverse FVG (bars 1..3, newest first) that contains the level.
+fvgFind(int sd, float lvl, float h1, float l1, float h2, float l2, float h3, float l3, float c1) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        if h1 < l3 and h1 <= lvl and lvl <= l3
+            f := true, t := l3, b := h1
+        else if useIFVG and l2 > h3 and c1 < h3 and h3 <= lvl and lvl <= l2
+            f := true, t := l2, b := h3
+    else
+        if l1 > h3 and h3 <= lvl and lvl <= l1
+            f := true, t := l1, b := h3
+        else if useIFVG and h2 < l3 and c1 > l3 and h2 <= lvl and lvl <= l3
+            f := true, t := l3, b := h2
+    [f, t, b]
+
+bool sellSig = false
+bool buySig  = false
+
+// Rule 3 zone bars (closed): the chart's own on a {tfZone} chart, else the last closed tfZone bar.
+chartIsZone = timeframe.period == tfZone
+[zH1r, zL1r, zH2r, zL2r, zH3r, zL3r, zC1r, zT3r] = request.security(syminfo.tickerid, tfZone, [high[1], low[1], high[2], low[2], high[3], low[3], close[1], time[3]], lookahead=barmerge.lookahead_on)
+zH1 = chartIsZone ? high    : zH1r
+zL1 = chartIsZone ? low     : zL1r
+zH2 = chartIsZone ? high[1] : zH2r
+zL2 = chartIsZone ? low[1]  : zL2r
+zH3 = chartIsZone ? high[2] : zH3r
+zL3 = chartIsZone ? low[2]  : zL3r
+zC1 = chartIsZone ? close   : zC1r
+zT3 = chartIsZone ? time[2] : zT3r
+zoneTick = chartIsZone or ta.change(time(tfZone)) != 0
+
+// Setup building per side: 5m zone piece + 1m entry-FVG piece; both arm on a 15m BOS.
+var bool  arm5S = false
+var bool  arm1S = false
+var float p5ST = na, var float p5SB = na, var int p5ST0 = na
+var float p1ST = na, var float p1SB = na, var int p1ST0 = na
+var bool  arm5L = false
+var bool  arm1L = false
+var float p5LT = na, var float p5LB = na, var int p5LT0 = na
+var float p1LT = na, var float p1LB = na, var int p1LT0 = na
+var float pviST = na, var float pviSB = na, var int pviST0 = na    // 1m volume imbalance waiting one candle
+var float pviLT = na, var float pviLB = na, var int pviLT0 = na
+var string p1SK = ""                                                // entry type: FVG / SB / VI
+var string p1LK = ""
+if bosDown
+    arm5S := true, arm1S := true, p5ST := na, p1ST := na, pviST := na
+if bosUp
+    arm5L := true, arm1L := true, p5LT := na, p1LT := na, pviLT := na
+
+// Rule 3: zone piece, once per closed zone-TF bar
+if okBar and zoneTick
+    if not na(p5ST) and zC1 > p5ST
+        p5ST := na, p1ST := na, arm1S := false        // zone failed before pairing
+    if not na(p5LT) and zC1 < p5LB
+        p5LT := na, p1LT := na, arm1L := false
+    if showSell and arm5S and not na(brokenLow15)
+        [fA, tA, bA] = fvgFind(-1, brokenLow15, zH1, zL1, zH2, zL2, zH3, zL3, zC1)
+        if fA
+            p5ST := tA, p5SB := bA, p5ST0 := zT3, arm5S := false
+    if showBuy and arm5L and not na(brokenHigh15)
+        [fB, tB, bB] = fvgFind(1, brokenHigh15, zH1, zL1, zH2, zL2, zH3, zL3, zC1)
+        if fB
+            p5LT := tB, p5LB := bB, p5LT0 := zT3, arm5L := false
+
+// Volume imbalance on bars 1 (newer) and 2: bodies don't overlap, wicks do.
+// Zone = gap between the bodies. sd -1 = bearish, +1 = bullish.
+viFind(int sd, float lvl, float o1, float h1, float l1, float c1, float o2, float h2, float l2, float c2) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        top1 = math.max(o1, c1)
+        bot2 = math.min(o2, c2)
+        if top1 < bot2 and h1 >= l2 and top1 <= lvl and lvl <= bot2
+            f := true, t := bot2, b := top1
+    else
+        bot1 = math.min(o1, c1)
+        top2 = math.max(o2, c2)
+        if bot1 > top2 and l1 <= h2 and top2 <= lvl and lvl <= bot1
+            f := true, t := bot1, b := top2
+    [f, t, b]
+
+// Suspension block on bars A (oldest), B, C (newest): B's body is isolated by a volume
+// imbalance on each side (bodies don't overlap, wicks do). Zone = from C's body edge to
+// A's body edge (both volume imbalances + B's body). sd -1 = bearish, +1 = bullish.
+sbFind(int sd, float lvl, float oA, float hA, float lA, float cA, float oB, float hB, float lB, float cB, float oC, float hC, float lC, float cC) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        botA = math.min(oA, cA)
+        topB = math.max(oB, cB)
+        botB = math.min(oB, cB)
+        topC = math.max(oC, cC)
+        if topB < botA and topC < botB and hB >= lA and hC >= lB and topC <= lvl and lvl <= botA
+            f := true, t := botA, b := topC
+    else
+        topA = math.max(oA, cA)
+        botB = math.min(oB, cB)
+        topB = math.max(oB, cB)
+        botC = math.min(oC, cC)
+        if botB > topA and botC > topB and lB <= hA and lC <= hB and topA <= lvl and lvl <= botC
+            f := true, t := botC, b := topA
+    [f, t, b]
+
+// Rule 4: 1m entry piece, on every new closed 1m bar from the feed
+if newCount > 0
+    for i = mH.size() - newCount to mH.size() - 1
+        if i >= 2
+            c1m = mC.get(i)
+            if not na(p1ST) and c1m > p1ST
+                p1ST := na, arm1S := arm5S or not na(p5ST)    // look for a new entry
+            if not na(p1LT) and c1m < p1LB
+                p1LT := na, arm1L := arm5L or not na(p5LT)
+            if not na(pviST) and c1m > pviST
+                pviST := na                                   // waiting volume imbalance closed through
+            if showSell and arm1S and not na(brokenLow15)
+                [fF, tF, bF] = fvgFind(-1, brokenLow15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fS, tS, bS] = sbFind(-1, brokenLow15, mO.get(i - 2), mH.get(i - 2), mL.get(i - 2), mC.get(i - 2), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1), mO.get(i), mH.get(i), mL.get(i), mC.get(i))
+                [fV, tV, bV] = viFind(-1, brokenLow15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(i - 2), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(i - 2), nK := "SB"
+                else if useVI and not na(pviST)
+                    nT := pviST, nB := pviSB, nT0 := pviST0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviST := tV, pviSB := bV, pviST0 := mT.get(i - 1)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(i - 1), nK := "VI"
+                if not na(nT)
+                    p1ST := nT, p1SB := nB, p1ST0 := nT0, p1SK := nK, arm1S := false, pviST := na
+            if not na(pviLT) and c1m < pviLB
+                pviLT := na                                   // waiting volume imbalance closed through
+            if showBuy and arm1L and not na(brokenHigh15)
+                [fF, tF, bF] = fvgFind(1, brokenHigh15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                [fS, tS, bS] = sbFind(1, brokenHigh15, mO.get(i - 2), mH.get(i - 2), mL.get(i - 2), mC.get(i - 2), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1), mO.get(i), mH.get(i), mL.get(i), mC.get(i))
+                [fV, tV, bV] = viFind(1, brokenHigh15, mO.get(i), mH.get(i), mL.get(i), mC.get(i), mO.get(i - 1), mH.get(i - 1), mL.get(i - 1), mC.get(i - 1))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(i - 2), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(i - 2), nK := "SB"
+                else if useVI and not na(pviLT)
+                    nT := pviLT, nB := pviLB, nT0 := pviLT0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviLT := tV, pviLB := bV, pviLT0 := mT.get(i - 1)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(i - 1), nK := "VI"
+                if not na(nT)
+                    p1LT := nT, p1LB := nB, p1LT0 := nT0, p1LK := nK, arm1L := false, pviLT := na
+
+// Pair: both pieces -> tradable setup (entry at the 1m entry FVG near edge; stop = 1m swing or 5m zone)
+// Stop / RR target for a setup (same rules as the strategy and EA)
+stopFor(int dir, float t, float b, float slSw) =>
+    buf = (t - b) * slBufPct / 100.0
+    not na(slSw) ? (dir < 0 ? slSw + stopBuf : slSw - stopBuf) : (dir < 0 ? t + buf : b - buf)
+
+limitMsg(int dir, float entryP, float slP) =>
+    risk = math.abs(entryP - slP)
+    tpP = dir < 0 ? entryP - risk * rrMult : entryP + risk * rrMult
+    "MTF-FVG " + syminfo.ticker + ": " + (dir < 0 ? "SELL" : "BUY") + " LIMIT placed @ " + str.tostring(entryP, format.mintick) + " | SL " + str.tostring(slP, format.mintick) + " | TP " + str.tostring(tpP, format.mintick) + " | " + rrChoice + " target"
+
+bool limitSellSig = false
+bool limitBuySig  = false
+if not na(p5ST) and not na(p1ST)
+    swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
+    // no 1m swing above the entry -> swS is na and the stop falls back to the 5m zone far edge + buffer
+    addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS, p1SK)
+    limitSellSig := showSell
+    if showSell
+        alert(limitMsg(-1, p1SB, stopFor(-1, p5ST, p5SB, swS)), alert.freq_once_per_bar_close)
+    p5ST := na, p1ST := na
+if not na(p5LT) and not na(p1LT)
+    swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
+    addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL, p1LK)
+    limitBuySig := showBuy
+    if showBuy
+        alert(limitMsg(1, p1LT, stopFor(1, p5LT, p5LB, swL)), alert.freq_once_per_bar_close)
+    p5LT := na, p1LT := na
+armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
+armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)
+
+// --- Tap detection + mitigation ---
+if okBar and zTops.size() > 0
+    for i = zTops.size() - 1 to 0
+        t = zTops.get(i)
+        b = zBots.get(i)
+        d = zDir.get(i)
+        armed = zArmed.get(i)
+        tgt = zTgt.get(i)
+        trig = zTrig.get(i)
+        slSw = zSL.get(i)
+        ebx = zEBox.get(i)
+        if d < 0
+            if zoneTick and zC1 > t          // 5m zone closed through
+                box.delete(zBox.get(i))
+                zTops.remove(i)
+                zBots.remove(i)
+                zDir.remove(i)
+                zBox.remove(i)
+                zArmed.remove(i)
+                zTgt.remove(i)
+                zTrig.remove(i)
+                zEBox.remove(i)
+                zSL.remove(i)
+            else if armed and high >= trig
+                sellSig := true
+                zArmed.set(i, false)
+                box.set_right(zBox.get(i), time)
+                box.set_extend(zBox.get(i), extend.none)
+                drawTrade(-1, trig, t, b, tgt, slSw)
+        else
+            if zoneTick and zC1 < b
+                box.delete(zBox.get(i))
+                zTops.remove(i)
+                zBots.remove(i)
+                zDir.remove(i)
+                zBox.remove(i)
+                zArmed.remove(i)
+                zTgt.remove(i)
+                zTrig.remove(i)
+                zEBox.remove(i)
+                zSL.remove(i)
+            else if armed and low <= trig
+                buySig := true
+                zArmed.set(i, false)
+                box.set_right(zBox.get(i), time)
+                box.set_extend(zBox.get(i), extend.none)
+                drawTrade(1, trig, t, b, tgt, slSw)
+
+plot(armShort ? brokenLow15 : na, "Broken 15m low", color=cLine, style=plot.style_linebr, linewidth=1)
+plot(armLong ? brokenHigh15 : na, "Broken 15m high", color=cLine, style=plot.style_linebr, linewidth=1)
+
+plotshape(limitSellSig, "Sell limit placed", shape.xcross, location.abovebar, color.red, size=size.tiny, text="Sell lim", textcolor=color.red)
+plotshape(limitBuySig,  "Buy limit placed",  shape.xcross, location.belowbar, color.green, size=size.tiny, text="Buy lim", textcolor=color.green)
+plotshape(sellSig, "Sell", shape.triangledown, location.abovebar, color.red,   size=size.small, text="Sell", textcolor=color.red)
+plotshape(buySig,  "Buy",  shape.triangleup,   location.belowbar, color.green, size=size.small, text="Buy",  textcolor=color.green)
+
+alertcondition(limitSellSig,     "Sell limit placed", "SELL LIMIT placed at the 1m entry FVG near edge on {{ticker}} ({{interval}})")
+alertcondition(limitBuySig,      "Buy limit placed",  "BUY LIMIT placed at the 1m entry FVG near edge on {{ticker}} ({{interval}})")
+alertcondition(limitSellSig or limitBuySig, "Any limit placed", "Limit order placed at the 1m entry FVG on {{ticker}} ({{interval}})")
+alertcondition(sellSig,          "Sell limit filled", "SELL: price reached the 1m entry FVG (sell limit filled) on {{ticker}} ({{interval}})")
+alertcondition(buySig,           "Buy limit filled",  "BUY: price reached the 1m entry FVG (buy limit filled) on {{ticker}} ({{interval}})")
+alertcondition(sellSig or buySig,"Any limit filled",  "Entry reached / limit filled on {{ticker}} ({{interval}})")
+alertcondition(bosDown,          "15m BOS down",      "15m break of structure DOWN on {{ticker}} ({{interval}})")
+alertcondition(bosUp,            "15m BOS up",        "15m break of structure UP on {{ticker}} ({{interval}})")
+
+// --------------------------- trim the 1m buffer ------------------------------
+while mH.size() > 1500
+    mO.shift(), mH.shift(), mL.shift(), mC.shift(), mT.shift()
+
+// ------------------------- chart timeframe check -----------------------------
+if barstate.islast and timeframe.period != "1" and timeframe.period != "5"
+    var label warnLbl = na
+    label.delete(warnLbl)
+    warnLbl := label.new(bar_index, high, "TradingView: setups and 1m FVGs are exact on a 1m or 5m chart (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)

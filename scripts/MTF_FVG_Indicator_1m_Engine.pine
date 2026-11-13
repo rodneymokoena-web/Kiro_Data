@@ -1,0 +1,708 @@
+//@version=6
+indicator("MTF-FVG 1m engine: D/4H/1H > 15m BOS > 5m zone + 1m FVG", shorttitle="MTF-FVG-1m", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500)
+
+// ============================================================================
+// SEPARATE, SELF-CONTAINED indicator. It runs every rule on REAL 1m bars
+// (request.security_lower_tf) and builds the 5m and 15m bars inside the script,
+// so a 1m, 5m, 15m or 1H chart shows the same setups and 1m FVGs.
+//
+//   Rule 1  bias: D / 4H / 1H swing sweep, or a 5m close inside a D/4H/1H FVG
+//   Rule 2  15m BOS while biased
+//   Rule 3  first 5m FVG / iFVG that contains the broken level (zone)
+//   Rule 4  first 1m FVG / iFVG, else suspension block, else volume imbalance,
+//           containing the broken level (entry);
+//           limit at its near edge once both exist
+//   Rule 5  stop beyond the previous 1m swing (or the 5m zone)
+//   Rule 6  2R / 3R target (or the broken 15m level); one trade at a time
+//
+// It does not use or change MTF_FVG_Indicator / MTF_FVG_Strategy, so it can be
+// deleted at any time without affecting them.
+//
+// Limits: TradingView caps how much 1m history a chart can read, so on 15m and
+// 1H charts setups only appear for the most recent part of the chart. Bias
+// timeframe data (D/4H/1H) updates once per chart bar.
+// ============================================================================
+
+// ---------------------------------- Inputs ----------------------------------
+gBias = "Rule 1: bias (D / 4H / 1H)"
+biasMode     = input.string("D + 4H + 1H", "Bias timeframes", options=["D + 4H + 1H", "D + 4H", "4H + 1H", "D", "4H", "1H"], group=gBias, tooltip="A hit on any selected timeframe sets the bias.")
+useSweep     = input.bool(true, "Bias: swing sweep", group=gBias)
+useFvgB      = input.bool(true, "Bias: 5m close inside FVG", group=gBias)
+swLenB       = input.int(5, "Swing length (D, 4H, 1H)", minval=1, group=gBias)
+sweepConfirm = input.string("Both", "Sweep type", options=["Wick", "Close", "Both"], group=gBias)
+biasBars     = input.int(500, "Bias valid for (5m bars)", minval=20, group=gBias)
+
+gStruct = "Rule 2: 15m structure"
+swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
+
+gZone = "Rules 3-4: 5m zone + 1m entry FVG"
+useIFVG  = input.bool(true, "Allow inverse FVGs", group=gZone)
+useSB    = input.bool(true, "Rule 4: a 1m suspension block can be the entry", group=gZone, tooltip="One candle with a volume imbalance on each side of its body. Zone = body + both volume imbalances.")
+useVI    = input.bool(true, "Rule 4: a 1m volume imbalance (only when no suspension block)", group=gZone, tooltip="Bodies of two back-to-back 1m candles do not overlap while their wicks do; the zone is the gap between the bodies.")
+maxZones = input.int(30, "Max stored setups", minval=1, maxval=100, group=gZone)
+
+gStop = "Rule 5: stop"
+stopMode  = input.string("1m swing", "Stop", options=["1m swing", "5m zone"], group=gStop, tooltip="1m swing = beyond the previous 1m swing high (sell) / low (buy) beyond the entry. 5m zone = beyond the 5m zone's far edge + buffer %.")
+swingLen1 = input.int(3, "1m swing length (bars each side)", minval=1, group=gStop)
+swingLook = input.int(300, "1m swing lookback (1m bars)", minval=10, group=gStop)
+stopBuf   = input.float(0.0, "Extra distance beyond the 1m swing (price units)", minval=0.0, group=gStop)
+slBufPct  = input.float(5.0, "5m-zone stop: buffer beyond zone (%)", minval=0.0, step=0.5, group=gStop)
+
+gTgt = "Rule 6: target"
+exitMode = input.string("RR multiple", "Take profit", options=["RR multiple", "Structure level"], group=gTgt)
+rrChoice = input.string("2R", "RR target", options=["2R", "3R"], group=gTgt)
+
+gSide = "Sides"
+allowShort = input.bool(true, "Sell setups", group=gSide)
+allowLong  = input.bool(true, "Buy setups",  group=gSide)
+
+gShow = "Display"
+showZones  = input.bool(true, "5m zones", group=gShow)
+showEntry  = input.bool(true, "1m entry FVGs", group=gShow)
+showBos    = input.bool(true, "15m BOS", group=gShow)
+showLegFvg = input.bool(true, "Last 1m FVG on the BOS leg", group=gShow)
+showTrades = input.bool(true, "Limits, entries, stops, targets, exits", group=gShow)
+maxBos     = input.int(10, "Keep the last N BOS lines", minval=1, maxval=100, group=gShow)
+fvgMin     = input.int(60, "1m FVG box length (minutes)", minval=1, group=gShow)
+tradeMin   = input.int(60, "Trade line length (minutes)", minval=5, group=gShow)
+cZS        = input.color(color.new(color.red, 75),   "Sell zone",    group=gShow)
+cZB        = input.color(color.new(color.green, 75), "Buy zone",     group=gShow)
+cEntryFvg  = input.color(color.blue,   "1m entry FVG", group=gShow)
+cLegFvg    = input.color(color.orange, "BOS-leg FVG",  group=gShow)
+cBosDn     = input.color(color.red,    "BOS down",     group=gShow)
+cBosUp     = input.color(color.green,  "BOS up",       group=gShow)
+
+useD   = str.contains(biasMode, "D")
+use4H  = str.contains(biasMode, "4H")
+useH1  = str.contains(biasMode, "1H")
+rrMult = rrChoice == "3R" ? 3.0 : 2.0
+
+// ======================= Rule 1 data: D / 4H / 1H ============================
+htf() =>
+    ph = ta.pivothigh(high, swLenB, swLenB)[1]
+    pl = ta.pivotlow(low,  swLenB, swLenB)[1]
+    bear = high[1] < low[3]
+    bull = low[1] > high[3]
+    [ph, pl, bear ? low[3] : na, bear ? high[1] : na, bull ? low[1] : na, bull ? high[3] : na]
+
+[dPH, dPL, dBT, dBB, dUT, dUB] = request.security(syminfo.tickerid, "D",   htf(), lookahead=barmerge.lookahead_off)
+[fPH, fPL, fBT, fBB, fUT, fUB] = request.security(syminfo.tickerid, "240", htf(), lookahead=barmerge.lookahead_off)
+[hPH, hPL, hBT, hBB, hUT, hUB] = request.security(syminfo.tickerid, "60",  htf(), lookahead=barmerge.lookahead_off)
+
+// latest swing / FVG per bias timeframe: index 0 = D, 1 = 4H, 2 = 1H
+var array<float> bSH = array.new<float>(3, na)
+var array<float> bSL = array.new<float>(3, na)
+var array<float> bFT = array.new<float>(3, na)
+var array<float> bFB = array.new<float>(3, na)
+var array<float> bUT = array.new<float>(3, na)
+var array<float> bUB = array.new<float>(3, na)
+
+setIfNew(array<float> arr, int idx, float v, float vPrev) =>
+    if not na(v) and v != nz(vPrev)
+        arr.set(idx, v)
+
+setFvg(array<float> at, array<float> ab, int idx, float t, float b, float tPrev, float bPrev) =>
+    if not na(t) and (t != nz(tPrev) or b != nz(bPrev))
+        at.set(idx, t)
+        ab.set(idx, b)
+
+setIfNew(bSH, 0, dPH, dPH[1]), setIfNew(bSL, 0, dPL, dPL[1])
+setIfNew(bSH, 1, fPH, fPH[1]), setIfNew(bSL, 1, fPL, fPL[1])
+setIfNew(bSH, 2, hPH, hPH[1]), setIfNew(bSL, 2, hPL, hPL[1])
+setFvg(bFT, bFB, 0, dBT, dBB, dBT[1], dBB[1]), setFvg(bUT, bUB, 0, dUT, dUB, dUT[1], dUB[1])
+setFvg(bFT, bFB, 1, fBT, fBB, fBT[1], fBB[1]), setFvg(bUT, bUB, 1, fUT, fUB, fUT[1], fUB[1])
+setFvg(bFT, bFB, 2, hBT, hBB, hBT[1], hBB[1]), setFvg(bUT, bUB, 2, hUT, hUB, hUT[1], hUB[1])
+
+// ============================ 1m bar feed ====================================
+feedTF = timeframe.in_seconds() >= 60 ? "1" : timeframe.period
+[ltO, ltH, ltL, ltC, ltT] = request.security_lower_tf(syminfo.tickerid, feedTF, [open, high, low, close, time])
+
+// ============================ Engine state ===================================
+// 1m buffer + confirmed 1m swings
+var array<float> mO = array.new<float>()
+var array<float> mH = array.new<float>()
+var array<float> mL = array.new<float>()
+var array<float> mC = array.new<float>()
+var array<int>   mT = array.new<int>()
+var int m1Seq = 0
+var array<float> swHv = array.new<float>()
+var array<int>   swHi = array.new<int>()
+var array<float> swLv = array.new<float>()
+var array<int>   swLi = array.new<int>()
+
+// 5m and 15m bars built from the 1m feed
+var int   cur5T = na
+var float cur5H = na
+var float cur5L = na
+var float cur5C = na
+var array<float> h5 = array.new<float>()
+var array<float> l5 = array.new<float>()
+var array<float> c5 = array.new<float>()
+var array<int>   t5 = array.new<int>()
+var int k5 = 0
+var int   cur15T = na
+var float cur15H = na
+var float cur15L = na
+var float cur15C = na
+var array<float> h15 = array.new<float>()
+var array<float> l15 = array.new<float>()
+var array<float> c15 = array.new<float>()
+var array<int>   t15 = array.new<int>()
+
+// Rule 1 / Rule 2
+var int   shortBiasBar = -1
+var int   longBiasBar  = -1
+var float lastPL = na
+var float lastPH = na
+var int   lastPLT = na
+var int   lastPHT = na
+var float brokenLow  = na
+var float brokenHigh = na
+
+// Rules 3-4: setup pieces per side (S = sell, L = buy)
+var bool  arm5S = false
+var bool  arm1S = false
+var bool  arm5L = false
+var bool  arm1L = false
+var float p5ST = na
+var float p5SB = na
+var int   p5ST0 = na
+var float p1ST = na
+var float p1SB = na
+var int   p1ST0 = na
+var float p5LT = na
+var float p5LB = na
+var int   p5LT0 = na
+var float p1LT = na
+var float p1LB = na
+var int   p1LT0 = na
+var float pviST = na, var float pviSB = na, var int pviST0 = na    // 1m volume imbalance waiting one candle
+var float pviLT = na, var float pviLB = na, var int pviLT0 = na
+var string p1SK = ""                                                // entry type: FVG / SB / VI
+var string p1LK = ""
+
+// Setups (5m zone + entry), oldest first
+var array<float>  zT      = array.new<float>()   // 5m zone top
+var array<float>  zB      = array.new<float>()   // 5m zone bottom
+var array<int>    zD      = array.new<int>()     // -1 sell, +1 buy
+var array<float>  zTg     = array.new<float>()   // broken 15m level (structure target)
+var array<float>  zTrig   = array.new<float>()   // limit price = 1m entry FVG near edge
+var array<float>  zStop   = array.new<float>()   // stop price
+var array<bool>   zArmed  = array.new<bool>()    // not yet traded / skipped
+var array<bool>   zPlaced = array.new<bool>()    // limit resting
+var array<box>    zBox    = array.new<box>()
+var array<string> zId     = array.new<string>()
+
+// Open trade (one at a time)
+var int   trDir = 0
+var float trSL = na
+var float trTP = na
+var bool  needReplace = false
+
+var array<line>  bosLines  = array.new<line>()
+var array<label> bosLabels = array.new<label>()
+
+// alert de-duplication across realtime updates
+varip string firedKeys = ""
+
+// per-execution events
+msgs = array.new<string>()
+keys = array.new<string>()
+bool evLimS  = false
+bool evLimL  = false
+bool evFillS = false
+bool evFillL = false
+bool evExit  = false
+bool evBosDn = false
+bool evBosUp = false
+
+// ============================== Helpers ======================================
+// First FVG / inverse FVG on bars 1..3 (newest first) that contains the level.
+fvgFind(int sd, float lvl, float h1, float l1, float h2, float l2, float h3, float l3, float c1) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        if h1 < l3 and h1 <= lvl and lvl <= l3
+            f := true, t := l3, b := h1
+        else if useIFVG and l2 > h3 and c1 < h3 and h3 <= lvl and lvl <= l2
+            f := true, t := l2, b := h3
+    else
+        if l1 > h3 and h3 <= lvl and lvl <= l1
+            f := true, t := l1, b := h3
+        else if useIFVG and h2 < l3 and c1 > l3 and h2 <= lvl and lvl <= l3
+            f := true, t := l3, b := h2
+    [f, t, b]
+
+// Volume imbalance on bars 1 (newer) and 2: bodies don't overlap, wicks do.
+// Zone = gap between the bodies. sd -1 = bearish, +1 = bullish.
+viFind(int sd, float lvl, float o1, float h1, float l1, float c1, float o2, float h2, float l2, float c2) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        top1 = math.max(o1, c1)
+        bot2 = math.min(o2, c2)
+        if top1 < bot2 and h1 >= l2 and top1 <= lvl and lvl <= bot2
+            f := true, t := bot2, b := top1
+    else
+        bot1 = math.min(o1, c1)
+        top2 = math.max(o2, c2)
+        if bot1 > top2 and l1 <= h2 and top2 <= lvl and lvl <= bot1
+            f := true, t := bot1, b := top2
+    [f, t, b]
+
+// Suspension block on bars A (oldest), B, C (newest): B's body is isolated by a volume
+// imbalance on each side (bodies don't overlap, wicks do). Zone = from C's body edge to
+// A's body edge (both volume imbalances + B's body). sd -1 = bearish, +1 = bullish.
+sbFind(int sd, float lvl, float oA, float hA, float lA, float cA, float oB, float hB, float lB, float cB, float oC, float hC, float lC, float cC) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        botA = math.min(oA, cA)
+        topB = math.max(oB, cB)
+        botB = math.min(oB, cB)
+        topC = math.max(oC, cC)
+        if topB < botA and topC < botB and hB >= lA and hC >= lB and topC <= lvl and lvl <= botA
+            f := true, t := botA, b := topC
+    else
+        topA = math.max(oA, cA)
+        botB = math.min(oB, cB)
+        topB = math.max(oB, cB)
+        botC = math.min(oC, cC)
+        if botB > topA and botC > topB and lB <= hA and lC <= hB and topA <= lvl and lvl <= botC
+            f := true, t := botC, b := topA
+    [f, t, b]
+
+stopFor(int dir, float t, float b, float slSw) =>
+    buf = (t - b) * slBufPct / 100.0
+    not na(slSw) ? (dir < 0 ? slSw + stopBuf : slSw - stopBuf) : (dir < 0 ? t + buf : b - buf)
+
+tpFor(int dir, float e, float sl, float tgt) =>
+    risk = math.abs(e - sl)
+    useS = exitMode == "Structure level" and not na(tgt) and (dir < 0 ? tgt < e : tgt > e)
+    useS ? tgt : (dir < 0 ? e - risk * rrMult : e + risk * rrMult)
+
+// Most recent confirmed 1m swing high above price (dir -1) / swing low below price (dir +1)
+findStopSwing(int dir, float price) =>
+    float v = na
+    vals = dir < 0 ? swHv : swLv
+    idxs = dir < 0 ? swHi : swLi
+    if vals.size() > 0
+        for i = vals.size() - 1 to 0
+            if m1Seq - idxs.get(i) > swingLook
+                break
+            x = vals.get(i)
+            if (dir < 0 and x > price) or (dir > 0 and x < price)
+                v := x
+                break
+    v
+
+// Last 1m FVG on the leg of a break: leg = from the extreme since the broken
+// swing formed (highest high for a break down) to the break.
+legFvg(int dir, int fromT) =>
+    int n = mH.size()
+    int ext = -1
+    if n > 0
+        for i = n - 1 to 0
+            if mT.get(i) < fromT
+                break
+            if ext < 0 or (dir < 0 ? mH.get(i) > mH.get(ext) : mL.get(i) < mL.get(ext))
+                ext := i
+    bool f = false
+    float ft = na
+    float fb = na
+    int ft0 = na
+    if ext >= 0 and n - 1 >= ext + 2
+        for j = n - 1 to ext + 2
+            if dir < 0 and mH.get(j) < mL.get(j - 2)
+                f := true, ft := mL.get(j - 2), fb := mH.get(j), ft0 := mT.get(j - 2)
+                break
+            if dir > 0 and mL.get(j) > mH.get(j - 2)
+                f := true, ft := mL.get(j), fb := mH.get(j - 2), ft0 := mT.get(j - 2)
+                break
+    [f, ft, fb, ft0]
+
+drawBos(int dir, float lvl, int fromT, int toT) =>
+    col = dir < 0 ? cBosDn : cBosUp
+    if showBos
+        bosLines.push(line.new(nz(fromT, toT), lvl, toT, lvl, xloc=xloc.bar_time, color=col, width=2))
+        bosLabels.push(label.new(toT, lvl, "BOS", xloc=xloc.bar_time, style=dir < 0 ? label.style_label_up : label.style_label_down, color=color.new(col, 20), textcolor=color.white, size=size.small))
+        while bosLines.size() > maxBos
+            line.delete(bosLines.shift())
+        while bosLabels.size() > maxBos
+            label.delete(bosLabels.shift())
+    if showLegFvg and not na(fromT)
+        [f, ft, fb, ft0] = legFvg(dir, fromT)
+        if f
+            box.new(ft0, ft, ft0 + fvgMin * 60000, fb, xloc=xloc.bar_time, border_color=cLegFvg, border_width=1, border_style=line.style_dotted, bgcolor=color.new(cLegFvg, 85), text="1m FVG (BOS leg)", text_color=cLegFvg, text_size=size.tiny, text_halign=text.align_left)
+
+limitMsg(int dir, float e, float sl, float tp) =>
+    "MTF-FVG " + syminfo.ticker + ": " + (dir < 0 ? "SELL" : "BUY") + " LIMIT placed @ " + str.tostring(e, format.mintick) + " | SL " + str.tostring(sl, format.mintick) + " | TP " + str.tostring(tp, format.mintick) + " | " + (exitMode == "Structure level" ? "structure" : rrChoice) + " target"
+
+limitMark(int dir, int t, float e) =>
+    if showTrades
+        label.new(t, e, dir < 0 ? "Sell lim" : "Buy lim", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(dir < 0 ? color.red : color.green, 70), textcolor=color.white, size=size.tiny)
+
+// Store a complete setup; returns true if its limit is placed now (flat).
+addSetup(int d, float zTop, float zBot, int zT0, float tgt, float eTop, float eBot, int eT0, float sl, int t, string ekind) =>
+    trig = d < 0 ? eBot : eTop
+    if zT.size() >= maxZones
+        ob = zBox.shift()
+        if zArmed.get(0) and not na(ob)
+            box.delete(ob)
+        zT.shift(), zB.shift(), zD.shift(), zTg.shift(), zTrig.shift(), zStop.shift(), zArmed.shift(), zPlaced.shift(), zId.shift()
+    box bx = na
+    if showZones
+        bx := box.new(zT0, zTop, t + 60000, zBot, xloc=xloc.bar_time, border_color=color.new(d < 0 ? color.red : color.green, 30), bgcolor=d < 0 ? cZS : cZB, extend=extend.right, text="5m zone", text_color=color.gray, text_size=size.small)
+    if showEntry
+        box.new(eT0, eTop, eT0 + fvgMin * 60000, eBot, xloc=xloc.bar_time, border_color=cEntryFvg, border_width=2, bgcolor=color.new(cEntryFvg, 88), text="1m " + (ekind == "SB" ? "suspension block" : ekind == "VI" ? "entry VI" : "entry FVG"), text_color=cEntryFvg, text_size=size.tiny)
+    placed = trDir == 0
+    zT.push(zTop), zB.push(zBot), zD.push(d), zTg.push(tgt), zTrig.push(trig), zStop.push(sl)
+    zArmed.push(true), zPlaced.push(placed), zBox.push(bx), zId.push((d < 0 ? "S" : "L") + str.tostring(t))
+    if placed
+        msgs.push(limitMsg(d, trig, sl, tpFor(d, trig, sl, tgt)))
+        keys.push("P" + zId.last() + "@" + str.tostring(t))
+        limitMark(d, t, trig)
+    placed
+
+drawFill(int d, int t, float e, float sl, float tp) =>
+    if showTrades
+        t2 = t + tradeMin * 60000
+        line.new(t, e,  t2, e,  xloc=xloc.bar_time, color=color.blue, width=2)
+        line.new(t, sl, t2, sl, xloc=xloc.bar_time, color=color.red, width=2, style=line.style_dashed)
+        line.new(t, tp, t2, tp, xloc=xloc.bar_time, color=color.green, width=2)
+        label.new(t, e, (d < 0 ? "Sell " : "Buy ") + str.tostring(e, format.mintick), xloc=xloc.bar_time, style=d < 0 ? label.style_label_down : label.style_label_up, color=d < 0 ? color.red : color.green, textcolor=color.white, size=size.small)
+
+drawExit(int d, int t, float px, bool won) =>
+    if showTrades
+        label.new(t, px, won ? "TP" : "SL", xloc=xloc.bar_time, style=label.style_label_left, color=color.new(won ? color.teal : color.red, 20), textcolor=color.white, size=size.tiny)
+
+// ================================ Engine =====================================
+// Processes every closed 1m bar in order. In realtime the newest (still forming)
+// 1m bar is left for the next update.
+nAll  = ltH.size()
+nProc = barstate.isconfirmed ? nAll : nAll - 1
+if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
+    for j = 0 to nProc - 1
+        o = ltO.get(j)
+        h = ltH.get(j)
+        l = ltL.get(j)
+        c = ltC.get(j)
+        t = ltT.get(j)
+        tEnd = t + 60000
+
+        // ---- (A) open trade: stop first, then target ----
+        if trDir != 0
+            hitSL = trDir < 0 ? h >= trSL : l <= trSL
+            hitTP = trDir < 0 ? l <= trTP : h >= trTP
+            if hitSL or hitTP
+                px = hitSL ? trSL : trTP
+                drawExit(trDir, t, px, not hitSL)
+                msgs.push("MTF-FVG " + syminfo.ticker + ": " + (trDir < 0 ? "SELL" : "BUY") + " closed at " + (hitSL ? "SL " : "TP ") + str.tostring(px, format.mintick))
+                keys.push("X" + str.tostring(t))
+                evExit := true
+                trDir := 0
+                needReplace := true
+
+        // ---- (B) taps on resting limits ----
+        if zT.size() > 0
+            for zi = zT.size() - 1 to 0
+                if zArmed.get(zi)
+                    d = zD.get(zi)
+                    trig = zTrig.get(zi)
+                    touched = d < 0 ? h >= trig : l <= trig
+                    if touched
+                        zArmed.set(zi, false)              // each setup is used once
+                        bx = zBox.get(zi)
+                        if not na(bx)
+                            box.set_right(bx, t)
+                            box.set_extend(bx, extend.none)
+                        if zPlaced.get(zi) and trDir == 0
+                            e = d < 0 ? math.max(trig, o) : math.min(trig, o)
+                            sl = zStop.get(zi)
+                            if d < 0 ? sl > e : sl < e
+                                tp = tpFor(d, e, sl, zTg.get(zi))
+                                trDir := d, trSL := sl, trTP := tp
+                                drawFill(d, t, e, sl, tp)
+                                msgs.push("MTF-FVG " + syminfo.ticker + ": " + (d < 0 ? "SELL" : "BUY") + " LIMIT filled @ " + str.tostring(e, format.mintick) + " | SL " + str.tostring(sl, format.mintick) + " | TP " + str.tostring(tp, format.mintick))
+                                keys.push("F" + zId.get(zi))
+                                if d < 0
+                                    evFillS := true
+                                else
+                                    evFillL := true
+                                // other setups' limits are pulled while in the trade
+                                for zk = 0 to zT.size() - 1
+                                    zPlaced.set(zk, false)
+                                // entry minute: stop only (as in the backtest)
+                                if d < 0 ? h >= sl : l <= sl
+                                    drawExit(d, t, sl, false)
+                                    msgs.push("MTF-FVG " + syminfo.ticker + ": " + (d < 0 ? "SELL" : "BUY") + " closed at SL " + str.tostring(sl, format.mintick))
+                                    keys.push("X" + str.tostring(t))
+                                    evExit := true
+                                    trDir := 0
+                                    needReplace := true
+
+        // ---- (C) close this 1m bar; build and close 5m / 15m bars ----
+        b5  = t - t % 300000
+        b15 = t - t % 900000
+        for pass = 0 to 1
+            if pass == 1
+                mO.push(o), mH.push(h), mL.push(l), mC.push(c), mT.push(t)
+                m1Seq += 1
+                n1 = mH.size()
+                if n1 >= 2 * swingLen1 + 1
+                    pp = n1 - 1 - swingLen1
+                    vH = mH.get(pp)
+                    vL = mL.get(pp)
+                    bool isH = true
+                    bool isL = true
+                    for k = 1 to swingLen1
+                        if not (vH > mH.get(pp - k) and vH >= mH.get(pp + k))
+                            isH := false
+                        if not (vL < mL.get(pp - k) and vL <= mL.get(pp + k))
+                            isL := false
+                    if isH
+                        swHv.push(vH), swHi.push(m1Seq - swingLen1)
+                    if isL
+                        swLv.push(vL), swLi.push(m1Seq - swingLen1)
+                if na(cur5T)
+                    cur5T := b5, cur5H := h, cur5L := l, cur5C := c
+                else
+                    cur5H := math.max(cur5H, h), cur5L := math.min(cur5L, l), cur5C := c
+                if na(cur15T)
+                    cur15T := b15, cur15H := h, cur15L := l, cur15C := c
+                else
+                    cur15H := math.max(cur15H, h), cur15L := math.min(cur15L, l), cur15C := c
+            // pass 0: a gap moved us into a new bucket -> close the old bar first
+            // pass 1: this minute is the last of its bucket -> close it now
+            fin5  = pass == 0 ? (not na(cur5T)  and b5  != cur5T)  : (tEnd % 300000 == 0)
+            fin15 = pass == 0 ? (not na(cur15T) and b15 != cur15T) : (tEnd % 900000 == 0)
+            if fin5 and not na(cur5T)
+                h5.push(cur5H), l5.push(cur5L), c5.push(cur5C), t5.push(cur5T)
+                if h5.size() > 10
+                    h5.shift(), l5.shift(), c5.shift(), t5.shift()
+                k5 += 1
+                n5 = h5.size()
+                cz = cur5C
+
+                // Rule 1: bias from the two latest closed 5m bars
+                if n5 >= 2
+                    b1h = h5.get(n5 - 1)
+                    b1l = l5.get(n5 - 1)
+                    b2h = h5.get(n5 - 2)
+                    b2l = l5.get(n5 - 2)
+                    for bi = 0 to 2
+                        tfOn = bi == 0 ? useD : bi == 1 ? use4H : useH1
+                        if tfOn
+                            swH = bSH.get(bi)
+                            swL = bSL.get(bi)
+                            fbT = bFT.get(bi)
+                            fbB = bFB.get(bi)
+                            fuT = bUT.get(bi)
+                            fuB = bUB.get(bi)
+                            wickHi  = not na(swH) and b1h > swH and cz < swH
+                            closeHi = not na(swH) and b2h > swH and cz < swH
+                            sweepHi = sweepConfirm == "Wick" ? wickHi : sweepConfirm == "Close" ? closeHi : (wickHi or closeHi)
+                            wickLo  = not na(swL) and b1l < swL and cz > swL
+                            closeLo = not na(swL) and b2l < swL and cz > swL
+                            sweepLo = sweepConfirm == "Wick" ? wickLo : sweepConfirm == "Close" ? closeLo : (wickLo or closeLo)
+                            inBear = not na(fbT) and cz <= fbT and cz >= fbB
+                            inBull = not na(fuT) and cz <= fuT and cz >= fuB
+                            if (useSweep and sweepHi) or (useFvgB and inBear)
+                                shortBiasBar := k5
+                            if (useSweep and sweepLo) or (useFvgB and inBull)
+                                longBiasBar := k5
+                shortBias = shortBiasBar >= 0 and k5 - shortBiasBar <= biasBars
+                longBias  = longBiasBar  >= 0 and k5 - longBiasBar  <= biasBars
+
+                // Rule 2: 15m close -> swings + BOS
+                if fin15 and not na(cur15T)
+                    h15.push(cur15H), l15.push(cur15L), c15.push(cur15C), t15.push(cur15T)
+                    if h15.size() > 50
+                        h15.shift(), l15.shift(), c15.shift(), t15.shift()
+                    n15 = h15.size()
+                    if n15 >= 2 * swLen15 + 1
+                        qq = n15 - 1 - swLen15
+                        wH = h15.get(qq)
+                        wL = l15.get(qq)
+                        bool isH15 = true
+                        bool isL15 = true
+                        for k = 1 to swLen15
+                            if not (wH > h15.get(qq - k) and wH >= h15.get(qq + k))
+                                isH15 := false
+                            if not (wL < l15.get(qq - k) and wL <= l15.get(qq + k))
+                                isL15 := false
+                        if isL15
+                            lastPL := wL, lastPLT := t15.get(qq)
+                        if isH15
+                            lastPH := wH, lastPHT := t15.get(qq)
+                    if n15 >= 2
+                        cA = c15.get(n15 - 1)
+                        cB = c15.get(n15 - 2)
+                        bosT = cur15T + 900000
+                        if shortBias and not na(lastPL) and cA < lastPL and cB >= lastPL
+                            brokenLow := lastPL
+                            arm5S := true, arm1S := true, p5ST := na, p1ST := na, pviST := na
+                            evBosDn := true
+                            drawBos(-1, brokenLow, lastPLT, bosT)
+                            msgs.push("MTF-FVG " + syminfo.ticker + ": 15m BOS DOWN through " + str.tostring(brokenLow, format.mintick))
+                            keys.push("BD" + str.tostring(bosT))
+                        if longBias and not na(lastPH) and cA > lastPH and cB <= lastPH
+                            brokenHigh := lastPH
+                            arm5L := true, arm1L := true, p5LT := na, p1LT := na, pviLT := na
+                            evBosUp := true
+                            drawBos(1, brokenHigh, lastPHT, bosT)
+                            msgs.push("MTF-FVG " + syminfo.ticker + ": 15m BOS UP through " + str.tostring(brokenHigh, format.mintick))
+                            keys.push("BU" + str.tostring(bosT))
+                    cur15T := na
+
+                // setups whose 5m zone was closed through
+                if zT.size() > 0
+                    for zi = zT.size() - 1 to 0
+                        dd = zD.get(zi)
+                        if dd < 0 ? cz > zT.get(zi) : cz < zB.get(zi)
+                            zb = zBox.get(zi)
+                            if zArmed.get(zi) and not na(zb)
+                                box.delete(zb)
+                            zT.remove(zi), zB.remove(zi), zD.remove(zi), zTg.remove(zi), zTrig.remove(zi), zStop.remove(zi), zArmed.remove(zi), zPlaced.remove(zi), zBox.remove(zi), zId.remove(zi)
+
+                // Rule 3: 5m zone piece
+                if not na(p5ST) and cz > p5ST
+                    p5ST := na, p1ST := na, arm1S := false
+                if not na(p5LT) and cz < p5LB
+                    p5LT := na, p1LT := na, arm1L := false
+                if n5 >= 3
+                    if allowShort and arm5S and not na(brokenLow)
+                        [fA, tA, bA] = fvgFind(-1, brokenLow, h5.get(n5 - 1), l5.get(n5 - 1), h5.get(n5 - 2), l5.get(n5 - 2), h5.get(n5 - 3), l5.get(n5 - 3), cz)
+                        if fA
+                            p5ST := tA, p5SB := bA, p5ST0 := t5.get(n5 - 3), arm5S := false
+                    if allowLong and arm5L and not na(brokenHigh)
+                        [fB, tB, bB] = fvgFind(1, brokenHigh, h5.get(n5 - 1), l5.get(n5 - 1), h5.get(n5 - 2), l5.get(n5 - 2), h5.get(n5 - 3), l5.get(n5 - 3), cz)
+                        if fB
+                            p5LT := tB, p5LB := bB, p5LT0 := t5.get(n5 - 3), arm5L := false
+                cur5T := na
+
+        // ---- (D) Rule 4: 1m entry piece (FVG / iFVG, suspension block, volume imbalance) ----
+        nm = mH.size()
+        if nm >= 3
+            if not na(p1ST) and c > p1ST
+                p1ST := na, arm1S := arm5S or not na(p5ST)
+            if not na(p1LT) and c < p1LB
+                p1LT := na, arm1L := arm5L or not na(p5LT)
+            if not na(pviST) and c > pviST
+                pviST := na                                   // waiting volume imbalance closed through
+            if allowShort and arm1S and not na(brokenLow)
+                [fF, tF, bF] = fvgFind(-1, brokenLow, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
+                [fS, tS, bS] = sbFind(-1, brokenLow, mO.get(nm - 3), mH.get(nm - 3), mL.get(nm - 3), mC.get(nm - 3), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2), mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1))
+                [fV, tV, bV] = viFind(-1, brokenLow, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(nm - 3), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(nm - 3), nK := "SB"
+                else if useVI and not na(pviST)
+                    nT := pviST, nB := pviSB, nT0 := pviST0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviST := tV, pviSB := bV, pviST0 := mT.get(nm - 2)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(nm - 2), nK := "VI"
+                if not na(nT)
+                    p1ST := nT, p1SB := nB, p1ST0 := nT0, p1SK := nK, arm1S := false, pviST := na
+            if not na(pviLT) and c < pviLB
+                pviLT := na                                   // waiting volume imbalance closed through
+            if allowLong and arm1L and not na(brokenHigh)
+                [fF, tF, bF] = fvgFind(1, brokenHigh, mH.get(nm - 1), mL.get(nm - 1), mH.get(nm - 2), mL.get(nm - 2), mH.get(nm - 3), mL.get(nm - 3), c)
+                [fS, tS, bS] = sbFind(1, brokenHigh, mO.get(nm - 3), mH.get(nm - 3), mL.get(nm - 3), mC.get(nm - 3), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2), mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1))
+                [fV, tV, bV] = viFind(1, brokenHigh, mO.get(nm - 1), mH.get(nm - 1), mL.get(nm - 1), mC.get(nm - 1), mO.get(nm - 2), mH.get(nm - 2), mL.get(nm - 2), mC.get(nm - 2))
+                float nT = na
+                float nB = na
+                int nT0 = na
+                string nK = ""
+                // order: FVG / iFVG, suspension block, then volume imbalance
+                if fF
+                    nT := tF, nB := bF, nT0 := mT.get(nm - 3), nK := "FVG"
+                else if useSB and fS
+                    nT := tS, nB := bS, nT0 := mT.get(nm - 3), nK := "SB"
+                else if useVI and not na(pviLT)
+                    nT := pviLT, nB := pviLB, nT0 := pviLT0, nK := "VI"     // no suspension block formed -> use the VI
+                else if useVI and fV
+                    if useSB
+                        pviLT := tV, pviLB := bV, pviLT0 := mT.get(nm - 2)   // wait one candle: may become a suspension block
+                    else
+                        nT := tV, nB := bV, nT0 := mT.get(nm - 2), nK := "VI"
+                if not na(nT)
+                    p1LT := nT, p1LB := nB, p1LT0 := nT0, p1LK := nK, arm1L := false, pviLT := na
+
+        // ---- (E) pair: 5m zone + 1m entry FVG -> setup, stop from the 1m swing ----
+        if not na(p5ST) and not na(p1ST)
+            swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
+            // no 1m swing above the entry -> swS is na and the stop is the 5m zone far edge + buffer
+            slS = stopFor(-1, p5ST, p5SB, swS)
+            if addSetup(-1, p5ST, p5SB, p5ST0, brokenLow, p1ST, p1SB, p1ST0, slS, t, p1SK)
+                evLimS := true
+            p5ST := na, p1ST := na
+        if not na(p5LT) and not na(p1LT)
+            swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
+            slL = stopFor(1, p5LT, p5LB, swL)
+            if addSetup(1, p5LT, p5LB, p5LT0, brokenHigh, p1LT, p1LB, p1LT0, slL, t, p1LK)
+                evLimL := true
+            p5LT := na, p1LT := na
+
+        // ---- (F) flat again: re-place the limits of setups still waiting ----
+        if needReplace and trDir == 0
+            needReplace := false
+            if zT.size() > 0
+                for zi = 0 to zT.size() - 1
+                    if zArmed.get(zi) and not zPlaced.get(zi)
+                        zPlaced.set(zi, true)
+                        d = zD.get(zi)
+                        e = zTrig.get(zi)
+                        sl = zStop.get(zi)
+                        msgs.push(limitMsg(d, e, sl, tpFor(d, e, sl, zTg.get(zi))))
+                        keys.push("P" + zId.get(zi) + "@" + str.tostring(t))
+                        limitMark(d, t, e)
+                        if d < 0
+                            evLimS := true
+                        else
+                            evLimL := true
+
+// ---------------------------- trim buffers -----------------------------------
+while mH.size() > 1500
+    mO.shift(), mH.shift(), mL.shift(), mC.shift(), mT.shift()
+while swHv.size() > 200
+    swHv.shift(), swHi.shift()
+while swLv.size() > 200
+    swLv.shift(), swLi.shift()
+
+// -------------------------------- Alerts -------------------------------------
+// Dynamic messages: create the alert with "Any alert() function call".
+if msgs.size() > 0
+    for q = 0 to msgs.size() - 1
+        kk = "|" + keys.get(q) + "|"
+        if not str.contains(firedKeys, kk)
+            alert(msgs.get(q), alert.freq_all)
+            firedKeys := firedKeys + kk
+if str.length(firedKeys) > 4000
+    firedKeys := str.substring(firedKeys, 2000)
+
+alertcondition(evLimS,           "Sell limit placed", "SELL LIMIT placed at the 1m entry FVG on {{ticker}}")
+alertcondition(evLimL,           "Buy limit placed",  "BUY LIMIT placed at the 1m entry FVG on {{ticker}}")
+alertcondition(evLimS or evLimL, "Any limit placed",  "Limit order placed at the 1m entry FVG on {{ticker}}")
+alertcondition(evFillS,          "Sell limit filled", "SELL limit filled on {{ticker}}")
+alertcondition(evFillL,          "Buy limit filled",  "BUY limit filled on {{ticker}}")
+alertcondition(evExit,           "Trade closed",      "Trade closed (TP or SL) on {{ticker}}")
+alertcondition(evBosDn,          "15m BOS down",      "15m break of structure DOWN on {{ticker}}")
+alertcondition(evBosUp,          "15m BOS up",        "15m break of structure UP on {{ticker}}")
+
+// ------------------------- chart timeframe check -----------------------------
+if barstate.islast and (timeframe.in_seconds() < 60 or timeframe.in_seconds() > 3600)
+    var label warnLbl = na
+    label.delete(warnLbl)
+    warnLbl := label.new(bar_index, high, "MTF-FVG 1m engine runs on 1m to 1H charts (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)
