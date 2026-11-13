@@ -634,6 +634,7 @@ if new1
     q := B1.size() - 1
     updFvgs(F1, B1, q, 150)
 
+
 // end of day (intraday): eodExit = this 5m candle ends at / after the cutoff (close - N min) -> open trades close at its close;
 // eodNoFill = the candle starts at / after the cutoff -> no entry fills; eodNext = the NEXT candle is in the no-fill window
 bool eodExit = false

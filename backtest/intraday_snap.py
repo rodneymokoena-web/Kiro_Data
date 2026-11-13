@@ -11,6 +11,8 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
                  The 5m FVG to invert = the intact bullish 5m FVG nearest below the sweep (highest bottom) among those completed in the
                  IFVG_LOOKBACK_5M 5m candles before the sweep candle; intact = no 5m close below its bottom before the sweep.
                  The 5m order block (-> breaker) = the last bearish 5m candle at or before the origin (up to OB_LOOKBACK candles back).
+    LIQUIDITY+   (FVG_LIQ_D) the far edge of every FRESH D FVG (bearish FVG top / bullish FVG bottom; fresh = no D candle has
+                 traded into the gap yet - the D candle that first enters it can still sweep it), tf "DFVG". Does not set the bias.
     LIQUIDITY+   (MACRO_LIQ) the high / low of every completed ICT macro window (MACROS, New York time), valid MACRO_VALID.
     IFVG         (IFVG_15M) a 5m or a 15m FVG.
     BREAK        a 5m close - or (BOS_WICK) a 5m wick - below the leg origin low, or (MSS_BOS) below the last 5m swing low formed
@@ -68,6 +70,7 @@ MSS_BOS = os.environ.get("MSS_BOS", "1") == "1"           # the break may also b
 MIN_STOP = float(os.environ.get("MIN_STOP_PTS", "0"))     # removed (0 = no minimum stop); kept only for experiments
 ONE_PER_ENTRY = os.environ.get("ONE_PER_ENTRY", "1") == "1"   # one trade per direction + entry zone/price (first signal wins)
 BOS_WICK = os.environ.get("BOS_WICK", "1") == "1"         # the break may be a body close OR a wick through the level (0 = close only)
+FVG_LIQ_D = os.environ.get("FVG_LIQ_D", "1") == "1"       # fresh D FVG far edges as Rule 1 liquidity (with the 4H / 1H FVG edges)
 MACRO_LIQ = os.environ.get("MACRO_LIQ", "1") == "1"       # ICT macro-time highs/lows as Rule 1 liquidity
 MACRO_VALID = pd.Timedelta(hours=float(os.environ.get("MACRO_VALID_H", "24")))
 # ICT macro windows, New York time (start, end); the high and low of each completed window are liquidity levels (tf "MACRO")
@@ -207,6 +210,8 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
     o, h, l, c = (bars[k].to_numpy() for k in ("Open", "High", "Low", "Close"))
     idx, n = bars.index, len(bars)
     lv0 = setups_5m._levels(h1)
+    if FVG_LIQ_D:
+        lv0 = pd.concat([lv0, S.fvg_far_edge_levels(S.build_htf(h1, "D"), "DFVG")], ignore_index=True)
     if MACRO_LIQ:
         lv0 = pd.concat([lv0, macro_levels(bars)], ignore_index=True)
     levels = S.add_break_times_5m(lv0, bars, None)
