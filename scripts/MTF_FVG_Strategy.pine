@@ -41,7 +41,11 @@ gEntry = "Zone (Rule 3) / entry FVG (Rule 4)"
 useIFVG = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
 
 gTrade = "Trade management"
-slBufPct  = input.float(5.0, "SL buffer beyond zone (%)", minval=0.0, step=0.5, group=gTrade, tooltip="Percent of the zone height added beyond its far edge.")
+stopMode  = input.string("1m swing", "Rule 5 stop", options=["1m swing", "5m zone"], group=gTrade, tooltip="1m swing = beyond the previous 1m swing high (sell) / low (buy) above / below the entry. 5m zone = beyond the 5m zone's far edge + buffer %.")
+swingLen1 = input.int(3, "1m swing length (bars each side)", minval=1, group=gTrade)
+swingLook = input.int(300, "1m swing lookback (bars)", minval=10, group=gTrade)
+stopBuf   = input.float(0.0, "Extra distance beyond the 1m swing (price units)", minval=0.0, group=gTrade)
+slBufPct  = input.float(5.0, "5m-zone stop: buffer beyond zone (%)", minval=0.0, step=0.5, group=gTrade, tooltip="Percent of the zone height added beyond its far edge.")
 exitMode  = input.string("RR multiple", "Take-profit mode", options=["RR multiple","Structure level"], group=gTrade)
 rrChoice  = input.string("2R", "RR target (2R or 3R)", options=["2R", "3R"], group=gTrade)
 rrMult    = rrChoice == "3R" ? 3.0 : 2.0
@@ -250,10 +254,42 @@ var array<bool>  zArmed = array.new<bool>()
 var array<float> zTgt   = array.new<float>()
 var array<float> zTrig  = array.new<float>()   // entry price = near edge of the 1m entry FVG
 var array<box>   zEBox  = array.new<box>()
+var array<float> zSL    = array.new<float>()   // 1m swing stop (na = 5m-zone stop)
+
+// Confirmed 1m swings from the chart bars (chart on 1m)
+phv = ta.pivothigh(high, swingLen1, swingLen1)
+plv = ta.pivotlow(low,  swingLen1, swingLen1)
+var array<float> swHv = array.new<float>()
+var array<int>   swHi = array.new<int>()
+var array<float> swLv = array.new<float>()
+var array<int>   swLi = array.new<int>()
+if not na(phv)
+    swHv.push(phv), swHi.push(bar_index - swingLen1)
+    if swHv.size() > 200
+        swHv.shift(), swHi.shift()
+if not na(plv)
+    swLv.push(plv), swLi.push(bar_index - swingLen1)
+    if swLv.size() > 200
+        swLv.shift(), swLi.shift()
+
+// Most recent 1m swing high above price (dir -1) / swing low below price (dir +1)
+findStopSwing(int dir, float price) =>
+    float v = na
+    vals = dir < 0 ? swHv : swLv
+    idxs = dir < 0 ? swHi : swLi
+    if vals.size() > 0
+        for i = vals.size() - 1 to 0
+            if bar_index - idxs.get(i) > swingLook
+                break
+            x = vals.get(i)
+            if (dir < 0 and x > price) or (dir > 0 and x < price)
+                v := x
+                break
+    v
 
 overlap(float aT, float aB, float bT, float bB) => aB <= bT and aT >= bB
 
-addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et, float eb, int et0) =>
+addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et, float eb, int et0, float slSw) =>
     box bx = na
     box ebx = na
     if drawZones
@@ -269,6 +305,7 @@ addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et,
     zArmed.push(true)
     zTgt.push(tgt)
     zTrig.push(trig)
+    zSL.push(slSw)
 
 // First FVG / inverse FVG (bars 1..3, newest first) that contains the level.
 fvgFind(int sd, float lvl, float h1, float l1, float h2, float l2, float h3, float l3, float c1) =>
@@ -344,12 +381,16 @@ if showBuy and arm1L and not na(brokenHigh15)
     if fD
         p1LT := tD, p1LB := bD, p1LT0 := e_t2, arm1L := false
 
-// Pair: both pieces -> tradable setup (stop from the zone, entry at the entry FVG near edge)
+// Pair: both pieces -> tradable setup (entry at the 1m entry FVG near edge; stop = 1m swing or 5m zone)
 if not na(p5ST) and not na(p1ST)
-    addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0)
+    swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
+    if stopMode == "5m zone" or not na(swS)          // no 1m swing above the entry -> setup skipped
+        addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS)
     p5ST := na, p1ST := na
 if not na(p5LT) and not na(p1LT)
-    addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0)
+    swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
+    if stopMode == "5m zone" or not na(swL)
+        addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL)
     p5LT := na, p1LT := na
 armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
 armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)
@@ -370,6 +411,7 @@ if zTops.size() > 0
         armed = zArmed.get(i)
         tgt = zTgt.get(i)
         trig = zTrig.get(i)
+        slSw = zSL.get(i)
         ebx = zEBox.get(i)
         bx = zBox.get(i)
         if d < 0
@@ -378,7 +420,7 @@ if zTops.size() > 0
                     box.delete(bx)
                 if not na(ebx)
                     box.delete(ebx)
-                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i)
+                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i), zSL.remove(i)
             else if armed and high >= trig
                 zArmed.set(i, false)
                 if drawZones and not na(bx)
@@ -390,7 +432,7 @@ if zTops.size() > 0
                 zh  = t - b
                 buf = zh * slBufPct / 100.0
                 entryP = trig
-                slP = t + buf
+                slP = not na(slSw) ? slSw + stopBuf : t + buf
                 risk = math.abs(entryP - slP)
                 tpP = exitMode == "Structure level" and not na(tgt) and tgt < entryP ? tgt : entryP - risk * rrMult
                 if canTrade
@@ -402,7 +444,7 @@ if zTops.size() > 0
                     box.delete(bx)
                 if not na(ebx)
                     box.delete(ebx)
-                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i)
+                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i), zSL.remove(i)
             else if armed and low <= trig
                 zArmed.set(i, false)
                 if drawZones and not na(bx)
@@ -414,7 +456,7 @@ if zTops.size() > 0
                 zh  = t - b
                 buf = zh * slBufPct / 100.0
                 entryP = trig
-                slP = b - buf
+                slP = not na(slSw) ? slSw - stopBuf : b - buf
                 risk = math.abs(entryP - slP)
                 tpP = exitMode == "Structure level" and not na(tgt) and tgt > entryP ? tgt : entryP + risk * rrMult
                 if canTrade

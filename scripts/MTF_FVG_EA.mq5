@@ -25,6 +25,7 @@ enum ENUM_TP_MODE    { TP_RR = 0, TP_STRUCTURE = 1 };
 enum ENUM_LOT_MODE   { LOT_FIXED = 0, LOT_RISK_PCT = 1 };
 enum ENUM_RR_CHOICE  { RR_2R = 0, RR_3R = 1 };
 enum ENUM_RISK_CHOICE{ RISK_1_PCT = 0, RISK_HALF_PCT = 1 };
+enum ENUM_STOP_MODE  { STOP_1M_SWING = 0, STOP_5M_ZONE = 1 };
 enum ENUM_ENTRY_TYPE { ENTRY_LIMIT = 0, ENTRY_MARKET_ON_TOUCH = 1 };
 
 //--- inputs
@@ -55,7 +56,11 @@ input int             InpMaxZones   = 30;         // Max stored zones (oldest dr
 input group "Trade management"
 input bool            InpAllowLong  = true;
 input bool            InpAllowShort = true;
-input double          InpSlBufPct   = 5.0;        // SL buffer beyond zone (% of zone height)
+input ENUM_STOP_MODE  InpStopMode   = STOP_1M_SWING; // Rule 5 stop: previous 1m swing, or 5m zone far edge
+input int             InpSwingLen1  = 3;          // 1m swing length (bars each side)
+input int             InpSwingLookback = 300;     // 1m bars searched back for the swing
+input int             InpStopBufPts = 0;          // Extra points beyond the 1m swing (0 = exactly at it)
+input double          InpSlBufPct   = 5.0;        // 5m-zone mode: buffer beyond zone (% of zone height)
 input ENUM_TP_MODE    InpTpMode     = TP_RR;      // Take-profit mode
 input ENUM_RR_CHOICE  InpRRChoice   = RR_2R;      // RR target: 2R or 3R
 input bool            InpOneAtATime = true;       // One open position at a time
@@ -96,6 +101,7 @@ struct Zone
    double ebot;
    datetime et0;
    double tgt;     // structure target (broken 15m swing)
+   double swingSL; // 1m swing used for the stop (0 = 5m-zone mode)
    int    dir;     // -1 sell, +1 buy
    bool   armed;   // true until traded (filled / tapped) or skipped
    ulong  id;
@@ -293,7 +299,7 @@ void RemoveZone(int idx)
    ArrayResize(g_zones, n - 1);
   }
 
-void AddZone(double top, double bot, int dir, datetime t0, double tgt, double etop, double ebot, datetime et0)
+void AddZone(double top, double bot, int dir, datetime t0, double tgt, double etop, double ebot, datetime et0, double swingSL)
   {
    if(ArraySize(g_zones) >= InpMaxZones)
       RemoveZone(0);
@@ -304,6 +310,7 @@ void AddZone(double top, double bot, int dir, datetime t0, double tgt, double et
    g_zones[n].etop  = etop;
    g_zones[n].ebot  = ebot;
    g_zones[n].et0   = et0;
+   g_zones[n].swingSL = swingSL;
    g_zones[n].tgt   = tgt;
    g_zones[n].dir   = dir;
    g_zones[n].armed = true;
@@ -527,14 +534,49 @@ void CaptureEntryPieces()
      }
   }
 
+// Most recent confirmed 1m swing high above price (sd 0, sell) or swing low below price (sd 1, buy).
+bool FindStopSwing(int sd, double price, double &val)
+  {
+   int L = InpSwingLen1;
+   int n = MathMin(InpSwingLookback + L + 1, Bars(_Symbol, InpEntryFvgTF));
+   if(n < 2 * L + 3) return false;
+   double hi[], lo[];
+   if(!LoadSeries(InpEntryFvgTF, n, hi, lo)) return false;
+   for(int s = L + 1; s < n - L; s++)              // shift 0 = forming bar; L+1 = newest confirmed
+     {
+      bool ok = true;
+      for(int k = 1; k <= L && ok; k++)
+        {
+         if(sd == 0) { if(hi[s] < hi[s - k] || hi[s] <= hi[s + k]) ok = false; }
+         else        { if(lo[s] > lo[s - k] || lo[s] >= lo[s + k]) ok = false; }
+        }
+      if(!ok) continue;
+      if(sd == 0 && hi[s] > price) { val = hi[s]; return true; }
+      if(sd == 1 && lo[s] < price) { val = lo[s]; return true; }
+     }
+   return false;
+  }
+
 // Both pieces present -> one tradable setup.
 void PairPieces()
   {
    for(int sd = 0; sd < 2; sd++)
      {
       if(!g_p5[sd].has || !g_p1[sd].has) continue;
+      double swingSL = 0;
+      if(InpStopMode == STOP_1M_SWING)
+        {
+         double entry = (sd == 0) ? g_p1[sd].bot : g_p1[sd].top;
+         if(!FindStopSwing(sd, entry, swingSL))
+           {
+            PrintFormat("%s setup skipped: no 1m swing %s the entry within %d bars", sd == 0 ? "SELL" : "BUY",
+                        sd == 0 ? "above" : "below", InpSwingLookback);
+            g_p5[sd].has = false; g_p1[sd].has = false;
+            continue;
+           }
+        }
       AddZone(g_p5[sd].top, g_p5[sd].bot, sd == 0 ? -1 : 1, g_p5[sd].t0, SideLevel(sd),
-              g_p1[sd].top, g_p1[sd].bot, g_p1[sd].t0);
+              g_p1[sd].top, g_p1[sd].bot, g_p1[sd].t0, swingSL);
       g_p5[sd].has = false;
       g_p1[sd].has = false;
      }
@@ -549,9 +591,11 @@ bool CalcLevels(int idx, double entry, double &sl, double &tp, double &risk)
    double top = g_zones[idx].top, bot = g_zones[idx].bot, tgt = g_zones[idx].tgt;
    double buf = (top - bot) * InpSlBufPct / 100.0;
    double minDist = (double)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL) * _Point;
+   bool   useSwing = (InpStopMode == STOP_1M_SWING && g_zones[idx].swingSL > 0);
+   double swBuf = InpStopBufPts * _Point;
    if(dir < 0)
      {
-      sl   = top + buf;
+      sl   = useSwing ? g_zones[idx].swingSL + swBuf : top + buf;
       risk = sl - entry;
       if(risk <= 0) return false;              // price already beyond the stop
       if(risk < minDist) { sl = entry + minDist; risk = minDist; }
@@ -560,7 +604,7 @@ bool CalcLevels(int idx, double entry, double &sl, double &tp, double &risk)
      }
    else
      {
-      sl   = bot - buf;
+      sl   = useSwing ? g_zones[idx].swingSL - swBuf : bot - buf;
       risk = entry - sl;
       if(risk <= 0) return false;
       if(risk < minDist) { sl = entry - minDist; risk = minDist; }
@@ -743,7 +787,7 @@ void OnNewEntryFvgBar()
 //+------------------------------------------------------------------+
 int OnInit()
   {
-   if(InpSwLen4 < 1 || InpSwLen15 < 1 || InpMaxZones < 1)
+   if(InpSwLen4 < 1 || InpSwLen15 < 1 || InpMaxZones < 1 || InpSwingLen1 < 1 || InpSwingLookback < 10)
      {
       Print("Invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
