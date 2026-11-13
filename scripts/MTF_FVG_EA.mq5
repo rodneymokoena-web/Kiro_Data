@@ -1,11 +1,11 @@
 //+------------------------------------------------------------------+
 //|                                                  MTF_FVG_EA.mq5  |
-//|  D/4H/1H POI -> 15m BOS -> 1m FVG/iFVG entry                     |
+//|  D/4H/1H POI -> 15m BOS -> 5m zone (stop) + 1m FVG entry         |
 //+------------------------------------------------------------------+
 #property copyright "MTF-FVG"
 #property version   "1.00"
 #property description "D/4H/1H bias (swing sweep / inside FVG) -> 15m break of structure ->"
-#property description "first overlapping 1m FVG / inverse FVG -> limit order resting at the zone edge"
+#property description "5m zone (stop) + 1m entry FVG -> limit order at the 1m FVG near edge"
 #property description "(placed before price touches it), with an alert when the order is placed."
 
 #include <Trade/Trade.mqh>
@@ -34,7 +34,8 @@ input ENUM_TIMEFRAMES InpBiasTF   = PERIOD_H4;   // Bias timeframe (4H)
 input ENUM_TIMEFRAMES InpBiasTF2  = PERIOD_H1;   // Second bias timeframe (1H)
 input ENUM_TIMEFRAMES InpStructTF = PERIOD_M15;  // Structure timeframe
 input ENUM_TIMEFRAMES InpEntryTF  = PERIOD_M5;   // Bias-check timeframe (Rule 1 bars, 5m)
-input ENUM_TIMEFRAMES InpZoneTF   = PERIOD_M1;   // Rule 3 entry-zone timeframe (1m; 5m = old behaviour)
+input ENUM_TIMEFRAMES InpZoneTF   = PERIOD_M5;   // Rule 3 zone timeframe (sets the stop, 5m)
+input ENUM_TIMEFRAMES InpEntryFvgTF = PERIOD_M1; // Rule 4 entry FVG timeframe (1m; = zone TF -> enter at zone edge)
 
 input group "Bias (D / 4H / 1H)"
 input ENUM_BIAS_MODE InpBiasMode  = BIAS_D_4H_1H; // Rule 1 bias timeframes
@@ -89,8 +90,11 @@ input color           InpColBuy     = clrMediumSeaGreen;
 //--- zone storage
 struct Zone
   {
-   double top;
+   double top;     // Rule 3 zone (5m): sets the stop
    double bot;
+   double etop;    // Rule 4 entry FVG (1m): limit price is its near edge
+   double ebot;
+   datetime et0;
    double tgt;     // structure target (broken 15m swing)
    int    dir;     // -1 sell, +1 buy
    bool   armed;   // true until traded (filled / tapped) or skipped
@@ -107,6 +111,7 @@ CTrade   trade;
 datetime g_lastEntryBar  = 0;
 datetime g_lastStructBar = 0;
 datetime g_lastZoneBar   = 0;
+datetime g_lastEntryFvgBar = 0;
 long     g_barCount      = 0;
 
 // One slot per selected bias timeframe (Daily / 4H / 1H, chosen by InpBiasMode)
@@ -124,7 +129,16 @@ long     g_shortBiasBar = -1, g_longBiasBar = -1;
 
 double   g_lastPL15 = 0, g_lastPH15 = 0;        // latest 15m swings
 double   g_brokenLow15 = 0, g_brokenHigh15 = 0;
-bool     g_armShort = false, g_armLong = false;
+// Setup building, per side: [0] = short, [1] = long.
+// After a 15m BOS both searches arm; a setup is complete when both pieces exist.
+struct Piece
+  {
+   bool     has;
+   double   top, bot;
+   datetime t0;
+  };
+Piece    g_p5[2], g_p1[2];        // 5m zone piece, 1m entry-FVG piece
+bool     g_arm5[2], g_arm1[2];    // searches armed
 
 const string PFX = "MTFFVG_";
 
@@ -235,7 +249,19 @@ void DrawZone(const Zone &z)
    ObjectSetInteger(0, nm, OBJPROP_RAY_RIGHT, true);
    ObjectSetInteger(0, nm, OBJPROP_SELECTABLE, false);
    string tfn = StringSubstr(EnumToString(InpZoneTF), 7);   // e.g. "M1"
-   ObjectSetString(0, nm, OBJPROP_TEXT, tfn + (z.dir < 0 ? " FVG (sell)" : " FVG (buy)"));
+   ObjectSetString(0, nm, OBJPROP_TEXT, tfn + (z.dir < 0 ? " zone (sell)" : " zone (buy)"));
+   if(InpEntryFvgTF != InpZoneTF)
+     {
+      string en = nm + "e";
+      if(ObjectFind(0, en) < 0)
+         ObjectCreate(0, en, OBJ_RECTANGLE, 0, z.et0, z.etop, t2, z.ebot);
+      ObjectSetInteger(0, en, OBJPROP_COLOR, clrDodgerBlue);
+      ObjectSetInteger(0, en, OBJPROP_FILL, false);
+      ObjectSetInteger(0, en, OBJPROP_WIDTH, 2);
+      ObjectSetInteger(0, en, OBJPROP_RAY_RIGHT, true);
+      ObjectSetInteger(0, en, OBJPROP_SELECTABLE, false);
+      ObjectSetString(0, en, OBJPROP_TEXT, StringSubstr(EnumToString(InpEntryFvgTF), 7) + " entry FVG");
+     }
   }
 
 void FinishZoneDrawing(const Zone &z)
@@ -245,13 +271,18 @@ void FinishZoneDrawing(const Zone &z)
    if(ObjectFind(0, nm) < 0) return;
    ObjectSetInteger(0, nm, OBJPROP_RAY_RIGHT, false);
    ObjectSetInteger(0, nm, OBJPROP_TIME, 1, TimeCurrent());
+   if(ObjectFind(0, nm + "e") >= 0)
+     {
+      ObjectSetInteger(0, nm + "e", OBJPROP_RAY_RIGHT, false);
+      ObjectSetInteger(0, nm + "e", OBJPROP_TIME, 1, TimeCurrent());
+     }
   }
 
 void RemoveZone(int idx)
   {
    int n = ArraySize(g_zones);
    if(idx < 0 || idx >= n) return;
-   if(InpDrawZones) ObjectDelete(0, ZoneName(g_zones[idx].id));
+   if(InpDrawZones) { ObjectDelete(0, ZoneName(g_zones[idx].id)); ObjectDelete(0, ZoneName(g_zones[idx].id) + "e"); }
    if(g_zones[idx].ticket != 0)
      {
       CancelOrder(g_zones[idx].ticket);
@@ -262,7 +293,7 @@ void RemoveZone(int idx)
    ArrayResize(g_zones, n - 1);
   }
 
-void AddZone(double top, double bot, int dir, datetime t0, double tgt)
+void AddZone(double top, double bot, int dir, datetime t0, double tgt, double etop, double ebot, datetime et0)
   {
    if(ArraySize(g_zones) >= InpMaxZones)
       RemoveZone(0);
@@ -270,6 +301,9 @@ void AddZone(double top, double bot, int dir, datetime t0, double tgt)
    ArrayResize(g_zones, n + 1);
    g_zones[n].top   = top;
    g_zones[n].bot   = bot;
+   g_zones[n].etop  = etop;
+   g_zones[n].ebot  = ebot;
+   g_zones[n].et0   = et0;
    g_zones[n].tgt   = tgt;
    g_zones[n].dir   = dir;
    g_zones[n].armed = true;
@@ -278,8 +312,9 @@ void AddZone(double top, double bot, int dir, datetime t0, double tgt)
    g_zones[n].ticket  = 0;
    g_zones[n].lastTry = 0;
    DrawZone(g_zones[n]);
-   PrintFormat("New %s zone [%s - %s] target %s", dir < 0 ? "SELL" : "BUY",
-               DoubleToString(bot, _Digits), DoubleToString(top, _Digits), DoubleToString(tgt, _Digits));
+   PrintFormat("New %s setup: zone [%s - %s] entry FVG [%s - %s] target %s", dir < 0 ? "SELL" : "BUY",
+               DoubleToString(bot, _Digits), DoubleToString(top, _Digits),
+               DoubleToString(ebot, _Digits), DoubleToString(etop, _Digits), DoubleToString(tgt, _Digits));
   }
 
 double NormalizeLots(double lots)
@@ -386,13 +421,13 @@ void UpdateStructure()
    if(bosDown)
      {
       g_brokenLow15 = g_lastPL15;
-      g_armShort = true;
+      StartSetup(0);
       PrintFormat("15m BOS DOWN through %s", DoubleToString(g_brokenLow15, _Digits));
      }
    if(bosUp)
      {
       g_brokenHigh15 = g_lastPH15;
-      g_armLong = true;
+      StartSetup(1);
       PrintFormat("15m BOS UP through %s", DoubleToString(g_brokenHigh15, _Digits));
      }
   }
@@ -411,35 +446,97 @@ void MitigateZones()
   }
 
 //+------------------------------------------------------------------+
-//| Capture first overlapping FVG / iFVG after a BOS (zone TF, 1m)  |
-//|  Pine [0],[1],[2] -> MQL closed shifts 1,2,3                     |
+//| Setup building (Rule 3 zone on 5m + Rule 4 entry FVG on 1m)      |
 //+------------------------------------------------------------------+
-void CaptureZones()
+double SideLevel(int sd) { return sd == 0 ? g_brokenLow15 : g_brokenHigh15; }
+bool   SideAllowed(int sd) { return sd == 0 ? InpAllowShort : InpAllowLong; }
+
+void StartSetup(int sd)
   {
-   double h1 = iHigh(_Symbol, InpZoneTF, 1), l1 = iLow(_Symbol, InpZoneTF, 1);
-   double h2 = iHigh(_Symbol, InpZoneTF, 2), l2 = iLow(_Symbol, InpZoneTF, 2);
-   double h3 = iHigh(_Symbol, InpZoneTF, 3), l3 = iLow(_Symbol, InpZoneTF, 3);
-   double c1 = iClose(_Symbol, InpZoneTF, 1);
-   datetime t3 = iTime(_Symbol, InpZoneTF, 3);
+   g_arm5[sd] = true;
+   g_arm1[sd] = true;
+   g_p5[sd].has = false;
+   g_p1[sd].has = false;
+  }
 
-   if(InpAllowShort && g_armShort && g_brokenLow15 > 0)
+// First FVG / inverse FVG on tf (closed bars 1..3) that contains the level.
+// sd 0 = bearish (short), 1 = bullish (long).
+bool FindFvg(ENUM_TIMEFRAMES tf, int sd, double level, double &top, double &bot, datetime &t0)
+  {
+   double h1 = iHigh(_Symbol, tf, 1), l1 = iLow(_Symbol, tf, 1);
+   double h2 = iHigh(_Symbol, tf, 2), l2 = iLow(_Symbol, tf, 2);
+   double h3 = iHigh(_Symbol, tf, 3), l3 = iLow(_Symbol, tf, 3);
+   double c1 = iClose(_Symbol, tf, 1);
+   t0 = iTime(_Symbol, tf, 3);
+   if(sd == 0)
      {
-      bool bearFvg  = (h1 < l3);                             // gap: top=l3, bottom=h1
-      bool ifvgBear = InpUseIFVG && (l2 > h3) && (c1 < h3);  // prior bull gap violated: top=l2, bottom=h3
-      if(bearFvg && Overlap(l3, h1, g_brokenLow15, g_brokenLow15))
-        { AddZone(l3, h1, -1, t3, g_brokenLow15); g_armShort = false; }
-      else if(ifvgBear && Overlap(l2, h3, g_brokenLow15, g_brokenLow15))
-        { AddZone(l2, h3, -1, t3, g_brokenLow15); g_armShort = false; }
+      if(h1 < l3 && Overlap(l3, h1, level, level))                                { top = l3; bot = h1; return true; }
+      if(InpUseIFVG && l2 > h3 && c1 < h3 && Overlap(l2, h3, level, level))        { top = l2; bot = h3; return true; }
      }
-
-   if(InpAllowLong && g_armLong && g_brokenHigh15 > 0)
+   else
      {
-      bool bullFvg  = (l1 > h3);                             // gap: top=l1, bottom=h3
-      bool ifvgBull = InpUseIFVG && (h2 < l3) && (c1 > l3);  // prior bear gap violated: top=l3, bottom=h2
-      if(bullFvg && Overlap(l1, h3, g_brokenHigh15, g_brokenHigh15))
-        { AddZone(l1, h3, 1, t3, g_brokenHigh15); g_armLong = false; }
-      else if(ifvgBull && Overlap(l3, h2, g_brokenHigh15, g_brokenHigh15))
-        { AddZone(l3, h2, 1, t3, g_brokenHigh15); g_armLong = false; }
+      if(l1 > h3 && Overlap(l1, h3, level, level))                                { top = l1; bot = h3; return true; }
+      if(InpUseIFVG && h2 < l3 && c1 > l3 && Overlap(l3, h2, level, level))        { top = l3; bot = h2; return true; }
+     }
+   return false;
+  }
+
+// New zone-TF (5m) bar: drop a pending 5m piece that price closed through, then search.
+void CaptureZonePieces()
+  {
+   double c1 = iClose(_Symbol, InpZoneTF, 1);
+   for(int sd = 0; sd < 2; sd++)
+     {
+      if(g_p5[sd].has && ((sd == 0 && c1 > g_p5[sd].top) || (sd == 1 && c1 < g_p5[sd].bot)))
+        {
+         g_p5[sd].has = false;               // zone failed before an entry FVG paired with it
+         g_arm1[sd] = false;
+         g_p1[sd].has = false;
+         Print(sd == 0 ? "Pending SELL zone closed through: setup cancelled" : "Pending BUY zone closed through: setup cancelled");
+        }
+      double level = SideLevel(sd);
+      if(!SideAllowed(sd) || !g_arm5[sd] || level <= 0) continue;
+      double t, b; datetime t0;
+      if(FindFvg(InpZoneTF, sd, level, t, b, t0))
+        {
+         g_p5[sd].has = true; g_p5[sd].top = t; g_p5[sd].bot = b; g_p5[sd].t0 = t0;
+         g_arm5[sd] = false;
+        }
+     }
+  }
+
+// New entry-FVG-TF (1m) bar: drop a pending 1m piece price closed through (and re-arm), then search.
+void CaptureEntryPieces()
+  {
+   double c1 = iClose(_Symbol, InpEntryFvgTF, 1);
+   for(int sd = 0; sd < 2; sd++)
+     {
+      if(g_p1[sd].has && ((sd == 0 && c1 > g_p1[sd].top) || (sd == 1 && c1 < g_p1[sd].bot)))
+        {
+         g_p1[sd].has = false;
+         g_arm1[sd] = (g_arm5[sd] || g_p5[sd].has);   // look for a new entry FVG while the setup lives
+        }
+      double level = SideLevel(sd);
+      if(!SideAllowed(sd) || !g_arm1[sd] || level <= 0) continue;
+      double t, b; datetime t0;
+      if(FindFvg(InpEntryFvgTF, sd, level, t, b, t0))
+        {
+         g_p1[sd].has = true; g_p1[sd].top = t; g_p1[sd].bot = b; g_p1[sd].t0 = t0;
+         g_arm1[sd] = false;
+        }
+     }
+  }
+
+// Both pieces present -> one tradable setup.
+void PairPieces()
+  {
+   for(int sd = 0; sd < 2; sd++)
+     {
+      if(!g_p5[sd].has || !g_p1[sd].has) continue;
+      AddZone(g_p5[sd].top, g_p5[sd].bot, sd == 0 ? -1 : 1, g_p5[sd].t0, SideLevel(sd),
+              g_p1[sd].top, g_p1[sd].bot, g_p1[sd].t0);
+      g_p5[sd].has = false;
+      g_p1[sd].has = false;
      }
   }
 
@@ -490,7 +587,7 @@ void PlaceLimit(int idx)
   {
    g_zones[idx].lastTry = TimeCurrent();
    int    dir   = g_zones[idx].dir;
-   double entry = RoundToTick(dir < 0 ? g_zones[idx].bot : g_zones[idx].top);
+   double entry = RoundToTick(dir < 0 ? g_zones[idx].ebot : g_zones[idx].etop);   // 1m entry FVG near edge
    double bid   = SymbolInfoDouble(_Symbol, SYMBOL_BID);
    double ask   = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
    double minDist = (double)MathMax(SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL),
@@ -566,7 +663,7 @@ void ManageZones()
      {
       if(!g_zones[i].armed) continue;
       int  dir     = g_zones[i].dir;
-      bool touched = (dir < 0) ? (bid >= g_zones[i].bot) : (ask <= g_zones[i].top);
+      bool touched = (dir < 0) ? (bid >= g_zones[i].ebot) : (ask <= g_zones[i].etop);
 
       // 1) A limit order is (or was) resting for this zone
       if(g_zones[i].ticket != 0)
@@ -629,8 +726,18 @@ void OnNewBar()
 //+------------------------------------------------------------------+
 void OnNewZoneBar()
   {
-   MitigateZones();
-   CaptureZones();
+   MitigateZones();          // setups whose 5m zone was closed through
+   CaptureZonePieces();      // Rule 3: 5m zone
+   PairPieces();
+  }
+
+//+------------------------------------------------------------------+
+//| New entry-FVG-TF bar (1m): Rule 4 entry FVG                      |
+//+------------------------------------------------------------------+
+void OnNewEntryFvgBar()
+  {
+   CaptureEntryPieces();
+   PairPieces();
   }
 
 //+------------------------------------------------------------------+
@@ -641,9 +748,10 @@ int OnInit()
       Print("Invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
      }
-   if(PeriodSeconds(InpStructTF) <= PeriodSeconds(InpEntryTF) || PeriodSeconds(InpZoneTF) > PeriodSeconds(InpEntryTF))
+   if(PeriodSeconds(InpStructTF) <= PeriodSeconds(InpEntryTF) || PeriodSeconds(InpZoneTF) > PeriodSeconds(InpEntryTF)
+      || PeriodSeconds(InpEntryFvgTF) > PeriodSeconds(InpZoneTF))
      {
-      Print("Timeframes must satisfy: Structure > Bias-check TF >= Zone TF");
+      Print("Timeframes must satisfy: Structure > Bias-check TF >= Zone TF >= Entry FVG TF");
       return INIT_PARAMETERS_INCORRECT;
      }
    bool useD  = (InpBiasMode == BIAS_D_4H_1H || InpBiasMode == BIAS_D_4H || InpBiasMode == BIAS_D);
@@ -666,6 +774,8 @@ int OnInit()
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);
    ArrayResize(g_zones, 0);
+   ZeroMemory(g_p5); ZeroMemory(g_p1);
+   ArrayInitialize(g_arm5, false); ArrayInitialize(g_arm1, false);
    return INIT_SUCCEEDED;
   }
 
@@ -697,7 +807,13 @@ void OnTick()
    if(zt != 0 && zt != g_lastZoneBar)
      {
       g_lastZoneBar = zt;
-      OnNewZoneBar();             // Rule 3 zones
+      OnNewZoneBar();             // Rule 3 zones (5m)
+     }
+   datetime et = iTime(_Symbol, InpEntryFvgTF, 0);
+   if(et != 0 && et != g_lastEntryFvgBar)
+     {
+      g_lastEntryFvgBar = et;
+      OnNewEntryFvgBar();         // Rule 4 entry FVG (1m)
      }
    ManageZones();
   }

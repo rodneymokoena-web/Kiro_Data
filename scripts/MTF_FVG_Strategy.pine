@@ -1,5 +1,5 @@
 //@version=6
-strategy("D/4H/1H POI > 15m BOS > 1m FVG/iFVG Strategy", shorttitle="MTF-FVG-STR", overlay=true,
+strategy("D/4H/1H POI > 15m BOS > 5m zone + 1m FVG entry Strategy", shorttitle="MTF-FVG-STR", overlay=true,
      max_boxes_count=500, max_lines_count=500, max_labels_count=500,
      default_qty_type=strategy.percent_of_equity, default_qty_value=10,
      initial_capital=10000, commission_type=strategy.commission.percent, commission_value=0.02,
@@ -19,7 +19,8 @@ tfD   = input.timeframe("D",   "Bias timeframe (Daily)", group=gTf)
 tf4h  = input.timeframe("240", "Bias timeframe (4H)", group=gTf)
 tf1h  = input.timeframe("60",  "Second bias timeframe (1H)", group=gTf)
 tf15  = input.timeframe("15",  "Structure timeframe (15m)", group=gTf)
-zoneTF = input.timeframe("1", "Rule 3 entry-zone timeframe = run the chart on this", options=["1", "5"], group=gTf, tooltip="Zones are built from the chart's own bars. Put the chart on 1m for Rule 3 (1m zones), or 5m for the old behaviour. A warning shows if the chart doesn't match.")
+tfZone  = input.timeframe("5", "Rule 3 zone timeframe (sets the stop)", group=gTf, tooltip="The zone that must contain the broken 15m level. The stop goes beyond its far edge + buffer.")
+entryTF = input.timeframe("1", "Rule 4 entry FVG timeframe = run the chart on this", options=["1", "5"], group=gTf, tooltip="The entry FVG is built from the chart's own bars, so put the chart on 1m. On a 5m chart the entry is the 5m zone's own edge (old behaviour).")
 tfBiasChk = input.timeframe("5", "Rule 1 bias-check timeframe (5m)", group=gTf, tooltip="Bias sweeps / FVG closes are checked on closed bars of this timeframe, and the bias duration is counted in these bars, whatever the chart timeframe.")
 
 gBias = "Bias (D / 4H / 1H)"
@@ -36,7 +37,7 @@ biasBars = input.int(500, "Bias stays valid for (bars)", minval=20, group=gBias)
 gStruct = "15m structure"
 swLen15 = input.int(3, "15m swing length", minval=1, group=gStruct)
 
-gEntry = "Entry zone (Rule 3)"
+gEntry = "Zone (Rule 3) / entry FVG (Rule 4)"
 useIFVG = input.bool(true, "Allow inverse-FVG zones", group=gEntry)
 
 gTrade = "Trade management"
@@ -241,56 +242,117 @@ e_l1 = low[1]
 e_c  = close
 e_t2 = time[2]
 
-var array<float> zTops  = array.new<float>()
+var array<float> zTops  = array.new<float>()   // Rule 3 zone (5m): stop side
 var array<float> zBots  = array.new<float>()
 var array<int>   zDir   = array.new<int>()
 var array<box>   zBox   = array.new<box>()
 var array<bool>  zArmed = array.new<bool>()
 var array<float> zTgt   = array.new<float>()
+var array<float> zTrig  = array.new<float>()   // entry price = near edge of the 1m entry FVG
+var array<box>   zEBox  = array.new<box>()
 
 overlap(float aT, float aB, float bT, float bB) => aB <= bT and aT >= bB
 
-addEntryZone(float t, float b, int dir, int t0, float tgt) =>
+addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et, float eb, int et0) =>
+    box bx = na
+    box ebx = na
     if drawZones
         col = dir < 0 ? cZS : cZB
-        bx = box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=zoneTF + "m FVG", text_color=color.gray, text_size=size.small)
-        zBox.push(bx)
-    else
-        zBox.push(na)
+        bx := box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=tfZone + "m zone", text_color=color.gray, text_size=size.small)
+        if entryTF != tfZone
+            ebx := box.new(et0, et, time, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), extend=extend.right, text=entryTF + "m entry", text_color=color.blue, text_size=size.tiny)
+    zBox.push(bx)
+    zEBox.push(ebx)
     zTops.push(t)
     zBots.push(b)
     zDir.push(dir)
     zArmed.push(true)
     zTgt.push(tgt)
+    zTrig.push(trig)
+
+// First FVG / inverse FVG (bars 1..3, newest first) that contains the level.
+fvgFind(int sd, float lvl, float h1, float l1, float h2, float l2, float h3, float l3, float c1) =>
+    bool f = false
+    float t = na
+    float b = na
+    if sd < 0
+        if h1 < l3 and h1 <= lvl and lvl <= l3
+            f := true, t := l3, b := h1
+        else if useIFVG and l2 > h3 and c1 < h3 and h3 <= lvl and lvl <= l2
+            f := true, t := l2, b := h3
+    else
+        if l1 > h3 and h3 <= lvl and lvl <= l1
+            f := true, t := l1, b := h3
+        else if useIFVG and h2 < l3 and c1 > l3 and h2 <= lvl and lvl <= l3
+            f := true, t := l3, b := h2
+    [f, t, b]
 
 // --- Zone capture (bar close) ---
-if showSell and armShort and not na(brokenLow15)
-    bearFvg = e_h < e_l2
-    bT = e_l2
-    bB = e_h
-    ifvgBear = useIFVG and (e_l1 > e_h2) and e_c < e_h2
-    iT = e_l1
-    iB = e_h2
-    if bearFvg and overlap(bT, bB, brokenLow15, brokenLow15)
-        addEntryZone(bT, bB, -1, e_t2, brokenLow15)
-        armShort := false
-    else if ifvgBear and overlap(iT, iB, brokenLow15, brokenLow15)
-        addEntryZone(iT, iB, -1, e_t2, brokenLow15)
-        armShort := false
+// Rule 3 zone bars (closed): the chart's own on a {tfZone} chart, else the last closed tfZone bar.
+chartIsZone = timeframe.period == tfZone
+[zH1r, zL1r, zH2r, zL2r, zH3r, zL3r, zC1r, zT3r] = request.security(syminfo.tickerid, tfZone, [high[1], low[1], high[2], low[2], high[3], low[3], close[1], time[3]], lookahead=barmerge.lookahead_on)
+zH1 = chartIsZone ? high    : zH1r
+zL1 = chartIsZone ? low     : zL1r
+zH2 = chartIsZone ? high[1] : zH2r
+zL2 = chartIsZone ? low[1]  : zL2r
+zH3 = chartIsZone ? high[2] : zH3r
+zL3 = chartIsZone ? low[2]  : zL3r
+zC1 = chartIsZone ? close   : zC1r
+zT3 = chartIsZone ? time[2] : zT3r
+zoneTick = chartIsZone or ta.change(time(tfZone)) != 0
 
-if showBuy and armLong and not na(brokenHigh15)
-    bullFvg = e_l > e_h2
-    uT = e_l
-    uB = e_h2
-    ifvgBull = useIFVG and (e_h1 < e_l2) and e_c > e_l2
-    juT = e_l2
-    juB = e_h1
-    if bullFvg and overlap(uT, uB, brokenHigh15, brokenHigh15)
-        addEntryZone(uT, uB, 1, e_t2, brokenHigh15)
-        armLong := false
-    else if ifvgBull and overlap(juT, juB, brokenHigh15, brokenHigh15)
-        addEntryZone(juT, juB, 1, e_t2, brokenHigh15)
-        armLong := false
+// Setup building per side: 5m zone piece + 1m entry-FVG piece; both arm on a 15m BOS.
+var bool  arm5S = false
+var bool  arm1S = false
+var float p5ST = na, var float p5SB = na, var int p5ST0 = na
+var float p1ST = na, var float p1SB = na, var int p1ST0 = na
+var bool  arm5L = false
+var bool  arm1L = false
+var float p5LT = na, var float p5LB = na, var int p5LT0 = na
+var float p1LT = na, var float p1LB = na, var int p1LT0 = na
+if bosDown
+    arm5S := true, arm1S := true, p5ST := na, p1ST := na
+if bosUp
+    arm5L := true, arm1L := true, p5LT := na, p1LT := na
+
+// Rule 3: zone piece, once per closed zone-TF bar
+if zoneTick
+    if not na(p5ST) and zC1 > p5ST
+        p5ST := na, p1ST := na, arm1S := false        // zone failed before pairing
+    if not na(p5LT) and zC1 < p5LB
+        p5LT := na, p1LT := na, arm1L := false
+    if showSell and arm5S and not na(brokenLow15)
+        [fA, tA, bA] = fvgFind(-1, brokenLow15, zH1, zL1, zH2, zL2, zH3, zL3, zC1)
+        if fA
+            p5ST := tA, p5SB := bA, p5ST0 := zT3, arm5S := false
+    if showBuy and arm5L and not na(brokenHigh15)
+        [fB, tB, bB] = fvgFind(1, brokenHigh15, zH1, zL1, zH2, zL2, zH3, zL3, zC1)
+        if fB
+            p5LT := tB, p5LB := bB, p5LT0 := zT3, arm5L := false
+
+// Rule 4: entry FVG piece, every closed chart bar (1m)
+if not na(p1ST) and close > p1ST
+    p1ST := na, arm1S := arm5S or not na(p5ST)    // look for a new entry FVG
+if not na(p1LT) and close < p1LB
+    p1LT := na, arm1L := arm5L or not na(p5LT)
+if showSell and arm1S and not na(brokenLow15)
+    [fC, tC, bC_] = fvgFind(-1, brokenLow15, e_h, e_l, e_h1, e_l1, e_h2, e_l2, e_c)
+    if fC
+        p1ST := tC, p1SB := bC_, p1ST0 := e_t2, arm1S := false
+if showBuy and arm1L and not na(brokenHigh15)
+    [fD, tD, bD] = fvgFind(1, brokenHigh15, e_h, e_l, e_h1, e_l1, e_h2, e_l2, e_c)
+    if fD
+        p1LT := tD, p1LB := bD, p1LT0 := e_t2, arm1L := false
+
+// Pair: both pieces -> tradable setup (stop from the zone, entry at the entry FVG near edge)
+if not na(p5ST) and not na(p1ST)
+    addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0)
+    p5ST := na, p1ST := na
+if not na(p5LT) and not na(p1LT)
+    addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0)
+    p5LT := na, p1LT := na
+armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
+armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)
 
 // --- Tap detection, mitigation, and order placement ---
 bool goShort = false
@@ -307,20 +369,27 @@ if zTops.size() > 0
         d = zDir.get(i)
         armed = zArmed.get(i)
         tgt = zTgt.get(i)
+        trig = zTrig.get(i)
+        ebx = zEBox.get(i)
         bx = zBox.get(i)
         if d < 0
-            if close > t
+            if zoneTick and zC1 > t          // 5m zone closed through
                 if drawZones and not na(bx)
                     box.delete(bx)
-                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i)
-            else if armed and high >= b
+                if not na(ebx)
+                    box.delete(ebx)
+                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i)
+            else if armed and high >= trig
                 zArmed.set(i, false)
                 if drawZones and not na(bx)
                     box.set_right(bx, time)
                     box.set_extend(bx, extend.none)
+                if not na(ebx)
+                    box.set_right(ebx, time)
+                    box.set_extend(ebx, extend.none)
                 zh  = t - b
                 buf = zh * slBufPct / 100.0
-                entryP = b
+                entryP = trig
                 slP = t + buf
                 risk = math.abs(entryP - slP)
                 tpP = exitMode == "Structure level" and not na(tgt) and tgt < entryP ? tgt : entryP - risk * rrMult
@@ -328,18 +397,23 @@ if zTops.size() > 0
                     goShort := true
                     sEntry := entryP, sSL := slP, sTP := tpP
         else
-            if close < b
+            if zoneTick and zC1 < b
                 if drawZones and not na(bx)
                     box.delete(bx)
-                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i)
-            else if armed and low <= t
+                if not na(ebx)
+                    box.delete(ebx)
+                zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i)
+            else if armed and low <= trig
                 zArmed.set(i, false)
                 if drawZones and not na(bx)
                     box.set_right(bx, time)
                     box.set_extend(bx, extend.none)
+                if not na(ebx)
+                    box.set_right(ebx, time)
+                    box.set_extend(ebx, extend.none)
                 zh  = t - b
                 buf = zh * slBufPct / 100.0
-                entryP = t
+                entryP = trig
                 slP = b - buf
                 risk = math.abs(entryP - slP)
                 tpP = exitMode == "Structure level" and not na(tgt) and tgt > entryP ? tgt : entryP + risk * rrMult
@@ -370,7 +444,7 @@ plotshape(goShort, "Short entry", shape.triangledown, location.abovebar, color.r
 plotshape(goLong,  "Long entry",  shape.triangleup,   location.belowbar, color.green, size=size.small)
 
 // ------------------------- chart timeframe check -----------------------------
-if barstate.islast and timeframe.period != zoneTF
+if barstate.islast and timeframe.period != entryTF
     var label warnLbl = na
     label.delete(warnLbl)
-    warnLbl := label.new(bar_index, high, "Rule 3 zones are set to " + zoneTF + "m: put the chart on " + zoneTF + "m (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)
+    warnLbl := label.new(bar_index, high, "Rule 4 entry FVG is set to " + entryTF + "m: put the chart on " + entryTF + "m (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)
