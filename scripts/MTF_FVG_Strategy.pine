@@ -20,7 +20,7 @@ tf4h  = input.timeframe("240", "Bias timeframe (4H)", group=gTf)
 tf1h  = input.timeframe("60",  "Second bias timeframe (1H)", group=gTf)
 tf15  = input.timeframe("15",  "Structure timeframe (15m)", group=gTf)
 tfZone  = input.timeframe("5", "Rule 3 zone timeframe (sets the stop)", group=gTf, tooltip="The zone that must contain the broken 15m level. The stop goes beyond its far edge + buffer.")
-entryTF = input.timeframe("1", "Rule 4 entry FVG timeframe = run the chart on this", options=["1", "5"], group=gTf, tooltip="The entry FVG is built from the chart's own bars, so put the chart on 1m. On a 5m chart the entry is the 5m zone's own edge (old behaviour).")
+entryTF = input.timeframe("1", "Rule 4 entry FVG timeframe", options=["1", "5"], group=gTf, tooltip="1m FVGs are read from real 1m bars, so they are exact on a 1m or 5m chart. 5 = enter at the 5m zone edge (old behaviour).")
 tfBiasChk = input.timeframe("5", "Rule 1 bias-check timeframe (5m)", group=gTf, tooltip="Bias sweeps / FVG closes are checked on closed bars of this timeframe, and the bias duration is counted in these bars, whatever the chart timeframe.")
 
 gBias = "Bias (D / 4H / 1H)"
@@ -68,6 +68,7 @@ legLook    = input.int(600, "Leg scan limit (chart bars)", minval=20, maxval=990
 cBosDn     = input.color(color.red,    "BOS down color", group=gShow)
 cBosUp     = input.color(color.green,  "BOS up color",   group=gShow)
 cLegFvg    = input.color(color.orange, "Leg FVG color",  group=gShow)
+fvgMin     = input.int(60, "1m FVG box length (minutes)", minval=1, group=gShow, tooltip="1m FVG boxes (entry FVG and BOS-leg FVG) are drawn this long and stay on the chart.")
 showSell = input.bool(true, "Trade short setups", group=gShow)
 showBuy  = input.bool(true, "Trade long setups",  group=gShow)
 drawZones = input.bool(true, "Draw zones & POIs", group=gShow)
@@ -247,31 +248,85 @@ if bosUp
     brokenHigh15 := lastPH15
     armLong := true
 
+// ---------------------- 1m bar feed (real 1m bars) ---------------------------
+// Feeds the 1m FVGs, 1m swings and BOS-leg scan from actual 1m bars, so they are
+// the same on a 1m or a 5m chart.
+feedTF = timeframe.in_seconds(entryTF) > timeframe.in_seconds() ? timeframe.period : entryTF
+[ltH, ltL, ltC, ltT] = request.security_lower_tf(syminfo.tickerid, feedTF, [high, low, close, time])
+var array<float> mH = array.new<float>()
+var array<float> mL = array.new<float>()
+var array<float> mC = array.new<float>()
+var array<int>   mT = array.new<int>()
+var int m1Seq = 0
+var array<float> swHv = array.new<float>()     // confirmed 1m swing highs
+var array<int>   swHi = array.new<int>()       // ... their 1m sequence number
+var array<float> swLv = array.new<float>()
+var array<int>   swLi = array.new<int>()
+int newCount = 0
+if barstate.isconfirmed and ltH.size() > 0
+    newCount := ltH.size()
+    for j = 0 to ltH.size() - 1
+        mH.push(ltH.get(j)), mL.push(ltL.get(j)), mC.push(ltC.get(j)), mT.push(ltT.get(j))
+        m1Seq += 1
+        n = mH.size()
+        if n >= 2 * swingLen1 + 1
+            pp = n - 1 - swingLen1
+            vH = mH.get(pp)
+            vL = mL.get(pp)
+            bool isH = true
+            bool isL = true
+            for k = 1 to swingLen1
+                if not (vH > mH.get(pp - k) and vH >= mH.get(pp + k))
+                    isH := false
+                if not (vL < mL.get(pp - k) and vL <= mL.get(pp + k))
+                    isL := false
+            if isH
+                swHv.push(vH), swHi.push(m1Seq - swingLen1)
+            if isL
+                swLv.push(vL), swLi.push(m1Seq - swingLen1)
+    while swHv.size() > 200
+        swHv.shift(), swHi.shift()
+    while swLv.size() > 200
+        swLv.shift(), swLi.shift()
+
+// Most recent 1m swing high above price (dir -1) / swing low below price (dir +1)
+findStopSwing(int dir, float price) =>
+    float v = na
+    vals = dir < 0 ? swHv : swLv
+    idxs = dir < 0 ? swHi : swLi
+    if vals.size() > 0
+        for i = vals.size() - 1 to 0
+            if m1Seq - idxs.get(i) > swingLook
+                break
+            x = vals.get(i)
+            if (dir < 0 and x > price) or (dir > 0 and x < price)
+                v := x
+                break
+    v
+
 // --------------- 15m BOS + last FVG on the break leg (display only) ----------
 // Leg of a bearish break: from the highest high since the broken 15m swing low formed,
 // down to the break. The drawn FVG is the most recent bearish FVG inside that leg.
 legFvg(int dir, int fromT, int maxLook) =>
-    float ext = na
-    int extOff = -1
-    int lim = math.min(maxLook, bar_index - 3)
-    if lim >= 0
-        for i = 0 to lim
-            if time[i] < fromT
+    int n = mH.size()
+    int ext = -1
+    if n > 0
+        for i = n - 1 to 0
+            if mT.get(i) < fromT or n - 1 - i > maxLook
                 break
-            if dir < 0 ? (na(ext) or high[i] > ext) : (na(ext) or low[i] < ext)
-                ext := dir < 0 ? high[i] : low[i]
-                extOff := i
+            if ext < 0 or (dir < 0 ? mH.get(i) > mH.get(ext) : mL.get(i) < mL.get(ext))
+                ext := i
     bool f = false
     float ft = na
     float fb = na
     int ft0 = na
-    if extOff >= 2
-        for i = 0 to extOff - 2
-            if dir < 0 and high[i] < low[i + 2]
-                f := true, ft := low[i + 2], fb := high[i], ft0 := time[i + 2]
+    if ext >= 0 and n - 1 >= ext + 2
+        for j = n - 1 to ext + 2
+            if dir < 0 and mH.get(j) < mL.get(j - 2)
+                f := true, ft := mL.get(j - 2), fb := mH.get(j), ft0 := mT.get(j - 2)
                 break
-            if dir > 0 and low[i] > high[i + 2]
-                f := true, ft := low[i], fb := high[i + 2], ft0 := time[i + 2]
+            if dir > 0 and mL.get(j) > mH.get(j - 2)
+                f := true, ft := mL.get(j), fb := mH.get(j - 2), ft0 := mT.get(j - 2)
                 break
     [f, ft, fb, ft0]
 
@@ -291,9 +346,7 @@ drawBos(int dir, float lvl, int fromT) =>
     if showLegFvg and not na(fromT)
         [f, ft, fb, ft0] = legFvg(dir, fromT, legLook)
         if f
-            legBoxes.push(box.new(ft0, ft, time, fb, xloc=xloc.bar_time, border_color=cLegFvg, border_width=1, bgcolor=color.new(cLegFvg, 80), extend=extend.right, text=timeframe.period + (timeframe.isminutes ? "m" : "") + " FVG (BOS leg)", text_color=cLegFvg, text_size=size.tiny, text_halign=text.align_left))
-            while legBoxes.size() > maxBos
-                box.delete(legBoxes.shift())
+            legBoxes.push(box.new(ft0, ft, ft0 + fvgMin * 60000, fb, xloc=xloc.bar_time, border_color=cLegFvg, border_width=1, bgcolor=color.new(cLegFvg, 80), text=entryTF + "m FVG (BOS leg)", text_color=cLegFvg, text_size=size.tiny, text_halign=text.align_left))
 
 if bosDown
     drawBos(-1, brokenLow15, lastPL15T)
@@ -322,36 +375,6 @@ var array<float> zSL    = array.new<float>()   // 1m swing stop (na = 5m-zone st
 var array<string> zId   = array.new<string>()  // strategy order id for this setup
 var array<int>   zPlaced = array.new<int>()    // bar the limit was (re)placed, na = not resting
 
-// Confirmed 1m swings from the chart bars (chart on 1m)
-phv = ta.pivothigh(high, swingLen1, swingLen1)
-plv = ta.pivotlow(low,  swingLen1, swingLen1)
-var array<float> swHv = array.new<float>()
-var array<int>   swHi = array.new<int>()
-var array<float> swLv = array.new<float>()
-var array<int>   swLi = array.new<int>()
-if not na(phv)
-    swHv.push(phv), swHi.push(bar_index - swingLen1)
-    if swHv.size() > 200
-        swHv.shift(), swHi.shift()
-if not na(plv)
-    swLv.push(plv), swLi.push(bar_index - swingLen1)
-    if swLv.size() > 200
-        swLv.shift(), swLi.shift()
-
-// Most recent 1m swing high above price (dir -1) / swing low below price (dir +1)
-findStopSwing(int dir, float price) =>
-    float v = na
-    vals = dir < 0 ? swHv : swLv
-    idxs = dir < 0 ? swHi : swLi
-    if vals.size() > 0
-        for i = vals.size() - 1 to 0
-            if bar_index - idxs.get(i) > swingLook
-                break
-            x = vals.get(i)
-            if (dir < 0 and x > price) or (dir > 0 and x < price)
-                v := x
-                break
-    v
 
 overlap(float aT, float aB, float bT, float bB) => aB <= bT and aT >= bB
 
@@ -362,7 +385,7 @@ addEntryZone(float t, float b, int dir, int t0, float tgt, float trig, float et,
         col = dir < 0 ? cZS : cZB
         bx := box.new(t0, t, time, b, xloc=xloc.bar_time, border_color=color.new(dir < 0 ? color.red : color.green, 20), bgcolor=col, extend=extend.right, text=tfZone + "m zone", text_color=color.gray, text_size=size.small)
         if entryTF != tfZone
-            ebx := box.new(et0, et, time, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), extend=extend.right, text=entryTF + "m entry", text_color=color.blue, text_size=size.tiny)
+            ebx := box.new(et0, et, et0 + fvgMin * 60000, eb, xloc=xloc.bar_time, border_color=color.blue, border_width=2, bgcolor=color.new(color.blue, 90), text=entryTF + "m entry FVG", text_color=color.blue, text_size=size.tiny)
     zBox.push(bx)
     zEBox.push(ebx)
     zTops.push(t)
@@ -435,19 +458,23 @@ if zoneTick
         if fB
             p5LT := tB, p5LB := bB, p5LT0 := zT3, arm5L := false
 
-// Rule 4: entry FVG piece, every closed chart bar (1m)
-if not na(p1ST) and close > p1ST
-    p1ST := na, arm1S := arm5S or not na(p5ST)    // look for a new entry FVG
-if not na(p1LT) and close < p1LB
-    p1LT := na, arm1L := arm5L or not na(p5LT)
-if showSell and arm1S and not na(brokenLow15)
-    [fC, tC, bC_] = fvgFind(-1, brokenLow15, e_h, e_l, e_h1, e_l1, e_h2, e_l2, e_c)
-    if fC
-        p1ST := tC, p1SB := bC_, p1ST0 := e_t2, arm1S := false
-if showBuy and arm1L and not na(brokenHigh15)
-    [fD, tD, bD] = fvgFind(1, brokenHigh15, e_h, e_l, e_h1, e_l1, e_h2, e_l2, e_c)
-    if fD
-        p1LT := tD, p1LB := bD, p1LT0 := e_t2, arm1L := false
+// Rule 4: entry FVG piece, on every new closed 1m bar from the feed
+if newCount > 0
+    for i = mH.size() - newCount to mH.size() - 1
+        if i >= 2
+            c1m = mC.get(i)
+            if not na(p1ST) and c1m > p1ST
+                p1ST := na, arm1S := arm5S or not na(p5ST)    // look for a new entry FVG
+            if not na(p1LT) and c1m < p1LB
+                p1LT := na, arm1L := arm5L or not na(p5LT)
+            if showSell and arm1S and not na(brokenLow15)
+                [fC, tC, bC_] = fvgFind(-1, brokenLow15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                if fC
+                    p1ST := tC, p1SB := bC_, p1ST0 := mT.get(i - 2), arm1S := false
+            if showBuy and arm1L and not na(brokenHigh15)
+                [fD, tD, bD] = fvgFind(1, brokenHigh15, mH.get(i), mL.get(i), mH.get(i - 1), mL.get(i - 1), mH.get(i - 2), mL.get(i - 2), c1m)
+                if fD
+                    p1LT := tD, p1LB := bD, p1LT0 := mT.get(i - 2), arm1L := false
 
 // Pair: both pieces -> tradable setup (entry at the 1m entry FVG near edge; stop = 1m swing or 5m zone)
 if not na(p5ST) and not na(p1ST)
@@ -501,8 +528,6 @@ if zTops.size() > 0
             strategy.cancel(oid)
             if not na(bx)
                 box.delete(bx)
-            if not na(ebx)
-                box.delete(ebx)
             zTops.remove(i), zBots.remove(i), zDir.remove(i), zBox.remove(i), zArmed.remove(i), zTgt.remove(i), zTrig.remove(i), zEBox.remove(i), zSL.remove(i), zId.remove(i), zPlaced.remove(i)
             continue
         if not armed
@@ -514,9 +539,6 @@ if zTops.size() > 0
             if not na(bx)
                 box.set_right(bx, time)
                 box.set_extend(bx, extend.none)
-            if not na(ebx)
-                box.set_right(ebx, time)
-                box.set_extend(ebx, extend.none)
             continue
         if touched and na(placed)
             // price reached the entry while no order was resting (blocked) -> setup skipped
@@ -547,8 +569,12 @@ plotshape(limitL, "Buy limit placed",  shape.triangleup,   location.belowbar, co
 alertcondition(limitS, "Sell limit placed", "SELL LIMIT placed at the 1m entry FVG on {{ticker}} ({{interval}})")
 alertcondition(limitL, "Buy limit placed",  "BUY LIMIT placed at the 1m entry FVG on {{ticker}} ({{interval}})")
 
+// --------------------------- trim the 1m buffer ------------------------------
+while mH.size() > 1500
+    mH.shift(), mL.shift(), mC.shift(), mT.shift()
+
 // ------------------------- chart timeframe check -----------------------------
-if barstate.islast and timeframe.period != entryTF
+if barstate.islast and timeframe.period != "1" and timeframe.period != "5"
     var label warnLbl = na
     label.delete(warnLbl)
-    warnLbl := label.new(bar_index, high, "Rule 4 entry FVG is set to " + entryTF + "m: put the chart on " + entryTF + "m (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)
+    warnLbl := label.new(bar_index, high, "TradingView: setups and 1m FVGs are exact on a 1m or 5m chart (now " + timeframe.period + ")", style=label.style_label_down, color=color.orange, textcolor=color.black, size=size.normal)

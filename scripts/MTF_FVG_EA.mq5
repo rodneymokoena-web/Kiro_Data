@@ -99,6 +99,8 @@ input int             InpMaxBos     = 10;         // Keep the last N BOS drawing
 input color           InpColBosDn   = clrRed;
 input color           InpColBosUp   = clrLime;
 input color           InpColLegFvg  = clrOrange;
+input int             InpFvgBoxMin  = 60;         // 1m FVG box length (minutes)
+input int             InpMaxFvgBoxes = 300;       // 1m FVG boxes kept (oldest removed beyond this)
 
 //--- zone storage
 struct Zone
@@ -157,6 +159,8 @@ Piece    g_p5[2], g_p1[2];        // 5m zone piece, 1m entry-FVG piece
 bool     g_arm5[2], g_arm1[2];    // searches armed
 
 const string PFX = "MTFFVG_";
+string   g_sym = "";             // symbol the state belongs to
+string   g_fvgObjs[];             // permanent 1m FVG boxes (entry + BOS leg), oldest first
 
 //+------------------------------------------------------------------+
 //| Helpers                                                          |
@@ -277,6 +281,30 @@ bool TradeAllowedNow(int dir)
 
 string ZoneName(ulong id) { return PFX + (string)id; }
 
+// 1m FVG boxes: fixed length, visible on M1 / M5 / M15 / H1, kept after the setup ends.
+void Make1mFvgBox(const string nm, datetime t0, double top, double bot, color col, int style, int width, const string txt)
+  {
+   if(ObjectFind(0, nm) >= 0) return;
+   datetime t1 = t0 + InpFvgBoxMin * 60;
+   if(!ObjectCreate(0, nm, OBJ_RECTANGLE, 0, t0, top, t1, bot)) return;
+   ObjectSetInteger(0, nm, OBJPROP_COLOR, col);
+   ObjectSetInteger(0, nm, OBJPROP_FILL, false);
+   ObjectSetInteger(0, nm, OBJPROP_STYLE, style);
+   ObjectSetInteger(0, nm, OBJPROP_WIDTH, width);
+   ObjectSetInteger(0, nm, OBJPROP_RAY_RIGHT, false);
+   ObjectSetInteger(0, nm, OBJPROP_SELECTABLE, false);
+   ObjectSetInteger(0, nm, OBJPROP_TIMEFRAMES, OBJ_PERIOD_M1 | OBJ_PERIOD_M5 | OBJ_PERIOD_M15 | OBJ_PERIOD_H1);
+   ObjectSetString(0, nm, OBJPROP_TEXT, txt);
+   int n = ArraySize(g_fvgObjs);
+   ArrayResize(g_fvgObjs, n + 1);
+   g_fvgObjs[n] = nm;
+   while(ArraySize(g_fvgObjs) > InpMaxFvgBoxes)
+     {
+      ObjectDelete(0, g_fvgObjs[0]);
+      ArrayRemove(g_fvgObjs, 0, 1);
+     }
+  }
+
 void DrawZone(const Zone &z)
   {
    if(!InpDrawZones) return;
@@ -292,17 +320,8 @@ void DrawZone(const Zone &z)
    string tfn = StringSubstr(EnumToString(InpZoneTF), 7);   // e.g. "M1"
    ObjectSetString(0, nm, OBJPROP_TEXT, tfn + (z.dir < 0 ? " zone (sell)" : " zone (buy)"));
    if(InpEntryFvgTF != InpZoneTF)
-     {
-      string en = nm + "e";
-      if(ObjectFind(0, en) < 0)
-         ObjectCreate(0, en, OBJ_RECTANGLE, 0, z.et0, z.etop, t2, z.ebot);
-      ObjectSetInteger(0, en, OBJPROP_COLOR, clrDodgerBlue);
-      ObjectSetInteger(0, en, OBJPROP_FILL, false);
-      ObjectSetInteger(0, en, OBJPROP_WIDTH, 2);
-      ObjectSetInteger(0, en, OBJPROP_RAY_RIGHT, true);
-      ObjectSetInteger(0, en, OBJPROP_SELECTABLE, false);
-      ObjectSetString(0, en, OBJPROP_TEXT, StringSubstr(EnumToString(InpEntryFvgTF), 7) + " entry FVG");
-     }
+      Make1mFvgBox(nm + "e", z.et0, z.etop, z.ebot, clrDodgerBlue, STYLE_SOLID, 2,
+                   StringSubstr(EnumToString(InpEntryFvgTF), 7) + " entry FVG");
   }
 
 void FinishZoneDrawing(const Zone &z)
@@ -312,18 +331,13 @@ void FinishZoneDrawing(const Zone &z)
    if(ObjectFind(0, nm) < 0) return;
    ObjectSetInteger(0, nm, OBJPROP_RAY_RIGHT, false);
    ObjectSetInteger(0, nm, OBJPROP_TIME, 1, TimeCurrent());
-   if(ObjectFind(0, nm + "e") >= 0)
-     {
-      ObjectSetInteger(0, nm + "e", OBJPROP_RAY_RIGHT, false);
-      ObjectSetInteger(0, nm + "e", OBJPROP_TIME, 1, TimeCurrent());
-     }
   }
 
 void RemoveZone(int idx)
   {
    int n = ArraySize(g_zones);
    if(idx < 0 || idx >= n) return;
-   if(InpDrawZones) { ObjectDelete(0, ZoneName(g_zones[idx].id)); ObjectDelete(0, ZoneName(g_zones[idx].id) + "e"); }
+   if(InpDrawZones) ObjectDelete(0, ZoneName(g_zones[idx].id));   // the 1m entry FVG box stays
    if(g_zones[idx].ticket != 0)
      {
       CancelOrder(g_zones[idx].ticket);
@@ -492,21 +506,13 @@ void DrawBos(int dir, double lvl, datetime fromT)
    double t, b; datetime t0;
    if(InpShowLegFvg && fromT > 0 && LegFvg(dir, fromT, t, b, t0))
      {
-      string bx = PFX + "LEG_" + id;
-      ObjectCreate(0, bx, OBJ_RECTANGLE, 0, t0, t, now, b);
-      ObjectSetInteger(0, bx, OBJPROP_COLOR, InpColLegFvg);
-      ObjectSetInteger(0, bx, OBJPROP_FILL, false);
-      ObjectSetInteger(0, bx, OBJPROP_WIDTH, 1);
-      ObjectSetInteger(0, bx, OBJPROP_STYLE, STYLE_DOT);
-      ObjectSetInteger(0, bx, OBJPROP_RAY_RIGHT, true);
-      ObjectSetInteger(0, bx, OBJPROP_SELECTABLE, false);
-      ObjectSetString(0, bx, OBJPROP_TEXT, StringSubstr(EnumToString(InpEntryFvgTF), 7) + " FVG (BOS leg)");
+      Make1mFvgBox(PFX + "LEG_" + id, t0, t, b, InpColLegFvg, STYLE_DOT, 1,
+                   StringSubstr(EnumToString(InpEntryFvgTF), 7) + " FVG (BOS leg)");
      }
    // keep only the last N
    string old = (string)(g_bosId - InpMaxBos);
    ObjectDelete(0, PFX + "BOS_" + old);
-   ObjectDelete(0, PFX + "BOSL_" + old);
-   ObjectDelete(0, PFX + "LEG_" + old);
+   ObjectDelete(0, PFX + "BOSL_" + old);      // 1m FVG boxes are kept (see InpMaxFvgBoxes)
    ChartRedraw();
   }
 
@@ -894,7 +900,8 @@ void OnNewEntryFvgBar()
 //+------------------------------------------------------------------+
 int OnInit()
   {
-   if(InpSwLen4 < 1 || InpSwLen15 < 1 || InpMaxZones < 1 || InpSwingLen1 < 1 || InpSwingLookback < 10 || InpMaxBos < 1)
+   if(InpSwLen4 < 1 || InpSwLen15 < 1 || InpMaxZones < 1 || InpSwingLen1 < 1 || InpSwingLookback < 10 || InpMaxBos < 1
+      || InpFvgBoxMin < 1 || InpMaxFvgBoxes < 1)
      {
       Print("Invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
@@ -924,15 +931,33 @@ int OnInit()
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);
-   ArrayResize(g_zones, 0);
-   ZeroMemory(g_p5); ZeroMemory(g_p1);
-   ArrayInitialize(g_arm5, false); ArrayInitialize(g_arm1, false);
+   // A timeframe switch keeps setups and drawings; a symbol switch (or fresh start) resets them.
+   bool keep = (UninitializeReason() == REASON_CHARTCHANGE && g_sym == _Symbol);
+   if(!keep)
+     {
+      if(g_sym != "" && g_sym != _Symbol && InpCancelOnRemove)   // symbol switched: cancel the old symbol's orders
+         for(int i = OrdersTotal() - 1; i >= 0; i--)
+           {
+            ulong tk = OrderGetTicket(i);
+            if(tk != 0 && OrderGetString(ORDER_SYMBOL) == g_sym && (ulong)OrderGetInteger(ORDER_MAGIC) == InpMagic)
+               trade.OrderDelete(tk);
+           }
+      ObjectsDeleteAll(0, PFX);
+      ArrayResize(g_fvgObjs, 0);
+      ArrayResize(g_zones, 0);
+      ZeroMemory(g_p5); ZeroMemory(g_p1);
+      ArrayInitialize(g_arm5, false); ArrayInitialize(g_arm1, false);
+     }
+   g_sym = _Symbol;
    return INIT_SUCCEEDED;
   }
 
 void OnDeinit(const int reason)
   {
+   // Switching the chart timeframe keeps the EA loaded: keep drawings, orders and state.
+   if(reason == REASON_CHARTCHANGE) return;
    ObjectsDeleteAll(0, PFX);
+   ArrayResize(g_fvgObjs, 0);
    if(InpCancelOnRemove)
      {
       for(int i = OrdersTotal() - 1; i >= 0; i--)
