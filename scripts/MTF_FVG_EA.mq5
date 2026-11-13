@@ -4,7 +4,7 @@
 //+------------------------------------------------------------------+
 #property copyright "MTF-FVG"
 #property version   "1.00"
-#property description "4H bias (swing sweep / inside 4H FVG) -> 15m break of structure ->"
+#property description "D/4H/1H bias (swing sweep / inside FVG) -> 15m break of structure ->"
 #property description "first overlapping 5m FVG / inverse FVG -> limit order resting at the zone edge"
 #property description "(placed before price touches it), with an alert when the order is placed."
 
@@ -12,7 +12,15 @@
 
 //--- enums
 enum ENUM_SWEEP_TYPE { SWEEP_WICK = 0, SWEEP_CLOSE = 1, SWEEP_BOTH = 2 };
-enum ENUM_BIAS_MODE  { BIAS_4H_ONLY = 0, BIAS_4H_PLUS_1H = 1 };
+enum ENUM_BIAS_MODE
+  {
+   BIAS_D_4H_1H = 0,   // D + 4H + 1H
+   BIAS_D_4H    = 1,   // D + 4H
+   BIAS_4H_1H   = 2,   // 4H + 1H
+   BIAS_D       = 3,   // D only
+   BIAS_4H      = 4,   // 4H only
+   BIAS_1H      = 5    // 1H only
+  };
 enum ENUM_TP_MODE    { TP_RR = 0, TP_STRUCTURE = 1 };
 enum ENUM_LOT_MODE   { LOT_FIXED = 0, LOT_RISK_PCT = 1 };
 enum ENUM_RR_CHOICE  { RR_2R = 0, RR_3R = 1 };
@@ -21,16 +29,17 @@ enum ENUM_ENTRY_TYPE { ENTRY_LIMIT = 0, ENTRY_MARKET_ON_TOUCH = 1 };
 
 //--- inputs
 input group "Timeframes"
+input ENUM_TIMEFRAMES InpBiasTFD  = PERIOD_D1;   // Bias timeframe (Daily)
 input ENUM_TIMEFRAMES InpBiasTF   = PERIOD_H4;   // Bias timeframe (4H)
 input ENUM_TIMEFRAMES InpBiasTF2  = PERIOD_H1;   // Second bias timeframe (1H)
 input ENUM_TIMEFRAMES InpStructTF = PERIOD_M15;  // Structure timeframe
 input ENUM_TIMEFRAMES InpEntryTF  = PERIOD_M5;   // Entry timeframe
 
-input group "Bias (4H / 1H)"
-input ENUM_BIAS_MODE InpBiasMode  = BIAS_4H_PLUS_1H; // Rule 1 bias: 4H only, or 4H + 1H
+input group "Bias (D / 4H / 1H)"
+input ENUM_BIAS_MODE InpBiasMode  = BIAS_D_4H_1H; // Rule 1 bias timeframes
 input bool            InpUseSweep   = true;       // Bias: swing sweep
 input bool            InpUseFvg4    = true;       // Bias: price inside FVG
-input int             InpSwLen4     = 5;          // Swing length (4H and 1H)
+input int             InpSwLen4     = 5;          // Swing length (D, 4H and 1H)
 input ENUM_SWEEP_TYPE InpSweepType  = SWEEP_BOTH; // Sweep type
 input int             InpBiasBars   = 500;        // Bias valid for (entry-TF bars)
 
@@ -98,7 +107,7 @@ datetime g_lastEntryBar  = 0;
 datetime g_lastStructBar = 0;
 long     g_barCount      = 0;
 
-// One slot per bias timeframe: [0] = 4H, [1] = 1H (only used when InpBiasMode = BIAS_4H_PLUS_1H)
+// One slot per selected bias timeframe (Daily / 4H / 1H, chosen by InpBiasMode)
 struct BiasTF
   {
    ENUM_TIMEFRAMES tf;
@@ -107,7 +116,7 @@ struct BiasTF
    double   fbT, fbB;          // latest bearish FVG
    double   fuT, fuB;          // latest bullish FVG
   };
-BiasTF   g_bias[2];
+BiasTF   g_bias[3];
 int      g_biasCount = 1;
 long     g_shortBiasBar = -1, g_longBiasBar = -1;
 
@@ -297,7 +306,9 @@ double CalcLots(double slDistance)
 //+------------------------------------------------------------------+
 void UpdateBiasTF(int b)
   {
-   const int n = 300;
+   // Use up to 300 bars, or whatever history exists (Daily may have fewer, esp. in the tester)
+   int n = MathMin(300, Bars(_Symbol, g_bias[b].tf));
+   if(n < 2 * InpSwLen4 + 4) return;
    double hi[], lo[];
    if(!LoadSeries(g_bias[b].tf, n, hi, lo)) return;
 
@@ -316,7 +327,7 @@ void UpdateBiasTF(int b)
 
 //+------------------------------------------------------------------+
 //| Bias flags from the last closed entry-TF bar.                    |
-//| The same rules run on every bias TF (4H, and 1H if enabled);     |
+//| The same rules run on every selected bias TF (D / 4H / 1H);      |
 //| a hit on any of them sets the bias.                              |
 //+------------------------------------------------------------------+
 void UpdateBias()
@@ -620,20 +631,27 @@ int OnInit()
       Print("Invalid inputs");
       return INIT_PARAMETERS_INCORRECT;
      }
-   if(PeriodSeconds(InpBiasTF) <= PeriodSeconds(InpStructTF) || PeriodSeconds(InpStructTF) <= PeriodSeconds(InpEntryTF))
+   if(PeriodSeconds(InpStructTF) <= PeriodSeconds(InpEntryTF))
      {
-      Print("Timeframes must satisfy: Bias > Structure > Entry");
+      Print("Timeframes must satisfy: Structure > Entry");
       return INIT_PARAMETERS_INCORRECT;
      }
-   if(InpBiasMode == BIAS_4H_PLUS_1H && (PeriodSeconds(InpBiasTF2) <= PeriodSeconds(InpStructTF) || PeriodSeconds(InpBiasTF2) >= PeriodSeconds(InpBiasTF)))
-     {
-      Print("Second bias timeframe must be above Structure and below the first bias timeframe");
-      return INIT_PARAMETERS_INCORRECT;
-     }
+   bool useD  = (InpBiasMode == BIAS_D_4H_1H || InpBiasMode == BIAS_D_4H || InpBiasMode == BIAS_D);
+   bool use4H = (InpBiasMode == BIAS_D_4H_1H || InpBiasMode == BIAS_D_4H || InpBiasMode == BIAS_4H_1H || InpBiasMode == BIAS_4H);
+   bool use1H = (InpBiasMode == BIAS_D_4H_1H || InpBiasMode == BIAS_4H_1H || InpBiasMode == BIAS_1H);
    ZeroMemory(g_bias);
-   g_bias[0].tf = InpBiasTF;
-   g_bias[1].tf = InpBiasTF2;
-   g_biasCount  = (InpBiasMode == BIAS_4H_PLUS_1H) ? 2 : 1;
+   g_biasCount = 0;
+   if(useD)  g_bias[g_biasCount++].tf = InpBiasTFD;
+   if(use4H) g_bias[g_biasCount++].tf = InpBiasTF;
+   if(use1H) g_bias[g_biasCount++].tf = InpBiasTF2;
+   for(int b = 0; b < g_biasCount; b++)
+      if(PeriodSeconds(g_bias[b].tf) <= PeriodSeconds(InpStructTF))
+        {
+         Print("Every selected bias timeframe must be above the Structure timeframe");
+         return INIT_PARAMETERS_INCORRECT;
+        }
+   string sel = (useD ? "D " : "") + (use4H ? "4H " : "") + (use1H ? "1H" : "");
+   PrintFormat("Rule 1 bias timeframes: %s", sel);
    trade.SetExpertMagicNumber(InpMagic);
    trade.SetDeviationInPoints(InpSlippage);
    trade.SetTypeFillingBySymbol(_Symbol);
