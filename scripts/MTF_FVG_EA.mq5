@@ -732,10 +732,9 @@ void PairPieces()
          double entry = (sd == 0) ? g_p1[sd].bot : g_p1[sd].top;
          if(!FindStopSwing(sd, entry, swingSL))
            {
-            PrintFormat("%s setup skipped: no 1m swing %s the entry within %d bars", sd == 0 ? "SELL" : "BUY",
-                        sd == 0 ? "above" : "below", InpSwingLookback);
-            g_p5[sd].has = false; g_p1[sd].has = false;
-            continue;
+            swingSL = 0;                              // 0 -> CalcLevels uses the 5m zone far edge + buffer
+            PrintFormat("%s setup: no 1m swing %s the entry within %d bars, stop = 5m zone far edge + %.1f%%",
+                        sd == 0 ? "SELL" : "BUY", sd == 0 ? "above" : "below", InpSwingLookback, InpSlBufPct);
            }
         }
       AddZone(g_p5[sd].top, g_p5[sd].bot, sd == 0 ? -1 : 1, g_p5[sd].t0, SideLevel(sd),

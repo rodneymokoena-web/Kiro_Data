@@ -598,19 +598,18 @@ bool limitSellSig = false
 bool limitBuySig  = false
 if not na(p5ST) and not na(p1ST)
     swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
-    if stopMode == "5m zone" or not na(swS)          // no 1m swing above the entry -> setup skipped
-        addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS, p1SK)
-        limitSellSig := showSell
-        if showSell
-            alert(limitMsg(-1, p1SB, stopFor(-1, p5ST, p5SB, swS)), alert.freq_once_per_bar_close)
+    // no 1m swing above the entry -> swS is na and the stop falls back to the 5m zone far edge + buffer
+    addEntryZone(p5ST, p5SB, -1, p5ST0, brokenLow15, p1SB, p1ST, p1SB, p1ST0, swS, p1SK)
+    limitSellSig := showSell
+    if showSell
+        alert(limitMsg(-1, p1SB, stopFor(-1, p5ST, p5SB, swS)), alert.freq_once_per_bar_close)
     p5ST := na, p1ST := na
 if not na(p5LT) and not na(p1LT)
     swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
-    if stopMode == "5m zone" or not na(swL)
-        addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL, p1LK)
-        limitBuySig := showBuy
-        if showBuy
-            alert(limitMsg(1, p1LT, stopFor(1, p5LT, p5LB, swL)), alert.freq_once_per_bar_close)
+    addEntryZone(p5LT, p5LB, 1, p5LT0, brokenHigh15, p1LT, p1LT, p1LB, p1LT0, swL, p1LK)
+    limitBuySig := showBuy
+    if showBuy
+        alert(limitMsg(1, p1LT, stopFor(1, p5LT, p5LB, swL)), alert.freq_once_per_bar_close)
     p5LT := na, p1LT := na
 armShort := arm5S or arm1S or not na(p5ST) or not na(p1ST)
 armLong  := arm5L or arm1L or not na(p5LT) or not na(p1LT)

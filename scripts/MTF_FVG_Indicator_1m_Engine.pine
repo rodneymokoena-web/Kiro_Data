@@ -643,17 +643,16 @@ if nProc > 0 and timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600
         // ---- (E) pair: 5m zone + 1m entry FVG -> setup, stop from the 1m swing ----
         if not na(p5ST) and not na(p1ST)
             swS = stopMode == "1m swing" ? findStopSwing(-1, p1SB) : na
-            if stopMode == "5m zone" or not na(swS)          // no 1m swing above the entry -> skipped
-                slS = stopFor(-1, p5ST, p5SB, swS)
-                if addSetup(-1, p5ST, p5SB, p5ST0, brokenLow, p1ST, p1SB, p1ST0, slS, t, p1SK)
-                    evLimS := true
+            // no 1m swing above the entry -> swS is na and the stop is the 5m zone far edge + buffer
+            slS = stopFor(-1, p5ST, p5SB, swS)
+            if addSetup(-1, p5ST, p5SB, p5ST0, brokenLow, p1ST, p1SB, p1ST0, slS, t, p1SK)
+                evLimS := true
             p5ST := na, p1ST := na
         if not na(p5LT) and not na(p1LT)
             swL = stopMode == "1m swing" ? findStopSwing(1, p1LT) : na
-            if stopMode == "5m zone" or not na(swL)
-                slL = stopFor(1, p5LT, p5LB, swL)
-                if addSetup(1, p5LT, p5LB, p5LT0, brokenHigh, p1LT, p1LB, p1LT0, slL, t, p1LK)
-                    evLimL := true
+            slL = stopFor(1, p5LT, p5LB, swL)
+            if addSetup(1, p5LT, p5LB, p5LT0, brokenHigh, p1LT, p1LB, p1LT0, slL, t, p1LK)
+                evLimL := true
             p5LT := na, p1LT := na
 
         // ---- (F) flat again: re-place the limits of setups still waiting ----
