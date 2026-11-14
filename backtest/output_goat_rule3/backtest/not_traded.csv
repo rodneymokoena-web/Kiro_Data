@@ -1,0 +1,11 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,1,short,5m,touch,"trigger, no FVG"
+US100,1,short,5m,ce,"trigger, no FVG"
+US100,2,short,5m,touch,no trigger
+US100,2,short,5m,ce,no trigger
+US100,7,short,5m,touch,expired
+US100,7,short,5m,ce,expired
+XAUUSD,1,long,5m,touch,"trigger, no FVG"
+XAUUSD,1,long,5m,ce,"trigger, no FVG"
+XAUUSD,3,short,5m,touch,"trigger, no FVG"
+XAUUSD,3,short,5m,ce,"trigger, no FVG"

@@ -1,0 +1,11 @@
+variant,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26,avg stop,inv-candle used
+current 1H OB 50%,goat,122,47,1.59,20.43,12172,5.9,8.1,12.3,267,0
+inv candle if disp>=2.0ATR else OB,goat,121,33,1.08,4.8,10333,13.6,-4.2,9.0,163,84
+inv candle if disp>=2.5ATR else OB,goat,121,34,1.12,6.44,10520,13.6,1.4,5.1,194,64
+inv candle if disp>=3.0ATR else OB,goat,121,39,1.31,14.42,11401,11.1,1.0,13.4,210,48
+inv candle always,goat,121,33,1.01,0.9,9926,15.4,-6.7,7.6,99,121
+current 1H OB 50%,pepperstone,132,52,1.67,25.29,12769,7.6,12.9,12.4,255,0
+inv candle if disp>=2.0ATR else OB,pepperstone,132,39,0.93,-3.95,9521,14.8,-4.4,0.4,167,90
+inv candle if disp>=2.5ATR else OB,pepperstone,132,42,1.1,5.36,10455,11.0,2.9,2.5,189,69
+inv candle if disp>=3.0ATR else OB,pepperstone,132,45,1.2,9.88,10940,10.9,2.8,7.0,201,51
+inv candle always,pepperstone,131,33,0.79,-14.95,8522,22.4,-9.0,-5.9,100,131

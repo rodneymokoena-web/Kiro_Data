@@ -1,0 +1,23 @@
+broker,variant,period,n,WR,PF,R,acct,dd
+GoatFunded,4H IFVG only (current),2021-26,162,53,1.84,35.6,14149,5.6
+GoatFunded,4H IFVG only (current),21-23,85,55,1.81,17.3,11852,3.4
+GoatFunded,4H IFVG only (current),24-26,77,51,1.86,18.3,11937,5.6
+GoatFunded,BOTH entries (breaker: FVG right after),2021-26,252,47,1.69,61.3,17975,11.6
+GoatFunded,BOTH entries (breaker: FVG right after),21-23,131,49,1.83,36.5,14184,7.2
+GoatFunded,BOTH entries (breaker: FVG right after),24-26,121,45,1.56,24.8,12672,11.6
+GoatFunded,BOTH entries (breaker: FVG right after) - breaker at 0.5% risk,2021-26,252,46,1.74,48.4,16016,8.7
+GoatFunded,BOTH entries (breaker: FVG anywhere after),2021-26,314,51,1.78,62.1,18331,10.5
+GoatFunded,BOTH entries (breaker: FVG anywhere after),21-23,166,54,1.84,34.7,14059,6.3
+GoatFunded,BOTH entries (breaker: FVG anywhere after),24-26,148,49,1.73,27.3,13038,10.5
+GoatFunded,BOTH entries (breaker: FVG anywhere after) - breaker at 0.5% risk,2021-26,314,44,1.8,48.8,16129,8.0
+Pepperstone,4H IFVG only (current),2021-26,175,57,2.05,43.8,15353,3.5
+Pepperstone,4H IFVG only (current),21-23,85,65,2.44,23.6,12627,3.0
+Pepperstone,4H IFVG only (current),24-26,90,49,1.8,20.2,12159,3.5
+Pepperstone,BOTH entries (breaker: FVG right after),2021-26,276,49,1.85,80.9,21575,6.4
+Pepperstone,BOTH entries (breaker: FVG right after),21-23,128,53,1.56,23.7,12531,6.0
+Pepperstone,BOTH entries (breaker: FVG right after),24-26,148,45,2.1,57.2,17216,6.4
+Pepperstone,BOTH entries (breaker: FVG right after) - breaker at 0.5% risk,2021-26,276,48,1.91,62.4,18338,4.7
+Pepperstone,BOTH entries (breaker: FVG anywhere after),2021-26,335,52,1.69,60.1,17962,6.8
+Pepperstone,BOTH entries (breaker: FVG anywhere after),21-23,163,59,1.97,34.8,14094,5.4
+Pepperstone,BOTH entries (breaker: FVG anywhere after),24-26,172,46,1.5,25.3,12743,6.8
+Pepperstone,BOTH entries (breaker: FVG anywhere after) - breaker at 0.5% risk,2021-26,335,45,1.81,52.0,16632,4.8

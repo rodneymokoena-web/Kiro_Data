@@ -1,0 +1,178 @@
+source,variant,model,entry_time,exit,r_net,risk_pts,fallback
+pepperstone_oos,4H extreme (old),swing,2021-08-20 13:00:00+00:00,target,2.9921617161716174,242.40000000000146,False
+pepperstone_oos,4H OB disp (current),swing,2021-08-20 13:00:00+00:00,target,2.9921617161716174,242.40000000000146,False
+pepperstone_oos,1H IFVG,swing,2021-08-20 13:00:00+00:00,target,2.8455284552845668,12.300000000001091,False
+pepperstone_oos,1H FVG above 4H,swing,2021-08-20 13:00:00+00:00,target,2.9700315457413256,63.400000000001455,False
+pepperstone_oos,1H OB bull,swing,2021-08-20 13:00:00+00:00,target,2.927480916030536,26.200000000000728,False
+pepperstone_oos,1H OB bear,swing,2021-08-20 13:00:00+00:00,target,2.9613821138211387,49.20000000000073,False
+pepperstone_oos,4H extreme (old),swing,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,485.3000000000011,False
+pepperstone_oos,4H OB disp (current),swing,2021-11-24 10:00:00+00:00,breakeven,-0.005119913769873344,371.10000000000036,False
+pepperstone_oos,1H IFVG,swing,2021-11-24 10:00:00+00:00,target,2.9618473895582325,49.79999999999927,False
+pepperstone_oos,1H FVG above 4H,swing,2021-11-24 10:00:00+00:00,target,2.9618473895582325,49.79999999999927,False
+pepperstone_oos,1H OB bull,swing,2021-11-24 10:00:00+00:00,target,2.954976303317534,42.19999999999891,False
+pepperstone_oos,1H OB bear,swing,2021-11-24 10:00:00+00:00,breakeven,-0.017179023508137374,110.60000000000036,False
+pepperstone_oos,4H extreme (old),swing,2021-12-21 17:00:00+00:00,target,2.9932504440497403,281.5,False
+pepperstone_oos,4H OB disp (current),swing,2021-12-21 17:00:00+00:00,target,2.9932504440497403,281.5,False
+pepperstone_oos,1H IFVG,swing,2021-12-21 17:00:00+00:00,target,2.973163841807909,70.79999999999927,False
+pepperstone_oos,1H FVG above 4H,swing,2021-12-21 17:00:00+00:00,target,2.973163841807909,70.79999999999927,False
+pepperstone_oos,1H OB bull,swing,2021-12-21 17:00:00+00:00,target,2.982711555959964,109.89999999999964,False
+pepperstone_oos,1H OB bear,swing,2021-12-21 17:00:00+00:00,target,2.989554700384827,181.89999999999964,False
+pepperstone_oos,4H extreme (old),swing,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,450.39999999999964,False
+pepperstone_oos,4H OB disp (current),swing,2021-12-22 13:00:00+00:00,target,2.9915026833631484,223.59999999999854,False
+pepperstone_oos,1H IFVG,swing,2021-12-22 13:00:00+00:00,stop,-1.1881188118812152,10.099999999998545,False
+pepperstone_oos,1H FVG above 4H,swing,2021-12-22 13:00:00+00:00,stop,-1.1881188118812152,10.099999999998545,False
+pepperstone_oos,1H OB bull,swing,2021-12-22 13:00:00+00:00,target,2.958605664488017,45.899999999999636,False
+pepperstone_oos,1H OB bear,swing,2021-12-22 13:00:00+00:00,target,2.9858736059479556,134.5,False
+pepperstone_oos,4H extreme (old),swing,2022-05-04 17:00:00+00:00,breakeven,-0.004821111393047467,394.09999999999854,False
+pepperstone_oos,4H OB disp (current),swing,2022-05-04 17:00:00+00:00,breakeven,-0.005673335323977313,334.89999999999964,False
+pepperstone_oos,1H IFVG,swing,2022-05-04 17:00:00+00:00,stop,-1.0250000000000001,76.0,False
+pepperstone_oos,1H FVG above 4H,swing,2022-05-04 17:00:00+00:00,stop,-1.0149842271293377,126.79999999999927,False
+pepperstone_oos,1H OB bull,swing,2022-05-04 17:00:00+00:00,breakeven,-0.010807736063708804,175.79999999999927,False
+pepperstone_oos,1H OB bear,swing,2022-05-04 17:00:00+00:00,breakeven,-0.009495252373813162,200.09999999999854,False
+pepperstone_oos,4H extreme (old),swing,2022-05-10 13:00:00+00:00,stop,-1.0075727381426864,250.89999999999964,False
+pepperstone_oos,4H OB disp (current),swing,2022-05-10 13:00:00+00:00,stop,-1.0075727381426864,250.89999999999964,False
+pepperstone_oos,1H IFVG,swing,2022-05-10 13:00:00+00:00,stop,-1.2,9.5,False
+pepperstone_oos,1H FVG above 4H,swing,2022-05-10 13:00:00+00:00,stop,-1.2,9.5,False
+pepperstone_oos,1H OB bull,swing,2022-05-10 13:00:00+00:00,stop,-1.3166666666666667,6.0,False
+pepperstone_oos,1H OB bear,swing,2022-05-10 13:00:00+00:00,stop,-1.0075727381426864,250.89999999999964,True
+pepperstone_oos,4H extreme (old),swing,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,211.20000000000073,False
+pepperstone_oos,4H OB disp (current),swing,2022-08-12 12:00:00+00:00,stop,-1.0130944176430048,145.10000000000036,False
+pepperstone_oos,1H IFVG,swing,2022-08-12 12:00:00+00:00,stop,-1.138686131386854,13.700000000000728,False
+pepperstone_oos,1H FVG above 4H,swing,2022-08-12 12:00:00+00:00,stop,-1.138686131386854,13.700000000000728,False
+pepperstone_oos,1H OB bull,swing,2022-08-12 12:00:00+00:00,stop,-1.1233766233766262,15.399999999999636,False
+pepperstone_oos,1H OB bear,swing,2022-08-12 12:00:00+00:00,stop,-1.0234857849196541,80.89999999999964,False
+pepperstone_oos,4H extreme (old),swing,2022-08-18 14:00:00+00:00,target,2.9929130921298026,268.10000000000036,False
+pepperstone_oos,4H OB disp (current),swing,2022-08-18 14:00:00+00:00,target,2.9929130921298026,268.10000000000036,False
+pepperstone_oos,1H IFVG,swing,2022-08-18 14:00:00+00:00,stop,-1.1027027027027025,18.5,False
+pepperstone_oos,1H FVG above 4H,swing,2022-08-18 14:00:00+00:00,stop,-1.1027027027027025,18.5,False
+pepperstone_oos,1H OB bull,swing,2022-08-18 14:00:00+00:00,stop,-1.0261707988980715,72.60000000000036,False
+pepperstone_oos,1H OB bear,swing,2022-08-18 14:00:00+00:00,stop,-1.0256064690026951,74.20000000000073,False
+pepperstone_oos,4H extreme (old),swing,2022-08-25 15:00:00+00:00,stop,-1.0082644628099173,229.89999999999964,False
+pepperstone_oos,4H OB disp (current),swing,2022-08-25 15:00:00+00:00,stop,-1.0105321507760532,180.39999999999964,False
+pepperstone_oos,1H IFVG,swing,2022-08-25 15:00:00+00:00,stop,-1.094059405940599,20.19999999999891,False
+pepperstone_oos,1H FVG above 4H,swing,2022-08-25 15:00:00+00:00,stop,-1.094059405940599,20.19999999999891,False
+pepperstone_oos,1H OB bull,swing,2022-08-25 15:00:00+00:00,breakeven,-0.017576318223867026,108.09999999999854,False
+pepperstone_oos,1H OB bear,swing,2022-08-25 15:00:00+00:00,breakeven,-0.011557177615571802,164.39999999999964,False
+pepperstone_oos,4H extreme (old),swing,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,204.0,False
+pepperstone_oos,4H OB disp (current),swing,2022-10-26 18:00:00+00:00,target,2.989247311827957,176.6999999999989,False
+pepperstone_oos,1H IFVG,swing,2022-10-26 18:00:00+00:00,breakeven,-0.024967148488830367,76.10000000000036,False
+pepperstone_oos,1H FVG above 4H,swing,2022-10-26 18:00:00+00:00,breakeven,-0.024967148488830367,76.10000000000036,False
+pepperstone_oos,1H OB bull,swing,2022-10-26 18:00:00+00:00,target,2.985884101040119,134.60000000000036,False
+pepperstone_oos,1H OB bear,swing,2022-10-26 18:00:00+00:00,target,2.988966318234611,172.1999999999989,False
+pepperstone_oos,4H extreme (old),swing,2022-11-17 17:00:00+00:00,stop,-1.0052240857849875,363.7000000000007,False
+pepperstone_oos,4H OB disp (current),swing,2022-11-17 17:00:00+00:00,breakeven,-0.009345794392523313,203.3000000000011,False
+pepperstone_oos,1H IFVG,swing,2022-11-17 17:00:00+00:00,stop,-1.7307692307691287,2.600000000000364,False
+pepperstone_oos,1H FVG above 4H,swing,2022-11-17 17:00:00+00:00,stop,-1.7307692307691287,2.600000000000364,False
+pepperstone_oos,1H OB bull,swing,2022-11-17 17:00:00+00:00,breakeven,-0.08520179372196893,22.30000000000109,False
+pepperstone_oos,1H OB bear,swing,2022-11-17 17:00:00+00:00,breakeven,-0.01936799184505599,98.10000000000036,False
+pepperstone_oos,4H extreme (old),swing,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,453.2000000000007,False
+pepperstone_oos,4H OB disp (current),swing,2022-12-09 10:00:00+00:00,stop,-1.0113500597371565,167.39999999999964,False
+pepperstone_oos,1H IFVG,swing,2022-12-09 10:00:00+00:00,stop,-1.3653846153845643,5.200000000000728,False
+pepperstone_oos,1H FVG above 4H,swing,2022-12-09 10:00:00+00:00,stop,-1.3653846153845643,5.200000000000728,False
+pepperstone_oos,1H OB bull,swing,2022-12-09 10:00:00+00:00,stop,-1.0055490654205608,342.39999999999964,False
+pepperstone_oos,1H OB bear,swing,2022-12-09 10:00:00+00:00,stop,-1.004777470455117,397.7000000000007,False
+pepperstone_oos,4H extreme (old),swing,2022-12-30 11:00:00+00:00,target,2.9920965058236275,240.39999999999964,False
+pepperstone_oos,4H OB disp (current),swing,2022-12-30 11:00:00+00:00,target,2.9920965058236275,240.39999999999964,False
+pepperstone_oos,1H IFVG,swing,2022-12-30 11:00:00+00:00,stop,-1.1792452830188926,10.599999999998545,False
+pepperstone_oos,1H FVG above 4H,swing,2022-12-30 11:00:00+00:00,stop,-1.1792452830188926,10.599999999998545,False
+pepperstone_oos,1H OB bull,swing,2022-12-30 11:00:00+00:00,stop,-1.0275761973875184,68.89999999999964,False
+pepperstone_oos,1H OB bear,swing,2022-12-30 11:00:00+00:00,stop,-1.0215419501133791,88.19999999999891,False
+pepperstone_oos,4H extreme (old),swing,2023-02-14 08:00:00+00:00,stop,-1.0063951531470885,297.10000000000036,False
+pepperstone_oos,4H OB disp (current),swing,2023-02-14 08:00:00+00:00,stop,-1.006879073135409,276.2000000000007,False
+pepperstone_oos,1H IFVG,swing,2023-02-14 08:00:00+00:00,stop,-1.7916666666667869,2.399999999999636,False
+pepperstone_oos,1H FVG above 4H,swing,2023-02-14 08:00:00+00:00,stop,-1.7916666666667869,2.399999999999636,False
+pepperstone_oos,1H OB bull,swing,2023-02-14 08:00:00+00:00,breakeven,-0.015359741309619958,123.70000000000073,False
+pepperstone_oos,1H OB bear,swing,2023-02-14 08:00:00+00:00,breakeven,-0.06666666666666667,28.5,False
+pepperstone_oos,4H extreme (old),swing,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,261.39999999999964,False
+pepperstone_oos,4H OB disp (current),swing,2023-05-04 12:00:00+00:00,stop,-1.008203799654577,231.60000000000036,False
+pepperstone_oos,1H IFVG,swing,2023-05-04 12:00:00+00:00,target,2.547619047619126,4.200000000000728,False
+pepperstone_oos,1H FVG above 4H,swing,2023-05-04 12:00:00+00:00,target,2.547619047619126,4.200000000000728,False
+pepperstone_oos,1H OB bull,swing,2023-05-04 12:00:00+00:00,stop,-1.0198329853862216,95.79999999999927,False
+pepperstone_oos,1H OB bear,swing,2023-05-04 12:00:00+00:00,stop,-1.0169642857142858,112.0,False
+pepperstone_oos,4H extreme (old),swing M6,2021-08-20 13:00:00+00:00,target,2.9921617161716174,242.40000000000146,False
+pepperstone_oos,4H OB disp (current),swing M6,2021-08-20 13:00:00+00:00,target,2.9921617161716174,242.40000000000146,False
+pepperstone_oos,1H IFVG,swing M6,2021-08-20 13:00:00+00:00,target,2.8455284552845668,12.300000000001091,False
+pepperstone_oos,1H FVG above 4H,swing M6,2021-08-20 13:00:00+00:00,target,2.9700315457413256,63.400000000001455,False
+pepperstone_oos,1H OB bull,swing M6,2021-08-20 13:00:00+00:00,target,2.927480916030536,26.200000000000728,False
+pepperstone_oos,1H OB bear,swing M6,2021-08-20 13:00:00+00:00,target,2.9613821138211387,49.20000000000073,False
+pepperstone_oos,4H extreme (old),swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.007153614457831315,265.60000000000036,False
+pepperstone_oos,4H OB disp (current),swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.007307692307692308,260.0,False
+pepperstone_oos,1H IFVG,swing M6,2021-10-06 15:00:00+00:00,stop,-1.0463414634146342,41.0,False
+pepperstone_oos,1H FVG above 4H,swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.01126927639383153,168.60000000000036,False
+pepperstone_oos,1H OB bull,swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.007153614457831315,265.60000000000036,True
+pepperstone_oos,1H OB bear,swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.007153614457831315,265.60000000000036,True
+pepperstone_oos,4H extreme (old),swing M6,2021-10-27 12:00:00+00:00,stop,-1.0117574257425743,161.60000000000036,False
+pepperstone_oos,4H OB disp (current),swing M6,2021-10-27 12:00:00+00:00,stop,-1.0252659574468084,75.20000000000073,False
+pepperstone_oos,1H IFVG,swing M6,2021-10-27 12:00:00+00:00,stop,-1.2533333333333334,7.5,False
+pepperstone_oos,1H FVG above 4H,swing M6,2021-10-27 12:00:00+00:00,stop,-1.0833333333333293,22.80000000000109,False
+pepperstone_oos,1H OB bull,swing M6,2021-10-27 12:00:00+00:00,stop,-1.0505319148936165,37.600000000000364,False
+pepperstone_oos,1H OB bear,swing M6,2021-10-27 12:00:00+00:00,stop,-1.0288753799392094,65.80000000000109,False
+pepperstone_oos,4H extreme (old),swing M6,2021-12-21 17:00:00+00:00,target,2.9932504440497403,281.5,False
+pepperstone_oos,4H OB disp (current),swing M6,2021-12-21 17:00:00+00:00,target,2.9932504440497403,281.5,False
+pepperstone_oos,1H IFVG,swing M6,2021-12-21 17:00:00+00:00,target,2.973163841807909,70.79999999999927,False
+pepperstone_oos,1H FVG above 4H,swing M6,2021-12-21 17:00:00+00:00,target,2.973163841807909,70.79999999999927,False
+pepperstone_oos,1H OB bull,swing M6,2021-12-21 17:00:00+00:00,target,2.982711555959964,109.89999999999964,False
+pepperstone_oos,1H OB bear,swing M6,2021-12-21 17:00:00+00:00,target,2.989554700384827,181.89999999999964,False
+pepperstone_oos,4H extreme (old),swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.0030556449018977107,621.8000000000011,False
+pepperstone_oos,4H OB disp (current),swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.0030904359141184067,614.8000000000011,False
+pepperstone_oos,1H IFVG,swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.020105820105820106,94.5,False
+pepperstone_oos,1H FVG above 4H,swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.01295160190865706,146.70000000000073,False
+pepperstone_oos,1H OB bull,swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.012820512820512758,148.20000000000073,False
+pepperstone_oos,1H OB bear,swing M6,2022-02-04 15:00:00+00:00,stop,-1.0078157136980666,243.10000000000036,False
+pepperstone_oos,4H extreme (old),swing M6,2022-02-15 17:00:00+00:00,stop,-1.003781094527363,502.5,False
+pepperstone_oos,4H OB disp (current),swing M6,2022-02-15 17:00:00+00:00,stop,-1.0039046444718454,486.60000000000036,False
+pepperstone_oos,1H IFVG,swing M6,2022-02-15 17:00:00+00:00,stop,-1.2289156626506226,8.299999999999272,False
+pepperstone_oos,1H FVG above 4H,swing M6,2022-02-15 17:00:00+00:00,stop,-1.2289156626506226,8.299999999999272,False
+pepperstone_oos,1H OB bull,swing M6,2022-02-15 17:00:00+00:00,stop,-1.0061708346865865,307.89999999999964,False
+pepperstone_oos,1H OB bear,swing M6,2022-02-15 17:00:00+00:00,stop,-1.0059579805581687,318.89999999999964,False
+pepperstone_oos,4H extreme (old),swing M6,2022-06-08 11:00:00+00:00,stop,-1.0070007369196756,271.39999999999964,False
+pepperstone_oos,4H OB disp (current),swing M6,2022-06-08 11:00:00+00:00,stop,-1.0074247753028527,255.89999999999964,False
+pepperstone_oos,1H IFVG,swing M6,2022-06-08 11:00:00+00:00,stop,-1.0900473933649273,21.100000000000364,False
+pepperstone_oos,1H FVG above 4H,swing M6,2022-06-08 11:00:00+00:00,stop,-1.0900473933649273,21.100000000000364,False
+pepperstone_oos,1H OB bull,swing M6,2022-06-08 11:00:00+00:00,stop,-1.0183044315992296,103.79999999999927,False
+pepperstone_oos,1H OB bear,swing M6,2022-06-08 11:00:00+00:00,stop,-1.0125827814569537,151.0,False
+pepperstone_oos,4H extreme (old),swing M6,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,204.0,False
+pepperstone_oos,4H OB disp (current),swing M6,2022-10-26 18:00:00+00:00,target,2.989247311827957,176.6999999999989,False
+pepperstone_oos,1H IFVG,swing M6,2022-10-26 18:00:00+00:00,breakeven,-0.024967148488830367,76.10000000000036,False
+pepperstone_oos,1H FVG above 4H,swing M6,2022-10-26 18:00:00+00:00,breakeven,-0.024967148488830367,76.10000000000036,False
+pepperstone_oos,1H OB bull,swing M6,2022-10-26 18:00:00+00:00,target,2.985884101040119,134.60000000000036,False
+pepperstone_oos,1H OB bear,swing M6,2022-10-26 18:00:00+00:00,target,2.988966318234611,172.1999999999989,False
+pepperstone_oos,prev 1H candle (current),intraday,2021-11-24 11:15:00+00:00,stop,-1.038,50.0,False
+pepperstone_oos,prev 1H candle (current),intraday,2021-12-22 14:50:00+00:00,target,2.9801255230125525,95.60000000000036,False
+pepperstone_oos,prev 1H candle (current),intraday,2022-08-18 17:05:00+00:00,target,2.962301587301587,50.399999999999636,False
+pepperstone_oos,prev 1H candle (current),intraday,2022-08-25 18:45:00+00:00,target,2.9364548494983267,29.899999999999636,False
+pepperstone_oos,prev 1H candle (current),intraday,2022-10-26 23:20:00+00:00,target,2.9688524590163934,61.0,False
+pepperstone_oos,prev 1H candle (current),intraday,2022-11-17 18:55:00+00:00,target,2.902061855670101,19.399999999999636,False
+pepperstone_oos,prev 1H candle (current),intraday,2022-12-09 13:20:00+00:00,target,2.8967391304347805,18.399999999999636,False
+pepperstone_oos,prev 1H candle (current),intraday,2022-12-30 15:55:00+00:00,target,2.972423802612482,68.89999999999964,False
+pepperstone_oos,prev 1H candle (current),intraday,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,56.600000000000364,False
+pepperstone_oos,1H IFVG,intraday,2021-11-24 11:15:00+00:00,breakeven,-0.020364415862808304,93.29999999999927,False
+pepperstone_oos,1H IFVG,intraday,2021-12-22 14:50:00+00:00,target,2.9732016925246825,70.89999999999964,False
+pepperstone_oos,1H IFVG,intraday,2022-08-25 18:45:00+00:00,target,2.911627906976744,21.5,False
+pepperstone_oos,1H IFVG,intraday,2022-10-26 23:20:00+00:00,target,2.9853620955315874,129.8000000000011,False
+pepperstone_oos,1H IFVG,intraday,2022-11-17 18:55:00+00:00,target,2.8875739644970393,16.899999999999636,False
+pepperstone_oos,1H IFVG,intraday,2023-05-04 13:50:00+00:00,stop,-1.0329289428076252,57.70000000000073,False
+pepperstone_oos,1H FVG above 4H,intraday,2021-11-24 11:15:00+00:00,breakeven,-0.020364415862808304,93.29999999999927,False
+pepperstone_oos,1H FVG above 4H,intraday,2021-12-22 14:50:00+00:00,target,2.9732016925246825,70.89999999999964,False
+pepperstone_oos,1H FVG above 4H,intraday,2022-08-25 18:45:00+00:00,target,2.911627906976744,21.5,False
+pepperstone_oos,1H FVG above 4H,intraday,2022-10-26 23:20:00+00:00,target,2.9853620955315874,129.8000000000011,False
+pepperstone_oos,1H FVG above 4H,intraday,2022-11-17 18:55:00+00:00,target,2.8875739644970393,16.899999999999636,False
+pepperstone_oos,1H FVG above 4H,intraday,2023-05-04 13:50:00+00:00,stop,-1.0329289428076252,57.70000000000073,False
+pepperstone_oos,1H OB bull,intraday,2021-11-24 11:15:00+00:00,breakeven,-0.022170361726954774,85.69999999999891,False
+pepperstone_oos,1H OB bull,intraday,2021-12-22 14:50:00+00:00,target,2.9821930646672916,106.70000000000073,False
+pepperstone_oos,1H OB bull,intraday,2022-08-18 17:05:00+00:00,stop,-1.0678571428571428,28.0,False
+pepperstone_oos,1H OB bull,intraday,2022-08-25 18:45:00+00:00,breakeven,-0.017367458866544845,109.39999999999964,False
+pepperstone_oos,1H OB bull,intraday,2022-10-26 23:20:00+00:00,stop,-1.1792452830188618,10.600000000000364,False
+pepperstone_oos,1H OB bull,intraday,2022-11-17 18:55:00+00:00,target,2.9480874316939896,36.600000000000364,False
+pepperstone_oos,1H OB bull,intraday,2022-12-09 13:20:00+00:00,stop,-1.006393001345895,297.1999999999989,False
+pepperstone_oos,1H OB bull,intraday,2022-12-30 15:55:00+00:00,stop,-1.475,4.0,False
+pepperstone_oos,1H OB bull,intraday,2023-05-04 13:50:00+00:00,stop,-1.012726054922974,149.29999999999927,False
+pepperstone_oos,1H OB bear,intraday,2021-11-24 11:15:00+00:00,stop,-1.0123296560674886,154.10000000000036,False
+pepperstone_oos,1H OB bear,intraday,2021-12-22 14:50:00+00:00,target,2.9902713773681517,195.3000000000011,False
+pepperstone_oos,1H OB bear,intraday,2022-08-18 17:05:00+00:00,stop,-1.0641891891891884,29.600000000000364,False
+pepperstone_oos,1H OB bear,intraday,2022-08-25 18:45:00+00:00,breakeven,-0.011466505733252816,165.70000000000073,False
+pepperstone_oos,1H OB bear,intraday,2022-10-26 23:20:00+00:00,stop,-1.2021276595744759,9.399999999999636,False
+pepperstone_oos,1H OB bear,intraday,2022-11-17 18:55:00+00:00,breakeven,-0.016903914590747384,112.39999999999964,False
+pepperstone_oos,1H OB bear,intraday,2022-12-09 13:20:00+00:00,stop,-1.0053900709219858,352.5,False
+pepperstone_oos,1H OB bear,intraday,2022-12-30 15:55:00+00:00,stop,-1.0909090909090924,20.899999999999636,False
+pepperstone_oos,1H OB bear,intraday,2023-05-04 13:50:00+00:00,stop,-1.0114803625377644,165.5,False

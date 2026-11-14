@@ -1,0 +1,360 @@
+source,variant,entry_time,exit,r_net,risk_pts,stop_from
+pepperstone,current 1H OB 50%,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239,182.45000000000073,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-03-08 18:00:00+00:00,target,0.5900540137828284,268.4500000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-04-02 17:00:00+00:00,stop,-1.0266393442622934,48.80000000000291,sweep extreme (no up-close OB)
+pepperstone,current 1H OB 50%,2024-04-04 00:00:00+00:00,target,0.37066342057213025,164.29999999999927,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-05-23 19:00:00+00:00,target,0.10704055480174618,331.65000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-06-07 13:00:00+00:00,stop,-1.0095377842993398,136.29999999999927,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095,423.0,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2024-07-31 06:00:00+00:00,target,0.3714557047890408,368.5499999999993,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-08-01 08:00:00+00:00,stop,-1.8124999999988916,1.6000000000021828,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2024-08-06 08:00:00+00:00,target,0.7161937880344531,632.6500000000015,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-08-07 11:00:00+00:00,target,0.20672409002500614,899.75,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-08-23 04:00:00+00:00,target,0.6065072802444771,278.1499999999978,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-09-11 19:00:00+00:00,target,4.7282741738065495,81.70000000000073,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2024-10-17 10:00:00+00:00,target,1.589322381930146,97.40000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-10-31 00:00:00+00:00,target,0.224090447890994,344.9500000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-11-05 15:00:00+00:00,target,0.6644555002763904,180.90000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2024-11-20 14:00:00+00:00,stop,-1.0113636363636362,114.40000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-01-13 18:00:00+00:00,target,1.2168758716875696,143.40000000000146,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-01-15 14:00:00+00:00,target,0.1960784313725475,471.75,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-02-18 15:00:00+00:00,target,1.1180069930069534,114.40000000000146,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-03-17 19:00:00+00:00,target,0.4920479786761452,562.75,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-03-19 13:00:00+00:00,stop,-1.005825677795205,223.15000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-03-26 18:00:00+00:00,target,0.07030960897989175,405.3500000000022,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-04-07 15:00:00+00:00,target,1.22965641952984,718.8999999999978,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-04-10 15:00:00+00:00,target,0.12415198718881933,1717.25,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-04-25 11:00:00+00:00,stop,-1.0095799557848197,135.6999999999971,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923,206.20000000000073,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-05-20 13:00:00+00:00,target,0.46429906542056076,267.5,sweep extreme (no up-close OB)
+pepperstone,current 1H OB 50%,2025-05-21 19:00:00+00:00,target,0.3359897991711881,313.6999999999971,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-05-22 14:00:00+00:00,stop,-1.0058009817045963,224.09999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602,348.09999999999854,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-06-12 12:00:00+00:00,target,0.13789279112754968,270.5,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-08-04 17:00:00+00:00,target,0.1740566637021964,393.5499999999993,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-10-23 07:00:00+00:00,target,0.4004376367614848,228.5,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-11-04 15:00:00+00:00,stop,-1.008807588075881,147.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-11-21 17:00:00+00:00,target,2.459566074950672,405.6000000000022,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2025-11-25 19:00:00+00:00,target,0.1956176563988551,944.7000000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2025-12-01 15:00:00+00:00,stop,-1.0272536687631022,47.70000000000073,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-01-14 11:00:00+00:00,target,0.837178642056682,151.70000000000073,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-01-21 20:00:00+00:00,target,0.16542567506952588,557.3499999999985,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-01-28 21:00:00+00:00,target,0.9235993208828419,58.900000000001455,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2026-01-29 20:00:00+00:00,target,0.24196891191710035,386.0,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-01-29 16:00:00+00:00,target,0.23113207547169867,593.5999999999985,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-02-09 18:00:00+00:00,target,0.15336233555217613,953.9500000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-03-05 20:00:00+00:00,target,0.7314449623520911,278.90000000000146,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-03-24 05:00:00+00:00,target,0.3459642203127153,354.9500000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-04-07 14:00:00+00:00,target,0.07905544147844346,194.79999999999927,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915,156.89999999999782,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-05-21 18:00:00+00:00,target,0.43774757281553733,643.75,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-06-12 10:00:00+00:00,target,0.0952732341245441,1219.6499999999978,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-06-17 20:00:00+00:00,stop,-1.0038957147138148,333.7000000000007,sweep extreme (no 1H FVG of the drop)
+pepperstone,current 1H OB 50%,2026-06-22 13:00:00+00:00,target,0.2338788014645484,669.1500000000015,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-07-09 06:00:00+00:00,target,0.19920705558701668,617.9500000000044,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-07-15 17:00:00+00:00,target,0.49320225894165004,478.09999999999854,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891,203.60000000000218,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079,245.35000000000218,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-08-18 06:00:00+00:00,target,0.35663716814159935,226.0,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457,189.5,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-09-17 13:00:00+00:00,target,0.44842221812142075,270.9500000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-09-23 13:00:00+00:00,target,7.583460949464452,32.64999999999782,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-09-25 05:00:00+00:00,target,0.5487703785576133,180.9499999999971,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-09-30 17:00:00+00:00,target,0.4972217243233541,278.9500000000007,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854,1H OB of drop FVG
+pepperstone,current 1H OB 50%,2026-10-26 16:00:00+00:00,target,2.058937341866345,335.9500000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-02-28 10:00:00+00:00,stop,-1.0270270270270279,48.099999999998545,inv candle (4.39 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-03-08 18:00:00+00:00,target,1.1314285714285766,140.0,inv candle (4.22 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-03-21 19:00:00+00:00,breakeven,-0.03532608695652244,36.79999999999927,inv candle (2.41 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-04-02 17:00:00+00:00,stop,-1.0266393442622934,48.80000000000291,inv candle (5.83 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-04-04 00:00:00+00:00,target,0.37066342057213025,164.29999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-05-23 19:00:00+00:00,stop,-1.0247148288973373,52.60000000000218,inv candle (4.21 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-05-31 13:00:00+00:00,stop,-1.020602218700476,63.099999999998545,inv candle (2.81 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-06-07 13:00:00+00:00,stop,-1.0095377842993398,136.29999999999927,inv candle (3.58 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-07-25 17:00:00+00:00,stop,-1.011206896551724,116.0,inv candle (2.45 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-07-31 06:00:00+00:00,target,0.3714557047890408,368.5499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-08-01 08:00:00+00:00,stop,-1.8124999999988916,1.6000000000021828,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-08-06 08:00:00+00:00,target,0.7161937880344531,632.6500000000015,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-08-07 11:00:00+00:00,target,0.20672409002500614,899.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-08-23 04:00:00+00:00,stop,-1.02579365079365,50.400000000001455,inv candle (5.11 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-09-11 19:00:00+00:00,target,4.7282741738065495,81.70000000000073,inv candle (4.58 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-10-17 10:00:00+00:00,target,1.3796791443850047,112.20000000000073,inv candle (4.79 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-10-31 00:00:00+00:00,stop,-1.0593607305936035,21.900000000001455,inv candle (2.66 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-11-05 15:00:00+00:00,target,0.6927953890489914,173.5,inv candle (3.66 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2024-11-20 14:00:00+00:00,stop,-1.0120259019426459,108.09999999999854,inv candle (2.65 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-01-13 18:00:00+00:00,target,1.2168758716875696,143.40000000000146,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-01-15 14:00:00+00:00,target,0.3899662731871796,237.20000000000073,inv candle (6.75 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-02-18 15:00:00+00:00,target,1.1258802816900937,113.60000000000218,inv candle (2.98 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-02-28 21:00:00+00:00,breakeven,-0.006069094304388401,214.20000000000073,inv candle (2.89 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-03-17 19:00:00+00:00,stop,-1.05,26.0,inv candle (2.95 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-03-19 13:00:00+00:00,stop,-1.012833168805528,101.29999999999927,inv candle (4.82 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-03-26 18:00:00+00:00,target,0.732647814910048,38.89999999999782,inv candle (6.14 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-03-31 22:00:00+00:00,stop,-1.0637254901960853,20.399999999997817,inv candle (2.12 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-04-07 15:00:00+00:00,target,1.22965641952984,718.8999999999978,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-04-10 15:00:00+00:00,target,0.20802029466289362,1024.9000000000015,inv candle (4.38 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-04-25 11:00:00+00:00,stop,-1.0095799557848197,135.6999999999971,inv candle (2.98 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-05-01 14:00:00+00:00,stop,-1.0108877721943046,119.40000000000146,inv candle (2.55 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-05-08 15:00:00+00:00,stop,-1.0147727272727272,88.0,inv candle (3.32 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-05-20 13:00:00+00:00,breakeven,-0.039634146341464296,32.79999999999927,inv candle (3.51 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-05-21 19:00:00+00:00,breakeven,-0.018544935805991827,70.09999999999854,inv candle (3.57 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-05-22 14:00:00+00:00,stop,-1.0086378737541528,150.5,inv candle (3.03 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602,348.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-06-12 12:00:00+00:00,target,0.13789279112754968,270.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-08-04 17:00:00+00:00,target,0.1740566637021964,393.5499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-10-23 07:00:00+00:00,target,1.357566765578595,67.40000000000146,inv candle (2.16 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-11-04 15:00:00+00:00,stop,-1.008807588075881,147.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-11-21 17:00:00+00:00,target,2.459566074950672,405.6000000000022,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-11-25 19:00:00+00:00,stop,-1.0481481481481483,27.0,inv candle (2.0 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2025-12-01 15:00:00+00:00,stop,-1.0153301886792454,84.79999999999927,inv candle (3.07 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-01-14 11:00:00+00:00,target,1.3092783505154564,97.0,inv candle (2.69 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-01-21 20:00:00+00:00,target,0.22653562653562653,407.0,inv candle (2.96 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-01-28 21:00:00+00:00,stop,-1.0702702702702702,18.5,inv candle (3.01 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-01-29 20:00:00+00:00,target,0.3357296908698795,278.2000000000007,inv candle (4.73 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-01-29 16:00:00+00:00,stop,-1.0082592121982212,157.39999999999782,inv candle (7.03 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-02-09 18:00:00+00:00,breakeven,-0.051383399209487646,25.299999999999272,inv candle (3.24 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-03-05 20:00:00+00:00,stop,-1.0064837905236907,200.5,inv candle (2.84 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-03-24 05:00:00+00:00,target,0.3502567027952019,350.6000000000022,inv candle (2.86 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-04-07 14:00:00+00:00,target,0.07905544147844346,194.79999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915,156.89999999999782,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-04-16 14:00:00+00:00,stop,-1.0162094763092266,80.20000000000073,inv candle (2.01 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-05-21 18:00:00+00:00,target,0.43774757281553733,643.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-06-12 10:00:00+00:00,target,0.0952732341245441,1219.6499999999978,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-06-17 20:00:00+00:00,stop,-1.0038957147138148,333.7000000000007,inv candle (2.99 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-06-22 13:00:00+00:00,target,0.2338788014645484,669.1500000000015,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-07-09 06:00:00+00:00,target,0.19920705558701668,617.9500000000044,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-07-15 17:00:00+00:00,stop,-1.0202808112324497,64.09999999999854,inv candle (3.82 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891,203.60000000000218,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-08-05 16:00:00+00:00,breakeven,-0.008563899868247736,151.79999999999927,inv candle (3.01 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-08-18 06:00:00+00:00,target,0.35663716814159935,226.0,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-08-19 13:00:00+00:00,stop,-1.0076923076923077,169.0,inv candle (2.41 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-09-17 13:00:00+00:00,target,2.3275862068965054,52.20000000000073,inv candle (4.74 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-09-23 13:00:00+00:00,target,7.583460949464452,32.64999999999782,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-09-25 05:00:00+00:00,stop,-1.0481481481481483,27.0,inv candle (2.11 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-09-30 17:00:00+00:00,stop,-1.0135135135135134,96.20000000000073,inv candle (2.76 ATR)
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.0ATR else OB,2026-10-26 16:00:00+00:00,target,2.9763339070567802,232.40000000000146,inv candle (2.28 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-02-28 10:00:00+00:00,stop,-1.0270270270270279,48.099999999998545,inv candle (4.39 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-03-08 18:00:00+00:00,target,1.1314285714285766,140.0,inv candle (4.22 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-04-02 17:00:00+00:00,stop,-1.0266393442622934,48.80000000000291,inv candle (5.83 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-04-04 00:00:00+00:00,target,0.37066342057213025,164.29999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-05-23 19:00:00+00:00,stop,-1.0247148288973373,52.60000000000218,inv candle (4.21 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-05-31 13:00:00+00:00,stop,-1.020602218700476,63.099999999998545,inv candle (2.81 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-06-07 13:00:00+00:00,stop,-1.0095377842993398,136.29999999999927,inv candle (3.58 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095,423.0,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-07-31 06:00:00+00:00,target,0.3714557047890408,368.5499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-08-01 08:00:00+00:00,stop,-1.8124999999988916,1.6000000000021828,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-08-06 08:00:00+00:00,target,0.7161937880344531,632.6500000000015,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-08-07 11:00:00+00:00,target,0.20672409002500614,899.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-08-23 04:00:00+00:00,stop,-1.02579365079365,50.400000000001455,inv candle (5.11 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-09-11 19:00:00+00:00,target,4.7282741738065495,81.70000000000073,inv candle (4.58 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-10-17 10:00:00+00:00,target,1.3796791443850047,112.20000000000073,inv candle (4.79 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-10-31 00:00:00+00:00,stop,-1.0593607305936035,21.900000000001455,inv candle (2.66 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-11-05 15:00:00+00:00,target,0.6927953890489914,173.5,inv candle (3.66 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2024-11-20 14:00:00+00:00,stop,-1.0120259019426459,108.09999999999854,inv candle (2.65 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-01-13 18:00:00+00:00,target,1.2168758716875696,143.40000000000146,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-01-15 14:00:00+00:00,target,0.3899662731871796,237.20000000000073,inv candle (6.75 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-02-18 15:00:00+00:00,target,1.1258802816900937,113.60000000000218,inv candle (2.98 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-02-28 21:00:00+00:00,breakeven,-0.006069094304388401,214.20000000000073,inv candle (2.89 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-03-17 19:00:00+00:00,stop,-1.05,26.0,inv candle (2.95 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-03-19 13:00:00+00:00,stop,-1.012833168805528,101.29999999999927,inv candle (4.82 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-03-26 18:00:00+00:00,target,0.732647814910048,38.89999999999782,inv candle (6.14 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-04-07 15:00:00+00:00,target,1.22965641952984,718.8999999999978,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-04-10 15:00:00+00:00,target,0.20802029466289362,1024.9000000000015,inv candle (4.38 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-04-25 11:00:00+00:00,stop,-1.0095799557848197,135.6999999999971,inv candle (2.98 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-05-01 14:00:00+00:00,stop,-1.0108877721943046,119.40000000000146,inv candle (2.55 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-05-08 15:00:00+00:00,stop,-1.0147727272727272,88.0,inv candle (3.32 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-05-20 13:00:00+00:00,breakeven,-0.039634146341464296,32.79999999999927,inv candle (3.51 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-05-21 19:00:00+00:00,breakeven,-0.018544935805991827,70.09999999999854,inv candle (3.57 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-05-22 14:00:00+00:00,stop,-1.0086378737541528,150.5,inv candle (3.03 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602,348.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-06-12 12:00:00+00:00,target,0.13789279112754968,270.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-08-04 17:00:00+00:00,target,0.1740566637021964,393.5499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-10-23 07:00:00+00:00,target,0.4004376367614848,228.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-11-04 15:00:00+00:00,stop,-1.008807588075881,147.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-11-21 17:00:00+00:00,target,2.459566074950672,405.6000000000022,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-11-25 19:00:00+00:00,target,0.1956176563988551,944.7000000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2025-12-01 15:00:00+00:00,stop,-1.0153301886792454,84.79999999999927,inv candle (3.07 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-01-14 11:00:00+00:00,target,1.3092783505154564,97.0,inv candle (2.69 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-01-21 20:00:00+00:00,target,0.22653562653562653,407.0,inv candle (2.96 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-01-28 21:00:00+00:00,stop,-1.0702702702702702,18.5,inv candle (3.01 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-01-29 20:00:00+00:00,target,0.3357296908698795,278.2000000000007,inv candle (4.73 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-01-29 16:00:00+00:00,stop,-1.0082592121982212,157.39999999999782,inv candle (7.03 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-02-09 18:00:00+00:00,breakeven,-0.051383399209487646,25.299999999999272,inv candle (3.24 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-03-05 20:00:00+00:00,stop,-1.0064837905236907,200.5,inv candle (2.84 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-03-24 05:00:00+00:00,target,0.3502567027952019,350.6000000000022,inv candle (2.86 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-04-07 14:00:00+00:00,target,0.07905544147844346,194.79999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915,156.89999999999782,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-05-21 18:00:00+00:00,target,0.43774757281553733,643.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-06-12 10:00:00+00:00,target,0.0952732341245441,1219.6499999999978,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-06-17 20:00:00+00:00,stop,-1.0038957147138148,333.7000000000007,inv candle (2.99 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-06-22 13:00:00+00:00,target,0.2338788014645484,669.1500000000015,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-07-09 06:00:00+00:00,target,0.19920705558701668,617.9500000000044,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-07-15 17:00:00+00:00,stop,-1.0202808112324497,64.09999999999854,inv candle (3.82 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891,203.60000000000218,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-08-05 16:00:00+00:00,breakeven,-0.008563899868247736,151.79999999999927,inv candle (3.01 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-08-18 06:00:00+00:00,target,0.35663716814159935,226.0,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457,189.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-09-17 13:00:00+00:00,target,2.3275862068965054,52.20000000000073,inv candle (4.74 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-09-23 13:00:00+00:00,target,7.583460949464452,32.64999999999782,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-09-25 05:00:00+00:00,target,0.5487703785576133,180.9499999999971,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-09-30 17:00:00+00:00,stop,-1.0135135135135134,96.20000000000073,inv candle (2.76 ATR)
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=2.5ATR else OB,2026-10-26 16:00:00+00:00,target,2.058937341866345,335.9500000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-02-28 10:00:00+00:00,stop,-1.0270270270270279,48.099999999998545,inv candle (4.39 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322,24.950000000000728,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-03-08 18:00:00+00:00,target,1.1314285714285766,140.0,inv candle (4.22 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588,105.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-04-02 17:00:00+00:00,stop,-1.0266393442622934,48.80000000000291,inv candle (5.83 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-04-04 00:00:00+00:00,target,0.37066342057213025,164.29999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-05-23 19:00:00+00:00,stop,-1.0247148288973373,52.60000000000218,inv candle (4.21 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848,103.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-06-07 13:00:00+00:00,stop,-1.0095377842993398,136.29999999999927,inv candle (3.58 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247,302.0499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095,423.0,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-07-31 06:00:00+00:00,target,0.3714557047890408,368.5499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-08-01 08:00:00+00:00,stop,-1.8124999999988916,1.6000000000021828,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-08-06 08:00:00+00:00,target,0.7161937880344531,632.6500000000015,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-08-07 11:00:00+00:00,target,0.20672409002500614,899.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-08-23 04:00:00+00:00,stop,-1.02579365079365,50.400000000001455,inv candle (5.11 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-09-11 19:00:00+00:00,target,4.7282741738065495,81.70000000000073,inv candle (4.58 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-10-17 10:00:00+00:00,target,1.3796791443850047,112.20000000000073,inv candle (4.79 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-10-31 00:00:00+00:00,target,0.224090447890994,344.9500000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-11-05 15:00:00+00:00,target,0.6927953890489914,173.5,inv candle (3.66 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2024-11-20 14:00:00+00:00,stop,-1.0113636363636362,114.40000000000146,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-01-13 18:00:00+00:00,target,1.2168758716875696,143.40000000000146,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-01-15 14:00:00+00:00,target,0.3899662731871796,237.20000000000073,inv candle (6.75 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-02-18 15:00:00+00:00,target,1.1180069930069534,114.40000000000146,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-02-28 21:00:00+00:00,stop,-1.005100039231071,254.90000000000146,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-03-17 19:00:00+00:00,target,0.4920479786761452,562.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-03-19 13:00:00+00:00,stop,-1.012833168805528,101.29999999999927,inv candle (4.82 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-03-26 18:00:00+00:00,target,0.732647814910048,38.89999999999782,inv candle (6.14 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552,260.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-04-07 15:00:00+00:00,target,1.22965641952984,718.8999999999978,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-04-10 15:00:00+00:00,target,0.20802029466289362,1024.9000000000015,inv candle (4.38 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-04-25 11:00:00+00:00,stop,-1.0095799557848197,135.6999999999971,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004,162.70000000000073,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-05-08 15:00:00+00:00,stop,-1.0147727272727272,88.0,inv candle (3.32 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-05-20 13:00:00+00:00,breakeven,-0.039634146341464296,32.79999999999927,inv candle (3.51 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-05-21 19:00:00+00:00,breakeven,-0.018544935805991827,70.09999999999854,inv candle (3.57 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-05-22 14:00:00+00:00,stop,-1.0086378737541528,150.5,inv candle (3.03 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602,348.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-06-12 12:00:00+00:00,target,0.13789279112754968,270.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-08-04 17:00:00+00:00,target,0.1740566637021964,393.5499999999993,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-10-23 07:00:00+00:00,target,0.4004376367614848,228.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-11-04 15:00:00+00:00,stop,-1.008807588075881,147.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-11-21 17:00:00+00:00,target,2.459566074950672,405.6000000000022,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-11-25 19:00:00+00:00,target,0.1956176563988551,944.7000000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2025-12-01 15:00:00+00:00,stop,-1.0153301886792454,84.79999999999927,inv candle (3.07 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-01-14 11:00:00+00:00,target,0.837178642056682,151.70000000000073,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-01-21 20:00:00+00:00,target,0.16542567506952588,557.3499999999985,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-01-28 21:00:00+00:00,stop,-1.0702702702702702,18.5,inv candle (3.01 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-01-29 20:00:00+00:00,target,0.3357296908698795,278.2000000000007,inv candle (4.73 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-01-29 16:00:00+00:00,stop,-1.0082592121982212,157.39999999999782,inv candle (7.03 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-02-09 18:00:00+00:00,breakeven,-0.051383399209487646,25.299999999999272,inv candle (3.24 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-03-05 20:00:00+00:00,target,0.7314449623520911,278.90000000000146,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-03-24 05:00:00+00:00,target,0.3459642203127153,354.9500000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-04-07 14:00:00+00:00,target,0.07905544147844346,194.79999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915,156.89999999999782,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216,74.04999999999927,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-05-21 18:00:00+00:00,target,0.43774757281553733,643.75,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-06-12 10:00:00+00:00,target,0.0952732341245441,1219.6499999999978,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-06-17 20:00:00+00:00,stop,-1.0038957147138148,333.7000000000007,sweep extreme (no 1H FVG of the drop)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-06-22 13:00:00+00:00,target,0.2338788014645484,669.1500000000015,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-07-09 06:00:00+00:00,target,0.19920705558701668,617.9500000000044,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-07-15 17:00:00+00:00,stop,-1.0202808112324497,64.09999999999854,inv candle (3.82 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891,203.60000000000218,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-08-05 16:00:00+00:00,breakeven,-0.008563899868247736,151.79999999999927,inv candle (3.01 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-08-18 06:00:00+00:00,target,0.35663716814159935,226.0,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457,189.5,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-09-17 13:00:00+00:00,target,2.3275862068965054,52.20000000000073,inv candle (4.74 ATR)
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-09-23 13:00:00+00:00,target,7.583460949464452,32.64999999999782,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-09-25 05:00:00+00:00,target,0.5487703785576133,180.9499999999971,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-09-30 17:00:00+00:00,target,0.4972217243233541,278.9500000000007,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553,177.09999999999854,1H OB of drop FVG
+pepperstone,inv candle if disp>=3.0ATR else OB,2026-10-26 16:00:00+00:00,target,2.058937341866345,335.9500000000007,1H OB of drop FVG
+pepperstone,inv candle always,2024-02-28 10:00:00+00:00,stop,-1.0270270270270279,48.099999999998545,inv candle (4.39 ATR)
+pepperstone,inv candle always,2024-03-01 13:00:00+00:00,stop,-1.0634146341463415,20.5,inv candle (1.75 ATR)
+pepperstone,inv candle always,2024-03-08 18:00:00+00:00,target,1.1314285714285766,140.0,inv candle (4.22 ATR)
+pepperstone,inv candle always,2024-03-21 19:00:00+00:00,breakeven,-0.03532608695652244,36.79999999999927,inv candle (2.41 ATR)
+pepperstone,inv candle always,2024-04-02 17:00:00+00:00,stop,-1.0266393442622934,48.80000000000291,inv candle (5.83 ATR)
+pepperstone,inv candle always,2024-04-04 00:00:00+00:00,target,1.0481927710843761,58.099999999998545,inv candle (1.01 ATR)
+pepperstone,inv candle always,2024-05-23 19:00:00+00:00,stop,-1.0247148288973373,52.60000000000218,inv candle (4.21 ATR)
+pepperstone,inv candle always,2024-05-31 13:00:00+00:00,stop,-1.020602218700476,63.099999999998545,inv candle (2.81 ATR)
+pepperstone,inv candle always,2024-06-07 13:00:00+00:00,stop,-1.0095377842993398,136.29999999999927,inv candle (3.58 ATR)
+pepperstone,inv candle always,2024-07-22 19:00:00+00:00,stop,-1.0866666666666667,15.0,inv candle (1.9 ATR)
+pepperstone,inv candle always,2024-07-25 17:00:00+00:00,stop,-1.011206896551724,116.0,inv candle (2.45 ATR)
+pepperstone,inv candle always,2024-07-31 06:00:00+00:00,target,1.2234137622877475,111.90000000000146,inv candle (1.02 ATR)
+pepperstone,inv candle always,2024-08-01 08:00:00+00:00,stop,-1.8124999999988916,1.6000000000021828,inv candle (1.44 ATR)
+pepperstone,inv candle always,2024-08-07 11:00:00+00:00,stop,-1.0401234567901216,32.400000000001455,inv candle (1.57 ATR)
+pepperstone,inv candle always,2024-08-23 04:00:00+00:00,stop,-1.02579365079365,50.400000000001455,inv candle (5.11 ATR)
+pepperstone,inv candle always,2024-09-11 19:00:00+00:00,target,4.7282741738065495,81.70000000000073,inv candle (4.58 ATR)
+pepperstone,inv candle always,2024-10-17 10:00:00+00:00,target,1.3796791443850047,112.20000000000073,inv candle (4.79 ATR)
+pepperstone,inv candle always,2024-10-31 00:00:00+00:00,stop,-1.0593607305936035,21.900000000001455,inv candle (2.66 ATR)
+pepperstone,inv candle always,2024-11-05 15:00:00+00:00,target,0.6927953890489914,173.5,inv candle (3.66 ATR)
+pepperstone,inv candle always,2024-11-20 14:00:00+00:00,stop,-1.0120259019426459,108.09999999999854,inv candle (2.65 ATR)
+pepperstone,inv candle always,2025-01-13 18:00:00+00:00,target,1.2168758716875696,143.40000000000146,inv candle (1.7 ATR)
+pepperstone,inv candle always,2025-01-15 14:00:00+00:00,target,0.3899662731871796,237.20000000000073,inv candle (6.75 ATR)
+pepperstone,inv candle always,2025-02-18 15:00:00+00:00,target,1.1258802816900937,113.60000000000218,inv candle (2.98 ATR)
+pepperstone,inv candle always,2025-02-28 21:00:00+00:00,breakeven,-0.006069094304388401,214.20000000000073,inv candle (2.89 ATR)
+pepperstone,inv candle always,2025-03-17 19:00:00+00:00,stop,-1.05,26.0,inv candle (2.95 ATR)
+pepperstone,inv candle always,2025-03-19 13:00:00+00:00,stop,-1.012833168805528,101.29999999999927,inv candle (4.82 ATR)
+pepperstone,inv candle always,2025-03-26 18:00:00+00:00,target,0.732647814910048,38.89999999999782,inv candle (6.14 ATR)
+pepperstone,inv candle always,2025-03-31 22:00:00+00:00,stop,-1.0637254901960853,20.399999999997817,inv candle (2.12 ATR)
+pepperstone,inv candle always,2025-04-07 15:00:00+00:00,stop,-1.0060213061602594,215.90000000000146,inv candle (1.76 ATR)
+pepperstone,inv candle always,2025-04-10 15:00:00+00:00,target,0.20802029466289362,1024.9000000000015,inv candle (4.38 ATR)
+pepperstone,inv candle always,2025-04-25 11:00:00+00:00,stop,-1.0095799557848197,135.6999999999971,inv candle (2.98 ATR)
+pepperstone,inv candle always,2025-05-01 14:00:00+00:00,stop,-1.0108877721943046,119.40000000000146,inv candle (2.55 ATR)
+pepperstone,inv candle always,2025-05-08 15:00:00+00:00,stop,-1.0147727272727272,88.0,inv candle (3.32 ATR)
+pepperstone,inv candle always,2025-05-20 13:00:00+00:00,breakeven,-0.039634146341464296,32.79999999999927,inv candle (3.51 ATR)
+pepperstone,inv candle always,2025-05-21 19:00:00+00:00,breakeven,-0.018544935805991827,70.09999999999854,inv candle (3.57 ATR)
+pepperstone,inv candle always,2025-05-22 14:00:00+00:00,stop,-1.0086378737541528,150.5,inv candle (3.03 ATR)
+pepperstone,inv candle always,2025-06-05 22:00:00+00:00,stop,-1.0162297128589266,80.09999999999854,inv candle (1.82 ATR)
+pepperstone,inv candle always,2025-06-12 12:00:00+00:00,stop,-1.0212765957446812,61.099999999998545,inv candle (1.3 ATR)
+pepperstone,inv candle always,2025-08-04 17:00:00+00:00,stop,-1.0751445086705234,17.299999999999272,inv candle (1.02 ATR)
+pepperstone,inv candle always,2025-10-23 07:00:00+00:00,target,1.357566765578595,67.40000000000146,inv candle (2.16 ATR)
+pepperstone,inv candle always,2025-11-04 15:00:00+00:00,stop,-1.008807588075881,147.59999999999854,inv candle (1.91 ATR)
+pepperstone,inv candle always,2025-11-21 17:00:00+00:00,target,2.665241784664707,374.2999999999993,inv candle (1.98 ATR)
+pepperstone,inv candle always,2025-11-25 19:00:00+00:00,stop,-1.0481481481481483,27.0,inv candle (2.0 ATR)
+pepperstone,inv candle always,2025-12-01 15:00:00+00:00,stop,-1.0153301886792454,84.79999999999927,inv candle (3.07 ATR)
+pepperstone,inv candle always,2026-01-14 11:00:00+00:00,target,1.3092783505154564,97.0,inv candle (2.69 ATR)
+pepperstone,inv candle always,2026-01-21 20:00:00+00:00,target,0.22653562653562653,407.0,inv candle (2.96 ATR)
+pepperstone,inv candle always,2026-01-28 21:00:00+00:00,stop,-1.0702702702702702,18.5,inv candle (3.01 ATR)
+pepperstone,inv candle always,2026-01-29 20:00:00+00:00,target,0.3357296908698795,278.2000000000007,inv candle (4.73 ATR)
+pepperstone,inv candle always,2026-01-29 16:00:00+00:00,stop,-1.0082592121982212,157.39999999999782,inv candle (7.03 ATR)
+pepperstone,inv candle always,2026-02-09 18:00:00+00:00,breakeven,-0.051383399209487646,25.299999999999272,inv candle (3.24 ATR)
+pepperstone,inv candle always,2026-03-05 20:00:00+00:00,stop,-1.0064837905236907,200.5,inv candle (2.84 ATR)
+pepperstone,inv candle always,2026-03-24 05:00:00+00:00,target,0.3502567027952019,350.6000000000022,inv candle (2.86 ATR)
+pepperstone,inv candle always,2026-04-07 14:00:00+00:00,target,0.0875995449374334,175.79999999999927,inv candle (1.01 ATR)
+pepperstone,inv candle always,2026-04-08 14:00:00+00:00,breakeven,-0.008718980549966551,149.09999999999854,inv candle (1.93 ATR)
+pepperstone,inv candle always,2026-04-16 14:00:00+00:00,stop,-1.0162094763092266,80.20000000000073,inv candle (2.01 ATR)
+pepperstone,inv candle always,2026-05-21 18:00:00+00:00,breakeven,-0.0069481560662747735,187.09999999999854,inv candle (1.7 ATR)
+pepperstone,inv candle always,2026-06-12 10:00:00+00:00,stop,-1.0094134685010863,138.09999999999854,inv candle (1.85 ATR)
+pepperstone,inv candle always,2026-06-17 20:00:00+00:00,stop,-1.0038957147138148,333.7000000000007,inv candle (2.99 ATR)
+pepperstone,inv candle always,2026-06-22 13:00:00+00:00,stop,-1.028077753779698,46.29999999999927,inv candle (1.04 ATR)
+pepperstone,inv candle always,2026-07-09 06:00:00+00:00,target,1.0961709706143778,112.30000000000291,inv candle (1.38 ATR)
+pepperstone,inv candle always,2026-07-15 17:00:00+00:00,stop,-1.0202808112324497,64.09999999999854,inv candle (3.82 ATR)
+pepperstone,inv candle always,2026-07-20 12:00:00+00:00,breakeven,-0.05829596412556244,22.299999999999272,inv candle (1.69 ATR)
+pepperstone,inv candle always,2026-08-05 16:00:00+00:00,breakeven,-0.008563899868247736,151.79999999999927,inv candle (3.01 ATR)
+pepperstone,inv candle always,2026-08-18 06:00:00+00:00,target,1.9099526066352375,42.19999999999709,inv candle (1.09 ATR)
+pepperstone,inv candle always,2026-08-19 13:00:00+00:00,stop,-1.0076923076923077,169.0,inv candle (2.41 ATR)
+pepperstone,inv candle always,2026-09-17 13:00:00+00:00,target,2.3275862068965054,52.20000000000073,inv candle (4.74 ATR)
+pepperstone,inv candle always,2026-09-23 13:00:00+00:00,target,6.602666666666608,37.5,inv candle (1.49 ATR)
+pepperstone,inv candle always,2026-09-25 05:00:00+00:00,stop,-1.0481481481481483,27.0,inv candle (2.11 ATR)
+pepperstone,inv candle always,2026-09-30 17:00:00+00:00,stop,-1.0135135135135134,96.20000000000073,inv candle (2.76 ATR)
+pepperstone,inv candle always,2026-10-14 02:00:00+00:00,stop,-1.019345238095238,67.20000000000073,inv candle (1.03 ATR)
+pepperstone,inv candle always,2026-10-26 16:00:00+00:00,target,2.9763339070567802,232.40000000000146,inv candle (2.28 ATR)

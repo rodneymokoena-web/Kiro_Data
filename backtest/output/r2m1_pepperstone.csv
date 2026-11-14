@@ -1,0 +1,50 @@
+source,variant,model,entry_time,exit,r_net
+pepperstone,R2 last FVG any leg,intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,R2 last FVG any leg,intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,R2 last FVG any leg,intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,R2 last FVG any leg,intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,R2 last FVG any leg,intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,R2 last FVG any leg,intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,R2 last FVG any leg,intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,R2 last FVG any leg,intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,R2 last FVG any leg,intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,R2 last FVG any leg,intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,R2 last FVG any leg,swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798
+pepperstone,R2 last FVG any leg,swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317
+pepperstone,R2 last FVG any leg,swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088
+pepperstone,R2 last FVG any leg,swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617
+pepperstone,R2 last FVG any leg,swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036
+pepperstone,R2 last FVG any leg,swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765
+pepperstone,R2 last FVG any leg,swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204
+pepperstone,R2 last FVG any leg,swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074
+pepperstone,R2 last FVG any leg,swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414
+pepperstone,R2 last FVG any leg,swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885
+pepperstone,R2 last FVG any leg,swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,"R2 previous (first FVG, 4H swing leg)",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2024-08-06 15:00:00+00:00,target,2.998493452311971
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2025-01-14 19:00:00+00:00,target,2.995313626532084
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-03-06 09:00:00+00:00,stop,-1.0021790144150184
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-07-22 11:00:00+00:00,stop,-1.0017280340289778
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885
+pepperstone,"R2 previous (first FVG, 4H swing leg)",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132

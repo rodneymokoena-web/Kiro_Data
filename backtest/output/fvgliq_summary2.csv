@@ -1,0 +1,33 @@
+broker,variant,model,n,PF,R,acct,dd
+GoatFunded,off,swing,122,1.71,24.3,12658,4.8
+GoatFunded,off,both,195,1.54,39.6,14604,11.8
+GoatFunded,off,swing 21-23,60,1.74,12.7,11325,4.4
+GoatFunded,off,swing 24-26,62,1.67,11.6,11176,4.8
+GoatFunded,all FVGs,swing,416,1.26,35.8,14010,13.1
+GoatFunded,all FVGs,both,490,1.29,51.0,16157,18.4
+GoatFunded,all FVGs,swing 21-23,211,1.27,18.0,11879,12.1
+GoatFunded,all FVGs,swing 24-26,205,1.25,17.8,11793,11.0
+GoatFunded,intact (no 4H close through),swing,273,1.46,37.8,14402,11.2
+GoatFunded,intact (no 4H close through),both,346,1.44,53.1,16616,15.9
+GoatFunded,intact (no 4H close through),swing 21-23,138,1.57,21.9,12389,5.6
+GoatFunded,intact (no 4H close through),swing 24-26,135,1.36,15.9,11624,9.8
+GoatFunded,fresh (never traded into),swing,225,1.52,34.0,13883,7.5
+GoatFunded,fresh (never traded into),both,299,1.47,49.2,16011,10.2
+GoatFunded,fresh (never traded into),swing 21-23,119,1.56,18.2,11947,4.9
+GoatFunded,fresh (never traded into),swing 24-26,106,1.47,15.7,11620,7.5
+Pepperstone,off,swing,132,1.69,26.0,12867,7.1
+Pepperstone,off,both,208,1.95,68.4,19419,12.3
+Pepperstone,off,swing 21-23,60,2.11,16.0,11702,3.6
+Pepperstone,off,swing 24-26,72,1.43,10.0,10995,7.1
+Pepperstone,all FVGs,swing,461,1.23,35.9,13999,15.4
+Pepperstone,all FVGs,both,538,1.43,81.3,21759,20.1
+Pepperstone,all FVGs,swing 21-23,228,1.23,16.7,11730,11.7
+Pepperstone,all FVGs,swing 24-26,233,1.23,19.1,11934,12.9
+Pepperstone,intact (no 4H close through),swing,283,1.35,31.9,13557,14.1
+Pepperstone,intact (no 4H close through),both,359,1.6,74.3,20461,18.1
+Pepperstone,intact (no 4H close through),swing 21-23,139,1.71,24.8,12749,4.0
+Pepperstone,intact (no 4H close through),swing 24-26,144,1.13,7.1,10633,12.3
+Pepperstone,fresh (never traded into),swing,240,1.68,44.5,15419,5.3
+Pepperstone,fresh (never traded into),both,317,1.9,90.0,23965,9.6
+Pepperstone,fresh (never traded into),swing 21-23,119,2.15,28.1,13197,3.6
+Pepperstone,fresh (never traded into),swing 24-26,121,1.41,16.4,11683,5.3

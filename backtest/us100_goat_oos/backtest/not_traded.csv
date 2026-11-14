@@ -1,0 +1,5 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,3,long,5m,touch,no trigger
+US100,8,long,5m,touch,no trigger
+US100,12,short,5m,touch,no trigger
+US100,16,long,5m,touch,no retest

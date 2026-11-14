@@ -1,0 +1,3 @@
+entry_tf,entry_mode,symbol,trades,wins,losses,breakeven,open,win_rate_%,avg_planned_RR,gross_win_R,gross_loss_R,profit_factor,total_R,avg_R,avg_hold_days,median_hold_days,end_balance_1%,max_dd_%
+5m,ce,US100,7,2,3,2,0,28.6,3.0,5.92,3.13,1.89,2.79,0.4,0.1,0.1,10272.46,2.06
+5m,touch,US100,7,3,4,0,0,42.9,3.0,8.92,4.09,2.18,4.83,0.69,0.7,0.1,10478.74,2.05

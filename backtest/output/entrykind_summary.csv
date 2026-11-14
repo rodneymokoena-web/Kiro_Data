@@ -1,0 +1,55 @@
+broker,variant,period,n,WR,PF,R,acct,dd
+GoatFunded,4H IFVG entry (current),2021-26,162,53,1.84,35.6,14149,5.6
+GoatFunded,4H IFVG entry (current),21-23,85,55,1.81,17.3,11852,3.4
+GoatFunded,4H IFVG entry (current),24-26,77,51,1.86,18.3,11937,5.6
+GoatFunded,"breaker: break by close, FVG right after",2021-26,90,37,1.56,25.7,12704,8.3
+GoatFunded,"breaker: break by close, FVG right after",21-23,46,37,1.84,19.1,11967,5.0
+GoatFunded,"breaker: break by close, FVG right after",24-26,44,36,1.29,6.5,10615,6.9
+GoatFunded,"breaker: break by wick, FVG right after",2021-26,89,34,1.49,23.6,12425,12.0
+GoatFunded,"breaker: break by wick, FVG right after",21-23,45,33,1.68,16.3,11630,7.0
+GoatFunded,"breaker: break by wick, FVG right after",24-26,44,34,1.3,7.3,10683,7.7
+GoatFunded,"breaker: break by close, FVG anywhere after",2021-26,152,49,1.72,26.5,12955,7.3
+GoatFunded,"breaker: break by close, FVG anywhere after",21-23,81,52,1.86,17.4,11861,3.2
+GoatFunded,"breaker: break by close, FVG anywhere after",24-26,71,46,1.55,9.1,10921,7.3
+GoatFunded,"breaker: break by wick, FVG anywhere after",2021-26,152,49,1.6,23.1,12526,7.3
+GoatFunded,"breaker: break by wick, FVG anywhere after",21-23,81,51,1.71,15.2,11598,5.4
+GoatFunded,"breaker: break by wick, FVG anywhere after",24-26,71,46,1.46,8.0,10800,7.3
+GoatFunded,"either: break by close, FVG right after",2021-26,166,53,1.9,37.3,14399,5.5
+GoatFunded,"either: break by close, FVG right after",21-23,87,56,1.97,19.6,12132,2.9
+GoatFunded,"either: break by close, FVG right after",24-26,79,49,1.83,17.7,11868,5.5
+GoatFunded,"either: break by wick, FVG right after",2021-26,165,52,1.81,34.5,13994,5.5
+GoatFunded,"either: break by wick, FVG right after",21-23,86,55,1.79,16.8,11791,4.2
+GoatFunded,"either: break by wick, FVG right after",24-26,79,49,1.83,17.7,11868,5.5
+GoatFunded,"either: break by close, FVG anywhere after",2021-26,168,52,1.96,37.1,14369,4.3
+GoatFunded,"either: break by close, FVG anywhere after",21-23,90,53,1.9,18.3,11965,2.5
+GoatFunded,"either: break by close, FVG anywhere after",24-26,78,51,2.03,18.8,12009,4.3
+GoatFunded,"either: break by wick, FVG anywhere after",2021-26,168,52,1.88,34.9,14050,4.3
+GoatFunded,"either: break by wick, FVG anywhere after",21-23,90,52,1.75,16.0,11699,4.1
+GoatFunded,"either: break by wick, FVG anywhere after",24-26,78,51,2.03,18.8,12009,4.3
+Pepperstone,4H IFVG entry (current),2021-26,175,57,2.05,43.8,15353,3.5
+Pepperstone,4H IFVG entry (current),21-23,85,65,2.44,23.6,12627,3.0
+Pepperstone,4H IFVG entry (current),24-26,90,49,1.8,20.2,12159,3.5
+Pepperstone,"breaker: break by close, FVG right after",2021-26,101,36,1.7,37.1,14052,14.7
+Pepperstone,"breaker: break by close, FVG right after",21-23,43,30,1.0,0.1,9924,13.8
+Pepperstone,"breaker: break by close, FVG right after",24-26,58,40,2.38,37.0,14159,6.0
+Pepperstone,"breaker: break by wick, FVG right after",2021-26,100,34,1.69,37.4,14067,16.0
+Pepperstone,"breaker: break by wick, FVG right after",21-23,42,29,0.98,-0.5,9865,14.3
+Pepperstone,"breaker: break by wick, FVG right after",24-26,58,38,2.35,37.8,14258,6.9
+Pepperstone,"breaker: break by close, FVG anywhere after",2021-26,160,48,1.36,16.3,11699,4.2
+Pepperstone,"breaker: break by close, FVG anywhere after",21-23,78,53,1.58,11.2,11162,4.0
+Pepperstone,"breaker: break by close, FVG anywhere after",24-26,82,43,1.2,5.1,10480,4.2
+Pepperstone,"breaker: break by wick, FVG anywhere after",2021-26,161,47,1.33,15.3,11578,4.3
+Pepperstone,"breaker: break by wick, FVG anywhere after",21-23,78,53,1.58,11.2,11162,4.0
+Pepperstone,"breaker: break by wick, FVG anywhere after",24-26,83,42,1.15,4.0,10372,4.2
+Pepperstone,"either: break by close, FVG right after",2021-26,178,56,2.09,43.3,15289,4.0
+Pepperstone,"either: break by close, FVG right after",21-23,86,64,2.49,22.9,12544,3.0
+Pepperstone,"either: break by close, FVG right after",24-26,92,48,1.84,20.4,12187,4.0
+Pepperstone,"either: break by wick, FVG right after",2021-26,178,56,2.1,43.9,15368,3.8
+Pepperstone,"either: break by wick, FVG right after",21-23,85,64,2.45,22.3,12470,3.0
+Pepperstone,"either: break by wick, FVG right after",24-26,93,48,1.88,21.5,12323,3.8
+Pepperstone,"either: break by close, FVG anywhere after",2021-26,181,53,1.96,38.9,14623,4.1
+Pepperstone,"either: break by close, FVG anywhere after",21-23,88,59,2.17,19.1,12072,3.0
+Pepperstone,"either: break by close, FVG anywhere after",24-26,93,47,1.81,19.8,12112,4.1
+Pepperstone,"either: break by wick, FVG anywhere after",2021-26,181,53,1.96,38.9,14623,4.1
+Pepperstone,"either: break by wick, FVG anywhere after",21-23,88,59,2.17,19.1,12072,3.0
+Pepperstone,"either: break by wick, FVG anywhere after",24-26,93,47,1.81,19.8,12112,4.1

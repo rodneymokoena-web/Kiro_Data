@@ -1,0 +1,465 @@
+source,model,variant,entry_time,exit,r_net
+pepperstone_oos,swing,baseline,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,baseline,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,baseline,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,baseline,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,baseline,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,baseline,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,baseline,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,baseline,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,baseline,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,baseline,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,baseline,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,baseline,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,baseline,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,baseline,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,baseline,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,baseline,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,baseline,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,baseline,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,baseline,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,baseline,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,baseline,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,baseline,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,baseline,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,baseline,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,baseline,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,baseline,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,baseline,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,baseline,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,baseline,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,baseline,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,baseline,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,baseline,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,baseline,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,baseline,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,baseline,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,baseline,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,baseline,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,baseline,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,baseline,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-06-03 14:00:00+00:00,stop,-1.0086167800453516
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-09-23 15:00:00+00:00,target,0.12407429889522874
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-10-07 12:00:00+00:00,target,0.5155200934124781
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-02-28 17:00:00+00:00,target,0.0555605101221803
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-06-07 13:00:00+00:00,target,0.298946937940907
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-07-26 15:00:00+00:00,stop,-1.005076820307281
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-10-18 04:00:00+00:00,target,0.4362678295630051
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-10-27 19:00:00+00:00,target,0.7204167138489395
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-11-08 17:00:00+00:00,target,0.4099034312718309
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-04-06 14:00:00+00:00,stop,-1.006258234519104
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-05-24 12:00:00+00:00,target,0.1738518388175236
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,inversion window 80 -> 160 1H candles,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,4H FVG lookback 60 -> 120 4H candles,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,retest window 48 -> 96 h,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,retest window 48 -> 96 h,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,retest window 48 -> 96 h,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,no 1H MSS,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,no 1H MSS,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,no 1H MSS,2021-05-07 13:00:00+00:00,target,0.17395851490325678
+pepperstone_oos,swing,no 1H MSS,2021-06-16 13:00:00+00:00,target,1.223590408295548
+pepperstone_oos,swing,no 1H MSS,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,no 1H MSS,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,no 1H MSS,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,no 1H MSS,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,no 1H MSS,2021-09-07 09:00:00+00:00,target,0.5407608695652311
+pepperstone_oos,swing,no 1H MSS,2021-09-09 15:00:00+00:00,stop,-1.0390544707091458
+pepperstone_oos,swing,no 1H MSS,2021-10-05 19:00:00+00:00,target,0.2725300729639132
+pepperstone_oos,swing,no 1H MSS,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,no 1H MSS,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,no 1H MSS,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,no 1H MSS,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,no 1H MSS,2022-01-11 14:00:00+00:00,target,0.5603053435114531
+pepperstone_oos,swing,no 1H MSS,2022-01-19 10:00:00+00:00,stop,-1.0107954545454545
+pepperstone_oos,swing,no 1H MSS,2022-01-24 23:00:00+00:00,target,0.24630957401940048
+pepperstone_oos,swing,no 1H MSS,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,no 1H MSS,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,no 1H MSS,2022-02-22 18:00:00+00:00,breakeven,-0.01591956430666103
+pepperstone_oos,swing,no 1H MSS,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,no 1H MSS,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,no 1H MSS,2022-03-23 20:00:00+00:00,stop,-1.0089180943440508
+pepperstone_oos,swing,no 1H MSS,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,no 1H MSS,2022-04-20 14:00:00+00:00,target,0.4559585492227876
+pepperstone_oos,swing,no 1H MSS,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,no 1H MSS,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,no 1H MSS,2022-06-03 12:00:00+00:00,breakeven,-0.015121368881814607
+pepperstone_oos,swing,no 1H MSS,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,no 1H MSS,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,no 1H MSS,2022-08-11 16:00:00+00:00,stop,-1.0111962286387743
+pepperstone_oos,swing,no 1H MSS,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,no 1H MSS,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,no 1H MSS,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,no 1H MSS,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,no 1H MSS,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,no 1H MSS,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,no 1H MSS,2022-11-11 15:00:00+00:00,stop,-1.0200421940928273
+pepperstone_oos,swing,no 1H MSS,2022-11-15 19:00:00+00:00,target,0.5065738592420705
+pepperstone_oos,swing,no 1H MSS,2022-12-08 14:00:00+00:00,target,0.17128248828291384
+pepperstone_oos,swing,no 1H MSS,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,no 1H MSS,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,no 1H MSS,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,no 1H MSS,2023-02-03 14:00:00+00:00,stop,-1.027065527065527
+pepperstone_oos,swing,no 1H MSS,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,no 1H MSS,2023-03-13 08:00:00+00:00,stop,-1.0208905992303463
+pepperstone_oos,swing,no 1H MSS,2023-03-22 09:00:00+00:00,stop,-1.0561299852289476
+pepperstone_oos,swing,no 1H MSS,2023-04-13 08:00:00+00:00,target,6.070257611241123
+pepperstone_oos,swing,no 1H MSS,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,no 1H MSS,2023-05-08 14:00:00+00:00,stop,-1.0227544910179642
+pepperstone_oos,swing,no 1H MSS,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,no 1H MSS,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,no 1H MSS,2023-08-17 13:00:00+00:00,stop,-1.0201164637374271
+pepperstone_oos,swing,no 1H MSS,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,no 1H MSS,2023-08-30 10:00:00+00:00,stop,-1.0274170274170278
+pepperstone_oos,swing,no 1H MSS,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,no 1H MSS,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,no 1H MSS,2023-10-25 13:00:00+00:00,stop,-1.0111830488522662
+pepperstone_oos,swing,no 1H MSS,2023-10-30 14:00:00+00:00,target,0.4302387267904509
+pepperstone_oos,swing,no 1H MSS,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,no 1H MSS,2023-11-13 06:00:00+00:00,breakeven,-0.037924151696607886
+pepperstone_oos,swing,no 1H MSS,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,no 1H MSS,2023-11-22 10:00:00+00:00,stop,-1.0222222222222224
+pepperstone_oos,swing,no 1H MSS,2023-11-29 17:00:00+00:00,target,0.1863098301595478
+pepperstone_oos,swing,no 1H MSS,2023-12-14 17:00:00+00:00,breakeven,-0.026704146170062698
+pepperstone_oos,swing,no 1H MSS,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,no 1H MSS,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-05-03 22:00:00+00:00,target,0.07558694407329952
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-12-17 19:00:00+00:00,stop,-1.0076305220883535
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-09-29 12:00:00+00:00,target,0.39949431099872473
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-12-06 19:00:00+00:00,target,0.16599316133043232
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,displacement 1 ATR -> 0.5 ATR,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,no displacement requirement,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,no displacement requirement,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,no displacement requirement,2021-05-03 22:00:00+00:00,target,0.07558694407329952
+pepperstone_oos,swing,no displacement requirement,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,no displacement requirement,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,no displacement requirement,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,no displacement requirement,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,no displacement requirement,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,no displacement requirement,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,no displacement requirement,2021-12-17 19:00:00+00:00,stop,-1.0076305220883535
+pepperstone_oos,swing,no displacement requirement,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,no displacement requirement,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,no displacement requirement,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,no displacement requirement,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,no displacement requirement,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,no displacement requirement,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,no displacement requirement,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,no displacement requirement,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,no displacement requirement,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,no displacement requirement,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,no displacement requirement,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,no displacement requirement,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,no displacement requirement,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,no displacement requirement,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,no displacement requirement,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,no displacement requirement,2022-09-29 12:00:00+00:00,target,0.39949431099872473
+pepperstone_oos,swing,no displacement requirement,2022-09-29 02:00:00+00:00,stop,-1.0069128615608514
+pepperstone_oos,swing,no displacement requirement,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,no displacement requirement,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,no displacement requirement,2022-12-06 19:00:00+00:00,target,0.16599316133043232
+pepperstone_oos,swing,no displacement requirement,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,no displacement requirement,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,no displacement requirement,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,no displacement requirement,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,no displacement requirement,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,no displacement requirement,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,no displacement requirement,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,no displacement requirement,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,no displacement requirement,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,no displacement requirement,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,no displacement requirement,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,no displacement requirement,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,no displacement requirement,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,no displacement requirement,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-06-03 14:00:00+00:00,stop,-1.0086167800453516
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-09-23 15:00:00+00:00,target,0.12407429889522874
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-10-07 12:00:00+00:00,target,0.5155200934124781
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-12-09 18:00:00+00:00,target,0.2961751187972294
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-02-28 17:00:00+00:00,target,0.0555605101221803
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-06-07 13:00:00+00:00,target,0.298946937940907
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-07-26 15:00:00+00:00,stop,-1.005076820307281
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-10-18 04:00:00+00:00,target,0.4362678295630051
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-10-27 19:00:00+00:00,target,0.7204167138489395
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-11-08 17:00:00+00:00,target,0.4099034312718309
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-04-06 14:00:00+00:00,stop,-1.006258234519104
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-05-24 12:00:00+00:00,target,0.1738518388175236
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,window 160 + lookback 120 + retest 96,2023-12-29 18:00:00+00:00,open,-0.026327336551105973
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-04-04 23:00:00+00:00,stop,-1.0502645502645487
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-04-15 07:00:00+00:00,stop,-1.015224358974359
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-05-03 22:00:00+00:00,target,0.07558694407329952
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-05-07 13:00:00+00:00,target,0.17395851490325678
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-06-03 14:00:00+00:00,stop,-1.0086167800453516
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-06-08 06:00:00+00:00,breakeven,-0.054285714285714284
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-06-16 13:00:00+00:00,target,1.223590408295548
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-07-15 18:00:00+00:00,target,0.42254388666461723
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-07-27 15:00:00+00:00,target,0.35788937037981383
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-08-06 13:00:00+00:00,target,0.9370485036119772
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-08-19 16:00:00+00:00,target,0.33559991226145813
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-09-07 09:00:00+00:00,target,0.5407608695652311
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-09-09 15:00:00+00:00,stop,-1.0390544707091458
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-09-23 15:00:00+00:00,target,0.12407429889522874
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-10-05 19:00:00+00:00,target,0.2725300729639132
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-10-07 12:00:00+00:00,target,0.5155200934124781
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-10-26 17:00:00+00:00,stop,-1.0154408776919952
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-11-22 23:00:00+00:00,target,0.4389196923627282
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-09 18:00:00+00:00,target,0.2961751187972294
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-17 19:00:00+00:00,stop,-1.0076305220883535
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-21 15:00:00+00:00,target,2.402863961813804
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2021-12-31 01:00:00+00:00,target,0.30604288499025195
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-01-11 14:00:00+00:00,target,0.5603053435114531
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-01-19 10:00:00+00:00,stop,-1.0107954545454545
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-01-24 23:00:00+00:00,target,0.24630957401940048
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-03 21:00:00+00:00,target,0.17515475520540158
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-15 10:00:00+00:00,stop,-1.0044376970687843
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-22 18:00:00+00:00,breakeven,-0.01591956430666103
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-24 17:00:00+00:00,target,1.510021668472381
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-02-28 17:00:00+00:00,target,0.0555605101221803
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-03-21 14:00:00+00:00,stop,-1.012210796915167
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-03-23 20:00:00+00:00,stop,-1.0089180943440508
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-03-31 17:00:00+00:00,target,0.14270363206533598
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-04-20 14:00:00+00:00,target,0.4559585492227876
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-04-27 11:00:00+00:00,target,1.4597623089982998
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-05-02 20:00:00+00:00,target,1.0494037478705314
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-05-23 07:00:00+00:00,stop,-1.0044491277367988
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-03 12:00:00+00:00,breakeven,-0.015121368881814607
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-07 13:00:00+00:00,target,0.298946937940907
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-07 20:00:00+00:00,target,0.17487199684914934
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-06-15 20:00:00+00:00,target,0.38067427661268066
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-07-26 15:00:00+00:00,stop,-1.005076820307281
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-08-11 16:00:00+00:00,stop,-1.0111962286387743
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-08-17 17:00:00+00:00,target,0.9430944324823218
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-08-25 09:00:00+00:00,target,0.940664126292869
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-01 20:00:00+00:00,target,0.47154471544715915
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-08 13:00:00+00:00,target,0.5019455252918187
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-09-29 12:00:00+00:00,target,0.39949431099872473
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-05 15:00:00+00:00,stop,-1.0086070215175538
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-18 04:00:00+00:00,target,0.4362678295630051
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-26 02:00:00+00:00,target,0.2447602987231927
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-10-27 19:00:00+00:00,target,0.7204167138489395
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-11-08 17:00:00+00:00,target,0.4099034312718309
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-11-11 15:00:00+00:00,stop,-1.0200421940928273
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-11-15 19:00:00+00:00,target,0.5065738592420705
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-06 19:00:00+00:00,target,0.16599316133043232
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-08 14:00:00+00:00,target,0.17128248828291384
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-15 11:00:00+00:00,target,0.19798136645962655
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2022-12-30 14:00:00+00:00,target,0.5243962543124784
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-01-25 14:00:00+00:00,target,0.31328036322360786
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-01-30 12:00:00+00:00,target,0.24914943732007425
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-02-03 14:00:00+00:00,stop,-1.027065527065527
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-02-13 19:00:00+00:00,target,1.1947069943289268
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-03-13 08:00:00+00:00,stop,-1.0208905992303463
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-03-22 09:00:00+00:00,stop,-1.0561299852289476
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-04-06 14:00:00+00:00,stop,-1.006258234519104
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-04-13 08:00:00+00:00,target,6.070257611241123
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-02 16:00:00+00:00,stop,-1.0108540417023708
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-08 14:00:00+00:00,stop,-1.0227544910179642
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-24 12:00:00+00:00,target,0.1738518388175236
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-05-31 13:00:00+00:00,stop,-1.0101931330472103
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-06-08 14:00:00+00:00,stop,-1.0091368117335897
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-06-16 02:00:00+00:00,stop,-1.055152394775038
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-09 07:00:00+00:00,stop,-1.0145259938837923
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-17 13:00:00+00:00,stop,-1.0201164637374271
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-21 14:00:00+00:00,target,0.7741609891496318
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-08-30 10:00:00+00:00,stop,-1.0274170274170278
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-09-15 13:00:00+00:00,target,0.8028335301062461
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-09-22 11:00:00+00:00,target,1.5732484076432673
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-09-28 18:00:00+00:00,target,0.2767489711934106
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-10-25 13:00:00+00:00,stop,-1.0111830488522662
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-10-30 14:00:00+00:00,target,0.4302387267904509
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-10 01:00:00+00:00,stop,-1.0107557316727993
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-13 06:00:00+00:00,breakeven,-0.037924151696607886
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-15 17:00:00+00:00,target,0.619810633648939
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-22 10:00:00+00:00,stop,-1.0222222222222224
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-11-29 17:00:00+00:00,target,0.1863098301595478
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-14 17:00:00+00:00,breakeven,-0.026704146170062698
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-21 13:00:00+00:00,target,0.2331174838113092
+pepperstone_oos,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2023-12-29 18:00:00+00:00,open,-0.026327336551105973

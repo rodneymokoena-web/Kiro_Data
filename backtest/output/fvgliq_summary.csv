@@ -1,0 +1,21 @@
+broker,fvg_liq,model,n,WR,PF,R,acct,dd
+GoatFunded,0,swing,122,53,1.71,24.3,12658,4.8
+GoatFunded,0,intraday,73,25,1.4,15.3,11537,7.7
+GoatFunded,0,both,195,43,1.54,39.6,14604,11.8
+GoatFunded,1,swing,416,51,1.26,35.8,14010,13.1
+GoatFunded,1,intraday,74,24,1.4,15.2,11532,7.7
+GoatFunded,1,both,490,47,1.29,51.0,16157,18.4
+GoatFunded,0,swing 2021-23,60,57,1.74,12.7,11325,4.4
+GoatFunded,0,swing 2024-26,62,50,1.67,11.6,11176,4.8
+GoatFunded,1,swing 2021-23,211,53,1.27,18.0,11879,12.1
+GoatFunded,1,swing 2024-26,205,49,1.25,17.8,11793,11.0
+Pepperstone,0,swing,132,56,1.69,26.0,12867,7.1
+Pepperstone,0,intraday,76,34,2.23,42.5,15091,7.4
+Pepperstone,0,both,208,48,1.95,68.4,19419,12.3
+Pepperstone,1,swing,461,53,1.23,35.9,13999,15.4
+Pepperstone,1,intraday,77,35,2.32,45.4,15542,7.4
+Pepperstone,1,both,538,50,1.43,81.3,21759,20.1
+Pepperstone,0,swing 2021-23,60,63,2.11,16.0,11702,3.6
+Pepperstone,0,swing 2024-26,72,50,1.43,10.0,10995,7.1
+Pepperstone,1,swing 2021-23,228,56,1.23,16.7,11730,11.7
+Pepperstone,1,swing 2024-26,233,50,1.23,19.1,11934,12.9

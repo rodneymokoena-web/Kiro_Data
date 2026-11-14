@@ -1,0 +1,316 @@
+source,grid,variant,model,entry_time,exit,r_net,risk_pts
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2021-08-20 13:00:00+00:00,target,2.9921617161716174,242.40000000000146
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2021-11-24 10:00:00+00:00,breakeven,-0.005119913769873344,371.10000000000036
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2021-12-21 17:00:00+00:00,target,2.9932504440497403,281.5
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2021-12-22 13:00:00+00:00,target,2.9915026833631484,223.59999999999854
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-05-04 17:00:00+00:00,breakeven,-0.005673335323977313,334.89999999999964
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-05-10 13:00:00+00:00,stop,-1.0075727381426864,250.89999999999964
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-08-12 12:00:00+00:00,stop,-1.0130944176430048,145.10000000000036
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-08-18 14:00:00+00:00,target,2.9929130921298026,268.10000000000036
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-08-25 15:00:00+00:00,stop,-1.0105321507760532,180.39999999999964
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-10-26 18:00:00+00:00,target,2.989247311827957,176.6999999999989
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-11-17 17:00:00+00:00,breakeven,-0.009345794392523313,203.3000000000011
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-12-09 10:00:00+00:00,stop,-1.0113500597371565,167.39999999999964
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2022-12-30 11:00:00+00:00,target,2.9920965058236275,240.39999999999964
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2023-02-14 08:00:00+00:00,stop,-1.006879073135409,276.2000000000007
+pepperstone_oos,mt5,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2023-05-04 12:00:00+00:00,stop,-1.008203799654577,231.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-04-15 07:00:00+00:00,stop,-1.0414847161572058,45.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-06-17 13:00:00+00:00,stop,-1.0538243626062334,35.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-08-06 13:00:00+00:00,breakeven,-0.046228710462286694,41.100000000000364
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-08-19 17:00:00+00:00,target,2.991622574955908,226.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-11-22 23:00:00+00:00,breakeven,-0.03411131059245916,55.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-12-16 18:00:00+00:00,breakeven,-0.004878048780487805,389.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-12-21 08:00:00+00:00,target,2.9888235294117647,170.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2021-12-22 08:00:00+00:00,target,2.978794642857143,89.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-03-31 17:00:00+00:00,breakeven,-0.011356843992827305,167.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-05-03 07:00:00+00:00,stop,-1.0120558375634519,157.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-05-10 10:00:00+00:00,breakeven,-0.013991163475699632,135.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-08-12 08:00:00+00:00,breakeven,-0.05135135135135135,37.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-08-17 17:00:00+00:00,target,2.9838022165387894,117.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-08-25 09:00:00+00:00,breakeven,-0.016918967052537953,112.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-09-29 12:00:00+00:00,stop,-1.0147058823529411,129.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-09-29 02:00:00+00:00,stop,-1.0242656449553005,78.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-10-04 13:00:00+00:00,stop,-1.007557677008751,251.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-10-26 02:00:00+00:00,stop,-1.011085180863477,171.40000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-11-16 18:00:00+00:00,breakeven,-0.011425135297654765,166.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-12-06 23:00:00+00:00,stop,-1.0040220152413208,472.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2022-12-29 18:00:00+00:00,stop,-1.0070816250465895,268.2999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-01-25 14:00:00+00:00,stop,-1.011494252873563,165.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-02-13 19:00:00+00:00,breakeven,-0.02191464821222588,86.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-03-02 23:00:00+00:00,target,2.9750656167979006,76.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-05-02 22:00:00+00:00,stop,-1.050397877984084,37.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-05-31 13:00:00+00:00,stop,-1.0240506329113925,79.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-09-15 13:00:00+00:00,target,2.979074889867842,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-11-10 03:00:00+00:00,stop,-1.0163934426229506,115.90000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-11-30 12:00:00+00:00,target,2.980371900826446,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2023-12-29 18:00:00+00:00,open,-0.04761904761902452,63.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-04-15 07:00:00+00:00,stop,-1.01956745623069,97.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-06-17 13:00:00+00:00,stop,-1.047263681592041,40.19999999999891
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-08-06 13:00:00+00:00,breakeven,-0.03619047619047619,52.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-08-19 17:00:00+00:00,target,2.9845779220779223,123.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-11-22 23:00:00+00:00,breakeven,-0.008612873980054454,220.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-12-16 18:00:00+00:00,breakeven,-0.0046386718750000165,409.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-12-21 08:00:00+00:00,target,2.988921282798834,171.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2021-12-22 08:00:00+00:00,target,2.9787709497206705,89.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-03-31 17:00:00+00:00,breakeven,-0.009926854754440979,191.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-05-03 07:00:00+00:00,stop,-1.0120101137800255,158.1999999999989
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-05-10 10:00:00+00:00,stop,-1.0076954232482787,246.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-08-12 08:00:00+00:00,breakeven,-0.04822335025380755,39.399999999999636
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-08-17 17:00:00+00:00,target,2.988350705088903,163.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-08-25 09:00:00+00:00,breakeven,-0.011919698870765397,159.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-09-29 12:00:00+00:00,stop,-1.0186823992133727,101.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-09-29 02:00:00+00:00,stop,-1.0218642117376295,86.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-10-04 13:00:00+00:00,stop,-1.0070527097253155,269.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-10-26 02:00:00+00:00,breakeven,-0.00909090909090909,209.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-11-16 18:00:00+00:00,breakeven,-0.03109656301145644,61.100000000000364
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-12-06 23:00:00+00:00,stop,-1.003784106751643,502.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2022-12-29 18:00:00+00:00,stop,-1.0075848303393213,250.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-01-25 14:00:00+00:00,stop,-1.0091876208897486,206.8000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-02-13 19:00:00+00:00,breakeven,-0.017924528301886792,106.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-03-02 23:00:00+00:00,target,2.9812992125984255,101.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-05-02 22:00:00+00:00,stop,-1.0422222222222222,45.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-05-31 13:00:00+00:00,stop,-1.0183930300096804,103.30000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-09-15 13:00:00+00:00,target,2.979074889867842,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-11-10 03:00:00+00:00,stop,-1.0173992673992673,109.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-11-30 12:00:00+00:00,target,2.980371900826446,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2023-12-29 18:00:00+00:00,open,-0.037593984962388124,79.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-04-15 07:00:00+00:00,stop,-1.0165505226480838,114.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-06-17 13:00:00+00:00,stop,-1.0139911634756997,135.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-08-06 13:00:00+00:00,breakeven,-0.03909465020576102,48.600000000000364
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-08-19 17:00:00+00:00,target,2.991622574955908,226.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-11-22 23:00:00+00:00,breakeven,-0.007910074937552017,240.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-12-16 18:00:00+00:00,stop,-1.003984899328859,476.7999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-12-21 08:00:00+00:00,target,2.990635781172992,202.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2021-12-22 08:00:00+00:00,breakeven,-0.005634638196915795,337.1999999999989
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-03-31 17:00:00+00:00,breakeven,-0.011356843992827305,167.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-05-03 07:00:00+00:00,stop,-1.0110017371163869,172.6999999999989
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-05-10 10:00:00+00:00,breakeven,-0.013305322128851608,142.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-08-12 08:00:00+00:00,breakeven,-0.05135135135135135,37.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-08-17 17:00:00+00:00,target,2.99,190.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-08-25 09:00:00+00:00,breakeven,-0.015236567762630446,124.69999999999891
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-09-29 12:00:00+00:00,stop,-1.0110017371163869,172.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-09-29 02:00:00+00:00,stop,-1.0057768318637883,328.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-10-04 13:00:00+00:00,stop,-1.0036907536907536,514.7999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-10-26 02:00:00+00:00,stop,-1.0106861642294713,177.8000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-11-16 18:00:00+00:00,breakeven,-0.011425135297654765,166.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-12-06 23:00:00+00:00,stop,-1.0040220152413208,472.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2022-12-29 18:00:00+00:00,stop,-1.0070816250465895,268.2999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-01-25 14:00:00+00:00,stop,-1.0094012864918358,202.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-02-13 19:00:00+00:00,breakeven,-0.009895833333333333,192.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-03-02 23:00:00+00:00,target,2.9750656167979006,76.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-05-02 22:00:00+00:00,stop,-1.0116350275566444,163.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-05-31 13:00:00+00:00,stop,-1.0104052573932092,182.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-09-15 13:00:00+00:00,target,2.979074889867842,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-11-10 03:00:00+00:00,stop,-1.0100369783412573,189.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-11-30 12:00:00+00:00,target,2.980371900826446,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2023-12-29 18:00:00+00:00,open,-0.021770682148030192,137.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-04-15 07:00:00+00:00,stop,-1.019387755102041,98.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-06-17 13:00:00+00:00,stop,-1.0316666666666667,60.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-08-06 13:00:00+00:00,breakeven,-0.03619047619047619,52.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-08-19 17:00:00+00:00,target,2.9845779220779223,123.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-11-22 23:00:00+00:00,breakeven,-0.008612873980054454,220.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-12-16 18:00:00+00:00,breakeven,-0.0046386718750000165,409.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-12-21 08:00:00+00:00,target,2.9917677642980935,230.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2021-12-22 08:00:00+00:00,breakeven,-0.005204053683922233,365.09999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-03-31 17:00:00+00:00,breakeven,-0.009926854754440979,191.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-05-03 07:00:00+00:00,breakeven,-0.006484641638225256,293.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-05-10 10:00:00+00:00,stop,-1.0076954232482787,246.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-08-12 08:00:00+00:00,stop,-1.0253333333333334,75.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-08-17 17:00:00+00:00,target,2.9908697741470447,208.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-08-25 09:00:00+00:00,breakeven,-0.011919698870765397,159.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-09-29 12:00:00+00:00,stop,-1.0096251266464031,197.40000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-09-29 02:00:00+00:00,stop,-1.0053733031674208,353.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-10-04 13:00:00+00:00,stop,-1.0054363376251787,349.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-10-26 02:00:00+00:00,breakeven,-0.008023648648648612,236.8000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-11-16 18:00:00+00:00,breakeven,-0.018428709990300614,103.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-12-06 23:00:00+00:00,stop,-1.003784106751643,502.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2022-12-29 18:00:00+00:00,stop,-1.0075848303393213,250.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-01-25 14:00:00+00:00,stop,-1.009077878643096,209.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-02-13 19:00:00+00:00,breakeven,-0.008140531276778076,233.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-03-02 23:00:00+00:00,target,2.9812992125984255,101.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-05-02 22:00:00+00:00,stop,-1.0116279069767442,163.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-05-31 13:00:00+00:00,stop,-1.0180265654648954,105.40000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-09-15 13:00:00+00:00,target,2.979074889867842,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-11-10 03:00:00+00:00,stop,-1.012265978050355,154.90000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-11-30 12:00:00+00:00,target,2.980371900826446,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2023-12-29 18:00:00+00:00,open,-0.01977587343440033,151.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-04-15 07:00:00+00:00,stop,-1.013552068473609,140.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-06-17 13:00:00+00:00,stop,-1.0278184480234265,68.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-08-06 13:00:00+00:00,breakeven,-0.0359168241965976,52.899999999999636
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-08-19 17:00:00+00:00,breakeven,-0.007593924860111888,250.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-11-22 23:00:00+00:00,breakeven,-0.00770166193757598,246.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-12-16 18:00:00+00:00,stop,-1.0037818471337578,502.3999999999978
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-12-21 08:00:00+00:00,target,2.9929915160457465,271.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2021-12-22 08:00:00+00:00,target,2.9893617021276597,178.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-03-31 17:00:00+00:00,breakeven,-0.009926854754440979,191.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-05-03 07:00:00+00:00,breakeven,-0.006484641638225256,293.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-05-10 10:00:00+00:00,stop,-1.0076954232482787,246.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-08-12 08:00:00+00:00,stop,-1.0183397683397684,103.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-08-17 17:00:00+00:00,target,2.9922764227642276,246.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-08-25 09:00:00+00:00,breakeven,-0.010832383124287364,175.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-09-29 12:00:00+00:00,stop,-1.0110017371163869,172.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-09-29 02:00:00+00:00,stop,-1.0057768318637883,328.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-10-04 13:00:00+00:00,stop,-1.0031493452676943,603.2999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-10-26 02:00:00+00:00,breakeven,-0.008899297423887587,213.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-11-16 18:00:00+00:00,breakeven,-0.011425135297654765,166.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-12-06 23:00:00+00:00,stop,-1.006990434142752,271.7999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2022-12-29 18:00:00+00:00,target,2.993240839558876,281.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-01-25 14:00:00+00:00,breakeven,-0.016994633273702875,111.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-02-13 19:00:00+00:00,breakeven,-0.007943143812709006,239.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-03-02 23:00:00+00:00,breakeven,-0.009438648782911112,201.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-05-02 22:00:00+00:00,stop,-1.011543134872418,164.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-05-31 13:00:00+00:00,stop,-1.0181124880838892,104.90000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-09-15 13:00:00+00:00,target,2.979074889867842,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-11-10 03:00:00+00:00,stop,-1.0090692124105012,209.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-11-30 12:00:00+00:00,target,2.980371900826446,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, 3R",swing,2023-12-29 18:00:00+00:00,open,-0.023603461841058843,127.09999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-04-15 07:00:00+00:00,stop,-1.0414847161572058,45.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-06-17 13:00:00+00:00,stop,-1.0538243626062334,35.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-08-06 13:00:00+00:00,breakeven,-0.046228710462286694,41.100000000000364
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-08-19 17:00:00+00:00,target,0.8192239858906584,226.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-11-22 23:00:00+00:00,breakeven,-0.03411131059245916,55.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-12-16 18:00:00+00:00,target,0.998716302952507,389.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-12-21 08:00:00+00:00,target,4.028235294117652,170.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2021-12-22 08:00:00+00:00,target,6.143973214285831,89.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-03-31 17:00:00+00:00,breakeven,-0.011356843992827305,167.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-05-03 07:00:00+00:00,stop,-1.0120558375634519,157.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-05-10 10:00:00+00:00,breakeven,-0.013991163475699632,135.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-08-12 08:00:00+00:00,breakeven,-0.05135135135135135,37.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-08-17 17:00:00+00:00,target,4.540494458653055,117.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-08-25 09:00:00+00:00,breakeven,-0.016918967052537953,112.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-09-29 12:00:00+00:00,stop,-1.0147058823529411,129.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-09-29 02:00:00+00:00,stop,-1.0242656449553005,78.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-10-04 13:00:00+00:00,stop,-1.007557677008751,251.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-10-26 02:00:00+00:00,stop,-1.011085180863477,171.40000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-11-16 18:00:00+00:00,breakeven,-0.011425135297654765,166.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-12-06 23:00:00+00:00,target,0.23602878916172676,472.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2022-12-29 18:00:00+00:00,stop,-1.0070816250465895,268.2999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-01-25 14:00:00+00:00,stop,-1.011494252873563,165.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-02-13 19:00:00+00:00,breakeven,-0.02191464821222588,86.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-03-02 23:00:00+00:00,breakeven,-0.024934383202099498,76.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-05-02 22:00:00+00:00,stop,-1.050397877984084,37.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-05-31 13:00:00+00:00,stop,-1.0240506329113925,79.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-09-15 13:00:00+00:00,target,3.230176211453694,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-11-10 03:00:00+00:00,stop,-1.0163934426229506,115.90000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-11-30 12:00:00+00:00,target,1.4421487603305894,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2023-12-29 18:00:00+00:00,open,-0.04761904761902452,63.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-04-15 07:00:00+00:00,stop,-1.01956745623069,97.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-06-17 13:00:00+00:00,stop,-1.047263681592041,40.19999999999891
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-08-06 13:00:00+00:00,breakeven,-0.03619047619047619,52.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-08-19 17:00:00+00:00,target,1.50811688311688,123.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-11-22 23:00:00+00:00,breakeven,-0.008612873980054454,220.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-12-16 18:00:00+00:00,target,0.949707031250007,409.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-12-21 08:00:00+00:00,target,3.9930029154518993,171.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2021-12-22 08:00:00+00:00,target,6.150837988826832,89.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-03-31 17:00:00+00:00,breakeven,-0.009926854754440979,191.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-05-03 07:00:00+00:00,stop,-1.0120101137800255,158.1999999999989
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-05-10 10:00:00+00:00,stop,-1.0076954232482787,246.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-08-12 08:00:00+00:00,breakeven,-0.04822335025380755,39.399999999999636
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-08-17 17:00:00+00:00,target,3.2654812998160567,163.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-08-25 09:00:00+00:00,breakeven,-0.011919698870765397,159.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-09-29 12:00:00+00:00,stop,-1.0186823992133727,101.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-09-29 02:00:00+00:00,stop,-1.0218642117376295,86.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-10-04 13:00:00+00:00,stop,-1.0070527097253155,269.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-10-26 02:00:00+00:00,target,2.6416267942583733,209.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-11-16 18:00:00+00:00,breakeven,-0.03109656301145644,61.100000000000364
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-12-06 23:00:00+00:00,target,0.2220673172674757,502.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2022-12-29 18:00:00+00:00,stop,-1.0075848303393213,250.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-01-25 14:00:00+00:00,stop,-1.0091876208897486,206.8000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-02-13 19:00:00+00:00,breakeven,-0.017924528301886792,106.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-03-02 23:00:00+00:00,breakeven,-0.018700787401574735,101.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-05-02 22:00:00+00:00,stop,-1.0422222222222222,45.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-05-31 13:00:00+00:00,stop,-1.0183930300096804,103.30000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-09-15 13:00:00+00:00,target,3.230176211453694,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-11-10 03:00:00+00:00,stop,-1.0173992673992673,109.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-11-30 12:00:00+00:00,target,1.4421487603305894,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2023-12-29 18:00:00+00:00,open,-0.037593984962388124,79.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-04-15 07:00:00+00:00,stop,-1.0165505226480838,114.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-06-17 13:00:00+00:00,stop,-1.0139911634756997,135.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-08-06 13:00:00+00:00,breakeven,-0.03909465020576102,48.600000000000364
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-08-19 17:00:00+00:00,target,0.8192239858906584,226.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-11-22 23:00:00+00:00,breakeven,-0.007910074937552017,240.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-12-16 18:00:00+00:00,target,0.815855704697991,476.7999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-12-21 08:00:00+00:00,target,3.375061606702819,202.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2021-12-22 08:00:00+00:00,target,1.6325622775800808,337.1999999999989
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-03-31 17:00:00+00:00,breakeven,-0.011356843992827305,167.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-05-03 07:00:00+00:00,stop,-1.0110017371163869,172.6999999999989
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-05-10 10:00:00+00:00,breakeven,-0.013305322128851608,142.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-08-12 08:00:00+00:00,breakeven,-0.05135135135135135,37.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-08-17 17:00:00+00:00,target,2.803157894736842,190.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-08-25 09:00:00+00:00,breakeven,-0.015236567762630446,124.69999999999891
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-09-29 12:00:00+00:00,stop,-1.0110017371163869,172.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-09-29 02:00:00+00:00,stop,-1.0057768318637883,328.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-10-04 13:00:00+00:00,stop,-1.0036907536907536,514.7999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-10-26 02:00:00+00:00,stop,-1.0106861642294713,177.8000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-11-16 18:00:00+00:00,breakeven,-0.011425135297654765,166.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-12-06 23:00:00+00:00,target,0.23602878916172676,472.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2022-12-29 18:00:00+00:00,stop,-1.0070816250465895,268.2999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-01-25 14:00:00+00:00,stop,-1.0094012864918358,202.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-02-13 19:00:00+00:00,breakeven,-0.009895833333333333,192.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-03-02 23:00:00+00:00,breakeven,-0.024934383202099498,76.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-05-02 22:00:00+00:00,stop,-1.0116350275566444,163.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-05-31 13:00:00+00:00,stop,-1.0104052573932092,182.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-09-15 13:00:00+00:00,target,3.230176211453694,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-11-10 03:00:00+00:00,stop,-1.0100369783412573,189.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-11-30 12:00:00+00:00,target,1.4421487603305894,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2023-12-29 18:00:00+00:00,open,-0.021770682148030192,137.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-04-15 07:00:00+00:00,stop,-1.019387755102041,98.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-06-17 13:00:00+00:00,stop,-1.0316666666666667,60.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-08-06 13:00:00+00:00,breakeven,-0.03619047619047619,52.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-08-19 17:00:00+00:00,target,1.50811688311688,123.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-11-22 23:00:00+00:00,breakeven,-0.008612873980054454,220.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-12-16 18:00:00+00:00,target,0.949707031250007,409.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-12-21 08:00:00+00:00,target,2.967071057192387,230.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2021-12-22 08:00:00+00:00,target,1.5078060805258933,365.09999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-03-31 17:00:00+00:00,breakeven,-0.009926854754440979,191.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-05-03 07:00:00+00:00,breakeven,-0.006484641638225256,293.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-05-10 10:00:00+00:00,stop,-1.0076954232482787,246.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-08-12 08:00:00+00:00,stop,-1.0253333333333334,75.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-08-17 17:00:00+00:00,target,2.5593464680442053,208.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-08-25 09:00:00+00:00,breakeven,-0.011919698870765397,159.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-09-29 12:00:00+00:00,stop,-1.0096251266464031,197.40000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-09-29 02:00:00+00:00,stop,-1.0053733031674208,353.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-10-04 13:00:00+00:00,stop,-1.0054363376251787,349.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-10-26 02:00:00+00:00,target,2.331503378378368,236.8000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-11-16 18:00:00+00:00,breakeven,-0.018428709990300614,103.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-12-06 23:00:00+00:00,target,0.2220673172674757,502.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2022-12-29 18:00:00+00:00,stop,-1.0075848303393213,250.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-01-25 14:00:00+00:00,stop,-1.009077878643096,209.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-02-13 19:00:00+00:00,breakeven,-0.008140531276778076,233.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-03-02 23:00:00+00:00,breakeven,-0.018700787401574735,101.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-05-02 22:00:00+00:00,stop,-1.0116279069767442,163.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-05-31 13:00:00+00:00,stop,-1.0180265654648954,105.40000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-09-15 13:00:00+00:00,target,3.230176211453694,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-11-10 03:00:00+00:00,stop,-1.012265978050355,154.90000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-11-30 12:00:00+00:00,target,1.4421487603305894,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2023-12-29 18:00:00+00:00,open,-0.01977587343440033,151.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-04-15 07:00:00+00:00,stop,-1.013552068473609,140.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-06-17 13:00:00+00:00,stop,-1.0278184480234265,68.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-08-06 13:00:00+00:00,breakeven,-0.0359168241965976,52.899999999999636
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-08-19 17:00:00+00:00,target,0.7426059152677865,250.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-11-22 23:00:00+00:00,breakeven,-0.00770166193757598,246.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-12-16 18:00:00+00:00,target,0.7742834394904522,502.3999999999978
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-12-21 08:00:00+00:00,target,2.526005164146071,271.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2021-12-22 08:00:00+00:00,target,3.0823068309070885,178.59999999999854
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-03-31 17:00:00+00:00,breakeven,-0.009926854754440979,191.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-05-03 07:00:00+00:00,breakeven,-0.006484641638225256,293.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-05-10 10:00:00+00:00,stop,-1.0076954232482787,246.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-08-12 08:00:00+00:00,stop,-1.0183397683397684,103.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-08-17 17:00:00+00:00,target,2.165040650406504,246.0
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-08-25 09:00:00+00:00,breakeven,-0.010832383124287364,175.39999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-09-29 12:00:00+00:00,stop,-1.0110017371163869,172.70000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-09-29 02:00:00+00:00,stop,-1.0057768318637883,328.89999999999964
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-10-04 13:00:00+00:00,stop,-1.0031493452676943,603.2999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-10-26 02:00:00+00:00,target,2.5859484777517565,213.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-11-16 18:00:00+00:00,breakeven,-0.011425135297654765,166.3000000000011
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-12-06 23:00:00+00:00,target,0.41022810890360534,271.7999999999993
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2022-12-29 18:00:00+00:00,target,4.454998221273565,281.10000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-01-25 14:00:00+00:00,breakeven,-0.016994633273702875,111.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-02-13 19:00:00+00:00,breakeven,-0.007943143812709006,239.20000000000073
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-03-02 23:00:00+00:00,breakeven,-0.009438648782911112,201.29999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-05-02 22:00:00+00:00,stop,-1.011543134872418,164.60000000000036
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-05-31 13:00:00+00:00,stop,-1.0181124880838892,104.90000000000146
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-09-15 13:00:00+00:00,target,3.230176211453694,90.80000000000109
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-11-10 03:00:00+00:00,stop,-1.0090692124105012,209.5
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-11-30 12:00:00+00:00,target,1.4421487603305894,96.79999999999927
+pepperstone_oos,mt5,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2023-12-29 18:00:00+00:00,open,-0.023603461841058843,127.09999999999854

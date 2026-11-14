@@ -1,0 +1,199 @@
+source,variant,entry_time,exit,r_net,risk_pts,stop_from
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-04-04 23:00:00+00:00,stop,-1.1407407407407408,13.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-04-14 19:00:00+00:00,stop,-1.0105614230127848,179.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-07-13 13:00:00+00:00,stop,-1.0160337552742615,118.5,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-07-27 15:00:00+00:00,target,0.37340425531915084,188.0,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-08-06 13:00:00+00:00,target,1.7850162866450383,30.69999999999891,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-08-19 16:00:00+00:00,target,0.37190082644627787,205.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-10-26 17:00:00+00:00,stop,-1.020879120879121,91.0,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2021-12-29 18:00:00+00:00,target,0.7969628796400503,177.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-02-15 21:00:00+00:00,stop,-1.004152097902098,457.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-02-24 17:00:00+00:00,target,1.7608970309538978,316.59999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-03-21 14:00:00+00:00,stop,-1.0132681564245811,143.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-03-31 20:00:00+00:00,target,0.5958266452648475,311.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-04-20 19:00:00+00:00,stop,-1.011262596324837,168.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-05-02 20:00:00+00:00,target,1.0885416666666723,345.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-05-10 07:00:00+00:00,breakeven,-0.017288444040036453,109.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-08-25 09:00:00+00:00,target,0.7994157740993126,102.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-09-01 20:00:00+00:00,target,0.5491299897645902,195.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-09-07 17:00:00+00:00,target,0.49577464788732184,177.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-09-21 19:00:00+00:00,stop,-1.0069520673252834,273.2999999999993,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-09-29 07:00:00+00:00,stop,-1.011764705882353,161.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2022-10-26 07:00:00+00:00,stop,-1.011957205789805,158.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-01-03 11:00:00+00:00,target,0.1817890349470998,311.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-01-25 16:00:00+00:00,stop,-1.0110787172011662,171.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-02-13 19:00:00+00:00,breakeven,-0.014022140221402213,135.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-03-14 18:00:00+00:00,breakeven,-0.013333333333333332,142.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-03-22 20:00:00+00:00,target,0.05639503507824947,370.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-04-05 14:00:00+00:00,target,0.8443438914027215,110.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-06-07 22:00:00+00:00,stop,-1.0059024541783161,321.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-06-20 11:00:00+00:00,target,1.1128919860627202,143.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-08-04 17:00:00+00:00,stop,-1.0111241217798594,170.8000000000011,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-08-21 14:00:00+00:00,target,0.6112500000000045,160.0,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-11-10 13:00:00+00:00,stop,-1.0204520990312165,92.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 1H swing low",2023-12-21 13:00:00+00:00,target,0.42048517520213263,74.20000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-04-04 23:00:00+00:00,stop,-1.1407407407407408,13.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-04-14 19:00:00+00:00,stop,-1.0105614230127848,179.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-07-13 13:00:00+00:00,stop,-1.0160337552742615,118.5,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 3R",2021-07-27 15:00:00+00:00,stop,-1.0101063829787233,188.0,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-08-06 13:00:00+00:00,target,2.9381107491856655,30.69999999999891,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-08-19 16:00:00+00:00,target,2.9907632474477395,205.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-10-26 17:00:00+00:00,stop,-1.020879120879121,91.0,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2021-12-29 18:00:00+00:00,target,2.989313835770529,177.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-02-15 21:00:00+00:00,stop,-1.004152097902098,457.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-02-24 17:00:00+00:00,breakeven,-0.006001263423878738,316.59999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-03-21 14:00:00+00:00,stop,-1.0132681564245811,143.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 3R",2022-03-31 20:00:00+00:00,target,2.993900481540931,311.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-04-20 19:00:00+00:00,stop,-1.011262596324837,168.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-05-02 20:00:00+00:00,breakeven,-0.005497685185185208,345.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 3R",2022-05-10 07:00:00+00:00,breakeven,-0.017288444040036453,109.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-08-25 09:00:00+00:00,breakeven,-0.018500486854917102,102.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-09-01 20:00:00+00:00,stop,-1.0097236438075743,195.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-09-07 17:00:00+00:00,breakeven,-0.010704225352112675,177.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-09-21 19:00:00+00:00,stop,-1.0069520673252834,273.2999999999993,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 3R",2022-09-29 07:00:00+00:00,stop,-1.011764705882353,161.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2022-10-26 07:00:00+00:00,stop,-1.011957205789805,158.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-01-03 11:00:00+00:00,stop,-1.0060916960564283,311.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-01-25 16:00:00+00:00,stop,-1.0110787172011662,171.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-02-13 19:00:00+00:00,breakeven,-0.014022140221402213,135.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-03-14 18:00:00+00:00,breakeven,-0.013333333333333332,142.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-03-22 20:00:00+00:00,stop,-1.00512682137075,370.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB touch, target 3R",2023-04-05 14:00:00+00:00,breakeven,-0.017194570135746604,110.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-06-07 22:00:00+00:00,stop,-1.0059024541783161,321.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-06-20 11:00:00+00:00,breakeven,-0.013240418118466898,143.5,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-08-04 17:00:00+00:00,stop,-1.0111241217798594,170.8000000000011,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-08-21 14:00:00+00:00,target,2.988125,160.0,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-11-10 13:00:00+00:00,stop,-1.0204520990312165,92.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB touch, target 3R",2023-12-21 13:00:00+00:00,breakeven,-0.025606469002695167,74.20000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-04-04 23:00:00+00:00,stop,-1.0502645502645487,37.80000000000109,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-04-14 19:00:00+00:00,stop,-1.0097286226318485,195.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-07-13 13:00:00+00:00,stop,-1.0160337552742615,118.5,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-07-27 15:00:00+00:00,target,0.35788937037981383,196.14999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-08-06 13:00:00+00:00,target,1.5590327169275713,35.14999999999782,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-08-19 16:00:00+00:00,target,0.33559991226145813,227.95000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-10-26 17:00:00+00:00,stop,-1.0154408776919952,123.04999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2021-12-29 18:00:00+00:00,target,0.7330574236937449,193.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-02-15 21:00:00+00:00,stop,-1.0038434307676747,494.35000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-02-24 17:00:00+00:00,target,1.510021668472381,369.1999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-03-21 14:00:00+00:00,stop,-1.0132681564245811,143.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-03-31 20:00:00+00:00,target,0.5592888353171608,331.85000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-04-20 19:00:00+00:00,stop,-1.008421985815603,225.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-05-02 20:00:00+00:00,target,1.0885416666666723,345.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-08-25 09:00:00+00:00,target,0.5705350938151436,143.90000000000146,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-09-01 20:00:00+00:00,target,0.47154471544715915,227.54999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-09-07 17:00:00+00:00,target,0.46169989506820286,190.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-09-21 19:00:00+00:00,stop,-1.0069520673252834,273.2999999999993,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-09-29 07:00:00+00:00,stop,-1.0097661269596505,194.5500000000011,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2022-10-26 07:00:00+00:00,stop,-1.01009832580388,188.14999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-01-03 11:00:00+00:00,target,0.17810585833202647,318.34999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-01-25 16:00:00+00:00,stop,-1.007988227874711,237.84999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-02-13 19:00:00+00:00,breakeven,-0.01076792292434124,176.4499999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-03-14 18:00:00+00:00,target,0.9056330374932154,276.0499999999993,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-03-22 20:00:00+00:00,target,0.05639503507824947,370.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-04-05 14:00:00+00:00,target,0.615435356200531,151.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-06-07 22:00:00+00:00,stop,-1.0055240587294665,343.9500000000007,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-06-20 11:00:00+00:00,target,0.9358335774978066,170.64999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-08-04 17:00:00+00:00,stop,-1.0092345078979343,205.75000000000182,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-08-21 14:00:00+00:00,target,0.4935654806964466,198.14999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-11-10 13:00:00+00:00,stop,-1.0151093439363819,125.75,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 1H swing low",2023-12-21 13:00:00+00:00,target,0.3301587301587148,94.5,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-04-04 23:00:00+00:00,stop,-1.0502645502645487,37.80000000000109,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-04-14 19:00:00+00:00,stop,-1.0097286226318485,195.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-07-13 13:00:00+00:00,stop,-1.0160337552742615,118.5,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 3R",2021-07-27 15:00:00+00:00,stop,-1.0096864644404793,196.14999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-08-06 13:00:00+00:00,target,2.9459459459459425,35.14999999999782,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-08-19 16:00:00+00:00,target,2.9916648387804345,227.95000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-10-26 17:00:00+00:00,stop,-1.0154408776919952,123.04999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2021-12-29 18:00:00+00:00,target,2.990170719089498,193.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-02-15 21:00:00+00:00,stop,-1.0038434307676747,494.35000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-02-24 17:00:00+00:00,breakeven,-0.005146262188515724,369.1999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-03-21 14:00:00+00:00,stop,-1.0132681564245811,143.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 3R",2022-03-31 20:00:00+00:00,target,2.9942745216212145,331.85000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-04-20 19:00:00+00:00,stop,-1.008421985815603,225.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-05-02 20:00:00+00:00,breakeven,-0.005497685185185208,345.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 3R",2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-08-25 09:00:00+00:00,breakeven,-0.013203613620569706,143.90000000000146,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-09-01 20:00:00+00:00,stop,-1.008349813227862,227.54999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-09-07 17:00:00+00:00,breakeven,-0.009968520461699876,190.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-09-21 19:00:00+00:00,stop,-1.0069520673252834,273.2999999999993,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 3R",2022-09-29 07:00:00+00:00,stop,-1.0097661269596505,194.5500000000011,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2022-10-26 07:00:00+00:00,stop,-1.01009832580388,188.14999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-01-03 11:00:00+00:00,stop,-1.0059682739123605,318.34999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-01-25 16:00:00+00:00,stop,-1.007988227874711,237.84999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-02-13 19:00:00+00:00,breakeven,-0.01076792292434124,176.4499999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-03-14 18:00:00+00:00,target,2.993117188915052,276.0499999999993,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-03-22 20:00:00+00:00,stop,-1.00512682137075,370.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB 50%, target 3R",2023-04-05 14:00:00+00:00,breakeven,-0.012532981530342976,151.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-06-07 22:00:00+00:00,stop,-1.0055240587294665,343.9500000000007,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-06-20 11:00:00+00:00,breakeven,-0.01113389979490187,170.64999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-08-04 17:00:00+00:00,stop,-1.0092345078979343,205.75000000000182,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-08-21 14:00:00+00:00,breakeven,-0.009588695432752982,198.14999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-11-10 13:00:00+00:00,stop,-1.0151093439363819,125.75,1H OB of drop FVG
+pepperstone_oos,"stop OB 50%, target 3R",2023-12-21 13:00:00+00:00,breakeven,-0.020105820105820106,94.5,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-04-04 23:00:00+00:00,stop,-1.0305958132045088,62.100000000000364,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-04-14 19:00:00+00:00,stop,-1.009017560512577,210.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-07-13 13:00:00+00:00,stop,-1.0160337552742615,118.5,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 1H swing low",2021-07-27 15:00:00+00:00,target,0.3436123348017651,204.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-08-06 13:00:00+00:00,target,1.3838383838384531,39.599999999998545,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-08-19 16:00:00+00:00,target,0.3057553956834509,250.20000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-10-26 17:00:00+00:00,stop,-1.0122501611863315,155.10000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2021-12-29 18:00:00+00:00,target,0.6786398467432991,208.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-02-15 21:00:00+00:00,stop,-1.003577480700433,531.1000000000004,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-02-24 17:00:00+00:00,target,1.3217164532954064,421.7999999999993,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-03-21 14:00:00+00:00,stop,-1.0132681564245811,143.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 1H swing low",2022-03-31 20:00:00+00:00,target,0.5269733106189654,352.2000000000007,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-04-20 19:00:00+00:00,target,0.6336283185840695,282.5,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-05-02 20:00:00+00:00,target,1.0885416666666723,345.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 1H swing low",2022-05-10 07:00:00+00:00,stop,-1.0076954232482787,246.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-08-25 09:00:00+00:00,target,0.4435440302539159,185.10000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-09-01 20:00:00+00:00,target,0.41316904120139075,259.6999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-09-07 17:00:00+00:00,target,0.4320078546882676,203.6999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-09-21 19:00:00+00:00,stop,-1.0069520673252834,273.2999999999993,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 1H swing low",2022-09-29 07:00:00+00:00,stop,-1.008347978910369,227.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2022-10-26 07:00:00+00:00,target,0.3693652253909883,217.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-01-03 11:00:00+00:00,target,0.1745689655172429,324.7999999999993,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-01-25 16:00:00+00:00,stop,-1.0062458908612755,304.1999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-02-13 19:00:00+00:00,target,1.0574977000920032,217.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-03-14 18:00:00+00:00,target,0.6103515625000057,409.59999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-03-22 20:00:00+00:00,target,0.05639503507824947,370.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 1H swing low",2023-04-05 14:00:00+00:00,target,0.4841722885313979,192.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-06-07 22:00:00+00:00,stop,-1.005191256830601,366.0,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-06-20 11:00:00+00:00,target,0.8073811931243728,197.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-08-04 17:00:00+00:00,stop,-1.007893643539676,240.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-08-21 14:00:00+00:00,target,0.4138806601777445,236.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-11-10 13:00:00+00:00,stop,-1.0119798234552335,158.59999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 1H swing low",2023-12-21 13:00:00+00:00,target,0.2717770034843096,114.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-04-04 23:00:00+00:00,stop,-1.0305958132045088,62.100000000000364,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-04-14 19:00:00+00:00,stop,-1.009017560512577,210.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-07-13 13:00:00+00:00,stop,-1.0160337552742615,118.5,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 3R",2021-07-27 15:00:00+00:00,stop,-1.009300048947626,204.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-08-06 13:00:00+00:00,target,2.9520202020202,39.599999999998545,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-08-19 16:00:00+00:00,breakeven,-0.007593924860111888,250.20000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-10-26 17:00:00+00:00,stop,-1.0122501611863315,155.10000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2021-12-29 18:00:00+00:00,target,2.9909003831417627,208.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-02-15 21:00:00+00:00,stop,-1.003577480700433,531.1000000000004,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-02-24 17:00:00+00:00,breakeven,-0.004504504504504512,421.7999999999993,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-03-21 14:00:00+00:00,stop,-1.0132681564245811,143.1999999999989,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 3R",2022-03-31 20:00:00+00:00,target,2.9946053378762065,352.2000000000007,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-04-20 19:00:00+00:00,target,2.9932743362831857,282.5,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-05-02 20:00:00+00:00,breakeven,-0.005497685185185208,345.59999999999854,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 3R",2022-05-10 07:00:00+00:00,stop,-1.0076954232482787,246.89999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-08-25 09:00:00+00:00,breakeven,-0.010264721772015106,185.10000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-09-01 20:00:00+00:00,stop,-1.0073161340007701,259.6999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-09-07 17:00:00+00:00,breakeven,-0.009327442317133089,203.6999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-09-21 19:00:00+00:00,stop,-1.0069520673252834,273.2999999999993,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 3R",2022-09-29 07:00:00+00:00,stop,-1.008347978910369,227.60000000000036,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2022-10-26 07:00:00+00:00,breakeven,-0.008739650413983455,217.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-01-03 11:00:00+00:00,stop,-1.0058497536945812,324.7999999999993,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-01-25 16:00:00+00:00,stop,-1.0062458908612755,304.1999999999989,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-02-13 19:00:00+00:00,breakeven,-0.008739650413983455,217.39999999999964,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-03-14 18:00:00+00:00,target,2.9953613281249996,409.59999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-03-22 20:00:00+00:00,stop,-1.00512682137075,370.60000000000036,sweep extreme (no 1H FVG of the drop)
+pepperstone_oos,"stop OB high, target 3R",2023-04-05 14:00:00+00:00,breakeven,-0.009859885832900844,192.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-06-07 22:00:00+00:00,stop,-1.005191256830601,366.0,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-06-20 11:00:00+00:00,breakeven,-0.009605662285136537,197.79999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-08-04 17:00:00+00:00,stop,-1.007893643539676,240.70000000000073,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-08-21 14:00:00+00:00,breakeven,-0.00804062632247146,236.29999999999927,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-11-10 13:00:00+00:00,stop,-1.0119798234552335,158.59999999999854,1H OB of drop FVG
+pepperstone_oos,"stop OB high, target 3R",2023-12-21 13:00:00+00:00,breakeven,-0.016550522648083727,114.79999999999927,1H OB of drop FVG

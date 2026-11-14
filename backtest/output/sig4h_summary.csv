@@ -1,0 +1,9 @@
+model,4H liquidity,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+swing,4H(10) all swings,goat,104,45,1.39,11.52,11155,7.9,5.9,5.6
+intraday,4H(10) all swings,goat,73,25,1.4,15.28,11537,7.7,18.1,-2.8
+swing,significant 4H,goat,230,48,1.06,4.36,10326,19.5,6.2,-1.8
+intraday,significant 4H,goat,73,25,1.4,15.28,11537,7.7,18.1,-2.8
+swing,4H(10) all swings,pepperstone,111,51,1.61,18.04,11903,8.0,9.7,8.3
+intraday,4H(10) all swings,pepperstone,76,34,2.23,42.45,15092,7.4,27.1,15.3
+swing,significant 4H,pepperstone,232,51,1.17,12.96,11250,18.5,9.3,3.7
+intraday,significant 4H,pepperstone,76,34,2.23,42.45,15092,7.4,27.1,15.3
