@@ -17,6 +17,30 @@ HTML reports and `mt5_tester_log.py` logs carry their own profit. Account type (
 
 ---
 
+# ICT ERL/IRL EA (MetaTrader 5) - `ICT_ERL_IRL_EA.mq5`
+
+A separate EA for the **ERL / IRL model** - the same rules as the TradingView *ICT ERL/IRL* scripts and the Python
+backtest `intraday_snap.py` with `ERL_IRL=1`. It is built from the intraday EA below and differs only here (short described):
+
+- **ERL starts a setup:** D/W/M swings, 4H and 1H swings, Asia/London/NY session highs/lows, ICT macro highs/lows.
+  FVG edges are **not** swept as liquidity.
+- **IRL:** fresh D / 4H / 1H FVGs (`InpIrlD`, `InpIrl4H`, `InpIrl1H`). A short needs a fresh **bullish** FVG below the
+  entry at least `InpIrlMinR` (1R) away; none -> the order is not placed (`InpIrlRequired`; false = first target `InpTargetR`).
+- **TP1 = that IRL** (its near edge; `InpIrlCE` = its 50%). When price reaches it the EA closes `InpPartialPct` (50 %) at
+  market and moves the stop to breakeven. The first-target price is saved at order placement in the terminal global
+  variable `ICTERL_TP1_<order ticket>` (the position keeps that ticket as its identifier), so restarts keep it.
+- **Broker TP = the next ERL:** the nearest unswept D/W/M/4H/1H swing low or session low below TP1 (macros not used).
+  None -> the broker TP is TP1 and everything closes there.
+- Everything else as the intraday EA: sweep rule, IFVG, BOS/MSS, displacement, bias, entry FVG/VI, breaker stop, 60-minute
+  order, one trade per entry, flat 15 min before the 17:00 NY close, loss limits, real-account lock.
+- **Own magic number 770201** (intraday EA: 770101), order comments `ICTe S/L <time>`, global variables `ICTERL_*`, so both
+  EAs can run on the same account and symbol without touching each other's trades.
+
+**Not compiled or tested here.** Compile it (F7), send me any errors, then use the Strategy Tester / demo. The Python
+backtest of these rules lost money in October 2026 (Exness -25.4R, GOAT -35.8R, Pepperstone -36.5R).
+
+---
+
 # ICT Intraday EA (MetaTrader 5) - `ICT_Intraday_EA.mq5`
 
 An Expert Advisor for the **intraday model only** (US100, 5m), with the same rules as the intraday TradingView scripts and
