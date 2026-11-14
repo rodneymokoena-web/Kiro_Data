@@ -12,7 +12,7 @@
 //  Rule 5  Stop: 50% of the 1H order block of the drop (none: previous 1H candle high/low), no buffer.
 //  Rule 6  Target: the 1H swing low before the 4H FVG's middle candle (Fixed R optional). Breakeven at +1R, then trail to each new 1H swing.
 //#}
-//#{N
+//#{X
 //  ICT INTRADAY model (US100, 5m chart)  -  Python: intraday_snap.py
 //  Generated from pine/core.pine by pine/build.py - edit core.pine, then rebuild the scripts.
 //  US100 ONLY (default). HTF data from request.security() on COMPLETED candles (no repaint). SHORT described, LONG mirrored.
@@ -30,6 +30,21 @@
 //  Rule 7  Target: fixed R (3R) or the major 5m swing (10 each side; none -> 3R). Breakeven at +1R.
 //  Bias    The last sweep of a Rule 1 swing (D/W/M/4H/1H): high swept = bearish, low swept = bullish. Trades only with the bias.
 //#}
+//#{E
+//  ICT ERL / IRL model (US100, 5m chart) - the intraday model with external / internal range liquidity.
+//  Generated from pine/core.pine by pine/build.py - edit core.pine, then rebuild the scripts. SHORT described, LONG mirrored.
+//  ERL     External range liquidity = what a setup starts from: D / W / M swings (2 each side), 4H and 1H swings (10 each side),
+//          Asia / London / NY session highs/lows (1H+ swing, valid 7 days), ICT macro window highs/lows (24 h).
+//  IRL     Internal range liquidity = FRESH D / 4H / 1H FVGs (no candle of their timeframe has traded into the gap yet).
+//          FVG edges are NOT swept as liquidity here.
+//  Rules   Sweep of an ERL level on 5m -> 5m / 15m IFVG + 5m BOS / MSS with displacement -> sell limit at the latest 5m FVG /
+//          volume imbalance of the drop; stop = the 5m breaker high; bias from the last D/W/M/4H/1H swing sweep - as the intraday model.
+//  Draw    ERL -> IRL -> ERL: a short needs a fresh BULLISH FVG (IRL) below the entry, at least 'IRL min distance' R away.
+//          No IRL -> no trade.
+//  Target  TP1 = the nearest such IRL (its near edge = top, or its 50% CE): close 'Partial close %' there, stop to breakeven.
+//          The rest runs to the next ERL below TP1 = the nearest unswept D / W / M / 4H / 1H swing low or session low
+//          (none -> everything at TP1). Flat 15 min before the 17:00 New York close.
+//#}
 // =====================================================================================================
 //#I indicator("ICT Sweep > IFVG > MSS (rules 1-7)", shorttitle="ICT IFVG", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
 //#S strategy("ICT Sweep > IFVG > MSS Strategy (rules 1-7)", shorttitle="ICT IFVG Strategy", overlay=true, pyramiding=5, initial_capital=10000, default_qty_type=strategy.fixed, commission_type=strategy.commission.cash_per_contract, commission_value=0, slippage=0, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
@@ -42,7 +57,13 @@ i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
 i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
 i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) and the fresh 4H (intraday also 1H) FVG far edges (dashed, e.g. \'4H FVG H\' = a bearish FVG\'s top) from the candle that formed it, with a label at the right edge: e.g. '4H H'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
 i_liq4   = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group=g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
-i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
+//#E gI = "ERL / IRL - internal range liquidity (fresh FVGs)"
+//#E i_fvgLiq = input.bool(true, "IRL: fresh 4H FVGs", group=gI, tooltip="Fresh 4H FVGs (no 4H candle has traded into the gap yet) are internal range liquidity: possible draws / first targets. They are not swept as liquidity in this model.")
+//#E i_irlReq = input.bool(true, "Require an IRL draw (no fresh FVG beyond the entry -> no trade)", group=gI, tooltip="Off: without an IRL the first target falls back to 'Target (R)'.")
+//#E i_irlMinR = input.float(1.0, "IRL min distance from the entry (R)", minval=0, step=0.25, group=gI, tooltip="The IRL used as the first target must be at least this many R (initial stop distances) beyond the entry; nearer FVGs are skipped.")
+//#E i_irlCE = input.bool(false, "IRL target at the FVG's 50% (CE) instead of its near edge", group=gI)
+//#W i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
+//#X i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
 
 //#N gN = "Rule 1 - intraday liquidity"
 //#N i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group=gN, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
@@ -51,8 +72,10 @@ i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g
 //#N i_macro = input.bool(true, "Intraday: ICT macro-time highs/lows as liquidity", group=gN, tooltip="High and low of each completed ICT macro window (New York time): 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10. Labelled MAC H / MAC L.")
 //#N i_macroHrs = input.int(24, "Macro level stays sweepable for N hours", minval=1, group=gN)
 //#N i_liq1h = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group=gN, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
-//#N i_fvgLiqD = input.bool(true, "Intraday: fresh D FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh daily FVG (bearish FVG top = buy-side, bullish FVG bottom = sell-side) is swept liquidity while no daily candle has traded into the gap; the day that first enters it can still sweep it. Labelled D FVG H / L. Does not set the bias.")
-//#N i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
+//#X i_fvgLiqD = input.bool(true, "Intraday: fresh D FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh daily FVG (bearish FVG top = buy-side, bullish FVG bottom = sell-side) is swept liquidity while no daily candle has traded into the gap; the day that first enters it can still sweep it. Labelled D FVG H / L. Does not set the bias.")
+//#E i_fvgLiqD = input.bool(true, "IRL: fresh D FVGs", group=gI, tooltip="Fresh daily FVGs as internal range liquidity (draws / first targets).")
+//#X i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
+//#E i_fvgLiq1h = input.bool(true, "IRL: fresh 1H FVGs", group=gI, tooltip="Fresh 1H FVGs as internal range liquidity (draws / first targets).")
 
 //#N gR = "Intraday rules 2-7 (5m chart)"
 //#N i_ifvgLB = input.int(48, "Intraday: IFVG lookback (5m candles before the sweep)", minval=3, group=gR, tooltip="The 5m FVG to invert = the intact bullish (short) 5m FVG nearest below the sweep, completed in this many 5m candles before the sweep.")
@@ -67,7 +90,8 @@ i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g
 //#N i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
 //#N i_onePer = input.bool(true, "Intraday: one trade per entry price", group=gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
 //#N PARTIAL = "Partial: half at R, rest at next Rule 1 swing"
-//#N i_tgt5 = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group=gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+//#X i_tgt5 = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group=gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+//#E i_tgt5 = PARTIAL
 //#N i_eod = input.bool(true, "Intraday: close trades before the market close", group=gR, tooltip="Open trades are closed at the close of the 5m candle ending 'minutes before' the market close (New York time), every day including Friday, and no entry order fills from then until the market reopens. Default: US100 CFD daily close 17:00 NY -> flat at 16:45 NY. Use 16:00 for the cash-market close.")
 //#N i_eodH = input.int(17, "Market close (New York) hour", minval=0, maxval=23, inline="eod", group=gR)
 //#N i_eodM = input.int(0, "min", minval=0, maxval=59, inline="eod", group=gR)
@@ -241,6 +265,7 @@ type Sig
     float     tp1 = na     // intraday partial: first target (part closed there)
     float     tp2 = na     // intraday partial: runner target = next Rule 1 swing (na = everything at tp1)
     string    tp2Tx = ""
+    string    tp1Tx = ""   // ERL/IRL: what the first target is (IRL FVG)
     int       halfIdx = -1 // candle where the partial close happened
 //#W     int       anc = -1     // swing: 1H index of the sweep extreme
 //#W     float     tpFix = na   // swing: target = 1H swing low
@@ -742,32 +767,69 @@ f_r1(array<float> P, array<int> T, bool sh, float px, float best, string bestTx,
             if (sh ? v < px : v > px) and (na(b) or (sh ? v > b : v < b))
                 if not f_swept(v, T.get(k))
                     b := v
-                    bt := tf + " swing"
+                    bt := tf
     [b, bt]
 
 f_runner(bool sh, float px) =>
     float b = na
     string bt = ""
     if i_useD
-        [rb1, rt1] = f_r1(sh ? dLp : dHp, sh ? dLt : dHt, sh, px, b, bt, "D")
+        [rb1, rt1] = f_r1(sh ? dLp : dHp, sh ? dLt : dHt, sh, px, b, bt, "D swing")
         b := rb1
         bt := rt1
     if i_useW
-        [rb2, rt2] = f_r1(sh ? wLp : wHp, sh ? wLt : wHt, sh, px, b, bt, "W")
+        [rb2, rt2] = f_r1(sh ? wLp : wHp, sh ? wLt : wHt, sh, px, b, bt, "W swing")
         b := rb2
         bt := rt2
     if i_useM
-        [rb3, rt3] = f_r1(sh ? mLp : mHp, sh ? mLt : mHt, sh, px, b, bt, "M")
+        [rb3, rt3] = f_r1(sh ? mLp : mHp, sh ? mLt : mHt, sh, px, b, bt, "M swing")
         b := rb3
         bt := rt3
     if i_liq4 > 0
-        [rb4, rt4] = f_r1(sh ? l4LP : l4HP, sh ? l4LT : l4HT, sh, px, b, bt, "4H")
+        [rb4, rt4] = f_r1(sh ? l4LP : l4HP, sh ? l4LT : l4HT, sh, px, b, bt, "4H swing")
         b := rb4
         bt := rt4
         if i_liq1h
-            [rb5, rt5] = f_r1(sh ? l1LP : l1HP, sh ? l1LT : l1HT, sh, px, b, bt, "1H")
+            [rb5, rt5] = f_r1(sh ? l1LP : l1HP, sh ? l1LT : l1HT, sh, px, b, bt, "1H swing")
             b := rb5
             bt := rt5
+//#E     if i_sess
+//#E         [rb6, rt6] = f_r1(sh ? lSLP : lSHP, sh ? lSLT : lSHT, sh, px, b, bt, "session " + (sh ? "low" : "high"))
+//#E         b := rb6
+//#E         bt := rt6
+    [b, bt]
+//#}
+
+//#{E
+// IRL draw: the nearest FRESH opposite FVG beyond px by at least minD - a bullish FVG below for a short, a bearish FVG above for a
+// long (D / 4H / 1H, per the IRL inputs). Level = its near edge (top of a bullish FVG) or its 50% CE. [level, text]; na = none.
+f_irl1(array<float> P, array<int> T, array<bool> Hi, array<float> E, array<int> X, bool sh, float px, float minD, float best, string bestTx, string tf) =>
+    float b = best
+    string bt = bestTx
+    for [k, _ir] in P
+        if Hi.get(k) != sh and X.get(k) == -1 and T.get(k) <= time
+            float lv = i_irlCE ? (P.get(k) + E.get(k)) / 2 : E.get(k)
+            if (sh ? lv <= px - minD : lv >= px + minD) and (na(b) or (sh ? lv > b : lv < b))
+                b := lv
+                bt := tf + " FVG " + (i_irlCE ? "CE" : "edge")
+    [b, bt]
+
+f_irl(bool sh, float px, float risk) =>
+    float minD = i_irlMinR * risk
+    float b = na
+    string bt = ""
+    if i_fvgLiq
+        [ia1, ib1] = f_irl1(fvP, fvT, fvHi, fvE, fvX, sh, px, minD, b, bt, "4H")
+        b := ia1
+        bt := ib1
+    if i_fvgLiq1h
+        [ia2, ib2] = f_irl1(v1P, v1T, v1Hi, v1E, v1X, sh, px, minD, b, bt, "1H")
+        b := ia2
+        bt := ib2
+    if i_fvgLiqD
+        [ia3, ib3] = f_irl1(dvP, dvT, dvHi, dvE, dvX, sh, px, minD, b, bt, "D")
+        b := ia3
+        bt := ib3
     [b, bt]
 //#}
 
@@ -1068,6 +1130,20 @@ for [k, _e4] in SG
 //#N                 g.tp2 := rv
 //#N                 g.tp2Tx := rtx
 //#N                 g.tp := na(rv) ? g.tp1 : rv
+//#{E
+            // ERL -> IRL -> ERL: TP1 = the nearest fresh opposite FVG (IRL) at least i_irlMinR R away; the rest to the next ERL
+            [irlV, irlTx] = f_irl(g.sh, g.entry, g.risk)
+            if na(irlV) and i_irlReq
+                g.state := 3
+                g.result := "no IRL draw (fresh FVG) " + str.tostring(i_irlMinR) + "R+ beyond the entry"
+                continue
+            g.tp1 := na(irlV) ? (g.sh ? g.entry - i_tgtR * g.risk : g.entry + i_tgtR * g.risk) : irlV
+            g.tp1Tx := na(irlV) ? str.tostring(i_tgtR) + "R (no IRL)" : irlTx
+            [rvE, rtxE] = f_runner(g.sh, g.tp1)
+            g.tp2 := rvE
+            g.tp2Tx := rtxE
+            g.tp := na(rvE) ? g.tp1 : rvE
+//#}
             if na(g.tp) or (g.sh ? g.tp >= g.entry : g.tp <= g.entry)
                 g.state := 3
                 g.result := "no 1H swing low target beyond entry"
@@ -1257,12 +1333,12 @@ if sw5 and isM5 and symOK and p >= BC.base + 2
     if i_sess
         f_scan5(lSHP, lSHT, true, "SESS", p)
         f_scan5(lSLP, lSLT, false, "SESS", p)
-    if i_fvgLiq
-        f_scan5fvg(fvP, fvT, fvHi, fvX, "4HFVG", p)
-    if i_fvgLiq1h
-        f_scan5fvg(v1P, v1T, v1Hi, v1X, "1HFVG", p)
-    if i_fvgLiqD
-        f_scan5fvg(dvP, dvT, dvHi, dvX, "DFVG", p)
+//#X     if i_fvgLiq
+//#X         f_scan5fvg(fvP, fvT, fvHi, fvX, "4HFVG", p)
+//#X     if i_fvgLiq1h
+//#X         f_scan5fvg(v1P, v1T, v1Hi, v1X, "1HFVG", p)
+//#X     if i_fvgLiqD
+//#X         f_scan5fvg(dvP, dvT, dvHi, dvX, "DFVG", p)
     if i_macro
         f_scan5(lMHP, lMHT, true, "MACRO", p)
         f_scan5(lMLP, lMLT, false, "MACRO", p)
@@ -1770,6 +1846,20 @@ if tfOK and SG.size() > 0
 //#N                     g.tp2 := rvp
 //#N                     g.tp2Tx := rtxp
 //#N                     g.tp := na(rvp) ? g.tp1 : rvp
+//#{E
+                if not na(g.sl)
+                    [irlP, irlPx] = f_irl(sh, g.lvl, math.abs(g.lvl - g.sl))
+                    if na(irlP) and i_irlReq
+                        g.state := 3
+                        g.result := "no IRL draw (fresh FVG) " + str.tostring(i_irlMinR) + "R+ beyond the entry"
+                    else
+                        g.tp1 := na(irlP) ? (sh ? g.lvl - i_tgtR * (g.sl - g.lvl) : g.lvl + i_tgtR * (g.lvl - g.sl)) : irlP
+                        g.tp1Tx := na(irlP) ? str.tostring(i_tgtR) + "R (no IRL)" : irlPx
+                        [rvq, rtxq] = f_runner(sh, g.tp1)
+                        g.tp2 := rvq
+                        g.tp2Tx := rtxq
+                        g.tp := na(rvq) ? g.tp1 : rvq
+//#}
 //#{W
             if isSwing and g.state == 1 and p == g.trig and not na(g.sl)
                 if sh
@@ -1811,7 +1901,8 @@ if i_showE and tfOK and SG.size() > 0
             label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
 //#W             label.set_text(g.lbT, "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_swTgt == "1H swing low" ? "1H swing low, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
-//#N             label.set_text(g.lbT, not na(g.tp2) ? "TP2 " + str.tostring(g.tp2, format.mintick) + "  (" + g.tp2Tx + ")  |  TP1 " + str.tostring(g.tp1, format.mintick) + "  (" + str.tostring(i_tgtR) + "R, " + str.tostring(partPct) + "%" + (g.halfIdx >= 0 ? " done" : "") + ")" : "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
+//#X             label.set_text(g.lbT, not na(g.tp2) ? "TP2 " + str.tostring(g.tp2, format.mintick) + "  (" + g.tp2Tx + ")  |  TP1 " + str.tostring(g.tp1, format.mintick) + "  (" + str.tostring(i_tgtR) + "R, " + str.tostring(partPct) + "%" + (g.halfIdx >= 0 ? " done" : "") + ")" : "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
+//#E             label.set_text(g.lbT, (not na(g.tp2) ? "TP2 " + str.tostring(g.tp2, format.mintick) + "  (" + g.tp2Tx + ", ERL)  |  " : "") + "TP1 " + str.tostring(g.tp1, format.mintick) + "  (" + g.tp1Tx + ", IRL, " + str.tostring(math.abs(g.tp1 - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" + (na(g.tp2) ? ", all" : ", " + str.tostring(partPct) + "%") + (g.halfIdx >= 0 ? " done" : "") + ")")
             actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
 
 // ───────────────────────────────────────────────────────────────────────────── 7. broker orders (strategy only)
@@ -1862,6 +1953,22 @@ f_drawLv(array<float> P, array<int> T, color col, string tag, bool isHigh) =>
             lvLabels.push(label.new(bar_index + 3, lv, tag + (isHigh ? " H" : " L") + (used ? " (swept)" : ""), style=label.style_label_left, color=color.new(color.black, 100), textcolor=c2, size=size.tiny))
 // draw + label the fresh FVG far edges of one list (price P, completion time T, buy-side? Hi, state X: -1 = fresh). Only fresh
 // edges are drawn (price has not traded into the gap yet) - the newest 25. Label e.g. "4H FVG H" (bearish FVG top = buy-side).
+//#{E
+// ERL/IRL: a fresh FVG (IRL) as a dashed line at its near edge (the first-target level), labelled with its side
+f_drawIrl(array<float> P, array<int> T, array<bool> Hi, array<float> E, array<int> X, color col, string tag) =>
+    int nP = P.size()
+    int cnt = 0
+    if nP > 0
+        for k = nP - 1 to 0
+            if cnt >= 25
+                break
+            if X.get(k) == -1
+                cnt += 1
+                float lv = i_irlCE ? (P.get(k) + E.get(k)) / 2 : E.get(k)
+                lvLines.push(line.new(T.get(k), lv, time + 1, lv, xloc=xloc.bar_time, extend=extend.right, color=col, style=line.style_dashed, width=1))
+                lvLabels.push(label.new(bar_index + 3, lv, tag + (Hi.get(k) ? " above (bearish)" : " below (bullish)"), style=label.style_label_left, color=color.new(color.black, 100), textcolor=col, size=size.tiny))
+//#}
+
 f_drawFvg(array<float> P, array<int> T, array<bool> Hi, array<int> X, color col, string tag) =>
     int nP = P.size()
     int cnt = 0
@@ -1900,11 +2007,15 @@ if barstate.islast
 //#N             f_drawLv(l1HP, l1HT, color.new(color.silver, 30), "1H", true)
 //#N             f_drawLv(l1LP, l1LT, color.new(color.silver, 30), "1H", false)
         if i_fvgLiq
-            f_drawFvg(fvP, fvT, fvHi, fvX, color.new(color.fuchsia, 25), "4H FVG")
+//#W             f_drawFvg(fvP, fvT, fvHi, fvX, color.new(color.fuchsia, 25), "4H FVG")
+//#X             f_drawFvg(fvP, fvT, fvHi, fvX, color.new(color.fuchsia, 25), "4H FVG")
+//#E             f_drawIrl(fvP, fvT, fvHi, fvE, fvX, color.new(color.fuchsia, 25), "4H IRL")
 //#N         if i_fvgLiq1h
-//#N             f_drawFvg(v1P, v1T, v1Hi, v1X, color.new(color.fuchsia, 50), "1H FVG")
+//#X             f_drawFvg(v1P, v1T, v1Hi, v1X, color.new(color.fuchsia, 50), "1H FVG")
+//#E             f_drawIrl(v1P, v1T, v1Hi, v1E, v1X, color.new(color.fuchsia, 50), "1H IRL")
 //#N         if i_fvgLiqD
-//#N             f_drawFvg(dvP, dvT, dvHi, dvX, color.new(color.purple, 10), "D FVG")
+//#X             f_drawFvg(dvP, dvT, dvHi, dvX, color.new(color.purple, 10), "D FVG")
+//#E             f_drawIrl(dvP, dvT, dvHi, dvE, dvX, color.new(color.purple, 10), "D IRL")
 //#N         if i_macro
 //#N             f_drawLv(lMHP, lMHT, color.new(color.yellow, 25), "MAC", true)
 //#N             f_drawLv(lMLP, lMLT, color.new(color.yellow, 25), "MAC", false)
@@ -1927,14 +2038,16 @@ if barstate.islast and i_table
     table.cell(tb, 1, 7, str.tostring(SW1.size()) + " / " + str.tostring(SG.size()), text_color=color.white, text_size=size.small)
 //#}
 //#{N
-    table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? "INTRADAY model (5m)" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
+//#X     table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? "INTRADAY model (5m)" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
+//#E     table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? "ERL / IRL model (5m)" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
     table.cell(tb, 1, 0, "sweep > " + (i_ifvg15 ? "5m/15m" : "5m") + " IFVG + " + (i_mssBos ? "BOS / MSS" : "BOS") + " > FVG / VI", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 1, "Setups (IFVG + BOS / MSS)", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 1, str.tostring(n4), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 2, "Reversal window / entry valid", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 2, str.tostring(i_rev5) + " x 5m / " + str.tostring(i_fill5) + " min", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 10, "Stop / target", text_color=color.white, text_size=size.small)
-    table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == PARTIAL ? str.tostring(partPct) + "% at " + str.tostring(i_tgtR) + "R + BE, rest at next Rule 1 swing" + (i_beFirst and i_be ? " (BE +" + str.tostring(i_beR) + "R before TP1)" : "") : i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be and i_tgt5 != PARTIAL ? ", BE +" + str.tostring(i_beR) + "R" : "") + (i_eod ? "; flat " + str.tostring(i_eodMin) + " min before the " + str.format("{0,number,00}:{1,number,00}", i_eodH, i_eodM) + " NY close" : ""), text_color=color.white, text_size=size.small)
+//#X     table.cell(tb, 1, 10, "5m breaker high / " + (i_tgt5 == PARTIAL ? str.tostring(partPct) + "% at " + str.tostring(i_tgtR) + "R + BE, rest at next Rule 1 swing" + (i_beFirst and i_be ? " (BE +" + str.tostring(i_beR) + "R before TP1)" : "") : i_tgt5 == "Major 5m swing" ? "major 5m swing (else " + str.tostring(i_tgtR) + "R)" : str.tostring(i_tgtR) + "R") + (i_be and i_tgt5 != PARTIAL ? ", BE +" + str.tostring(i_beR) + "R" : "") + (i_eod ? "; flat " + str.tostring(i_eodMin) + " min before the " + str.format("{0,number,00}:{1,number,00}", i_eodH, i_eodM) + " NY close" : ""), text_color=color.white, text_size=size.small)
+//#E     table.cell(tb, 1, 10, "5m breaker high / TP1 nearest IRL (fresh FVG, " + str.tostring(i_irlMinR) + "R+)" + (i_irlReq ? "" : " else " + str.tostring(i_tgtR) + "R") + ": " + str.tostring(partPct) + "% + BE, rest to next ERL" + (i_eod ? "; flat " + str.tostring(i_eodMin) + " min before the " + str.format("{0,number,00}:{1,number,00}", i_eodH, i_eodM) + " NY close" : ""), text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 12, "Bias (last Rule 1 swing sweep)" + (i_bias5 ? "" : " - filter off"), text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 12, biasS.get(0), text_color=biasA.get(0) < 0 ? color.red : biasA.get(0) > 0 ? color.lime : color.white, text_size=size.small)
     table.cell(tb, 0, 7, "Watching sweeps / orders", text_color=color.white, text_size=size.small)
