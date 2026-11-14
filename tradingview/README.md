@@ -8,6 +8,8 @@ The two models are separate scripts (one model per script):
 | `ict_swing_strategy.pine` | **Swing strategy** – same swing logic, places the orders, Strategy Tester report |
 | `ict_intraday_indicator.pine` | **Intraday indicator** – the intraday model (5m chart), alerts, stats table (no orders) |
 | `ict_intraday_strategy.pine` | **Intraday strategy** – same intraday logic, places the orders, Strategy Tester report |
+| `ict_erl_irl_indicator.pine` | **ERL/IRL indicator** – the intraday model with external / internal range liquidity (5m chart), alerts, table (no orders) |
+| `ict_erl_irl_strategy.pine` | **ERL/IRL strategy** – same ERL/IRL logic, places the orders, Strategy Tester report |
 
 Pine Script v5. Uses completed higher-timeframe candles only (no repainting).
 
@@ -128,3 +130,21 @@ fixed 3R or major 5m swing, breakeven +1R. Only in the direction of the bias (la
 bullish; input *Intraday: only trade in the direction of the bias*). The chart table shows setups, windows, stop / target, the current bias and
 the trade stats. **In the Python backtest these rules lose money (about -313R / -347R over 2021-2026 with the bias filter) - forward-test only.**
 
+
+
+## ERL / IRL scripts (`ict_erl_irl_*.pine`)
+The intraday model with ICT external / internal range liquidity (short described, long mirrored). Everything not listed
+here is the same as the intraday scripts (sweep rule, IFVG, BOS / MSS, displacement, bias, entry FVG / VI, breaker stop,
+one trade per entry, 60-minute order, end-of-day close at 16:45 NY).
+- **ERL (starts a setup):** D / W / M swings, 4H and 1H swings, Asia / London / NY session highs/lows, ICT macro window
+  highs/lows. **FVG edges are not swept as liquidity** in this model.
+- **IRL:** fresh D / 4H / 1H FVGs (no candle of their timeframe has traded into the gap yet). Inputs *IRL: fresh D / 4H / 1H FVGs*.
+- **Draw filter:** a short needs a fresh **bullish** FVG below the entry, at least *IRL min distance* (1R) away; none ->
+  no trade (*Require an IRL draw*, on; off = fall back to *Target (R)*).
+- **TP1 = the nearest such IRL** at its near edge (top of the bullish FVG; *IRL target at the FVG's 50% (CE)* optional):
+  *Partial close %* (50) closes there and the stop on the rest moves to breakeven.
+- **Runner = the next ERL** below TP1: the nearest unswept D / W / M / 4H / 1H swing low or session low (macros not used).
+  None -> everything closes at TP1.
+- Chart: IRL levels drawn at their near edge, labelled *4H / 1H / D IRL below (bullish)* / *above (bearish)*; the TP label
+  shows TP1 (IRL, with its R) and TP2 (ERL).
+- Not backtested; the Python backtest and the MT5 EA do not have this model yet.

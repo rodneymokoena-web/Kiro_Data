@@ -173,6 +173,7 @@ type Sig
     float     tp1 = na     // intraday partial: first target (part closed there)
     float     tp2 = na     // intraday partial: runner target = next Rule 1 swing (na = everything at tp1)
     string    tp2Tx = ""
+    string    tp1Tx = ""   // ERL/IRL: what the first target is (IRL FVG)
     int       halfIdx = -1 // candle where the partial close happened
     int       anc = -1     // swing: 1H index of the sweep extreme
     float     tpFix = na   // swing: target = 1H swing low
@@ -597,6 +598,7 @@ f_stopBase(bool sh, float px, float ext, float ob) =>
 
 
 // entry / stop / target lines of a signal: stop extending, gray + dotted if the order never filled
+
 
 
 method finishLines(Sig g) =>
@@ -1044,6 +1046,7 @@ f_drawLv(array<float> P, array<int> T, color col, string tag, bool isHigh) =>
             lvLabels.push(label.new(bar_index + 3, lv, tag + (isHigh ? " H" : " L") + (used ? " (swept)" : ""), style=label.style_label_left, color=color.new(color.black, 100), textcolor=c2, size=size.tiny))
 // draw + label the fresh FVG far edges of one list (price P, completion time T, buy-side? Hi, state X: -1 = fresh). Only fresh
 // edges are drawn (price has not traded into the gap yet) - the newest 25. Label e.g. "4H FVG H" (bearish FVG top = buy-side).
+
 f_drawFvg(array<float> P, array<int> T, array<bool> Hi, array<int> X, color col, string tag) =>
     int nP = P.size()
     int cnt = 0
