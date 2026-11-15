@@ -17,7 +17,7 @@
 //|   backtest of these rules LOSES money (US100 Oct 2026: -21.6R).   |
 //+------------------------------------------------------------------+
 #property copyright "ICT Intraday EA"
-#property version   "1.30"
+#property version   "1.31"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -611,7 +611,7 @@ void SetBias(int tf, bool hi, double px)
   {
    if(tf > 4) return;                                        // only D / W / M / 4H / 1H swing sweeps set the bias
    g_bias = hi ? -1 : 1;
-   g_biasTx = (hi ? "Bearish (" : "Bullish (") + TFN[tf] + (hi ? " high " : " low ") + DoubleToString(px, _Digits) + ")";
+   g_biasTx = (hi ? "Bearish (" : "Bullish (") + TFN[tf] + (hi ? " high" : " low") + ")";     // no price on the chart (v1.31)
   }
 
 // before the 5m replay: a level counts as swept by a 1H candle that wicks through it and closes back
