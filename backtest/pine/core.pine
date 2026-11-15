@@ -256,6 +256,8 @@ type Sig
     bool      cancelled = false
     float     entry = na
     int       fillIdx = -1
+    int       fillT = 0    // open time of the fill candle (fillIdx can fall out of the 4000-candle buffer)
+    int       fillTd = 0   // intraday: trading day of the fill (end-of-day exit if it was missed)
     float     risk = na
     bool      beDone = false
     string    result = ""
@@ -1152,12 +1154,20 @@ if new1 and i_irlVI and i_fvgLiq1h and q - 1 >= B1.base
 //#W bool eodExit = false
 //#W bool eodNoFill = false
 //#W bool eodNext = false
+//#W int tdN = 0
+//#W i_eod = false
 //#N int nyMin = hour(time, "America/New_York") * 60 + minute(time, "America/New_York")
 //#N int eodCut = i_eodH * 60 + i_eodM - i_eodMin
 //#N int eodEnd = i_eodH * 60 + i_eodM
 //#N bool eodExit = i_eod and isM5 and nyMin + 5 >= eodCut and nyMin < eodEnd
 //#N bool eodNoFill = i_eod and isM5 and nyMin >= eodCut and nyMin < eodEnd
 //#N bool eodNext = i_eod and isM5 and nyMin + 5 >= eodCut and nyMin + 5 < eodEnd
+// trading-day counter (a day ends at the market close): when the feed has no candle in the last minutes before the close
+// (e.g. a cash-index chart that stops at 16:00), a trade still open from an earlier trading day is closed on the first candle
+//#N int tdRel = (nyMin - eodEnd + 1440) % 1440
+//#N var int tdN = 0
+//#N if bar_index > 0 and (tdRel < nz(tdRel[1]) or time - nz(time[1]) > 86400000)
+//#N     tdN += 1
 
 // ───────────────────────────────────────────────────────────────────────────── 2. virtual fills / exits (orders were set on the previous candle)
 for [k, _e4] in SG
@@ -1236,6 +1246,8 @@ for [k, _e4] in SG
                 g.result := "no 1H swing low target beyond entry"
                 continue
             g.fillIdx := p
+            g.fillT := time
+            g.fillTd := tdN
             g.state := 2
             if g.sh
                 evShortFill := true
@@ -1255,9 +1267,10 @@ for [k, _e4] in SG
             if i_showE
                 label.new(time, g.tp1, "TP1 " + str.tostring(partPct) + "%", xloc=xloc.bar_time, style=label.style_label_left, color=color.teal, textcolor=color.white, size=size.tiny)
             alert(syminfo.ticker + " " + str.tostring(partPct) + "% closed at TP1 " + str.tostring(g.tp1, format.mintick) + " - stop to breakeven " + str.tostring(g.entry, format.mintick) + ", runner to " + str.tostring(g.tp2, format.mintick) + " (" + g.tp2Tx + ")", alert.freq_once_per_bar_close)
-        bool hitEOD = eodExit and not hitSL and not hitTP             // end of day: the rest closes at this candle's close
+        bool eodMiss = i_eod and isM5 and tdN > g.fillTd                // the end-of-day candle was missing: close now
+        bool hitEOD = (eodExit or eodMiss) and not hitSL and not hitTP  // end of day: the rest closes at this candle's close
         if hitSL or hitTP or hitEOD
-            float exitPx = hitSL ? g.sl : hitTP ? g.tp : close
+            float exitPx = hitSL ? g.sl : hitTP ? g.tp : eodMiss and not eodExit ? open : close
             float pnl = g.sh ? g.entry - exitPx : exitPx - g.entry
             bool half = g.halfIdx >= 0
             if half                                                  // size-weighted: part at TP1 + the rest at this exit
@@ -1275,12 +1288,12 @@ for [k, _e4] in SG
             sumR += r
             grossW += r > 0 ? r : 0.0
             grossL += r < 0 ? -r : 0.0
-            holdH += (time - BC.T(g.fillIdx)) / 3600000.0
+            holdH += (time - g.fillT) / 3600000.0
             g.state := 3
             g.result := hitEOD ? (half ? "TP1 + end of day" : "end of day") : half ? (hitSL ? "TP1 + breakeven" : "TP1 + TP2") : trailWin ? "trailed" : isBE ? "breakeven" : hitSL ? "stop" : "target"
             if i_showE
                 label.new(time, exitPx, (hitEOD ? (half ? "TP1+EOD " : "EOD ") : half ? (hitSL ? "TP1+BE " : "TP1+TP2 ") : trailWin ? "TRAIL " : isBE ? "BE " : hitSL ? "SL " : "TP ") + str.tostring(r, "+0.00;-0.00") + "R", xloc=xloc.bar_time, style=label.style_label_left, color=trailWin ? color.teal : isBE ? color.gray : hitSL ? color.red : color.teal, textcolor=color.white, size=size.tiny)
-                line.new(BC.T(g.fillIdx), g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
+                line.new(g.fillT, g.entry, time, exitPx, xloc=xloc.bar_time, color=color.gray, style=line.style_dotted)
             evClosed := true
             alert(syminfo.ticker + " trade closed: " + g.result + " " + str.tostring(r, "+0.00;-0.00") + "R", alert.freq_once_per_bar_close)
 //#W         else if i_be and not g.beDone and p > g.fillIdx and (g.sh ? g.entry - low : high - g.entry) >= i_beR * g.risk
@@ -1292,7 +1305,7 @@ for [k, _e4] in SG
         // swing model: after breakeven, trail to the newest confirmed 1H swing (2 each side) that formed after the fill
         if isSwing and i_swTrail and g.state == 2 and g.beDone and new1 and q >= 0
             int ti = q - 2                                           // candle with 2 newer candles = confirmed pivot
-            if ti - 2 >= B1.base and B1.T(ti) > BC.T(g.fillIdx)
+            if ti - 2 >= B1.base and B1.T(ti) > g.fillT
                 float lvT = na
                 if g.sh
                     bool okT = true
@@ -2017,7 +2030,7 @@ if i_showE and tfOK and SG.size() > 0
 //#S             strategy.exit(g.id + " x", from_entry=g.id, stop=g.sl, limit=g.tp)
 //#S         else if g.state == 3
 //#S             strategy.cancel(g.id)
-//#S             if eodExit and g.fillIdx >= 0
+//#S             if (eodExit or (i_eod and isM5 and tdN > g.fillTd)) and g.fillIdx >= 0
 //#S                 strategy.close(g.id, comment="end of day")       // flat before the market close (fills at the next open = cutoff)
 
 // ───────────────────────────────────────────────────────────────────────────── 8. levels + table
