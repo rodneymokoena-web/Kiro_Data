@@ -36,9 +36,10 @@ SHORT described; LONG is the mirror image. Rule 1 liquidity = the intraday level
     6b FILTERS   no minimum stop (MIN_STOP_PTS = 0, experiments only). ONE_PER_ENTRY: several setups with
                  the same direction and entry zone / limit price -> one trade (the first signal).
     ERL / IRL    (ERL_IRL=1, the TradingView "ICT ERL/IRL" scripts) ERL = the swing / session / macro levels start setups; FVG
-                 edges are NOT swept. IRL = fresh D / 4H / 1H FVGs (IRL_TFS). A short needs a fresh BULLISH FVG below the entry,
-                 >= IRL_MIN_R x risk away (none -> no trade, unless IRL_REQUIRED=0 -> TARGET_R). TP1 = the nearest one at its
-                 near edge (top; IRL_CE=1 -> its 50%), PARTIAL_PCT closes there, stop to breakeven; the rest runs to the next
+                 edges are NOT swept. IRL = fresh D / 4H / 1H FVGs and (IRL_VI) volume imbalances of those candles (IRL_TFS).
+                 TP1 = the nearest fresh BULLISH FVG / VI below the entry, >= IRL_MIN_R x risk away, at its top edge (IRL_CE=1 ->
+                 its 50%); none -> TP1 = TARGET_R (3R) (IRL_REQUIRED=1 -> no trade). PARTIAL_PCT closes at TP1, stop to
+                 breakeven; the rest runs to the next
                  ERL = the nearest unswept D / W / M / 4H / 1H swing low or session low below TP1 (none -> all at TP1).
     7 TARGET     TARGET_MODE "partial" (default): close PARTIAL_PCT (half) at TARGET_R x risk (3R) and move the stop on the rest
                  to breakeven; the rest runs to the NEXT RULE 1 SWING = the nearest D / W / M / 4H / 1H swing low (short) below the
@@ -67,7 +68,8 @@ BE_BEFORE_TP1 = os.environ.get("BE_BEFORE_TP1", "0") == "1"        # partial mod
 ERL_IRL = os.environ.get("ERL_IRL", "0") == "1"           # ERL / IRL model (see the docstring)
 IRL_TFS = tuple(os.environ.get("IRL_TFS", "D,4H,1H").split(","))
 IRL_MIN_R = float(os.environ.get("IRL_MIN_R", "1.0"))
-IRL_REQUIRED = os.environ.get("IRL_REQUIRED", "1") == "1"
+IRL_REQUIRED = os.environ.get("IRL_REQUIRED", "0") == "1"   # 0 (default): no IRL -> TP1 = TARGET_R; 1: no IRL -> no trade
+IRL_VI = os.environ.get("IRL_VI", "1") == "1"               # volume imbalances of the IRL_TFS candles are IRL too
 IRL_CE = os.environ.get("IRL_CE", "0") == "1"
 FVG_LEVEL_TFS = ("4HFVG", "1HFVG", "DFVG")
 SESSION_TFS_ERL = ("ASIA", "LONDON", "NY")
@@ -114,22 +116,28 @@ def _major_swing(h, l, q, short, entry):
 
 
 def irl_zones(h1: pd.DataFrame) -> dict:
-    """Fresh FVGs (IRL) of the IRL_TFS timeframes: {"bull"/"bear": (level, usable_from_ns, fresh_until_ns, tf)}.
-    level = the near edge (bullish FVG top / bearish FVG bottom) or (IRL_CE) the 50%. Usable from the close of candle 3,
-    fresh until the end of the first later candle of its timeframe that trades into the gap (as fvg_far_edge_levels)."""
+    """Fresh FVGs and (IRL_VI) volume imbalances (IRL) of the IRL_TFS timeframes:
+    {"bull"/"bear": (level, usable_from_ns, fresh_until_ns, tag)}. level = the near edge (bullish top / bearish bottom) or
+    (IRL_CE) the 50%. Usable from the close of the completing candle (FVG candle 3 / VI candle 2), fresh until the end of
+    the first later candle of its timeframe that trades into it (as fvg_far_edge_levels)."""
+    import entry_ltf
     NEVER = np.iinfo(np.int64).max
     rows = []
     for tf in IRL_TFS:
         bars = h1.assign(Start=h1.index, End=h1.index + pd.Timedelta(hours=1)) if tf == "1H" else S.build_htf(h1, tf)
-        f = ifvg.find_fvgs(bars.drop(columns=["Start", "End"]))
+        ohlc = bars.drop(columns=["Start", "End"])
+        f = ifvg.find_fvgs(ohlc)[["dir", "idx", "bottom", "top"]].assign(kind="FVG")
+        if IRL_VI:
+            f = pd.concat([f, entry_ltf.volume_imbalances(ohlc)[["dir", "idx", "bottom", "top"]].assign(kind="VI")], ignore_index=True)
         H, L = bars["High"].to_numpy(), bars["Low"].to_numpy()
         end = pd.DatetimeIndex(bars["End"]).as_unit("ns").asi8
-        for d, i, bot, top in f[["dir", "idx", "bottom", "top"]].itertuples(index=False):
+        for d, i, bot, top, kind in f.itertuples(index=False):
+            i = int(i)
             later = np.arange(i + 1, len(bars))
             hit = later[(H[later] >= bot) if d == "bear" else (L[later] <= top)]
             until = end[hit[0]] - 1 if len(hit) else NEVER
             near = top if d == "bull" else bot
-            rows.append((d, (top + bot) / 2 if IRL_CE else near, end[i], until, tf))
+            rows.append((d, (top + bot) / 2 if IRL_CE else near, end[i], until, f"{tf} {kind}"))
     out = {}
     for d in ("bull", "bear"):
         x = [r for r in rows if r[0] == d]
@@ -287,7 +295,7 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
         if not m.any():
             return np.nan, ""
         k = np.flatnonzero(m)[int(np.argmax(lv_[m]) if short_ else np.argmin(lv_[m]))]
-        return float(lv_[k]), f"{tfs_[k]} FVG {'CE' if IRL_CE else 'edge'}"
+        return float(lv_[k]), f"{tfs_[k]} {'CE' if IRL_CE else 'edge'}"
 
     levels = levels[levels["broken_time"].notna() & (levels["broken_time"] >= max(S.TEST_START, idx[0]))]
     # bias timeline: sweeps of Rule 1 swing levels, in time order (+1 = a low swept -> bullish, -1 = a high swept -> bearish)
@@ -427,6 +435,7 @@ def build_trades(h1: pd.DataFrame, m5: pd.DataFrame, symbol: str = "US100") -> p
                 if np.isnan(iv):
                     if IRL_REQUIRED:
                         continue
+                    ttag = f"{TARGET_R:g}R (no IRL)"                  # no IRL: TP1 stays at TARGET_R
                 else:
                     tp, ttag = iv, itag
                 tp2, t2tag = runner(short, tp, idx[q])
