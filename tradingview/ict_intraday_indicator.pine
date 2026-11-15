@@ -75,6 +75,8 @@ i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
 i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
 i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
 partPct = i_partPct
+// chart labels / box texts without prices (intraday scripts)
+noPx = true
 i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group=g5)
 
 g6 = "Display"
@@ -1171,7 +1173,7 @@ if isM5 and symOK and BW.size() > 0
                 float tpL = w.sh ? lim - i_tgtR * rk : lim + i_tgtR * rk
                 if i_showE
                     int z0 = BC.T(z1)
-                    box.new(z0, z.top, BC.TC(p) + i_fill5 * 60000, z.bot, xloc=xloc.bar_time, border_color=color.fuchsia, border_width=2, bgcolor=color.new(color.fuchsia, 85), text="1st 5m " + zTx + " after BOS " + str.tostring(z.bot, format.mintick) + "-" + str.tostring(z.top, format.mintick), text_size=size.tiny, text_color=color.fuchsia, text_halign=text.align_left, text_valign=text.align_top)
+                    box.new(z0, z.top, BC.TC(p) + i_fill5 * 60000, z.bot, xloc=xloc.bar_time, border_color=color.fuchsia, border_width=2, bgcolor=color.new(color.fuchsia, 85), text="1st 5m " + zTx + " after BOS" + (noPx ? "" : " " + str.tostring(z.bot, format.mintick) + "-" + str.tostring(z.top, format.mintick)), text_size=size.tiny, text_color=color.fuchsia, text_halign=text.align_left, text_valign=text.align_top)
                 // every first FVG / VI after a BOS gets an order alert (never skipped)
                 if w.sh
                     evBosLimShort := true
@@ -1284,7 +1286,7 @@ if tfOK and SG.size() > 0
                         // every 5m FVG of the drop stays on the chart (grey box with its prices), drawn once
                         zl += (zl == "" ? "" : ", ") + "FVG " + str.tostring(f.bot, format.mintick) + "-" + str.tostring(f.top, format.mintick)
                         if i_showPrev and f.i3 > drF0
-                            box.new(BC.T(f.i3 - 2), f.top, BC.TC(f.i3) + i_fill5 * 60000, f.bot, xloc=xloc.bar_time, border_color=color.gray, border_style=line.style_dotted, bgcolor=color.new(color.gray, 88), text="5m FVG " + str.tostring(f.bot, format.mintick) + "-" + str.tostring(f.top, format.mintick), text_size=size.tiny, text_color=color.gray, text_halign=text.align_left, text_valign=text.align_bottom)
+                            box.new(BC.T(f.i3 - 2), f.top, BC.TC(f.i3) + i_fill5 * 60000, f.bot, xloc=xloc.bar_time, border_color=color.gray, border_style=line.style_dotted, bgcolor=color.new(color.gray, 88), text="5m FVG" + (noPx ? "" : " " + str.tostring(f.bot, format.mintick) + "-" + str.tostring(f.top, format.mintick)), text_size=size.tiny, text_color=color.gray, text_halign=text.align_left, text_valign=text.align_bottom)
                             g.drF := math.max(g.drF, f.i3)
                 for [m, _e13] in VC                                  // ... or a later 5m volume imbalance (i3 = its 2nd candle)
                     Fvg v = VC.get(m)
@@ -1295,7 +1297,7 @@ if tfOK and SG.size() > 0
                             bestVI := true
                         zl += (zl == "" ? "" : ", ") + "VI " + str.tostring(v.bot, format.mintick) + "-" + str.tostring(v.top, format.mintick)
                         if i_showPrev and v.i3 > drV0
-                            box.new(BC.T(v.i3 - 1), v.top, BC.TC(v.i3) + i_fill5 * 60000, v.bot, xloc=xloc.bar_time, border_color=color.gray, border_style=line.style_dotted, bgcolor=color.new(color.gray, 88), text="5m VI " + str.tostring(v.bot, format.mintick) + "-" + str.tostring(v.top, format.mintick), text_size=size.tiny, text_color=color.gray, text_halign=text.align_left, text_valign=text.align_bottom)
+                            box.new(BC.T(v.i3 - 1), v.top, BC.TC(v.i3) + i_fill5 * 60000, v.bot, xloc=xloc.bar_time, border_color=color.gray, border_style=line.style_dotted, bgcolor=color.new(color.gray, 88), text="5m VI" + (noPx ? "" : " " + str.tostring(v.bot, format.mintick) + "-" + str.tostring(v.top, format.mintick)), text_size=size.tiny, text_color=color.gray, text_halign=text.align_left, text_valign=text.align_bottom)
                             g.drV := math.max(g.drV, v.i3)
                 if best >= 0
                     Fvg f = na
@@ -1364,11 +1366,11 @@ if i_showE and tfOK and SG.size() > 0
             line.set_y2(g.lnT, g.tp)
             line.set_x2(g.lnT, time)
             label.set_xy(g.lbE, time, ePx)
-            label.set_text(g.lbE, side + " " + stx + "  entry " + str.tostring(ePx, format.mintick))
+            label.set_text(g.lbE, side + " " + stx + "  entry" + (noPx ? "" : " " + str.tostring(ePx, format.mintick)))
             label.set_xy(g.lbS, time, g.sl)
-            label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
+            label.set_text(g.lbS, "SL" + (noPx ? "" : " " + str.tostring(g.sl, format.mintick)) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
-            label.set_text(g.lbT, not na(g.tp2) ? "TP2 " + str.tostring(g.tp2, format.mintick) + "  (" + g.tp2Tx + ")  |  TP1 " + str.tostring(g.tp1, format.mintick) + "  (" + str.tostring(i_tgtR) + "R, " + str.tostring(partPct) + "%" + (g.halfIdx >= 0 ? " done" : "") + ")" : "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
+            label.set_text(g.lbT, not na(g.tp2) ? "TP2  (" + g.tp2Tx + ")  |  TP1  (" + str.tostring(i_tgtR) + "R, " + str.tostring(partPct) + "%" + (g.halfIdx >= 0 ? " done" : "") + ")" : "TP  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
             actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
 
 // ───────────────────────────────────────────────────────────────────────────── 7. broker orders (strategy only)

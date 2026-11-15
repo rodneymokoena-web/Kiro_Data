@@ -54,6 +54,8 @@ i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
 i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
 i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
 partPct = 50.0
+// chart labels / box texts without prices (intraday scripts)
+noPx = false
 i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group=g5)
 
 g6 = "Display"
@@ -1015,9 +1017,9 @@ if i_showE and tfOK and SG.size() > 0
             line.set_y2(g.lnT, g.tp)
             line.set_x2(g.lnT, time)
             label.set_xy(g.lbE, time, ePx)
-            label.set_text(g.lbE, side + " " + stx + "  entry " + str.tostring(ePx, format.mintick))
+            label.set_text(g.lbE, side + " " + stx + "  entry" + (noPx ? "" : " " + str.tostring(ePx, format.mintick)))
             label.set_xy(g.lbS, time, g.sl)
-            label.set_text(g.lbS, "SL " + str.tostring(g.sl, format.mintick) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
+            label.set_text(g.lbS, "SL" + (noPx ? "" : " " + str.tostring(g.sl, format.mintick)) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
             label.set_text(g.lbT, "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_swTgt == "1H swing low" ? "1H swing low, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
             actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
