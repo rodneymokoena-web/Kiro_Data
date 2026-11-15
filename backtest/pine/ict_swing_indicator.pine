@@ -1022,7 +1022,7 @@ if i_showE and tfOK and SG.size() > 0
             label.set_text(g.lbS, "SL" + (noPx ? "" : " " + str.tostring(g.sl, format.mintick)) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
             label.set_text(g.lbT, "TP " + str.tostring(g.tp, format.mintick) + "  (" + (i_swTgt == "1H swing low" ? "1H swing low, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
-            actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
+            actTxt := noPx ? side + " " + stx + (g.halfIdx >= 0 ? " (TP1 done, SL at breakeven)" : "") : side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
 
 // ───────────────────────────────────────────────────────────────────────────── 7. broker orders (strategy only)
 
