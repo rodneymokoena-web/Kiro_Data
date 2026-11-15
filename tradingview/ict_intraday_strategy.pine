@@ -925,7 +925,7 @@ f_reg5(float lv, int ct, bool isHigh, string tf, int pc) =>
         sweptT.push(ct)
         if tf == "D" or tf == "W" or tf == "M" or tf == "4H" or tf == "1H"     // Rule 1 swing sweep -> bias
             biasA.set(0, isHigh ? -1 : 1)
-            biasS.set(0, (isHigh ? "Bearish (" + tf + " high " : "Bullish (" + tf + " low ") + str.tostring(lv, format.mintick) + ")")
+            biasS.set(0, (isHigh ? "Bearish (" + tf + " high" : "Bullish (" + tf + " low") + (noPx ? "" : " " + str.tostring(lv, format.mintick)) + ")")
         // leg origin on 5m = the lowest low (high sweep) / highest high (low sweep) between the previous 5m swing high (low),
         // 2 candles each side and formed before the sweep extreme, and the extreme = where the leg into the sweep started
         int ext0 = math.max(pc - 3, BC.base)
@@ -1373,7 +1373,7 @@ if i_showE and tfOK and SG.size() > 0
             label.set_text(g.lbS, "SL" + (noPx ? "" : " " + str.tostring(g.sl, format.mintick)) + (g.beDone ? (g.sl == g.entry ? "  (breakeven)" : "  (trailing)") : ""))
             label.set_xy(g.lbT, time, g.tp)
             label.set_text(g.lbT, not na(g.tp2) ? "TP2  (" + g.tp2Tx + ")  |  TP1  (" + str.tostring(i_tgtR) + "R, " + str.tostring(partPct) + "%" + (g.halfIdx >= 0 ? " done" : "") + ")" : "TP  (" + (i_tgt5 == "Major 5m swing" ? "5m swing / R, " + str.tostring(math.abs(g.tp - (g.state == 2 ? g.entry : g.lvl)) / math.max(math.abs((g.state == 2 ? g.entry : g.lvl) - g.sl), syminfo.mintick), "0.0") + "R" : str.tostring(i_tgtR) + "R") + ")")
-            actTxt := side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
+            actTxt := noPx ? side + " " + stx + (g.halfIdx >= 0 ? " (TP1 done, SL at breakeven)" : "") : side + " " + stx + "  E " + str.tostring(ePx, format.mintick) + " / SL " + str.tostring(g.sl, format.mintick) + " / TP " + str.tostring(g.tp, format.mintick)
 
 // ───────────────────────────────────────────────────────────────────────────── 7. broker orders (strategy only)
 if SG.size() > 0
