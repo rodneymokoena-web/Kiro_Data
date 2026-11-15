@@ -138,10 +138,11 @@ here is the same as the intraday scripts (sweep rule, IFVG, BOS / MSS, displacem
 one trade per entry, 60-minute order, end-of-day close at 16:45 NY).
 - **ERL (starts a setup):** D / W / M swings, 4H and 1H swings, Asia / London / NY session highs/lows, ICT macro window
   highs/lows. **FVG edges are not swept as liquidity** in this model.
-- **IRL:** fresh D / 4H / 1H FVGs (no candle of their timeframe has traded into the gap yet). Inputs *IRL: fresh D / 4H / 1H FVGs*.
-- **Draw filter:** a short needs a fresh **bullish** FVG below the entry, at least *IRL min distance* (1R) away; none ->
-  no trade (*Require an IRL draw*, on; off = fall back to *Target (R)*).
-- **TP1 = the nearest such IRL** at its near edge (top of the bullish FVG; *IRL target at the FVG's 50% (CE)* optional):
+- **IRL:** fresh D / 4H / 1H FVGs **and volume imbalances** of those candles (nothing of their timeframe has traded into
+  them yet). Inputs *IRL: fresh D / 4H / 1H FVGs*, *IRL: fresh volume imbalances*.
+- **TP1 = the nearest fresh bullish FVG or VI below the entry**, at least *IRL min distance* (1R) away, at its top edge
+  (*50% (CE)* optional). **None -> TP1 = *Target (R)* (3R)** (*Require an IRL draw* on would skip the trade instead).
+- At TP1:
   *Partial close %* (50) closes there and the stop on the rest moves to breakeven.
 - **Runner = the next ERL** below TP1: the nearest unswept D / W / M / 4H / 1H swing low or session low (macros not used).
   None -> everything closes at TP1.
