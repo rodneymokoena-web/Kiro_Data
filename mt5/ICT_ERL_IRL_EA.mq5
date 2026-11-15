@@ -9,9 +9,10 @@
 //|   Sweep on 5m -> 5m/15m IFVG + 5m BOS/MSS with displacement ->    |
 //|   limit at the latest 5m FVG / volume imbalance of the drop; stop |
 //|   at the 5m breaker; bias from the last D/W/M/4H/1H swing sweep.  |
-//|   IRL (internal range liquidity) = fresh D/4H/1H FVGs. A short    |
-//|   needs a fresh BULLISH FVG below the entry, >= InpIrlMinR R away |
-//|   (none -> no trade). TP1 = the nearest one (near edge, or 50%):  |
+//|   IRL (internal range liquidity) = fresh D/4H/1H FVGs and volume  |
+//|   imbalances. TP1 = the nearest fresh BULLISH FVG / VI below the  |
+//|   entry, >= InpIrlMinR R away, at its top edge (or 50%); none ->  |
+//|   TP1 = InpTargetR (3R) (v1.10).                                  |
 //|   InpPartialPct closes there + stop to breakeven; the rest runs   |
 //|   to the next ERL = nearest unswept D/W/M/4H/1H swing low or      |
 //|   session low below TP1. Flat 15 min before the 17:00 NY close.   |
@@ -24,7 +25,7 @@
 //|   these rules LOSES money (US100 Oct 2026: -25R to -37R).         |
 //+------------------------------------------------------------------+
 #property copyright "ICT ERL IRL EA"
-#property version   "1.00"
+#property version   "1.10"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -66,7 +67,8 @@ input group "IRL - internal range liquidity (fresh FVGs, first target)"
 input bool   InpIrlD             = true;    // fresh D FVGs
 input bool   InpIrl4H            = true;    // fresh 4H FVGs
 input bool   InpIrl1H            = true;    // fresh 1H FVGs
-input bool   InpIrlRequired      = true;    // no fresh FVG beyond the entry -> no trade (false: first target = InpTargetR)
+input bool   InpIrlVI            = true;    // volume imbalances of the D / 4H / 1H candles are IRL too (v1.10)
+input bool   InpIrlRequired      = false;   // false (default): no IRL -> first target = InpTargetR; true: no IRL -> no trade
 input double InpIrlMinR          = 1.0;     // the IRL must be at least this many R beyond the entry
 input bool   InpIrlCE            = false;   // first target at the FVG's 50% (CE) instead of its near edge
 
@@ -86,7 +88,7 @@ input int    InpFvgAfter         = 2;       // entry FVG / VI may complete N can
 input int    InpEntryValidMin    = 60;      // limit order valid N minutes after the reversal candle close
 input bool   InpOnePerEntry      = true;    // one trade per direction + entry zone / price
 input double InpPartialPct       = 50.0;    // % of the position closed at the first target (the IRL)
-input double InpTargetR          = 3.0;     // first target in R when there is no IRL and InpIrlRequired = false
+input double InpTargetR          = 3.0;     // first target in R when there is no IRL (and InpIrlRequired = false)
 input double InpBE_at_R          = 1.0;     // breakeven at +R before the first target - only if InpBEBeforeTP1 = true
 input bool   InpBEBeforeTP1      = false;   // false: the stop moves to breakeven when the first part closes at the IRL
 input bool   InpEODClose         = true;    // close all trades InpEODMin minutes before the market close; no entries from then to the reopen
@@ -215,14 +217,16 @@ struct Irl
    double   nearE;              // near edge (trading through it ends "fresh")
    datetime ct;                 // usable from (close of candle 3)
    datetime ex;                 // fresh until (end of the first candle that traded into it - 1); 0 = still fresh
-   int      fIdx;               // candle-3 index on its timeframe
+   int      fIdx;               // index of the completing candle on its timeframe (FVG candle 3 / VI candle 2)
+   bool     vi;                 // volume imbalance (else FVG)
   };
 Irl g_irl[];
 string IRLN[5] = {"", "", "D", "4H", "1H"};
 
-void AddIrl(int x, bool bear, double far, double nearE, datetime ct, int fIdx)
+void AddIrl(int x, bool bear, double far, double nearE, datetime ct, int fIdx, bool vi = false)
   {
    int n = ArraySize(g_irl); ArrayResize(g_irl, n + 1, 1024);
+   g_irl[n].vi = vi;
    g_irl[n].x = x; g_irl[n].bear = bear; g_irl[n].nearE = nearE; g_irl[n].lv = InpIrlCE ? (far + nearE) / 2.0 : nearE;
    g_irl[n].ct = ct; g_irl[n].ex = 0; g_irl[n].fIdx = fIdx;
   }
@@ -573,6 +577,17 @@ void OnCandle(CHtf &x, int i)
      {
       if(x.h[i] < x.l[i - 2]) AddIrl(x.id, true,  x.l[i - 2], x.h[i], x.en[i], i);   // bearish FVG: near edge = bottom
       if(x.l[i] > x.h[i - 2]) AddIrl(x.id, false, x.h[i - 2], x.l[i], x.en[i], i);   // bullish FVG: near edge = top
+     }
+   // volume imbalance between candles i-1 and i (same definition as the 5m entry VI) -> IRL
+   if(fvgOn && InpIrlVI && i >= 1)
+     {
+      double o1 = x.o[i - 1], c1 = x.c[i - 1], o2 = x.o[i], c2 = x.c[i];
+      double b1lo = MathMin(o1, c1), b1hi = MathMax(o1, c1), b2lo = MathMin(o2, c2), b2hi = MathMax(o2, c2);
+      bool bear2 = c1 < o1 && c2 < o2, bull2 = c1 > o1 && c2 > o2;
+      if(bear2 && b1lo > b2hi && x.h[i] >= x.l[i - 1]) AddIrl(x.id, true, b1lo, b2hi, x.en[i], i, true);   // above: near edge = bottom
+      else if(bear2 && o2 > c1)                         AddIrl(x.id, true, o2, c1, x.en[i], i, true);
+      if(bull2 && b1hi < b2lo && x.l[i] <= x.h[i - 1]) AddIrl(x.id, false, b1hi, b2lo, x.en[i], i, true);  // below: near edge = top
+      else if(bull2 && o2 < c1)                         AddIrl(x.id, false, o2, c1, x.en[i], i, true);
      }
   }
 
@@ -1040,7 +1055,7 @@ double IrlTarget(bool sh, double entry, double risk, datetime t, string &tx)
       if(g_irl[k].bear == sh || g_irl[k].ct > t || (g_irl[k].ex != 0 && g_irl[k].ex < t)) continue;
       double v = g_irl[k].lv;
       if(sh ? v > lim : v < lim) continue;
-      if(!got || (sh ? v > best : v < best)) { best = v; got = true; tx = IRLN[g_irl[k].x] + " FVG " + (InpIrlCE ? "CE" : "edge"); }
+      if(!got || (sh ? v > best : v < best)) { best = v; got = true; tx = IRLN[g_irl[k].x] + (g_irl[k].vi ? " VI " : " FVG ") + (InpIrlCE ? "CE" : "edge"); }
      }
    return got ? best : 0;
   }
@@ -1067,7 +1082,7 @@ void SignalsModel(int i)
             double risk = MathAbs(e - g_sg[k].stop);
             double tp = sh ? e - InpTargetR * risk : e + InpTargetR * risk;
             string itx; double iv = IrlTarget(sh, e, risk, T5(i), itx);        // TP1 = the IRL
-            if(iv <= 0 && InpIrlRequired) { DropSignal(k, "no IRL draw (fresh FVG) beyond the entry"); continue; }
+            if(iv <= 0 && InpIrlRequired) { DropSignal(k, "no IRL draw (fresh FVG / VI) beyond the entry"); continue; }
             if(iv > 0) tp = iv;
             g_sg[k].tp1 = tp; g_sg[k].tp2 = 0; g_sg[k].halfIdx = -1;
             { string tx; g_sg[k].tp2 = Runner(sh, tp, tx); if(g_sg[k].tp2 > 0) tp = g_sg[k].tp2; }   // the rest to the next ERL
@@ -1245,7 +1260,7 @@ void PlaceReal(int k)
    double t1 = IrlTarget(sh, e, risk, tNow, itx);                       // first target = the IRL
    if(t1 <= 0)
      {
-      if(InpIrlRequired) { Print("No IRL draw (fresh FVG) ", DoubleToString(InpIrlMinR, 2), "R+ beyond ", DoubleToString(e, dg), " - ", g_sg[k].id, " skipped."); g_sg[k].want = false; return; }
+      if(InpIrlRequired) { Print("No IRL draw (fresh FVG / VI) ", DoubleToString(InpIrlMinR, 2), "R+ beyond ", DoubleToString(e, dg), " - ", g_sg[k].id, " skipped."); g_sg[k].want = false; return; }
       t1 = sh ? e - InpTargetR * risk : e + InpTargetR * risk; itx = DoubleToString(InpTargetR, 1) + "R (no IRL)";
      }
    t1 = NormalizeDouble(t1, dg);
@@ -1466,7 +1481,7 @@ void ShowStatus()
    for(int k = 0; k < ArraySize(g_sg); k++) { if(g_sg[k].state == 1) pend++; if(g_sg[k].state == 2) open++; }
    Comment("ICT ERL/IRL EA  |  ", LiveAllowed() ? "AUTOMATIC" : "SIGNALS ONLY", g_halted ? "  |  HALTED (loss limit)" : "",
            "\nBias: ", g_biasTx,
-           "\nLive ERL levels: ", alive, "   fresh IRL (FVGs): ", IrlFresh(), "   swept levels waiting for IFVG + break: ", ArraySize(g_sw),
+           "\nLive ERL levels: ", alive, "   fresh IRL (FVGs / VIs): ", IrlFresh(), "   swept levels waiting for IFVG + break: ", ArraySize(g_sw),
            "\nModel: pending orders ", pend, ", open trades ", open,
            "\nModel trades since start: ", g_vTrades, "  wins ", g_vWins, "  ", DoubleToString(g_vR, 2), "R (before costs)");
   }

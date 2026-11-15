@@ -24,9 +24,9 @@ backtest `intraday_snap.py` with `ERL_IRL=1`. It is built from the intraday EA b
 
 - **ERL starts a setup:** D/W/M swings, 4H and 1H swings, Asia/London/NY session highs/lows, ICT macro highs/lows.
   FVG edges are **not** swept as liquidity.
-- **IRL:** fresh D / 4H / 1H FVGs (`InpIrlD`, `InpIrl4H`, `InpIrl1H`). A short needs a fresh **bullish** FVG below the
-  entry at least `InpIrlMinR` (1R) away; none -> the order is not placed (`InpIrlRequired`; false = first target `InpTargetR`).
-- **TP1 = that IRL** (its near edge; `InpIrlCE` = its 50%). When price reaches it the EA closes `InpPartialPct` (50 %) at
+- **IRL:** fresh D / 4H / 1H FVGs **and volume imbalances** (`InpIrlD`, `InpIrl4H`, `InpIrl1H`, `InpIrlVI`; v1.10).
+- **TP1 = the nearest fresh bullish FVG / VI below the entry**, at least `InpIrlMinR` (1R) away, at its top edge
+  (`InpIrlCE` = its 50%). **None -> TP1 = `InpTargetR` (3R)** (`InpIrlRequired = true` would skip the trade instead). When price reaches it the EA closes `InpPartialPct` (50 %) at
   market and moves the stop to breakeven. The first-target price is saved at order placement in the terminal global
   variable `ICTERL_TP1_<order ticket>` (the position keeps that ticket as its identifier), so restarts keep it.
 - **Broker TP = the next ERL:** the nearest unswept D/W/M/4H/1H swing low or session low below TP1 (macros not used).
