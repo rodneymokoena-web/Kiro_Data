@@ -1490,4 +1490,5 @@ alertcondition(evBosShort, "Intraday bearish BOS", "{{ticker}} 5m BEARISH BOS / 
 alertcondition(evBosLong or evBosShort, "Intraday any BOS", "{{ticker}} 5m BOS / MSS after a Rule 1 sweep")
 alertcondition(evBosLimLong,  "Intraday BUY LIMIT (1st 5m FVG/VI after BOS)",  "{{ticker}} BUY LIMIT at the first 5m FVG / VI after a bullish BOS - see chart")
 alertcondition(evBosLimShort, "Intraday SELL LIMIT (1st 5m FVG/VI after BOS)", "{{ticker}} SELL LIMIT at the first 5m FVG / VI after a bearish BOS - see chart")
+alertcondition(evLongOrder or evShortOrder or evBosLimLong or evBosLimShort, "Intraday ANY limit order placed", "{{ticker}} limit order placed (model entry or 1st 5m FVG / VI after a BOS) - see chart")
 alertcondition(evClosed,     "Trade closed",             "{{ticker}} trade closed (target / stop / breakeven / trail)")

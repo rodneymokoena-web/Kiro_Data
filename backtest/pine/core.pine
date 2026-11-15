@@ -2177,5 +2177,6 @@ if barstate.islast and i_table
 //#I alertcondition(evBosLong or evBosShort, "Intraday any BOS", "{{ticker}} 5m BOS / MSS after a Rule 1 sweep")
 //#I alertcondition(evBosLimLong,  "Intraday BUY LIMIT (1st 5m FVG/VI after BOS)",  "{{ticker}} BUY LIMIT at the first 5m FVG / VI after a bullish BOS - see chart")
 //#I alertcondition(evBosLimShort, "Intraday SELL LIMIT (1st 5m FVG/VI after BOS)", "{{ticker}} SELL LIMIT at the first 5m FVG / VI after a bearish BOS - see chart")
+//#I alertcondition(evLongOrder or evShortOrder or evBosLimLong or evBosLimShort, "Intraday ANY limit order placed", "{{ticker}} limit order placed (model entry or 1st 5m FVG / VI after a BOS) - see chart")
 //#}
 //#I alertcondition(evClosed,     "Trade closed",             "{{ticker}} trade closed (target / stop / breakeven / trail)")
