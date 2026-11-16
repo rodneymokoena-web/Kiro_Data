@@ -94,7 +94,7 @@ MAJOR_PIVOT = 10                                            # major 5m swing: ca
 LEG_PIVOT = 2
 DISP_5M = 2
 OB_LOOKBACK = 10
-FVG_AFTER = 2
+FVG_AFTER = int(os.environ.get("FVG_AFTER", "2"))
 IFVG_LOOKBACK_5M = int(os.environ.get("IFVG_LOOKBACK_5M", "48"))   # bullish 5m FVGs completed in this many 5m candles before the sweep
 M5 = pd.Timedelta(minutes=5)
 

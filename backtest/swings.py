@@ -31,8 +31,8 @@ import numpy as np
 import pandas as pd
 
 # ----------------------------------------------------------------------------- CONFIG
-PIVOT_LEFT = 2             # W / M swings: candles each side
-PIVOT_RIGHT = 2
+PIVOT_LEFT = int(os.environ.get("PIVOT_DWM", "2"))   # D / W / M swings: candles each side (TradingView "Swing size")
+PIVOT_RIGHT = PIVOT_LEFT
 PIVOT_BY_TF = {}           # rule 1 (original): every timeframe uses PIVOT_LEFT / PIVOT_RIGHT; {"D": 1} = D 1 each side
 D_EQUAL_ONLY = False       # rule 1 (original): every D swing counts; True = relative equal highs / lows only
 EQ_TOL_ATR = 0.2           # "relatively equal" = within this x ATR(14) of the D candles
@@ -313,7 +313,7 @@ def _swing_prices(h1: pd.DataFrame, tfs) -> dict:
     return out
 
 
-SESSION_VALID = pd.Timedelta(days=7)   # a session high/low stays sweepable for this long after the session closes
+SESSION_VALID = pd.Timedelta(days=float(os.environ.get("SESSION_VALID_D", "7")))   # a session high/low stays sweepable for this long after the session closes
 
 
 def session_levels(h1: pd.DataFrame, which=("ASIA", "LONDON", "NY"), min_tf=None) -> pd.DataFrame:

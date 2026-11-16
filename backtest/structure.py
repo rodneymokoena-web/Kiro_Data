@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 
 DISP_MIN_CANDLES = 2
-DISP_BODY_RATIO = 0.0   # 0 = any candle closing in the move direction; 0.3-0.5 = demand strong bodies
+DISP_BODY_RATIO = float(__import__("os").environ.get("DISP_BODY_RATIO", "0.0"))   # 0 = any candle closing in the move direction; 0.3-0.5 = demand strong bodies
 DISP_MIN_ATR = 1.0
 MSS_PIVOT = 2
 
