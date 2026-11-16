@@ -54,6 +54,50 @@ OLD_TITLE = {
 }
 
 
+# intraday / ERL-IRL: every one of these inputs exists twice - a NASDAQ copy and a GOLD copy (groups "NASDAQ - ..." /
+# "GOLD - ..."). The chart symbol picks the set: i_x = isAu ? i_x_au : i_x_nq. Emitted at the //#MARKET line of core.pine.
+PER_MARKET = """i_piv i_useD i_useW i_useM i_liq4 i_fvgLiq i_irlVI i_irlReq i_irlMinR i_irlCE i_sess i_sessPiv i_sessDays
+    i_macro i_macroHrs i_liq1h i_fvgLiqD i_fvgLiq1h i_ifvgLB i_rev5 i_fvgAft i_fill5 i_ifvg15 i_mssBos i_bosWick i_bias5
+    i_onePer i_tgt5 i_eod i_eodH i_eodM i_eodMin i_partPct i_beFirst i_dMin i_dAtr i_dBody i_mssPiv i_tgtR i_be i_beR
+    i_cost i_risk i_qtyStep""".split()
+GOLD_DEFAULTS = {"i_cost": "0.3"}            # gold copies that start with a different default (round-trip cost, price units)
+MARKETS = (("nq", "NASDAQ"), ("au", "GOLD"))
+
+
+def split_markets(lines: list[str]) -> list[str]:
+    import re
+    rx = re.compile(r"^(i_\w+)(\s*)=(\s*)(input\.\w+\()(.*)\)\s*$")
+    found, rest = [], []
+    for ln in lines:
+        m = rx.match(ln)
+        if m and m.group(1) in PER_MARKET:
+            found.append(m)
+            rest.append(None)                      # removed here, emitted at //#MARKET
+        elif m:                                    # shared display / alert inputs left in a rule group -> "Display"
+            rest.append(re.sub(r"group=g(1|N|R|S|5)\b", 'group="Display"', ln))
+        else:
+            rest.append(ln)
+    block = []
+    for suf, name in MARKETS:
+        for m in found:
+            var, args = m.group(1), m.group(5)
+            if suf == "au" and var in GOLD_DEFAULTS:
+                args = re.sub(r"^[^,]+", GOLD_DEFAULTS[var], args, count=1)
+            args = re.sub(r"group=(\w+)", rf'group="{name} - " + \1', args)
+            args = re.sub(r'inline="(\w+)"', rf'inline="\1_{suf}"', args)
+            block.append(f"{var}_{suf} = {m.group(4)}{args})")
+    block += [f"{m.group(1)} = isAu ? {m.group(1)}_au : {m.group(1)}_nq" for m in found]
+    out = []
+    for ln in rest:
+        if ln is None:
+            continue
+        if ln.strip() == "//#MARKET":
+            out += block
+            continue
+        out.append(ln)
+    return out
+
+
 def build(kind: str, model: str) -> str:
     out, skip, depth = [], False, 0
     for line in (HERE / "core.pine").read_text().splitlines():
@@ -74,6 +118,10 @@ def build(kind: str, model: str) -> str:
         out.append(line)
     if depth:
         raise ValueError("unclosed //#{ block")
+    if model in ("N", "E"):
+        out = split_markets(out)
+    else:
+        out = [ln for ln in out if ln.strip() != "//#MARKET"]
     text = "\n".join(out) + "\n"
     title, label = TITLES[(kind, model)]
     text = text.replace(OLD_TITLE[kind], title)

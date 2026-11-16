@@ -49,6 +49,15 @@
 //#S strategy("ICT Sweep > IFVG > MSS Strategy (rules 1-7)", shorttitle="ICT IFVG Strategy", overlay=true, pyramiding=5, initial_capital=10000, default_qty_type=strategy.fixed, commission_type=strategy.commission.cash_per_contract, commission_value=0, slippage=0, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
 
 // ───────────────────────────────────────────────────────────────────────────── inputs
+g0 = "Market"
+//#W i_us100   = input.bool(true, "Trade US100 only (NAS100 / US100 / USTEC / NDX)", group=g0)
+//#N i_mkNq = input.bool(true, "Trade NASDAQ (US100 / NAS100 / USTEC / NDX / NQ) - uses the NASDAQ settings", group=g0, tooltip="On a NASDAQ chart the script trades with the inputs in the 'NASDAQ -' groups. Off: no trades on NASDAQ charts.")
+//#N i_mkAu = input.bool(true, "Trade GOLD (XAUUSD / GOLD / GC) - uses the GOLD settings", group=g0, tooltip="On a gold chart the script trades with the inputs in the 'GOLD -' groups. Off: no trades on gold charts.")
+string symU = str.upper(syminfo.ticker)
+isUS100 = str.contains(symU, "NAS100") or str.contains(symU, "US100") or str.contains(symU, "USTEC") or str.contains(symU, "NDX") or str.contains(symU, "US TECH") or str.contains(symU, "NQ")
+isAu = str.contains(symU, "XAU") or str.contains(symU, "GOLD") or str.startswith(symU, "GC")
+//#N mktTx = isAu ? "GOLD" : isUS100 ? "NASDAQ" : "-"
+
 g1 = "Rule 1 - liquidity"
 i_piv    = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, group=g1)
 i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
@@ -120,15 +129,12 @@ i_dAtr   = input.float(1.0, "Displacement: minimum move (x ATR14)", minval=0, st
 i_dBody  = input.float(0.0, "Displacement: minimum body / range per candle", minval=0, maxval=1, step=0.1, group=gS)
 i_mssPiv = input.int(2, "MSS swing size (candles each side)", minval=1, group=gS)
 
-g0 = "Market"
-i_us100   = input.bool(true, "Trade US100 only (NAS100 / US100 / USTEC / NDX)", group=g0)
 
 g5 = "Target / risk"
 i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
 i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
 i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
 //#W partPct = 50.0
-//#N partPct = i_partPct
 // chart labels / box texts without prices (intraday scripts)
 //#W noPx = false
 //#X noPx = true
@@ -136,6 +142,8 @@ i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
 i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group=g5)
 //#S i_risk    = input.float(1.0, "Risk per trade (% of equity)", minval=0.01, step=0.1, group=g5)
 //#S i_qtyStep = input.float(0.01, "Quantity step (lot / contract size)", minval=0.000001, group=g5)
+//#MARKET
+//#N partPct = i_partPct
 
 g6 = "Display"
 //#W i_show4 = input.bool(true, "4H setups", group=g6)
@@ -158,9 +166,8 @@ isM15 = timeframe.period == "15"
 sw5     = not isSwing      // intraday: sweeps are judged on 5m candles (section 2b)
 //#W useHa   = true      // swing model = snapshot rules on 1H (section 3b)
 //#N useHa   = false
-string symU = str.upper(syminfo.ticker)
-isUS100 = str.contains(symU, "NAS100") or str.contains(symU, "US100") or str.contains(symU, "USTEC") or str.contains(symU, "NDX") or str.contains(symU, "US TECH") or str.contains(symU, "NQ")
-symOK = not i_us100 or isUS100
+//#W symOK = not i_us100 or isUS100
+//#N symOK = (isUS100 and not isAu and i_mkNq) or (isAu and i_mkAu)
 tfOK  = symOK and (isSwing ? (timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600) : isM5)
 
 // ───────────────────────────────────────────────────────────────────────────── types
@@ -2146,8 +2153,8 @@ if barstate.islast and i_table
     table.cell(tb, 1, 7, str.tostring(SW1.size()) + " / " + str.tostring(SG.size()), text_color=color.white, text_size=size.small)
 //#}
 //#{N
-//#X     table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? "INTRADAY model (5m)" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
-//#E     table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? "ERL / IRL model (5m)" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
+//#X     table.cell(tb, 0, 0, not symOK ? "Not a NASDAQ / GOLD chart (or market off) - trading off" : tfOK ? "INTRADAY model (5m) - " + mktTx + " settings" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
+//#E     table.cell(tb, 0, 0, not symOK ? "Not a NASDAQ / GOLD chart (or market off) - trading off" : tfOK ? "ERL / IRL model (5m) - " + mktTx + " settings" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
     table.cell(tb, 1, 0, "sweep > " + (i_ifvg15 ? "5m/15m" : "5m") + " IFVG + " + (i_mssBos ? "BOS / MSS" : "BOS") + " > FVG / VI", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 1, "Setups (IFVG + BOS / MSS)", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 1, str.tostring(n4), text_color=color.white, text_size=size.small)
