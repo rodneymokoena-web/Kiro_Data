@@ -20,64 +20,146 @@
 indicator("ICT Intraday - 5m sweep > 5m IFVG (US100)", shorttitle="ICT Intraday", overlay=true, max_boxes_count=500, max_lines_count=500, max_labels_count=500, max_bars_back=3000)
 
 // ───────────────────────────────────────────────────────────────────────────── inputs
+g0 = "Market"
+i_mkNq = input.bool(true, "Trade NASDAQ (US100 / NAS100 / USTEC / NDX / NQ) - uses the NASDAQ settings", group=g0, tooltip="On a NASDAQ chart the script trades with the inputs in the 'NASDAQ -' groups. Off: no trades on NASDAQ charts.")
+i_mkAu = input.bool(true, "Trade GOLD (XAUUSD / GOLD / GC) - uses the GOLD settings", group=g0, tooltip="On a gold chart the script trades with the inputs in the 'GOLD -' groups. Off: no trades on gold charts.")
+string symU = str.upper(syminfo.ticker)
+isUS100 = str.contains(symU, "NAS100") or str.contains(symU, "US100") or str.contains(symU, "USTEC") or str.contains(symU, "NDX") or str.contains(symU, "US TECH") or str.contains(symU, "NQ")
+isAu = str.contains(symU, "XAU") or str.contains(symU, "GOLD") or str.startswith(symU, "GC")
+mktTx = isAu ? "GOLD" : isUS100 ? "NASDAQ" : "-"
+
 g1 = "Rule 1 - liquidity"
-i_piv    = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, group=g1)
-i_useD   = input.bool(true, "Daily", inline="tf", group=g1)
-i_useW   = input.bool(true, "Weekly", inline="tf", group=g1)
-i_useM   = input.bool(true, "Monthly", inline="tf", group=g1)
-i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group=g1, tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) and the fresh 4H (intraday also 1H) FVG far edges (dashed, e.g. \'4H FVG H\' = a bearish FVG\'s top) from the candle that formed it, with a label at the right edge: e.g. '4H H'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
-i_liq4   = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group=g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
-i_fvgLiq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group=g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
+i_showLv = input.bool(true, "Show and label the Rule 1 swing levels", group="Display", tooltip="Draws every Rule 1 swing level (D / W / M swings, 4H swings; intraday also 1H swings and session highs/lows) and the fresh 4H (intraday also 1H) FVG far edges (dashed, e.g. \'4H FVG H\' = a bearish FVG\'s top) from the candle that formed it, with a label at the right edge: e.g. '4H H'. Solid line = not swept yet, dotted gray = already swept. Up to the newest 25 levels per list.")
 
 gN = "Rule 1 - intraday liquidity"
-i_sess   = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group=gN, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
-i_sessPiv = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group=gN)
-i_sessDays = input.int(7, "Session: level stays sweepable for N days", minval=1, group=gN)
-i_macro = input.bool(true, "Intraday: ICT macro-time highs/lows as liquidity", group=gN, tooltip="High and low of each completed ICT macro window (New York time): 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10. Labelled MAC H / MAC L.")
-i_macroHrs = input.int(24, "Macro level stays sweepable for N hours", minval=1, group=gN)
-i_liq1h = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group=gN, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
-i_fvgLiqD = input.bool(true, "Intraday: fresh D FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh daily FVG (bearish FVG top = buy-side, bullish FVG bottom = sell-side) is swept liquidity while no daily candle has traded into the gap; the day that first enters it can still sweep it. Labelled D FVG H / L. Does not set the bias.")
-i_fvgLiq1h = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group=gN, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
 
 gR = "Intraday rules 2-7 (5m chart)"
-i_ifvgLB = input.int(48, "Intraday: IFVG lookback (5m candles before the sweep)", minval=3, group=gR, tooltip="The 5m FVG to invert = the intact bullish (short) 5m FVG nearest below the sweep, completed in this many 5m candles before the sweep.")
-i_rev5 = input.int(48, "Intraday: max 5m candles from the sweep to the reversal (N)", minval=1, group=gR, tooltip="The 5m IFVG and the 5m break of structure must both happen within this many 5m candles of the sweep.")
-i_fvgAft  = input.int(2, "Entry FVG / volume imbalance may complete N candles after the reversal", minval=0, group=gR)
-i_fill5 = input.int(60, "Intraday: entry order valid (minutes after the reversal)", minval=5, group=gR)
-i_ifvg15 = input.bool(true, "Intraday: IFVG may also be a 15m FVG", group=gR, tooltip="The FVG to invert = the intact bullish (short) 5m OR 15m FVG nearest below the sweep (15m candles built from the 5m chart).")
-i_mssBos = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group=gR, tooltip="Break of structure = a 5m close (or wick, see the next option) below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
-i_bosWick = input.bool(true, "Intraday: break may be a body close OR a wick", group=gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
-i_bosAlert = input.bool(true, "Intraday: alert on every 5m BOS / MSS", group=gR, tooltip="Fires an alert() when a 5m break of structure (leg-origin BOS or post-sweep MSS, close or wick) happens after a swept Rule 1 level, before the full setup is complete. With the bias filter on, only breaks in the bias direction alert. Create the alert with 'Any alert() function call' (indicator or strategy), or pick 'Intraday bullish / bearish / any BOS' (indicator).")
-i_bosLim = input.bool(true, "Intraday: limit order alert on the first 5m FVG / VI after a BOS", group=gR, tooltip="After every 5m BOS / MSS (bias direction when the bias filter is on): the first 5m FVG or volume imbalance in the break direction that completes after the breaking candle is drawn (magenta box) and an alert gives a limit at its near edge (bottom for a short), SL = 5m breaker high / low, TP = Target (R). Never skipped: if the breaker is not beyond the limit, the stop is the high (short) / low (long) of the zone's first candle. This alert is separate from the model's own entry.")
-i_bias5 = input.bool(true, "Intraday: only trade in the direction of the bias", group=gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
-i_onePer = input.bool(true, "Intraday: one trade per entry price", group=gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
+i_bosAlert = input.bool(true, "Intraday: alert on every 5m BOS / MSS", group="Display", tooltip="Fires an alert() when a 5m break of structure (leg-origin BOS or post-sweep MSS, close or wick) happens after a swept Rule 1 level, before the full setup is complete. With the bias filter on, only breaks in the bias direction alert. Create the alert with 'Any alert() function call' (indicator or strategy), or pick 'Intraday bullish / bearish / any BOS' (indicator).")
+i_bosLim = input.bool(true, "Intraday: limit order alert on the first 5m FVG / VI after a BOS", group="Display", tooltip="After every 5m BOS / MSS (bias direction when the bias filter is on): the first 5m FVG or volume imbalance in the break direction that completes after the breaking candle is drawn (magenta box) and an alert gives a limit at its near edge (bottom for a short), SL = 5m breaker high / low, TP = Target (R). Never skipped: if the breaker is not beyond the limit, the stop is the high (short) / low (long) of the zone's first candle. This alert is separate from the model's own entry.")
 PARTIAL = "Partial: half at R, rest at next Rule 1 swing"
-i_tgt5 = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group=gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
-i_eod = input.bool(true, "Intraday: close trades before the market close", group=gR, tooltip="Open trades are closed at the close of the 5m candle ending 'minutes before' the market close (New York time), every day including Friday, and no entry order fills from then until the market reopens. Default: US100 CFD daily close 17:00 NY -> flat at 16:45 NY. Use 16:00 for the cash-market close.")
-i_eodH = input.int(17, "Market close (New York) hour", minval=0, maxval=23, inline="eod", group=gR)
-i_eodM = input.int(0, "min", minval=0, maxval=59, inline="eod", group=gR)
-i_eodMin = input.int(15, "Close trades N minutes before the market close", minval=5, step=5, group=gR)
-i_partPct = input.float(50.0, "Partial close % at the first target", minval=1, maxval=99, step=5, group=gR)
-i_beFirst = input.bool(false, "Partial: also move the stop to breakeven at +R (below) before the first target", group=gR, tooltip="Off (default): the stop stays at the breaker until the first target; it moves to breakeven when half is closed. On: the 'Move stop to breakeven at +R' rule also applies before the first target.")
 
 
 gS = "Displacement / MSS"
-i_dMin   = input.int(2, "Displacement: minimum candles", minval=1, group=gS)
-i_dAtr   = input.float(1.0, "Displacement: minimum move (x ATR14)", minval=0, step=0.1, group=gS)
-i_dBody  = input.float(0.0, "Displacement: minimum body / range per candle", minval=0, maxval=1, step=0.1, group=gS)
-i_mssPiv = input.int(2, "MSS swing size (candles each side)", minval=1, group=gS)
 
-g0 = "Market"
-i_us100   = input.bool(true, "Trade US100 only (NAS100 / US100 / USTEC / NDX)", group=g0)
 
 g5 = "Target / risk"
-i_tgtR  = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group=g5)
-i_be    = input.bool(true, "Move stop to breakeven", inline="be", group=g5)
-i_beR   = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be", group=g5)
-partPct = i_partPct
 // chart labels / box texts without prices (intraday scripts)
 noPx = true
-i_cost  = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group=g5)
+i_piv_nq = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, group="NASDAQ - " + g1)
+i_useD_nq = input.bool(true, "Daily", inline="tf_nq", group="NASDAQ - " + g1)
+i_useW_nq = input.bool(true, "Weekly", inline="tf_nq", group="NASDAQ - " + g1)
+i_useM_nq = input.bool(true, "Monthly", inline="tf_nq", group="NASDAQ - " + g1)
+i_liq4_nq = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group="NASDAQ - " + g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
+i_fvgLiq_nq = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group="NASDAQ - " + g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
+i_sess_nq = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group="NASDAQ - " + gN, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
+i_sessPiv_nq = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group="NASDAQ - " + gN)
+i_sessDays_nq = input.int(7, "Session: level stays sweepable for N days", minval=1, group="NASDAQ - " + gN)
+i_macro_nq = input.bool(true, "Intraday: ICT macro-time highs/lows as liquidity", group="NASDAQ - " + gN, tooltip="High and low of each completed ICT macro window (New York time): 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10. Labelled MAC H / MAC L.")
+i_macroHrs_nq = input.int(24, "Macro level stays sweepable for N hours", minval=1, group="NASDAQ - " + gN)
+i_liq1h_nq = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group="NASDAQ - " + gN, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
+i_fvgLiqD_nq = input.bool(true, "Intraday: fresh D FVG far edges as liquidity", group="NASDAQ - " + gN, tooltip="Intraday model only: the far edge of every fresh daily FVG (bearish FVG top = buy-side, bullish FVG bottom = sell-side) is swept liquidity while no daily candle has traded into the gap; the day that first enters it can still sweep it. Labelled D FVG H / L. Does not set the bias.")
+i_fvgLiq1h_nq = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group="NASDAQ - " + gN, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
+i_ifvgLB_nq = input.int(48, "Intraday: IFVG lookback (5m candles before the sweep)", minval=3, group="NASDAQ - " + gR, tooltip="The 5m FVG to invert = the intact bullish (short) 5m FVG nearest below the sweep, completed in this many 5m candles before the sweep.")
+i_rev5_nq = input.int(48, "Intraday: max 5m candles from the sweep to the reversal (N)", minval=1, group="NASDAQ - " + gR, tooltip="The 5m IFVG and the 5m break of structure must both happen within this many 5m candles of the sweep.")
+i_fvgAft_nq = input.int(2, "Entry FVG / volume imbalance may complete N candles after the reversal", minval=0, group="NASDAQ - " + gR)
+i_fill5_nq = input.int(60, "Intraday: entry order valid (minutes after the reversal)", minval=5, group="NASDAQ - " + gR)
+i_ifvg15_nq = input.bool(true, "Intraday: IFVG may also be a 15m FVG", group="NASDAQ - " + gR, tooltip="The FVG to invert = the intact bullish (short) 5m OR 15m FVG nearest below the sweep (15m candles built from the 5m chart).")
+i_mssBos_nq = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group="NASDAQ - " + gR, tooltip="Break of structure = a 5m close (or wick, see the next option) below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
+i_bosWick_nq = input.bool(true, "Intraday: break may be a body close OR a wick", group="NASDAQ - " + gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
+i_bias5_nq = input.bool(true, "Intraday: only trade in the direction of the bias", group="NASDAQ - " + gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
+i_onePer_nq = input.bool(true, "Intraday: one trade per entry price", group="NASDAQ - " + gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
+i_tgt5_nq = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group="NASDAQ - " + gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+i_eod_nq = input.bool(true, "Intraday: close trades before the market close", group="NASDAQ - " + gR, tooltip="Open trades are closed at the close of the 5m candle ending 'minutes before' the market close (New York time), every day including Friday, and no entry order fills from then until the market reopens. Default: US100 CFD daily close 17:00 NY -> flat at 16:45 NY. Use 16:00 for the cash-market close.")
+i_eodH_nq = input.int(17, "Market close (New York) hour", minval=0, maxval=23, inline="eod_nq", group="NASDAQ - " + gR)
+i_eodM_nq = input.int(0, "min", minval=0, maxval=59, inline="eod_nq", group="NASDAQ - " + gR)
+i_eodMin_nq = input.int(15, "Close trades N minutes before the market close", minval=5, step=5, group="NASDAQ - " + gR)
+i_partPct_nq = input.float(50.0, "Partial close % at the first target", minval=1, maxval=99, step=5, group="NASDAQ - " + gR)
+i_beFirst_nq = input.bool(false, "Partial: also move the stop to breakeven at +R (below) before the first target", group="NASDAQ - " + gR, tooltip="Off (default): the stop stays at the breaker until the first target; it moves to breakeven when half is closed. On: the 'Move stop to breakeven at +R' rule also applies before the first target.")
+i_dMin_nq = input.int(2, "Displacement: minimum candles", minval=1, group="NASDAQ - " + gS)
+i_dAtr_nq = input.float(1.0, "Displacement: minimum move (x ATR14)", minval=0, step=0.1, group="NASDAQ - " + gS)
+i_dBody_nq = input.float(0.0, "Displacement: minimum body / range per candle", minval=0, maxval=1, step=0.1, group="NASDAQ - " + gS)
+i_mssPiv_nq = input.int(2, "MSS swing size (candles each side)", minval=1, group="NASDAQ - " + gS)
+i_tgtR_nq = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group="NASDAQ - " + g5)
+i_be_nq = input.bool(true, "Move stop to breakeven", inline="be_nq", group="NASDAQ - " + g5)
+i_beR_nq = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be_nq", group="NASDAQ - " + g5)
+i_cost_nq = input.float(1.0, "Round-trip cost used in the stats table (price units)", minval=0, group="NASDAQ - " + g5)
+i_piv_au = input.int(2, "Swing size (candles each side)", minval=1, maxval=5, group="GOLD - " + g1)
+i_useD_au = input.bool(true, "Daily", inline="tf_au", group="GOLD - " + g1)
+i_useW_au = input.bool(true, "Weekly", inline="tf_au", group="GOLD - " + g1)
+i_useM_au = input.bool(true, "Monthly", inline="tf_au", group="GOLD - " + g1)
+i_liq4_au = input.int(10, "4H swing size (candles each side): 10 = major swings, 2 = all swings, 0 = off", minval=0, maxval=30, group="GOLD - " + g1, tooltip="4H swing highs/lows with this many candles each side are Rule 1 liquidity, plus the D/W/M swings. 10 = only the major 4H swings, 2 = every 4H swing, 0 = off.")
+i_fvgLiq_au = input.bool(true, "4H FVG far edge as liquidity (fresh FVGs)", group="GOLD - " + g1, tooltip="Every 4H FVG is also Rule 1 liquidity at its FAR edge (bearish FVG: its top; bullish FVG: its bottom), only while price has not yet traded into the gap; the candle that first enters it can still sweep it.")
+i_sess_au = input.bool(true, "Intraday: previous session highs/lows (Asia/London/NY, 1H+ swing)", group="GOLD - " + gN, tooltip="Intraday model only: add the previous Asia/London/NY session high and low as liquidity, but only when the session extreme is also a swing on the 1H chart or higher. Sessions use the New York clock.")
+i_sessPiv_au = input.int(2, "Session: 1H swing size (candles each side)", minval=1, group="GOLD - " + gN)
+i_sessDays_au = input.int(7, "Session: level stays sweepable for N days", minval=1, group="GOLD - " + gN)
+i_macro_au = input.bool(true, "Intraday: ICT macro-time highs/lows as liquidity", group="GOLD - " + gN, tooltip="High and low of each completed ICT macro window (New York time): 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10. Labelled MAC H / MAC L.")
+i_macroHrs_au = input.int(24, "Macro level stays sweepable for N hours", minval=1, group="GOLD - " + gN)
+i_liq1h_au = input.bool(true, "Intraday: 1H swings (same size as the 4H swings) as liquidity", group="GOLD - " + gN, tooltip="Intraday model only: 1H swing highs/lows with the 4H swing size (candles each side) are also swept liquidity (swept by a 4H wick).")
+i_fvgLiqD_au = input.bool(true, "Intraday: fresh D FVG far edges as liquidity", group="GOLD - " + gN, tooltip="Intraday model only: the far edge of every fresh daily FVG (bearish FVG top = buy-side, bullish FVG bottom = sell-side) is swept liquidity while no daily candle has traded into the gap; the day that first enters it can still sweep it. Labelled D FVG H / L. Does not set the bias.")
+i_fvgLiq1h_au = input.bool(true, "Intraday: fresh 1H FVG far edges as liquidity", group="GOLD - " + gN, tooltip="Intraday model only: the far edge of every fresh 1H FVG (price has not traded into the gap) is swept liquidity, judged on 4H wicks. A 1H FVG stays sweepable for the 4H candles that open before price first enters it.")
+i_ifvgLB_au = input.int(48, "Intraday: IFVG lookback (5m candles before the sweep)", minval=3, group="GOLD - " + gR, tooltip="The 5m FVG to invert = the intact bullish (short) 5m FVG nearest below the sweep, completed in this many 5m candles before the sweep.")
+i_rev5_au = input.int(48, "Intraday: max 5m candles from the sweep to the reversal (N)", minval=1, group="GOLD - " + gR, tooltip="The 5m IFVG and the 5m break of structure must both happen within this many 5m candles of the sweep.")
+i_fvgAft_au = input.int(2, "Entry FVG / volume imbalance may complete N candles after the reversal", minval=0, group="GOLD - " + gR)
+i_fill5_au = input.int(60, "Intraday: entry order valid (minutes after the reversal)", minval=5, group="GOLD - " + gR)
+i_ifvg15_au = input.bool(true, "Intraday: IFVG may also be a 15m FVG", group="GOLD - " + gR, tooltip="The FVG to invert = the intact bullish (short) 5m OR 15m FVG nearest below the sweep (15m candles built from the 5m chart).")
+i_mssBos_au = input.bool(true, "Intraday: break may also be a post-sweep 5m MSS", group="GOLD - " + gR, tooltip="Break of structure = a 5m close (or wick, see the next option) below the leg-origin low, OR below the last 5m swing low (2 each side) formed after the sweep extreme. The breaker (stop) is the last bearish 5m candle at or before the low that was broken.")
+i_bosWick_au = input.bool(true, "Intraday: break may be a body close OR a wick", group="GOLD - " + gR, tooltip="On: a 5m candle whose body closes OR whose wick trades below the leg-origin low / post-sweep MSS low (short; long mirrored) counts as the break. Off: a 5m body close is required.")
+i_bias5_au = input.bool(true, "Intraday: only trade in the direction of the bias", group="GOLD - " + gR, tooltip="Bias = the most recent sweep of a Rule 1 SWING level (D / W / M / 4H / 1H swings, same 5m sweep rule): a swing high swept = bearish (shorts only), a swing low swept = bullish (longs only). Session levels and FVG edges do not change the bias.")
+i_onePer_au = input.bool(true, "Intraday: one trade per entry price", group="GOLD - " + gR, tooltip="When several setups point at the same entry (same direction, entry FVG / VI and fill price), only the first one is traded.")
+i_tgt5_au = input.string(PARTIAL, "Intraday target", options=[PARTIAL, "Fixed R", "Major 5m swing"], group="GOLD - " + gR, tooltip="Partial (default): close 'Partial close %' (half) at 'Target (R)' x risk (3R) and move the stop on the rest to breakeven; the rest runs to the NEXT Rule 1 swing = the nearest D / W / M / 4H / 1H swing low (short) / high (long) beyond the first target that has not been swept yet (no such swing -> everything closes at the first target). Fixed R = everything at 'Target (R)' x risk. Major 5m swing = the nearest confirmed 5m swing low (short) / high (long) with 10 candles each side beyond the entry; none -> 3R.")
+i_eod_au = input.bool(true, "Intraday: close trades before the market close", group="GOLD - " + gR, tooltip="Open trades are closed at the close of the 5m candle ending 'minutes before' the market close (New York time), every day including Friday, and no entry order fills from then until the market reopens. Default: US100 CFD daily close 17:00 NY -> flat at 16:45 NY. Use 16:00 for the cash-market close.")
+i_eodH_au = input.int(17, "Market close (New York) hour", minval=0, maxval=23, inline="eod_au", group="GOLD - " + gR)
+i_eodM_au = input.int(0, "min", minval=0, maxval=59, inline="eod_au", group="GOLD - " + gR)
+i_eodMin_au = input.int(15, "Close trades N minutes before the market close", minval=5, step=5, group="GOLD - " + gR)
+i_partPct_au = input.float(50.0, "Partial close % at the first target", minval=1, maxval=99, step=5, group="GOLD - " + gR)
+i_beFirst_au = input.bool(false, "Partial: also move the stop to breakeven at +R (below) before the first target", group="GOLD - " + gR, tooltip="Off (default): the stop stays at the breaker until the first target; it moves to breakeven when half is closed. On: the 'Move stop to breakeven at +R' rule also applies before the first target.")
+i_dMin_au = input.int(2, "Displacement: minimum candles", minval=1, group="GOLD - " + gS)
+i_dAtr_au = input.float(1.0, "Displacement: minimum move (x ATR14)", minval=0, step=0.1, group="GOLD - " + gS)
+i_dBody_au = input.float(0.0, "Displacement: minimum body / range per candle", minval=0, maxval=1, step=0.1, group="GOLD - " + gS)
+i_mssPiv_au = input.int(2, "MSS swing size (candles each side)", minval=1, group="GOLD - " + gS)
+i_tgtR_au = input.float(3.0, "Target (R)", minval=0.1, step=0.1, group="GOLD - " + g5)
+i_be_au = input.bool(true, "Move stop to breakeven", inline="be_au", group="GOLD - " + g5)
+i_beR_au = input.float(1.0, "at +R", minval=0.1, step=0.1, inline="be_au", group="GOLD - " + g5)
+i_cost_au = input.float(0.3, "Round-trip cost used in the stats table (price units)", minval=0, group="GOLD - " + g5)
+i_piv = isAu ? i_piv_au : i_piv_nq
+i_useD = isAu ? i_useD_au : i_useD_nq
+i_useW = isAu ? i_useW_au : i_useW_nq
+i_useM = isAu ? i_useM_au : i_useM_nq
+i_liq4 = isAu ? i_liq4_au : i_liq4_nq
+i_fvgLiq = isAu ? i_fvgLiq_au : i_fvgLiq_nq
+i_sess = isAu ? i_sess_au : i_sess_nq
+i_sessPiv = isAu ? i_sessPiv_au : i_sessPiv_nq
+i_sessDays = isAu ? i_sessDays_au : i_sessDays_nq
+i_macro = isAu ? i_macro_au : i_macro_nq
+i_macroHrs = isAu ? i_macroHrs_au : i_macroHrs_nq
+i_liq1h = isAu ? i_liq1h_au : i_liq1h_nq
+i_fvgLiqD = isAu ? i_fvgLiqD_au : i_fvgLiqD_nq
+i_fvgLiq1h = isAu ? i_fvgLiq1h_au : i_fvgLiq1h_nq
+i_ifvgLB = isAu ? i_ifvgLB_au : i_ifvgLB_nq
+i_rev5 = isAu ? i_rev5_au : i_rev5_nq
+i_fvgAft = isAu ? i_fvgAft_au : i_fvgAft_nq
+i_fill5 = isAu ? i_fill5_au : i_fill5_nq
+i_ifvg15 = isAu ? i_ifvg15_au : i_ifvg15_nq
+i_mssBos = isAu ? i_mssBos_au : i_mssBos_nq
+i_bosWick = isAu ? i_bosWick_au : i_bosWick_nq
+i_bias5 = isAu ? i_bias5_au : i_bias5_nq
+i_onePer = isAu ? i_onePer_au : i_onePer_nq
+i_tgt5 = isAu ? i_tgt5_au : i_tgt5_nq
+i_eod = isAu ? i_eod_au : i_eod_nq
+i_eodH = isAu ? i_eodH_au : i_eodH_nq
+i_eodM = isAu ? i_eodM_au : i_eodM_nq
+i_eodMin = isAu ? i_eodMin_au : i_eodMin_nq
+i_partPct = isAu ? i_partPct_au : i_partPct_nq
+i_beFirst = isAu ? i_beFirst_au : i_beFirst_nq
+i_dMin = isAu ? i_dMin_au : i_dMin_nq
+i_dAtr = isAu ? i_dAtr_au : i_dAtr_nq
+i_dBody = isAu ? i_dBody_au : i_dBody_nq
+i_mssPiv = isAu ? i_mssPiv_au : i_mssPiv_nq
+i_tgtR = isAu ? i_tgtR_au : i_tgtR_nq
+i_be = isAu ? i_be_au : i_be_nq
+i_beR = isAu ? i_beR_au : i_beR_nq
+i_cost = isAu ? i_cost_au : i_cost_nq
+partPct = i_partPct
 
 g6 = "Display"
 i_show1 = input.bool(true, "5m IFVG + BOS signals", group=g6)
@@ -95,9 +177,7 @@ isM15 = timeframe.period == "15"
 isSwing = false
 sw5     = not isSwing      // intraday: sweeps are judged on 5m candles (section 2b)
 useHa   = false
-string symU = str.upper(syminfo.ticker)
-isUS100 = str.contains(symU, "NAS100") or str.contains(symU, "US100") or str.contains(symU, "USTEC") or str.contains(symU, "NDX") or str.contains(symU, "US TECH") or str.contains(symU, "NQ")
-symOK = not i_us100 or isUS100
+symOK = (isUS100 and not isAu and i_mkNq) or (isAu and i_mkAu)
 tfOK  = symOK and (isSwing ? (timeframe.in_seconds() >= 60 and timeframe.in_seconds() <= 3600) : isM5)
 
 // ───────────────────────────────────────────────────────────────────────────── types
@@ -1461,7 +1541,7 @@ if barstate.islast
 
 var table tb = table.new(position.top_right, 2, 13, bgcolor=color.new(color.black, 20), border_width=1)
 if barstate.islast and i_table
-    table.cell(tb, 0, 0, not symOK ? "Not a US100 chart - trading off" : tfOK ? "INTRADAY model (5m)" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
+    table.cell(tb, 0, 0, not symOK ? "Not a NASDAQ / GOLD chart (or market off) - trading off" : tfOK ? "INTRADAY model (5m) - " + mktTx + " settings" : "Use a 5m chart", text_color=tfOK ? color.white : color.yellow, text_size=size.small)
     table.cell(tb, 1, 0, "sweep > " + (i_ifvg15 ? "5m/15m" : "5m") + " IFVG + " + (i_mssBos ? "BOS / MSS" : "BOS") + " > FVG / VI", text_color=color.white, text_size=size.small)
     table.cell(tb, 0, 1, "Setups (IFVG + BOS / MSS)", text_color=color.white, text_size=size.small)
     table.cell(tb, 1, 1, str.tostring(n4), text_color=color.white, text_size=size.small)

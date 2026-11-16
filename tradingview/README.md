@@ -149,3 +149,12 @@ one trade per entry, 60-minute order, end-of-day close at 16:45 NY).
 - Chart: IRL levels drawn at their near edge, labelled *4H / 1H / D IRL below (bullish)* / *above (bearish)*; the TP label
   shows TP1 (IRL, with its R) and TP2 (ERL).
 - Not backtested; the Python backtest and the MT5 EA do not have this model yet.
+
+
+## Intraday and ERL/IRL: NASDAQ and GOLD settings
+The intraday (and ERL/IRL) scripts no longer have *Trade US100 only*. Instead, group **Market** has two toggles:
+*Trade NASDAQ (US100 / NAS100 / USTEC / NDX / NQ)* and *Trade GOLD (XAUUSD / GOLD / GC)*. Every trading input exists twice,
+in groups **"NASDAQ - ..."** and **"GOLD - ..."** (liquidity, rules 2-7, displacement, target / risk / cost). The chart symbol
+picks the set automatically: a gold chart uses the GOLD inputs, a NASDAQ chart the NASDAQ inputs; any other symbol, or a
+market whose toggle is off, does not trade. Display and alert switches (group *Display*) are shared. The table header shows
+which set is in use. Gold starts with the same defaults except the stats-table cost (0.3). The swing scripts are unchanged.
