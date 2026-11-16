@@ -1,0 +1,37 @@
+source,variant,strategy,entry,symbol,trades,W,L,BE,PF,R,account,maxDD%
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),intraday,5m touch,US100,10,4,3,3,3.56,8.58,10875,2.1
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),intraday,5m touch,XAUUSD,9,2,2,5,2.67,3.74,10371,2.2
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),intraday,5m touch,ALL,19,6,5,8,3.2,12.32,11278,3.2
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),intraday,5m ce,US100,10,6,3,1,5.18,14.43,11520,2.2
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),intraday,5m ce,XAUUSD,9,2,2,5,2.63,3.7,10367,2.3
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),intraday,5m ce,ALL,19,8,5,6,4.17,18.13,11942,3.2
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing 4H extreme,1H touch,US100,14,5,6,3,2.48,8.95,10909,2.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing 4H extreme,1H touch,XAUUSD,11,4,5,2,2.39,6.98,10701,2.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing 4H extreme,1H touch,ALL,25,9,11,5,2.44,15.93,11674,3.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing 4H extreme,1H CE,US100,14,5,5,4,2.97,9.95,11019,2.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing 4H extreme,1H CE,XAUUSD,11,4,5,2,2.39,6.98,10701,2.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing 4H extreme,1H CE,ALL,25,9,10,6,2.68,16.92,11791,3.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing prev 4H candle,1H touch,US100,14,2,9,3,0.65,-3.21,9671,6.1
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing prev 4H candle,1H touch,XAUUSD,11,2,5,4,1.17,0.89,10078,3.0
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing prev 4H candle,1H touch,ALL,25,4,14,7,0.84,-2.32,9746,5.4
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing prev 4H candle,1H CE,US100,14,3,9,2,0.97,-0.27,9956,5.9
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing prev 4H candle,1H CE,XAUUSD,11,1,4,6,0.73,-1.13,9882,2.1
+pepperstone,A  original rule 1 + 4H swing leg + FVG into sweep (new default),swing prev 4H candle,1H CE,ALL,25,4,13,8,0.9,-1.39,9838,7.1
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",intraday,5m touch,US100,13,5,5,3,2.75,9.5,10970,2.1
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",intraday,5m touch,XAUUSD,12,2,4,6,1.4,1.72,10163,4.2
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",intraday,5m touch,ALL,25,7,9,9,2.16,11.22,11148,4.2
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",intraday,5m ce,US100,13,6,4,3,3.93,13.34,11395,2.2
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",intraday,5m ce,XAUUSD,12,2,4,6,1.4,1.71,10161,4.2
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",intraday,5m ce,ALL,25,8,8,9,2.71,15.05,11579,4.2
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing 4H extreme,1H touch,US100,17,5,7,5,2.12,7.92,10797,2.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing 4H extreme,1H touch,XAUUSD,15,4,8,3,1.49,3.96,10381,3.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing 4H extreme,1H touch,ALL,32,9,15,8,1.79,11.88,11209,4.9
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing 4H extreme,1H CE,US100,17,5,7,5,2.12,7.92,10796,2.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing 4H extreme,1H CE,XAUUSD,15,4,8,3,1.49,3.96,10381,3.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing 4H extreme,1H CE,ALL,32,9,15,8,1.79,11.88,11208,4.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing prev 4H candle,1H touch,US100,17,2,10,5,0.58,-4.26,9570,7.1
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing prev 4H candle,1H touch,XAUUSD,15,3,6,6,1.47,2.86,10273,2.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing prev 4H candle,1H touch,ALL,32,5,16,11,0.91,-1.4,9831,5.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing prev 4H candle,1H CE,US100,17,3,11,3,0.79,-2.32,9753,5.9
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing prev 4H candle,1H CE,XAUUSD,15,2,7,6,0.84,-1.17,9871,3.0
+pepperstone,"B  original rule 1 + original rule 2 (lowest/highest of 20, any FVG)",swing prev 4H candle,1H CE,ALL,32,5,18,9,0.81,-3.49,9627,8.0

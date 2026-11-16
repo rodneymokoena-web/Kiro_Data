@@ -1,0 +1,153 @@
+source,model,variant,entry_time,exit,r_net
+pepperstone_oos,intraday,baseline,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,baseline,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,baseline,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,baseline,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,baseline,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,baseline,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,baseline,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,baseline,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,baseline,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,baseline,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,baseline,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-02-07 14:20:00+00:00,stop,-1.0405982905982911
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-06-23 15:00:00+00:00,stop,-1.0187932739861527
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-10-19 10:20:00+00:00,stop,-1.035381750465549
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-11-21 05:15:00+00:00,breakeven,-0.10919540229885286
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-03-13 12:20:00+00:00,breakeven,-0.018627450980392157
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,4H inversion window 20 -> 40 4H candles,2023-07-10 16:20:00+00:00,stop,-1.0230582524271847
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-08-12 00:05:00+00:00,stop,-1.3392857142856922
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-03-01 00:45:00+00:00,stop,-1.0115221346270467
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-04-05 11:15:00+00:00,stop,-1.0788381742738578
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-11-01 07:20:00+00:00,stop,-1.085201793721969
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,4H IFVG retest window 48 -> 96 h,2023-08-29 00:40:00+00:00,stop,-1.2567567567567695
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-08-12 00:05:00+00:00,stop,-1.3392857142856922
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-12-21 10:10:00+00:00,stop,-1.0464547677261617
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,1H IFVG window 20 -> 40 1H candles,2023-09-18 14:45:00+00:00,stop,-1.0380761523046094
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-10-07 10:00:00+00:00,stop,-1.1450381679389272
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,1H IFVG retest 24 -> 48 h,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,5m trigger window 12 -> 24 h,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,entry order valid 12 -> 24 h,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-01-27 13:00:00+00:00,breakeven,-0.024265644955300352
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-04-27 17:00:00+00:00,stop,-1.0127946127946128
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,no 1H MSS on the 4H inversion,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-06-03 01:25:00+00:00,breakeven,-0.1623931623931523
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-07-21 08:40:00+00:00,stop,-1.0488431876606688
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-11-24 11:15:00+00:00,stop,-1.0450236966824638
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-12-01 18:55:00+00:00,target,2.988966318234611
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-02-15 20:30:00+00:00,target,2.9442815249266867
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-05-10 15:45:00+00:00,stop,-1.0701107011070148
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-09-08 22:15:00+00:00,target,2.8652482269503583
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-10-26 18:50:00+00:00,target,2.9772727272727275
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-01-09 12:40:00+00:00,target,2.9476584022038557
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-02-14 09:10:00+00:00,target,2.9015544041450743
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,displacement 2 candles -> 1 (all timeframes),2023-10-02 17:30:00+00:00,breakeven,-0.08085106382978723
+pepperstone_oos,intraday,all windows doubled,2021-08-12 00:05:00+00:00,stop,-1.3392857142856922
+pepperstone_oos,intraday,all windows doubled,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,intraday,all windows doubled,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,intraday,all windows doubled,2021-12-21 10:10:00+00:00,stop,-1.0464547677261617
+pepperstone_oos,intraday,all windows doubled,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,intraday,all windows doubled,2022-01-03 15:00:00+00:00,stop,-1.0142109199700822
+pepperstone_oos,intraday,all windows doubled,2022-02-07 14:20:00+00:00,stop,-1.0405982905982911
+pepperstone_oos,intraday,all windows doubled,2022-03-01 00:45:00+00:00,stop,-1.0115221346270467
+pepperstone_oos,intraday,all windows doubled,2022-04-05 11:15:00+00:00,stop,-1.0788381742738578
+pepperstone_oos,intraday,all windows doubled,2022-06-23 15:00:00+00:00,stop,-1.0187932739861527
+pepperstone_oos,intraday,all windows doubled,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,intraday,all windows doubled,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,intraday,all windows doubled,2022-10-07 10:00:00+00:00,stop,-1.1450381679389272
+pepperstone_oos,intraday,all windows doubled,2022-10-19 10:20:00+00:00,stop,-1.035381750465549
+pepperstone_oos,intraday,all windows doubled,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,intraday,all windows doubled,2022-10-31 19:20:00+00:00,stop,-1.0346083788706741
+pepperstone_oos,intraday,all windows doubled,2022-11-01 07:20:00+00:00,stop,-1.085201793721969
+pepperstone_oos,intraday,all windows doubled,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,intraday,all windows doubled,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,intraday,all windows doubled,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,intraday,all windows doubled,2022-12-15 08:55:00+00:00,stop,-1.1021505376344065
+pepperstone_oos,intraday,all windows doubled,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,intraday,all windows doubled,2023-03-13 12:20:00+00:00,breakeven,-0.018627450980392157
+pepperstone_oos,intraday,all windows doubled,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,intraday,all windows doubled,2023-06-20 18:05:00+00:00,stop,-1.0483460559796425
+pepperstone_oos,intraday,all windows doubled,2023-07-10 16:20:00+00:00,stop,-1.0230582524271847
+pepperstone_oos,intraday,all windows doubled,2023-08-29 00:40:00+00:00,stop,-1.2567567567567695
+pepperstone_oos,intraday,all windows doubled,2023-09-18 14:45:00+00:00,stop,-1.0380761523046094

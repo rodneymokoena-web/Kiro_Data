@@ -1,0 +1,301 @@
+source,variant,entry_time,exit,r_net,risk_pts,stop_from
+goat_oos,current 1H OB 50%,2021-04-04 23:00:00+00:00,stop,-1.0558659217877107,17.899999999999636,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2021-04-15 07:00:00+00:00,breakeven,-0.04115226337448683,24.299999999999272,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2021-06-02 13:00:00+00:00,target,0.6093189964157653,41.850000000000364,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-06-16 13:00:00+00:00,target,1.8485436893204026,51.5,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2021-07-15 18:00:00+00:00,target,0.42181818181817937,165.00000000000182,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-07-27 15:00:00+00:00,target,0.4026996625421859,177.79999999999927,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-08-06 13:00:00+00:00,target,1.4189602446482754,32.70000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2021-08-09 07:00:00+00:00,target,0.7595072308516416,93.34999999999854,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-08-16 20:00:00+00:00,stop,-1.0063816209317167,156.70000000000073,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-08-19 16:00:00+00:00,target,0.38099878197320697,205.25,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-09-07 13:00:00+00:00,target,0.47191011235955055,44.5,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-12-16 07:00:00+00:00,target,0.05268826112169834,603.5500000000011,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-12-21 15:00:00+00:00,target,2.390956194064963,106.15000000000146,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-12-22 08:00:00+00:00,target,1.6094588713187246,344.65000000000146,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2021-12-31 01:00:00+00:00,target,0.4916615194564412,161.90000000000146,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-02-03 21:00:00+00:00,stop,-1.0057670126874279,173.39999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-02-15 13:00:00+00:00,stop,-1.0041356492969395,241.8000000000011,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-02-22 19:00:00+00:00,breakeven,-0.008176614881439132,122.29999999999927,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-02-24 17:00:00+00:00,target,1.6247782780734108,366.4499999999989,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-03-03 17:00:00+00:00,target,1.8257425742574258,126.25,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063,157.5,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-03-25 16:00:00+00:00,stop,-1.0105374077976819,94.89999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-03-31 17:00:00+00:00,target,0.14581997006628314,233.85000000000036,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-05-02 20:00:00+00:00,target,1.0634285714285683,350.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361,173.45000000000073,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-06-03 12:00:00+00:00,breakeven,-0.009945300845350644,100.54999999999927,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-06-07 20:00:00+00:00,target,0.18102766798418685,253.0,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-06-15 20:00:00+00:00,target,0.19707237733802824,368.90000000000146,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-07-26 22:00:00+00:00,stop,-1.0178890876565296,55.899999999999636,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-08-09 14:00:00+00:00,stop,-1.0084961767204759,117.69999999999891,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837,182.60000000000036,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-09-01 20:00:00+00:00,target,0.4789658194566241,228.1999999999989,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-09-07 16:00:00+00:00,target,0.5106263982102889,178.79999999999927,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-09-13 13:00:00+00:00,target,0.5824037044832677,475.10000000000036,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353,272.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047,214.5,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-10-05 15:00:00+00:00,stop,-1.0044762757385854,223.39999999999782,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-10-26 02:00:00+00:00,target,0.24957760077238014,207.15000000000146,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-11-28 10:00:00+00:00,target,0.5504623253983861,254.14999999999964,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-12-15 11:00:00+00:00,target,0.19324649045150308,395.34999999999854,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2022-12-30 14:00:00+00:00,target,0.9638766519823596,56.75,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-01-06 14:00:00+00:00,target,0.8172242874845009,161.40000000000146,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2023-01-25 14:00:00+00:00,target,1.1844331641285883,59.100000000000364,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2023-02-13 19:00:00+00:00,breakeven,-0.010565240359218213,94.64999999999964,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-03-07 16:00:00+00:00,breakeven,-0.013351134846462014,74.89999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2023-04-06 15:00:00+00:00,target,0.3744192402295694,182.95000000000073,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-05-02 16:00:00+00:00,stop,-1.0056053811659194,178.39999999999964,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-05-05 13:00:00+00:00,stop,-1.0118764845605699,84.20000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2023-05-23 12:00:00+00:00,target,0.45358649789029887,94.79999999999927,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-05-24 12:00:00+00:00,target,0.26996504436675833,185.95000000000073,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-05-31 17:00:00+00:00,stop,-1.005197505197505,192.40000000000146,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-06-07 16:00:00+00:00,stop,-1.0047003525264395,212.75,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-06-27 16:00:00+00:00,target,0.8775167785234876,119.20000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2023-07-06 18:00:00+00:00,breakeven,-0.021074815595363217,47.45000000000073,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-09-28 17:00:00+00:00,target,0.27868440873713335,199.14999999999964,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-10-30 14:00:00+00:00,target,0.4324604614985713,192.85000000000036,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-11-10 04:00:00+00:00,stop,-1.005824111822947,171.6999999999989,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-12-05 16:00:00+00:00,target,0.7971014492753576,124.20000000000073,1H OB of drop FVG
+goat_oos,current 1H OB 50%,2023-12-20 20:00:00+00:00,target,0.16472694717994463,223.39999999999782,sweep extreme (no 1H FVG of the drop)
+goat_oos,current 1H OB 50%,2023-12-29 16:00:00+00:00,target,0.32894736842104294,98.80000000000291,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-04-04 23:00:00+00:00,stop,-1.0558659217877107,17.899999999999636,inv candle (2.85 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-04-15 07:00:00+00:00,breakeven,-0.04115226337448683,24.299999999999272,inv candle (2.15 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-06-02 13:00:00+00:00,target,0.7327586206896705,34.79999999999927,inv candle (4.02 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-06-16 13:00:00+00:00,stop,-1.0763358778625933,13.100000000000364,inv candle (3.99 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-07-15 18:00:00+00:00,target,0.42181818181817937,165.00000000000182,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-07-27 15:00:00+00:00,target,0.5177151120752042,138.29999999999927,inv candle (5.93 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-08-06 13:00:00+00:00,target,1.4189602446482754,32.70000000000073,inv candle (3.35 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-08-09 07:00:00+00:00,target,0.7595072308516416,93.34999999999854,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-08-16 20:00:00+00:00,stop,-1.0208768267223376,47.900000000001455,inv candle (4.42 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-08-19 16:00:00+00:00,stop,-1.013586956521739,73.60000000000036,inv candle (4.57 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-09-07 13:00:00+00:00,stop,-1.158730158730177,6.299999999999272,inv candle (3.05 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-12-16 07:00:00+00:00,target,0.05268826112169834,603.5500000000011,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-12-21 15:00:00+00:00,stop,-1.019047619047619,52.5,inv candle (2.1 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-12-22 08:00:00+00:00,target,9.697552447552336,57.20000000000073,inv candle (3.68 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2021-12-31 01:00:00+00:00,target,0.4916615194564412,161.90000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-02-03 21:00:00+00:00,stop,-1.0057670126874279,173.39999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-02-15 13:00:00+00:00,stop,-1.043859649122805,22.80000000000109,inv candle (3.99 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-02-22 19:00:00+00:00,stop,-1.064516129032258,15.5,inv candle (2.25 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-02-24 17:00:00+00:00,stop,-1.0180831826401449,55.29999999999927,inv candle (3.2 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-03-03 17:00:00+00:00,target,1.5584854631507814,147.89999999999964,inv candle (3.91 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063,157.5,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-03-25 16:00:00+00:00,stop,-1.0105374077976819,94.89999999999964,inv candle (2.24 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-03-31 17:00:00+00:00,target,0.14581997006628314,233.85000000000036,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-05-02 20:00:00+00:00,target,1.2659863945578194,294.0,inv candle (2.33 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361,173.45000000000073,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-06-03 12:00:00+00:00,breakeven,-0.009945300845350644,100.54999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-06-07 20:00:00+00:00,target,0.18102766798418685,253.0,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-06-15 20:00:00+00:00,target,0.19707237733802824,368.90000000000146,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-07-26 22:00:00+00:00,stop,-1.0178890876565296,55.899999999999636,inv candle (3.29 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-08-09 14:00:00+00:00,stop,-1.0103412616339194,96.69999999999891,inv candle (2.46 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-08-25 09:00:00+00:00,stop,-1.013736263736264,72.79999999999927,inv candle (2.3 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-09-01 20:00:00+00:00,target,1.1164453524004239,97.89999999999964,inv candle (3.14 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-09-07 16:00:00+00:00,target,0.5106263982102889,178.79999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-09-13 13:00:00+00:00,target,0.5824037044832677,475.10000000000036,inv candle (7.63 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353,272.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047,214.5,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-10-05 15:00:00+00:00,stop,-1.013642564802183,73.29999999999927,inv candle (4.07 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-10-26 02:00:00+00:00,stop,-1.029585798816567,33.80000000000109,inv candle (3.23 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-11-28 10:00:00+00:00,target,0.5504623253983861,254.14999999999964,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-12-15 11:00:00+00:00,stop,-1.089285714285723,11.199999999998909,inv candle (2.08 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2022-12-30 14:00:00+00:00,stop,-1.0238095238095237,42.0,inv candle (4.26 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-01-06 14:00:00+00:00,target,0.8172242874845009,161.40000000000146,inv candle (3.84 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-01-25 14:00:00+00:00,target,1.1844331641285883,59.100000000000364,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-02-13 19:00:00+00:00,stop,-1.1851851851851976,5.399999999999636,inv candle (3.49 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-03-07 16:00:00+00:00,breakeven,-0.013351134846462014,74.89999999999964,inv candle (4.62 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-04-06 15:00:00+00:00,stop,-1.0239808153477215,41.70000000000073,inv candle (5.2 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-05-02 16:00:00+00:00,stop,-1.0074794315632012,133.70000000000073,inv candle (5.16 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-05-05 13:00:00+00:00,stop,-1.0118764845605699,84.20000000000073,inv candle (2.99 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-05-23 12:00:00+00:00,target,0.45358649789029887,94.79999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-05-24 12:00:00+00:00,target,2.0658436213990394,24.30000000000109,inv candle (2.58 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-05-31 17:00:00+00:00,stop,-1.005197505197505,192.40000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-06-07 16:00:00+00:00,breakeven,-0.018018018018018018,55.5,inv candle (4.99 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-06-27 16:00:00+00:00,target,0.8775167785234876,119.20000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-07-06 18:00:00+00:00,breakeven,-0.022573363431150687,44.30000000000109,inv candle (2.98 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-09-28 17:00:00+00:00,target,0.7207792207792207,77.0,inv candle (3.74 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-10-30 14:00:00+00:00,stop,-1.0095419847328244,104.80000000000109,inv candle (2.88 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-11-10 04:00:00+00:00,stop,-2.0,1.0,inv candle (4.31 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-12-05 16:00:00+00:00,stop,-1.0187265917602997,53.399999999999636,inv candle (5.0 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-12-20 20:00:00+00:00,target,0.19057483169342077,193.09999999999854,inv candle (5.11 ATR)
+goat_oos,inv candle if disp>=2.0ATR else OB,2023-12-29 16:00:00+00:00,target,0.37227949599082377,87.30000000000291,inv candle (3.29 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-04-04 23:00:00+00:00,stop,-1.0558659217877107,17.899999999999636,inv candle (2.85 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-04-15 07:00:00+00:00,breakeven,-0.04115226337448683,24.299999999999272,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-06-02 13:00:00+00:00,target,0.7327586206896705,34.79999999999927,inv candle (4.02 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-06-16 13:00:00+00:00,stop,-1.0763358778625933,13.100000000000364,inv candle (3.99 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-07-15 18:00:00+00:00,target,0.42181818181817937,165.00000000000182,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-07-27 15:00:00+00:00,target,0.5177151120752042,138.29999999999927,inv candle (5.93 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-08-06 13:00:00+00:00,target,1.4189602446482754,32.70000000000073,inv candle (3.35 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-08-09 07:00:00+00:00,target,0.7595072308516416,93.34999999999854,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-08-16 20:00:00+00:00,stop,-1.0208768267223376,47.900000000001455,inv candle (4.42 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-08-19 16:00:00+00:00,stop,-1.013586956521739,73.60000000000036,inv candle (4.57 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-09-07 13:00:00+00:00,stop,-1.158730158730177,6.299999999999272,inv candle (3.05 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-12-16 07:00:00+00:00,target,0.05268826112169834,603.5500000000011,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-12-21 15:00:00+00:00,target,2.390956194064963,106.15000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-12-22 08:00:00+00:00,target,9.697552447552336,57.20000000000073,inv candle (3.68 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2021-12-31 01:00:00+00:00,target,0.4916615194564412,161.90000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-02-03 21:00:00+00:00,stop,-1.0057670126874279,173.39999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-02-15 13:00:00+00:00,stop,-1.043859649122805,22.80000000000109,inv candle (3.99 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-02-22 19:00:00+00:00,breakeven,-0.008176614881439132,122.29999999999927,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-02-24 17:00:00+00:00,stop,-1.0180831826401449,55.29999999999927,inv candle (3.2 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-03-03 17:00:00+00:00,target,1.5584854631507814,147.89999999999964,inv candle (3.91 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063,157.5,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-03-25 16:00:00+00:00,stop,-1.0105374077976819,94.89999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-03-31 17:00:00+00:00,target,0.14581997006628314,233.85000000000036,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-05-02 20:00:00+00:00,target,1.0634285714285683,350.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361,173.45000000000073,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-06-03 12:00:00+00:00,breakeven,-0.009945300845350644,100.54999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-06-07 20:00:00+00:00,target,0.18102766798418685,253.0,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-06-15 20:00:00+00:00,target,0.19707237733802824,368.90000000000146,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-07-26 22:00:00+00:00,stop,-1.0178890876565296,55.899999999999636,inv candle (3.29 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-08-09 14:00:00+00:00,stop,-1.0084961767204759,117.69999999999891,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837,182.60000000000036,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-09-01 20:00:00+00:00,target,1.1164453524004239,97.89999999999964,inv candle (3.14 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-09-07 16:00:00+00:00,target,0.5106263982102889,178.79999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-09-13 13:00:00+00:00,target,0.5824037044832677,475.10000000000036,inv candle (7.63 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353,272.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047,214.5,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-10-05 15:00:00+00:00,stop,-1.013642564802183,73.29999999999927,inv candle (4.07 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-10-26 02:00:00+00:00,stop,-1.029585798816567,33.80000000000109,inv candle (3.23 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-11-28 10:00:00+00:00,target,0.5504623253983861,254.14999999999964,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-12-15 11:00:00+00:00,target,0.19324649045150308,395.34999999999854,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2022-12-30 14:00:00+00:00,stop,-1.0238095238095237,42.0,inv candle (4.26 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-01-06 14:00:00+00:00,target,0.8172242874845009,161.40000000000146,inv candle (3.84 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-01-25 14:00:00+00:00,target,1.1844331641285883,59.100000000000364,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-02-13 19:00:00+00:00,stop,-1.1851851851851976,5.399999999999636,inv candle (3.49 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-03-07 16:00:00+00:00,breakeven,-0.013351134846462014,74.89999999999964,inv candle (4.62 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-04-06 15:00:00+00:00,stop,-1.0239808153477215,41.70000000000073,inv candle (5.2 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-05-02 16:00:00+00:00,stop,-1.0074794315632012,133.70000000000073,inv candle (5.16 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-05-05 13:00:00+00:00,stop,-1.0118764845605699,84.20000000000073,inv candle (2.99 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-05-23 12:00:00+00:00,target,0.45358649789029887,94.79999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-05-24 12:00:00+00:00,target,2.0658436213990394,24.30000000000109,inv candle (2.58 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-05-31 17:00:00+00:00,stop,-1.005197505197505,192.40000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-06-07 16:00:00+00:00,breakeven,-0.018018018018018018,55.5,inv candle (4.99 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-06-27 16:00:00+00:00,target,0.8775167785234876,119.20000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-07-06 18:00:00+00:00,breakeven,-0.022573363431150687,44.30000000000109,inv candle (2.98 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-09-28 17:00:00+00:00,target,0.7207792207792207,77.0,inv candle (3.74 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-10-30 14:00:00+00:00,stop,-1.0095419847328244,104.80000000000109,inv candle (2.88 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-11-10 04:00:00+00:00,stop,-2.0,1.0,inv candle (4.31 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-12-05 16:00:00+00:00,stop,-1.0187265917602997,53.399999999999636,inv candle (5.0 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-12-20 20:00:00+00:00,target,0.19057483169342077,193.09999999999854,inv candle (5.11 ATR)
+goat_oos,inv candle if disp>=2.5ATR else OB,2023-12-29 16:00:00+00:00,target,0.37227949599082377,87.30000000000291,inv candle (3.29 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-04-04 23:00:00+00:00,stop,-1.0558659217877107,17.899999999999636,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-04-15 07:00:00+00:00,breakeven,-0.04115226337448683,24.299999999999272,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-06-02 13:00:00+00:00,target,0.7327586206896705,34.79999999999927,inv candle (4.02 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-06-16 13:00:00+00:00,stop,-1.0763358778625933,13.100000000000364,inv candle (3.99 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-07-15 18:00:00+00:00,target,0.42181818181817937,165.00000000000182,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-07-27 15:00:00+00:00,target,0.5177151120752042,138.29999999999927,inv candle (5.93 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-08-06 13:00:00+00:00,target,1.4189602446482754,32.70000000000073,inv candle (3.35 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-08-09 07:00:00+00:00,target,0.7595072308516416,93.34999999999854,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-08-16 20:00:00+00:00,stop,-1.0208768267223376,47.900000000001455,inv candle (4.42 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-08-19 16:00:00+00:00,stop,-1.013586956521739,73.60000000000036,inv candle (4.57 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-09-07 13:00:00+00:00,stop,-1.158730158730177,6.299999999999272,inv candle (3.05 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-12-16 07:00:00+00:00,target,0.05268826112169834,603.5500000000011,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-12-21 15:00:00+00:00,target,2.390956194064963,106.15000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-12-22 08:00:00+00:00,target,9.697552447552336,57.20000000000073,inv candle (3.68 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2021-12-31 01:00:00+00:00,target,0.4916615194564412,161.90000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-02-03 21:00:00+00:00,stop,-1.0057670126874279,173.39999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-02-15 13:00:00+00:00,stop,-1.043859649122805,22.80000000000109,inv candle (3.99 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-02-22 19:00:00+00:00,breakeven,-0.008176614881439132,122.29999999999927,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-02-24 17:00:00+00:00,stop,-1.0180831826401449,55.29999999999927,inv candle (3.2 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-03-03 17:00:00+00:00,target,1.5584854631507814,147.89999999999964,inv candle (3.91 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063,157.5,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-03-25 16:00:00+00:00,stop,-1.0105374077976819,94.89999999999964,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-03-31 17:00:00+00:00,target,0.14581997006628314,233.85000000000036,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-05-02 20:00:00+00:00,target,1.0634285714285683,350.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-05-10 07:00:00+00:00,breakeven,-0.005765350245027361,173.45000000000073,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-06-03 12:00:00+00:00,breakeven,-0.009945300845350644,100.54999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-06-07 20:00:00+00:00,target,0.18102766798418685,253.0,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-06-15 20:00:00+00:00,target,0.19707237733802824,368.90000000000146,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-07-26 22:00:00+00:00,stop,-1.0178890876565296,55.899999999999636,inv candle (3.29 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-08-09 14:00:00+00:00,stop,-1.0084961767204759,117.69999999999891,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-08-25 09:00:00+00:00,stop,-1.0054764512595837,182.60000000000036,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-09-01 20:00:00+00:00,target,1.1164453524004239,97.89999999999964,inv candle (3.14 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-09-07 16:00:00+00:00,target,0.5106263982102889,178.79999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-09-13 13:00:00+00:00,target,0.5824037044832677,475.10000000000036,inv candle (7.63 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353,272.0,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-09-27 12:00:00+00:00,stop,-1.0046620046620047,214.5,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-10-05 15:00:00+00:00,stop,-1.013642564802183,73.29999999999927,inv candle (4.07 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-10-26 02:00:00+00:00,stop,-1.029585798816567,33.80000000000109,inv candle (3.23 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-11-28 10:00:00+00:00,target,0.5504623253983861,254.14999999999964,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-12-15 11:00:00+00:00,target,0.19324649045150308,395.34999999999854,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2022-12-30 14:00:00+00:00,stop,-1.0238095238095237,42.0,inv candle (4.26 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-01-06 14:00:00+00:00,target,0.8172242874845009,161.40000000000146,inv candle (3.84 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-01-25 14:00:00+00:00,target,1.1844331641285883,59.100000000000364,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-02-13 19:00:00+00:00,stop,-1.1851851851851976,5.399999999999636,inv candle (3.49 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-03-07 16:00:00+00:00,breakeven,-0.013351134846462014,74.89999999999964,inv candle (4.62 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-04-06 15:00:00+00:00,stop,-1.0239808153477215,41.70000000000073,inv candle (5.2 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-05-02 16:00:00+00:00,stop,-1.0074794315632012,133.70000000000073,inv candle (5.16 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-05-05 13:00:00+00:00,stop,-1.0118764845605699,84.20000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-05-23 12:00:00+00:00,target,0.45358649789029887,94.79999999999927,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-05-24 12:00:00+00:00,target,0.26996504436675833,185.95000000000073,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-05-31 17:00:00+00:00,stop,-1.005197505197505,192.40000000000146,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-06-07 16:00:00+00:00,breakeven,-0.018018018018018018,55.5,inv candle (4.99 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-06-27 16:00:00+00:00,target,0.8775167785234876,119.20000000000073,sweep extreme (no 1H FVG of the drop)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-07-06 18:00:00+00:00,breakeven,-0.021074815595363217,47.45000000000073,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-09-28 17:00:00+00:00,target,0.7207792207792207,77.0,inv candle (3.74 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-10-30 14:00:00+00:00,target,0.4324604614985713,192.85000000000036,1H OB of drop FVG
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-11-10 04:00:00+00:00,stop,-2.0,1.0,inv candle (4.31 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-12-05 16:00:00+00:00,stop,-1.0187265917602997,53.399999999999636,inv candle (5.0 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-12-20 20:00:00+00:00,target,0.19057483169342077,193.09999999999854,inv candle (5.11 ATR)
+goat_oos,inv candle if disp>=3.0ATR else OB,2023-12-29 16:00:00+00:00,target,0.37227949599082377,87.30000000000291,inv candle (3.29 ATR)
+goat_oos,inv candle always,2021-04-04 23:00:00+00:00,stop,-1.0558659217877107,17.899999999999636,inv candle (2.85 ATR)
+goat_oos,inv candle always,2021-04-15 07:00:00+00:00,breakeven,-0.04115226337448683,24.299999999999272,inv candle (2.15 ATR)
+goat_oos,inv candle always,2021-06-02 13:00:00+00:00,target,0.7327586206896705,34.79999999999927,inv candle (4.02 ATR)
+goat_oos,inv candle always,2021-06-16 13:00:00+00:00,stop,-1.0763358778625933,13.100000000000364,inv candle (3.99 ATR)
+goat_oos,inv candle always,2021-07-15 18:00:00+00:00,stop,-1.0196850393700783,50.80000000000109,inv candle (1.34 ATR)
+goat_oos,inv candle always,2021-07-27 15:00:00+00:00,target,0.5177151120752042,138.29999999999927,inv candle (5.93 ATR)
+goat_oos,inv candle always,2021-08-06 13:00:00+00:00,target,1.4189602446482754,32.70000000000073,inv candle (3.35 ATR)
+goat_oos,inv candle always,2021-08-09 07:00:00+00:00,stop,-1.0414937759336094,24.100000000000364,inv candle (1.31 ATR)
+goat_oos,inv candle always,2021-08-16 20:00:00+00:00,stop,-1.0208768267223376,47.900000000001455,inv candle (4.42 ATR)
+goat_oos,inv candle always,2021-08-19 16:00:00+00:00,stop,-1.013586956521739,73.60000000000036,inv candle (4.57 ATR)
+goat_oos,inv candle always,2021-09-07 13:00:00+00:00,stop,-1.158730158730177,6.299999999999272,inv candle (3.05 ATR)
+goat_oos,inv candle always,2021-12-16 07:00:00+00:00,target,1.1041666666666627,28.80000000000109,inv candle (1.22 ATR)
+goat_oos,inv candle always,2021-12-21 15:00:00+00:00,stop,-1.019047619047619,52.5,inv candle (2.1 ATR)
+goat_oos,inv candle always,2021-12-22 08:00:00+00:00,target,9.697552447552336,57.20000000000073,inv candle (3.68 ATR)
+goat_oos,inv candle always,2021-12-31 01:00:00+00:00,stop,-1.0178571428571428,56.0,inv candle (1.48 ATR)
+goat_oos,inv candle always,2022-02-03 21:00:00+00:00,stop,-1.0085836909871244,116.5,inv candle (1.69 ATR)
+goat_oos,inv candle always,2022-02-15 13:00:00+00:00,stop,-1.043859649122805,22.80000000000109,inv candle (3.99 ATR)
+goat_oos,inv candle always,2022-02-22 19:00:00+00:00,stop,-1.064516129032258,15.5,inv candle (2.25 ATR)
+goat_oos,inv candle always,2022-02-24 17:00:00+00:00,stop,-1.0180831826401449,55.29999999999927,inv candle (3.2 ATR)
+goat_oos,inv candle always,2022-03-03 17:00:00+00:00,target,1.5584854631507814,147.89999999999964,inv candle (3.91 ATR)
+goat_oos,inv candle always,2022-03-21 14:00:00+00:00,stop,-1.0063492063492063,157.5,inv candle (1.93 ATR)
+goat_oos,inv candle always,2022-03-25 16:00:00+00:00,stop,-1.0105374077976819,94.89999999999964,inv candle (2.24 ATR)
+goat_oos,inv candle always,2022-03-31 17:00:00+00:00,stop,-1.0158982511923689,62.899999999999636,inv candle (1.95 ATR)
+goat_oos,inv candle always,2022-05-02 20:00:00+00:00,target,1.2659863945578194,294.0,inv candle (2.33 ATR)
+goat_oos,inv candle always,2022-05-10 07:00:00+00:00,breakeven,-0.05649717514124061,17.700000000000728,inv candle (1.14 ATR)
+goat_oos,inv candle always,2022-06-03 12:00:00+00:00,breakeven,-0.03257328990228129,30.69999999999891,inv candle (1.97 ATR)
+goat_oos,inv candle always,2022-06-07 20:00:00+00:00,stop,-1.022831050228311,43.79999999999927,inv candle (1.2 ATR)
+goat_oos,inv candle always,2022-06-15 20:00:00+00:00,target,2.7228464419474503,26.700000000000728,inv candle (1.39 ATR)
+goat_oos,inv candle always,2022-07-26 22:00:00+00:00,stop,-1.0178890876565296,55.899999999999636,inv candle (3.29 ATR)
+goat_oos,inv candle always,2022-08-09 14:00:00+00:00,stop,-1.0103412616339194,96.69999999999891,inv candle (2.46 ATR)
+goat_oos,inv candle always,2022-08-25 09:00:00+00:00,stop,-1.013736263736264,72.79999999999927,inv candle (2.3 ATR)
+goat_oos,inv candle always,2022-09-01 20:00:00+00:00,target,1.1164453524004239,97.89999999999964,inv candle (3.14 ATR)
+goat_oos,inv candle always,2022-09-07 16:00:00+00:00,target,1.0791962174940766,84.60000000000036,inv candle (1.24 ATR)
+goat_oos,inv candle always,2022-09-13 13:00:00+00:00,target,0.5824037044832677,475.10000000000036,inv candle (7.63 ATR)
+goat_oos,inv candle always,2022-09-21 19:00:00+00:00,stop,-1.0036764705882353,272.0,inv candle (1.55 ATR)
+goat_oos,inv candle always,2022-09-27 12:00:00+00:00,breakeven,-0.026455026455026964,37.79999999999927,inv candle (1.72 ATR)
+goat_oos,inv candle always,2022-10-05 15:00:00+00:00,stop,-1.013642564802183,73.29999999999927,inv candle (4.07 ATR)
+goat_oos,inv candle always,2022-10-26 02:00:00+00:00,stop,-1.029585798816567,33.80000000000109,inv candle (3.23 ATR)
+goat_oos,inv candle always,2022-11-28 10:00:00+00:00,stop,-1.0195312499999998,51.20000000000073,inv candle (1.56 ATR)
+goat_oos,inv candle always,2022-12-15 11:00:00+00:00,stop,-1.089285714285723,11.199999999998909,inv candle (2.08 ATR)
+goat_oos,inv candle always,2022-12-30 14:00:00+00:00,stop,-1.0238095238095237,42.0,inv candle (4.26 ATR)
+goat_oos,inv candle always,2023-01-06 14:00:00+00:00,target,0.8172242874845009,161.40000000000146,inv candle (3.84 ATR)
+goat_oos,inv candle always,2023-01-25 14:00:00+00:00,target,1.580135440180548,44.30000000000109,inv candle (1.72 ATR)
+goat_oos,inv candle always,2023-02-13 19:00:00+00:00,stop,-1.1851851851851976,5.399999999999636,inv candle (3.49 ATR)
+goat_oos,inv candle always,2023-03-07 16:00:00+00:00,breakeven,-0.013351134846462014,74.89999999999964,inv candle (4.62 ATR)
+goat_oos,inv candle always,2023-04-06 15:00:00+00:00,stop,-1.0239808153477215,41.70000000000073,inv candle (5.2 ATR)
+goat_oos,inv candle always,2023-05-02 16:00:00+00:00,stop,-1.0074794315632012,133.70000000000073,inv candle (5.16 ATR)
+goat_oos,inv candle always,2023-05-05 13:00:00+00:00,stop,-1.0118764845605699,84.20000000000073,inv candle (2.99 ATR)
+goat_oos,inv candle always,2023-05-23 12:00:00+00:00,target,1.1716621253405761,36.70000000000073,inv candle (1.82 ATR)
+goat_oos,inv candle always,2023-05-24 12:00:00+00:00,target,2.0658436213990394,24.30000000000109,inv candle (2.58 ATR)
+goat_oos,inv candle always,2023-05-31 17:00:00+00:00,stop,-1.0135135135135136,74.0,inv candle (1.85 ATR)
+goat_oos,inv candle always,2023-06-07 16:00:00+00:00,breakeven,-0.018018018018018018,55.5,inv candle (4.99 ATR)
+goat_oos,inv candle always,2023-06-27 16:00:00+00:00,target,0.8909710391822887,117.39999999999964,inv candle (1.9 ATR)
+goat_oos,inv candle always,2023-07-06 18:00:00+00:00,breakeven,-0.022573363431150687,44.30000000000109,inv candle (2.98 ATR)
+goat_oos,inv candle always,2023-09-28 17:00:00+00:00,target,0.7207792207792207,77.0,inv candle (3.74 ATR)
+goat_oos,inv candle always,2023-10-30 14:00:00+00:00,stop,-1.0095419847328244,104.80000000000109,inv candle (2.88 ATR)
+goat_oos,inv candle always,2023-11-10 04:00:00+00:00,stop,-2.0,1.0,inv candle (4.31 ATR)
+goat_oos,inv candle always,2023-12-05 16:00:00+00:00,stop,-1.0187265917602997,53.399999999999636,inv candle (5.0 ATR)
+goat_oos,inv candle always,2023-12-20 20:00:00+00:00,target,0.19057483169342077,193.09999999999854,inv candle (5.11 ATR)
+goat_oos,inv candle always,2023-12-29 16:00:00+00:00,target,0.37227949599082377,87.30000000000291,inv candle (3.29 ATR)

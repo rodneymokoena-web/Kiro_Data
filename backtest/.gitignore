@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+logs/
+data/**/*.csv
+data/**/*.npz
+data/**/*.zip
+output/**/*.png
+output/us100_runs/

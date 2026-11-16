@@ -1,0 +1,9 @@
+variant,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+current 4H->1H->5m touch,goat,73,25,1.4,15.28,11537,7.7,18.1,-2.8
+"fast15 only, 15m entry",goat,206,19,1.02,2.74,10048,21.4,4.8,-2.1
+"fast15 only, 5m entry",goat,345,20,1.15,26.49,12544,28.0,35.0,-8.5
+"+ fast15, 15m entry",goat,257,19,1.05,7.21,10441,28.2,10.0,-2.8
+current 4H->1H->5m touch,pepperstone,76,34,2.23,42.45,15092,7.4,27.1,15.3
+"fast15 only, 15m entry",pepperstone,220,16,0.81,-24.45,7664,29.8,-4.3,-20.2
+"fast15 only, 5m entry",pepperstone,363,19,1.01,1.1,9720,39.6,29.8,-28.7
+"+ fast15, 15m entry",pepperstone,265,17,0.87,-20.25,7947,33.9,-7.8,-12.4

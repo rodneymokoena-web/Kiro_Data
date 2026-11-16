@@ -1,0 +1,13 @@
+config,broker,model,profitable,losing,no trade/flat,avg $,median $ traded,best $,worst $,worst DD%,months >+5%,months >+8%,months >+10%,months <-4%,sum $
+current,goat,both,29,16,22,103,72,2365,-594,5.94,6,3,3,2,6930
+current,goat,intraday,9,8,50,64,358,1222,-215,2.26,7,1,1,0,4262
+current,goat,swing,28,15,24,37,56,1675,-401,4.01,2,2,1,1,2500
+current,pepperstone,both,30,17,20,135,72,2337,-599,5.99,9,4,4,3,9072
+current,pepperstone,intraday,10,9,48,85,364,1215,-224,2.24,9,2,2,0,5663
+current,pepperstone,swing,31,15,21,48,66,1643,-409,4.09,3,1,1,1,3209
+recommended,goat,both,29,18,20,132,63,2365,-594,5.94,6,5,5,2,8844
+recommended,goat,intraday,9,10,48,91,-4,1230,-215,2.26,7,4,4,0,6119
+recommended,goat,swing,28,15,24,37,56,1675,-401,4.01,2,2,1,1,2500
+recommended,pepperstone,both,30,17,20,164,72,2337,-599,5.99,9,6,6,3,10967
+recommended,pepperstone,intraday,10,10,47,112,181,1226,-224,2.24,9,5,5,0,7524
+recommended,pepperstone,swing,31,15,21,48,66,1643,-409,4.09,3,1,1,1,3209

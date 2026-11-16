@@ -1,0 +1,361 @@
+source,variant,entry_time,exit,r_net,risk_pts
+pepperstone_oos,current: 1H OB 50%,2021-04-04 23:00:00+00:00,stop,-1.0502645502645487,37.80000000000109
+pepperstone_oos,current: 1H OB 50%,2021-04-15 07:00:00+00:00,breakeven,-0.07539682539682321,25.200000000000728
+pepperstone_oos,current: 1H OB 50%,2021-05-07 13:00:00+00:00,target,0.4479353680430829,111.39999999999964
+pepperstone_oos,current: 1H OB 50%,2021-06-02 13:00:00+00:00,target,0.5871121718377139,41.899999999999636
+pepperstone_oos,current: 1H OB 50%,2021-06-16 13:00:00+00:00,target,1.9148073022312877,49.29999999999927
+pepperstone_oos,current: 1H OB 50%,2021-07-15 18:00:00+00:00,target,0.42254388666461723,162.34999999999854
+pepperstone_oos,current: 1H OB 50%,2021-07-27 15:00:00+00:00,target,0.35788937037981383,196.14999999999964
+pepperstone_oos,current: 1H OB 50%,2021-08-06 13:00:00+00:00,target,1.2861189801699113,35.30000000000109
+pepperstone_oos,current: 1H OB 50%,2021-08-09 07:00:00+00:00,target,0.7306666666666769,93.74999999999818
+pepperstone_oos,current: 1H OB 50%,2021-08-19 16:00:00+00:00,target,0.33559991226145813,227.95000000000073
+pepperstone_oos,current: 1H OB 50%,2021-09-07 09:00:00+00:00,target,0.5407608695652311,36.80000000000109
+pepperstone_oos,current: 1H OB 50%,2021-10-26 17:00:00+00:00,stop,-1.0154408776919952,123.04999999999927
+pepperstone_oos,current: 1H OB 50%,2021-11-22 23:00:00+00:00,target,0.4389196923627282,279.5499999999993
+pepperstone_oos,current: 1H OB 50%,2021-12-16 07:00:00+00:00,target,0.0519221168247635,600.8999999999996
+pepperstone_oos,current: 1H OB 50%,2021-12-21 15:00:00+00:00,target,2.402863961813804,104.75000000000182
+pepperstone_oos,current: 1H OB 50%,2021-12-31 01:00:00+00:00,target,0.48788067122435624,160.90000000000146
+pepperstone_oos,current: 1H OB 50%,2022-02-03 21:00:00+00:00,stop,-1.0108757870635376,174.6999999999989
+pepperstone_oos,current: 1H OB 50%,2022-02-15 10:00:00+00:00,stop,-1.007906783187682,240.29999999999927
+pepperstone_oos,current: 1H OB 50%,2022-02-22 18:00:00+00:00,stop,-1.041530054644807,45.75000000000182
+pepperstone_oos,current: 1H OB 50%,2022-02-24 17:00:00+00:00,target,1.510021668472381,369.1999999999989
+pepperstone_oos,current: 1H OB 50%,2022-03-03 17:00:00+00:00,target,1.831469648562322,125.19999999999891
+pepperstone_oos,current: 1H OB 50%,2022-03-21 14:00:00+00:00,stop,-1.012210796915167,155.60000000000036
+pepperstone_oos,current: 1H OB 50%,2022-03-25 16:00:00+00:00,stop,-1.020127118644068,94.39999999999964
+pepperstone_oos,current: 1H OB 50%,2022-03-31 17:00:00+00:00,target,0.14270363206533598,232.64999999999964
+pepperstone_oos,current: 1H OB 50%,2022-05-02 20:00:00+00:00,target,1.0494037478705314,352.1999999999989
+pepperstone_oos,current: 1H OB 50%,2022-05-10 07:00:00+00:00,breakeven,-0.010650224215246659,178.39999999999964
+pepperstone_oos,current: 1H OB 50%,2022-06-03 12:00:00+00:00,breakeven,-0.019038076152304746,99.79999999999927
+pepperstone_oos,current: 1H OB 50%,2022-06-07 20:00:00+00:00,target,0.17487199684914934,253.90000000000146
+pepperstone_oos,current: 1H OB 50%,2022-06-15 20:00:00+00:00,target,0.38067427661268066,188.35000000000036
+pepperstone_oos,current: 1H OB 50%,2022-06-29 14:00:00+00:00,target,0.7581903276131002,64.10000000000036
+pepperstone_oos,current: 1H OB 50%,2022-07-26 15:00:00+00:00,breakeven,-0.032928942807626274,57.69999999999891
+pepperstone_oos,current: 1H OB 50%,2022-08-09 14:00:00+00:00,stop,-1.0160608622147085,118.29999999999927
+pepperstone_oos,current: 1H OB 50%,2022-08-25 09:00:00+00:00,target,0.940664126292869,183.70000000000073
+pepperstone_oos,current: 1H OB 50%,2022-09-01 20:00:00+00:00,target,0.47154471544715915,227.54999999999927
+pepperstone_oos,current: 1H OB 50%,2022-09-08 13:00:00+00:00,target,0.5019455252918187,179.90000000000146
+pepperstone_oos,current: 1H OB 50%,2022-09-13 13:00:00+00:00,target,0.5977738978611935,458.2000000000007
+pepperstone_oos,current: 1H OB 50%,2022-10-05 15:00:00+00:00,stop,-1.008543165467626,222.39999999999964
+pepperstone_oos,current: 1H OB 50%,2022-10-26 02:00:00+00:00,target,0.2447602987231927,207.5500000000011
+pepperstone_oos,current: 1H OB 50%,2022-11-28 10:00:00+00:00,target,0.5613894989019789,250.4499999999989
+pepperstone_oos,current: 1H OB 50%,2022-12-15 11:00:00+00:00,target,0.19798136645962655,386.39999999999964
+pepperstone_oos,current: 1H OB 50%,2022-12-30 14:00:00+00:00,target,0.5243962543124784,101.44999999999891
+pepperstone_oos,current: 1H OB 50%,2023-01-06 14:00:00+00:00,target,0.3327664399092998,176.39999999999964
+pepperstone_oos,current: 1H OB 50%,2023-01-25 14:00:00+00:00,target,1.1835334476843626,58.30000000000109
+pepperstone_oos,current: 1H OB 50%,2023-02-13 19:00:00+00:00,target,1.1947069943289268,185.14999999999964
+pepperstone_oos,current: 1H OB 50%,2023-03-07 17:00:00+00:00,breakeven,-0.02668539325842669,71.20000000000073
+pepperstone_oos,current: 1H OB 50%,2023-05-02 16:00:00+00:00,stop,-1.0108540417023708,175.04999999999927
+pepperstone_oos,current: 1H OB 50%,2023-05-05 13:00:00+00:00,stop,-1.0223529411764707,85.0
+pepperstone_oos,current: 1H OB 50%,2023-05-23 12:00:00+00:00,target,0.44116094986806237,94.75
+pepperstone_oos,current: 1H OB 50%,2023-05-31 13:00:00+00:00,stop,-1.0101931330472103,186.40000000000146
+pepperstone_oos,current: 1H OB 50%,2023-06-08 14:00:00+00:00,stop,-1.0091368117335897,207.95000000000073
+pepperstone_oos,current: 1H OB 50%,2023-06-27 16:00:00+00:00,target,0.8680033416875692,119.69999999999891
+pepperstone_oos,current: 1H OB 50%,2023-07-06 18:00:00+00:00,breakeven,-0.04428904428904466,42.899999999999636
+pepperstone_oos,current: 1H OB 50%,2023-08-21 14:00:00+00:00,target,0.7741609891496318,198.14999999999964
+pepperstone_oos,current: 1H OB 50%,2023-09-15 13:00:00+00:00,target,0.8028335301062461,84.70000000000073
+pepperstone_oos,current: 1H OB 50%,2023-09-28 18:00:00+00:00,target,0.2767489711934106,194.39999999999964
+pepperstone_oos,current: 1H OB 50%,2023-11-10 01:00:00+00:00,stop,-1.0107557316727993,176.65000000000146
+pepperstone_oos,current: 1H OB 50%,2023-11-15 17:00:00+00:00,target,0.619810633648939,137.3000000000011
+pepperstone_oos,current: 1H OB 50%,2023-12-05 16:00:00+00:00,target,0.7889022919179711,124.35000000000036
+pepperstone_oos,current: 1H OB 50%,2023-12-21 13:00:00+00:00,target,0.2331174838113092,108.09999999999854
+pepperstone_oos,current: 1H OB 50%,2023-12-29 18:00:00+00:00,open,-0.026327336551105973,113.95000000000073
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-04-04 23:00:00+00:00,stop,-1.1966873706004542,9.659999999998035
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-04-15 07:00:00+00:00,breakeven,-0.12393998695368616,15.329999999999927
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-05-07 13:00:00+00:00,stop,-1.0628306878306883,30.23999999999978
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-06-02 13:00:00+00:00,target,0.76814988290399,32.024999999999636
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-06-16 13:00:00+00:00,target,1.900734923990796,49.664999999999054
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-07-15 18:00:00+00:00,stop,-1.0309849967384215,61.31999999999971
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-07-27 15:00:00+00:00,target,1.611015490533544,43.57500000000073
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-08-06 13:00:00+00:00,stop,-1.0895803866100855,21.210000000000946
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-08-09 07:00:00+00:00,stop,-2.0644257703092945,1.7849999999980355
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-08-19 16:00:00+00:00,stop,-1.0196473812108993,96.70499999999993
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-09-07 09:00:00+00:00,target,0.8654055229398554,22.99499999999898
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-10-26 17:00:00+00:00,stop,-1.1123927832002323,16.905000000000655
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-11-22 23:00:00+00:00,stop,-2.50793650793407,1.2600000000020373
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-12-16 07:00:00+00:00,target,0.17645062775704343,176.8199999999997
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-12-21 15:00:00+00:00,stop,-1.0359032501889645,52.92000000000007
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2021-12-31 01:00:00+00:00,target,0.5746495369861849,136.6050000000032
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-02-03 21:00:00+00:00,stop,-1.009478909426526,200.4449999999997
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-02-15 10:00:00+00:00,stop,-1.00781651753574,243.07500000000073
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-02-22 18:00:00+00:00,stop,-1.0482539682539682,39.375
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-02-24 17:00:00+00:00,stop,-1.0601170700838518,31.604999999997744
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-03-03 17:00:00+00:00,stop,-1.0615484288953696,30.86999999999898
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-03-21 14:00:00+00:00,stop,-1.0318578135479537,59.64000000000124
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-03-25 16:00:00+00:00,stop,-1.0335097001763665,56.70000000000073
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-03-31 17:00:00+00:00,stop,-1.0865800865800876,21.94499999999971
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-05-02 20:00:00+00:00,stop,-1.013453708620995,141.22500000000036
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-05-10 07:00:00+00:00,stop,-1.212885154061642,8.924999999999272
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-06-03 12:00:00+00:00,breakeven,-0.020609610586831837,92.18999999999869
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-06-07 20:00:00+00:00,stop,-1.0753968253968231,25.200000000000728
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-06-15 20:00:00+00:00,target,2.107583774250258,34.020000000002256
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-06-29 14:00:00+00:00,target,0.656534954407298,74.02499999999964
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-07-26 15:00:00+00:00,breakeven,-0.020039023361282774,94.81499999999869
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-08-09 14:00:00+00:00,stop,-1.007992596331819,237.71999999999935
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-08-25 09:00:00+00:00,stop,-1.0269274376417237,70.55999999999949
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-09-01 20:00:00+00:00,target,1.1304256215760708,94.92000000000007
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-09-08 13:00:00+00:00,target,1.1300919842312516,79.90500000000065
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-09-13 13:00:00+00:00,target,19.613319011812443,13.965000000001965
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-10-05 15:00:00+00:00,stop,-1.045351473922902,41.89500000000044
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-10-26 02:00:00+00:00,stop,-1.0367789392179636,51.659999999999854
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-11-28 10:00:00+00:00,stop,-1.032900432900433,57.75
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-12-15 11:00:00+00:00,target,0.9234111895708882,82.84499999999935
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2022-12-30 14:00:00+00:00,stop,-1.2180149168100485,8.715000000001965
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-01-06 14:00:00+00:00,stop,-1.603174603174673,3.149999999999636
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-01-25 14:00:00+00:00,target,0.48036758563073684,143.64000000000124
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-02-13 19:00:00+00:00,breakeven,-0.03427128427128395,55.44000000000051
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-03-07 17:00:00+00:00,stop,-1.2233980011757521,8.505000000001019
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-05-02 16:00:00+00:00,stop,-1.0947394664672137,20.05500000000029
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-05-05 13:00:00+00:00,stop,-1.361904761904762,5.25
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-05-23 12:00:00+00:00,stop,-1.3933747412008342,4.829999999999927
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-05-31 13:00:00+00:00,stop,-1.0246529129362913,77.07000000000153
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-06-08 14:00:00+00:00,stop,-1.1533494753833808,12.389999999999418
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-06-27 16:00:00+00:00,target,1.6574938182978691,62.68499999999949
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-07-06 18:00:00+00:00,breakeven,-0.035903250188964425,52.92000000000007
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-08-21 14:00:00+00:00,target,1.805874389310728,84.94499999999971
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-09-15 13:00:00+00:00,target,2.9172029172027374,23.31000000000131
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-09-28 18:00:00+00:00,target,1.0288774144195452,52.29000000000087
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-11-10 01:00:00+00:00,stop,-1.0178983561772879,106.15500000000065
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-11-15 17:00:00+00:00,stop,-4.619047619050127,0.5249999999996362
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-12-05 16:00:00+00:00,stop,-1.0983436853002084,19.31999999999971
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-12-21 13:00:00+00:00,stop,-1.786749482401372,2.415000000000873
+pepperstone_oos,IFVG far edge + 5% of IFVG height,2023-12-29 18:00:00+00:00,stop,-1.0786749482401607,24.150000000001455
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-04-04 23:00:00+00:00,stop,-1.165217391304374,11.499999999998181
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-04-15 07:00:00+00:00,breakeven,-0.10410958904109588,18.25
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-05-07 13:00:00+00:00,stop,-1.0527777777777778,36.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-06-02 13:00:00+00:00,target,0.6452459016393443,38.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-06-16 13:00:00+00:00,target,1.5966173361522873,59.12499999999818
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-07-15 18:00:00+00:00,stop,-1.026027397260274,73.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-07-27 15:00:00+00:00,target,1.3532530120481996,51.875
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-08-06 13:00:00+00:00,stop,-1.0752475247524698,25.25000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-08-09 07:00:00+00:00,stop,-1.894117647059589,2.124999999998181
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-08-19 16:00:00+00:00,target,0.6644951140065114,115.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-09-07 09:00:00+00:00,target,0.7269406392694463,27.375
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-10-26 17:00:00+00:00,stop,-1.0944099378881986,20.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-11-22 23:00:00+00:00,stop,-2.2666666666666666,1.5
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-12-16 07:00:00+00:00,target,0.14821852731591623,210.5
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-12-21 15:00:00+00:00,target,3.995238095238101,63.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2021-12-31 01:00:00+00:00,target,0.4827056110683958,162.62500000000364
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-02-03 21:00:00+00:00,stop,-1.0079622839182818,238.625
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-02-15 10:00:00+00:00,stop,-1.0065658747300215,289.375
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-02-22 18:00:00+00:00,stop,-1.0405333333333333,46.875
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-02-24 17:00:00+00:00,stop,-1.0504983388704343,37.62499999999818
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-03-03 17:00:00+00:00,stop,-1.0517006802721087,36.75
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-03-21 14:00:00+00:00,stop,-1.026760563380281,71.00000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-03-25 16:00:00+00:00,stop,-1.0281481481481483,67.5
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-03-31 17:00:00+00:00,stop,-1.0727272727272728,26.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-05-02 20:00:00+00:00,stop,-1.0113011152416358,168.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-05-10 07:00:00+00:00,stop,-1.1788235294117648,10.625
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-06-03 12:00:00+00:00,breakeven,-0.017312072892938783,109.74999999999818
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-06-07 20:00:00+00:00,stop,-1.0633333333333332,30.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-06-15 20:00:00+00:00,target,1.7703703703702547,40.50000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-06-29 14:00:00+00:00,target,0.5514893617021277,88.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-07-26 15:00:00+00:00,breakeven,-0.016832779623477297,112.875
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-08-09 14:00:00+00:00,stop,-1.0067137809187279,283.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-08-25 09:00:00+00:00,target,2.0571428571429102,83.99999999999818
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-09-01 20:00:00+00:00,target,0.9495575221239002,113.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-09-08 13:00:00+00:00,target,0.9492772667542592,95.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-09-13 13:00:00+00:00,target,16.475187969922967,16.62500000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-10-05 15:00:00+00:00,stop,-1.038095238095238,49.875
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-10-26 02:00:00+00:00,stop,-1.0308943089430893,61.5
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-11-28 10:00:00+00:00,stop,-1.0276363636363637,68.75
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-12-15 11:00:00+00:00,target,0.77566539923954,98.625
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2022-12-30 14:00:00+00:00,stop,-1.1831325301204498,10.375000000001819
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-01-06 14:00:00+00:00,stop,-1.5066666666666668,3.75
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-01-25 14:00:00+00:00,target,0.4035087719298181,171.00000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-02-13 19:00:00+00:00,breakeven,-0.02878787878787799,66.00000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-03-07 17:00:00+00:00,stop,-1.1876543209876544,10.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-05-02 16:00:00+00:00,stop,-1.0795811518324607,23.875
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-05-05 13:00:00+00:00,stop,-1.304,6.25
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-05-23 12:00:00+00:00,stop,-1.3304347826086957,5.75
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-05-31 13:00:00+00:00,stop,-1.0207084468664847,91.75000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-06-08 14:00:00+00:00,stop,-1.1288135593220339,14.75
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-06-27 16:00:00+00:00,target,1.3922948073702328,74.62499999999818
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-07-06 18:00:00+00:00,breakeven,-0.030158730158730156,63.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-08-21 14:00:00+00:00,target,1.5169344870210064,101.125
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-09-15 13:00:00+00:00,target,2.4504504504502767,27.75000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-09-28 18:00:00+00:00,target,0.864257028112407,62.25000000000182
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-11-10 01:00:00+00:00,stop,-1.015034619188922,126.375
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-11-15 17:00:00+00:00,stop,-4.04,0.625
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-12-05 16:00:00+00:00,stop,-1.0826086956521739,23.0
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-12-21 13:00:00+00:00,stop,-1.6608695652173915,2.875
+pepperstone_oos,IFVG far edge + 25% of IFVG height,2023-12-29 18:00:00+00:00,stop,-1.066086956521739,28.75
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-04-04 23:00:00+00:00,stop,-1.1376811594203153,13.799999999997453
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-04-15 07:00:00+00:00,breakeven,-0.08675799086757414,21.900000000001455
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-05-07 13:00:00+00:00,stop,-1.0439814814814825,43.19999999999891
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-06-02 13:00:00+00:00,target,0.537704918032787,45.75
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-06-16 13:00:00+00:00,target,1.3305144467935524,70.94999999999891
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-07-15 18:00:00+00:00,stop,-1.0216894977168953,87.59999999999854
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-07-27 15:00:00+00:00,target,1.1277108433734997,62.25
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-08-06 13:00:00+00:00,stop,-1.0627062706270605,30.30000000000109
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-08-09 07:00:00+00:00,stop,-1.7450980392164306,2.5499999999974534
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-08-19 16:00:00+00:00,target,0.5537459283387537,138.15000000000146
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-09-07 09:00:00+00:00,target,0.6057838660578653,32.850000000000364
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-10-26 17:00:00+00:00,stop,-1.0786749482401607,24.150000000001455
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-11-22 23:00:00+00:00,stop,-2.0555555555538487,1.8000000000029104
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-12-16 07:00:00+00:00,target,0.12351543942993001,252.60000000000036
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-12-21 15:00:00+00:00,target,3.329365079365068,75.60000000000036
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2021-12-31 01:00:00+00:00,target,0.4022546758903284,195.1500000000051
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-02-03 21:00:00+00:00,stop,-1.006635236598568,286.35000000000036
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-02-15 10:00:00+00:00,stop,-1.0054715622750179,347.25
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-02-22 18:00:00+00:00,stop,-1.0337777777777777,56.25
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-02-24 17:00:00+00:00,stop,-1.0420819490586952,45.14999999999782
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-03-03 17:00:00+00:00,stop,-1.043083900226757,44.100000000000364
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-03-21 14:00:00+00:00,stop,-1.022300469483568,85.20000000000073
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-03-25 16:00:00+00:00,stop,-1.0234567901234568,81.0
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-03-31 17:00:00+00:00,stop,-1.0606060606060634,31.349999999998545
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-05-02 20:00:00+00:00,target,1.8319702602230485,201.75
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-05-10 07:00:00+00:00,breakeven,-0.14901960784313725,12.75
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-06-03 12:00:00+00:00,breakeven,-0.0144267274107822,131.6999999999989
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-06-07 20:00:00+00:00,stop,-1.0527777777777778,36.0
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-06-15 20:00:00+00:00,target,1.4753086419752124,48.60000000000218
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-06-29 14:00:00+00:00,target,0.4595744680851064,105.75
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-07-26 15:00:00+00:00,stop,-1.014027316352898,135.4499999999989
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-08-09 14:00:00+00:00,stop,-1.0055948174322733,339.59999999999854
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-08-25 09:00:00+00:00,target,1.7142857142857337,100.79999999999927
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-09-01 20:00:00+00:00,target,0.7912979351032481,135.60000000000036
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-09-08 13:00:00+00:00,target,0.7910643889618726,114.15000000000146
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-09-13 13:00:00+00:00,target,13.729323308270141,19.950000000000728
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-10-05 15:00:00+00:00,stop,-1.0317460317460316,59.850000000000364
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-10-26 02:00:00+00:00,stop,-1.0257452574525743,73.80000000000109
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-11-28 10:00:00+00:00,stop,-1.0230303030303032,82.5
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-12-15 11:00:00+00:00,target,0.6463878326996146,118.35000000000036
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2022-12-30 14:00:00+00:00,stop,-1.152610441767037,12.450000000002547
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-01-06 14:00:00+00:00,stop,-1.4222222222222223,4.5
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-01-25 14:00:00+00:00,target,0.3362573099415175,205.20000000000073
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-02-13 19:00:00+00:00,breakeven,-0.023989898989898218,79.20000000000255
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-03-07 17:00:00+00:00,stop,-1.1563786008230266,12.150000000001455
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-05-02 16:00:00+00:00,stop,-1.066317626527047,28.650000000001455
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-05-05 13:00:00+00:00,stop,-1.2533333333333334,7.5
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-05-23 12:00:00+00:00,stop,-1.2753623188405216,6.900000000001455
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-05-31 13:00:00+00:00,stop,-1.0172570390554039,110.10000000000218
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-06-08 14:00:00+00:00,stop,-1.107344632768368,17.69999999999891
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-06-27 16:00:00+00:00,target,1.160245672808532,89.54999999999745
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-07-06 18:00:00+00:00,stop,-1.0251322751322751,75.60000000000036
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-08-21 14:00:00+00:00,target,1.2641120725175206,121.34999999999854
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-09-15 13:00:00+00:00,target,2.042042042041964,33.30000000000109
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-09-28 18:00:00+00:00,target,0.720214190093669,74.70000000000255
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-11-10 01:00:00+00:00,stop,-1.0125288493241014,151.65000000000146
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-11-15 17:00:00+00:00,stop,-3.533333333333333,0.75
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-12-05 16:00:00+00:00,stop,-1.068840579710144,27.600000000000364
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-12-21 13:00:00+00:00,stop,-1.5507246376810433,3.4500000000007276
+pepperstone_oos,IFVG far edge + 50% of IFVG height,2023-12-29 18:00:00+00:00,stop,-1.055072463768116,34.5
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-04-04 23:00:00+00:00,stop,-1.1032608695652295,18.399999999997817
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-04-15 07:00:00+00:00,stop,-1.0650684931506833,29.200000000000728
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-05-07 13:00:00+00:00,stop,-1.0329861111111118,57.599999999998545
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-06-02 13:00:00+00:00,target,0.4032786885245902,61.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-06-16 13:00:00+00:00,target,0.9978858350951643,94.59999999999854
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-07-15 18:00:00+00:00,stop,-1.0162671232876714,116.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-07-27 15:00:00+00:00,target,0.8457831325301248,83.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-08-06 13:00:00+00:00,target,1.1237623762375653,40.400000000001455
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-08-09 07:00:00+00:00,stop,-1.5588235294121235,3.399999999997817
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-08-19 16:00:00+00:00,target,0.415309446254068,184.20000000000073
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-09-07 09:00:00+00:00,target,0.45433789954341147,43.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-10-26 17:00:00+00:00,stop,-1.0590062111801228,32.20000000000073
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-11-22 23:00:00+00:00,stop,-1.791666666666187,2.400000000001455
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-12-16 07:00:00+00:00,target,0.09263657957244784,336.7999999999993
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-12-21 15:00:00+00:00,target,2.497023809523831,100.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2021-12-31 01:00:00+00:00,target,0.3016910069177491,260.20000000000437
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-02-03 21:00:00+00:00,target,0.3260869565217388,381.7999999999993
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-02-15 10:00:00+00:00,stop,-1.0041036717062635,463.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-02-22 18:00:00+00:00,breakeven,-0.025333333333333333,75.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-02-24 17:00:00+00:00,stop,-1.0315614617940214,60.19999999999709
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-03-03 17:00:00+00:00,stop,-1.0323129251700685,58.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-03-21 14:00:00+00:00,stop,-1.0167253521126758,113.60000000000218
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-03-25 16:00:00+00:00,stop,-1.0175925925925926,108.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-03-31 17:00:00+00:00,stop,-1.0454545454545463,41.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-05-02 20:00:00+00:00,target,1.3739776951672864,269.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-05-10 07:00:00+00:00,breakeven,-0.11176470588235293,17.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-06-03 12:00:00+00:00,breakeven,-0.01082004555808665,175.59999999999854
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-06-07 20:00:00+00:00,stop,-1.0395833333333333,48.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-06-15 20:00:00+00:00,target,1.1064814814814092,64.80000000000291
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-06-29 14:00:00+00:00,target,0.3446808510638298,141.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-07-26 15:00:00+00:00,stop,-1.0105204872646734,180.59999999999854
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-08-09 14:00:00+00:00,stop,-1.004196113074205,452.7999999999993
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-08-25 09:00:00+00:00,target,1.285714285714312,134.39999999999782
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-09-01 20:00:00+00:00,target,0.59347345132744,180.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-09-08 13:00:00+00:00,target,0.5932982917214091,152.20000000000073
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-09-13 13:00:00+00:00,target,10.296992481202135,26.600000000002183
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-10-05 15:00:00+00:00,stop,-1.0238095238095242,79.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-10-26 02:00:00+00:00,target,0.5162601626016073,98.40000000000146
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-11-28 10:00:00+00:00,stop,-1.0172727272727273,110.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-12-15 11:00:00+00:00,target,0.4847908745247147,157.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2022-12-30 14:00:00+00:00,stop,-1.114457831325286,16.600000000002183
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-01-06 14:00:00+00:00,stop,-1.3166666666666667,6.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-01-25 14:00:00+00:00,target,0.25219298245613697,273.6000000000022
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-02-13 19:00:00+00:00,breakeven,-0.01799242424242387,105.60000000000218
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-03-07 17:00:00+00:00,stop,-1.1172839506172787,16.200000000000728
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-05-02 16:00:00+00:00,stop,-1.049738219895287,38.20000000000073
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-05-05 13:00:00+00:00,stop,-1.19,10.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-05-23 12:00:00+00:00,stop,-1.2065217391304184,9.200000000000728
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-05-31 13:00:00+00:00,stop,-1.0129427792915529,146.8000000000029
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-06-08 14:00:00+00:00,stop,-1.080508474576276,23.599999999998545
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-06-27 16:00:00+00:00,target,0.8701842546063902,119.39999999999782
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-07-06 18:00:00+00:00,stop,-1.0188492063492065,100.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-08-21 14:00:00+00:00,target,0.9480840543881333,161.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-09-15 13:00:00+00:00,target,1.531531531531473,44.400000000001455
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-09-28 18:00:00+00:00,target,0.5401606425702583,99.60000000000218
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-11-10 01:00:00+00:00,stop,-1.0093966369930762,202.20000000000073
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-11-15 17:00:00+00:00,stop,-2.9,1.0
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-12-05 16:00:00+00:00,stop,-1.0516304347826098,36.79999999999927
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-12-21 13:00:00+00:00,stop,-1.4130434782610004,4.599999999998545
+pepperstone_oos,IFVG far edge + 100% of IFVG height,2023-12-29 18:00:00+00:00,open,-0.06521739130431618,46.0
+pepperstone_oos,IFVG far edge + 5% of price,2021-04-04 23:00:00+00:00,stop,-1.0028073700852553,676.789999999999
+pepperstone_oos,IFVG far edge + 5% of price,2021-04-15 07:00:00+00:00,target,0.15670428226482117,710.255000000001
+pepperstone_oos,IFVG far edge + 5% of price,2021-05-07 13:00:00+00:00,target,0.0698747435708926,714.1349999999984
+pepperstone_oos,IFVG far edge + 5% of price,2021-06-02 13:00:00+00:00,target,0.03430603493358432,717.0750000000007
+pepperstone_oos,IFVG far edge + 5% of price,2021-06-16 13:00:00+00:00,target,0.12540767457771385,752.744999999999
+pepperstone_oos,IFVG far edge + 5% of price,2021-07-15 18:00:00+00:00,target,0.08589172134021131,798.6800000000003
+pepperstone_oos,IFVG far edge + 5% of price,2021-07-27 15:00:00+00:00,target,0.08882871369189643,790.2849999999999
+pepperstone_oos,IFVG far edge + 5% of price,2021-08-06 13:00:00+00:00,target,0.05838627536716386,777.5799999999999
+pepperstone_oos,IFVG far edge + 5% of price,2021-08-09 07:00:00+00:00,target,0.09062165129846894,755.8899999999994
+pepperstone_oos,IFVG far edge + 5% of price,2021-08-19 16:00:00+00:00,target,0.09155152914988664,835.5950000000012
+pepperstone_oos,IFVG far edge + 5% of price,2021-09-07 09:00:00+00:00,target,0.024684466772104154,806.1750000000011
+pepperstone_oos,IFVG far edge + 5% of price,2021-10-26 17:00:00+00:00,stop,-1.0023904031603645,794.8450000000012
+pepperstone_oos,IFVG far edge + 5% of price,2021-11-22 23:00:00+00:00,target,0.14931821085873215,821.7350000000006
+pepperstone_oos,IFVG far edge + 5% of price,2021-12-16 07:00:00+00:00,target,0.031872998360379774,978.8850000000002
+pepperstone_oos,IFVG far edge + 5% of price,2021-12-21 15:00:00+00:00,target,0.30276603294700766,831.3349999999991
+pepperstone_oos,IFVG far edge + 5% of price,2021-12-31 01:00:00+00:00,target,0.08210266493745494,956.1200000000026
+pepperstone_oos,IFVG far edge + 5% of price,2022-02-03 21:00:00+00:00,target,0.13423180592991873,927.5
+pepperstone_oos,IFVG far edge + 5% of price,2022-02-15 10:00:00+00:00,stop,-1.0020089026105161,945.7900000000009
+pepperstone_oos,IFVG far edge + 5% of price,2022-02-22 18:00:00+00:00,stop,-1.0026213043058372,724.8299999999999
+pepperstone_oos,IFVG far edge + 5% of price,2022-02-24 17:00:00+00:00,target,0.793554769513267,702.534999999998
+pepperstone_oos,IFVG far edge + 5% of price,2022-03-03 17:00:00+00:00,target,0.31058887271003466,738.2749999999996
+pepperstone_oos,IFVG far edge + 5% of price,2022-03-21 14:00:00+00:00,stop,-1.0024500164408998,775.505000000001
+pepperstone_oos,IFVG far edge + 5% of price,2022-03-25 16:00:00+00:00,target,0.28572875390867364,789.9099999999999
+pepperstone_oos,IFVG far edge + 5% of price,2022-03-31 17:00:00+00:00,target,0.043038910026640495,771.3950000000004
+pepperstone_oos,IFVG far edge + 5% of price,2022-05-02 20:00:00+00:00,target,0.47334853103147995,780.8199999999997
+pepperstone_oos,IFVG far edge + 5% of price,2022-05-10 07:00:00+00:00,stop,-1.00303820138478,625.3700000000008
+pepperstone_oos,IFVG far edge + 5% of price,2022-06-03 12:00:00+00:00,target,0.4868386902891817,732.0699999999997
+pepperstone_oos,IFVG far edge + 5% of price,2022-06-07 20:00:00+00:00,target,0.06748899883718167,657.8850000000002
+pepperstone_oos,IFVG far edge + 5% of price,2022-06-15 20:00:00+00:00,target,0.11768761079377314,609.2400000000016
+pepperstone_oos,IFVG far edge + 5% of price,2022-06-29 14:00:00+00:00,target,0.0737391515445773,659.0799999999999
+pepperstone_oos,IFVG far edge + 5% of price,2022-07-26 15:00:00+00:00,stop,-1.0026999182919465,703.7249999999985
+pepperstone_oos,IFVG far edge + 5% of price,2022-08-09 14:00:00+00:00,target,0.1364499354933213,887.5049999999992
+pepperstone_oos,IFVG far edge + 5% of price,2022-08-25 09:00:00+00:00,target,0.24157527208673377,715.3049999999985
+pepperstone_oos,IFVG far edge + 5% of price,2022-09-01 20:00:00+00:00,target,0.15345012513407325,699.25
+pepperstone_oos,IFVG far edge + 5% of price,2022-09-08 13:00:00+00:00,target,0.1329495513136666,679.2049999999999
+pepperstone_oos,IFVG far edge + 5% of price,2022-09-13 13:00:00+00:00,target,0.4316580776322617,634.5300000000007
+pepperstone_oos,IFVG far edge + 5% of price,2022-10-05 15:00:00+00:00,target,0.778101053149205,610.0749999999989
+pepperstone_oos,IFVG far edge + 5% of price,2022-10-26 02:00:00+00:00,target,0.08140699491206088,624.0250000000015
+pepperstone_oos,IFVG far edge + 5% of price,2022-11-28 10:00:00+00:00,target,0.2197527390944188,639.8099999999995
+pepperstone_oos,IFVG far edge + 5% of price,2022-12-15 11:00:00+00:00,target,0.11539331774643602,662.9499999999989
+pepperstone_oos,IFVG far edge + 5% of price,2022-12-30 14:00:00+00:00,target,0.09702894453665083,548.2900000000009
+pepperstone_oos,IFVG far edge + 5% of price,2023-01-06 14:00:00+00:00,target,0.1076442056426108,545.3150000000005
+pepperstone_oos,IFVG far edge + 5% of price,2023-01-25 14:00:00+00:00,target,0.09494258725430102,726.755000000001
+pepperstone_oos,IFVG far edge + 5% of price,2023-02-13 19:00:00+00:00,target,0.32860920462310955,673.1400000000012
+pepperstone_oos,IFVG far edge + 5% of price,2023-03-07 17:00:00+00:00,target,0.30135132958590327,620.8700000000008
+pepperstone_oos,IFVG far edge + 5% of price,2023-05-02 16:00:00+00:00,stop,-1.0028152110297004,674.9050000000007
+pepperstone_oos,IFVG far edge + 5% of price,2023-05-05 13:00:00+00:00,stop,-1.002872998351806,661.3299999999999
+pepperstone_oos,IFVG far edge + 5% of price,2023-05-23 12:00:00+00:00,target,0.06009891879456936,695.5200000000004
+pepperstone_oos,IFVG far edge + 5% of price,2023-05-31 13:00:00+00:00,stop,-1.0024008541986518,791.385000000002
+pepperstone_oos,IFVG far edge + 5% of price,2023-06-08 14:00:00+00:00,stop,-1.0025884148002833,734.039999999999
+pepperstone_oos,IFVG far edge + 5% of price,2023-06-27 16:00:00+00:00,target,0.1300766187590782,798.7599999999984
+pepperstone_oos,IFVG far edge + 5% of price,2023-07-06 18:00:00+00:00,target,0.16710505956985874,807.875
+pepperstone_oos,IFVG far edge + 5% of price,2023-08-21 14:00:00+00:00,target,0.18782216889302383,816.7299999999996
+pepperstone_oos,IFVG far edge + 5% of price,2023-09-15 13:00:00+00:00,target,0.08554750402576432,794.880000000001
+pepperstone_oos,IFVG far edge + 5% of price,2023-09-28 18:00:00+00:00,target,0.06890236483673966,780.8150000000005
+pepperstone_oos,IFVG far edge + 5% of price,2023-11-10 01:00:00+00:00,stop,-1.0021964175274118,865.0450000000001
+pepperstone_oos,IFVG far edge + 5% of price,2023-11-15 17:00:00+00:00,target,0.1073695100871825,792.5900000000001
+pepperstone_oos,IFVG far edge + 5% of price,2023-12-05 16:00:00+00:00,target,0.12095655551240084,811.0349999999999
+pepperstone_oos,IFVG far edge + 5% of price,2023-12-21 13:00:00+00:00,target,0.03004650053654723,838.7000000000007
+pepperstone_oos,IFVG far edge + 5% of price,2023-12-29 18:00:00+00:00,open,-0.0034676668959163024,865.1349999999984

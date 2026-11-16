@@ -1,0 +1,873 @@
+source,model,variant,entry_time,exit,r_net
+pepperstone,swing,current,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,current,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,current,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,current,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,current,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,current,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,current,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,current,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,current,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,current,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,current,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,current,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,current,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,current,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,current,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,current,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,current,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,current,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,current,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,current,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,current,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,current,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,current,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,current,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,current,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,current,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,current,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,current,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,current,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,current,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,current,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,current,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,current,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,current,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,current,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,current,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,current,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,current,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,current,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,current,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,current,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,current,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,current,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,current,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 4H(2) at D FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 4H(2) at D FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 4H(2) at D FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 4H(2) at D FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 4H(2) at D FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 4H(2) at D FVG,2024-04-24 17:00:00+00:00,target,0.8623279098873919
+pepperstone,swing,+ 4H(2) at D FVG,2024-05-08 15:00:00+00:00,stop,-1.0188542422044957
+pepperstone,swing,+ 4H(2) at D FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 4H(2) at D FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 4H(2) at D FVG,2024-06-03 15:00:00+00:00,stop,-1.0080896079651525
+pepperstone,swing,+ 4H(2) at D FVG,2024-06-28 13:00:00+00:00,stop,-1.0178326474622776
+pepperstone,swing,+ 4H(2) at D FVG,2024-07-12 15:00:00+00:00,breakeven,-0.006742738589211644
+pepperstone,swing,+ 4H(2) at D FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 4H(2) at D FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 4H(2) at D FVG,2024-07-31 03:00:00+00:00,target,0.8475033738191624
+pepperstone,swing,+ 4H(2) at D FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 4H(2) at D FVG,2024-08-05 16:00:00+00:00,breakeven,-0.0026587585642703715
+pepperstone,swing,+ 4H(2) at D FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 4H(2) at D FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 4H(2) at D FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 4H(2) at D FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 4H(2) at D FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 4H(2) at D FVG,2024-11-20 16:00:00+00:00,breakeven,-0.012726382770435453
+pepperstone,swing,+ 4H(2) at D FVG,2024-11-25 18:00:00+00:00,target,0.3875530410183902
+pepperstone,swing,+ 4H(2) at D FVG,2025-01-14 16:00:00+00:00,target,0.7651632970450966
+pepperstone,swing,+ 4H(2) at D FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 4H(2) at D FVG,2025-01-21 01:00:00+00:00,stop,-1.0158150851581507
+pepperstone,swing,+ 4H(2) at D FVG,2025-01-29 21:00:00+00:00,target,1.0196936542668726
+pepperstone,swing,+ 4H(2) at D FVG,2025-01-30 16:00:00+00:00,stop,-1.00796080832823
+pepperstone,swing,+ 4H(2) at D FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 4H(2) at D FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 4H(2) at D FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 4H(2) at D FVG,2025-03-27 15:00:00+00:00,stop,-1.0056277056277056
+pepperstone,swing,+ 4H(2) at D FVG,2025-04-01 14:00:00+00:00,breakeven,-0.007624633431085044
+pepperstone,swing,+ 4H(2) at D FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 4H(2) at D FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 4H(2) at D FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 4H(2) at D FVG,2025-04-28 18:00:00+00:00,stop,-1.0214168039538711
+pepperstone,swing,+ 4H(2) at D FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 4H(2) at D FVG,2025-05-08 14:00:00+00:00,stop,-1.0101010101010102
+pepperstone,swing,+ 4H(2) at D FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 4H(2) at D FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 4H(2) at D FVG,2025-05-28 20:00:00+00:00,stop,-1.014476614699332
+pepperstone,swing,+ 4H(2) at D FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 4H(2) at D FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 4H(2) at D FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 4H(2) at D FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 4H(2) at D FVG,2025-09-18 00:00:00+00:00,target,0.30824008138350534
+pepperstone,swing,+ 4H(2) at D FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 4H(2) at D FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 4H(2) at D FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 4H(2) at D FVG,2025-12-08 15:00:00+00:00,target,0.756578947368407
+pepperstone,swing,+ 4H(2) at D FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 4H(2) at D FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 4H(2) at D FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 4H(2) at D FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 4H(2) at D FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 4H(2) at D FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 4H(2) at D FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 4H(2) at D FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 4H(2) at D FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 4H(2) at D FVG,2026-06-18 15:00:00+00:00,target,1.0942295497780514
+pepperstone,swing,+ 4H(2) at D FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 4H(2) at D FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 4H(2) at D FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 4H(2) at D FVG,2026-07-28 17:00:00+00:00,stop,-1.011343804537522
+pepperstone,swing,+ 4H(2) at D FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 4H(2) at D FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 4H(2) at D FVG,2026-08-31 04:00:00+00:00,target,1.208666386201084
+pepperstone,swing,+ 4H(2) at D FVG,2026-09-11 12:00:00+00:00,breakeven,-0.006788511749347258
+pepperstone,swing,+ 4H(2) at D FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 4H(2) at D FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 4H(2) at D FVG,2026-10-13 14:00:00+00:00,target,0.4901800327331975
+pepperstone,swing,+ 4H(2) at D FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 4H(2) at D FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 4H(2) at D FVG,2026-10-28 23:00:00+00:00,target,1.0822532402791776
+pepperstone,swing,+ 4H(5) at D FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 4H(5) at D FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 4H(5) at D FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 4H(5) at D FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 4H(5) at D FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 4H(5) at D FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 4H(5) at D FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 4H(5) at D FVG,2024-07-12 15:00:00+00:00,breakeven,-0.006742738589211644
+pepperstone,swing,+ 4H(5) at D FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 4H(5) at D FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 4H(5) at D FVG,2024-07-31 03:00:00+00:00,target,0.8475033738191624
+pepperstone,swing,+ 4H(5) at D FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 4H(5) at D FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 4H(5) at D FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 4H(5) at D FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 4H(5) at D FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 4H(5) at D FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 4H(5) at D FVG,2024-11-20 16:00:00+00:00,breakeven,-0.012726382770435453
+pepperstone,swing,+ 4H(5) at D FVG,2024-11-25 18:00:00+00:00,target,0.3875530410183902
+pepperstone,swing,+ 4H(5) at D FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 4H(5) at D FVG,2025-01-21 01:00:00+00:00,stop,-1.0158150851581507
+pepperstone,swing,+ 4H(5) at D FVG,2025-01-30 16:00:00+00:00,stop,-1.00796080832823
+pepperstone,swing,+ 4H(5) at D FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 4H(5) at D FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 4H(5) at D FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 4H(5) at D FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 4H(5) at D FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 4H(5) at D FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 4H(5) at D FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 4H(5) at D FVG,2025-05-08 14:00:00+00:00,stop,-1.0101010101010102
+pepperstone,swing,+ 4H(5) at D FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 4H(5) at D FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 4H(5) at D FVG,2025-05-28 20:00:00+00:00,stop,-1.014476614699332
+pepperstone,swing,+ 4H(5) at D FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 4H(5) at D FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 4H(5) at D FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 4H(5) at D FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 4H(5) at D FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 4H(5) at D FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 4H(5) at D FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 4H(5) at D FVG,2025-12-08 15:00:00+00:00,target,0.756578947368407
+pepperstone,swing,+ 4H(5) at D FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 4H(5) at D FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 4H(5) at D FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 4H(5) at D FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 4H(5) at D FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 4H(5) at D FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 4H(5) at D FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 4H(5) at D FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 4H(5) at D FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 4H(5) at D FVG,2026-06-18 15:00:00+00:00,target,1.0942295497780514
+pepperstone,swing,+ 4H(5) at D FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 4H(5) at D FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 4H(5) at D FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 4H(5) at D FVG,2026-07-28 17:00:00+00:00,stop,-1.011343804537522
+pepperstone,swing,+ 4H(5) at D FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 4H(5) at D FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 4H(5) at D FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 4H(5) at D FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 4H(5) at D FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 4H(5) at D FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 4H(5) at D FVG,2026-10-28 23:00:00+00:00,target,1.0822532402791776
+pepperstone,swing,+ 4H(10) at D FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 4H(10) at D FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 4H(10) at D FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 4H(10) at D FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 4H(10) at D FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 4H(10) at D FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 4H(10) at D FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 4H(10) at D FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 4H(10) at D FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 4H(10) at D FVG,2024-07-31 03:00:00+00:00,target,0.8475033738191624
+pepperstone,swing,+ 4H(10) at D FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 4H(10) at D FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 4H(10) at D FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 4H(10) at D FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 4H(10) at D FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 4H(10) at D FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 4H(10) at D FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 4H(10) at D FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 4H(10) at D FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 4H(10) at D FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 4H(10) at D FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 4H(10) at D FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 4H(10) at D FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 4H(10) at D FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 4H(10) at D FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 4H(10) at D FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 4H(10) at D FVG,2025-05-28 20:00:00+00:00,stop,-1.014476614699332
+pepperstone,swing,+ 4H(10) at D FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 4H(10) at D FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 4H(10) at D FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 4H(10) at D FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 4H(10) at D FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 4H(10) at D FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 4H(10) at D FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 4H(10) at D FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 4H(10) at D FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 4H(10) at D FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 4H(10) at D FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 4H(10) at D FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 4H(10) at D FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 4H(10) at D FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 4H(10) at D FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 4H(10) at D FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 4H(10) at D FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 4H(10) at D FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 4H(10) at D FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 4H(10) at D FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 4H(10) at D FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 4H(10) at D FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 4H(10) at D FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 4H(10) at D FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 4H(10) at D FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 4H(10) at D FVG,2026-10-28 23:00:00+00:00,target,1.0822532402791776
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-02-01 08:00:00+00:00,target,0.49132075471699216
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-02-15 17:00:00+00:00,stop,-1.0318627450980398
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-02-21 21:00:00+00:00,target,0.4838255977496357
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-04-09 19:00:00+00:00,stop,-1.0426929392446624
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-04-10 10:00:00+00:00,stop,-1.026
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-04-24 17:00:00+00:00,target,0.8623279098873919
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-06-21 15:00:00+00:00,target,3.0104166666671985
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-06-28 13:00:00+00:00,stop,-1.0178326474622776
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-07-12 15:00:00+00:00,breakeven,-0.006742738589211644
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-07-15 18:00:00+00:00,stop,-1.01409978308026
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-07-31 03:00:00+00:00,target,0.8475033738191624
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-08-05 16:00:00+00:00,breakeven,-0.0026587585642703715
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-08-27 15:00:00+00:00,target,0.1558441558441416
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-09-03 01:00:00+00:00,breakeven,-0.06205250596658496
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-09-05 15:00:00+00:00,stop,-1.0161993769470405
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-09-17 23:00:00+00:00,target,0.9508650519031142
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-09-23 06:00:00+00:00,stop,-1.010362694300518
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-11-20 16:00:00+00:00,breakeven,-0.012726382770435453
+pepperstone,swing,+ 1H(5) at 4H FVG,2024-11-25 18:00:00+00:00,target,0.3875530410183902
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-01-21 01:00:00+00:00,stop,-1.0158150851581507
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-01-29 21:00:00+00:00,target,1.0196936542668726
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-01-30 16:00:00+00:00,stop,-1.00796080832823
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-03-27 15:00:00+00:00,stop,-1.0056277056277056
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-01 14:00:00+00:00,breakeven,-0.007624633431085044
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-01 18:00:00+00:00,target,0.24031777557100487
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-11 17:00:00+00:00,target,0.3053531037949204
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-24 11:00:00+00:00,target,0.5855448898927208
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-04-28 18:00:00+00:00,stop,-1.0214168039538711
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-05-08 14:00:00+00:00,stop,-1.0101010101010102
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-06-11 20:00:00+00:00,target,0.33072236727588156
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-06-18 01:00:00+00:00,target,0.4726911618669064
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-07-16 13:00:00+00:00,stop,-1.0108514190317195
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-07-17 08:00:00+00:00,target,1.3228097868982496
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-08-04 11:00:00+00:00,target,0.5694635488308075
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-08-06 15:00:00+00:00,stop,-1.026721479958889
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-08-14 13:00:00+00:00,stop,-1.026156941649899
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-09-03 18:00:00+00:00,stop,-1.0080098582871226
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-09-18 00:00:00+00:00,target,0.30824008138350534
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-09-26 15:00:00+00:00,target,0.46172839506171043
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-10-14 06:00:00+00:00,breakeven,-0.005325686194182744
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-12-01 01:00:00+00:00,target,0.32366895097522663
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-12-03 15:00:00+00:00,stop,-1.013933547695605
+pepperstone,swing,+ 1H(5) at 4H FVG,2025-12-08 15:00:00+00:00,target,0.756578947368407
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-03-05 20:00:00+00:00,target,1.0354757929883263
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-03-24 02:00:00+00:00,target,0.3324501464230937
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-04-07 20:00:00+00:00,target,0.23090338332752242
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-05-26 11:00:00+00:00,breakeven,-0.026104417670683114
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-05-26 15:00:00+00:00,target,0.16277746158222936
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-06-04 19:00:00+00:00,stop,-1.0060254924681344
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-06-18 15:00:00+00:00,target,1.0942295497780514
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-06-25 00:00:00+00:00,stop,-1.0025734930218746
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-06-25 13:00:00+00:00,stop,-1.0084224165856819
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-06-25 14:00:00+00:00,target,0.3510005408328853
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-16 05:00:00+00:00,target,0.24198792382722542
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-17 16:00:00+00:00,stop,-1.0025809013301568
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.011343804537522
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.005853219270599
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-08-31 04:00:00+00:00,target,1.208666386201084
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-09-16 22:00:00+00:00,stop,-1.0114891736632787
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-10-20 15:00:00+00:00,target,0.49088145896656254
+pepperstone,swing,+ 1H(5) at 4H FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-02-21 21:00:00+00:00,target,0.4838255977496357
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-04-09 19:00:00+00:00,stop,-1.0426929392446624
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-04-10 10:00:00+00:00,stop,-1.026
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-04-24 17:00:00+00:00,target,0.8623279098873919
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-07-12 15:00:00+00:00,breakeven,-0.006742738589211644
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-07-15 18:00:00+00:00,stop,-1.01409978308026
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-08-27 15:00:00+00:00,target,0.1558441558441416
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-09-03 01:00:00+00:00,breakeven,-0.06205250596658496
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-09-17 23:00:00+00:00,target,0.9508650519031142
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-11-20 16:00:00+00:00,breakeven,-0.012726382770435453
+pepperstone,swing,+ 1H(10) at 4H FVG,2024-11-25 18:00:00+00:00,target,0.3875530410183902
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-01-21 01:00:00+00:00,stop,-1.0158150851581507
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-01-30 16:00:00+00:00,stop,-1.00796080832823
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-03-27 15:00:00+00:00,stop,-1.0056277056277056
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-04-01 14:00:00+00:00,breakeven,-0.007624633431085044
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-04-28 18:00:00+00:00,stop,-1.0214168039538711
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-05-08 14:00:00+00:00,stop,-1.0101010101010102
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-06-11 20:00:00+00:00,target,0.33072236727588156
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-09-03 18:00:00+00:00,stop,-1.0080098582871226
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-09-18 00:00:00+00:00,target,0.30824008138350534
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-12-01 01:00:00+00:00,target,0.32366895097522663
+pepperstone,swing,+ 1H(10) at 4H FVG,2025-12-08 15:00:00+00:00,target,0.756578947368407
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-03-24 02:00:00+00:00,target,0.3324501464230937
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-04-07 20:00:00+00:00,target,0.23090338332752242
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-06-04 19:00:00+00:00,stop,-1.0060254924681344
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-06-18 15:00:00+00:00,target,1.0942295497780514
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-06-25 00:00:00+00:00,stop,-1.0025734930218746
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-06-25 13:00:00+00:00,stop,-1.0084224165856819
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-16 05:00:00+00:00,target,0.24198792382722542
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-17 16:00:00+00:00,stop,-1.0025809013301568
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.011343804537522
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.005853219270599
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-08-31 04:00:00+00:00,target,1.208666386201084
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-09-16 22:00:00+00:00,stop,-1.0114891736632787
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 1H(10) at 4H FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-04-09 19:00:00+00:00,stop,-1.0426929392446624
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-07-12 15:00:00+00:00,breakeven,-0.006742738589211644
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-09-03 01:00:00+00:00,breakeven,-0.06205250596658496
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-09-17 23:00:00+00:00,target,0.9508650519031142
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-11-20 16:00:00+00:00,breakeven,-0.012726382770435453
+pepperstone,swing,+ 1H(20) at 4H FVG,2024-11-25 18:00:00+00:00,target,0.3875530410183902
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-01-21 01:00:00+00:00,stop,-1.0158150851581507
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-01-30 16:00:00+00:00,stop,-1.00796080832823
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-05-08 14:00:00+00:00,stop,-1.0101010101010102
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-12-01 01:00:00+00:00,target,0.32366895097522663
+pepperstone,swing,+ 1H(20) at 4H FVG,2025-12-08 15:00:00+00:00,target,0.756578947368407
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-03-24 02:00:00+00:00,target,0.3324501464230937
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-04-07 20:00:00+00:00,target,0.23090338332752242
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-06-18 15:00:00+00:00,target,1.0942295497780514
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-07-17 16:00:00+00:00,stop,-1.0025809013301568
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.011343804537522
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-08-31 04:00:00+00:00,target,1.208666386201084
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 1H(20) at 4H FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-02-21 21:00:00+00:00,target,0.4838255977496357
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-04-05 14:00:00+00:00,breakeven,-0.00847457627118636
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-04-09 19:00:00+00:00,stop,-1.0426929392446624
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-04-10 10:00:00+00:00,stop,-1.026
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-04-24 17:00:00+00:00,target,0.8623279098873919
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-05-31 13:00:00+00:00,stop,-1.0098709187547457
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-12 15:00:00+00:00,breakeven,-0.006742738589211644
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-15 18:00:00+00:00,stop,-1.01409978308026
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-25 17:00:00+00:00,stop,-1.0030516431924883
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-31 03:00:00+00:00,target,0.8475033738191624
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-08-27 15:00:00+00:00,target,0.1558441558441416
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-09-03 01:00:00+00:00,breakeven,-0.06205250596658496
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-09-17 23:00:00+00:00,target,0.9508650519031142
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-11-19 17:00:00+00:00,target,0.33208955223879155
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-11-20 16:00:00+00:00,breakeven,-0.012726382770435453
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-11-25 18:00:00+00:00,target,0.3875530410183902
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-01-21 01:00:00+00:00,stop,-1.0158150851581507
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-01-30 16:00:00+00:00,stop,-1.00796080832823
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-03-27 15:00:00+00:00,stop,-1.0056277056277056
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-01 14:00:00+00:00,breakeven,-0.007624633431085044
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-28 18:00:00+00:00,stop,-1.0214168039538711
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-08 14:00:00+00:00,stop,-1.0101010101010102
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-21 10:00:00+00:00,target,1.6130753835890974
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-28 20:00:00+00:00,stop,-1.014476614699332
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-06-05 14:00:00+00:00,stop,-1.008513425016372
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-06-11 20:00:00+00:00,target,0.33072236727588156
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-09-03 18:00:00+00:00,stop,-1.0080098582871226
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-09-18 00:00:00+00:00,target,0.30824008138350534
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-12-01 01:00:00+00:00,target,0.32366895097522663
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-12-08 15:00:00+00:00,target,0.756578947368407
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-03-24 02:00:00+00:00,target,0.3324501464230937
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-04-07 20:00:00+00:00,target,0.23090338332752242
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-06-04 19:00:00+00:00,stop,-1.0060254924681344
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-06-18 15:00:00+00:00,target,1.0942295497780514
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-06-25 00:00:00+00:00,stop,-1.0025734930218746
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-06-25 13:00:00+00:00,stop,-1.0084224165856819
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-16 05:00:00+00:00,target,0.24198792382722542
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-17 16:00:00+00:00,stop,-1.0025809013301568
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.011343804537522
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-28 17:00:00+00:00,stop,-1.005853219270599
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-08-31 04:00:00+00:00,target,1.208666386201084
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-09-16 22:00:00+00:00,stop,-1.0114891736632787
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-10-28 23:00:00+00:00,target,1.0822532402791776
+pepperstone,intraday,current,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,current,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,current,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,current,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,current,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,current,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,current,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,current,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,current,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,current,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,current,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,current,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,current,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,current,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,current,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 4H(2) at D FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 4H(2) at D FVG,2024-06-03 17:30:00+00:00,stop,-1.016602809706258
+pepperstone,intraday,+ 4H(2) at D FVG,2024-06-28 19:40:00+00:00,breakeven,-0.013727560718056918
+pepperstone,intraday,+ 4H(2) at D FVG,2024-07-12 19:30:00+00:00,stop,-1.0395136778115528
+pepperstone,intraday,+ 4H(2) at D FVG,2024-07-31 06:00:00+00:00,target,2.9859611231101515
+pepperstone,intraday,+ 4H(2) at D FVG,2024-08-05 16:35:00+00:00,breakeven,-0.0048291233283803735
+pepperstone,intraday,+ 4H(2) at D FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 4H(2) at D FVG,2024-08-08 02:00:00+00:00,stop,-1.008813559322034
+pepperstone,intraday,+ 4H(2) at D FVG,2024-09-17 12:15:00+00:00,breakeven,-0.04642857142857143
+pepperstone,intraday,+ 4H(2) at D FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 4H(2) at D FVG,2025-01-14 19:50:00+00:00,stop,-1.0211382113821137
+pepperstone,intraday,+ 4H(2) at D FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 4H(2) at D FVG,2025-01-30 04:45:00+00:00,target,2.833333333333395
+pepperstone,intraday,+ 4H(2) at D FVG,2025-03-03 18:15:00+00:00,target,2.9941599281221927
+pepperstone,intraday,+ 4H(2) at D FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 4H(2) at D FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 4H(2) at D FVG,2025-04-01 18:00:00+00:00,breakeven,-0.006109022556390894
+pepperstone,intraday,+ 4H(2) at D FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 4H(2) at D FVG,2025-04-30 16:35:00+00:00,breakeven,-0.022146507666098533
+pepperstone,intraday,+ 4H(2) at D FVG,2025-05-09 00:25:00+00:00,breakeven,-0.012392755004766703
+pepperstone,intraday,+ 4H(2) at D FVG,2025-05-08 14:20:00+00:00,stop,-1.012037037037037
+pepperstone,intraday,+ 4H(2) at D FVG,2025-05-29 14:15:00+00:00,breakeven,-0.005086071987480467
+pepperstone,intraday,+ 4H(2) at D FVG,2025-07-31 16:45:00+00:00,stop,-1.0135841170323927
+pepperstone,intraday,+ 4H(2) at D FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 4H(2) at D FVG,2025-09-18 01:15:00+00:00,target,2.952380952380951
+pepperstone,intraday,+ 4H(2) at D FVG,2025-10-06 12:30:00+00:00,stop,-1.0170827858081466
+pepperstone,intraday,+ 4H(2) at D FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 4H(2) at D FVG,2025-11-18 03:15:00+00:00,breakeven,-0.010989010989011058
+pepperstone,intraday,+ 4H(2) at D FVG,2026-01-14 13:50:00+00:00,stop,-1.0397553516819562
+pepperstone,intraday,+ 4H(2) at D FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 4H(2) at D FVG,2026-01-15 15:45:00+00:00,stop,-1.5000000000002798
+pepperstone,intraday,+ 4H(2) at D FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 4H(2) at D FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 4H(2) at D FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 4H(2) at D FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 4H(2) at D FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 4H(2) at D FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 4H(2) at D FVG,2026-10-14 03:25:00+00:00,stop,-1.0295454545454545
+pepperstone,intraday,+ 4H(2) at D FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 4H(2) at D FVG,2026-10-29 05:00:00+00:00,stop,-1.013903743315508
+pepperstone,intraday,+ 4H(5) at D FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 4H(5) at D FVG,2024-07-12 19:30:00+00:00,stop,-1.0395136778115528
+pepperstone,intraday,+ 4H(5) at D FVG,2024-07-31 06:00:00+00:00,target,2.9859611231101515
+pepperstone,intraday,+ 4H(5) at D FVG,2024-08-05 16:35:00+00:00,breakeven,-0.0048291233283803735
+pepperstone,intraday,+ 4H(5) at D FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 4H(5) at D FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 4H(5) at D FVG,2025-01-14 19:50:00+00:00,stop,-1.0211382113821137
+pepperstone,intraday,+ 4H(5) at D FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 4H(5) at D FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 4H(5) at D FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 4H(5) at D FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 4H(5) at D FVG,2025-05-09 00:25:00+00:00,breakeven,-0.012392755004766703
+pepperstone,intraday,+ 4H(5) at D FVG,2025-05-08 14:20:00+00:00,stop,-1.012037037037037
+pepperstone,intraday,+ 4H(5) at D FVG,2025-07-31 16:45:00+00:00,stop,-1.0135841170323927
+pepperstone,intraday,+ 4H(5) at D FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 4H(5) at D FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 4H(5) at D FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 4H(5) at D FVG,2026-01-15 15:45:00+00:00,stop,-1.5000000000002798
+pepperstone,intraday,+ 4H(5) at D FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 4H(5) at D FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 4H(5) at D FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 4H(5) at D FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 4H(5) at D FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 4H(5) at D FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 4H(5) at D FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 4H(5) at D FVG,2026-10-29 05:00:00+00:00,stop,-1.013903743315508
+pepperstone,intraday,+ 4H(10) at D FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 4H(10) at D FVG,2024-07-31 06:00:00+00:00,target,2.9859611231101515
+pepperstone,intraday,+ 4H(10) at D FVG,2024-08-05 16:35:00+00:00,breakeven,-0.0048291233283803735
+pepperstone,intraday,+ 4H(10) at D FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 4H(10) at D FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 4H(10) at D FVG,2025-01-14 19:50:00+00:00,stop,-1.0211382113821137
+pepperstone,intraday,+ 4H(10) at D FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 4H(10) at D FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 4H(10) at D FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 4H(10) at D FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 4H(10) at D FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 4H(10) at D FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 4H(10) at D FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 4H(10) at D FVG,2026-01-15 15:45:00+00:00,stop,-1.5000000000002798
+pepperstone,intraday,+ 4H(10) at D FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 4H(10) at D FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 4H(10) at D FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 4H(10) at D FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 4H(10) at D FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 4H(10) at D FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 4H(10) at D FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 4H(10) at D FVG,2026-10-29 05:00:00+00:00,stop,-1.013903743315508
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-03-20 07:55:00+00:00,stop,-1.0628019323671476
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-06-21 17:50:00+00:00,breakeven,-0.01452513966480447
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-06-27 08:30:00+00:00,stop,-1.0416666666666656
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-06-28 19:40:00+00:00,breakeven,-0.013727560718056918
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-07-12 19:30:00+00:00,stop,-1.0395136778115528
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-07-15 19:55:00+00:00,stop,-1.0228070175438595
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-07-31 06:00:00+00:00,target,2.9859611231101515
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-08-05 16:35:00+00:00,breakeven,-0.0048291233283803735
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-08-27 18:00:00+00:00,stop,-1.0206349206349206
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-09-17 12:15:00+00:00,breakeven,-0.04642857142857143
+pepperstone,intraday,+ 1H(5) at 4H FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-01-30 04:45:00+00:00,target,2.833333333333395
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-04-01 18:00:00+00:00,breakeven,-0.006109022556390894
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-04-11 18:15:00+00:00,target,2.9907997169143665
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-04-24 12:45:00+00:00,target,2.9890387858347385
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-04-30 16:35:00+00:00,breakeven,-0.022146507666098533
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-05-05 16:30:00+00:00,breakeven,-0.02264808362369424
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-05-09 00:25:00+00:00,breakeven,-0.012392755004766703
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-05-08 14:20:00+00:00,stop,-1.012037037037037
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-05-29 14:15:00+00:00,breakeven,-0.005086071987480467
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-06-10 07:50:00+00:00,stop,-1.0210696920583466
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-06-12 05:15:00+00:00,breakeven,-0.06770833333333078
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-06-18 04:30:00+00:00,stop,-1.0469314079422432
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-07-17 13:15:00+00:00,stop,-1.0288248337028834
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-08-06 08:25:00+00:00,target,2.954545454545458
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-08-22 11:20:00+00:00,breakeven,-0.05855855855855664
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-09-03 22:30:00+00:00,stop,-1.042622950819672
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-09-18 01:15:00+00:00,target,2.952380952380951
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-10-06 12:30:00+00:00,stop,-1.0170827858081466
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-10-14 08:30:00+00:00,target,2.9775474956822094
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-11-18 03:15:00+00:00,breakeven,-0.010989010989011058
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-12-01 08:05:00+00:00,stop,-1.0792682926829198
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-12-03 16:15:00+00:00,stop,-1.026
+pepperstone,intraday,+ 1H(5) at 4H FVG,2025-12-18 14:45:00+00:00,stop,-1.0340314136125648
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-01-14 13:50:00+00:00,stop,-1.0397553516819562
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-01-21 20:25:00+00:00,breakeven,-0.004967520061138764
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-02-26 20:15:00+00:00,breakeven,-0.026804123711340208
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-03-02 16:50:00+00:00,stop,-1.0063168124392614
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-03-03 15:30:00+00:00,stop,-1.0049656226126815
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-03-06 05:55:00+00:00,breakeven,-0.07142857142856858
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-03-23 14:25:00+00:00,stop,-1.0065789473684212
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-05-26 13:25:00+00:00,stop,-1.032581453634087
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-05-26 20:00:00+00:00,breakeven,-0.017105263157894738
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-05-28 16:30:00+00:00,breakeven,-0.012322274881516588
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-06-25 04:15:00+00:00,target,2.9675000000000002
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-07-15 19:05:00+00:00,stop,-1.0163934426229508
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-10-20 04:15:00+00:00,breakeven,-0.015186915887850726
+pepperstone,intraday,+ 1H(5) at 4H FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-07-12 19:30:00+00:00,stop,-1.0395136778115528
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-07-15 19:55:00+00:00,stop,-1.0228070175438595
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-08-27 18:00:00+00:00,stop,-1.0206349206349206
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-09-17 12:15:00+00:00,breakeven,-0.04642857142857143
+pepperstone,intraday,+ 1H(10) at 4H FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-04-01 18:00:00+00:00,breakeven,-0.006109022556390894
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-04-30 16:35:00+00:00,breakeven,-0.022146507666098533
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-05-09 00:25:00+00:00,breakeven,-0.012392755004766703
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-05-08 14:20:00+00:00,stop,-1.012037037037037
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-05-29 14:15:00+00:00,breakeven,-0.005086071987480467
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-06-10 07:50:00+00:00,stop,-1.0210696920583466
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-06-12 05:15:00+00:00,breakeven,-0.06770833333333078
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-08-22 11:20:00+00:00,breakeven,-0.05855855855855664
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-09-03 22:30:00+00:00,stop,-1.042622950819672
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-09-18 01:15:00+00:00,target,2.952380952380951
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-10-06 12:30:00+00:00,stop,-1.0170827858081466
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-12-01 08:05:00+00:00,stop,-1.0792682926829198
+pepperstone,intraday,+ 1H(10) at 4H FVG,2025-12-18 14:45:00+00:00,stop,-1.0340314136125648
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-01-14 13:50:00+00:00,stop,-1.0397553516819562
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-01-21 20:25:00+00:00,breakeven,-0.004967520061138764
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-02-26 20:15:00+00:00,breakeven,-0.026804123711340208
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-03-02 16:50:00+00:00,stop,-1.0063168124392614
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-03-03 15:30:00+00:00,stop,-1.0049656226126815
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-03-23 14:25:00+00:00,stop,-1.0065789473684212
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-05-28 16:30:00+00:00,breakeven,-0.012322274881516588
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-06-25 04:15:00+00:00,target,2.9675000000000002
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-07-15 19:05:00+00:00,stop,-1.0163934426229508
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 1H(10) at 4H FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 1H(20) at 4H FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 1H(20) at 4H FVG,2024-07-12 19:30:00+00:00,stop,-1.0395136778115528
+pepperstone,intraday,+ 1H(20) at 4H FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 1H(20) at 4H FVG,2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,intraday,+ 1H(20) at 4H FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-05-09 00:25:00+00:00,breakeven,-0.012392755004766703
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-05-08 14:20:00+00:00,stop,-1.012037037037037
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-06-10 07:50:00+00:00,stop,-1.0210696920583466
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 1H(20) at 4H FVG,2025-12-01 08:05:00+00:00,stop,-1.0792682926829198
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-01-21 20:25:00+00:00,breakeven,-0.004967520061138764
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-02-26 20:15:00+00:00,breakeven,-0.026804123711340208
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-03-02 16:50:00+00:00,stop,-1.0063168124392614
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-03-23 14:25:00+00:00,stop,-1.0065789473684212
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 1H(20) at 4H FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-12 19:30:00+00:00,stop,-1.0395136778115528
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-15 19:55:00+00:00,stop,-1.0228070175438595
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-07-31 06:00:00+00:00,target,2.9859611231101515
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-08-05 16:35:00+00:00,breakeven,-0.0048291233283803735
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-08-27 18:00:00+00:00,stop,-1.0206349206349206
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-09-03 03:50:00+00:00,stop,-1.028077753779698
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-09-17 12:15:00+00:00,breakeven,-0.04642857142857143
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2024-11-19 17:40:00+00:00,breakeven,-0.023423423423423424
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-01-14 19:50:00+00:00,stop,-1.0211382113821137
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-01 18:00:00+00:00,breakeven,-0.006109022556390894
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-04-30 16:35:00+00:00,breakeven,-0.022146507666098533
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-09 00:25:00+00:00,breakeven,-0.012392755004766703
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-08 14:20:00+00:00,stop,-1.012037037037037
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-05-29 14:15:00+00:00,breakeven,-0.005086071987480467
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-06-10 07:50:00+00:00,stop,-1.0210696920583466
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-06-12 05:15:00+00:00,breakeven,-0.06770833333333078
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-07-31 16:45:00+00:00,stop,-1.0135841170323927
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-08-22 11:20:00+00:00,breakeven,-0.05855855855855664
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-09-03 22:30:00+00:00,stop,-1.042622950819672
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-09-18 01:15:00+00:00,target,2.952380952380951
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-10-06 12:30:00+00:00,stop,-1.0170827858081466
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-12-01 08:05:00+00:00,stop,-1.0792682926829198
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2025-12-18 14:45:00+00:00,stop,-1.0340314136125648
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-14 13:50:00+00:00,stop,-1.0397553516819562
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-15 15:45:00+00:00,stop,-1.5000000000002798
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-21 20:25:00+00:00,breakeven,-0.004967520061138764
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-02-26 20:15:00+00:00,breakeven,-0.026804123711340208
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-03-02 16:50:00+00:00,stop,-1.0063168124392614
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-03-03 15:30:00+00:00,stop,-1.0049656226126815
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-03-23 14:25:00+00:00,stop,-1.0065789473684212
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-05-28 16:30:00+00:00,breakeven,-0.012322274881516588
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-06-25 04:15:00+00:00,target,2.9675000000000002
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-15 19:05:00+00:00,stop,-1.0163934426229508
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-09-15 13:30:00+00:00,breakeven,-0.023008849557522124
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,2026-10-29 05:00:00+00:00,stop,-1.013903743315508

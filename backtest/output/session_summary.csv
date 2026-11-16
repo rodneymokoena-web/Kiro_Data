@@ -1,0 +1,17 @@
+model,variant,broker,trades,win%,PF,R,capital,maxDD%
+swing,baseline (no sessions),goat,104,45,1.39,11.52,11155,7.9
+swing,+ ASIA/LONDON/NY,goat,695,48,1.1,25.08,12430,15.8
+swing,+ LONDON/NY,goat,606,49,1.15,29.67,13069,13.3
+swing,+ NY,goat,452,49,1.11,16.33,11543,17.6
+intraday,baseline (no sessions),goat,26,50,4.48,30.02,13420,3.2
+intraday,+ ASIA/LONDON/NY,goat,75,25,1.47,18.13,11866,7.7
+intraday,+ LONDON/NY,goat,70,24,1.4,14.33,11435,10.1
+intraday,+ NY,goat,65,26,1.53,17.56,11812,8.2
+swing,baseline (no sessions),pepperstone,111,51,1.61,18.04,11903,8.0
+swing,+ ASIA/LONDON/NY,pepperstone,737,48,1.06,14.43,11171,20.5
+swing,+ LONDON/NY,pepperstone,638,50,1.1,21.64,12065,17.2
+swing,+ NY,pepperstone,466,49,1.03,4.52,10254,23.8
+intraday,baseline (no sessions),pepperstone,26,58,5.89,36.82,14353,3.2
+intraday,+ ASIA/LONDON/NY,pepperstone,81,35,2.27,46.18,15650,7.4
+intraday,+ LONDON/NY,pepperstone,74,35,2.3,43.39,15235,10.0
+intraday,+ NY,pepperstone,68,38,2.64,47.72,15914,8.2

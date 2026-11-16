@@ -1,0 +1,123 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.958942065491181,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.990664375715922,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9875477463712756,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2026-09-28 13:50:00+00:00,target,2.9832648870636547,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.996242508068234,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.9992239573414587,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.005338136564598,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.002483998780859505,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.99730667547918,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.005537625276032,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-03-06 09:00:00+00:00,stop,-1.0027394957983193,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9981860672156686,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685,32,18
+goat,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445,32,18
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.958942065491181,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.990664375715922,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9875477463712756,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2026-09-28 13:50:00+00:00,target,2.9832648870636547,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.996242508068234,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.9992239573414587,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.005338136564598,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.99730667547918,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.005537625276032,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9981860672156686,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685,25,14
+goat,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445,25,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.958942065491181,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.990664375715922,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9875477463712756,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2026-09-28 13:50:00+00:00,target,2.9832648870636547,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.996242508068234,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.9992239573414587,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.005338136564598,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.99730667547918,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.005537625276032,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9981860672156686,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685,27,14
+goat,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.958942065491181,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.990664375715922,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9875477463712756,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2026-09-28 13:50:00+00:00,target,2.9832648870636547,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.996242508068234,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.9992239573414587,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.005338136564598,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.99730667547918,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.005537625276032,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9981860672156686,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685,27,14
+goat,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.958942065491181,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.990664375715922,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9875477463712756,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2026-09-28 13:50:00+00:00,target,2.9832648870636547,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.996242508068234,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.9992239573414587,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.005338136564598,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.99730667547918,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.005537625276032,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9981860672156686,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685,27,14
+goat,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.958942065491181,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.990664375715922,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0655935613682035,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1283464566929426,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9875477463712756,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.035589519650655585,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2026-09-15 20:25:00+00:00,breakeven,-0.026059152677858015,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2026-09-28 13:50:00+00:00,target,2.9832648870636547,27,14
+goat,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.018822170900692364,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.996242508068234,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.9992239573414587,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.005338136564598,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.005525423728813559,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.99730667547918,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.005537625276032,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9981860672156686,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0071821987221854,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-09-28 12:00:00+00:00,breakeven,-0.004646522234891685,27,14
+goat,"F last FVG, any sweeping leg, no limit",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0033566721581548445,27,14

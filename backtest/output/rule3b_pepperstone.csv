@@ -1,0 +1,134 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.0044023027429732,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885,25,15
+pepperstone,"A current: 4H close inverts, 4H disp + 4H CISD/MSS",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132,25,15
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",intraday 5m touch,2026-07-21 01:15:00+00:00,breakeven,-0.006849315068493177,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,36,17
+pepperstone,"B 1H inversion, CISD on 4H close OR 1H MSS (strict)",swing 1H touch,2026-07-21 01:00:00+00:00,breakeven,-0.0028248587570621425,36,17
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,20,8
+pepperstone,"C 1H inversion, CISD on 4H close AND 1H MSS (strict)",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,20,8
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",intraday 5m touch,2026-07-21 01:15:00+00:00,breakeven,-0.006849315068493177,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.0044023027429732,43,20
+pepperstone,"D 1H inversion, CISD 4H close OR 1H MSS, may confirm up to 8 1H later",swing 1H touch,2026-07-21 01:00:00+00:00,breakeven,-0.0028248587570621425,43,20
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2024-03-22 18:55:00+00:00,breakeven,-0.04467353951890258,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2025-08-05 14:00:00+00:00,stop,-1.021311475409836,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",intraday 5m touch,2026-07-21 01:15:00+00:00,breakeven,-0.006849315068493177,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2024-03-22 14:00:00+00:00,breakeven,-0.00834403080872918,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2025-08-05 12:00:00+00:00,breakeven,-0.0022456382794956036,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,37,18
+pepperstone,"E 1H inversion, 4H CISD level broken by 1H close OR 1H MSS",swing 1H touch,2026-07-21 01:00:00+00:00,breakeven,-0.0028248587570621425,37,18
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2024-07-23 13:45:00+00:00,breakeven,-0.01740294511378832,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2024-08-08 06:45:00+00:00,stop,-1.0167095115681235,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2025-04-01 20:25:00+00:00,stop,-1.0083601286173633,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2025-06-13 19:00:00+00:00,stop,-1.0093323761665471,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2024-07-23 12:00:00+00:00,stop,-1.0038898862956314,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2024-08-08 04:00:00+00:00,target,2.997981993169823,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2024-08-23 17:00:00+00:00,breakeven,-0.004186795491143317,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2025-04-01 18:00:00+00:00,breakeven,-0.0026612077789150462,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2025-06-13 15:00:00+00:00,breakeven,-0.004539106145251374,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,28,11
+pepperstone,"F 1H inversion, 4H CISD level broken by 1H close AND 1H MSS",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,28,11

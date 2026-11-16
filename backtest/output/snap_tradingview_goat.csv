@@ -1,0 +1,353 @@
+source,grid,variant,model,entry_time,exit,r_net,risk_pts
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2024-02-26 23:00:00+00:00,stop,-1.0095126933177707,171.34999999999854
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2024-04-05 14:00:00+00:00,stop,-1.0073479691655773,221.8299999999981
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-01-14 19:00:00+00:00,target,2.9940640932265112,274.59999999999854
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-02-19 08:00:00+00:00,breakeven,-0.03364293085655264,48.45000000000073
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-03-27 08:00:00+00:00,target,2.9961097852028638,419.0
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-04-01 18:00:00+00:00,breakeven,-0.003336745138178096,488.5
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-04-11 07:00:00+00:00,target,2.999103311695456,1817.7999999999993
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-08-05 12:00:00+00:00,breakeven,-0.0028444289329028916,573.0499999999993
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2025-10-23 13:00:00+00:00,stop,-1.005970695970696,273.0
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,114.30000000000291
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-01-15 23:00:00+00:00,target,2.9908323959505063,177.79999999999927
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-01-30 08:00:00+00:00,breakeven,-0.0030926857034437,527.0499999999993
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-03-06 09:00:00+00:00,stop,-1.0036563481381786,445.7999999999993
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-04-02 08:00:00+00:00,target,2.997392417213246,625.0999999999985
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-07-10 11:00:00+00:00,stop,-1.0019714562167392,826.7999999999993
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-07-22 11:00:00+00:00,stop,-1.0040893125940793,398.6000000000022
+goat,tradingview,"A current: 1H IFVG entry, 4H OB stop, 3R",swing,2026-09-28 12:00:00+00:00,breakeven,-0.00528534370946826,308.3999999999978
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2024-02-26 05:00:00+00:00,stop,-1.022056833558864,73.89999999999782
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2024-04-03 15:00:00+00:00,target,2.9618713450292398,42.75
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2024-06-05 14:00:00+00:00,target,2.992603684544877,220.38000000000102
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2024-10-25 18:00:00+00:00,target,2.925570776255713,21.900000000001455
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2024-11-05 15:00:00+00:00,target,2.9930623536922747,234.9499999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-01-14 12:00:00+00:00,breakeven,-0.016838842975206103,96.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-01-16 21:00:00+00:00,target,2.9928162185985014,226.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-02-18 20:00:00+00:00,stop,-1.0372146118721468,43.79999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-03-26 18:00:00+00:00,target,2.9925485714285713,218.75
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-03-31 22:00:00+00:00,breakeven,-0.011358885017421601,143.5
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-04-10 15:00:00+00:00,stop,-1.0033042773160348,493.2999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-08-04 22:00:00+00:00,stop,-1.0059315866084424,274.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-10-03 18:00:00+00:00,stop,-1.0173959445037357,93.69999999999709
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-10-22 18:00:00+00:00,stop,-1.0098787878787878,165.0
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2025-11-14 20:00:00+00:00,breakeven,-0.009627879503839379,169.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-01-14 11:00:00+00:00,breakeven,-0.009613683279268693,169.54999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-01-29 20:00:00+00:00,stop,-1.0130504403522815,124.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-02-09 20:00:00+00:00,stop,-1.0050747198007473,321.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-02-26 19:00:00+00:00,breakeven,-0.006166067713258971,264.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-03-03 01:00:00+00:00,stop,-1.0161866931479642,100.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-03-05 15:00:00+00:00,stop,-1.0034666099532115,470.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-04-02 11:00:00+00:00,target,2.993562401263823,253.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-04-01 06:00:00+00:00,breakeven,-0.011515365595196102,141.54999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-04-16 14:00:00+00:00,stop,-1.0225293711126473,72.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-07-09 14:00:00+00:00,stop,-1.0064979071158062,250.85000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-07-22 07:00:00+00:00,stop,-1.0042348661990128,384.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-08-06 02:00:00+00:00,stop,-1.0041827046445984,389.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-08-18 06:00:00+00:00,target,2.9938836772983115,266.5
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-09-17 14:00:00+00:00,target,2.9954399216673657,357.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-09-25 08:00:00+00:00,breakeven,-0.0156429942418425,104.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-10-28 20:00:00+00:00,stop,-1.0057414582599506,283.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, 3R",swing,2026-10-29 05:00:00+00:00,target,2.9894087069525668,153.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2024-02-26 05:00:00+00:00,stop,-1.0173681406499735,93.84999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2024-04-03 15:00:00+00:00,breakeven,-0.027557058326288415,59.150000000001455
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2024-06-05 14:00:00+00:00,target,2.9926271033110186,221.08000000000175
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2024-10-25 18:00:00+00:00,breakeven,-0.01664114344053076,97.95000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2024-11-05 15:00:00+00:00,target,2.992835164835165,227.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-01-14 12:00:00+00:00,breakeven,-0.01701461377870512,95.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-01-16 21:00:00+00:00,breakeven,-0.004732868757258981,344.40000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-02-18 20:00:00+00:00,stop,-1.025548589341693,63.79999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-03-26 18:00:00+00:00,target,2.9925942753293957,220.09999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-03-31 22:00:00+00:00,breakeven,-0.00961084905660365,169.60000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-04-10 15:00:00+00:00,target,2.9990744946627297,1761.199999999997
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-08-04 22:00:00+00:00,stop,-1.0125577812018487,129.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-10-03 18:00:00+00:00,stop,-1.0115849324804551,140.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-10-22 18:00:00+00:00,stop,-1.0075761096909133,215.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2025-11-14 20:00:00+00:00,stop,-1.0050969355847406,319.7999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-01-14 11:00:00+00:00,breakeven,-0.009027970091387463,180.54999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-01-29 20:00:00+00:00,stop,-1.0121234659724805,134.45000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-02-09 20:00:00+00:00,stop,-1.0052495974235105,310.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-02-26 19:00:00+00:00,breakeven,-0.005221012171684805,312.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-03-03 01:00:00+00:00,stop,-1.0201732673267319,80.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-03-05 15:00:00+00:00,stop,-1.003253493013972,501.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-04-02 11:00:00+00:00,target,2.9946818923327894,306.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-04-01 06:00:00+00:00,breakeven,-0.007721459024159086,211.10000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-04-16 14:00:00+00:00,stop,-1.0187679907887164,86.84999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-07-09 14:00:00+00:00,stop,-1.0057233146067415,284.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-07-22 07:00:00+00:00,stop,-1.0041354814157046,394.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-08-06 02:00:00+00:00,stop,-1.0033508068660706,486.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-08-18 06:00:00+00:00,target,2.994221907125133,282.1000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-09-17 14:00:00+00:00,target,2.9954772475027744,360.3999999999978
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-09-25 08:00:00+00:00,breakeven,-0.012519201228878578,130.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-10-28 20:00:00+00:00,stop,-1.0052327447833065,311.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, 3R",swing,2026-10-29 05:00:00+00:00,target,2.991687914329424,196.09999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2024-02-26 05:00:00+00:00,stop,-1.022056833558864,73.89999999999782
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2024-04-03 15:00:00+00:00,breakeven,-0.027510548523206748,59.25
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2024-06-05 14:00:00+00:00,target,2.994421247176398,292.1800000000003
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2024-10-25 18:00:00+00:00,target,2.925570776255713,21.900000000001455
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2024-11-05 15:00:00+00:00,target,2.9930623536922747,234.9499999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-01-14 12:00:00+00:00,breakeven,-0.016838842975206103,96.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-01-16 21:00:00+00:00,breakeven,-0.004719166184134317,345.40000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-02-18 20:00:00+00:00,stop,-1.0212516297262058,76.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-03-26 18:00:00+00:00,target,2.995425203480213,356.2999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-03-31 22:00:00+00:00,breakeven,-0.0075955265610437245,214.60000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-04-10 15:00:00+00:00,target,2.9981738740757335,892.5999999999985
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-08-04 22:00:00+00:00,breakeven,-0.003508394317692622,464.6000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-10-03 18:00:00+00:00,stop,-1.0087352625937835,186.59999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-10-22 18:00:00+00:00,stop,-1.0036740673954694,443.65000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2025-11-14 20:00:00+00:00,breakeven,-0.009627879503839379,169.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-01-14 11:00:00+00:00,breakeven,-0.009373202990224188,173.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-01-29 20:00:00+00:00,breakeven,-0.00523274478330658,311.5
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-02-09 20:00:00+00:00,stop,-1.0023981168162424,679.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-02-26 19:00:00+00:00,breakeven,-0.006166067713258971,264.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-03-03 01:00:00+00:00,stop,-1.0161866931479642,100.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-03-05 15:00:00+00:00,stop,-1.0034666099532115,470.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-04-02 11:00:00+00:00,target,2.9962528735632183,435.0
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-04-01 06:00:00+00:00,target,2.9979094523534693,779.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-04-16 14:00:00+00:00,stop,-1.0225293711126473,72.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-07-09 14:00:00+00:00,stop,-1.002695551513147,604.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-07-22 07:00:00+00:00,stop,-1.0042348661990128,384.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-08-06 02:00:00+00:00,stop,-1.0036502071436568,446.5500000000029
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-08-18 06:00:00+00:00,breakeven,-0.0039794921874999785,409.6000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-09-17 14:00:00+00:00,target,2.9954399216673657,357.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-09-25 08:00:00+00:00,breakeven,-0.0156429942418425,104.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-10-28 20:00:00+00:00,stop,-1.0025326289620882,643.6000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, 3R",swing,2026-10-29 05:00:00+00:00,target,2.992300425129901,211.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2024-02-26 05:00:00+00:00,stop,-1.0173681406499735,93.84999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2024-04-03 15:00:00+00:00,breakeven,-0.024076809453470936,67.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2024-06-05 14:00:00+00:00,target,2.9926271033110186,221.08000000000175
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2024-10-25 18:00:00+00:00,breakeven,-0.01664114344053076,97.95000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2024-11-05 15:00:00+00:00,target,2.992835164835165,227.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-01-14 12:00:00+00:00,breakeven,-0.013955479452054446,116.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-01-16 21:00:00+00:00,breakeven,-0.004460864805692374,365.40000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-02-18 20:00:00+00:00,breakeven,-0.01314516129032258,124.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-03-26 18:00:00+00:00,target,2.995171800947867,337.59999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-03-31 22:00:00+00:00,breakeven,-0.00961084905660365,169.60000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-04-10 15:00:00+00:00,target,2.9990744946627297,1761.199999999997
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-08-04 22:00:00+00:00,stop,-1.0125577812018487,129.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-10-22 18:00:00+00:00,stop,-1.003490364025696,467.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2025-11-14 20:00:00+00:00,stop,-1.0037112932604735,439.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-01-14 11:00:00+00:00,breakeven,-0.008491794738213043,191.95000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-01-29 20:00:00+00:00,breakeven,-0.0051853030062033005,314.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-02-09 20:00:00+00:00,stop,-1.0020354645354645,800.7999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-02-26 19:00:00+00:00,breakeven,-0.005221012171684805,312.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-03-03 01:00:00+00:00,stop,-1.0201732673267319,80.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-03-05 15:00:00+00:00,stop,-1.0029417072730553,554.0999999999985
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-04-02 11:00:00+00:00,target,2.997585185185185,675.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-04-01 06:00:00+00:00,target,2.9984014906345005,1019.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-04-16 14:00:00+00:00,stop,-1.0184597961494906,88.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-07-09 14:00:00+00:00,stop,-1.0027011351396138,603.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-07-22 07:00:00+00:00,stop,-1.0031267983886438,521.3000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-08-06 02:00:00+00:00,stop,-1.0033508068660706,486.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-08-18 06:00:00+00:00,breakeven,-0.0042754098360655735,381.25
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-09-17 14:00:00+00:00,target,2.9954772475027744,360.3999999999978
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-09-25 08:00:00+00:00,breakeven,-0.012519201228878578,130.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-10-28 20:00:00+00:00,stop,-1.0023402727925341,696.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, 3R",swing,2026-10-29 05:00:00+00:00,target,2.9949110209178893,320.2999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2024-02-26 05:00:00+00:00,stop,-1.008737603859555,186.54999999999927
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2024-04-03 15:00:00+00:00,breakeven,-0.023551509897413964,69.20999999999913
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2024-06-05 14:00:00+00:00,breakeven,-0.004729024022281533,344.6800000000003
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2024-10-25 18:00:00+00:00,breakeven,-0.01664114344053076,97.95000000000073
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2024-11-05 15:00:00+00:00,target,2.992835164835165,227.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-01-14 12:00:00+00:00,target,2.994318577901708,286.90000000000146
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-01-16 21:00:00+00:00,target,2.9944378092475685,293.0499999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-02-18 20:00:00+00:00,breakeven,-0.014791288566243095,110.20000000000073
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-03-26 18:00:00+00:00,target,2.995933133732535,400.7999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-04-10 15:00:00+00:00,target,2.9990744946627297,1761.199999999997
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-08-04 22:00:00+00:00,breakeven,-0.0029029385574354406,561.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-10-03 18:00:00+00:00,stop,-1.0075515404215891,215.84999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-10-22 18:00:00+00:00,stop,-1.0036137900454496,451.0499999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2025-11-14 20:00:00+00:00,breakeven,-0.008295165394402036,196.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-01-14 11:00:00+00:00,breakeven,-0.0088731627653783,183.70000000000073
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-01-29 20:00:00+00:00,breakeven,-0.004486032750791266,363.34999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-02-09 20:00:00+00:00,stop,-1.0044065963773994,369.8999999999978
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-02-26 19:00:00+00:00,breakeven,-0.005221012171684805,312.2000000000007
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-03-03 01:00:00+00:00,stop,-1.004804008252284,339.3000000000029
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-03-05 15:00:00+00:00,stop,-1.0036465324384787,447.0
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-04-02 11:00:00+00:00,target,2.9964611376465475,460.59999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-04-01 06:00:00+00:00,target,2.997975909598907,805.2999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-04-16 14:00:00+00:00,stop,-1.0183043234138125,89.04999999999927
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-07-09 14:00:00+00:00,stop,-1.0019165196942974,850.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-07-22 07:00:00+00:00,stop,-1.0052827742667314,308.5500000000029
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-08-18 06:00:00+00:00,breakeven,-0.003718489791262671,438.3500000000022
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-09-17 14:00:00+00:00,target,2.994342242276987,288.09999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-09-25 08:00:00+00:00,breakeven,-0.01454058876003587,112.09999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-10-28 20:00:00+00:00,stop,-1.004189154459008,389.1000000000022
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, 3R",swing,2026-10-29 05:00:00+00:00,target,2.993159882501049,238.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2024-02-26 05:00:00+00:00,stop,-1.022056833558864,73.89999999999782
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2024-04-03 15:00:00+00:00,breakeven,-0.038128654970760234,42.75
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2024-06-05 14:00:00+00:00,target,0.5945185588528779,220.38000000000102
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2024-11-05 15:00:00+00:00,target,2.113513513513543,234.9499999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-01-14 12:00:00+00:00,breakeven,-0.016838842975206103,96.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-01-16 21:00:00+00:00,target,2.8218157778757047,226.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-02-18 20:00:00+00:00,stop,-1.0372146118721468,43.79999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-03-26 18:00:00+00:00,target,2.382948571428578,218.75
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-03-31 22:00:00+00:00,breakeven,-0.011358885017421601,143.5
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-04-10 15:00:00+00:00,stop,-1.0033042773160348,493.2999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-08-04 22:00:00+00:00,stop,-1.0059315866084424,274.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-10-03 18:00:00+00:00,stop,-1.0173959445037357,93.69999999999709
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-10-22 18:00:00+00:00,stop,-1.0098787878787878,165.0
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2025-11-14 20:00:00+00:00,breakeven,-0.009627879503839379,169.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-01-14 11:00:00+00:00,breakeven,-0.009613683279268693,169.54999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-01-29 20:00:00+00:00,stop,-1.0130504403522815,124.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-02-09 20:00:00+00:00,stop,-1.0050747198007473,321.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-02-26 19:00:00+00:00,target,1.6282201626631423,264.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-03-03 01:00:00+00:00,stop,-1.0161866931479642,100.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-03-05 15:00:00+00:00,stop,-1.0034666099532115,470.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-04-02 11:00:00+00:00,target,4.085584518167439,253.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-04-01 06:00:00+00:00,breakeven,-0.011515365595196102,141.54999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-04-16 14:00:00+00:00,stop,-1.0225293711126473,72.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-07-09 14:00:00+00:00,stop,-1.0064979071158062,250.85000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-07-22 07:00:00+00:00,stop,-1.0042348661990128,384.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-08-06 02:00:00+00:00,stop,-1.0041827046445984,389.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-08-18 06:00:00+00:00,breakeven,-0.006116322701688555,266.5
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-09-17 14:00:00+00:00,target,1.073912435305635,357.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-09-25 08:00:00+00:00,breakeven,-0.0156429942418425,104.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-10-28 20:00:00+00:00,stop,-1.0057414582599506,283.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB nearest above 1H FVG, D/W liquidity",swing,2026-10-29 05:00:00+00:00,target,4.602144249512636,153.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2024-02-26 05:00:00+00:00,stop,-1.0173681406499735,93.84999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2024-04-03 15:00:00+00:00,breakeven,-0.027557058326288415,59.150000000001455
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2024-06-05 14:00:00+00:00,target,0.592636149810009,221.08000000000175
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2024-11-05 15:00:00+00:00,target,2.182725274725278,227.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-01-14 12:00:00+00:00,breakeven,-0.01701461377870512,95.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-01-16 21:00:00+00:00,target,1.8590882694541195,344.40000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-02-18 20:00:00+00:00,stop,-1.025548589341693,63.79999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-03-26 18:00:00+00:00,target,2.3683325761017944,220.09999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-03-31 22:00:00+00:00,breakeven,-0.00961084905660365,169.60000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-04-10 15:00:00+00:00,target,0.8524131274131296,1761.199999999997
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-08-04 22:00:00+00:00,stop,-1.0125577812018487,129.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-10-03 18:00:00+00:00,stop,-1.0115849324804551,140.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-10-22 18:00:00+00:00,stop,-1.0075761096909133,215.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2025-11-14 20:00:00+00:00,stop,-1.0050969355847406,319.7999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-01-14 11:00:00+00:00,breakeven,-0.009027970091387463,180.54999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-01-29 20:00:00+00:00,stop,-1.0121234659724805,134.45000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-02-09 20:00:00+00:00,stop,-1.0052495974235105,310.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-02-26 19:00:00+00:00,target,1.3786675208199817,312.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-03-03 01:00:00+00:00,stop,-1.0201732673267319,80.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-03-05 15:00:00+00:00,stop,-1.003253493013972,501.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-04-02 11:00:00+00:00,target,3.375106035889065,306.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-04-01 06:00:00+00:00,breakeven,-0.007721459024159086,211.10000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-04-16 14:00:00+00:00,stop,-1.0187679907887164,86.84999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-07-09 14:00:00+00:00,stop,-1.0057233146067415,284.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-07-22 07:00:00+00:00,stop,-1.0041354814157046,394.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-08-06 02:00:00+00:00,stop,-1.0033508068660706,486.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-08-18 06:00:00+00:00,breakeven,-0.005778092874867024,282.1000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-09-17 14:00:00+00:00,target,1.0651220865704838,360.3999999999978
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-09-25 08:00:00+00:00,breakeven,-0.012519201228878578,130.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-10-28 20:00:00+00:00,stop,-1.0052327447833065,311.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB nearest above 1H FVG, D/W liquidity",swing,2026-10-29 05:00:00+00:00,target,3.6117797042325686,196.09999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2024-02-26 05:00:00+00:00,stop,-1.022056833558864,73.89999999999782
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2024-04-03 15:00:00+00:00,breakeven,-0.027510548523206748,59.25
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2024-06-05 14:00:00+00:00,target,0.4484222054897587,292.1800000000003
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2024-11-05 15:00:00+00:00,target,2.113513513513543,234.9499999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-01-14 12:00:00+00:00,breakeven,-0.016838842975206103,96.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-01-16 21:00:00+00:00,target,1.853705848291832,345.40000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-02-18 20:00:00+00:00,stop,-1.0212516297262058,76.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-03-26 18:00:00+00:00,target,1.4630087005332655,356.2999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-03-31 22:00:00+00:00,breakeven,-0.0075955265610437245,214.60000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-04-10 15:00:00+00:00,target,1.681906789155281,892.5999999999985
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-08-04 22:00:00+00:00,target,1.0294231597072656,464.6000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-10-03 18:00:00+00:00,stop,-1.0087352625937835,186.59999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-10-22 18:00:00+00:00,stop,-1.0036740673954694,443.65000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2025-11-14 20:00:00+00:00,breakeven,-0.009627879503839379,169.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-01-14 11:00:00+00:00,breakeven,-0.009373202990224188,173.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-01-29 20:00:00+00:00,target,1.6214125200642078,311.5
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-02-09 20:00:00+00:00,stop,-1.0023981168162424,679.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-02-26 19:00:00+00:00,target,1.6282201626631423,264.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-03-03 01:00:00+00:00,stop,-1.0161866931479642,100.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-03-05 15:00:00+00:00,stop,-1.0034666099532115,470.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-04-02 11:00:00+00:00,target,2.378091954022985,435.0
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-04-01 06:00:00+00:00,target,0.8846607669616483,779.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-04-16 14:00:00+00:00,stop,-1.0225293711126473,72.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-07-09 14:00:00+00:00,stop,-1.002695551513147,604.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-07-22 07:00:00+00:00,stop,-1.0042348661990128,384.90000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-08-06 02:00:00+00:00,stop,-1.0036502071436568,446.5500000000029
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-08-18 06:00:00+00:00,breakeven,-0.0039794921874999785,409.6000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-09-17 14:00:00+00:00,target,1.073912435305635,357.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-09-25 08:00:00+00:00,breakeven,-0.0156429942418425,104.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-10-28 20:00:00+00:00,stop,-1.0025326289620882,643.6000000000022
+goat,tradingview,"S 4H IFVG entry, 1H bull OB last above 1H FVG, D/W liquidity",swing,2026-10-29 05:00:00+00:00,target,3.3456306093528534,211.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2024-02-26 05:00:00+00:00,stop,-1.0173681406499735,93.84999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2024-04-03 15:00:00+00:00,breakeven,-0.024076809453470936,67.70000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2024-06-05 14:00:00+00:00,target,0.592636149810009,221.08000000000175
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2024-11-05 15:00:00+00:00,target,2.182725274725278,227.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-01-14 12:00:00+00:00,breakeven,-0.013955479452054446,116.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-01-16 21:00:00+00:00,target,1.7522441160372164,365.40000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-02-18 20:00:00+00:00,breakeven,-0.01314516129032258,124.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-03-26 18:00:00+00:00,target,1.5440462085308166,337.59999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-03-31 22:00:00+00:00,breakeven,-0.00961084905660365,169.60000000000218
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-04-10 15:00:00+00:00,target,0.8524131274131296,1761.199999999997
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-08-04 22:00:00+00:00,stop,-1.0125577812018487,129.8000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-10-22 18:00:00+00:00,stop,-1.003490364025696,467.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2025-11-14 20:00:00+00:00,stop,-1.0037112932604735,439.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-01-14 11:00:00+00:00,breakeven,-0.008491794738213043,191.95000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-01-29 20:00:00+00:00,target,1.6067122634006779,314.34999999999854
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-02-09 20:00:00+00:00,stop,-1.0020354645354645,800.7999999999993
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-02-26 19:00:00+00:00,target,1.3786675208199817,312.2000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-03-03 01:00:00+00:00,stop,-1.0201732673267319,80.80000000000291
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-03-05 15:00:00+00:00,stop,-1.0029417072730553,554.0999999999985
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-04-02 11:00:00+00:00,target,1.5325481481481458,675.0
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-04-01 06:00:00+00:00,target,0.6764440521722049,1019.7000000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-04-16 14:00:00+00:00,stop,-1.0184597961494906,88.29999999999927
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-07-09 14:00:00+00:00,stop,-1.0027011351396138,603.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-07-22 07:00:00+00:00,stop,-1.0031267983886438,521.3000000000029
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-08-06 02:00:00+00:00,stop,-1.0033508068660706,486.4500000000007
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-08-18 06:00:00+00:00,breakeven,-0.0042754098360655735,381.25
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-09-17 14:00:00+00:00,target,1.0651220865704838,360.3999999999978
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-09-25 08:00:00+00:00,breakeven,-0.012519201228878578,130.20000000000073
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-10-28 20:00:00+00:00,stop,-1.0023402727925341,696.5
+goat,tradingview,"S 4H IFVG entry, 1H bear OB last above 1H FVG, D/W liquidity",swing,2026-10-29 05:00:00+00:00,target,2.211270683734009,320.2999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2024-02-26 05:00:00+00:00,stop,-1.008737603859555,186.54999999999927
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2024-04-03 15:00:00+00:00,breakeven,-0.023551509897413964,69.20999999999913
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2024-06-05 14:00:00+00:00,target,0.38012069165602214,344.6800000000003
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2024-11-05 15:00:00+00:00,target,2.182725274725278,227.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-01-14 12:00:00+00:00,target,3.0981875217845785,286.90000000000146
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-01-16 21:00:00+00:00,target,2.1848490018768234,293.0499999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-02-18 20:00:00+00:00,breakeven,-0.014791288566243095,110.20000000000073
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-03-26 18:00:00+00:00,target,1.3005738522954151,400.7999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-04-10 15:00:00+00:00,target,0.8524131274131296,1761.199999999997
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-06-20 17:00:00+00:00,breakeven,-0.012191473448018216,133.6999999999971
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-08-04 22:00:00+00:00,target,0.8517720391807619,561.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-10-03 18:00:00+00:00,stop,-1.0075515404215891,215.84999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-10-22 18:00:00+00:00,stop,-1.0036137900454496,451.0499999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2025-11-14 20:00:00+00:00,breakeven,-0.008295165394402036,196.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-01-08 07:00:00+00:00,stop,-1.0076471968097582,213.15000000000146
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-01-14 11:00:00+00:00,breakeven,-0.0088731627653783,183.70000000000073
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-01-29 20:00:00+00:00,target,1.3900371542589864,363.34999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-02-09 20:00:00+00:00,stop,-1.0044065963773994,369.8999999999978
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-02-26 19:00:00+00:00,target,1.3786675208199817,312.2000000000007
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-03-03 01:00:00+00:00,stop,-1.004804008252284,339.3000000000029
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-03-05 15:00:00+00:00,stop,-1.0036465324384787,447.0
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-04-02 11:00:00+00:00,target,2.2459183673469423,460.59999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-04-01 06:00:00+00:00,target,0.8565379361728529,805.2999999999993
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-04-16 14:00:00+00:00,stop,-1.0183043234138125,89.04999999999927
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-07-09 14:00:00+00:00,stop,-1.0019165196942974,850.5
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-07-22 07:00:00+00:00,stop,-1.0052827742667314,308.5500000000029
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-08-18 06:00:00+00:00,breakeven,-0.003718489791262671,438.3500000000022
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-09-17 14:00:00+00:00,target,1.332419298854571,288.09999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-09-25 08:00:00+00:00,breakeven,-0.01454058876003587,112.09999999999854
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-10-28 20:00:00+00:00,stop,-1.004189154459008,389.1000000000022
+goat,tradingview,"S 4H IFVG entry, 4H OB stop, D/W liquidity",swing,2026-10-29 05:00:00+00:00,target,2.97217792698281,238.29999999999927

@@ -1,0 +1,434 @@
+source,grid,variant,entry_time,exit,r_net,risk_pts
+goat,tradingview,A current swing model,2024-02-26 23:00:00+00:00,stop,-1.0095126933177707,171.34999999999854
+goat,tradingview,A current swing model,2024-04-05 14:00:00+00:00,stop,-1.0073479691655773,221.8299999999981
+goat,tradingview,A current swing model,2025-01-14 19:00:00+00:00,target,2.9940640932265112,274.59999999999854
+goat,tradingview,A current swing model,2025-02-19 08:00:00+00:00,breakeven,-0.03364293085655264,48.45000000000073
+goat,tradingview,A current swing model,2025-03-27 08:00:00+00:00,target,2.9961097852028638,419.0
+goat,tradingview,A current swing model,2025-04-01 18:00:00+00:00,breakeven,-0.003336745138178096,488.5
+goat,tradingview,A current swing model,2025-04-11 07:00:00+00:00,target,2.999103311695456,1817.7999999999993
+goat,tradingview,A current swing model,2025-08-05 12:00:00+00:00,breakeven,-0.0028444289329028916,573.0499999999993
+goat,tradingview,A current swing model,2025-10-23 13:00:00+00:00,stop,-1.005970695970696,273.0
+goat,tradingview,A current swing model,2026-01-12 14:00:00+00:00,stop,-1.0142607174103233,114.30000000000291
+goat,tradingview,A current swing model,2026-01-15 23:00:00+00:00,target,2.9908323959505063,177.79999999999927
+goat,tradingview,A current swing model,2026-01-30 08:00:00+00:00,breakeven,-0.0030926857034437,527.0499999999993
+goat,tradingview,A current swing model,2026-03-06 09:00:00+00:00,stop,-1.0036563481381786,445.7999999999993
+goat,tradingview,A current swing model,2026-04-02 08:00:00+00:00,target,2.997392417213246,625.0999999999985
+goat,tradingview,A current swing model,2026-07-10 11:00:00+00:00,stop,-1.0019714562167392,826.7999999999993
+goat,tradingview,A current swing model,2026-07-22 11:00:00+00:00,stop,-1.0040893125940793,398.6000000000022
+goat,tradingview,A current swing model,2026-09-28 12:00:00+00:00,breakeven,-0.00528534370946826,308.3999999999978
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2024-02-26 01:00:00+00:00,stop,-1.008737603859555,186.54999999999927
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.005806911293195567,280.7000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.01016843418590125,160.3000000000029
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2024-06-05 14:00:00+00:00,breakeven,-0.004188293334703733,389.1800000000003
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0030438842203548084,535.5
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-02-18 16:00:00+00:00,breakeven,-0.013459950454170267,121.09999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-03-26 18:00:00+00:00,target,2.9960779595765157,415.59999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-04-10 15:00:00+00:00,target,2.9991658990891414,1954.199999999997
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0042403746097814,384.3999999999978
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-06-20 17:00:00+00:00,breakeven,-0.015120593692022365,107.79999999999927
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-09-02 08:00:00+00:00,stop,-1.0034926076708806,466.6999999999971
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-10-21 14:00:00+00:00,target,2.9874615384615386,130.0
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0026271254734466887,620.4500000000007
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.0038878950506857483,419.25
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-02-09 18:00:00+00:00,stop,-1.001545463164881,1054.7000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.004051199204672563,402.34999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0037889353788936,430.2000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.005044097168497635,323.1499999999978
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.011198900721401636,145.54999999999927
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0023001481690539,708.6499999999978
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.00365388926249718,446.1000000000022
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-09-17 13:00:00+00:00,target,2.9962891291974953,439.25
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-09-23 13:00:00+00:00,target,2.964680390032501,46.14999999999782
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-09-25 08:00:00+00:00,breakeven,-0.01656504065040687,98.39999999999782
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.004028670291646085,404.59999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 3R",2026-10-28 23:00:00+00:00,target,2.9949110209178893,320.2999999999993
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-02-26 01:00:00+00:00,target,0.5584025730367177,186.54999999999927
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.7241539009618844,280.7000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-03-22 03:00:00+00:00,target,1.8625701809107402,160.3000000000029
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.2000873631738526,389.1800000000003
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.17249299719887956,535.5
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-02-18 16:00:00+00:00,target,0.8668042939719525,121.09999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06645813282001949,415.59999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.07740763483778615,1954.199999999997
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.5587148803329934,384.3999999999978
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-06-20 17:00:00+00:00,target,1.0961966604824092,107.79999999999927
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.2859867152346326,466.6999999999971
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.5301538461538406,130.0
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.12107341445724863,620.4500000000007
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.18358974358974012,419.25
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.1488764577605019,1054.7000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.18359637131850445,402.34999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.5717573221757278,430.2000000000007
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.5635772860900549,323.1499999999978
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.011198900721401636,145.54999999999927
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.16717702674099,708.6499999999978
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.1840842860345205,446.1000000000022
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.2760842344906123,439.25
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-09-23 13:00:00+00:00,target,5.356879739978632,46.14999999999782
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-09-25 08:00:00+00:00,target,1.9814024390244565,98.39999999999782
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-10-26 16:00:00+00:00,target,1.6605783489866595,404.59999999999854
+goat,tradingview,"N disp 1c, stop OB high, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.2378083047143287,320.2999999999993
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-02-26 01:00:00+00:00,stop,-1.008737603859555,186.54999999999927
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.0230495190594888,280.7000000000007
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-03-22 03:00:00+00:00,breakeven,-0.01016843418590125,160.3000000000029
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-06-05 14:00:00+00:00,target,0.3366565599465485,389.1800000000003
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-01-16 21:00:00+00:00,target,1.1956489262371643,535.5
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-02-18 16:00:00+00:00,breakeven,-0.013459950454170267,121.09999999999854
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.2542589027911533,415.59999999999854
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.7682274076348397,1954.199999999997
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.5587148803329934,384.3999999999978
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-06-20 17:00:00+00:00,breakeven,-0.015120593692022365,107.79999999999927
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-09-02 08:00:00+00:00,stop,-1.0034926076708806,466.6999999999971
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.012538461538461538,130.0
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.5847691191876868,620.4500000000007
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-01-29 20:00:00+00:00,target,1.20469886702445,419.25
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-02-09 18:00:00+00:00,stop,-1.001545463164881,1054.7000000000007
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.0697651298620625,402.34999999999854
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-03-24 00:00:00+00:00,stop,-1.0037889353788936,430.2000000000007
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-03-24 13:00:00+00:00,breakeven,-0.005044097168497635,323.1499999999978
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-04-08 16:00:00+00:00,breakeven,-0.011198900721401636,145.54999999999927
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-07-09 06:00:00+00:00,stop,-1.0023001481690539,708.6499999999978
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-08-18 06:00:00+00:00,breakeven,-0.00365388926249718,446.1000000000022
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-09-17 13:00:00+00:00,target,0.8739214570290268,439.25
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-09-23 13:00:00+00:00,breakeven,-0.03531960996749896,46.14999999999782
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-09-25 08:00:00+00:00,breakeven,-0.01656504065040687,98.39999999999782
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-10-26 16:00:00+00:00,target,1.6605783489866595,404.59999999999854
+goat,tradingview,"N disp 1c, stop OB high, target D/W liquidity",2026-10-28 23:00:00+00:00,target,2.211270683734009,320.2999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-02-26 01:00:00+00:00,stop,-1.0112607944732297,144.75
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.007092352877189143,229.82500000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-06-05 14:00:00+00:00,target,2.9948040356385777,313.70500000000175
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0034171907756813417,477.0
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-03-26 18:00:00+00:00,target,2.9959568398858982,403.1499999999978
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-04-10 15:00:00+00:00,target,2.9990702715035362,1753.199999999997
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0047863749816472,340.5499999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-06-20 17:00:00+00:00,breakeven,-0.02139107611548536,76.20000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-09-02 08:00:00+00:00,stop,-1.003602608022986,452.4499999999971
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-10-21 14:00:00+00:00,target,2.986115843270869,117.40000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0028166580266113664,578.7000000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.004077038519259637,399.7999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-02-09 18:00:00+00:00,stop,-1.0016885067592065,965.3499999999985
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.004779357865415638,341.0499999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0044371852456784,367.3500000000022
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.006262005378409544,260.2999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.017148869016307338,95.04999999999927
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0025182495847977,647.2749999999978
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.00392889424525456,414.87500000000364
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-09-17 13:00:00+00:00,target,2.994212675306231,281.65000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-09-23 13:00:00+00:00,target,2.9489827856024995,31.94999999999709
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-09-25 08:00:00+00:00,breakeven,-0.019358669833729886,84.19999999999709
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.004670487106017192,349.0
+goat,tradingview,"N disp 1c, stop OB 50%, target 3R",2026-10-28 23:00:00+00:00,target,2.9929620034542315,231.60000000000218
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-02-26 01:00:00+00:00,target,0.7196545768566444,144.75
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.8844555640161027,229.82500000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.24822683731531078,313.70500000000175
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.19364779874213836,477.0
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06851047997023478,403.1499999999978
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.08628222678530785,1753.199999999997
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.6306562912935014,340.5499999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-06-20 17:00:00+00:00,target,1.5507874015748266,76.20000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.294993921980336,452.4499999999971
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.6943781942078093,117.40000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.12980819077242078,578.7000000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.19252126063031189,399.7999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.16265603149117078,965.3499999999985
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.21659580706641302,341.0499999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.6695794201714906,367.3500000000022
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.6996542451018076,260.2999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.017148869016307338,95.04999999999927
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.18302885172454147,647.2749999999978
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.19793913829466533,414.87500000000364
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.4305698562045121,281.65000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-09-23 13:00:00+00:00,target,7.7377151799694746,31.94999999999709
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-09-25 08:00:00+00:00,target,2.315558194774453,84.19999999999709
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-10-26 16:00:00+00:00,target,1.9251289398280802,349.0
+goat,tradingview,"N disp 1c, stop OB 50%, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.7118739205526545,231.60000000000218
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-02-26 01:00:00+00:00,stop,-1.0112607944732297,144.75
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.2495159360382828,229.82500000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-06-05 14:00:00+00:00,target,0.417653527996038,313.70500000000175
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-01-16 21:00:00+00:00,target,1.3422851153039863,477.0
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.292992682624344,403.1499999999978
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.8563027606662126,1753.199999999997
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.6306562912935014,340.5499999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-06-20 17:00:00+00:00,breakeven,-0.02139107611548536,76.20000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-09-02 08:00:00+00:00,stop,-1.003602608022986,452.4499999999971
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.013884156729131002,117.40000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.6269569725246247,578.7000000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-01-29 20:00:00+00:00,target,1.2633066533266675,399.7999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-02-09 18:00:00+00:00,stop,-1.0016885067592065,965.3499999999985
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.262043688608709,341.0499999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-03-24 00:00:00+00:00,stop,-1.0044371852456784,367.3500000000022
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-03-24 13:00:00+00:00,breakeven,-0.006262005378409544,260.2999999999993
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-04-08 16:00:00+00:00,breakeven,-0.017148869016307338,95.04999999999927
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-07-09 06:00:00+00:00,stop,-1.0025182495847977,647.2749999999978
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-08-18 06:00:00+00:00,breakeven,-0.00392889424525456,414.87500000000364
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-09-17 13:00:00+00:00,target,1.3629327179122954,281.65000000000146
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-09-23 13:00:00+00:00,breakeven,-0.05101721439750073,31.94999999999709
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-09-25 08:00:00+00:00,breakeven,-0.019358669833729886,84.19999999999709
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-10-26 16:00:00+00:00,target,1.9251289398280802,349.0
+goat,tradingview,"N disp 1c, stop OB 50%, target D/W liquidity",2026-10-28 23:00:00+00:00,target,3.0581606217616355,231.60000000000218
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.005806911293195567,280.7000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.01016843418590125,160.3000000000029
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2024-06-05 14:00:00+00:00,breakeven,-0.004188293334703733,389.1800000000003
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0030438842203548084,535.5
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-02-18 16:00:00+00:00,breakeven,-0.013459950454170267,121.09999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-03-26 18:00:00+00:00,target,2.9960779595765157,415.59999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-04-10 15:00:00+00:00,target,2.9991658990891414,1954.199999999997
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0042403746097814,384.3999999999978
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-06-20 17:00:00+00:00,breakeven,-0.015120593692022365,107.79999999999927
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-10-21 14:00:00+00:00,target,2.9874615384615386,130.0
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0026271254734466887,620.4500000000007
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-02-09 18:00:00+00:00,stop,-1.001545463164881,1054.7000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.004051199204672563,402.34999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0037889353788936,430.2000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.005044097168497635,323.1499999999978
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0023001481690539,708.6499999999978
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-09-17 13:00:00+00:00,target,2.9962891291974953,439.25
+goat,tradingview,"N disp 2c, stop OB high, target 3R",2026-10-28 23:00:00+00:00,target,2.9949110209178893,320.2999999999993
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.7241539009618844,280.7000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-03-22 03:00:00+00:00,target,1.8625701809107402,160.3000000000029
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.2000873631738526,389.1800000000003
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.17249299719887956,535.5
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-02-18 16:00:00+00:00,target,0.8668042939719525,121.09999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06645813282001949,415.59999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.07740763483778615,1954.199999999997
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.5587148803329934,384.3999999999978
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-06-20 17:00:00+00:00,target,1.0961966604824092,107.79999999999927
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.5301538461538406,130.0
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.12107341445724863,620.4500000000007
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.1488764577605019,1054.7000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.18359637131850445,402.34999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.5717573221757278,430.2000000000007
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.5635772860900549,323.1499999999978
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.16717702674099,708.6499999999978
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.2760842344906123,439.25
+goat,tradingview,"N disp 2c, stop OB high, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.2378083047143287,320.2999999999993
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.0230495190594888,280.7000000000007
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-03-22 03:00:00+00:00,breakeven,-0.01016843418590125,160.3000000000029
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-06-05 14:00:00+00:00,target,0.3366565599465485,389.1800000000003
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-01-16 21:00:00+00:00,target,1.1956489262371643,535.5
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-02-18 16:00:00+00:00,breakeven,-0.013459950454170267,121.09999999999854
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.2542589027911533,415.59999999999854
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.7682274076348397,1954.199999999997
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.5587148803329934,384.3999999999978
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-06-20 17:00:00+00:00,breakeven,-0.015120593692022365,107.79999999999927
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.012538461538461538,130.0
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.5847691191876868,620.4500000000007
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-02-09 18:00:00+00:00,stop,-1.001545463164881,1054.7000000000007
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.0697651298620625,402.34999999999854
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-03-24 00:00:00+00:00,stop,-1.0037889353788936,430.2000000000007
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-03-24 13:00:00+00:00,breakeven,-0.005044097168497635,323.1499999999978
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-07-09 06:00:00+00:00,stop,-1.0023001481690539,708.6499999999978
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-09-17 13:00:00+00:00,target,0.8739214570290268,439.25
+goat,tradingview,"N disp 2c, stop OB high, target D/W liquidity",2026-10-28 23:00:00+00:00,target,2.211270683734009,320.2999999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.007092352877189143,229.82500000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-06-05 14:00:00+00:00,target,2.9948040356385777,313.70500000000175
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0034171907756813417,477.0
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-03-26 18:00:00+00:00,target,2.9959568398858982,403.1499999999978
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-04-10 15:00:00+00:00,target,2.9990702715035362,1753.199999999997
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0047863749816472,340.5499999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-06-20 17:00:00+00:00,breakeven,-0.02139107611548536,76.20000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-10-21 14:00:00+00:00,target,2.986115843270869,117.40000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0028166580266113664,578.7000000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-02-09 18:00:00+00:00,stop,-1.0016885067592065,965.3499999999985
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.004779357865415638,341.0499999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0044371852456784,367.3500000000022
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.006262005378409544,260.2999999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0025182495847977,647.2749999999978
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-09-17 13:00:00+00:00,target,2.994212675306231,281.65000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target 3R",2026-10-28 23:00:00+00:00,target,2.9929620034542315,231.60000000000218
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.8844555640161027,229.82500000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.24822683731531078,313.70500000000175
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.19364779874213836,477.0
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06851047997023478,403.1499999999978
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.08628222678530785,1753.199999999997
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.6306562912935014,340.5499999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-06-20 17:00:00+00:00,target,1.5507874015748266,76.20000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.6943781942078093,117.40000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.12980819077242078,578.7000000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.16265603149117078,965.3499999999985
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.21659580706641302,341.0499999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.6695794201714906,367.3500000000022
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.6996542451018076,260.2999999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.18302885172454147,647.2749999999978
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.4305698562045121,281.65000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.7118739205526545,231.60000000000218
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-03-08 19:00:00+00:00,target,1.2495159360382828,229.82500000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-06-05 14:00:00+00:00,target,0.417653527996038,313.70500000000175
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-01-16 21:00:00+00:00,target,1.3422851153039863,477.0
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-03-26 18:00:00+00:00,target,1.292992682624344,403.1499999999978
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-04-10 15:00:00+00:00,target,0.8563027606662126,1753.199999999997
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-06-13 11:00:00+00:00,target,0.6306562912935014,340.5499999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-06-20 17:00:00+00:00,breakeven,-0.02139107611548536,76.20000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-10-21 14:00:00+00:00,breakeven,-0.013884156729131002,117.40000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-01-22 14:00:00+00:00,target,0.6269569725246247,578.7000000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-02-09 18:00:00+00:00,stop,-1.0016885067592065,965.3499999999985
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-02-26 19:00:00+00:00,target,1.262043688608709,341.0499999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-03-24 00:00:00+00:00,stop,-1.0044371852456784,367.3500000000022
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-03-24 13:00:00+00:00,breakeven,-0.006262005378409544,260.2999999999993
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-07-09 06:00:00+00:00,stop,-1.0025182495847977,647.2749999999978
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-09-17 13:00:00+00:00,target,1.3629327179122954,281.65000000000146
+goat,tradingview,"N disp 2c, stop OB 50%, target D/W liquidity",2026-10-28 23:00:00+00:00,target,3.0581606217616355,231.60000000000218

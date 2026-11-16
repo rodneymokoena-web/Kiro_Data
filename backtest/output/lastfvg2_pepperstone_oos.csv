@@ -1,0 +1,88 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.038,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-12-30 15:55:00+00:00,target,2.972423802612482,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9921617161716174,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9932504440497403,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.9929130921298026,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-12-30 11:00:00+00:00,target,2.9920965058236275,31,11
+pepperstone_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,31,11
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.038,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9921617161716174,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.9929130921298026,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,28,9
+pepperstone_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.038,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9921617161716174,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.9929130921298026,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,28,9
+pepperstone_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.038,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9921617161716174,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.9929130921298026,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,28,9
+pepperstone_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.038,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9921617161716174,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.9929130921298026,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,28,9
+pepperstone_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.038,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9921617161716174,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.003915104059344726,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.004218472468916522,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0089962121212122,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.9929130921298026,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.009313725490196078,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0041924095322152,28,9
+pepperstone_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0072685539403212,28,9

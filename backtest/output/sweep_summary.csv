@@ -1,0 +1,9 @@
+model,sweep,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+swing,wick,goat,104,45,1.39,11.52,11155,7.9,5.9,5.6
+intraday,wick,goat,73,25,1.4,15.28,11537,7.7,18.1,-2.8
+swing,sweep,goat,122,47,1.59,20.43,12172,5.9,8.1,12.3
+intraday,sweep,goat,67,25,1.52,17.27,11778,7.3,15.0,2.3
+swing,wick,pepperstone,111,51,1.61,18.04,11903,8.0,9.7,8.3
+intraday,wick,pepperstone,76,34,2.23,42.45,15092,7.4,27.1,15.3
+swing,sweep,pepperstone,132,52,1.67,25.29,12769,7.6,12.9,12.4
+intraday,sweep,pepperstone,70,30,1.93,29.96,13350,7.2,15.4,14.6

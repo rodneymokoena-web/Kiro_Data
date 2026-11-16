@@ -1,0 +1,17 @@
+symbol,setup,variant,reason
+US100,1,all,no 1H IFVG (no 1H IFVG)
+US100,3,1H touch,expired
+US100,4,1H touch,expired
+US100,5,all,no 1H IFVG (no retest)
+US100,8,all,no 1H IFVG (no 1H IFVG)
+US100,9,1H touch,expired
+US100,11,all,no 1H IFVG (no retest)
+US100,14,all,no 1H IFVG (no retest)
+US100,18,all,no 1H IFVG (no retest)
+US100,21,all,duplicate 1H IFVG signal
+US100,22,all,no 1H IFVG (no 1H IFVG)
+US100,23,all,no 1H IFVG (no 1H IFVG)
+US100,24,all,no 1H IFVG (no retest)
+US100,26,1H touch,expired
+US100,27,all,no 1H IFVG (no 1H IFVG)
+US100,29,all,no 1H IFVG (no retest)

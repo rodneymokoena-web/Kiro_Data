@@ -1,0 +1,235 @@
+source,variant,entry_time,exit,r_net,risk_pts,stop_from
+goat,"stop OB touch, target 1H swing low",2024-02-26 01:00:00+00:00,target,1.011850412821744,102.95000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2024-03-08 19:00:00+00:00,target,1.1359038837664188,178.95000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2024-03-22 03:00:00+00:00,breakeven,-0.012754303599373731,127.80000000000291,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.32686899215043846,238.2300000000032,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0108485856905158,150.25,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB touch, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.22071684587813623,418.5,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-02-18 16:00:00+00:00,breakeven,-0.02097812097812078,77.70000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-02-28 21:00:00+00:00,breakeven,-0.011272475795297485,144.59999999999854,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.0706936268236504,390.6999999999971,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.012824547600314491,127.10000000000218,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.09745522484216064,1552.199999999997,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB touch, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.015553435114504,104.79999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0154210028382213,105.70000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0066995478832717,243.3000000000029,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-06-13 11:00:00+00:00,stop,-1.0054937647455342,296.6999999999971,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-06-20 17:00:00+00:00,target,2.6495515695068783,44.599999999998545,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.3045869465997332,438.1999999999971,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0083632632119035,194.89999999999782,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-10-21 14:00:00+00:00,stop,-1.015553435114504,104.79999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.0131770412287795,123.69999999999709,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.13990129434770446,536.9500000000007,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.20236624161955788,380.34999999999854,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.1792465753424674,876.0,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.2640571939231457,279.75,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.8077832512315223,304.5,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.9223600911623332,197.4499999999971,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.036588103254770514,44.54999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0265905383360525,61.29999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.20220174091142282,585.8999999999978,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB touch, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.004110452654142,396.5500000000029,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.21404926365176513,383.65000000000146,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.9775896815800256,124.04999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-09-23 13:00:00+00:00,target,13.927887323943786,17.75,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-09-25 08:00:00+00:00,stop,-1.0232857142857141,70.0,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-10-26 16:00:00+00:00,target,2.289945466939349,293.3999999999978,1H OB of drop FVG
+goat,"stop OB touch, target 1H swing low",2026-10-28 23:00:00+00:00,breakeven,-0.011406578026591906,142.90000000000146,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2024-02-26 01:00:00+00:00,breakeven,-0.015832928606119363,102.95000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.009108689578094402,178.95000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.012754303599373731,127.80000000000291,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2024-06-05 14:00:00+00:00,target,2.9931578726440837,238.2300000000032,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0108485856905158,150.25,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB touch, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0038948626045400237,418.5,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-02-18 16:00:00+00:00,breakeven,-0.02097812097812078,77.70000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-02-28 21:00:00+00:00,breakeven,-0.011272475795297485,144.59999999999854,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-03-26 18:00:00+00:00,target,2.995828001023803,390.6999999999971,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.012824547600314491,127.10000000000218,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-04-10 15:00:00+00:00,target,2.9989498775930934,1552.199999999997,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB touch, target 3R",2025-05-02 00:00:00+00:00,stop,-1.015553435114504,104.79999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0154210028382213,105.70000000000073,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0066995478832717,243.3000000000029,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0054937647455342,296.6999999999971,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-06-20 17:00:00+00:00,target,2.9634529147982054,44.599999999998545,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-09-02 08:00:00+00:00,stop,-1.0037197626654495,438.1999999999971,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0083632632119035,194.89999999999782,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-10-21 14:00:00+00:00,stop,-1.015553435114504,104.79999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2025-12-01 06:00:00+00:00,stop,-1.0131770412287795,123.69999999999709,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0030356644007821913,536.9500000000007,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.0042855264887603686,380.34999999999854,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-02-09 18:00:00+00:00,stop,-1.0018607305936074,876.0,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.0058266309204647,279.75,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-03-24 00:00:00+00:00,stop,-1.005353037766831,304.5,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.008255254494808933,197.4499999999971,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.036588103254770514,44.54999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0265905383360525,61.29999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0027820447175286,585.8999999999978,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB touch, target 3R",2026-08-06 02:00:00+00:00,stop,-1.004110452654142,396.5500000000029,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.004248664147008976,383.65000000000146,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-09-17 13:00:00+00:00,target,2.9868601370415155,124.04999999999927,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-09-23 13:00:00+00:00,target,2.908169014084507,17.75,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-09-25 08:00:00+00:00,stop,-1.0232857142857141,70.0,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.0055555555555555965,293.3999999999978,1H OB of drop FVG
+goat,"stop OB touch, target 3R",2026-10-28 23:00:00+00:00,breakeven,-0.011406578026591906,142.90000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2024-02-26 01:00:00+00:00,target,0.7196545768566444,144.75,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.8844555640161027,229.82500000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.24822683731531078,313.70500000000175,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB 50%, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.19364779874213836,477.0,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06851047997023478,403.1499999999978,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.08628222678530785,1753.199999999997,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB 50%, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.6306562912935014,340.5499999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-06-20 17:00:00+00:00,target,1.5507874015748266,76.20000000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.294993921980336,452.4499999999971,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.6943781942078093,117.40000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.12980819077242078,578.7000000000007,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.19252126063031189,399.7999999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.16265603149117078,965.3499999999985,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.21659580706641302,341.0499999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.6695794201714906,367.3500000000022,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.6996542451018076,260.2999999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.017148869016307338,95.04999999999927,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.18302885172454147,647.2749999999978,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB 50%, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.19793913829466533,414.87500000000364,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.4305698562045121,281.65000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-09-23 13:00:00+00:00,target,7.7377151799694746,31.94999999999709,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-09-25 08:00:00+00:00,target,2.315558194774453,84.19999999999709,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-10-26 16:00:00+00:00,target,1.9251289398280802,349.0,1H OB of drop FVG
+goat,"stop OB 50%, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.7118739205526545,231.60000000000218,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2024-02-26 01:00:00+00:00,stop,-1.0112607944732297,144.75,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.007092352877189143,229.82500000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.011315515446025456,144.0500000000029,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2024-06-05 14:00:00+00:00,target,2.9948040356385777,313.70500000000175,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0089663897904175,181.79000000000087,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB 50%, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0034171907756813417,477.0,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-02-18 16:00:00+00:00,stop,-1.0163983903420526,99.39999999999782,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175,249.90000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-03-26 18:00:00+00:00,target,2.9959568398858982,403.1499999999978,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138,256.7000000000007,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-04-10 15:00:00+00:00,target,2.9990702715035362,1753.199999999997,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB 50%, target 3R",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097,140.75,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0134766432410085,120.95000000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0056725247955454,287.3500000000022,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0047863749816472,340.5499999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-06-20 17:00:00+00:00,breakeven,-0.02139107611548536,76.20000000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-09-02 08:00:00+00:00,stop,-1.003602608022986,452.4499999999971,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-10-03 18:00:00+00:00,stop,-1.007943469785575,205.20000000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-10-21 14:00:00+00:00,target,2.986115843270869,117.40000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2025-12-01 06:00:00+00:00,stop,-1.0095016030311863,171.54999999999927,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0028166580266113664,578.7000000000007,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.004077038519259637,399.7999999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-02-09 18:00:00+00:00,stop,-1.0016885067592065,965.3499999999985,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.004779357865415638,341.0499999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0044371852456784,367.3500000000022,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.006262005378409544,260.2999999999993,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.017148869016307338,95.04999999999927,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771,73.32500000000073,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0025182495847977,647.2749999999978,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB 50%, target 3R",2026-08-06 02:00:00+00:00,stop,-1.003365508697672,484.3250000000007,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.00392889424525456,414.87500000000364,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-09-17 13:00:00+00:00,target,2.994212675306231,281.65000000000146,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-09-23 13:00:00+00:00,target,2.9489827856024995,31.94999999999709,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-09-25 08:00:00+00:00,breakeven,-0.019358669833729886,84.19999999999709,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.004670487106017192,349.0,1H OB of drop FVG
+goat,"stop OB 50%, target 3R",2026-10-28 23:00:00+00:00,target,2.9929620034542315,231.60000000000218,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2024-02-26 01:00:00+00:00,target,0.5584025730367177,186.54999999999927,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2024-03-08 19:00:00+00:00,target,0.7241539009618844,280.7000000000007,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2024-03-22 03:00:00+00:00,target,1.8625701809107402,160.3000000000029,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2024-06-05 14:00:00+00:00,target,0.2000873631738526,389.1800000000003,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB high, target 1H swing low",2025-01-16 21:00:00+00:00,target,0.17249299719887956,535.5,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-02-18 16:00:00+00:00,target,0.8668042939719525,121.09999999999854,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-03-26 18:00:00+00:00,target,0.06645813282001949,415.59999999999854,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-04-10 15:00:00+00:00,target,0.07740763483778615,1954.199999999997,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB high, target 1H swing low",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-06-13 11:00:00+00:00,target,0.5587148803329934,384.3999999999978,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-06-20 17:00:00+00:00,target,1.0961966604824092,107.79999999999927,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-09-02 08:00:00+00:00,target,0.2859867152346326,466.6999999999971,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-10-21 14:00:00+00:00,target,1.5301538461538406,130.0,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-01-22 14:00:00+00:00,target,0.12107341445724863,620.4500000000007,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-01-29 20:00:00+00:00,target,0.18358974358974012,419.25,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-02-09 18:00:00+00:00,target,0.1488764577605019,1054.7000000000007,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-02-26 19:00:00+00:00,target,0.18359637131850445,402.34999999999854,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-03-24 00:00:00+00:00,target,0.5717573221757278,430.2000000000007,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-03-24 13:00:00+00:00,target,0.5635772860900549,323.1499999999978,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-04-08 16:00:00+00:00,breakeven,-0.011198900721401636,145.54999999999927,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-07-09 06:00:00+00:00,target,0.16717702674099,708.6499999999978,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB high, target 1H swing low",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-08-18 06:00:00+00:00,target,0.1840842860345205,446.1000000000022,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-09-17 13:00:00+00:00,target,0.2760842344906123,439.25,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-09-23 13:00:00+00:00,target,5.356879739978632,46.14999999999782,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-09-25 08:00:00+00:00,target,1.9814024390244565,98.39999999999782,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-10-26 16:00:00+00:00,target,1.6605783489866595,404.59999999999854,1H OB of drop FVG
+goat,"stop OB high, target 1H swing low",2026-10-28 23:00:00+00:00,target,1.2378083047143287,320.2999999999993,1H OB of drop FVG
+goat,"stop OB high, target 3R",2024-02-26 01:00:00+00:00,stop,-1.008737603859555,186.54999999999927,1H OB of drop FVG
+goat,"stop OB high, target 3R",2024-03-08 19:00:00+00:00,breakeven,-0.005806911293195567,280.7000000000007,1H OB of drop FVG
+goat,"stop OB high, target 3R",2024-03-22 03:00:00+00:00,breakeven,-0.01016843418590125,160.3000000000029,1H OB of drop FVG
+goat,"stop OB high, target 3R",2024-06-05 14:00:00+00:00,breakeven,-0.004188293334703733,389.1800000000003,1H OB of drop FVG
+goat,"stop OB high, target 3R",2024-09-20 15:00:00+00:00,stop,-1.0076407443866309,213.33000000000175,1H OB of drop FVG
+goat,"stop OB high, target 3R",2024-11-01 14:00:00+00:00,breakeven,-0.011398601398601398,143.0,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB high, target 3R",2025-01-16 21:00:00+00:00,breakeven,-0.0030438842203548084,535.5,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-02-18 16:00:00+00:00,breakeven,-0.013459950454170267,121.09999999999854,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-02-28 21:00:00+00:00,stop,-1.004588963963964,355.2000000000007,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-03-26 18:00:00+00:00,target,2.9960779595765157,415.59999999999854,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-03-31 22:00:00+00:00,breakeven,-0.004219518508930891,386.2999999999993,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-04-10 15:00:00+00:00,target,2.9991658990891414,1954.199999999997,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763,219.95000000000073,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB high, target 3R",2025-05-02 00:00:00+00:00,stop,-1.0092246745897,176.70000000000073,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-05-08 14:00:00+00:00,stop,-1.0119676945668135,136.20000000000073,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-06-05 20:00:00+00:00,stop,-1.0049185274592638,331.40000000000146,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-06-13 11:00:00+00:00,stop,-1.0042403746097814,384.3999999999978,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-06-20 17:00:00+00:00,breakeven,-0.015120593692022365,107.79999999999927,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-09-02 08:00:00+00:00,stop,-1.0034926076708806,466.6999999999971,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-10-03 18:00:00+00:00,stop,-1.0075638051044082,215.5,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-10-21 14:00:00+00:00,target,2.9874615384615386,130.0,1H OB of drop FVG
+goat,"stop OB high, target 3R",2025-12-01 06:00:00+00:00,stop,-1.00742935278031,219.39999999999782,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-01-22 14:00:00+00:00,breakeven,-0.0026271254734466887,620.4500000000007,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-01-29 20:00:00+00:00,breakeven,-0.0038878950506857483,419.25,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-02-09 18:00:00+00:00,stop,-1.001545463164881,1054.7000000000007,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-02-26 19:00:00+00:00,breakeven,-0.004051199204672563,402.34999999999854,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-03-24 00:00:00+00:00,stop,-1.0037889353788936,430.2000000000007,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-03-24 13:00:00+00:00,breakeven,-0.005044097168497635,323.1499999999978,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-04-08 16:00:00+00:00,breakeven,-0.011198900721401636,145.54999999999927,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-04-16 14:00:00+00:00,stop,-1.019097832454599,85.34999999999854,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-07-09 06:00:00+00:00,stop,-1.0023001481690539,708.6499999999978,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-07-17 17:00:00+00:00,stop,-1.0030232773810628,539.1500000000015,sweep extreme (no 1H FVG of the drop)
+goat,"stop OB high, target 3R",2026-08-06 02:00:00+00:00,stop,-1.0028491522461107,572.1000000000022,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-08-18 06:00:00+00:00,breakeven,-0.00365388926249718,446.1000000000022,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-09-17 13:00:00+00:00,target,2.9962891291974953,439.25,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-09-23 13:00:00+00:00,target,2.964680390032501,46.14999999999782,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-09-25 08:00:00+00:00,breakeven,-0.01656504065040687,98.39999999999782,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-10-26 16:00:00+00:00,breakeven,-0.004028670291646085,404.59999999999854,1H OB of drop FVG
+goat,"stop OB high, target 3R",2026-10-28 23:00:00+00:00,target,2.9949110209178893,320.2999999999993,1H OB of drop FVG

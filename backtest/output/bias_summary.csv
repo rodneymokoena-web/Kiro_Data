@@ -1,0 +1,37 @@
+broker,variant,model,n,PF,R,acct,dd
+GoatFunded,0 baseline (no bias),intraday,73,1.4,15.3,11537,7.7
+GoatFunded,0 baseline (no bias),swing,122,1.71,24.3,12658,4.8
+GoatFunded,1 sweep+FVG 500,intraday,23,1.75,8.9,10890,6.2
+GoatFunded,1 sweep+FVG 500,swing,32,1.18,1.4,10137,3.8
+GoatFunded,2 sweep only 500,intraday,28,0.92,-1.3,9839,7.4
+GoatFunded,2 sweep only 500,swing,60,1.34,6.5,10650,7.6
+GoatFunded,3 FVG only 500,intraday,23,2.68,14.9,11565,6.2
+GoatFunded,3 FVG only 500,swing,31,1.02,0.2,10012,5.1
+GoatFunded,4 sweep+FVG 250,intraday,22,1.5,5.9,10578,6.2
+GoatFunded,4 sweep+FVG 250,swing,31,1.35,2.5,10241,3.2
+GoatFunded,5 sweep+FVG 1000,intraday,23,1.75,8.9,10890,6.2
+GoatFunded,5 sweep+FVG 1000,swing,32,1.18,1.4,10137,3.8
+GoatFunded,0 baseline (no bias),both,195,1.54,39.6,14604,11.8
+GoatFunded,1 sweep+FVG 500,both,55,1.52,10.3,11040,6.0
+GoatFunded,2 sweep only 500,both,88,1.15,5.2,10479,10.8
+GoatFunded,3 FVG only 500,both,54,1.84,15.1,11580,5.6
+GoatFunded,4 sweep+FVG 250,both,53,1.44,8.4,10834,6.0
+GoatFunded,5 sweep+FVG 1000,both,55,1.52,10.3,11040,6.0
+Pepperstone,0 baseline (no bias),intraday,76,2.23,42.5,15091,7.4
+Pepperstone,0 baseline (no bias),swing,132,1.69,26.0,12867,7.1
+Pepperstone,1 sweep+FVG 500,intraday,26,2.97,21.6,12344,4.2
+Pepperstone,1 sweep+FVG 500,swing,39,0.76,-2.9,9700,5.8
+Pepperstone,2 sweep only 500,intraday,29,2.73,20.6,12219,5.2
+Pepperstone,2 sweep only 500,swing,69,1.37,7.8,10783,6.3
+Pepperstone,3 FVG only 500,intraday,25,3.93,28.7,13240,2.2
+Pepperstone,3 FVG only 500,swing,32,1.2,1.5,10141,4.1
+Pepperstone,4 sweep+FVG 250,intraday,24,2.71,18.7,11998,4.2
+Pepperstone,4 sweep+FVG 250,swing,35,0.84,-1.6,9832,4.5
+Pepperstone,5 sweep+FVG 1000,intraday,26,2.97,21.6,12344,4.2
+Pepperstone,5 sweep+FVG 1000,swing,40,0.86,-1.7,9825,5.8
+Pepperstone,0 baseline (no bias),both,208,1.95,68.4,19419,12.3
+Pepperstone,1 sweep+FVG 500,both,65,1.8,18.6,11975,6.5
+Pepperstone,2 sweep only 500,both,98,1.85,28.4,13176,6.7
+Pepperstone,3 FVG only 500,both,57,2.78,30.1,13427,4.7
+Pepperstone,4 sweep+FVG 250,both,59,1.81,17.1,11797,6.5
+Pepperstone,5 sweep+FVG 1000,both,66,1.86,19.9,12129,6.5

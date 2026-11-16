@@ -1,0 +1,416 @@
+source,variant,model,symbol,entry_time,exit_time,exit,r_net,signal
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-19 10:40:00+00:00,target,2.962301587301587,
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2022-10-26 23:20:00+00:00,2022-10-27 13:50:00+00:00,target,2.9688524590163934,
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.8967391304347805,
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,BASE (current rules),intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0335689045936394,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 19:00:00+00:00,target,2.9929130921298026,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.009313725490196078,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0041924095322152,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,BASE (current rules),swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0072685539403212,
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-02-07 14:20:00+00:00,2022-02-07 14:40:00+00:00,stop,-1.0405982905982911,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-19 10:40:00+00:00,target,2.962301587301587,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-10-26 23:20:00+00:00,2022-10-27 13:50:00+00:00,target,2.9688524590163934,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-11-21 05:15:00+00:00,2022-11-21 08:25:00+00:00,breakeven,-0.10919540229885286,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.8967391304347805,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,4H inversion window 30 candles,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0335689045936394,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-02-07 10:00:00+00:00,2022-02-16 09:00:00+00:00,breakeven,-0.003144133708422963,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 19:00:00+00:00,target,2.9929130921298026,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.009313725490196078,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-11-21 02:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.004314259763851,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0041924095322152,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-12-14 19:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.0041877892880757,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,4H inversion window 30 candles,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0072685539403212,
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-02-04 14:00:00+00:00,2022-03-22 14:00:00+00:00,breakeven,-0.0025780189959294436,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-07-26 22:00:00+00:00,2022-07-28 17:00:00+00:00,stop,-1.003821399839099,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-28 13:00:00+00:00,2022-11-10 13:00:00+00:00,breakeven,-0.0040016849199662925,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-11-08 18:00:00+00:00,2022-12-19 14:00:00+00:00,breakeven,-0.0034439006706543478,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-11-17 16:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.0043698252069917,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-13 17:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.0051955154498222,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-02-16 13:00:00+00:00,2023-02-21 08:00:00+00:00,stop,-1.0045717035611164,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-24 13:00:00+00:00,2023-05-25 13:00:00+00:00,stop,-1.0062997347480105,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-08-18 06:45:00+00:00,2022-08-18 09:05:00+00:00,stop,-1.0435779816513757,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-10-04 20:10:00+00:00,2022-10-05 00:50:00+00:00,stop,-1.0265734265734268,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-12-07 07:20:00+00:00,2022-12-07 08:50:00+00:00,breakeven,-0.09793814432989874,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2023-02-07 09:05:00+00:00,2023-02-07 09:10:00+00:00,stop,-1.1005291005290927,
+pepperstone_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2023-05-04 11:15:00+00:00,2023-05-04 12:35:00+00:00,breakeven,-0.05722891566264934,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-08-18 06:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.993391304347826,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-10-04 19:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0026027397260273,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-10-26 13:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.00851636037651276,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-12-07 07:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0033904354032832,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2023-02-07 05:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.004671748217359224,
+pepperstone_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2023-05-04 10:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0077614379084967,
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-06-08 22:00:00+00:00,2021-06-10 13:00:00+00:00,stop,-1.0195876288659795,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-02-25 14:00:00+00:00,2022-03-14 17:00:00+00:00,stop,-1.0020438898450947,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-02-06 14:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.004670599803343153,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-07-21 08:40:00+00:00,2021-07-21 11:05:00+00:00,stop,-1.0488431876606688,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0450236966824638,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-02-15 20:30:00+00:00,2022-02-16 08:15:00+00:00,target,2.9442815249266867,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-19 10:40:00+00:00,target,2.962301587301587,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-10-26 18:50:00+00:00,2022-10-27 20:00:00+00:00,target,2.9772727272727275,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.8967391304347805,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0335689045936394,
+pepperstone_oos,displacement >= 1 candle,intraday 5m touch,US100,2023-10-02 17:30:00+00:00,2023-10-02 18:00:00+00:00,breakeven,-0.08085106382978723,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2021-07-21 07:00:00+00:00,2021-08-19 08:00:00+00:00,breakeven,-0.006795422031473524,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-02-15 17:00:00+00:00,2022-02-18 16:00:00+00:00,stop,-1.003781094527363,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-04-21 15:00:00+00:00,2022-04-22 16:00:00+00:00,target,2.9906311637080867,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 19:00:00+00:00,target,2.9929130921298026,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.009313725490196078,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0041924095322152,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0072685539403212,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2023-10-02 16:00:00+00:00,2023-10-19 22:00:00+00:00,breakeven,-0.0062499999999999995,
+pepperstone_oos,displacement >= 1 candle,swing 1H touch,US100,2023-12-21 18:00:00+00:00,2023-12-26 19:00:00+00:00,stop,-1.008699633699634,
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-07-20 20:00:00+00:00,2021-08-30 13:00:00+00:00,target,2.992537313432836,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-07-27 19:00:00+00:00,2021-08-05 14:00:00+00:00,stop,-1.0090175605125773,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-02-15 10:00:00+00:00,2022-02-18 16:00:00+00:00,stop,-1.0039517470881862,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-04-21 05:00:00+00:00,2022-04-22 14:00:00+00:00,target,2.9890616004605643,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-09-01 23:00:00+00:00,2022-09-06 14:00:00+00:00,stop,-1.0073161340007701,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-06-08 14:00:00+00:00,2023-06-09 14:00:00+00:00,stop,-1.0081615120274914,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-09-28 18:00:00+00:00,2023-10-20 14:00:00+00:00,breakeven,-0.007857733664185242,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-10-25 13:00:00+00:00,2023-10-25 17:00:00+00:00,stop,-1.0111830488522662,long
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-12-21 05:00:00+00:00,2023-12-26 19:00:00+00:00,stop,-1.0085972850678733,short
+pepperstone_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-19 10:40:00+00:00,target,2.962301587301587,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-10-26 23:20:00+00:00,2022-10-27 13:50:00+00:00,target,2.9688524590163934,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-11-01 07:20:00+00:00,2022-11-01 07:25:00+00:00,stop,-1.085201793721969,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.8967391304347805,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0335689045936394,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 19:00:00+00:00,target,2.9929130921298026,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.009313725490196078,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-11-01 07:00:00+00:00,2022-11-02 20:00:00+00:00,stop,-1.0031635031635031,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0041924095322152,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,4H IFVG retest window 72h,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0072685539403212,
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-19 10:40:00+00:00,target,2.962301587301587,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-10-26 23:20:00+00:00,2022-10-27 13:50:00+00:00,target,2.9688524590163934,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.8967391304347805,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0335689045936394,
+pepperstone_oos,1H inversion window 30 candles,intraday 5m touch,US100,2023-09-18 14:45:00+00:00,2023-09-18 15:30:00+00:00,stop,-1.0380761523046094,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 19:00:00+00:00,target,2.9929130921298026,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.009313725490196078,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0041924095322152,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0072685539403212,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2023-09-18 13:00:00+00:00,2023-10-10 15:00:00+00:00,breakeven,-0.006101477199743067,
+pepperstone_oos,1H inversion window 30 candles,swing 1H touch,US100,2023-12-01 13:00:00+00:00,2023-12-11 15:00:00+00:00,stop,-1.0069469835466178,
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-08-12 00:05:00+00:00,2021-08-12 00:10:00+00:00,stop,-1.3392857142856922,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-09-10 18:00:00+00:00,2021-09-10 19:20:00+00:00,target,2.9347079037800694,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-12-31 01:20:00+00:00,2021-12-31 05:30:00+00:00,breakeven,-0.08189655172413536,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-19 10:40:00+00:00,target,2.962301587301587,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-10-26 23:20:00+00:00,2022-10-27 13:50:00+00:00,target,2.9688524590163934,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.8967391304347805,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,FVG into sweep OFF,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0335689045936394,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2021-08-11 17:00:00+00:00,2021-08-20 13:00:00+00:00,breakeven,-0.012607830126078391,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2021-09-10 16:00:00+00:00,2021-09-20 07:00:00+00:00,target,2.985051140833989,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2021-12-30 21:00:00+00:00,2022-01-05 20:00:00+00:00,target,2.991219963031423,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-03-01 14:00:00+00:00,2022-03-14 17:00:00+00:00,stop,-1.0016583747927033,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-06-07 13:00:00+00:00,2022-06-14 19:00:00+00:00,target,2.9955534753100865,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 19:00:00+00:00,target,2.9929130921298026,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.009313725490196078,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0041924095322152,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0072685539403212,
+pepperstone_oos,FVG into sweep OFF,swing 1H touch,US100,2023-09-26 12:00:00+00:00,2023-09-26 13:00:00+00:00,stop,-1.0211581291759464,
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-08-11 05:00:00+00:00,2021-08-16 17:00:00+00:00,breakeven,-0.01500789889415499,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-09-10 04:00:00+00:00,2021-09-20 02:00:00+00:00,target,2.9839797639123105,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-09-13 13:00:00+00:00,2021-09-13 14:00:00+00:00,stop,-1.0161427357689041,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-12-30 15:00:00+00:00,2022-01-04 11:00:00+00:00,breakeven,-0.019709543568465177,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-02-28 19:00:00+00:00,2022-03-14 17:00:00+00:00,stop,-1.0018678725914274,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-06-06 17:00:00+00:00,2022-06-12 22:00:00+00:00,target,2.9935919055649243,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-08-17 13:00:00+00:00,2022-08-22 14:00:00+00:00,target,2.990170719089498,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-09-29 07:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0069546120058563,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-05-02 17:00:00+00:00,2023-05-05 14:00:00+00:00,breakeven,-0.013139695712309786,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-05-23 13:00:00+00:00,2023-05-24 22:00:00+00:00,breakeven,-0.01693404634581094,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-09-26 00:00:00+00:00,2023-09-26 13:00:00+00:00,stop,-1.0182516810758886,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-12-06 11:00:00+00:00,2023-12-13 20:00:00+00:00,target,2.991445294912202,long
+pepperstone_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-12-29 08:00:00+00:00,2023-12-29 16:00:00+00:00,target,2.954869358669832,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.038,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2021-12-13 09:20:00+00:00,2021-12-13 14:25:00+00:00,stop,-1.0391752577319602,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.9801255230125525,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-01-03 15:00:00+00:00,2022-01-03 19:40:00+00:00,stop,-1.0142109199700822,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-07-27 12:50:00+00:00,2022-07-27 12:50:00+00:00,stop,-1.8260869565220006,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-08-18 06:45:00+00:00,2022-08-18 09:05:00+00:00,stop,-1.0435779816513757,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-10-04 20:10:00+00:00,2022-10-05 00:50:00+00:00,stop,-1.0265734265734268,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-10-31 16:55:00+00:00,2022-11-01 05:25:00+00:00,stop,-1.0328719723183395,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-11-01 02:40:00+00:00,2022-11-01 04:30:00+00:00,stop,-1.0979381443298988,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-11-18 05:40:00+00:00,2022-11-18 07:10:00+00:00,breakeven,-0.07116104868914148,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-12-07 07:20:00+00:00,2022-12-07 08:50:00+00:00,breakeven,-0.09793814432989874,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.972423802612482,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2023-02-07 09:05:00+00:00,2023-02-07 09:10:00+00:00,stop,-1.1005291005290927,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2023-05-04 11:15:00+00:00,2023-05-04 12:35:00+00:00,breakeven,-0.05722891566264934,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2023-09-18 14:45:00+00:00,2023-09-18 15:30:00+00:00,stop,-1.0380761523046094,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9921617161716174,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.003915104059344726,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-12-13 07:00:00+00:00,2021-12-20 08:00:00+00:00,stop,-1.00229912875121,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9932504440497403,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004218472468916522,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-01-03 14:00:00+00:00,2022-01-06 04:00:00+00:00,target,2.9923878205128207,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-07-27 07:00:00+00:00,2022-07-28 17:00:00+00:00,stop,-1.0045184304399524,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0089962121212122,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-08-18 06:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.993391304347826,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-10-04 19:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0026027397260273,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-10-26 13:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.00851636037651276,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-10-31 15:00:00+00:00,2022-11-03 13:00:00+00:00,target,2.991887275832622,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-11-01 02:00:00+00:00,2022-11-02 20:00:00+00:00,stop,-1.0033693917361233,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-11-17 20:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.0046580044128461,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-12-07 07:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0033904354032832,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-12-14 19:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.0041877892880757,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 13:00:00+00:00,target,2.9920965058236275,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-02-07 05:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.004671748217359224,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-05-04 10:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0077614379084967,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-06-19 09:00:00+00:00,2023-06-30 12:00:00+00:00,breakeven,-0.00988039521580867,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-09-18 13:00:00+00:00,2023-10-10 15:00:00+00:00,breakeven,-0.006101477199743067,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-12-01 13:00:00+00:00,2023-12-11 15:00:00+00:00,stop,-1.0069469835466178,
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.013552068473609,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-06-08 22:00:00+00:00,2021-06-10 13:00:00+00:00,stop,-1.0195876288659795,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.0107587768969422,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-20 16:00:00+00:00,breakeven,-0.007593924860111888,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-11-22 23:00:00+00:00,2021-11-29 17:00:00+00:00,breakeven,-0.005264616237184794,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.003598484848485,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9929915160457465,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.004686729156388756,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-02-04 14:00:00+00:00,2022-03-22 14:00:00+00:00,breakeven,-0.0025780189959294436,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-02-25 14:00:00+00:00,2022-03-14 17:00:00+00:00,stop,-1.0020438898450947,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.993172835070068,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-07-26 22:00:00+00:00,2022-07-28 17:00:00+00:00,stop,-1.003821399839099,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0111962286387743,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.9922764227642276,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0094105993065874,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-09-29 02:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.005305780508238,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0031493452676943,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.007890365448504947,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-10-28 13:00:00+00:00,2022-11-10 13:00:00+00:00,breakeven,-0.0040016849199662925,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-11-08 18:00:00+00:00,2022-12-19 14:00:00+00:00,breakeven,-0.0034439006706543478,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-11-17 16:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.0043698252069917,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0034074605451937,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-12-13 17:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.0051955154498222,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.993240839558876,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.006629448709002,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-02-06 14:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.004670599803343153,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-02-16 13:00:00+00:00,2023-02-21 08:00:00+00:00,stop,-1.0045717035611164,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.009161041465766651,long
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 17:00:00+00:00,stop,-1.0097736625514404,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-05-24 13:00:00+00:00,2023-05-25 13:00:00+00:00,stop,-1.0062997347480105,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 11:00:00+00:00,stop,-1.0077551020408164,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-09-15 13:00:00+00:00,2023-09-18 11:00:00+00:00,target,2.979074889867842,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-11-10 03:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0090692124105012,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-11-30 12:00:00+00:00,2023-12-07 19:00:00+00:00,breakeven,-0.014383043149129407,short
+pepperstone_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,-0.019430051813462353,short

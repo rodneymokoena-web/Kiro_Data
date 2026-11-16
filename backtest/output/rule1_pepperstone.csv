@@ -1,0 +1,91 @@
+source,variant,strategy,entry,symbol,trades,W,L,BE,PF,R,account,maxDD%
+pepperstone,OLD  D 2/2 all swings,intraday,5m touch,US100,13,5,5,3,2.75,9.5,10970,2.1
+pepperstone,OLD  D 2/2 all swings,intraday,5m touch,XAUUSD,12,2,4,6,1.4,1.72,10163,4.2
+pepperstone,OLD  D 2/2 all swings,intraday,5m touch,ALL,25,7,9,9,2.16,11.22,11148,4.2
+pepperstone,OLD  D 2/2 all swings,intraday,5m ce,US100,13,6,4,3,3.93,13.34,11395,2.2
+pepperstone,OLD  D 2/2 all swings,intraday,5m ce,XAUUSD,12,2,4,6,1.4,1.71,10161,4.2
+pepperstone,OLD  D 2/2 all swings,intraday,5m ce,ALL,25,8,8,9,2.71,15.05,11579,4.2
+pepperstone,OLD  D 2/2 all swings,swing 4H-extreme stop,1H touch,US100,17,5,7,5,2.12,7.92,10797,2.0
+pepperstone,OLD  D 2/2 all swings,swing 4H-extreme stop,1H touch,XAUUSD,15,4,8,3,1.49,3.96,10381,3.0
+pepperstone,OLD  D 2/2 all swings,swing 4H-extreme stop,1H touch,ALL,32,9,15,8,1.79,11.88,11209,4.9
+pepperstone,OLD  D 2/2 all swings,swing 4H-extreme stop,1H CE,US100,17,5,7,5,2.12,7.92,10796,2.0
+pepperstone,OLD  D 2/2 all swings,swing 4H-extreme stop,1H CE,XAUUSD,15,4,8,3,1.49,3.96,10381,3.0
+pepperstone,OLD  D 2/2 all swings,swing 4H-extreme stop,1H CE,ALL,32,9,15,8,1.79,11.88,11208,4.0
+pepperstone,OLD  D 2/2 all swings,swing prev-4H-candle stop,1H touch,US100,17,2,10,5,0.58,-4.26,9570,7.1
+pepperstone,OLD  D 2/2 all swings,swing prev-4H-candle stop,1H touch,XAUUSD,15,3,6,6,1.47,2.86,10273,2.0
+pepperstone,OLD  D 2/2 all swings,swing prev-4H-candle stop,1H touch,ALL,32,5,16,11,0.91,-1.4,9831,5.0
+pepperstone,OLD  D 2/2 all swings,swing prev-4H-candle stop,1H CE,US100,17,3,11,3,0.79,-2.32,9753,5.9
+pepperstone,OLD  D 2/2 all swings,swing prev-4H-candle stop,1H CE,XAUUSD,15,2,7,6,0.84,-1.17,9871,3.0
+pepperstone,OLD  D 2/2 all swings,swing prev-4H-candle stop,1H CE,ALL,32,5,18,9,0.81,-3.49,9627,8.0
+pepperstone,D 1/1 all swings,intraday,5m touch,US100,17,7,7,3,2.81,13.45,11400,2.1
+pepperstone,D 1/1 all swings,intraday,5m touch,XAUUSD,18,2,9,7,0.63,-3.45,9647,9.0
+pepperstone,D 1/1 all swings,intraday,5m touch,ALL,35,9,16,10,1.59,10.0,10998,5.4
+pepperstone,D 1/1 all swings,intraday,5m ce,US100,17,8,6,3,3.63,17.29,11842,2.2
+pepperstone,D 1/1 all swings,intraday,5m ce,XAUUSD,18,2,9,7,0.63,-3.49,9644,9.1
+pepperstone,D 1/1 all swings,intraday,5m ce,ALL,35,10,15,10,1.86,13.8,11421,5.3
+pepperstone,D 1/1 all swings,swing 4H-extreme stop,1H touch,US100,28,7,13,8,1.6,7.89,10781,4.9
+pepperstone,D 1/1 all swings,swing 4H-extreme stop,1H touch,XAUUSD,23,7,12,4,1.74,8.94,10895,3.0
+pepperstone,D 1/1 all swings,swing 4H-extreme stop,1H touch,ALL,51,14,25,12,1.67,16.83,11745,5.9
+pepperstone,D 1/1 all swings,swing 4H-extreme stop,1H CE,US100,27,7,12,8,1.74,8.89,10889,4.0
+pepperstone,D 1/1 all swings,swing 4H-extreme stop,1H CE,XAUUSD,23,7,11,5,1.9,9.94,11004,3.0
+pepperstone,D 1/1 all swings,swing 4H-extreme stop,1H CE,ALL,50,14,23,13,1.81,18.83,11983,5.0
+pepperstone,D 1/1 all swings,swing prev-4H-candle stop,1H touch,US100,28,5,15,8,0.97,-0.42,9928,7.9
+pepperstone,D 1/1 all swings,swing prev-4H-candle stop,1H touch,XAUUSD,23,4,11,8,1.07,0.78,10055,4.0
+pepperstone,D 1/1 all swings,swing prev-4H-candle stop,1H touch,ALL,51,9,26,16,1.01,0.35,9983,8.1
+pepperstone,D 1/1 all swings,swing prev-4H-candle stop,1H CE,US100,27,4,15,8,0.77,-3.58,9624,8.1
+pepperstone,D 1/1 all swings,swing prev-4H-candle stop,1H CE,XAUUSD,23,3,12,8,0.73,-3.32,9655,6.1
+pepperstone,D 1/1 all swings,swing prev-4H-candle stop,1H CE,ALL,50,7,27,16,0.75,-6.9,9292,12.8
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,intraday,5m touch,US100,6,3,2,1,4.12,6.77,10685,1.1
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,intraday,5m touch,XAUUSD,3,0,3,0,0.0,-3.05,9698,3.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,intraday,5m touch,ALL,9,3,5,1,1.71,3.72,10362,3.1
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,intraday,5m ce,US100,6,3,1,2,6.98,7.65,10780,1.1
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,intraday,5m ce,XAUUSD,3,0,3,0,0.0,-3.06,9697,3.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,intraday,5m ce,ALL,9,3,4,2,2.06,4.59,10454,3.1
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing 4H-extreme stop,1H touch,US100,7,4,2,1,5.96,9.97,11028,2.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing 4H-extreme stop,1H touch,XAUUSD,5,2,3,0,1.99,2.99,10292,2.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing 4H-extreme stop,1H touch,ALL,12,6,5,1,3.58,12.96,11351,4.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing 4H-extreme stop,1H CE,US100,7,4,1,2,11.83,10.97,11140,1.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing 4H-extreme stop,1H CE,XAUUSD,5,2,3,0,1.99,2.98,10292,2.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing 4H-extreme stop,1H CE,ALL,12,6,4,2,4.47,13.96,11465,3.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing prev-4H-candle stop,1H touch,US100,7,1,3,3,0.95,-0.15,9979,3.1
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing prev-4H-candle stop,1H touch,XAUUSD,5,1,2,2,1.47,0.96,10091,1.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing prev-4H-candle stop,1H touch,ALL,12,2,5,5,1.16,0.81,10070,3.1
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing prev-4H-candle stop,1H CE,US100,7,2,3,2,1.84,2.73,10266,3.2
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing prev-4H-candle stop,1H CE,XAUUSD,5,1,2,2,1.47,0.95,10090,1.0
+pepperstone,D 1/1 equal H/L tol 0.1 ATR,swing prev-4H-candle stop,1H CE,ALL,12,3,5,4,1.7,3.68,10358,4.2
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,intraday,5m touch,US100,7,4,2,1,5.5,9.76,11005,1.1
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,intraday,5m touch,XAUUSD,4,0,3,1,0.0,-3.07,9696,3.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,intraday,5m touch,ALL,11,4,5,2,2.28,6.69,10670,3.1
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,intraday,5m ce,US100,7,4,1,2,9.31,10.64,11102,1.1
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,intraday,5m ce,XAUUSD,4,0,3,1,0.0,-3.07,9696,3.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,intraday,5m ce,ALL,11,4,4,3,2.74,7.56,10765,3.1
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing 4H-extreme stop,1H touch,US100,9,5,2,2,7.44,12.97,11359,2.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing 4H-extreme stop,1H touch,XAUUSD,6,2,3,1,1.99,2.98,10292,2.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing 4H-extreme stop,1H touch,ALL,15,7,5,3,4.17,15.95,11690,4.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing 4H-extreme stop,1H CE,US100,8,5,1,2,14.79,13.97,11473,1.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing 4H-extreme stop,1H CE,XAUUSD,6,2,3,1,1.99,2.98,10292,2.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing 4H-extreme stop,1H CE,ALL,14,7,4,3,5.21,16.95,11808,3.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing prev-4H-candle stop,1H touch,US100,9,2,4,3,1.44,1.81,10172,4.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing prev-4H-candle stop,1H touch,XAUUSD,6,1,3,2,0.98,-0.05,9989,2.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing prev-4H-candle stop,1H touch,ALL,15,3,7,5,1.24,1.76,10160,4.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing prev-4H-candle stop,1H CE,US100,8,2,4,2,1.41,1.72,10162,4.1
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing prev-4H-candle stop,1H CE,XAUUSD,6,1,3,2,0.98,-0.06,9988,2.0
+pepperstone,NEW  D 1/1 equal H/L tol 0.2 ATR,swing prev-4H-candle stop,1H CE,ALL,14,3,7,4,1.23,1.65,10150,5.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,intraday,5m touch,US100,7,4,2,1,5.5,9.76,11005,1.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,intraday,5m touch,XAUUSD,7,0,4,3,0.0,-4.18,9588,4.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,intraday,5m touch,ALL,14,4,6,4,1.88,5.58,10552,3.2
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,intraday,5m ce,US100,7,4,1,2,9.31,10.64,11102,1.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,intraday,5m ce,XAUUSD,7,0,4,3,0.0,-4.19,9588,4.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,intraday,5m ce,ALL,14,4,5,5,2.18,6.45,10644,3.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing 4H-extreme stop,1H touch,US100,10,5,3,2,4.97,11.97,11245,2.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing 4H-extreme stop,1H touch,XAUUSD,10,4,5,1,2.39,6.97,10700,3.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing 4H-extreme stop,1H touch,ALL,20,9,8,3,3.36,18.94,12032,4.9
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing 4H-extreme stop,1H CE,US100,9,5,2,2,7.43,12.97,11358,1.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing 4H-extreme stop,1H CE,XAUUSD,10,4,5,1,2.39,6.97,10700,3.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing 4H-extreme stop,1H CE,ALL,19,9,7,3,3.83,19.94,12154,4.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing prev-4H-candle stop,1H touch,US100,10,2,5,3,1.16,0.8,10069,5.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing prev-4H-candle stop,1H touch,XAUUSD,10,1,6,3,0.49,-3.1,9687,4.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing prev-4H-candle stop,1H touch,ALL,20,3,11,6,0.8,-2.3,9755,6.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing prev-4H-candle stop,1H CE,US100,9,2,5,2,1.14,0.71,10060,5.1
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing prev-4H-candle stop,1H CE,XAUUSD,10,1,6,3,0.49,-3.12,9686,4.0
+pepperstone,D 1/1 equal H/L tol 0.3 ATR,swing prev-4H-candle stop,1H CE,ALL,19,3,11,5,0.79,-2.41,9744,7.0

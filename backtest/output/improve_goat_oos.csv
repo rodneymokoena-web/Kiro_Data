@@ -1,0 +1,415 @@
+source,variant,model,symbol,entry_time,exit_time,exit,r_net,signal
+goat_oos,BASE (current rules),intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0194931773879146,
+goat_oos,BASE (current rules),intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,BASE (current rules),intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-18 19:15:00+00:00,stop,-1.019685039370079,
+goat_oos,BASE (current rules),intraday 5m touch,US100,2022-10-27 03:00:00+00:00,2022-10-27 05:35:00+00:00,stop,-1.0378787878787885,
+goat_oos,BASE (current rules),intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.9465240641711197,
+goat_oos,BASE (current rules),intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,BASE (current rules),intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0176991150442478,
+goat_oos,BASE (current rules),swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,BASE (current rules),swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,BASE (current rules),swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,BASE (current rules),swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,BASE (current rules),swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,BASE (current rules),swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996531390912244,
+goat_oos,BASE (current rules),swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004894762604013679,
+goat_oos,BASE (current rules),swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0021978021978022,
+goat_oos,BASE (current rules),swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,BASE (current rules),swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0038051750380517,
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,BASE (current rules),swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0194931773879146,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-02-07 14:20:00+00:00,2022-02-07 14:40:00+00:00,stop,-1.021413276231264,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-18 19:15:00+00:00,stop,-1.019685039370079,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-10-27 03:00:00+00:00,2022-10-27 05:35:00+00:00,stop,-1.0378787878787885,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.9465240641711197,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0176991150442478,
+goat_oos,4H inversion window 30 candles,intraday 5m touch,US100,2023-12-08 14:50:00+00:00,2023-12-08 17:15:00+00:00,breakeven,-0.009191176470588296,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-02-07 10:00:00+00:00,2022-03-22 15:00:00+00:00,breakeven,-0.001663339986693283,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996531390912244,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004894762604013679,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0021978021978022,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-12-14 19:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.002200704225352,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0038051750380517,
+goat_oos,4H inversion window 30 candles,swing 1H touch,US100,2023-12-08 10:00:00+00:00,2023-12-28 00:00:00+00:00,target,2.9968040907638223,
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-02-04 14:00:00+00:00,2022-03-22 14:00:00+00:00,breakeven,-0.001358695652173913,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-07-26 22:00:00+00:00,2022-07-28 15:00:00+00:00,stop,-1.0020563438206869,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-28 13:00:00+00:00,2022-11-10 13:00:00+00:00,breakeven,-0.0020846362309776914,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-11-08 18:00:00+00:00,2022-12-19 14:00:00+00:00,breakeven,-0.0017972681524083345,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-11-17 16:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.002269117313365,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-13 17:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.0027307482250136,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-02-16 13:00:00+00:00,2023-02-21 08:00:00+00:00,stop,-1.00238379022646,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-24 13:00:00+00:00,2023-05-25 15:00:00+00:00,stop,-1.0032840722495895,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-12-07 18:00:00+00:00,2023-12-28 08:00:00+00:00,target,2.9968583097706567,long
+goat_oos,4H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0194931773879146,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-08-18 06:45:00+00:00,2022-08-18 09:05:00+00:00,stop,-1.0229885057471264,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-10-04 20:10:00+00:00,2022-10-05 00:50:00+00:00,stop,-1.0139664804469273,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-12-07 07:20:00+00:00,2022-12-07 08:50:00+00:00,breakeven,-0.05128205128205128,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2023-02-07 09:05:00+00:00,2023-02-07 09:10:00+00:00,stop,-1.0526315789473684,
+goat_oos,displacement >= 0.5 ATR,intraday 5m touch,US100,2023-05-04 11:15:00+00:00,2023-05-04 12:35:00+00:00,breakeven,-0.029498525073745046,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-09-08 00:00:00+00:00,2021-09-08 11:00:00+00:00,breakeven,-0.026109660574413027,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-08-18 06:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996486296556571,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-10-04 19:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0013663068725236,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-10-26 13:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004438526409232113,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-12-07 07:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017809439002672,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2023-01-26 10:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0116144018583042,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2023-02-07 05:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.002458814851241697,
+goat_oos,displacement >= 0.5 ATR,swing 1H touch,US100,2023-05-04 10:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0040683482506103,
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-02-25 14:00:00+00:00,2022-03-14 19:00:00+00:00,stop,-1.0010771219302026,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-02-06 14:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.002466091245376079,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,displacement >= 0.5 ATR,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-07-21 08:40:00+00:00,2021-07-21 11:05:00+00:00,stop,-1.0257731958762892,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-09-08 16:20:00+00:00,2021-09-09 13:35:00+00:00,stop,-1.0154559505409582,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0229885057471264,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-18 19:15:00+00:00,stop,-1.019685039370079,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-10-26 18:50:00+00:00,2022-10-27 19:05:00+00:00,target,2.987995198079232,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.9465240641711197,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0176991150442478,
+goat_oos,displacement >= 1 candle,intraday 5m touch,US100,2023-10-02 17:30:00+00:00,2023-10-02 18:00:00+00:00,breakeven,-0.04115226337448683,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2021-07-21 07:00:00+00:00,2021-08-19 08:00:00+00:00,breakeven,-0.0036049026676279786,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2021-09-08 14:00:00+00:00,2021-09-09 13:00:00+00:00,breakeven,-0.014224751066856478,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2022-04-21 15:00:00+00:00,2022-04-22 16:00:00+00:00,target,2.995019920318725,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996531390912244,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004894762604013679,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0021978021978022,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0038051750380517,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2023-10-02 17:00:00+00:00,2023-10-19 20:00:00+00:00,breakeven,-0.003276539973787672,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2023-11-30 09:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006493506493506494,
+goat_oos,displacement >= 1 candle,swing 1H touch,US100,2023-12-21 18:00:00+00:00,2023-12-26 15:00:00+00:00,stop,-1.004450378282154,
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-07-20 20:00:00+00:00,2021-08-30 13:00:00+00:00,target,2.9960348929421095,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-07-27 19:00:00+00:00,2021-08-05 14:00:00+00:00,stop,-1.0046948356807512,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-04-21 05:00:00+00:00,2022-04-22 14:00:00+00:00,target,2.9942429476108234,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-09-01 23:00:00+00:00,2022-09-06 14:00:00+00:00,stop,-1.003831417624521,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-04-06 15:00:00+00:00,2023-04-27 14:00:00+00:00,breakeven,-0.0044563279857397576,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-06-08 14:00:00+00:00,2023-06-12 17:00:00+00:00,stop,-1.0042122999157541,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-09-28 17:00:00+00:00,2023-10-20 14:00:00+00:00,breakeven,-0.004033884630899562,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-10-23 17:00:00+00:00,2023-10-25 17:00:00+00:00,stop,-1.0035223670306446,long
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-12-21 07:00:00+00:00,2023-12-26 15:00:00+00:00,stop,-1.0044762757385854,short
+goat_oos,displacement >= 1 candle,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2021-09-10 00:00:00+00:00,2021-09-10 07:20:00+00:00,stop,-1.026881720430107,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0194931773879146,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-18 19:15:00+00:00,stop,-1.019685039370079,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-10-27 03:00:00+00:00,2022-10-27 05:35:00+00:00,stop,-1.0378787878787885,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-11-01 07:20:00+00:00,2022-11-01 07:25:00+00:00,stop,-1.0448430493273557,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.9465240641711197,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,4H IFVG retest window 72h,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0176991150442478,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-09-09 18:00:00+00:00,2021-09-20 02:00:00+00:00,target,2.991701244813278,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996531390912244,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004894762604013679,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-11-01 07:00:00+00:00,2022-11-02 20:00:00+00:00,stop,-1.001641766540798,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0021978021978022,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,4H IFVG retest window 72h,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0038051750380517,
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,4H IFVG retest window 72h,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0194931773879146,
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-18 19:15:00+00:00,stop,-1.019685039370079,
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-10-27 03:00:00+00:00,2022-10-27 05:35:00+00:00,stop,-1.0378787878787885,
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.9465240641711197,
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,1H inversion window 30 candles,intraday 5m touch,US100,2023-05-04 13:50:00+00:00,2023-05-04 15:05:00+00:00,stop,-1.0176991150442478,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996531390912244,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004894762604013679,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0021978021978022,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2023-05-04 12:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0038051750380517,
+goat_oos,1H inversion window 30 candles,swing 1H touch,US100,2023-12-01 13:00:00+00:00,2023-12-11 15:00:00+00:00,stop,-1.0035486160397444,
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,1H inversion window 30 candles,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-06-03 01:25:00+00:00,2021-06-03 05:20:00+00:00,breakeven,-0.08196721311474921,
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-08-12 00:05:00+00:00,2021-08-12 00:10:00+00:00,stop,-1.1724137931034158,
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2021-12-31 01:20:00+00:00,2021-12-31 05:30:00+00:00,breakeven,-0.0425531914893617,
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-08-18 17:05:00+00:00,2022-08-18 19:15:00+00:00,stop,-1.019685039370079,
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-10-27 03:00:00+00:00,2022-10-27 05:35:00+00:00,stop,-1.0378787878787885,
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-12-09 13:20:00+00:00,2022-12-09 13:30:00+00:00,target,2.9465240641711197,
+goat_oos,FVG into sweep OFF,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2021-06-02 19:00:00+00:00,2021-06-04 13:00:00+00:00,breakeven,-0.007751937984496124,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2021-08-11 17:00:00+00:00,2021-08-20 13:00:00+00:00,breakeven,-0.006596306068601568,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2021-12-30 23:00:00+00:00,2022-01-05 20:00:00+00:00,target,2.99535747446611,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-03-01 14:00:00+00:00,2022-03-14 19:00:00+00:00,stop,-1.0008740494712,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-06-07 13:00:00+00:00,2022-06-14 14:00:00+00:00,target,2.9976453967506473,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-08-18 14:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996531390912244,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-10-26 18:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004894762604013679,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-12-09 10:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0021978021978022,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,FVG into sweep OFF,swing 1H touch,US100,2023-09-26 12:00:00+00:00,2023-09-26 13:00:00+00:00,stop,-1.0108695652173914,
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-06-02 00:00:00+00:00,2021-06-04 13:00:00+00:00,breakeven,-0.008326394671107386,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-08-11 02:00:00+00:00,2021-08-16 17:00:00+00:00,breakeven,-0.007751937984496124,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2021-12-29 07:00:00+00:00,2021-12-30 15:00:00+00:00,breakeven,-0.010416666666666666,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-02-28 19:00:00+00:00,2022-03-14 19:00:00+00:00,stop,-1.0009872642906505,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-06-06 17:00:00+00:00,2022-06-12 22:00:00+00:00,target,2.9966124661246614,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-08-17 13:00:00+00:00,2022-08-22 14:00:00+00:00,target,2.994747899159664,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-09-29 07:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0036469730123998,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-03-16 13:00:00+00:00,2023-05-18 15:00:00+00:00,target,2.9981259370314843,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-05-02 17:00:00+00:00,2023-05-05 14:00:00+00:00,breakeven,-0.006715916722632656,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-05-23 13:00:00+00:00,2023-05-24 22:00:00+00:00,breakeven,-0.008904719501335766,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-05-31 13:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0047778308647874,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-09-26 00:00:00+00:00,2023-09-26 13:00:00+00:00,stop,-1.0093896713615023,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-12-06 11:00:00+00:00,2023-12-13 23:00:00+00:00,target,2.995547640249332,long
+goat_oos,FVG into sweep OFF,swing 4H IFVG touch (no 1H step),US100,2023-12-29 08:00:00+00:00,2023-12-29 15:00:00+00:00,target,2.972972972972973,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2021-11-24 11:15:00+00:00,2021-11-24 11:45:00+00:00,stop,-1.0194931773879146,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2021-12-13 09:20:00+00:00,2021-12-13 14:25:00+00:00,stop,-1.0206185567010309,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2021-12-22 14:50:00+00:00,2021-12-23 15:55:00+00:00,target,2.989429175475687,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-01-03 15:00:00+00:00,2022-01-03 19:40:00+00:00,stop,-1.0074349442379182,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-07-27 12:50:00+00:00,2022-07-27 12:50:00+00:00,stop,-1.4761904761903937,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-08-18 06:45:00+00:00,2022-08-18 09:05:00+00:00,stop,-1.0229885057471264,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-10-04 20:10:00+00:00,2022-10-05 00:50:00+00:00,stop,-1.0139664804469273,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-10-31 16:55:00+00:00,2022-11-01 05:25:00+00:00,stop,-1.0172711571675297,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-11-01 02:40:00+00:00,2022-11-01 04:30:00+00:00,stop,-1.0515463917525782,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-11-18 06:15:00+00:00,2022-11-18 08:45:00+00:00,breakeven,-0.039062499999999445,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-12-07 07:20:00+00:00,2022-12-07 08:50:00+00:00,breakeven,-0.05128205128205128,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2022-12-30 15:55:00+00:00,2023-01-02 23:00:00+00:00,target,2.9863945578231292,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2023-02-07 09:05:00+00:00,2023-02-07 09:10:00+00:00,stop,-1.0526315789473684,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2023-05-04 11:15:00+00:00,2023-05-04 12:35:00+00:00,breakeven,-0.029498525073745046,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,intraday 5m touch,US100,2023-12-08 14:50:00+00:00,2023-12-08 17:15:00+00:00,breakeven,-0.009191176470588296,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-08-20 13:00:00+00:00,2021-09-01 13:00:00+00:00,target,2.9958915365653245,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-09-08 00:00:00+00:00,2021-09-08 11:00:00+00:00,breakeven,-0.026109660574413027,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-11-24 10:00:00+00:00,2021-12-07 15:00:00+00:00,breakeven,-0.002066542674106214,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-12-13 07:00:00+00:00,2021-12-20 07:00:00+00:00,stop,-1.001208167210342,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-12-21 17:00:00+00:00,2021-12-28 09:00:00+00:00,target,2.9964936886395512,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2021-12-22 13:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.002219263204616066,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-01-03 14:00:00+00:00,2022-01-06 03:00:00+00:00,target,2.995925020374898,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-07-27 07:00:00+00:00,2022-07-28 15:00:00+00:00,stop,-1.0024497795198433,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-08-12 12:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.0047348484848486,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-08-18 06:00:00+00:00,2022-08-26 20:00:00+00:00,target,2.996486296556571,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-10-04 19:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0013663068725236,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-10-26 13:00:00+00:00,2022-10-28 16:00:00+00:00,breakeven,-0.004438526409232113,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-10-31 15:00:00+00:00,2022-11-03 13:00:00+00:00,target,2.995719178082192,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-11-01 02:00:00+00:00,2022-11-02 20:00:00+00:00,stop,-1.0017445917655268,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-11-17 20:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.0024195499637067,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-12-07 07:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017809439002672,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-12-14 19:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.002200704225352,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2022-12-30 11:00:00+00:00,2023-01-18 02:00:00+00:00,target,2.9957859249894647,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-01-26 10:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0116144018583042,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-02-07 05:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.002458814851241697,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-05-04 10:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0040683482506103,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-12-01 13:00:00+00:00,2023-12-11 15:00:00+00:00,stop,-1.0035486160397444,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 1H touch,US100,2023-12-08 10:00:00+00:00,2023-12-28 00:00:00+00:00,target,2.9968040907638223,
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-04-15 07:00:00+00:00,2021-04-15 19:00:00+00:00,stop,-1.0070921985815602,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-06-17 13:00:00+00:00,2021-06-17 15:00:00+00:00,stop,-1.005608524957936,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-08-19 17:00:00+00:00,2021-09-06 07:00:00+00:00,target,2.995990376904571,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-09-07 13:00:00+00:00,2021-09-07 15:00:00+00:00,breakeven,-0.019646365422397,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-11-23 06:00:00+00:00,2021-12-07 18:00:00+00:00,breakeven,-0.0023320895522388,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-12-16 18:00:00+00:00,2021-12-27 15:00:00+00:00,stop,-1.0018828845791754,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-12-21 08:00:00+00:00,2021-12-28 08:00:00+00:00,target,2.9963369963369964,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2021-12-22 08:00:00+00:00,2022-01-05 19:00:00+00:00,breakeven,-0.0024408103490358756,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-02-04 14:00:00+00:00,2022-03-22 14:00:00+00:00,breakeven,-0.001358695652173913,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-02-25 14:00:00+00:00,2022-03-14 19:00:00+00:00,stop,-1.0010771219302026,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-03-31 17:00:00+00:00,2022-04-11 08:00:00+00:00,target,2.996415770609319,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-07-26 22:00:00+00:00,2022-07-28 15:00:00+00:00,stop,-1.0020563438206869,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-08-12 08:00:00+00:00,2022-08-12 19:00:00+00:00,stop,-1.005941770647653,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-08-17 17:00:00+00:00,2022-08-26 17:00:00+00:00,target,2.995920032639739,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-09-29 12:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0049188391539596,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-09-29 05:00:00+00:00,2022-09-29 17:00:00+00:00,stop,-1.0028344671201814,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-10-04 13:00:00+00:00,2022-10-10 17:00:00+00:00,stop,-1.0016553550736633,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-10-26 02:00:00+00:00,2022-10-28 15:00:00+00:00,breakeven,-0.00416146483562212,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-10-28 13:00:00+00:00,2022-11-10 13:00:00+00:00,breakeven,-0.0020846362309776914,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-11-08 18:00:00+00:00,2022-12-19 14:00:00+00:00,breakeven,-0.0017972681524083345,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-11-17 16:00:00+00:00,2022-12-01 13:00:00+00:00,stop,-1.002269117313365,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-12-06 23:00:00+00:00,2022-12-13 13:00:00+00:00,stop,-1.0017927572606669,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-12-13 17:00:00+00:00,2022-12-15 15:00:00+00:00,stop,-1.0027307482250136,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2022-12-29 18:00:00+00:00,2023-01-23 15:00:00+00:00,target,2.9964438122332857,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-01-25 14:00:00+00:00,2023-01-26 13:00:00+00:00,stop,-1.0034686090877558,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-02-06 14:00:00+00:00,2023-03-16 15:00:00+00:00,breakeven,-0.002466091245376079,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-02-16 13:00:00+00:00,2023-02-21 08:00:00+00:00,stop,-1.00238379022646,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-03-02 23:00:00+00:00,2023-03-09 20:00:00+00:00,breakeven,-0.0048053820278712075,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-05-02 22:00:00+00:00,2023-05-08 18:00:00+00:00,stop,-1.0050607287449393,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-05-24 13:00:00+00:00,2023-05-25 15:00:00+00:00,stop,-1.0032840722495895,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-05-31 17:00:00+00:00,2023-06-02 13:00:00+00:00,stop,-1.0039856516540455,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-11-10 04:00:00+00:00,2023-11-10 17:00:00+00:00,stop,-1.0048828125,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-11-30 05:00:00+00:00,2023-12-07 17:00:00+00:00,breakeven,-0.006578947368421052,short
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-12-07 18:00:00+00:00,2023-12-28 08:00:00+00:00,target,2.9968583097706567,long
+goat_oos,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,swing 4H IFVG touch (no 1H step),US100,2023-12-29 18:00:00+00:00,2023-12-29 21:00:00+00:00,open,0.06033287101246217,short

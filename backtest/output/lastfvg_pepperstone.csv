@@ -1,0 +1,43 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-01-22 18:00:00+00:00,breakeven,-0.0019808014627456867,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.0044023027429732,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-03-06 09:00:00+00:00,stop,-1.0021790144150184,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885,29,18
+pepperstone,"OLD first inverted FVG, formed into sweep",swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132,29,18
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2025-03-27 12:35:00+00:00,target,2.967336683417085,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2025-04-11 17:00:00+00:00,target,2.9925544100801833,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2026-01-30 15:35:00+00:00,target,2.9901515151515152,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2026-09-15 20:25:00+00:00,target,2.97923322683706,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),intraday 5m touch,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2024-02-29 09:00:00+00:00,stop,-1.0050761421319798,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2025-03-27 08:00:00+00:00,target,2.997010807082088,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2025-04-11 07:00:00+00:00,target,2.999387023764617,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2025-10-23 13:00:00+00:00,stop,-1.0041908446163765,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-01-12 14:00:00+00:00,stop,-1.011453744493392,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-01-15 23:00:00+00:00,breakeven,-0.004402302742973204,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-01-30 08:00:00+00:00,target,2.997862896597074,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-02-04 12:00:00+00:00,stop,-1.0044023027429732,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-04-02 08:00:00+00:00,target,2.9985484591335414,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-09-15 14:00:00+00:00,stop,-1.0056082830025885,22,14
+pepperstone,NEW last FVG of the leg (swing low -> sweep),swing 1H touch,2026-10-27 10:00:00+00:00,breakeven,-0.0026710499280871132,22,14

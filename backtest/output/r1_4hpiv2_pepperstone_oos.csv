@@ -1,0 +1,22 @@
+source,variant,model,entry_time,exit,r_net
+pepperstone_oos,4H(8)/D/W/M,intraday,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,4H(8)/D/W/M,intraday,2021-12-01 00:15:00+00:00,target,2.9658273381294964
+pepperstone_oos,4H(8)/D/W/M,intraday,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-10-20 18:00:00+00:00,breakeven,-0.022093023255813953
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-11-29 15:30:00+00:00,target,2.8698630136986174
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,4H(8)/D/W/M,intraday,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,4H(8)/D/W/M,intraday,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394
+pepperstone_oos,4H(12)/D/W/M,intraday,2021-11-24 11:15:00+00:00,stop,-1.038
+pepperstone_oos,4H(12)/D/W/M,intraday,2021-12-22 14:50:00+00:00,target,2.9801255230125525
+pepperstone_oos,4H(12)/D/W/M,intraday,2022-08-18 17:05:00+00:00,target,2.962301587301587
+pepperstone_oos,4H(12)/D/W/M,intraday,2022-08-25 18:45:00+00:00,target,2.9364548494983267
+pepperstone_oos,4H(12)/D/W/M,intraday,2022-10-26 23:20:00+00:00,target,2.9688524590163934
+pepperstone_oos,4H(12)/D/W/M,intraday,2022-11-17 18:55:00+00:00,target,2.902061855670101
+pepperstone_oos,4H(12)/D/W/M,intraday,2022-12-09 13:20:00+00:00,target,2.8967391304347805
+pepperstone_oos,4H(12)/D/W/M,intraday,2022-12-30 15:55:00+00:00,target,2.972423802612482
+pepperstone_oos,4H(12)/D/W/M,intraday,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394

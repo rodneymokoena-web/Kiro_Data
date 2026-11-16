@@ -1,0 +1,64 @@
+source,variant,entry_time,exit,r_net,risk_pts
+pepperstone_oos,current: 5m MSS FVG touch,2021-11-24 11:15:00+00:00,stop,-1.038,50.0
+pepperstone_oos,current: 5m MSS FVG touch,2021-12-01 00:15:00+00:00,target,2.9658273381294964,55.600000000000364
+pepperstone_oos,current: 5m MSS FVG touch,2021-12-22 14:50:00+00:00,target,2.9801255230125525,95.60000000000036
+pepperstone_oos,current: 5m MSS FVG touch,2022-08-18 17:05:00+00:00,target,2.962301587301587,50.399999999999636
+pepperstone_oos,current: 5m MSS FVG touch,2022-08-25 18:45:00+00:00,target,2.9364548494983267,29.899999999999636
+pepperstone_oos,current: 5m MSS FVG touch,2022-10-26 23:20:00+00:00,target,2.9688524590163934,61.0
+pepperstone_oos,current: 5m MSS FVG touch,2022-11-17 18:55:00+00:00,target,2.902061855670101,19.399999999999636
+pepperstone_oos,current: 5m MSS FVG touch,2022-11-29 15:30:00+00:00,target,2.8698630136986174,14.599999999998545
+pepperstone_oos,current: 5m MSS FVG touch,2022-12-09 13:20:00+00:00,target,2.8967391304347805,18.399999999999636
+pepperstone_oos,current: 5m MSS FVG touch,2022-12-30 15:55:00+00:00,target,2.972423802612482,68.89999999999964
+pepperstone_oos,current: 5m MSS FVG touch,2023-05-04 13:50:00+00:00,stop,-1.0335689045936394,56.600000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2021-08-20 13:00:00+00:00,target,2.9666080843585245,56.900000000001455
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2021-11-24 10:15:00+00:00,breakeven,-0.05604719764011859,33.899999999999636
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2021-11-30 15:20:00+00:00,stop,-1.0255720053835804,74.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2021-12-06 11:15:00+00:00,stop,-1.0308441558441557,61.600000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2021-12-21 17:05:00+00:00,target,2.9839391377852915,118.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2021-12-22 13:20:00+00:00,stop,-1.0605095541401282,31.399999999999636
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-05-04 17:00:00+00:00,stop,-1.0122818358112478,154.6999999999989
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-05-10 13:45:00+00:00,target,2.8972972972972975,18.5
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-08-12 12:00:00+00:00,breakeven,-0.2602739726027008,7.300000000001091
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-08-18 14:15:00+00:00,stop,-1.0425055928411626,44.70000000000073
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-08-25 15:10:00+00:00,stop,-1.2435897435897663,7.799999999999272
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-10-26 18:00:00+00:00,target,2.932142857142857,28.0
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-11-17 17:55:00+00:00,breakeven,-0.09452736318407788,20.100000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-11-29 14:00:00+00:00,target,2.9434523809523814,33.600000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-12-09 10:00:00+00:00,stop,-1.068592057761731,27.700000000000728
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2022-12-30 11:05:00+00:00,stop,-1.1428571428571508,13.299999999999272
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2023-02-14 08:05:00+00:00,stop,-1.1292517006802656,14.700000000000728
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS before",2023-05-04 12:00:00+00:00,breakeven,-0.12582781456953337,15.100000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2021-11-24 10:15:00+00:00,breakeven,-0.05604719764011859,33.899999999999636
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2021-11-30 15:20:00+00:00,stop,-1.0255720053835804,74.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2021-12-06 11:15:00+00:00,stop,-1.0308441558441557,61.600000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2021-12-21 17:05:00+00:00,target,2.9839391377852915,118.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2021-12-22 13:20:00+00:00,stop,-1.0605095541401282,31.399999999999636
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-05-04 17:05:00+00:00,stop,-1.0122818358112478,154.6999999999989
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-05-10 13:45:00+00:00,target,2.8972972972972975,18.5
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-08-12 15:50:00+00:00,stop,-1.0637583892617464,29.799999999999272
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-08-18 16:45:00+00:00,target,2.9791666666666665,91.19999999999891
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-08-25 17:20:00+00:00,breakeven,-0.039337474120083406,48.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-10-26 20:05:00+00:00,target,2.862318840579703,13.799999999999272
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-11-17 17:55:00+00:00,breakeven,-0.09452736318407788,20.100000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-12-09 13:15:00+00:00,target,2.912442396313367,21.700000000000728
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2022-12-30 13:55:00+00:00,target,2.973239436619718,71.0
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2023-02-14 09:10:00+00:00,target,2.8914285714285715,17.5
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS after",2023-05-04 12:35:00+00:00,breakeven,-0.12418300653593885,15.300000000001091
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2021-08-20 13:00:00+00:00,target,2.9666080843585245,56.900000000001455
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2021-11-24 10:15:00+00:00,breakeven,-0.05604719764011859,33.899999999999636
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2021-11-30 15:20:00+00:00,stop,-1.0255720053835804,74.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2021-12-06 11:15:00+00:00,stop,-1.0308441558441557,61.600000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2021-12-21 17:05:00+00:00,target,2.9839391377852915,118.29999999999927
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2021-12-22 13:20:00+00:00,stop,-1.0605095541401282,31.399999999999636
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-05-04 17:00:00+00:00,stop,-1.0122818358112478,154.6999999999989
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-05-10 13:45:00+00:00,target,2.8972972972972975,18.5
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-08-12 12:00:00+00:00,breakeven,-0.2602739726027008,7.300000000001091
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-08-18 14:15:00+00:00,stop,-1.0425055928411626,44.70000000000073
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-08-25 15:10:00+00:00,stop,-1.2435897435897663,7.799999999999272
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-10-26 18:00:00+00:00,target,2.932142857142857,28.0
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-11-17 17:55:00+00:00,breakeven,-0.09452736318407788,20.100000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-11-29 14:00:00+00:00,target,2.9434523809523814,33.600000000000364
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-12-09 10:00:00+00:00,stop,-1.068592057761731,27.700000000000728
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2022-12-30 11:05:00+00:00,stop,-1.1428571428571508,13.299999999999272
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2023-02-14 08:05:00+00:00,stop,-1.1292517006802656,14.700000000000728
+pepperstone_oos,"new: 1H IFVG touch, 5m MSS none",2023-05-04 12:00:00+00:00,breakeven,-0.12582781456953337,15.100000000000364

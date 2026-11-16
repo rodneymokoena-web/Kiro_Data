@@ -1,0 +1,49 @@
+model,variant,broker,trades,per_yr,PF,R,maxDD,account,unseen_R,neg_years
+intraday 5m touch,1H inversion window 30 candles,GFT,19,3.4,2.75,13.3,2.2,11379,4.8,2
+intraday 5m touch,1H inversion window 30 candles,Pep,19,3.4,4.1,20.2,3.2,12185,11.7,2
+intraday 5m touch,4H IFVG retest window 72h,GFT,21,3.8,2.18,11.3,3.1,11154,2.8,2
+intraday 5m touch,4H IFVG retest window 72h,Pep,18,3.2,4.11,20.2,2.1,12187,11.6,2
+intraday 5m touch,4H inversion window 30 candles,GFT,20,3.6,3.2,16.4,3.0,11733,3.8,1
+intraday 5m touch,4H inversion window 30 candles,Pep,21,3.8,3.9,22.1,3.2,12409,11.6,2
+intraday 5m touch,BASE (current rules),GFT,17,3.0,3.25,14.4,2.2,11514,4.8,1
+intraday 5m touch,BASE (current rules),Pep,17,3.0,4.93,21.3,2.1,12321,12.7,2
+intraday 5m touch,FVG into sweep OFF,GFT,18,3.2,2.67,11.2,3.3,11147,2.6,1
+intraday 5m touch,FVG into sweep OFF,Pep,22,3.9,3.33,20.7,2.1,12246,11.2,1
+intraday 5m touch,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,GFT,33,5.9,1.73,11.3,7.8,11139,-3.8,3
+intraday 5m touch,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,Pep,30,5.4,1.8,11.9,7.3,11209,-5.5,2
+intraday 5m touch,displacement >= 0.5 ATR,GFT,20,3.6,3.15,14.2,2.3,11487,1.8,1
+intraday 5m touch,displacement >= 0.5 ATR,Pep,19,3.4,3.12,14.1,2.2,11481,1.6,1
+intraday 5m touch,displacement >= 1 candle,GFT,24,4.3,1.31,4.2,5.3,10398,6.8,4
+intraday 5m touch,displacement >= 1 candle,Pep,26,4.7,2.09,13.9,6.2,11437,14.5,3
+swing 1H touch,1H inversion window 30 candles,GFT,27,4.8,2.97,19.9,2.0,12141,8.0,1
+swing 1H touch,1H inversion window 30 candles,Pep,27,4.8,2.43,15.9,3.0,11666,7.9,2
+swing 1H touch,4H IFVG retest window 72h,GFT,28,5.0,3.27,22.9,2.0,12503,11.0,1
+swing 1H touch,4H IFVG retest window 72h,Pep,25,4.5,2.67,16.9,2.0,11785,7.9,2
+swing 1H touch,4H inversion window 30 candles,GFT,29,5.2,3.27,22.9,2.0,12504,11.0,1
+swing 1H touch,4H inversion window 30 candles,Pep,29,5.2,2.48,17.9,3.1,11896,6.9,2
+swing 1H touch,BASE (current rules),GFT,24,4.3,3.34,18.9,2.0,12028,9.0,1
+swing 1H touch,BASE (current rules),Pep,24,4.3,2.97,17.9,2.0,11905,8.9,2
+swing 1H touch,FVG into sweep OFF,GFT,27,4.8,2.97,19.9,2.0,12137,13.9,1
+swing 1H touch,FVG into sweep OFF,Pep,32,5.7,2.96,23.8,3.0,12612,15.9,2
+swing 1H touch,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,GFT,44,7.9,2.08,21.8,4.0,12349,9.9,1
+swing 1H touch,LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,Pep,40,7.2,1.98,17.8,5.0,11876,7.9,2
+swing 1H touch,displacement >= 0.5 ATR,GFT,29,5.2,2.16,12.9,4.9,11326,6.9,1
+swing 1H touch,displacement >= 0.5 ATR,Pep,26,4.7,2.38,13.9,4.0,11442,7.9,2
+swing 1H touch,displacement >= 1 candle,GFT,34,6.1,2.7,18.9,3.0,12014,10.9,2
+swing 1H touch,displacement >= 1 candle,Pep,35,6.3,2.12,15.8,4.0,11653,9.9,2
+swing 4H IFVG touch (no 1H step),1H inversion window 30 candles,GFT,47,8.4,1.49,9.8,5.0,10974,3.0,1
+swing 4H IFVG touch (no 1H step),1H inversion window 30 candles,Pep,47,8.4,1.48,9.7,4.1,10959,2.8,2
+swing 4H IFVG touch (no 1H step),4H IFVG retest window 72h,GFT,47,8.4,1.49,9.8,5.0,10974,3.0,1
+swing 4H IFVG touch (no 1H step),4H IFVG retest window 72h,Pep,47,8.4,1.48,9.7,4.1,10959,2.8,2
+swing 4H IFVG touch (no 1H step),4H inversion window 30 candles,GFT,60,10.8,1.6,15.8,8.8,11625,0.9,1
+swing 4H IFVG touch (no 1H step),4H inversion window 30 candles,Pep,59,10.6,1.48,12.7,8.0,11270,-2.2,2
+swing 4H IFVG touch (no 1H step),BASE (current rules),GFT,47,8.4,1.49,9.8,5.0,10974,3.0,1
+swing 4H IFVG touch (no 1H step),BASE (current rules),Pep,47,8.4,1.48,9.7,4.1,10959,2.8,2
+swing 4H IFVG touch (no 1H step),FVG into sweep OFF,GFT,58,10.4,1.43,11.7,9.7,11158,13.8,2
+swing 4H IFVG touch (no 1H step),FVG into sweep OFF,Pep,63,11.3,1.53,15.5,8.8,11583,12.6,1
+swing 4H IFVG touch (no 1H step),LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,GFT,63,11.3,1.65,17.8,8.8,11853,-0.1,2
+swing 4H IFVG touch (no 1H step),LOOSE: inv 30 + 0.5 ATR + retest 72h + 1H inv 30,Pep,63,11.3,1.48,13.6,8.0,11373,-4.3,3
+swing 4H IFVG touch (no 1H step),displacement >= 0.5 ATR,GFT,50,9.0,1.56,11.8,5.0,11189,1.9,1
+swing 4H IFVG touch (no 1H step),displacement >= 0.5 ATR,Pep,51,9.1,1.48,10.7,4.1,11060,0.8,2
+swing 4H IFVG touch (no 1H step),displacement >= 1 candle,GFT,60,10.8,1.32,8.8,9.6,10846,3.9,2
+swing 4H IFVG touch (no 1H step),displacement >= 1 candle,Pep,64,11.5,1.24,7.6,8.0,10710,2.7,2

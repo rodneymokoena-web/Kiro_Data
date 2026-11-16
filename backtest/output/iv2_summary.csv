@@ -1,0 +1,17 @@
+model,variant,broker,trades,W/L/BE,win%,PF,R,capital,maxDD%,R21-23,R24-26
+intraday,current: 5m MSS FVG touch,goat,26,13/8/5,50,4.48,30.02,13420,3.2,16.6,13.4
+intraday,"new: 1H IFVG touch, 5m MSS after",goat,35,7/17/11,20,1.13,2.31,10193,8.9,8.5,-6.2
+intraday,"new: 1H IFVG touch, 5m MSS before",goat,38,5/23/10,13,0.6,-9.86,9030,14.3,2.2,-12.1
+intraday,"new: 1H IFVG touch, 5m MSS none",goat,38,5/23/10,13,0.6,-9.86,9030,14.3,2.2,-12.1
+intraday,current: 5m MSS FVG touch,pepperstone,26,15/7/4,58,5.89,36.82,14353,3.2,24.4,12.4
+intraday,"new: 1H IFVG touch, 5m MSS after",pepperstone,36,10/16/10,28,1.7,12.11,11230,7.5,15.0,-2.9
+intraday,"new: 1H IFVG touch, 5m MSS before",pepperstone,39,6/24/9,15,0.71,-7.38,9253,14.3,4.4,-11.8
+intraday,"new: 1H IFVG touch, 5m MSS none",pepperstone,39,6/24/9,15,0.71,-7.38,9253,14.3,4.4,-11.8
+both (1% each),current: 5m MSS FVG touch,goat,101,46/27/28,46,2.52,42.35,15105,5.0,19.7,22.6
+both (1% each),"new: 1H IFVG touch, 5m MSS after",goat,110,40/36/34,36,1.39,14.64,11473,12.5,11.6,3.0
+both (1% each),"new: 1H IFVG touch, 5m MSS before",goat,113,38/42/33,34,1.06,2.47,10164,14.8,5.4,-2.9
+both (1% each),"new: 1H IFVG touch, 5m MSS none",goat,113,38/42/33,34,1.06,2.47,10164,14.8,5.4,-2.9
+both (1% each),current: 5m MSS FVG touch,pepperstone,109,55/28/26,50,2.83,52.78,16746,6.8,30.9,21.9
+both (1% each),"new: 1H IFVG touch, 5m MSS after",pepperstone,119,50/37/32,42,1.73,28.07,13103,11.1,21.5,6.6
+both (1% each),"new: 1H IFVG touch, 5m MSS before",pepperstone,122,46/45/31,38,1.18,8.58,10795,12.1,10.9,-2.3
+both (1% each),"new: 1H IFVG touch, 5m MSS none",pepperstone,122,46/45/31,38,1.18,8.58,10795,12.1,10.9,-2.3

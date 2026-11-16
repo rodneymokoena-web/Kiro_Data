@@ -1,0 +1,103 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,30,9
+goat_oos,"A current: 4H close, 4H disp + 4H CISD/MSS",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,30,9
+goat_oos,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",intraday 5m touch,2022-02-04 15:50:00+00:00,breakeven,-0.012836970474967967,9,3
+goat_oos,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,9,3
+goat_oos,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9964936886395512,9,3
+goat_oos,"Ha option: 1H wick+close, 1H disp + 4H CISD + 1H MSS",swing 1H touch,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806,9,3
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-08-25 18:45:00+00:00,target,2.9674267100977207,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-05-04 18:00:00+00:00,breakeven,-0.003246753246753247,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-08-25 15:00:00+00:00,stop,-1.004372540445999,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2023-02-14 08:00:00+00:00,stop,-1.0032981530343008,37,12
+goat_oos,"M1 4H close, 4H disp + 1H MSS (swing before extreme)",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,37,12
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-04-27 17:00:00+00:00,stop,-1.0066755674232308,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-08-25 18:45:00+00:00,target,2.9674267100977207,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-06-17 14:00:00+00:00,stop,-1.0090744101633395,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-04-27 14:00:00+00:00,breakeven,-0.0032851511169513835,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-05-04 18:00:00+00:00,breakeven,-0.003246753246753247,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-08-25 15:00:00+00:00,stop,-1.004372540445999,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2023-02-14 08:00:00+00:00,stop,-1.0032981530343008,42,14
+goat_oos,"M2 4H close, 4H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,42,14
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-02-04 15:50:00+00:00,breakeven,-0.012836970474967967,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-02-15 20:30:00+00:00,target,2.9706744868035195,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-06-08 11:20:00+00:00,stop,-1.0219298245614032,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9964936886395512,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-02-15 17:00:00+00:00,stop,-1.002001601281025,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-06-08 11:00:00+00:00,stop,-1.0036496350364963,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2023-02-14 08:00:00+00:00,stop,-1.0032981530343008,35,10
+goat_oos,"M3 1H close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,35,10
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-02-04 15:50:00+00:00,breakeven,-0.012836970474967967,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-02-15 20:30:00+00:00,target,2.9706744868035195,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-06-08 11:20:00+00:00,stop,-1.0219298245614032,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-06-17 14:00:00+00:00,stop,-1.0090744101633395,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-10-06 15:00:00+00:00,breakeven,-0.0037216226274655647,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9964936886395512,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-02-15 17:00:00+00:00,stop,-1.002001601281025,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-06-08 11:00:00+00:00,stop,-1.0036496350364963,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2023-02-14 08:00:00+00:00,stop,-1.0032981530343008,43,12
+goat_oos,"M4 1H close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,43,12
+goat_oos,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-02-04 15:50:00+00:00,breakeven,-0.012836970474967967,14,4
+goat_oos,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,14,4
+goat_oos,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,14,4
+goat_oos,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9964936886395512,14,4
+goat_oos,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806,14,4
+goat_oos,"M5 1H wick+close, 1H disp + 1H MSS (swing before extreme)",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,14,4
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-02-04 15:50:00+00:00,breakeven,-0.012836970474967967,19,5
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,19,5
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,19,5
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-10-06 15:00:00+00:00,breakeven,-0.0037216226274655647,19,5
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9964936886395512,19,5
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806,19,5
+goat_oos,"M6 1H wick+close, 1H disp + 1H MSS (latest swing, before/after sweep)",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,19,5

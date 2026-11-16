@@ -1,0 +1,17 @@
+entry,stop,target,symbol,trades,wins,losses,breakeven,open,win_rate_%,profit_factor,total_R,avg_R,avg_planned_RR,avg_hours_held,end_balance_1%,max_dd_%
+1H CE,1H swing,3R,XAUUSD,17,2,8,7,0,11.8,0.72,-2.28,-0.13,3.0,168.9,9762.32,4.03
+1H CE,1H swing,D/W liquidity,XAUUSD,16,2,8,6,0,12.5,0.73,-2.21,-0.14,5.86,61.0,9768.32,4.03
+1H CE,4H extreme,3R,XAUUSD,17,5,9,3,0,29.4,1.65,5.9,0.35,3.0,281.5,10579.51,3.95
+1H CE,4H extreme,D/W liquidity,XAUUSD,16,6,9,1,0,37.5,0.91,-0.85,-0.05,2.12,134.6,9905.38,4.11
+1H CE,prev 1H swing,3R,XAUUSD,17,2,8,7,0,11.8,0.72,-2.3,-0.14,3.0,168.7,9760.45,4.01
+1H CE,prev 1H swing,D/W liquidity,XAUUSD,16,2,8,6,0,12.5,0.75,-2.09,-0.13,6.17,60.8,9779.52,4.01
+1H CE,prev 4H candle,3R,XAUUSD,17,2,8,7,0,11.8,0.71,-2.39,-0.14,3.0,31.0,9751.58,4.07
+1H CE,prev 4H candle,D/W liquidity,XAUUSD,16,2,8,6,0,12.5,1.63,5.19,0.32,8.84,52.2,10478.11,4.07
+1H touch,1H swing,3R,XAUUSD,18,3,9,6,0,16.7,0.97,-0.27,-0.01,3.0,163.2,9955.53,4.99
+1H touch,1H swing,D/W liquidity,XAUUSD,17,2,9,6,0,11.8,0.57,-3.95,-0.23,5.7,65.4,9601.24,4.99
+1H touch,4H extreme,3R,XAUUSD,18,5,9,4,0,27.8,1.65,5.9,0.33,3.0,279.1,10579.37,3.95
+1H touch,4H extreme,D/W liquidity,XAUUSD,17,6,9,2,0,35.3,0.86,-1.24,-0.07,2.12,134.4,9866.9,4.23
+1H touch,prev 1H swing,3R,XAUUSD,18,4,9,5,0,22.2,1.29,2.72,0.15,3.0,163.3,10252.46,2.99
+1H touch,prev 1H swing,D/W liquidity,XAUUSD,17,2,9,6,0,11.8,0.58,-3.88,-0.23,5.96,66.9,9608.39,4.97
+1H touch,prev 4H candle,3R,XAUUSD,18,4,7,7,0,22.2,1.64,4.66,0.26,3.0,37.4,10454.81,2.11
+1H touch,prev 4H candle,D/W liquidity,XAUUSD,17,2,7,8,0,11.8,1.37,2.69,0.16,7.27,63.9,10243.59,3.08

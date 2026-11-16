@@ -1,0 +1,77 @@
+model,variant,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+intraday,+ 1H(10) at 4H FVG,goat,97,24,1.33,16.9,11693,9.8,15.5,1.4
+intraday,+ 1H(10) at 4H FVG,pepperstone,91,24,1.36,17.28,11746,11.5,14.6,2.7
+intraday,+ 1H(20) at 4H FVG,goat,59,27,1.67,19.16,12011,8.1,14.2,5.0
+intraday,+ 1H(20) at 4H FVG,pepperstone,55,35,2.22,30.9,13491,10.1,25.7,5.2
+intraday,+ 1H(5) at 4H FVG,goat,134,26,1.54,36.62,14157,9.3,28.1,8.6
+intraday,+ 1H(5) at 4H FVG,pepperstone,132,23,1.43,27.42,12939,11.7,14.5,13.0
+intraday,+ 4H(10) at D FVG,goat,40,32,2.17,20.85,12237,5.3,10.2,10.6
+intraday,+ 4H(10) at D FVG,pepperstone,43,42,3.2,36.61,14298,4.6,24.8,11.8
+intraday,+ 4H(2) at D FVG,goat,78,26,1.5,19.64,12041,6.8,10.6,9.1
+intraday,+ 4H(2) at D FVG,pepperstone,85,27,1.65,26.87,12927,7.3,14.6,12.3
+intraday,+ 4H(5) at D FVG,goat,48,29,1.81,18.69,11967,7.2,10.2,8.5
+intraday,+ 4H(5) at D FVG,pepperstone,53,34,2.14,28.33,13156,6.5,19.6,8.8
+intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,goat,104,22,1.17,9.97,10906,13.1,12.3,-2.4
+intraday,+ 4H(5) at D FVG + 1H(10) at 4H FVG,pepperstone,104,23,1.25,14.25,11379,9.9,13.2,1.1
+intraday,current,goat,26,50,4.48,30.02,13420,3.2,16.6,13.4
+intraday,current,pepperstone,26,58,5.89,36.82,14353,3.2,24.4,12.4
+swing,+ 1H(10) at 4H FVG,goat,155,43,1.08,4.17,10339,15.4,3.2,1.0
+swing,+ 1H(10) at 4H FVG,pepperstone,165,44,1.03,1.93,10112,16.6,2.2,-0.2
+swing,+ 1H(20) at 4H FVG,goat,109,43,1.22,7.62,10724,12.6,0.6,7.0
+swing,+ 1H(20) at 4H FVG,pepperstone,120,48,1.47,16.22,11680,11.1,8.7,7.5
+swing,+ 1H(5) at 4H FVG,goat,200,43,0.92,-6.24,9301,23.0,-4.0,-2.2
+swing,+ 1H(5) at 4H FVG,pepperstone,208,44,0.99,-0.56,9843,17.5,-3.5,2.9
+swing,+ 4H(10) at D FVG,goat,86,45,1.59,13.72,11408,5.9,3.5,10.2
+swing,+ 4H(10) at D FVG,pepperstone,99,46,1.44,12.98,11317,8.7,3.7,9.3
+swing,+ 4H(2) at D FVG,goat,132,44,1.4,15.51,11594,7.6,4.8,10.7
+swing,+ 4H(2) at D FVG,pepperstone,147,44,1.26,12.14,11202,13.7,5.1,7.0
+swing,+ 4H(5) at D FVG,goat,104,41,1.23,7.32,10695,10.2,-0.3,7.6
+swing,+ 4H(5) at D FVG,pepperstone,117,44,1.27,9.74,10951,11.9,2.3,7.5
+swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,goat,164,42,1.02,1.13,10027,18.2,-0.9,2.0
+swing,+ 4H(5) at D FVG + 1H(10) at 4H FVG,pepperstone,175,42,0.97,-2.12,9706,18.9,-2.8,0.7
+swing,current,goat,75,44,1.64,12.33,11255,6.4,3.1,9.2
+swing,current,pepperstone,83,48,1.75,15.96,11667,6.2,6.5,9.5
+both,S: + 1H(10) at 4H FVG | I: + 1H(10) at 4H FVG,goat,252,36,1.2,21.07,12090,19.4,18.7,2.3
+both,S: + 1H(10) at 4H FVG | I: + 1H(10) at 4H FVG,pepperstone,256,37,1.18,19.22,11877,22.7,16.8,2.4
+both,S: + 1H(10) at 4H FVG | I: current,goat,181,44,1.55,34.19,13876,7.9,19.8,14.4
+both,S: + 1H(10) at 4H FVG | I: current,pepperstone,191,46,1.6,38.75,14513,14.5,26.6,12.2
+both,S: + 1H(20) at 4H FVG | I: + 1H(20) at 4H FVG,goat,168,38,1.43,26.78,12881,15.9,14.8,12.0
+both,S: + 1H(20) at 4H FVG | I: + 1H(20) at 4H FVG,pepperstone,175,43,1.78,47.11,15758,15.9,34.5,12.7
+both,S: + 1H(20) at 4H FVG | I: current,goat,135,44,1.87,37.64,14392,8.3,17.2,20.4
+both,S: + 1H(20) at 4H FVG | I: current,pepperstone,146,49,2.26,53.04,16765,10.9,33.1,19.9
+both,S: + 1H(5) at 4H FVG | I: + 1H(5) at 4H FVG,goat,334,36,1.21,30.38,13168,18.0,24.0,6.4
+both,S: + 1H(5) at 4H FVG | I: + 1H(5) at 4H FVG,pepperstone,340,36,1.19,26.86,12736,22.6,11.0,15.9
+both,S: + 1H(5) at 4H FVG | I: current,goat,226,44,1.28,23.79,12482,15.2,12.6,11.2
+both,S: + 1H(5) at 4H FVG | I: current,pepperstone,234,45,1.43,36.26,14128,15.6,20.9,15.4
+both,S: + 4H(10) at D FVG | I: + 4H(10) at D FVG,goat,126,41,1.84,34.57,13960,7.0,13.7,20.8
+both,S: + 4H(10) at D FVG | I: + 4H(10) at D FVG,pepperstone,142,45,2.08,49.59,16180,7.4,28.5,21.1
+both,S: + 4H(10) at D FVG | I: current,goat,112,46,2.37,43.74,15309,5.3,20.1,23.6
+both,S: + 4H(10) at D FVG | I: current,pepperstone,125,49,2.35,49.79,16243,10.0,28.1,21.7
+both,S: + 4H(2) at D FVG | I: + 4H(2) at D FVG,goat,210,37,1.45,35.16,13960,8.8,15.4,19.7
+both,S: + 4H(2) at D FVG | I: + 4H(2) at D FVG,pepperstone,232,38,1.44,39.01,14480,15.5,19.7,19.4
+both,S: + 4H(2) at D FVG | I: current,goat,158,45,1.97,45.54,15559,6.2,21.5,24.1
+both,S: + 4H(2) at D FVG | I: current,pepperstone,173,46,1.9,48.96,16077,12.3,29.5,19.5
+both,S: + 4H(5) at D FVG | I: + 4H(5) at D FVG,goat,152,38,1.47,26.01,12799,12.2,9.9,16.1
+both,S: + 4H(5) at D FVG | I: + 4H(5) at D FVG,pepperstone,170,41,1.62,38.07,14407,11.0,21.8,16.2
+both,S: + 4H(5) at D FVG | I: current,goat,130,43,1.91,37.34,14353,7.5,16.4,21.0
+both,S: + 4H(5) at D FVG | I: current,pepperstone,143,46,2.05,46.56,15717,10.8,26.6,19.9
+both,S: + 4H(5) at D FVG + 1H(10) at 4H FVG | I: + 4H(5) at D FVG + 1H(10) at 4H FVG,goat,268,34,1.09,11.1,10935,24.9,11.5,-0.4
+both,S: + 4H(5) at D FVG + 1H(10) at 4H FVG | I: + 4H(5) at D FVG + 1H(10) at 4H FVG,pepperstone,279,35,1.1,12.13,11044,21.7,10.4,1.8
+both,S: + 4H(5) at D FVG + 1H(10) at 4H FVG | I: current,goat,190,43,1.46,31.16,13456,9.9,15.7,15.4
+both,S: + 4H(5) at D FVG + 1H(10) at 4H FVG | I: current,pepperstone,201,44,1.49,34.7,13930,16.3,21.6,13.1
+both,S: current | I: + 1H(10) at 4H FVG,goat,172,33,1.41,29.23,13161,12.7,18.6,10.6
+both,S: current | I: + 1H(10) at 4H FVG,pepperstone,174,36,1.48,33.24,13704,14.0,21.1,12.1
+both,S: current | I: + 1H(20) at 4H FVG,goat,134,37,1.66,31.49,13519,11.0,17.3,14.2
+both,S: current | I: + 1H(20) at 4H FVG,pepperstone,138,43,2.0,46.86,15741,12.6,32.2,14.6
+both,S: current | I: + 1H(5) at 4H FVG,goat,209,33,1.57,48.95,15935,10.9,31.2,17.8
+both,S: current | I: + 1H(5) at 4H FVG,pepperstone,215,33,1.51,43.38,15096,15.7,20.9,22.4
+both,S: current | I: + 4H(10) at D FVG,goat,115,40,1.9,33.18,13774,7.0,13.4,19.8
+both,S: current | I: + 4H(10) at D FVG,pepperstone,126,46,2.38,52.57,16682,5.3,31.3,21.3
+both,S: current | I: + 4H(2) at D FVG,goat,153,35,1.54,31.97,13552,7.5,13.7,18.3
+both,S: current | I: + 4H(2) at D FVG,pepperstone,168,38,1.69,42.83,15083,10.4,21.0,21.8
+both,S: current | I: + 4H(5) at D FVG,goat,123,38,1.74,31.01,13469,8.9,13.3,17.7
+both,S: current | I: + 4H(5) at D FVG,pepperstone,136,43,1.96,44.29,15350,8.1,26.1,18.2
+both,S: current | I: + 4H(5) at D FVG + 1H(10) at 4H FVG,goat,179,31,1.29,22.3,12275,15.9,15.5,6.8
+both,S: current | I: + 4H(5) at D FVG + 1H(10) at 4H FVG,pepperstone,187,34,1.39,30.21,13277,10.5,19.6,10.6
+both,S: current | I: current,goat,101,46,2.52,42.35,15105,5.0,19.7,22.6
+both,S: current | I: current,pepperstone,109,50,2.83,52.78,16746,6.8,30.9,21.9

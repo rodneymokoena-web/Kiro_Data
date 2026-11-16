@@ -1,0 +1,17 @@
+entry,stop,target,symbol,trades,wins,losses,breakeven,open,win_rate_%,profit_factor,total_R,avg_R,avg_planned_RR,avg_hours_held,end_balance_1%,max_dd_%
+1H CE,1H swing,3R,US100,8,3,2,3,0,37.5,4.38,6.91,0.86,3.0,44.6,10700.18,2.03
+1H CE,1H swing,D/W liquidity,US100,8,1,2,5,0,12.5,2.75,3.64,0.45,8.06,63.9,10353.15,2.07
+1H CE,4H extreme,3R,US100,8,5,1,2,0,62.5,14.79,13.97,1.75,3.0,754.5,11473.46,1.01
+1H CE,4H extreme,D/W liquidity,US100,8,5,1,2,0,62.5,11.51,10.65,1.33,2.57,349.9,11103.53,1.01
+1H CE,prev 1H swing,3R,US100,8,3,2,3,0,37.5,4.35,6.9,0.86,3.0,67.2,10699.13,1.02
+1H CE,prev 1H swing,D/W liquidity,US100,8,1,2,5,0,12.5,1.2,0.42,0.05,8.3,68.9,10037.79,1.08
+1H CE,prev 4H candle,3R,US100,8,2,4,2,0,25.0,1.41,1.72,0.21,3.0,28.6,10162.18,4.15
+1H CE,prev 4H candle,D/W liquidity,US100,8,0,4,4,0,0.0,0.0,-4.28,-0.54,26.76,41.8,9578.72,4.21
+1H touch,1H swing,3R,US100,9,3,3,3,0,33.3,2.92,5.9,0.66,3.0,39.0,10591.96,3.01
+1H touch,1H swing,D/W liquidity,US100,9,2,3,4,0,22.2,3.58,7.94,0.88,6.94,55.4,10792.95,3.01
+1H touch,4H extreme,3R,US100,9,5,2,2,0,55.6,7.44,12.97,1.44,3.0,696.2,11358.54,2.0
+1H touch,4H extreme,D/W liquidity,US100,9,6,2,1,0,66.7,5.96,9.98,1.11,2.24,311.3,11029.09,2.0
+1H touch,prev 1H swing,3R,US100,9,3,3,3,0,33.3,2.91,5.89,0.65,3.0,61.8,10591.02,2.01
+1H touch,prev 1H swing,D/W liquidity,US100,9,2,3,4,0,22.2,2.56,4.81,0.53,7.04,59.8,10472.72,2.01
+1H touch,prev 4H candle,3R,US100,9,2,4,3,0,22.2,1.44,1.81,0.2,3.0,25.2,10171.82,4.04
+1H touch,prev 4H candle,D/W liquidity,US100,9,1,4,4,0,11.1,1.81,3.36,0.37,13.98,35.7,10311.78,4.04

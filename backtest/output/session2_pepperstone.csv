@@ -1,0 +1,519 @@
+source,model,variant,entry_time,exit,r_net
+pepperstone,swing,baseline,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,baseline,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,baseline,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,baseline,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,baseline,2024-05-23 19:00:00+00:00,target,0.10704055480174618
+pepperstone,swing,baseline,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,baseline,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,baseline,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095
+pepperstone,swing,baseline,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,baseline,2024-08-06 08:00:00+00:00,target,0.7161937880344531
+pepperstone,swing,baseline,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,baseline,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,baseline,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,baseline,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,baseline,2024-11-20 14:00:00+00:00,stop,-1.0113636363636362
+pepperstone,swing,baseline,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,baseline,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,baseline,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,baseline,2025-03-19 13:00:00+00:00,stop,-1.005825677795205
+pepperstone,swing,baseline,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,baseline,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,baseline,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,baseline,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,baseline,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,baseline,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,baseline,2025-05-20 13:00:00+00:00,target,0.46429906542056076
+pepperstone,swing,baseline,2025-05-21 19:00:00+00:00,target,0.3359897991711881
+pepperstone,swing,baseline,2025-05-22 14:00:00+00:00,stop,-1.0058009817045963
+pepperstone,swing,baseline,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,baseline,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,baseline,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,baseline,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,baseline,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,baseline,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,baseline,2025-12-01 01:00:00+00:00,target,0.3543689320388322
+pepperstone,swing,baseline,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,baseline,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,baseline,2026-01-28 21:00:00+00:00,target,0.532810969637625
+pepperstone,swing,baseline,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,baseline,2026-01-29 16:00:00+00:00,target,0.23113207547169867
+pepperstone,swing,baseline,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,baseline,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,baseline,2026-03-05 20:00:00+00:00,target,0.7314449623520911
+pepperstone,swing,baseline,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,baseline,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,baseline,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,baseline,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,baseline,2026-05-21 18:00:00+00:00,target,0.43774757281553733
+pepperstone,swing,baseline,2026-06-17 20:00:00+00:00,stop,-1.0014284144599495
+pepperstone,swing,baseline,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,baseline,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,baseline,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,baseline,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,baseline,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,baseline,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457
+pepperstone,swing,baseline,2026-09-17 13:00:00+00:00,target,0.44842221812142075
+pepperstone,swing,baseline,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,baseline,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,baseline,2026-09-30 17:00:00+00:00,target,0.4972217243233541
+pepperstone,swing,baseline,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,baseline,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ session @ 1H swing,2024-01-09 13:00:00+00:00,target,0.16406112770068632
+pepperstone,swing,+ session @ 1H swing,2024-01-11 14:00:00+00:00,target,2.7962154294031936
+pepperstone,swing,+ session @ 1H swing,2024-01-16 17:00:00+00:00,target,0.42619542619546935
+pepperstone,swing,+ session @ 1H swing,2024-01-17 15:00:00+00:00,stop,-1.0047838086476542
+pepperstone,swing,+ session @ 1H swing,2024-01-22 16:00:00+00:00,stop,-1.0112359550561796
+pepperstone,swing,+ session @ 1H swing,2024-01-23 21:00:00+00:00,target,0.4111776447105759
+pepperstone,swing,+ session @ 1H swing,2024-01-25 19:00:00+00:00,target,1.2087500000000044
+pepperstone,swing,+ session @ 1H swing,2024-01-26 00:00:00+00:00,target,0.6740881099005072
+pepperstone,swing,+ session @ 1H swing,2024-01-30 15:00:00+00:00,stop,-1.0087014725568944
+pepperstone,swing,+ session @ 1H swing,2024-02-01 00:00:00+00:00,stop,-1.0153482880755607
+pepperstone,swing,+ session @ 1H swing,2024-02-05 16:00:00+00:00,stop,-1.0129611166500498
+pepperstone,swing,+ session @ 1H swing,2024-02-12 20:00:00+00:00,target,0.9147095179233672
+pepperstone,swing,+ session @ 1H swing,2024-02-13 13:00:00+00:00,target,0.17931966659158688
+pepperstone,swing,+ session @ 1H swing,2024-02-13 15:00:00+00:00,target,0.32929091168498126
+pepperstone,swing,+ session @ 1H swing,2024-02-14 21:00:00+00:00,target,0.407119476268428
+pepperstone,swing,+ session @ 1H swing,2024-02-15 15:00:00+00:00,stop,-1.013457556935818
+pepperstone,swing,+ session @ 1H swing,2024-02-16 13:00:00+00:00,stop,-1.0143487858719649
+pepperstone,swing,+ session @ 1H swing,2024-02-16 19:00:00+00:00,target,1.052074139452787
+pepperstone,swing,+ session @ 1H swing,2024-02-20 09:00:00+00:00,target,0.19999999999999998
+pepperstone,swing,+ session @ 1H swing,2024-02-26 23:00:00+00:00,stop,-1.0205859065716554
+pepperstone,swing,+ session @ 1H swing,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ session @ 1H swing,2024-02-29 15:00:00+00:00,target,0.18677390527257492
+pepperstone,swing,+ session @ 1H swing,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ session @ 1H swing,2024-03-06 14:00:00+00:00,target,0.3968120805369225
+pepperstone,swing,+ session @ 1H swing,2024-03-06 18:00:00+00:00,stop,-1.0554371002132266
+pepperstone,swing,+ session @ 1H swing,2024-03-07 21:00:00+00:00,target,0.10684750248097333
+pepperstone,swing,+ session @ 1H swing,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ session @ 1H swing,2024-03-13 00:00:00+00:00,stop,-1.005359719645434
+pepperstone,swing,+ session @ 1H swing,2024-03-14 14:00:00+00:00,target,0.5727616085314425
+pepperstone,swing,+ session @ 1H swing,2024-03-18 15:00:00+00:00,stop,-1.0049121481201586
+pepperstone,swing,+ session @ 1H swing,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ session @ 1H swing,2024-03-22 12:00:00+00:00,stop,-1.0167958656330747
+pepperstone,swing,+ session @ 1H swing,2024-03-22 18:00:00+00:00,stop,-1.0159705159705164
+pepperstone,swing,+ session @ 1H swing,2024-04-02 17:00:00+00:00,target,0.29587036069000106
+pepperstone,swing,+ session @ 1H swing,2024-04-04 00:00:00+00:00,target,0.37066342057213025
+pepperstone,swing,+ session @ 1H swing,2024-04-10 13:00:00+00:00,stop,-1.004765395894428
+pepperstone,swing,+ session @ 1H swing,2024-04-12 12:00:00+00:00,stop,-1.0065939639868122
+pepperstone,swing,+ session @ 1H swing,2024-04-12 08:00:00+00:00,stop,-1.0043383947939264
+pepperstone,swing,+ session @ 1H swing,2024-04-22 19:00:00+00:00,target,0.8459687123947102
+pepperstone,swing,+ session @ 1H swing,2024-04-24 20:00:00+00:00,target,0.5193178790301122
+pepperstone,swing,+ session @ 1H swing,2024-04-24 17:00:00+00:00,target,0.8623279098873919
+pepperstone,swing,+ session @ 1H swing,2024-04-25 14:00:00+00:00,stop,-1.0038022813688214
+pepperstone,swing,+ session @ 1H swing,2024-04-25 14:00:00+00:00,stop,-1.004148053605616
+pepperstone,swing,+ session @ 1H swing,2024-04-25 18:00:00+00:00,target,1.0432127759511334
+pepperstone,swing,+ session @ 1H swing,2024-05-01 19:00:00+00:00,target,0.7343971631205725
+pepperstone,swing,+ session @ 1H swing,2024-05-16 13:00:00+00:00,stop,-1.044673539518897
+pepperstone,swing,+ session @ 1H swing,2024-05-17 19:00:00+00:00,stop,-1.009279086366881
+pepperstone,swing,+ session @ 1H swing,2024-05-22 19:00:00+00:00,stop,-1.0315533980582545
+pepperstone,swing,+ session @ 1H swing,2024-05-23 19:00:00+00:00,target,0.10704055480174618
+pepperstone,swing,+ session @ 1H swing,2024-05-27 22:00:00+00:00,stop,-1.005703005044966
+pepperstone,swing,+ session @ 1H swing,2024-05-28 14:00:00+00:00,target,0.729198184568811
+pepperstone,swing,+ session @ 1H swing,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ session @ 1H swing,2024-06-04 19:00:00+00:00,target,0.2700389105058366
+pepperstone,swing,+ session @ 1H swing,2024-06-07 13:00:00+00:00,stop,-1.0095377842993398
+pepperstone,swing,+ session @ 1H swing,2024-06-11 15:00:00+00:00,target,0.20194647201948956
+pepperstone,swing,+ session @ 1H swing,2024-06-20 15:00:00+00:00,target,0.5382631126397408
+pepperstone,swing,+ session @ 1H swing,2024-06-25 14:00:00+00:00,stop,-1.0122352941176471
+pepperstone,swing,+ session @ 1H swing,2024-06-26 13:00:00+00:00,breakeven,-0.025242718446601944
+pepperstone,swing,+ session @ 1H swing,2024-06-28 17:00:00+00:00,target,4.346153846154143
+pepperstone,swing,+ session @ 1H swing,2024-07-01 09:00:00+00:00,target,0.4134146341463326
+pepperstone,swing,+ session @ 1H swing,2024-07-02 16:00:00+00:00,target,0.33386025924756824
+pepperstone,swing,+ session @ 1H swing,2024-07-02 19:00:00+00:00,target,0.3674349195821549
+pepperstone,swing,+ session @ 1H swing,2024-07-09 17:00:00+00:00,stop,-1.0145576707726764
+pepperstone,swing,+ session @ 1H swing,2024-07-11 16:00:00+00:00,target,0.25879108250977206
+pepperstone,swing,+ session @ 1H swing,2024-07-15 18:00:00+00:00,stop,-1.01409978308026
+pepperstone,swing,+ session @ 1H swing,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ session @ 1H swing,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095
+pepperstone,swing,+ session @ 1H swing,2024-07-31 02:00:00+00:00,stop,-1.0063015026660203
+pepperstone,swing,+ session @ 1H swing,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ session @ 1H swing,2024-08-01 08:00:00+00:00,stop,-1.0017362270450751
+pepperstone,swing,+ session @ 1H swing,2024-08-06 08:00:00+00:00,target,0.7161937880344531
+pepperstone,swing,+ session @ 1H swing,2024-08-06 19:00:00+00:00,stop,-1.0071369750205874
+pepperstone,swing,+ session @ 1H swing,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ session @ 1H swing,2024-08-08 12:00:00+00:00,stop,-1.0044604563389947
+pepperstone,swing,+ session @ 1H swing,2024-08-07 22:00:00+00:00,stop,-1.0022122011401344
+pepperstone,swing,+ session @ 1H swing,2024-08-13 13:00:00+00:00,target,6.170921198668075
+pepperstone,swing,+ session @ 1H swing,2024-08-14 14:00:00+00:00,stop,-1.0124521072796933
+pepperstone,swing,+ session @ 1H swing,2024-08-15 15:00:00+00:00,target,0.48635027299454303
+pepperstone,swing,+ session @ 1H swing,2024-08-22 18:00:00+00:00,target,0.3166203771378558
+pepperstone,swing,+ session @ 1H swing,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ session @ 1H swing,2024-08-28 18:00:00+00:00,stop,-1.004033509152963
+pepperstone,swing,+ session @ 1H swing,2024-08-29 14:00:00+00:00,target,0.20688797712296333
+pepperstone,swing,+ session @ 1H swing,2024-08-30 15:00:00+00:00,target,0.5044987146529446
+pepperstone,swing,+ session @ 1H swing,2024-09-11 19:00:00+00:00,target,0.5494239795192708
+pepperstone,swing,+ session @ 1H swing,2024-09-12 18:00:00+00:00,target,0.3141405588484374
+pepperstone,swing,+ session @ 1H swing,2024-09-16 15:00:00+00:00,stop,-1.008843537414966
+pepperstone,swing,+ session @ 1H swing,2024-09-17 17:00:00+00:00,target,0.19183445190155474
+pepperstone,swing,+ session @ 1H swing,2024-09-24 07:00:00+00:00,target,0.41791044776119196
+pepperstone,swing,+ session @ 1H swing,2024-09-26 22:00:00+00:00,breakeven,-0.011458792419568018
+pepperstone,swing,+ session @ 1H swing,2024-10-03 08:00:00+00:00,stop,-1.003579295154185
+pepperstone,swing,+ session @ 1H swing,2024-10-08 17:00:00+00:00,target,0.2783745913124578
+pepperstone,swing,+ session @ 1H swing,2024-10-11 16:00:00+00:00,target,0.381766381766415
+pepperstone,swing,+ session @ 1H swing,2024-10-21 11:00:00+00:00,stop,-1.0099350401222775
+pepperstone,swing,+ session @ 1H swing,2024-10-25 08:00:00+00:00,target,0.9580152671756125
+pepperstone,swing,+ session @ 1H swing,2024-10-29 15:00:00+00:00,target,0.6401360544217787
+pepperstone,swing,+ session @ 1H swing,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ session @ 1H swing,2024-11-01 14:00:00+00:00,target,2.3471698113207546
+pepperstone,swing,+ session @ 1H swing,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ session @ 1H swing,2024-11-18 19:00:00+00:00,target,1.2156862745097896
+pepperstone,swing,+ session @ 1H swing,2024-11-20 14:00:00+00:00,stop,-1.0113636363636362
+pepperstone,swing,+ session @ 1H swing,2024-11-20 15:00:00+00:00,stop,-1.0057880676758681
+pepperstone,swing,+ session @ 1H swing,2024-11-25 18:00:00+00:00,target,0.6787020109689202
+pepperstone,swing,+ session @ 1H swing,2024-11-25 18:00:00+00:00,target,0.3928064363464248
+pepperstone,swing,+ session @ 1H swing,2024-11-26 13:00:00+00:00,target,0.2789980732177264
+pepperstone,swing,+ session @ 1H swing,2024-11-29 01:00:00+00:00,stop,-1.0386904761904778
+pepperstone,swing,+ session @ 1H swing,2024-11-29 05:00:00+00:00,stop,-1.0299194476409685
+pepperstone,swing,+ session @ 1H swing,2024-12-09 16:00:00+00:00,target,0.48656457671193504
+pepperstone,swing,+ session @ 1H swing,2024-12-13 16:00:00+00:00,target,0.19715909090909092
+pepperstone,swing,+ session @ 1H swing,2025-01-02 20:00:00+00:00,stop,-1.0039382005452893
+pepperstone,swing,+ session @ 1H swing,2025-01-07 17:00:00+00:00,target,0.7764509858372566
+pepperstone,swing,+ session @ 1H swing,2025-01-09 08:00:00+00:00,target,0.3482093663911846
+pepperstone,swing,+ session @ 1H swing,2025-01-10 14:00:00+00:00,target,1.1066870852475597
+pepperstone,swing,+ session @ 1H swing,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ session @ 1H swing,2025-01-20 14:00:00+00:00,target,0.11673315137517842
+pepperstone,swing,+ session @ 1H swing,2025-01-21 01:00:00+00:00,stop,-1.0074413279908414
+pepperstone,swing,+ session @ 1H swing,2025-01-24 20:00:00+00:00,target,0.47949526813879256
+pepperstone,swing,+ session @ 1H swing,2025-01-30 16:00:00+00:00,stop,-1.0089102124742975
+pepperstone,swing,+ session @ 1H swing,2025-01-31 18:00:00+00:00,stop,-1.004661168877734
+pepperstone,swing,+ session @ 1H swing,2025-02-04 01:00:00+00:00,target,1.2969056603773628
+pepperstone,swing,+ session @ 1H swing,2025-02-11 16:00:00+00:00,stop,-1.0122468205369757
+pepperstone,swing,+ session @ 1H swing,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ session @ 1H swing,2025-02-18 21:00:00+00:00,stop,-1.027659574468085
+pepperstone,swing,+ session @ 1H swing,2025-02-20 19:00:00+00:00,stop,-1.0151162790697674
+pepperstone,swing,+ session @ 1H swing,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ session @ 1H swing,2025-03-03 19:00:00+00:00,target,1.0430321085733298
+pepperstone,swing,+ session @ 1H swing,2025-03-17 19:00:00+00:00,stop,-1.0081735303363724
+pepperstone,swing,+ session @ 1H swing,2025-03-18 14:00:00+00:00,stop,-1.0039555758405598
+pepperstone,swing,+ session @ 1H swing,2025-03-19 13:00:00+00:00,stop,-1.005825677795205
+pepperstone,swing,+ session @ 1H swing,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ session @ 1H swing,2025-03-28 10:00:00+00:00,breakeven,-0.05427974947808593
+pepperstone,swing,+ session @ 1H swing,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ session @ 1H swing,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ session @ 1H swing,2025-04-11 17:00:00+00:00,target,0.580477223427335
+pepperstone,swing,+ session @ 1H swing,2025-04-14 16:00:00+00:00,target,1.5227909345556592
+pepperstone,swing,+ session @ 1H swing,2025-04-22 15:00:00+00:00,target,0.33425176511106863
+pepperstone,swing,+ session @ 1H swing,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ session @ 1H swing,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ session @ 1H swing,2025-05-06 03:00:00+00:00,breakeven,-0.006955591225254228
+pepperstone,swing,+ session @ 1H swing,2025-05-06 19:00:00+00:00,target,0.44582524271845225
+pepperstone,swing,+ session @ 1H swing,2025-05-07 05:00:00+00:00,stop,-1.007564736688973
+pepperstone,swing,+ session @ 1H swing,2025-05-07 14:00:00+00:00,target,6.796915167094861
+pepperstone,swing,+ session @ 1H swing,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ session @ 1H swing,2025-05-15 19:00:00+00:00,target,0.2610188895248863
+pepperstone,swing,+ session @ 1H swing,2025-05-20 13:00:00+00:00,target,0.46429906542056076
+pepperstone,swing,+ session @ 1H swing,2025-05-21 17:00:00+00:00,stop,-1.0072483969891275
+pepperstone,swing,+ session @ 1H swing,2025-05-21 19:00:00+00:00,target,0.3359897991711881
+pepperstone,swing,+ session @ 1H swing,2025-05-22 14:00:00+00:00,stop,-1.0058009817045963
+pepperstone,swing,+ session @ 1H swing,2025-05-23 17:00:00+00:00,stop,-1.005129216808049
+pepperstone,swing,+ session @ 1H swing,2025-05-29 14:00:00+00:00,target,0.670115967885811
+pepperstone,swing,+ session @ 1H swing,2025-05-30 18:00:00+00:00,stop,-1.0023072144822078
+pepperstone,swing,+ session @ 1H swing,2025-06-03 17:00:00+00:00,target,0.2031249999999973
+pepperstone,swing,+ session @ 1H swing,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ session @ 1H swing,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ session @ 1H swing,2025-06-12 15:00:00+00:00,stop,-1.0095098756400878
+pepperstone,swing,+ session @ 1H swing,2025-06-16 22:00:00+00:00,stop,-1.00645001240387
+pepperstone,swing,+ session @ 1H swing,2025-06-18 01:00:00+00:00,breakeven,-0.014145810663765298
+pepperstone,swing,+ session @ 1H swing,2025-06-27 19:00:00+00:00,stop,-1.0165605095541401
+pepperstone,swing,+ session @ 1H swing,2025-06-30 14:00:00+00:00,stop,-1.0185714285714285
+pepperstone,swing,+ session @ 1H swing,2025-07-02 14:00:00+00:00,stop,-1.0113487560017465
+pepperstone,swing,+ session @ 1H swing,2025-07-09 14:00:00+00:00,target,0.510897435897436
+pepperstone,swing,+ session @ 1H swing,2025-07-17 11:00:00+00:00,breakeven,-0.024597918637654415
+pepperstone,swing,+ session @ 1H swing,2025-07-30 19:00:00+00:00,stop,-1.0089779005524864
+pepperstone,swing,+ session @ 1H swing,2025-07-31 15:00:00+00:00,target,0.39573311022799307
+pepperstone,swing,+ session @ 1H swing,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ session @ 1H swing,2025-08-06 14:00:00+00:00,stop,-1.0171165240289661
+pepperstone,swing,+ session @ 1H swing,2025-08-06 00:00:00+00:00,stop,-1.0047384727537816
+pepperstone,swing,+ session @ 1H swing,2025-08-12 13:00:00+00:00,target,1.6800554016620128
+pepperstone,swing,+ session @ 1H swing,2025-08-13 23:00:00+00:00,target,0.7696850393701185
+pepperstone,swing,+ session @ 1H swing,2025-08-15 14:00:00+00:00,target,1.0916580844490138
+pepperstone,swing,+ session @ 1H swing,2025-08-27 14:00:00+00:00,stop,-1.0236363636363637
+pepperstone,swing,+ session @ 1H swing,2025-09-02 13:00:00+00:00,target,0.8219346888478285
+pepperstone,swing,+ session @ 1H swing,2025-09-05 14:00:00+00:00,target,0.13280000000000147
+pepperstone,swing,+ session @ 1H swing,2025-09-17 17:00:00+00:00,target,0.3573157315731573
+pepperstone,swing,+ session @ 1H swing,2025-09-18 00:00:00+00:00,target,0.30824008138350534
+pepperstone,swing,+ session @ 1H swing,2025-09-23 19:00:00+00:00,target,0.20410256410255284
+pepperstone,swing,+ session @ 1H swing,2025-09-24 17:00:00+00:00,target,0.38609583660644675
+pepperstone,swing,+ session @ 1H swing,2025-09-29 13:00:00+00:00,target,0.15401703072936573
+pepperstone,swing,+ session @ 1H swing,2025-10-01 09:00:00+00:00,stop,-1.0096118299445471
+pepperstone,swing,+ session @ 1H swing,2025-10-02 15:00:00+00:00,stop,-1.010492332526231
+pepperstone,swing,+ session @ 1H swing,2025-10-03 13:00:00+00:00,breakeven,-0.022165387894288974
+pepperstone,swing,+ session @ 1H swing,2025-10-14 16:00:00+00:00,target,1.0139616055846552
+pepperstone,swing,+ session @ 1H swing,2025-10-16 20:00:00+00:00,target,0.45618295891520744
+pepperstone,swing,+ session @ 1H swing,2025-10-20 14:00:00+00:00,target,0.6701916721744556
+pepperstone,swing,+ session @ 1H swing,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ session @ 1H swing,2025-10-23 17:00:00+00:00,target,0.48976497346475334
+pepperstone,swing,+ session @ 1H swing,2025-10-29 19:00:00+00:00,stop,-1.0096510764662212
+pepperstone,swing,+ session @ 1H swing,2025-10-30 13:00:00+00:00,target,0.8566838046272279
+pepperstone,swing,+ session @ 1H swing,2025-10-30 15:00:00+00:00,target,0.22268441486412233
+pepperstone,swing,+ session @ 1H swing,2025-10-30 20:00:00+00:00,target,0.10004990019960462
+pepperstone,swing,+ session @ 1H swing,2025-10-31 14:00:00+00:00,breakeven,-0.010180109631949825
+pepperstone,swing,+ session @ 1H swing,2025-11-05 05:00:00+00:00,target,0.29107783168107776
+pepperstone,swing,+ session @ 1H swing,2025-11-05 15:00:00+00:00,breakeven,-0.007782101167315209
+pepperstone,swing,+ session @ 1H swing,2025-11-06 17:00:00+00:00,target,0.7415022691488437
+pepperstone,swing,+ session @ 1H swing,2025-11-10 23:00:00+00:00,target,0.10102089903255032
+pepperstone,swing,+ session @ 1H swing,2025-11-11 19:00:00+00:00,target,0.9621212121211763
+pepperstone,swing,+ session @ 1H swing,2025-11-13 15:00:00+00:00,target,2.5390662602278034
+pepperstone,swing,+ session @ 1H swing,2025-11-19 15:00:00+00:00,target,0.2629767708632084
+pepperstone,swing,+ session @ 1H swing,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ session @ 1H swing,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ session @ 1H swing,2025-12-01 01:00:00+00:00,target,0.3543689320388322
+pepperstone,swing,+ session @ 1H swing,2025-12-01 15:00:00+00:00,stop,-1.0272536687631022
+pepperstone,swing,+ session @ 1H swing,2025-12-01 08:00:00+00:00,target,0.09166092350102235
+pepperstone,swing,+ session @ 1H swing,2025-12-08 15:00:00+00:00,target,0.7071428571428572
+pepperstone,swing,+ session @ 1H swing,2025-12-10 23:00:00+00:00,stop,-1.0101364522417156
+pepperstone,swing,+ session @ 1H swing,2025-12-24 18:00:00+00:00,target,0.21924039117580316
+pepperstone,swing,+ session @ 1H swing,2025-12-29 07:00:00+00:00,target,0.9212598425197412
+pepperstone,swing,+ session @ 1H swing,2025-12-29 09:00:00+00:00,breakeven,-0.012059369202226427
+pepperstone,swing,+ session @ 1H swing,2025-12-29 14:00:00+00:00,target,0.7144638403989825
+pepperstone,swing,+ session @ 1H swing,2025-12-31 09:00:00+00:00,stop,-1.0080370942812984
+pepperstone,swing,+ session @ 1H swing,2026-01-02 17:00:00+00:00,stop,-1.00345928685471
+pepperstone,swing,+ session @ 1H swing,2026-01-06 19:00:00+00:00,target,0.09748237663645666
+pepperstone,swing,+ session @ 1H swing,2026-01-08 15:00:00+00:00,stop,-1.003883495145631
+pepperstone,swing,+ session @ 1H swing,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ session @ 1H swing,2026-01-14 17:00:00+00:00,stop,-1.0029626253418413
+pepperstone,swing,+ session @ 1H swing,2026-01-15 12:00:00+00:00,target,0.1263929171118813
+pepperstone,swing,+ session @ 1H swing,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ session @ 1H swing,2026-01-23 16:00:00+00:00,stop,-1.0091036414565828
+pepperstone,swing,+ session @ 1H swing,2026-01-28 21:00:00+00:00,target,0.532810969637625
+pepperstone,swing,+ session @ 1H swing,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ session @ 1H swing,2026-01-29 16:00:00+00:00,target,0.23113207547169867
+pepperstone,swing,+ session @ 1H swing,2026-02-02 09:00:00+00:00,stop,-1.0120036934441368
+pepperstone,swing,+ session @ 1H swing,2026-02-03 21:00:00+00:00,target,0.5582229305707731
+pepperstone,swing,+ session @ 1H swing,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ session @ 1H swing,2026-02-17 15:00:00+00:00,stop,-1.0035163646199623
+pepperstone,swing,+ session @ 1H swing,2026-02-17 19:00:00+00:00,target,0.1998980112187693
+pepperstone,swing,+ session @ 1H swing,2026-02-24 02:00:00+00:00,target,0.3020774845592511
+pepperstone,swing,+ session @ 1H swing,2026-02-26 15:00:00+00:00,target,0.6263970196913203
+pepperstone,swing,+ session @ 1H swing,2026-02-25 15:00:00+00:00,target,0.169670710571925
+pepperstone,swing,+ session @ 1H swing,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ session @ 1H swing,2026-02-27 14:00:00+00:00,target,0.25520446096654004
+pepperstone,swing,+ session @ 1H swing,2026-03-05 20:00:00+00:00,target,0.7314449623520911
+pepperstone,swing,+ session @ 1H swing,2026-03-06 15:00:00+00:00,target,0.6197928653624822
+pepperstone,swing,+ session @ 1H swing,2026-03-10 10:00:00+00:00,target,0.08089133089133022
+pepperstone,swing,+ session @ 1H swing,2026-03-13 07:00:00+00:00,stop,-1.0033982485949549
+pepperstone,swing,+ session @ 1H swing,2026-03-18 14:00:00+00:00,stop,-1.0108695652173911
+pepperstone,swing,+ session @ 1H swing,2026-03-17 14:00:00+00:00,target,0.2885238315594627
+pepperstone,swing,+ session @ 1H swing,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ session @ 1H swing,2026-03-30 14:00:00+00:00,target,1.2178217821782193
+pepperstone,swing,+ session @ 1H swing,2026-04-01 15:00:00+00:00,stop,-1.0068241469816273
+pepperstone,swing,+ session @ 1H swing,2026-04-02 07:00:00+00:00,stop,-1.0028536933377237
+pepperstone,swing,+ session @ 1H swing,2026-04-02 15:00:00+00:00,target,0.22024471635150764
+pepperstone,swing,+ session @ 1H swing,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ session @ 1H swing,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ session @ 1H swing,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ session @ 1H swing,2026-04-23 18:00:00+00:00,stop,-1.0049904030710173
+pepperstone,swing,+ session @ 1H swing,2026-04-28 08:00:00+00:00,target,1.742765273311876
+pepperstone,swing,+ session @ 1H swing,2026-04-29 15:00:00+00:00,stop,-1.0073571024335033
+pepperstone,swing,+ session @ 1H swing,2026-04-30 04:00:00+00:00,target,0.17904233171407943
+pepperstone,swing,+ session @ 1H swing,2026-05-12 18:00:00+00:00,stop,-1.0027721505490992
+pepperstone,swing,+ session @ 1H swing,2026-05-13 11:00:00+00:00,target,0.1905483473813764
+pepperstone,swing,+ session @ 1H swing,2026-05-15 07:00:00+00:00,breakeven,-0.004777655273796424
+pepperstone,swing,+ session @ 1H swing,2026-05-21 18:00:00+00:00,target,0.43774757281553733
+pepperstone,swing,+ session @ 1H swing,2026-05-26 15:00:00+00:00,target,0.16277746158222936
+pepperstone,swing,+ session @ 1H swing,2026-05-28 06:00:00+00:00,stop,-1.0038145539906105
+pepperstone,swing,+ session @ 1H swing,2026-06-03 14:00:00+00:00,target,1.1744699646643066
+pepperstone,swing,+ session @ 1H swing,2026-06-09 15:00:00+00:00,target,0.5364528566421252
+pepperstone,swing,+ session @ 1H swing,2026-06-12 10:00:00+00:00,target,0.15555555555555556
+pepperstone,swing,+ session @ 1H swing,2026-06-14 23:00:00+00:00,target,0.5879113314057508
+pepperstone,swing,+ session @ 1H swing,2026-06-16 15:00:00+00:00,target,0.3348402652200172
+pepperstone,swing,+ session @ 1H swing,2026-06-17 20:00:00+00:00,stop,-1.0014284144599495
+pepperstone,swing,+ session @ 1H swing,2026-06-22 13:00:00+00:00,target,0.2338788014645484
+pepperstone,swing,+ session @ 1H swing,2026-06-25 20:00:00+00:00,target,1.3166579815876491
+pepperstone,swing,+ session @ 1H swing,2026-06-26 03:00:00+00:00,stop,-1.0014698400135678
+pepperstone,swing,+ session @ 1H swing,2026-06-26 16:00:00+00:00,target,0.7215428033866369
+pepperstone,swing,+ session @ 1H swing,2026-07-01 13:00:00+00:00,breakeven,-0.009615384615384822
+pepperstone,swing,+ session @ 1H swing,2026-07-02 07:00:00+00:00,target,1.091348155550013
+pepperstone,swing,+ session @ 1H swing,2026-07-03 02:00:00+00:00,target,1.3241219008264564
+pepperstone,swing,+ session @ 1H swing,2026-07-06 02:00:00+00:00,stop,-1.006559031281534
+pepperstone,swing,+ session @ 1H swing,2026-07-07 05:00:00+00:00,target,0.35127216653816723
+pepperstone,swing,+ session @ 1H swing,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ session @ 1H swing,2026-07-09 14:00:00+00:00,target,0.285902582229945
+pepperstone,swing,+ session @ 1H swing,2026-07-14 14:00:00+00:00,target,0.623513870541622
+pepperstone,swing,+ session @ 1H swing,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ session @ 1H swing,2026-07-16 14:00:00+00:00,target,0.5622277535780976
+pepperstone,swing,+ session @ 1H swing,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ session @ 1H swing,2026-07-22 01:00:00+00:00,stop,-1.0028005170185266
+pepperstone,swing,+ session @ 1H swing,2026-07-22 08:00:00+00:00,stop,-1.0099923136049196
+pepperstone,swing,+ session @ 1H swing,2026-07-22 14:00:00+00:00,target,0.6552185548617316
+pepperstone,swing,+ session @ 1H swing,2026-07-28 17:00:00+00:00,stop,-1.005853219270599
+pepperstone,swing,+ session @ 1H swing,2026-08-03 18:00:00+00:00,target,0.6292789512017457
+pepperstone,swing,+ session @ 1H swing,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ session @ 1H swing,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ session @ 1H swing,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457
+pepperstone,swing,+ session @ 1H swing,2026-08-27 00:00:00+00:00,target,0.18412505075111707
+pepperstone,swing,+ session @ 1H swing,2026-08-31 00:00:00+00:00,target,0.6025641025640897
+pepperstone,swing,+ session @ 1H swing,2026-08-31 04:00:00+00:00,target,1.208666386201084
+pepperstone,swing,+ session @ 1H swing,2026-09-10 14:00:00+00:00,target,0.337605909189661
+pepperstone,swing,+ session @ 1H swing,2026-09-11 13:00:00+00:00,stop,-1.0039144835892804
+pepperstone,swing,+ session @ 1H swing,2026-09-17 13:00:00+00:00,target,0.44842221812142075
+pepperstone,swing,+ session @ 1H swing,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ session @ 1H swing,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ session @ 1H swing,2026-09-23 17:00:00+00:00,stop,-1.0039447731755424
+pepperstone,swing,+ session @ 1H swing,2026-09-25 10:00:00+00:00,stop,-1.002955889040473
+pepperstone,swing,+ session @ 1H swing,2026-09-27 23:00:00+00:00,target,0.7152245345016566
+pepperstone,swing,+ session @ 1H swing,2026-09-30 17:00:00+00:00,target,0.4972217243233541
+pepperstone,swing,+ session @ 1H swing,2026-10-08 22:00:00+00:00,target,0.2297096842551414
+pepperstone,swing,+ session @ 1H swing,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ session @ 1H swing,2026-10-16 04:00:00+00:00,stop,-1.0028688072382215
+pepperstone,swing,+ session @ 1H swing,2026-10-16 14:00:00+00:00,target,0.5329619312906193
+pepperstone,swing,+ session @ 1H swing,2026-10-20 01:00:00+00:00,breakeven,-0.005421184320266906
+pepperstone,swing,+ session @ 1H swing,2026-10-21 16:00:00+00:00,stop,-1.0026614801924456
+pepperstone,swing,+ session @ 1H swing,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,swing,+ session @ 1H swing,2026-10-27 13:00:00+00:00,target,1.049356865091234
+pepperstone,swing,+ session @ 1H swing,2026-10-28 20:00:00+00:00,stop,-1.0096906448005962
+pepperstone,swing,+ session @ 4H+ swing,2024-02-28 10:00:00+00:00,stop,-1.0071252397917239
+pepperstone,swing,+ session @ 4H+ swing,2024-03-01 13:00:00+00:00,stop,-1.0521042084168322
+pepperstone,swing,+ session @ 4H+ swing,2024-03-08 18:00:00+00:00,target,0.5900540137828284
+pepperstone,swing,+ session @ 4H+ swing,2024-03-21 19:00:00+00:00,breakeven,-0.012322274881516588
+pepperstone,swing,+ session @ 4H+ swing,2024-04-12 08:00:00+00:00,stop,-1.0043383947939264
+pepperstone,swing,+ session @ 4H+ swing,2024-05-23 19:00:00+00:00,target,0.10704055480174618
+pepperstone,swing,+ session @ 4H+ swing,2024-05-28 14:00:00+00:00,target,0.729198184568811
+pepperstone,swing,+ session @ 4H+ swing,2024-05-31 13:00:00+00:00,stop,-1.0126091173617848
+pepperstone,swing,+ session @ 4H+ swing,2024-06-26 13:00:00+00:00,breakeven,-0.025242718446601944
+pepperstone,swing,+ session @ 4H+ swing,2024-07-22 19:00:00+00:00,stop,-1.0043039231915247
+pepperstone,swing,+ session @ 4H+ swing,2024-07-25 17:00:00+00:00,stop,-1.0030732860520095
+pepperstone,swing,+ session @ 4H+ swing,2024-07-31 06:00:00+00:00,target,0.3714557047890408
+pepperstone,swing,+ session @ 4H+ swing,2024-08-01 08:00:00+00:00,stop,-1.0017362270450751
+pepperstone,swing,+ session @ 4H+ swing,2024-08-06 08:00:00+00:00,target,0.7161937880344531
+pepperstone,swing,+ session @ 4H+ swing,2024-08-07 11:00:00+00:00,target,0.20672409002500614
+pepperstone,swing,+ session @ 4H+ swing,2024-08-07 22:00:00+00:00,stop,-1.0022122011401344
+pepperstone,swing,+ session @ 4H+ swing,2024-08-23 04:00:00+00:00,target,0.6065072802444771
+pepperstone,swing,+ session @ 4H+ swing,2024-08-29 14:00:00+00:00,target,0.20688797712296333
+pepperstone,swing,+ session @ 4H+ swing,2024-10-03 08:00:00+00:00,stop,-1.003579295154185
+pepperstone,swing,+ session @ 4H+ swing,2024-10-31 00:00:00+00:00,target,0.224090447890994
+pepperstone,swing,+ session @ 4H+ swing,2024-11-05 15:00:00+00:00,target,0.6644555002763904
+pepperstone,swing,+ session @ 4H+ swing,2024-11-20 14:00:00+00:00,stop,-1.0113636363636362
+pepperstone,swing,+ session @ 4H+ swing,2025-01-02 20:00:00+00:00,stop,-1.0039382005452893
+pepperstone,swing,+ session @ 4H+ swing,2025-01-15 14:00:00+00:00,target,0.1960784313725475
+pepperstone,swing,+ session @ 4H+ swing,2025-02-18 15:00:00+00:00,target,1.1180069930069534
+pepperstone,swing,+ session @ 4H+ swing,2025-02-28 21:00:00+00:00,stop,-1.005100039231071
+pepperstone,swing,+ session @ 4H+ swing,2025-03-19 13:00:00+00:00,stop,-1.005825677795205
+pepperstone,swing,+ session @ 4H+ swing,2025-03-26 18:00:00+00:00,target,0.07030960897989175
+pepperstone,swing,+ session @ 4H+ swing,2025-03-28 10:00:00+00:00,breakeven,-0.05427974947808593
+pepperstone,swing,+ session @ 4H+ swing,2025-03-31 22:00:00+00:00,breakeven,-0.004998077662437552
+pepperstone,swing,+ session @ 4H+ swing,2025-04-10 15:00:00+00:00,target,0.12415198718881933
+pepperstone,swing,+ session @ 4H+ swing,2025-04-11 17:00:00+00:00,target,0.580477223427335
+pepperstone,swing,+ session @ 4H+ swing,2025-04-25 11:00:00+00:00,stop,-1.005826983415509
+pepperstone,swing,+ session @ 4H+ swing,2025-05-01 14:00:00+00:00,stop,-1.0079901659496004
+pepperstone,swing,+ session @ 4H+ swing,2025-05-08 15:00:00+00:00,stop,-1.0063045586808923
+pepperstone,swing,+ session @ 4H+ swing,2025-05-20 13:00:00+00:00,target,0.46429906542056076
+pepperstone,swing,+ session @ 4H+ swing,2025-05-21 19:00:00+00:00,target,0.3359897991711881
+pepperstone,swing,+ session @ 4H+ swing,2025-05-22 14:00:00+00:00,stop,-1.0058009817045963
+pepperstone,swing,+ session @ 4H+ swing,2025-06-05 22:00:00+00:00,stop,-1.0037345590347602
+pepperstone,swing,+ session @ 4H+ swing,2025-06-12 12:00:00+00:00,target,0.13789279112754968
+pepperstone,swing,+ session @ 4H+ swing,2025-07-17 11:00:00+00:00,breakeven,-0.024597918637654415
+pepperstone,swing,+ session @ 4H+ swing,2025-08-04 17:00:00+00:00,target,0.1740566637021964
+pepperstone,swing,+ session @ 4H+ swing,2025-10-23 07:00:00+00:00,target,0.4004376367614848
+pepperstone,swing,+ session @ 4H+ swing,2025-11-13 15:00:00+00:00,target,2.5390662602278034
+pepperstone,swing,+ session @ 4H+ swing,2025-11-21 17:00:00+00:00,target,2.459566074950672
+pepperstone,swing,+ session @ 4H+ swing,2025-11-25 19:00:00+00:00,target,0.1956176563988551
+pepperstone,swing,+ session @ 4H+ swing,2025-12-01 01:00:00+00:00,target,0.3543689320388322
+pepperstone,swing,+ session @ 4H+ swing,2025-12-01 08:00:00+00:00,target,0.09166092350102235
+pepperstone,swing,+ session @ 4H+ swing,2026-01-08 15:00:00+00:00,stop,-1.003883495145631
+pepperstone,swing,+ session @ 4H+ swing,2026-01-14 11:00:00+00:00,target,0.837178642056682
+pepperstone,swing,+ session @ 4H+ swing,2026-01-21 20:00:00+00:00,target,0.16542567506952588
+pepperstone,swing,+ session @ 4H+ swing,2026-01-28 21:00:00+00:00,target,0.532810969637625
+pepperstone,swing,+ session @ 4H+ swing,2026-01-29 20:00:00+00:00,target,0.24196891191710035
+pepperstone,swing,+ session @ 4H+ swing,2026-01-29 16:00:00+00:00,target,0.23113207547169867
+pepperstone,swing,+ session @ 4H+ swing,2026-02-09 18:00:00+00:00,target,0.15336233555217613
+pepperstone,swing,+ session @ 4H+ swing,2026-02-26 19:00:00+00:00,target,0.2051654091700531
+pepperstone,swing,+ session @ 4H+ swing,2026-03-05 20:00:00+00:00,target,0.7314449623520911
+pepperstone,swing,+ session @ 4H+ swing,2026-03-24 05:00:00+00:00,target,0.3459642203127153
+pepperstone,swing,+ session @ 4H+ swing,2026-04-02 07:00:00+00:00,stop,-1.0028536933377237
+pepperstone,swing,+ session @ 4H+ swing,2026-04-02 15:00:00+00:00,target,0.22024471635150764
+pepperstone,swing,+ session @ 4H+ swing,2026-04-07 14:00:00+00:00,target,0.07905544147844346
+pepperstone,swing,+ session @ 4H+ swing,2026-04-08 14:00:00+00:00,breakeven,-0.008285532186105915
+pepperstone,swing,+ session @ 4H+ swing,2026-04-16 14:00:00+00:00,stop,-1.0175557056043216
+pepperstone,swing,+ session @ 4H+ swing,2026-05-13 11:00:00+00:00,target,0.1905483473813764
+pepperstone,swing,+ session @ 4H+ swing,2026-05-21 18:00:00+00:00,target,0.43774757281553733
+pepperstone,swing,+ session @ 4H+ swing,2026-05-28 06:00:00+00:00,stop,-1.0038145539906105
+pepperstone,swing,+ session @ 4H+ swing,2026-06-17 20:00:00+00:00,stop,-1.0014284144599495
+pepperstone,swing,+ session @ 4H+ swing,2026-06-25 20:00:00+00:00,target,1.3166579815876491
+pepperstone,swing,+ session @ 4H+ swing,2026-07-06 02:00:00+00:00,stop,-1.006559031281534
+pepperstone,swing,+ session @ 4H+ swing,2026-07-09 06:00:00+00:00,target,0.19920705558701668
+pepperstone,swing,+ session @ 4H+ swing,2026-07-15 17:00:00+00:00,target,0.49320225894165004
+pepperstone,swing,+ session @ 4H+ swing,2026-07-20 12:00:00+00:00,breakeven,-0.00638506876227891
+pepperstone,swing,+ session @ 4H+ swing,2026-08-05 16:00:00+00:00,breakeven,-0.005298553087426079
+pepperstone,swing,+ session @ 4H+ swing,2026-08-18 06:00:00+00:00,target,0.18820782253357024
+pepperstone,swing,+ session @ 4H+ swing,2026-08-19 13:00:00+00:00,stop,-1.0068601583113457
+pepperstone,swing,+ session @ 4H+ swing,2026-09-17 13:00:00+00:00,target,0.44842221812142075
+pepperstone,swing,+ session @ 4H+ swing,2026-09-23 13:00:00+00:00,target,7.583460949464452
+pepperstone,swing,+ session @ 4H+ swing,2026-09-25 05:00:00+00:00,target,0.5487703785576133
+pepperstone,swing,+ session @ 4H+ swing,2026-09-30 17:00:00+00:00,target,0.4972217243233541
+pepperstone,swing,+ session @ 4H+ swing,2026-10-14 02:00:00+00:00,stop,-1.0073404856013553
+pepperstone,swing,+ session @ 4H+ swing,2026-10-26 16:00:00+00:00,target,2.058937341866345
+pepperstone,intraday,baseline,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,baseline,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,baseline,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,baseline,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,baseline,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,baseline,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,baseline,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,baseline,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,baseline,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,baseline,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,baseline,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,baseline,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,baseline,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,baseline,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,baseline,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ session @ 1H swing,2024-01-10 00:15:00+00:00,stop,-1.0467625899280588
+pepperstone,intraday,+ session @ 1H swing,2024-01-26 18:55:00+00:00,stop,-1.0120036934441368
+pepperstone,intraday,+ session @ 1H swing,2024-02-14 18:20:00+00:00,stop,-1.0481481481481483
+pepperstone,intraday,+ session @ 1H swing,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ session @ 1H swing,2024-03-14 11:25:00+00:00,stop,-1.0866666666666667
+pepperstone,intraday,+ session @ 1H swing,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ session @ 1H swing,2024-10-09 10:30:00+00:00,target,2.9643835616438357
+pepperstone,intraday,+ session @ 1H swing,2024-10-23 00:05:00+00:00,stop,-1.0509803921568628
+pepperstone,intraday,+ session @ 1H swing,2024-10-24 15:55:00+00:00,stop,-1.0183098591549296
+pepperstone,intraday,+ session @ 1H swing,2024-12-10 19:25:00+00:00,target,2.9532374100719476
+pepperstone,intraday,+ session @ 1H swing,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ session @ 1H swing,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ session @ 1H swing,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ session @ 1H swing,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ session @ 1H swing,2025-04-16 16:10:00+00:00,target,2.9907275320970044
+pepperstone,intraday,+ session @ 1H swing,2025-05-16 17:50:00+00:00,breakeven,-0.0325
+pepperstone,intraday,+ session @ 1H swing,2025-06-05 15:05:00+00:00,stop,-1.0084306095979247
+pepperstone,intraday,+ session @ 1H swing,2025-06-18 13:40:00+00:00,stop,-1.0239852398523999
+pepperstone,intraday,+ session @ 1H swing,2025-07-03 11:40:00+00:00,stop,-1.0866666666666667
+pepperstone,intraday,+ session @ 1H swing,2025-07-10 12:00:00+00:00,stop,-1.0472727272727274
+pepperstone,intraday,+ session @ 1H swing,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ session @ 1H swing,2025-10-15 13:55:00+00:00,stop,-1.038922155688621
+pepperstone,intraday,+ session @ 1H swing,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ session @ 1H swing,2025-11-12 11:30:00+00:00,breakeven,-0.057017543859650945
+pepperstone,intraday,+ session @ 1H swing,2025-11-19 19:50:00+00:00,stop,-1.0133470225872692
+pepperstone,intraday,+ session @ 1H swing,2025-12-31 17:15:00+00:00,stop,-1.04744525547445
+pepperstone,intraday,+ session @ 1H swing,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ session @ 1H swing,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ session @ 1H swing,2026-03-13 14:50:00+00:00,breakeven,-0.006184586108468104
+pepperstone,intraday,+ session @ 1H swing,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ session @ 1H swing,2026-05-28 11:50:00+00:00,target,2.972631578947368
+pepperstone,intraday,+ session @ 1H swing,2026-05-28 13:50:00+00:00,stop,-1.0170603674540681
+pepperstone,intraday,+ session @ 1H swing,2026-07-10 12:35:00+00:00,breakeven,-0.06220095693780554
+pepperstone,intraday,+ session @ 1H swing,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ session @ 1H swing,2026-07-23 06:45:00+00:00,breakeven,-0.019548872180451128
+pepperstone,intraday,+ session @ 1H swing,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ session @ 1H swing,2026-09-02 01:25:00+00:00,target,2.971175166297116
+pepperstone,intraday,+ session @ 1H swing,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ session @ 1H swing,2026-10-08 09:00:00+00:00,breakeven,-0.02177554438860945
+pepperstone,intraday,+ session @ 1H swing,2026-10-09 19:45:00+00:00,stop,-1.0276008492568989
+pepperstone,intraday,+ session @ 1H swing,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047
+pepperstone,intraday,+ session @ 4H+ swing,2024-02-29 13:30:00+00:00,stop,-1.1181818181818182
+pepperstone,intraday,+ session @ 4H+ swing,2024-08-06 16:25:00+00:00,breakeven,-0.009265858873841576
+pepperstone,intraday,+ session @ 4H+ swing,2025-01-15 01:10:00+00:00,stop,-1.0585585585585566
+pepperstone,intraday,+ session @ 4H+ swing,2025-03-20 15:40:00+00:00,target,2.987451737451737
+pepperstone,intraday,+ session @ 4H+ swing,2025-03-27 12:35:00+00:00,target,2.967336683417085
+pepperstone,intraday,+ session @ 4H+ swing,2025-04-11 17:00:00+00:00,target,2.9925544100801833
+pepperstone,intraday,+ session @ 4H+ swing,2025-08-05 14:00:00+00:00,stop,-1.021311475409836
+pepperstone,intraday,+ session @ 4H+ swing,2025-10-23 15:50:00+00:00,stop,-1.0546218487394976
+pepperstone,intraday,+ session @ 4H+ swing,2026-01-16 07:40:00+00:00,stop,-1.1031746031745853
+pepperstone,intraday,+ session @ 4H+ swing,2026-01-30 15:35:00+00:00,target,2.9901515151515152
+pepperstone,intraday,+ session @ 4H+ swing,2026-04-02 13:10:00+00:00,breakeven,-0.028446389496717274
+pepperstone,intraday,+ session @ 4H+ swing,2026-05-28 13:50:00+00:00,stop,-1.0170603674540681
+pepperstone,intraday,+ session @ 4H+ swing,2026-07-22 22:05:00+00:00,target,2.9731958762886594
+pepperstone,intraday,+ session @ 4H+ swing,2026-08-26 04:45:00+00:00,breakeven,-0.046099290780140655
+pepperstone,intraday,+ session @ 4H+ swing,2026-09-15 20:25:00+00:00,target,2.97923322683706
+pepperstone,intraday,+ session @ 4H+ swing,2026-10-27 10:50:00+00:00,breakeven,-0.015028901734104047

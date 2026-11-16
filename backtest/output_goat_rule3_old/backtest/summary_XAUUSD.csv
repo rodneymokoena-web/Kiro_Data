@@ -1,0 +1,5 @@
+entry_tf,entry_mode,symbol,trades,wins,losses,breakeven,open,win_rate_%,avg_planned_RR,gross_win_R,gross_loss_R,profit_factor,total_R,avg_R,avg_hold_days,median_hold_days,end_balance_1%,max_dd_%
+15m,ce,XAUUSD,11,1,7,3,0,9.1,3.0,2.87,7.4,0.39,-4.53,-0.41,0.2,0.1,9549.85,6.1
+15m,touch,XAUUSD,12,0,9,3,0,0.0,3.0,0.0,9.43,0.0,-9.43,-0.79,0.2,0.2,9095.31,9.05
+5m,ce,XAUUSD,14,4,5,5,0,28.6,3.0,11.68,5.46,2.14,6.22,0.44,0.2,0.0,10621.55,3.08
+5m,touch,XAUUSD,15,4,5,6,0,26.7,3.0,11.84,5.45,2.17,6.39,0.43,0.3,0.1,10639.13,2.31

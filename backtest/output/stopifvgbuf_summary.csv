@@ -1,0 +1,13 @@
+stop,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26,avg stop pts
+current: 1H OB 50%,goat,122,47,1.59,20.43,12172,5.9,8.1,12.3,267
+IFVG far edge + 5% of IFVG height,goat,122,32,0.77,-19.77,8018,37.1,-29.6,9.8,96
+IFVG far edge + 25% of IFVG height,goat,122,35,1.0,-0.38,9647,26.7,-2.1,1.7,114
+IFVG far edge + 50% of IFVG height,goat,122,39,1.02,1.05,9868,20.9,-3.8,4.8,137
+IFVG far edge + 100% of IFVG height,goat,122,42,1.08,4.83,10317,14.3,-4.7,9.5,182
+IFVG far edge + 5% of price,goat,122,19,0.71,-6.89,9320,9.0,-4.1,-2.8,1026
+current: 1H OB 50%,pepperstone,132,52,1.67,25.29,12769,7.6,12.9,12.4,255
+IFVG far edge + 5% of IFVG height,pepperstone,132,27,0.58,-41.29,6443,37.2,-9.5,-31.8,92
+IFVG far edge + 25% of IFVG height,pepperstone,132,32,0.76,-21.59,7853,31.0,-4.3,-17.3,110
+IFVG far edge + 50% of IFVG height,pepperstone,132,35,0.73,-22.74,7812,29.1,-7.5,-15.2,132
+IFVG far edge + 100% of IFVG height,pepperstone,132,39,0.92,-5.52,9266,23.9,-8.4,2.9,175
+IFVG far edge + 5% of price,pepperstone,132,18,0.7,-7.89,9227,8.4,-3.7,-4.2,1033

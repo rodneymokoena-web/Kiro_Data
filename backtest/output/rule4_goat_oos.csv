@@ -1,0 +1,61 @@
+source,variant,model,entry_time,exit,r_net
+goat_oos,C current: cancel beyond sweep extreme,swing,2021-08-20 13:00:00+00:00,target,2.9958915365653245
+goat_oos,C current: cancel beyond sweep extreme,swing,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214
+goat_oos,C current: cancel beyond sweep extreme,swing,2021-12-21 17:00:00+00:00,target,2.9964936886395512
+goat_oos,C current: cancel beyond sweep extreme,swing,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-05-04 18:00:00+00:00,breakeven,-0.003246753246753247
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-08-18 14:00:00+00:00,target,2.996531390912244
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-08-25 15:00:00+00:00,stop,-1.004372540445999
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-11-17 17:00:00+00:00,stop,-1.0027555800496004
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022
+goat_oos,C current: cancel beyond sweep extreme,swing,2022-12-30 11:00:00+00:00,target,2.9957859249894647
+goat_oos,C current: cancel beyond sweep extreme,swing,2023-02-14 08:00:00+00:00,stop,-1.0032981530343008
+goat_oos,C current: cancel beyond sweep extreme,swing,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517
+goat_oos,C current: cancel beyond sweep extreme,intraday,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,C current: cancel beyond sweep extreme,intraday,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,C current: cancel beyond sweep extreme,intraday,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,C current: cancel beyond sweep extreme,intraday,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,C current: cancel beyond sweep extreme,intraday,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,C current: cancel beyond sweep extreme,intraday,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,C current: cancel beyond sweep extreme,intraday,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,C current: cancel beyond sweep extreme,intraday,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,C current: cancel beyond sweep extreme,intraday,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,C current: cancel beyond sweep extreme,swing M6,2021-08-20 13:00:00+00:00,target,2.9958915365653245
+goat_oos,C current: cancel beyond sweep extreme,swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.0037216226274655647
+goat_oos,C current: cancel beyond sweep extreme,swing M6,2021-12-21 17:00:00+00:00,target,2.9964936886395512
+goat_oos,C current: cancel beyond sweep extreme,swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806
+goat_oos,C current: cancel beyond sweep extreme,swing M6,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679
+goat_oos,"N no cancellation, extreme follows price",swing,2021-08-20 13:00:00+00:00,target,2.9958915365653245
+goat_oos,"N no cancellation, extreme follows price",swing,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214
+goat_oos,"N no cancellation, extreme follows price",swing,2021-12-21 17:00:00+00:00,target,2.9964936886395512
+goat_oos,"N no cancellation, extreme follows price",swing,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066
+goat_oos,"N no cancellation, extreme follows price",swing,2022-05-04 18:00:00+00:00,breakeven,-0.003246753246753247
+goat_oos,"N no cancellation, extreme follows price",swing,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486
+goat_oos,"N no cancellation, extreme follows price",swing,2022-08-18 14:00:00+00:00,target,2.996531390912244
+goat_oos,"N no cancellation, extreme follows price",swing,2022-08-25 15:00:00+00:00,stop,-1.004372540445999
+goat_oos,"N no cancellation, extreme follows price",swing,2022-09-30 08:00:00+00:00,stop,-1.0040933278755628
+goat_oos,"N no cancellation, extreme follows price",swing,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679
+goat_oos,"N no cancellation, extreme follows price",swing,2022-11-17 17:00:00+00:00,stop,-1.0027555800496004
+goat_oos,"N no cancellation, extreme follows price",swing,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022
+goat_oos,"N no cancellation, extreme follows price",swing,2022-12-30 11:00:00+00:00,target,2.9957859249894647
+goat_oos,"N no cancellation, extreme follows price",swing,2023-02-14 08:00:00+00:00,stop,-1.0032981530343008
+goat_oos,"N no cancellation, extreme follows price",swing,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517
+goat_oos,"N no cancellation, extreme follows price",swing,2023-11-13 06:00:00+00:00,stop,-1.0130548302872062
+goat_oos,"N no cancellation, extreme follows price",intraday,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146
+goat_oos,"N no cancellation, extreme follows price",intraday,2021-12-22 14:50:00+00:00,target,2.989429175475687
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-08-18 17:05:00+00:00,stop,-1.019685039370079
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-08-25 18:45:00+00:00,target,2.9674267100977207
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-09-30 09:00:00+00:00,stop,-1.0284900284900296
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-11-17 18:55:00+00:00,target,2.9625468164793993
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-12-09 13:20:00+00:00,target,2.9465240641711197
+goat_oos,"N no cancellation, extreme follows price",intraday,2022-12-30 15:55:00+00:00,target,2.9863945578231292
+goat_oos,"N no cancellation, extreme follows price",intraday,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478
+goat_oos,"N no cancellation, extreme follows price",intraday,2023-11-13 07:35:00+00:00,breakeven,-0.15151515151514316
+goat_oos,"N no cancellation, extreme follows price",swing M6,2021-08-20 13:00:00+00:00,target,2.9958915365653245
+goat_oos,"N no cancellation, extreme follows price",swing M6,2021-10-06 15:00:00+00:00,breakeven,-0.0037216226274655647
+goat_oos,"N no cancellation, extreme follows price",swing M6,2021-12-21 17:00:00+00:00,target,2.9964936886395512
+goat_oos,"N no cancellation, extreme follows price",swing M6,2022-02-04 15:00:00+00:00,breakeven,-0.0016090104585679806
+goat_oos,"N no cancellation, extreme follows price",swing M6,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679

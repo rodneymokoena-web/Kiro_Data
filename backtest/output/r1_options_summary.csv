@@ -1,0 +1,29 @@
+model,option,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+swing,D/W/M,goat,75,44,1.64,12.33,11255,6.4,3.1,9.2
+swing,D/W/M,pepperstone,83,48,1.75,15.96,11667,6.2,6.5,9.5
+swing,4H(2)/D/W/M,goat,348,49,1.19,21.13,12155,13.9,17.3,3.8
+swing,4H(2)/D/W/M,pepperstone,351,50,1.19,21.86,12234,16.4,15.7,6.2
+swing,4H(5)/D/W/M,goat,204,47,1.03,2.25,10128,17.7,3.5,-1.2
+swing,4H(5)/D/W/M,pepperstone,197,50,1.15,9.39,10883,16.2,9.0,0.4
+swing,4H(10)/D/W/M,goat,104,45,1.39,11.52,11155,7.9,5.9,5.6
+swing,4H(10)/D/W/M,pepperstone,111,51,1.61,18.04,11903,8.0,9.7,8.3
+intraday,D/W/M,goat,21,48,3.51,21.27,12311,3.2,10.8,10.5
+intraday,D/W/M,pepperstone,22,55,4.75,28.04,13163,3.2,18.5,9.5
+intraday,4H(2)/D/W/M,goat,56,29,1.85,21.83,12337,7.2,18.3,3.6
+intraday,4H(2)/D/W/M,pepperstone,55,35,2.37,32.5,13710,9.1,21.6,10.9
+intraday,4H(5)/D/W/M,goat,43,35,2.1,23.37,12537,6.2,17.5,5.8
+intraday,4H(5)/D/W/M,pepperstone,43,40,2.77,32.15,13678,7.2,21.1,11.0
+intraday,4H(10)/D/W/M,goat,26,50,4.48,30.02,13420,3.2,16.6,13.4
+intraday,4H(10)/D/W/M,pepperstone,26,58,5.89,36.82,14353,3.2,24.4,12.4
+both (1% each),current: swing D/W/M + intraday D/W/M,goat,96,45,2.21,33.6,13857,5.0,13.9,19.7
+both (1% each),current: swing D/W/M + intraday D/W/M,pepperstone,105,50,2.53,44.0,15358,6.8,25.0,19.0
+both (1% each),Option 1: swing D/W/M + intraday 4H(2),goat,131,37,1.76,34.15,13886,8.9,21.4,12.8
+both (1% each),Option 1: swing D/W/M + intraday 4H(2),pepperstone,138,43,2.07,48.46,15997,12.6,28.1,20.4
+both (1% each),Option 2a: both models 4H(5),goat,247,45,1.28,25.62,12698,16.2,21.0,4.6
+both (1% each),Option 2a: both models 4H(5),pepperstone,240,48,1.51,41.54,14887,17.1,30.1,11.4
+both (1% each),Option 2b: both models 4H(10),goat,130,46,2.1,41.55,14971,6.1,22.5,19.0
+both (1% each),Option 2b: both models 4H(10),pepperstone,137,53,2.49,54.86,17084,7.3,34.1,20.7
+both (1% each),Option 1+2: swing D/W/M + intraday 4H(5),goat,118,41,1.88,35.7,14111,8.0,20.7,15.0
+both (1% each),Option 1+2: swing D/W/M + intraday 4H(5),pepperstone,126,45,2.22,48.11,15959,11.6,27.6,20.5
+both (1% each),Option 1+2: swing D/W/M + intraday 4H(10),goat,101,46,2.52,42.35,15105,5.0,19.7,22.6
+both (1% each),Option 1+2: swing D/W/M + intraday 4H(10),pepperstone,109,50,2.83,52.78,16746,6.8,30.9,21.9

@@ -1,0 +1,16 @@
+symbol,setup,variant,reason
+US100,1,1H touch,expired
+US100,1,1H CE,expired
+US100,2,1H touch,expired
+US100,2,1H CE,expired
+US100,6,all,no 1H IFVG (no 1H IFVG)
+US100,7,all,no 1H IFVG (no retest)
+XAUUSD,1,all,no 1H IFVG (no retest)
+XAUUSD,2,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,3,all,no 1H IFVG (no retest)
+XAUUSD,4,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,5,all,no 1H IFVG (no retest)
+XAUUSD,6,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,7,all,no 1H IFVG (no retest)
+XAUUSD,8,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,9,all,no 1H IFVG (no 1H IFVG)

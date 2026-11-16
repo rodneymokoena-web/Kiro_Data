@@ -1,0 +1,88 @@
+source,variant,model,entry_time,exit,r_net,setups4h,signals1h
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2022-12-30 15:55:00+00:00,target,2.9863945578231292,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-12-21 17:00:00+00:00,target,2.9964936886395512,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2022-12-30 11:00:00+00:00,target,2.9957859249894647,32,11
+goat_oos,"A previous rule: first inverted FVG, leg from last 4H swing",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,32,11
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,29,9
+goat_oos,"B last FVG, leg from last 4H swing -> sweep",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,29,9
+goat_oos,"C last FVG, any sweeping leg, within 20 4H candles",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,29,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,30,9
+goat_oos,"D last FVG, any sweeping leg, within 40 4H candles",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,30,9
+goat_oos,"E last FVG, any sweeping leg, within 60 4H candles",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2021-11-24 11:15:00+00:00,stop,-1.0194931773879146,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2021-12-22 14:50:00+00:00,target,2.989429175475687,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2022-08-18 17:05:00+00:00,stop,-1.019685039370079,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2022-10-27 03:00:00+00:00,stop,-1.0378787878787885,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2022-12-09 13:20:00+00:00,target,2.9465240641711197,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",intraday 5m touch,2023-05-04 13:50:00+00:00,stop,-1.0176991150442478,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2021-08-20 13:00:00+00:00,target,2.9958915365653245,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2021-11-24 10:00:00+00:00,breakeven,-0.002066542674106214,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2021-12-22 13:00:00+00:00,breakeven,-0.002219263204616066,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-08-12 12:00:00+00:00,stop,-1.0047348484848486,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-08-18 14:00:00+00:00,target,2.996531390912244,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-10-26 18:00:00+00:00,breakeven,-0.004894762604013679,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2022-12-09 10:00:00+00:00,stop,-1.0021978021978022,30,9
+goat_oos,"F last FVG, any sweeping leg, no limit",swing 1H touch,2023-05-04 12:00:00+00:00,stop,-1.0038051750380517,30,9

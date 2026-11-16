@@ -1,0 +1,72 @@
+symbol,setup,variant,reason
+US100,1,all,no 1H IFVG (no retest)
+US100,2,all,no 1H IFVG (no retest)
+US100,3,all,no 1H IFVG (no 1H IFVG)
+US100,4,1H touch,expired
+US100,4,1H CE,expired
+US100,5,all,no 1H IFVG (no 1H IFVG)
+US100,6,1H touch,expired
+US100,6,1H CE,expired
+US100,7,all,no 1H IFVG (no retest)
+US100,8,all,no 1H IFVG (no retest)
+US100,9,all,no 1H IFVG (no retest)
+US100,10,1H touch,expired
+US100,10,1H CE,expired
+US100,15,all,no 1H IFVG (no 1H IFVG)
+US100,16,all,no 1H IFVG (no 1H IFVG)
+US100,17,1H touch,expired
+US100,17,1H CE,expired
+US100,18,all,no 1H IFVG (no retest)
+US100,19,all,no 1H IFVG (no retest)
+US100,20,all,no 1H IFVG (no retest)
+US100,22,all,no 1H IFVG (no 1H IFVG)
+US100,23,all,no 1H IFVG (no retest)
+US100,24,all,no 1H IFVG (no 1H IFVG)
+US100,27,all,no 1H IFVG (no retest)
+US100,30,all,no 1H IFVG (no retest)
+US100,31,all,no 1H IFVG (no 1H IFVG)
+US100,35,all,no 1H IFVG (no 1H IFVG)
+US100,36,all,no 1H IFVG (no 1H IFVG)
+US100,37,all,no 1H IFVG (no 1H IFVG)
+US100,38,all,no 1H IFVG (no 1H IFVG)
+US100,40,all,no 1H IFVG (no 1H IFVG)
+US100,41,all,no 1H IFVG (no 1H IFVG)
+US100,42,all,no 1H IFVG (no 1H IFVG)
+US100,44,all,no 1H IFVG (no retest)
+XAUUSD,2,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,3,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,4,1H touch / prev 4H candle / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H touch / prev 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H touch / 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H touch / 4H extreme / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H CE / prev 4H candle / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H CE / prev 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H CE / 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,4,1H CE / 4H extreme / D/W liquidity,no unbroken D/W level beyond entry
+XAUUSD,6,all,no 1H IFVG (no retest)
+XAUUSD,7,all,no 1H IFVG (no retest)
+XAUUSD,9,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,10,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,13,all,no 1H IFVG (no retest)
+XAUUSD,14,1H touch,expired
+XAUUSD,14,1H CE,expired
+XAUUSD,15,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,16,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,18,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,19,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,20,1H CE,expired
+XAUUSD,21,all,no 1H IFVG (no retest)
+XAUUSD,22,all,no 1H IFVG (no retest)
+XAUUSD,24,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,25,all,no 1H IFVG (no retest)
+XAUUSD,27,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,28,all,no 1H IFVG (no retest)
+XAUUSD,31,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,33,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,35,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,37,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,39,all,no 1H IFVG (no retest)
+XAUUSD,40,all,no 1H IFVG (no retest)
+XAUUSD,41,all,no 1H IFVG (no retest)
+XAUUSD,42,all,no 1H IFVG (no 1H IFVG)
+XAUUSD,44,all,no 1H IFVG (no retest)

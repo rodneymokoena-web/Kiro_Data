@@ -1,0 +1,10 @@
+symbol,setup,variant,reason
+US100,1,1H touch / prev 4H candle / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H touch / prev 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H touch / 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H touch / 4H extreme / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H CE / prev 4H candle / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H CE / prev 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H CE / 1H swing / D/W liquidity,no unbroken D/W level beyond entry
+US100,1,1H CE / 4H extreme / D/W liquidity,no unbroken D/W level beyond entry
+US100,7,1H CE,expired

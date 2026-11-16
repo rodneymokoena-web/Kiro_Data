@@ -1,0 +1,421 @@
+source,model,variant,entry_time,exit,r_net
+goat,swing,baseline,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,baseline,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,baseline,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,baseline,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,baseline,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,baseline,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,baseline,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,baseline,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,baseline,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,baseline,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,baseline,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,baseline,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,baseline,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,baseline,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,baseline,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,baseline,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,baseline,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,baseline,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,baseline,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,baseline,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,baseline,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,baseline,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,baseline,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,baseline,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,baseline,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,baseline,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,baseline,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,baseline,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,baseline,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,baseline,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,baseline,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,baseline,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,baseline,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,baseline,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,baseline,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,inversion window 80 -> 160 1H candles,2024-02-13 15:00:00+00:00,target,0.3295833454144784
+goat,swing,inversion window 80 -> 160 1H candles,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,inversion window 80 -> 160 1H candles,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,inversion window 80 -> 160 1H candles,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,inversion window 80 -> 160 1H candles,2024-09-11 19:00:00+00:00,target,0.5332390969941376
+goat,swing,inversion window 80 -> 160 1H candles,2024-10-03 08:00:00+00:00,stop,-1.002872373232301
+goat,swing,inversion window 80 -> 160 1H candles,2024-10-16 14:00:00+00:00,target,0.26972773090047447
+goat,swing,inversion window 80 -> 160 1H candles,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,inversion window 80 -> 160 1H candles,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,inversion window 80 -> 160 1H candles,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,inversion window 80 -> 160 1H candles,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,inversion window 80 -> 160 1H candles,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,inversion window 80 -> 160 1H candles,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,inversion window 80 -> 160 1H candles,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,inversion window 80 -> 160 1H candles,2025-04-09 22:00:00+00:00,target,0.10662743394288969
+goat,swing,inversion window 80 -> 160 1H candles,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,inversion window 80 -> 160 1H candles,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,inversion window 80 -> 160 1H candles,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,inversion window 80 -> 160 1H candles,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,inversion window 80 -> 160 1H candles,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,inversion window 80 -> 160 1H candles,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,inversion window 80 -> 160 1H candles,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,inversion window 80 -> 160 1H candles,2025-08-19 15:00:00+00:00,target,0.14259002770083415
+goat,swing,inversion window 80 -> 160 1H candles,2025-09-02 13:00:00+00:00,target,0.38925692083535696
+goat,swing,inversion window 80 -> 160 1H candles,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,inversion window 80 -> 160 1H candles,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,inversion window 80 -> 160 1H candles,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,inversion window 80 -> 160 1H candles,2025-12-22 14:00:00+00:00,target,0.21886670543387002
+goat,swing,inversion window 80 -> 160 1H candles,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,inversion window 80 -> 160 1H candles,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,inversion window 80 -> 160 1H candles,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,inversion window 80 -> 160 1H candles,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,inversion window 80 -> 160 1H candles,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,inversion window 80 -> 160 1H candles,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,inversion window 80 -> 160 1H candles,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,inversion window 80 -> 160 1H candles,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,inversion window 80 -> 160 1H candles,2026-07-01 13:00:00+00:00,stop,-1.001797628894403
+goat,swing,inversion window 80 -> 160 1H candles,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,inversion window 80 -> 160 1H candles,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,inversion window 80 -> 160 1H candles,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,inversion window 80 -> 160 1H candles,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,inversion window 80 -> 160 1H candles,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,inversion window 80 -> 160 1H candles,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,inversion window 80 -> 160 1H candles,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,4H FVG lookback 60 -> 120 4H candles,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,retest window 48 -> 96 h,2024-02-26 13:00:00+00:00,target,1.5888715548621477
+goat,swing,retest window 48 -> 96 h,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,retest window 48 -> 96 h,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,retest window 48 -> 96 h,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,retest window 48 -> 96 h,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,retest window 48 -> 96 h,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,retest window 48 -> 96 h,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,retest window 48 -> 96 h,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,retest window 48 -> 96 h,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,retest window 48 -> 96 h,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,retest window 48 -> 96 h,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,retest window 48 -> 96 h,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,retest window 48 -> 96 h,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,retest window 48 -> 96 h,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,retest window 48 -> 96 h,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,retest window 48 -> 96 h,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,retest window 48 -> 96 h,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,retest window 48 -> 96 h,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,retest window 48 -> 96 h,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,retest window 48 -> 96 h,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,retest window 48 -> 96 h,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,retest window 48 -> 96 h,2025-12-15 14:00:00+00:00,target,0.21505404692855493
+goat,swing,retest window 48 -> 96 h,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,retest window 48 -> 96 h,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,retest window 48 -> 96 h,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,retest window 48 -> 96 h,2026-02-09 14:00:00+00:00,target,0.2418781084042868
+goat,swing,retest window 48 -> 96 h,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,retest window 48 -> 96 h,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,retest window 48 -> 96 h,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,retest window 48 -> 96 h,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,retest window 48 -> 96 h,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,retest window 48 -> 96 h,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,retest window 48 -> 96 h,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,retest window 48 -> 96 h,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,retest window 48 -> 96 h,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,retest window 48 -> 96 h,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,retest window 48 -> 96 h,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,retest window 48 -> 96 h,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,no 1H MSS,2024-02-05 16:00:00+00:00,stop,-1.0148614150255286
+goat,swing,no 1H MSS,2024-03-01 13:00:00+00:00,stop,-1.0583706356311564
+goat,swing,no 1H MSS,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,no 1H MSS,2024-03-18 19:00:00+00:00,stop,-1.0108848080133555
+goat,swing,no 1H MSS,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,no 1H MSS,2024-04-01 19:00:00+00:00,target,0.6564324324323909
+goat,swing,no 1H MSS,2024-04-04 00:00:00+00:00,target,0.36585219786801604
+goat,swing,no 1H MSS,2024-04-19 12:00:00+00:00,stop,-1.0100425112439158
+goat,swing,no 1H MSS,2024-05-10 15:00:00+00:00,target,0.16662320730119975
+goat,swing,no 1H MSS,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,no 1H MSS,2024-09-09 17:00:00+00:00,target,0.649445407846083
+goat,swing,no 1H MSS,2024-09-20 10:00:00+00:00,breakeven,-0.01121894142748978
+goat,swing,no 1H MSS,2024-10-25 08:00:00+00:00,target,0.18847497089639342
+goat,swing,no 1H MSS,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,no 1H MSS,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,no 1H MSS,2025-01-13 18:00:00+00:00,target,1.6315936626281633
+goat,swing,no 1H MSS,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,no 1H MSS,2025-01-23 15:00:00+00:00,stop,-1.0161666253409376
+goat,swing,no 1H MSS,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,no 1H MSS,2025-03-04 20:00:00+00:00,target,0.41124916051040583
+goat,swing,no 1H MSS,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,no 1H MSS,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,no 1H MSS,2025-04-07 15:00:00+00:00,target,0.6840116605000586
+goat,swing,no 1H MSS,2025-04-07 15:00:00+00:00,target,1.3833227546810622
+goat,swing,no 1H MSS,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,no 1H MSS,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,no 1H MSS,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,no 1H MSS,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,no 1H MSS,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,no 1H MSS,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,no 1H MSS,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,no 1H MSS,2025-07-11 02:00:00+00:00,target,1.1092846270928618
+goat,swing,no 1H MSS,2025-07-15 22:00:00+00:00,target,0.30679706601466994
+goat,swing,no 1H MSS,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,no 1H MSS,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,no 1H MSS,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,no 1H MSS,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,no 1H MSS,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,no 1H MSS,2026-01-20 17:00:00+00:00,stop,-1.0059728838402344
+goat,swing,no 1H MSS,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,no 1H MSS,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,no 1H MSS,2026-02-03 15:00:00+00:00,stop,-1.0048475836431228
+goat,swing,no 1H MSS,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,no 1H MSS,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,no 1H MSS,2026-03-03 19:00:00+00:00,target,1.1660873966593637
+goat,swing,no 1H MSS,2026-03-09 17:00:00+00:00,target,0.5882896473694185
+goat,swing,no 1H MSS,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,no 1H MSS,2026-03-30 09:00:00+00:00,stop,-1.0062130741376025
+goat,swing,no 1H MSS,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,no 1H MSS,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,no 1H MSS,2026-06-12 10:00:00+00:00,target,0.09304725247727443
+goat,swing,no 1H MSS,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,no 1H MSS,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,no 1H MSS,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,no 1H MSS,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,no 1H MSS,2026-09-14 14:00:00+00:00,target,0.5280241935483946
+goat,swing,no 1H MSS,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,no 1H MSS,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,no 1H MSS,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,displacement 1 ATR -> 0.5 ATR,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,displacement 1 ATR -> 0.5 ATR,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,displacement 1 ATR -> 0.5 ATR,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,displacement 1 ATR -> 0.5 ATR,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,displacement 1 ATR -> 0.5 ATR,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-02-18 19:00:00+00:00,stop,-1.012875197472354
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,displacement 1 ATR -> 0.5 ATR,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-04-07 14:00:00+00:00,target,0.07230375029117919
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-10-14 05:00:00+00:00,stop,-1.0091265397536395
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,displacement 1 ATR -> 0.5 ATR,2026-10-29 04:00:00+00:00,target,1.1261679079214544
+goat,swing,no displacement requirement,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,no displacement requirement,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,no displacement requirement,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,no displacement requirement,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,no displacement requirement,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,no displacement requirement,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,no displacement requirement,2025-02-18 19:00:00+00:00,stop,-1.012875197472354
+goat,swing,no displacement requirement,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,no displacement requirement,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,no displacement requirement,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,no displacement requirement,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,no displacement requirement,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,no displacement requirement,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,no displacement requirement,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,no displacement requirement,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,no displacement requirement,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,no displacement requirement,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,no displacement requirement,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,no displacement requirement,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,no displacement requirement,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,no displacement requirement,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,no displacement requirement,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,no displacement requirement,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,no displacement requirement,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,no displacement requirement,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,no displacement requirement,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,no displacement requirement,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,no displacement requirement,2026-03-31 23:00:00+00:00,target,0.29851655479722466
+goat,swing,no displacement requirement,2026-04-07 14:00:00+00:00,target,0.07230375029117919
+goat,swing,no displacement requirement,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,no displacement requirement,2026-04-13 00:00:00+00:00,stop,-1.0071272409269785
+goat,swing,no displacement requirement,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,no displacement requirement,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,no displacement requirement,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,no displacement requirement,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,no displacement requirement,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,no displacement requirement,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,no displacement requirement,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,no displacement requirement,2026-10-14 05:00:00+00:00,stop,-1.0091265397536395
+goat,swing,no displacement requirement,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,no displacement requirement,2026-10-29 04:00:00+00:00,target,1.1261679079214544
+goat,swing,window 160 + lookback 120 + retest 96,2024-02-13 15:00:00+00:00,target,0.3295833454144784
+goat,swing,window 160 + lookback 120 + retest 96,2024-02-26 13:00:00+00:00,target,1.5888715548621477
+goat,swing,window 160 + lookback 120 + retest 96,2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,window 160 + lookback 120 + retest 96,2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,window 160 + lookback 120 + retest 96,2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,window 160 + lookback 120 + retest 96,2024-09-11 19:00:00+00:00,target,0.5332390969941376
+goat,swing,window 160 + lookback 120 + retest 96,2024-10-03 08:00:00+00:00,stop,-1.002872373232301
+goat,swing,window 160 + lookback 120 + retest 96,2024-10-16 14:00:00+00:00,target,0.26972773090047447
+goat,swing,window 160 + lookback 120 + retest 96,2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,window 160 + lookback 120 + retest 96,2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,window 160 + lookback 120 + retest 96,2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,window 160 + lookback 120 + retest 96,2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,window 160 + lookback 120 + retest 96,2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,window 160 + lookback 120 + retest 96,2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,window 160 + lookback 120 + retest 96,2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,window 160 + lookback 120 + retest 96,2025-04-09 22:00:00+00:00,target,0.10662743394288969
+goat,swing,window 160 + lookback 120 + retest 96,2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,window 160 + lookback 120 + retest 96,2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,window 160 + lookback 120 + retest 96,2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,window 160 + lookback 120 + retest 96,2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,window 160 + lookback 120 + retest 96,2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,window 160 + lookback 120 + retest 96,2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,window 160 + lookback 120 + retest 96,2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,window 160 + lookback 120 + retest 96,2025-08-19 15:00:00+00:00,target,0.14259002770083415
+goat,swing,window 160 + lookback 120 + retest 96,2025-09-02 13:00:00+00:00,target,0.38925692083535696
+goat,swing,window 160 + lookback 120 + retest 96,2025-10-13 07:00:00+00:00,target,0.5464677804295995
+goat,swing,window 160 + lookback 120 + retest 96,2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,window 160 + lookback 120 + retest 96,2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,window 160 + lookback 120 + retest 96,2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,window 160 + lookback 120 + retest 96,2025-12-15 14:00:00+00:00,target,0.21505404692855493
+goat,swing,window 160 + lookback 120 + retest 96,2025-12-22 14:00:00+00:00,target,0.21886670543387002
+goat,swing,window 160 + lookback 120 + retest 96,2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,window 160 + lookback 120 + retest 96,2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,window 160 + lookback 120 + retest 96,2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,window 160 + lookback 120 + retest 96,2026-02-09 14:00:00+00:00,target,0.2418781084042868
+goat,swing,window 160 + lookback 120 + retest 96,2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,window 160 + lookback 120 + retest 96,2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,window 160 + lookback 120 + retest 96,2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,window 160 + lookback 120 + retest 96,2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,window 160 + lookback 120 + retest 96,2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,window 160 + lookback 120 + retest 96,2026-07-01 13:00:00+00:00,stop,-1.001797628894403
+goat,swing,window 160 + lookback 120 + retest 96,2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,window 160 + lookback 120 + retest 96,2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,window 160 + lookback 120 + retest 96,2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,window 160 + lookback 120 + retest 96,2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,window 160 + lookback 120 + retest 96,2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,window 160 + lookback 120 + retest 96,2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,window 160 + lookback 120 + retest 96,2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-02-05 16:00:00+00:00,stop,-1.0148614150255286
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-02-13 15:00:00+00:00,target,0.3295833454144784
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-02-26 13:00:00+00:00,target,1.5888715548621477
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-03-01 13:00:00+00:00,stop,-1.0583706356311564
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-03-08 18:00:00+00:00,target,0.5758937505685474
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-03-18 19:00:00+00:00,stop,-1.0108848080133555
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-03-21 19:00:00+00:00,breakeven,-0.01661569826707404
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-04-01 19:00:00+00:00,target,0.6564324324323909
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-04-04 00:00:00+00:00,target,0.36585219786801604
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-04-19 12:00:00+00:00,stop,-1.0100425112439158
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-05-10 15:00:00+00:00,target,0.16662320730119975
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-06-05 14:00:00+00:00,target,0.28131084242732385
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-09-09 17:00:00+00:00,target,0.649445407846083
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-09-11 19:00:00+00:00,target,0.5332390969941376
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-09-20 10:00:00+00:00,breakeven,-0.01121894142748978
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-10-03 08:00:00+00:00,stop,-1.002872373232301
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-10-16 14:00:00+00:00,target,0.26972773090047447
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-10-25 08:00:00+00:00,target,0.18847497089639342
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-10-31 00:00:00+00:00,target,0.23048304830483318
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2024-11-05 15:00:00+00:00,target,0.7149099498080849
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-01-13 18:00:00+00:00,target,1.6315936626281633
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-01-16 21:00:00+00:00,target,0.19364779874213836
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-01-23 15:00:00+00:00,stop,-1.0161666253409376
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-02-18 19:00:00+00:00,stop,-1.012875197472354
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-02-28 21:00:00+00:00,stop,-1.0065226090436175
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-03-04 20:00:00+00:00,target,0.41124916051040583
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-03-17 19:00:00+00:00,target,0.44292003521972084
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-03-26 18:00:00+00:00,target,0.06983732770396164
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-03-31 22:00:00+00:00,breakeven,-0.006349824698091138
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-04-07 15:00:00+00:00,target,0.6840116605000586
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-04-07 15:00:00+00:00,target,1.3833227546810622
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-04-10 15:00:00+00:00,target,0.12444352600814891
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-04-09 22:00:00+00:00,target,0.10662743394288969
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-04-25 11:00:00+00:00,stop,-1.0074107751761763
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-05-02 00:00:00+00:00,stop,-1.0115808170515097
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-05-08 15:00:00+00:00,stop,-1.0079107012860957
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-05-29 16:00:00+00:00,target,0.4644335633207203
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-06-05 22:00:00+00:00,stop,-1.0046578082583226
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-06-12 12:00:00+00:00,target,0.1373502856089829
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-07-11 02:00:00+00:00,target,1.1092846270928618
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-07-15 22:00:00+00:00,target,0.30679706601466994
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-08-01 07:00:00+00:00,target,0.28252188452837695
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-08-04 17:00:00+00:00,target,0.1775152537972212
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-08-19 15:00:00+00:00,target,0.14259002770083415
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-09-02 13:00:00+00:00,target,0.38925692083535696
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-09-07 22:00:00+00:00,stop,-1.0229739252995065
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-10-13 07:00:00+00:00,target,0.5464677804295995
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-10-21 13:00:00+00:00,target,0.10628649587037482
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-10-23 07:00:00+00:00,target,0.407430478309213
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-11-21 18:00:00+00:00,breakeven,-0.007340689034001375
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-11-25 19:00:00+00:00,target,0.19708255410098774
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-12-15 14:00:00+00:00,target,0.21505404692855493
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2025-12-22 14:00:00+00:00,target,0.21886670543387002
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-01-08 03:00:00+00:00,target,0.3410498687663966
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-01-14 11:00:00+00:00,target,0.8259198957994226
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-01-20 17:00:00+00:00,stop,-1.0059728838402344
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-01-22 14:00:00+00:00,target,0.16307035488748384
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-01-29 20:00:00+00:00,target,0.2409422175949946
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-02-03 15:00:00+00:00,stop,-1.0048475836431228
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-02-09 14:00:00+00:00,target,0.2418781084042868
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-02-09 18:00:00+00:00,target,0.15327348138814764
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-02-26 19:00:00+00:00,target,0.20511182108626244
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-03-03 19:00:00+00:00,target,1.1660873966593637
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-03-09 17:00:00+00:00,target,0.5882896473694185
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-03-24 02:00:00+00:00,target,0.3832108801000352
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-03-30 09:00:00+00:00,stop,-1.0062130741376025
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-04-07 14:00:00+00:00,target,0.07230375029117919
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-04-08 16:00:00+00:00,breakeven,-0.015871470301849936
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-04-16 14:00:00+00:00,stop,-1.0222297988407771
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-06-12 10:00:00+00:00,target,0.09304725247727443
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-07-01 13:00:00+00:00,stop,-1.001797628894403
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-07-09 10:00:00+00:00,target,0.19870799983748047
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-07-20 14:00:00+00:00,stop,-1.0084063950489943
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-08-05 16:00:00+00:00,breakeven,-0.006704370179948586
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-08-18 06:00:00+00:00,target,0.18764619453422607
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-09-14 14:00:00+00:00,target,0.5280241935483946
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-09-23 13:00:00+00:00,target,7.7377151799694746
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-09-25 05:00:00+00:00,target,0.5513753820505907
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-10-14 05:00:00+00:00,stop,-1.0091265397536395
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-10-27 03:00:00+00:00,target,2.0982397572078906
+goat,swing,"all loose: no MSS, 0.5 ATR, window 160, retest 96",2026-10-29 04:00:00+00:00,target,1.1261679079214544

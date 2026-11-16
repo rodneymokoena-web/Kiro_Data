@@ -1,0 +1,9 @@
+variant,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26,avg stop pts,med RR
+"current: 1H OB 50%, target 1H swing low",goat,75,44,1.64,12.33,11255,6.4,3.1,9.2,285,0.49
+"4H IFVG stop, target 1H swing low",goat,75,33,1.01,0.37,9878,21.0,-14.3,14.7,83,2.13
+"4H IFVG stop, target 3R",goat,75,19,0.88,-5.69,9369,14.6,-13.3,7.7,83,3.0
+"4H IFVG stop, target 4H(2) liquidity >=1R",goat,74,15,1.59,27.93,12176,27.2,-26.0,54.0,82,4.9
+"current: 1H OB 50%, target 1H swing low",pepperstone,83,48,1.75,15.96,11667,6.2,6.5,9.5,282,0.56
+"4H IFVG stop, target 1H swing low",pepperstone,83,28,0.6,-21.94,7959,23.5,-16.8,-5.2,81,2.32
+"4H IFVG stop, target 3R",pepperstone,83,17,0.73,-15.46,8489,18.6,-11.9,-3.6,81,3.0
+"4H IFVG stop, target 4H(2) liquidity >=1R",pepperstone,83,13,0.54,-26.12,7624,23.8,-16.9,-9.2,81,5.23

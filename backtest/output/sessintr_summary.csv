@@ -1,0 +1,15 @@
+intraday Rule 1,broker,trades,win%,PF,R,capital,maxDD%,R21-23,R24-26
+baseline (no sessions),goat,26,50,4.48,30.02,13420,3.2,16.6,13.4
+ASIA/LONDON/NY @ 1H+ swing,goat,73,25,1.4,15.28,11537,7.7,18.1,-2.8
+ASIA/LONDON/NY @ 4H+ swing,goat,33,39,2.77,24.69,12719,6.2,15.4,9.3
+LONDON/NY @ 1H+ swing,goat,67,25,1.44,15.46,11565,9.1,18.1,-2.7
+LONDON/NY @ 4H+ swing,goat,29,45,3.57,27.82,13126,3.2,15.4,12.4
+NY @ 1H+ swing,goat,58,29,1.82,22.78,12448,7.2,20.2,2.5
+NY @ 4H+ swing,goat,29,45,3.57,27.82,13126,3.2,15.4,12.4
+baseline (no sessions),pepperstone,26,58,5.89,36.82,14353,3.2,24.4,12.4
+ASIA/LONDON/NY @ 1H+ swing,pepperstone,76,34,2.23,42.45,15092,7.4,27.1,15.3
+ASIA/LONDON/NY @ 4H+ swing,pepperstone,35,51,4.42,41.19,14970,3.1,23.8,17.4
+LONDON/NY @ 1H+ swing,pepperstone,71,34,2.19,38.62,14539,10.0,27.1,11.5
+LONDON/NY @ 4H+ swing,pepperstone,30,53,4.33,36.38,14281,3.1,25.0,11.4
+NY @ 1H+ swing,pepperstone,58,38,2.72,41.14,14930,7.2,27.4,13.7
+NY @ 4H+ swing,pepperstone,29,55,4.79,37.41,14429,3.1,26.0,11.4

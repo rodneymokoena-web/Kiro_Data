@@ -1,0 +1,18 @@
+symbol,setup,signal,entry_tf,entry_mode,reason
+US100,3,long,5m,touch,no trigger
+US100,3,long,5m,ce,no trigger
+US100,7,long,5m,touch,no trigger
+US100,7,long,5m,ce,no trigger
+US100,11,short,5m,touch,no trigger
+US100,11,short,5m,ce,no trigger
+US100,15,long,5m,touch,no retest
+US100,15,long,5m,ce,no retest
+XAUUSD,7,short,5m,touch,no trigger
+XAUUSD,7,short,5m,ce,no trigger
+XAUUSD,11,long,5m,ce,expired
+XAUUSD,18,short,5m,touch,"trigger, no FVG"
+XAUUSD,18,short,5m,ce,"trigger, no FVG"
+XAUUSD,29,short,5m,touch,expired
+XAUUSD,29,short,5m,ce,expired
+XAUUSD,30,short,5m,touch,expired
+XAUUSD,30,short,5m,ce,expired
