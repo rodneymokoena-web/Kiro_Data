@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MT5 Backtest Analyzer</title>
+<!--
+  MT5 Backtest Analyzer - one self-contained file, no internet needed, nothing is uploaded.
+  Open it in a browser and drop in:
+    * an MT5 Strategy Tester JOURNAL log  (Strategy Tester -> Journal -> right click -> Open, or MQL5/../Tester/logs/*.log;
+      UTF-16 or UTF-8), or the tester-style logs made by backtest/mt5_tester_log.py, or
+    * an MT5 Strategy Tester REPORT saved as HTML (Strategy Tester -> Backtest -> right click -> Report -> HTML).
+  Trades are rebuilt from the deals (journal: order / deal / stop loss / take profit lines; report: the Deals table).
+-->
+<style>
+:root{--bg:#0e1320;--panel:#161d2d;--panel2:#1c2538;--text:#e6e9f0;--muted:#8a94aa;--line:#2a3550;
+      --green:#26a69a;--red:#ef5350;--amber:#f0b429;--blue:#4f8cff;--grey:#7f8aa3}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.45 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{padding:16px 24px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .sub{color:var(--muted);font-size:13px}
+main{padding:18px 24px;max-width:1440px;margin:0 auto}
+h2{font-size:13px;margin:0 0 10px;color:#c9d1e3;text-transform:uppercase;letter-spacing:.05em}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.row>.panel{flex:1 1 420px;min-width:320px}
+#drop{border:2px dashed var(--line);border-radius:10px;padding:22px;text-align:center;color:var(--muted);cursor:pointer}
+#drop.over{border-color:var(--blue);color:var(--text);background:#18233a}
+#drop b{color:var(--text)}
+textarea{width:100%;min-height:90px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px;font:12px/1.4 Consolas,monospace}
+button,select,input[type=number]{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font:inherit}
+button{cursor:pointer} button:hover{border-color:var(--blue)}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.settings{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end;margin-top:12px}
+.settings label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+.settings input[type=number]{width:140px}
+.hint{color:var(--muted);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:10px}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.card .k{color:var(--muted);font-size:12px}
+.card .v{font-size:19px;font-weight:600;margin-top:2px;overflow-wrap:anywhere}
+.card .s{color:var(--muted);font-size:12px;margin-top:2px}
+.pos{color:var(--green)} .neg{color:var(--red)} .be{color:var(--grey)} .warn{color:var(--amber)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{color:var(--muted);font-weight:500;position:sticky;top:0;background:var(--panel);cursor:default}
+td:first-child,th:first-child{text-align:left}
+table.kv td:first-child{color:var(--muted)}
+table.kv td{text-align:right}
+table.kv td:first-child{text-align:left}
+.scroll{max-height:520px;overflow:auto}
+th.sortable{cursor:pointer} th.sortable:hover{color:var(--text)}
+canvas{width:100%;display:block}
+.tag{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;background:#25304a}
+.tag.TP{background:#164a45;color:#7fe3d6}.tag.SL{background:#4d1f22;color:#ff9c9a}.tag.BE{background:#30384c;color:#c3cad8}
+.tag.Trail{background:#173a5c;color:#9cc8ff}
+.tag[class*="Partial"]{background:#3b3416;color:#f3d77a}
+#warnings li{color:var(--amber)}
+.hidden{display:none}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+footer{color:var(--muted);font-size:12px;padding:0 24px 24px;max-width:1440px;margin:0 auto}
+</style>
+</head>
+<body>
+<header>
+  <h1>MT5 Backtest Analyzer</h1>
+  <span class="sub">Strategy Tester journal log or HTML report &rarr; PnL, win rate, profit factor, drawdown, R multiples, equity curve. Runs entirely in your browser.</span>
+</header>
+<main>
+  <div class="panel">
+    <div id="drop">
+      <b>Drop an MT5 tester log (.log / .txt) or report (.html / .htm) here</b>, or click to choose a file
+      <div class="hint">Journal logs are in <code>MQL5\..\Tester\logs</code> or <code>Tester\Agent-*\logs</code> (UTF-16 is fine). Report: Strategy Tester &rarr; Backtest tab &rarr; right-click &rarr; Report &rarr; HTML.</div>
+      <input id="file" type="file" accept=".log,.txt,.htm,.html,text/*" class="hidden">
+    </div>
+    <details style="margin-top:10px">
+      <summary class="hint" style="cursor:pointer">&hellip;or paste journal text</summary>
+      <textarea id="paste" placeholder="Paste the Strategy Tester journal here"></textarea>
+      <button id="pasteGo" class="primary" style="margin-top:6px">Analyze pasted text</button>
+    </details>
+    <div class="settings">
+      <label>Profit per 1.0 lot per 1.0 price move
+        <input id="vpp" type="number" step="any" min="0" value="1">
+      </label>
+      <label>Cost per lot per trade (money)
+        <input id="cost" type="number" step="any" value="0">
+      </label>
+      <label>Account type
+        <select id="mode"><option value="hedging">Hedging</option><option value="netting">Netting</option></select>
+      </label>
+      <label>Initial deposit (override)
+        <input id="dep" type="number" step="any" min="0" placeholder="from file">
+      </label>
+      <label>Breakeven tolerance (R)
+        <input id="beTol" type="number" step="0.01" min="0" value="0.05">
+      </label>
+      <label style="flex-direction:row;align-items:center;gap:6px"><input id="merge" type="checkbox" checked> Partial closes of a position = one trade</label>
+      <button id="rerun">Recalculate</button>
+      <span id="vppNote" class="hint"></span>
+    </div>
+  </div>
+
+  <div id="out" class="hidden">
+    <div class="panel">
+      <h2 id="title">Summary</h2>
+      <div id="meta" class="hint" style="margin-bottom:10px"></div>
+      <div class="cards" id="cards"></div>
+      <ul id="warnings"></ul>
+    </div>
+
+    <div class="panel">
+      <h2>Balance curve &amp; drawdown</h2>
+      <canvas id="eq" height="300"></canvas>
+      <div class="legend"><span><i style="background:var(--blue)"></i>Balance (closed trades)</span><span><i style="background:rgba(239,83,80,.45)"></i>Drawdown from peak</span></div>
+    </div>
+
+    <div class="row">
+      <div class="panel"><h2>Performance</h2><table class="kv" id="perf"></table></div>
+      <div class="panel"><h2>Trades &amp; risk</h2><table class="kv" id="risk"></table></div>
+    </div>
+
+    <div class="row">
+      <div class="panel"><h2>Long vs short</h2><table id="ls"></table></div>
+      <div class="panel"><h2>Exit reasons</h2><table id="exits"></table></div>
+    </div>
+
+    <div class="row">
+      <div class="panel"><h2>Monthly</h2><canvas id="mchart" height="200"></canvas><div class="scroll" style="max-height:300px;margin-top:10px"><table id="months"></table></div></div>
+      <div class="panel"><h2>By entry hour (server time)</h2><canvas id="hchart" height="200"></canvas><div class="scroll" style="max-height:300px;margin-top:10px"><table id="hours"></table></div></div>
+    </div>
+
+    <div class="row">
+      <div class="panel"><h2>By weekday (entry)</h2><table id="wdays"></table></div>
+      <div class="panel"><h2>R-multiple distribution</h2><canvas id="rchart" height="200"></canvas><div id="rnote" class="hint"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="toolbar">
+        <h2 style="margin:0">Trades</h2>
+        <select id="fSide"><option value="">All sides</option><option value="long">Long</option><option value="short">Short</option></select>
+        <select id="fRes"><option value="">All results</option><option value="win">Wins</option><option value="loss">Losses</option><option value="be">Breakeven</option></select>
+        <button id="csv">Export CSV</button>
+        <span id="tcount" class="hint"></span>
+      </div>
+      <div class="scroll"><table id="trades"></table></div>
+    </div>
+  </div>
+</main>
+<footer>
+  How it works: trades are rebuilt from the tester's deals. Journal logs do not contain money per deal, so profit = price move &times; lots &times;
+  the value per lot (guessed from the symbol - check it) minus a cost per lot, which is solved so the total matches the log's <i>final balance</i>
+  (spread, commission, swap). Logs from <code>mt5_tester_log.py</code> and HTML reports carry their own profit. R = profit / money at risk at the
+  initial stop (journal) or price move / stop distance (report), where the stop is known.
+  Partial closes of one position count as one trade (exit marked *, size-weighted; reason e.g. <i>Partial+BE</i> = part closed at the
+  first target, rest at breakeven) unless the box is unticked. Breakeven = stopped at the entry (within the tolerance). Win rate counts breakeven trades as neither wins nor losses in
+  &ldquo;excl. BE&rdquo;.
+</footer>
+
+<script>
+/*CORE-START*/
+const Core = (() => {
+  const N = '(-?\\d+(?:\\.\\d+)?)';
+  const MONEY = '(-?\\d+(?:[ \\u00a0]\\d{3})*(?:\\.\\d+)?)';
+  const num = s => (s == null || s === '') ? NaN : parseFloat(String(s).replace(/[\s\u00a0']/g, ''));
+  const nz = s => { const v = num(s); return isFinite(v) && v !== 0 ? v : null; };
+  const parseTime = s => {
+    const m = /(\d{4})\.(\d{2})\.(\d{2})(?:\s+(\d{2}):(\d{2})(?::(\d{2}))?)?/.exec(String(s));
+    return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0), +(m[6] || 0)) : NaN;
+  };
+
+  function decode(buf) {
+    const b = new Uint8Array(buf);
+    if (b.length >= 2 && b[0] === 0xFF && b[1] === 0xFE) return new TextDecoder('utf-16le').decode(b.subarray(2));
+    if (b.length >= 2 && b[0] === 0xFE && b[1] === 0xFF) return new TextDecoder('utf-16be').decode(b.subarray(2));
+    if (b.length >= 3 && b[0] === 0xEF && b[1] === 0xBB && b[2] === 0xBF) return new TextDecoder('utf-8').decode(b.subarray(3));
+    let z = 0; const n = Math.min(b.length, 4000);
+    for (let i = 1; i < n; i += 2) if (b[i] === 0) z++;
+    if (n > 20 && z > n / 4) return new TextDecoder('utf-16le').decode(b);
+    return new TextDecoder('utf-8').decode(b);
+  }
+
+  function detect(text) {
+    return (/<table/i.test(text) && /<t[dh][^>]*>\s*Deal\s*<\/t[dh]>/i.test(text)) ? 'report' : 'journal';
+  }
+
+  // ---------------------------------------------------------------- journal log
+  function parseJournal(text, opt) {
+    opt = opt || {};
+    const netting = opt.mode === 'netting';
+    const out = { source: 'MT5 journal log', deposit: null, finalBalance: null, currency: '', expert: '', symbol: '', tf: '',
+      from: null, to: null, trades: [], warnings: [], counts: { lines: 0, deals: 0, placed: 0, filled: 0, cancelled: 0, modified: 0 },
+      profitGiven: false };
+    const pos = new Map();          // position ticket -> open position
+    const orderInfo = new Map();    // pending order ticket -> {sl, tp, placed, kind}
+    const placements = [];          // pending orders placed, not triggered yet
+    const custom = new Map();       // ticket -> {profit, r, reason} ("closed #n ... profit ..." lines of mt5_tester_log.py)
+    let pendingMarket = null, seq = 0;
+    const closeQ = [];             // close contexts (SL / TP / close / stop out) waiting for their deal
+
+    const RE = {
+      dep: new RegExp('initial deposit\\s+' + MONEY + '\\s*([A-Z]{3})?', 'i'),
+      fin: new RegExp('final balance\\s+' + MONEY + '\\s*([A-Z]{3})?', 'i'),
+      exp: /expert file added:\s*(.+?)\.?\s*$/i,
+      test: /(\S+),(M\d+|H\d+|D1|W1|MN1)[^:]*:\s*testing of\s+(.+?)\s+from\s+(\d{4}\.\d{2}\.\d{2}(?: \d{2}:\d{2})?)\s+to\s+(\d{4}\.\d{2}\.\d{2}(?: \d{2}:\d{2})?)/i,
+      ts: /(\d{4}\.\d{2}\.\d{2} \d{2}:\d{2}(?::\d{2})?)\s+(.+)$/,
+      place: new RegExp('^(buy|sell) (limit|stop limit|stop) ' + N + ' (\\S+) at ' + N + '(?: \\(' + N + '\\))?(?: sl: ' + N + ')?(?: tp: ' + N + ')?'),
+      market: new RegExp('^(?:instant |market |exchange )(buy|sell) ' + N + ' ([^\\s,]+),?(?: close #(\\d+))?(?: sl: ' + N + ')?(?: tp: ' + N + ')?'),
+      trig: new RegExp('^order \\[#(\\d+) (buy|sell) (limit|stop limit|stop) ' + N + ' (\\S+) at ' + N + '\\] triggered'),
+      ord: new RegExp('\\[#(\\d+) (buy|sell) (limit|stop limit|stop) ' + N + ' (\\S+) at ' + N),
+      sltp: /^(stop loss|take profit) triggered #(\d+)/,
+      cdeal: new RegExp('\\[#\\d+ (buy|sell) ' + N + ' (\\S+) at ' + N + '\\]\\s*$'),
+      slv: new RegExp('sl: ' + N),
+      so: /^stop out(?: triggered)? #(\d+)/i,
+      mod: new RegExp('^position modified \\[#(\\d+) (buy|sell) ' + N + ' (\\S+) ' + N + ' sl: ' + N + ' tp: ' + N),
+      closed: /^closed #(\d+) (\w+) profit ([-+]?\d+(?:\.\d+)?)/,
+      closedR: /\|\s*([-+]?\d+(?:\.\d+)?)R/,
+      deal: new RegExp('^deal #(\\d+) (buy|sell) ' + N + ' (\\S+) at ' + N + ' done \\(based on order #(\\d+)\\)')
+    };
+
+    function openPos(ticket, d, vol, mk) {
+      const oi = orderInfo.get(d.order) || {};
+      let sl = oi.sl != null ? oi.sl : null, tp = oi.tp != null ? oi.tp : null, kind = oi.kind || null;
+      if (!kind && mk && !mk.close) { sl = mk.sl; tp = mk.tp; kind = 'market'; }
+      let tk = String(ticket);
+      while (pos.has(tk)) tk = ticket + '.' + (++seq);
+      pos.set(tk, { ticket: tk, sym: d.sym, side: d.side, vol, entry: d.price, entryTime: d.t, sl0: sl, tp0: tp, slCur: sl,
+        tpCur: tp, kind: kind || '?', placed: oi.placed != null ? oi.placed : null, slAtExit: null });
+    }
+    function closeQty(p, d, reason, qty) {
+      const q = Math.min(qty, p.vol);
+      out.trades.push({ ticket: p.ticket, sym: p.sym, side: p.side === 'buy' ? 'long' : 'short', vol: q, entry: p.entry,
+        exit: d.price, entryTime: p.entryTime, exitTime: d.t, sl0: p.sl0, tp0: p.tp0,
+        slExit: p.slAtExit != null ? p.slAtExit : p.slCur, reason, kind: p.kind, placed: p.placed,
+        pts: (d.price - p.entry) * (p.side === 'buy' ? 1 : -1) });
+      p.vol = +(p.vol - q).toFixed(8);
+      if (p.vol <= 1e-9) pos.delete(p.ticket);
+      return +(qty - q).toFixed(8);
+    }
+    function fifoClose(d, reason, qty) {
+      const opp = [...pos.values()].filter(p => p.sym === d.sym && p.side !== d.side).sort((a, b) => a.entryTime - b.entryTime);
+      const same = opp.find(p => Math.abs(p.vol - qty) < 1e-9);       // prefer the position with exactly this volume
+      if (same) return closeQty(same, d, reason, qty);
+      for (const p of opp) { if (qty <= 1e-9) break; qty = closeQty(p, d, reason, qty); }
+      return qty;
+    }
+    function handleDeal(d) {
+      out.counts.deals++;
+      const mk = pendingMarket;
+      pendingMarket = null;
+      // the close context of this deal: exact match on the closing deal shown in the trigger line, else the oldest one
+      let ci = closeQ.findIndex(c => c.side === d.side && c.sym === d.sym && Math.abs(c.vol - d.vol) < 1e-9 && Math.abs(c.price - d.price) < 1e-9);
+      if (ci < 0) ci = closeQ.findIndex(c => c.price == null && (!c.ticket || !pos.has(c.ticket) || pos.get(c.ticket).side !== d.side));
+      const ctx = ci >= 0 ? closeQ.splice(ci, 1)[0] : null;
+      let qty = d.vol;
+      if (ctx) {
+        const p = ctx.ticket ? pos.get(ctx.ticket) : null;
+        if (p && p.side !== d.side) qty = closeQty(p, d, ctx.reason, qty);
+        if (qty > 1e-9) qty = fifoClose(d, ctx.reason, qty);
+        if (Math.abs(qty - d.vol) < 1e-9) { out.counts.unmatched = (out.counts.unmatched || 0) + 1; return; }   // nothing to close
+        if (qty > 1e-9) openPos(d.order, d, qty, null);               // netting reversal
+        return;
+      }
+      if (netting) {
+        qty = fifoClose(d, 'Close', qty);
+        if (qty <= 1e-9) return;
+        const same = [...pos.values()].find(p => p.sym === d.sym && p.side === d.side);
+        if (same) {                                                    // netting: add to the position (average price)
+          same.entry = (same.entry * same.vol + d.price * qty) / (same.vol + qty);
+          same.vol = +(same.vol + qty).toFixed(8);
+          return;
+        }
+      }
+      openPos(d.order, d, qty, mk);
+    }
+
+    for (const raw of text.split(/\r?\n/)) {
+      if (!raw.trim()) continue;
+      out.counts.lines++;
+      let m;
+      if ((m = RE.dep.exec(raw))) { out.deposit = num(m[1]); if (m[2]) out.currency = m[2]; continue; }
+      if ((m = RE.fin.exec(raw))) { out.finalBalance = num(m[1]); if (m[2]) out.currency = m[2]; continue; }
+      if ((m = RE.exp.exec(raw))) { out.expert = m[1].split(/[\\/]/).pop().replace(/\.ex5$/i, ''); continue; }
+      if ((m = RE.test.exec(raw))) {
+        out.symbol = m[1].split(/\s/).pop(); out.tf = m[2];
+        if (!out.expert) out.expert = m[3].split(/[\\/]/).pop().replace(/\.ex5$/i, '');
+        out.from = parseTime(m[4]); out.to = parseTime(m[5]); continue;
+      }
+      if (!(m = RE.ts.exec(raw))) continue;
+      const t = parseTime(m[1]);
+      const msg = m[2].trim();
+      if (/^CTrade::/.test(msg)) continue;
+      if ((m = RE.place.exec(msg))) {
+        placements.push({ side: m[1], type: m[2], vol: +m[3], sym: m[4], price: +m[5], sl: nz(m[7]), tp: nz(m[8]), t });
+        out.counts.placed++; continue;
+      }
+      if ((m = RE.market.exec(msg))) {
+        pendingMarket = { side: m[1], vol: +m[2], sym: m[3], close: m[4] || null, sl: nz(m[5]), tp: nz(m[6]), t };
+        if (m[4]) closeQ.push({ ticket: m[4], reason: 'Close', side: m[1], sym: m[3], vol: +m[2], price: null });
+        continue;
+      }
+      if ((m = RE.trig.exec(msg))) {
+        const k = placements.findIndex(p => p.side === m[2] && p.type === m[3] && Math.abs(p.vol - +m[4]) < 1e-9 && p.sym === m[5] && Math.abs(p.price - +m[6]) < 1e-9);
+        const pl = k >= 0 ? placements.splice(k, 1)[0] : null;
+        orderInfo.set(m[1], { sl: pl ? pl.sl : null, tp: pl ? pl.tp : null, placed: pl ? pl.t : null, kind: m[3] });
+        out.counts.filled++; continue;
+      }
+      if (/\b(cancel+ed|deleted|expired|expiration)\b/i.test(msg) && (m = RE.ord.exec(msg))) {
+        const k = placements.findIndex(p => p.side === m[2] && p.type === m[3] && Math.abs(p.vol - +m[4]) < 1e-9 && Math.abs(p.price - +m[6]) < 1e-9);
+        if (k >= 0) placements.splice(k, 1);
+        out.counts.cancelled++; continue;
+      }
+      if ((m = RE.sltp.exec(msg))) {
+        const cd = RE.cdeal.exec(msg);
+        closeQ.push({ ticket: m[2], reason: m[1] === 'take profit' ? 'TP' : 'SL', side: cd ? cd[1] : null, vol: cd ? +cd[2] : null,
+          sym: cd ? cd[3] : null, price: cd ? +cd[4] : null });
+        const s = RE.slv.exec(msg), p = pos.get(m[2]);
+        if (s && p) p.slAtExit = nz(s[1]);
+        continue;
+      }
+      if ((m = RE.so.exec(msg))) { closeQ.push({ ticket: m[1], reason: 'Stop out', price: null }); continue; }
+      if (/end of test/i.test(msg) && !RE.deal.test(msg)) { const k = /#(\d+)/.exec(msg); closeQ.push({ ticket: k ? k[1] : null, reason: 'End of test', price: null }); continue; }
+      if ((m = RE.mod.exec(msg))) {
+        const p = pos.get(m[1]);
+        if (p) { p.slCur = nz(m[6]); p.tpCur = nz(m[7]); if (p.sl0 == null) p.sl0 = p.slCur; if (p.tp0 == null) p.tp0 = p.tpCur; }
+        out.counts.modified++; continue;
+      }
+      if ((m = RE.closed.exec(msg))) {
+        const r = RE.closedR.exec(msg);
+        custom.set(m[1], { profit: +m[3], r: r ? +r[1] : null, reason: m[2] });
+        out.profitGiven = true; continue;
+      }
+      if ((m = RE.deal.exec(msg))) handleDeal({ deal: m[1], side: m[2], vol: +m[3], sym: m[4], price: +m[5], order: m[6], t });
+    }
+
+    // apply the per-trade profit / R of mt5_tester_log.py logs
+    if (custom.size) {
+      const volByTicket = {};
+      for (const tr of out.trades) volByTicket[tr.ticket] = (volByTicket[tr.ticket] || 0) + tr.vol;
+      let missing = 0;
+      for (const tr of out.trades) {
+        const c = custom.get(String(tr.ticket).split('.')[0]);
+        if (!c) { missing++; continue; }
+        const share = tr.vol / volByTicket[tr.ticket];
+        tr.profit = c.profit * share; tr.rGiven = c.r != null ? c.r * share : null;
+        const rs = c.reason.toUpperCase();
+        if (rs === 'BREAKEVEN' || rs === 'TP1_BE') tr.reason = 'BE';
+        else if (rs === 'EOD' || rs === 'TP1_EOD') tr.reason = 'EOD';
+      }
+      if (missing) { out.profitGiven = false; out.warnings.push(missing + ' trades had no "closed ... profit" line - profit computed from price x lots for all trades.'); for (const tr of out.trades) delete tr.profit; }
+    }
+    if (out.counts.unmatched) out.warnings.push(out.counts.unmatched + ' closing deal(s) had no open position to close - ignored.');
+    if (pos.size) out.warnings.push(pos.size + ' position(s) still open at the end of the log - not counted.');
+    if (placements.length) out.counts.notFilled = placements.length;
+    if (!out.symbol && out.trades.length) out.symbol = [...new Set(out.trades.map(t => t.sym))].join(', ');
+    return out;
+  }
+
+  // ---------------------------------------------------------------- HTML report (Deals + Orders tables)
+  function strip(html) {
+    return html.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+      .replace(/&#(\d+);/g, (_, c) => String.fromCharCode(+c)).replace(/\s+/g, ' ').trim();
+  }
+  function parseReport(text, opt) {
+    const out = { source: 'MT5 tester report', deposit: null, finalBalance: null, currency: '', expert: '', symbol: '', tf: '',
+      from: null, to: null, trades: [], warnings: [], counts: { lines: 0, deals: 0 }, profitGiven: true };
+    const rows = [];
+    const trRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi; let m;
+    while ((m = trRe.exec(text))) {
+      const cells = []; const tdRe = /<t([dh])[^>]*>([\s\S]*?)<\/t[dh]>/gi; let c;
+      while ((c = tdRe.exec(m[1]))) cells.push(strip(c[2]));
+      rows.push(cells);
+    }
+    out.counts.lines = rows.length;
+    const lab = (re) => { for (const r of rows) for (let i = 0; i < r.length - 1; i++) if (re.test(r[i])) { const v = r.slice(i + 1).find(x => x !== ''); if (v) return v; } return null; };
+    out.expert = lab(/^Expert:?$/i) || '';
+    out.symbol = lab(/^Symbol:?$/i) || '';
+    const per = lab(/^Period:?$/i);
+    if (per) { const mm = /(\w+)\s*\((\d{4}\.\d{2}\.\d{2})\s*-\s*(\d{4}\.\d{2}\.\d{2})\)/.exec(per); if (mm) { out.tf = mm[1]; out.from = parseTime(mm[2]); out.to = parseTime(mm[3]); } }
+    const idep = lab(/^Initial Deposit:?$/i); if (idep) out.deposit = num(idep);
+    const cur = lab(/^Currency:?$/i); if (cur) out.currency = cur;
+    const low = r => r.map(x => x.toLowerCase());
+    // orders table -> S/L of each order
+    const slOf = new Map();
+    const oh = rows.findIndex(r => { const l = low(r); return l.includes('order') && l.some(x => x.replace(/\s/g, '') === 's/l') && l.includes('state'); });
+    if (oh >= 0) {
+      const l = low(rows[oh]), iO = l.indexOf('order'), iS = l.findIndex(x => x.replace(/\s/g, '') === 's/l');
+      for (let r = oh + 1; r < rows.length; r++) {
+        const row = rows[r];
+        if (row.length < l.length - 1 || !/^\d{4}\.\d{2}\.\d{2}/.test(row[0])) { if (row.length && /^deals$/i.test(row[0])) break; continue; }
+        const v = nz(row[iS]); if (v != null) slOf.set(row[iO], v);
+      }
+    }
+    const dh = rows.findIndex(r => { const l = low(r); return l.includes('deal') && l.includes('direction') && l.includes('profit'); });
+    if (dh < 0) { out.warnings.push('No "Deals" table found in the report.'); return out; }
+    const h = low(rows[dh]);
+    const col = n => h.indexOf(n);
+    const iT = col('time'), iSym = col('symbol'), iTy = col('type'), iDir = col('direction'), iV = col('volume'), iP = col('price'),
+      iO = col('order'), iC = col('commission'), iSw = col('swap'), iPr = col('profit'), iB = col('balance'), iCm = col('comment');
+    const open = [];
+    let dep = 0, lastBal = null;
+    for (let r = dh + 1; r < rows.length; r++) {
+      const row = rows[r];
+      if (!row.length || !/^\d{4}\.\d{2}\.\d{2}/.test(row[0])) { if (row.length > 1 && open.length === 0 && out.trades.length) break; continue; }
+      const type = (row[iTy] || '').toLowerCase(), dir = (row[iDir] || '').toLowerCase().replace(/\s/g, '');
+      const profit = num(row[iPr]) || 0, comm = iC >= 0 ? (num(row[iC]) || 0) : 0, swap = iSw >= 0 ? (num(row[iSw]) || 0) : 0;
+      if (iB >= 0 && isFinite(num(row[iB]))) lastBal = num(row[iB]);
+      if (type === 'balance' || type === 'credit') { dep += profit; continue; }
+      if (type !== 'buy' && type !== 'sell') continue;
+      out.counts.deals++;
+      const d = { t: parseTime(row[iT]), sym: row[iSym], side: type, vol: num(String(row[iV]).split('/')[0]), price: num(row[iP]),
+        order: row[iO], comm, swap, profit, comment: iCm >= 0 ? row[iCm] : '' };
+      let qty = d.vol;
+      if (dir === 'out' || dir === 'inout' || dir === 'out/in' || dir === 'in/out') {
+        const cm = d.comment.toLowerCase();
+        let reason = /^\[?sl\b/.test(cm) ? 'SL' : /^\[?tp\b/.test(cm) ? 'TP' : /^\[?so\b|stop ?out/.test(cm) ? 'Stop out' : /end of test/.test(cm) ? 'End of test' : 'Close';
+        const opp = open.filter(p => p.sym === d.sym && p.side !== d.side);
+        const totalClose = Math.min(qty, opp.reduce((s, p) => s + p.vol, 0));
+        let left = totalClose;
+        for (const p of opp) {
+          if (left <= 1e-9) break;
+          const q = Math.min(left, p.vol), share = totalClose > 0 ? q / totalClose : 0;
+          const entryShare = q / p.vol0;
+          out.trades.push({ ticket: p.order, sym: p.sym, side: p.side === 'buy' ? 'long' : 'short', vol: q, entry: p.price, exit: d.price,
+            entryTime: p.t, exitTime: d.t, sl0: slOf.has(p.order) ? slOf.get(p.order) : null, tp0: null, slExit: null, reason, kind: '',
+            pts: (d.price - p.price) * (p.side === 'buy' ? 1 : -1),
+            profit: (d.profit + d.comm + d.swap) * share + p.comm * entryShare });
+          p.vol = +(p.vol - q).toFixed(8); left = +(left - q).toFixed(8);
+        }
+        for (let k = open.length - 1; k >= 0; k--) if (open[k].vol <= 1e-9) open.splice(k, 1);
+        qty = +(qty - totalClose).toFixed(8);
+        if (dir === 'out' || qty <= 1e-9) continue;
+      }
+      open.push({ sym: d.sym, side: d.side, vol: qty, vol0: qty, price: d.price, t: d.t, order: d.order, comm: d.comm });
+    }
+    if (out.deposit == null && dep) out.deposit = dep;
+    out.finalBalance = lastBal;
+    if (open.length) out.warnings.push(open.length + ' position(s) still open at the end of the report - not counted.');
+    return out;
+  }
+
+  // ---------------------------------------------------------------- statistics
+  // profit per 1.0 lot per 1.0 price move: a guess from the symbol name (index / stock CFDs 1, gold 100, silver 5000, xxxUSD FX 100000)
+  function guessVpp(sym) {
+    const s = String(sym || '').toUpperCase();
+    if (/XAU|GOLD/.test(s)) return 100;
+    if (/XAG|SILVER/.test(s)) return 5000;
+    if (/^[A-Z]{3}USD/.test(s)) return 100000;
+    return 1;
+  }
+  // journal logs carry no money: profit = points x lots x vpp - cost x lots. The cost per lot (spread, commission, swap) is
+  // solved so that the total matches the log's final balance.
+  function calibrate(parsed, vpp) {
+    if (parsed.profitGiven) return { vpp: null, cost: 0, note: 'profit per trade taken from the file' };
+    const v = vpp != null ? vpp : guessVpp(parsed.symbol);
+    const gross = parsed.trades.reduce((s, t) => s + t.pts * t.vol * v, 0), lots = parsed.trades.reduce((s, t) => s + t.vol, 0);
+    if (parsed.deposit != null && parsed.finalBalance != null && lots > 0) {
+      const cost = -(parsed.finalBalance - parsed.deposit - gross) / lots;
+      return { vpp: v, cost, note: 'cost per lot solved from the final balance (spread / commission / swap)' };
+    }
+    return { vpp: v, cost: 0, note: 'no final balance in the file - enter your cost per lot' };
+  }
+
+  // partial closes of one position (same ticket) -> one trade: size-weighted exit / points, summed profit and R, last exit reason
+  function mergeParts(list) {
+    const by = new Map(), keys = [];
+    for (const t of list) { if (!by.has(t.ticket)) { by.set(t.ticket, []); keys.push(t.ticket); } by.get(t.ticket).push(t); }
+    return keys.map(k => {
+      const a = by.get(k).sort((x, y) => x.exitTime - y.exitTime);
+      if (a.length === 1) return Object.assign({ parts: 1 }, a[0]);
+      const last = a[a.length - 1], vol = a.reduce((s, x) => s + x.vol, 0);
+      const m = Object.assign({}, last, { parts: a.length, vol, sl0: a[0].sl0, tp0: a[0].tp0,
+        entryTime: Math.min(...a.map(x => x.entryTime)),
+        exit: a.reduce((s, x) => s + x.exit * x.vol, 0) / vol, pts: a.reduce((s, x) => s + x.pts * x.vol, 0) / vol,
+        firstExit: a[0].exit, firstExitTime: a[0].exitTime });
+      if (a.every(x => x.profit != null)) m.profit = a.reduce((s, x) => s + x.profit, 0); else delete m.profit;
+      m.rGiven = a.some(x => x.rGiven != null) ? a.reduce((s, x) => s + (x.rGiven || 0), 0) : null;
+      return m;
+    });
+  }
+
+  function stats(parsed, cfg) {
+    const vpp = cfg.vpp, cost = cfg.cost || 0, beTol = cfg.beTol != null ? cfg.beTol : 0.05;
+    const deposit = cfg.deposit != null ? cfg.deposit : parsed.deposit;
+    const base0 = parsed.trades.map(t => Object.assign({}, t));
+    const tr = (cfg.merge === false ? base0.map(t => Object.assign({ parts: 1 }, t)) : mergeParts(base0))
+      .sort((a, b) => a.exitTime - b.exitTime || a.entryTime - b.entryTime);
+    for (const t of tr) {
+      const computed = !(parsed.profitGiven && t.profit != null);
+      if (computed) t.profit = t.pts * t.vol * vpp - cost * t.vol;
+      const risk = t.sl0 != null ? Math.abs(t.entry - t.sl0) : null;
+      t.riskPts = risk;
+      // R: from the file, else profit / money at risk (net of costs), else (report) points / stop distance
+      t.r = t.rGiven != null ? t.rGiven : !(risk > 0) ? null : computed ? t.profit / (risk * t.vol * vpp) : t.pts / risk;
+      // exit reason refinement: a stop loss hit at the entry = breakeven, beyond the entry in profit = trailing stop
+      if (t.reason === 'SL') {
+        const tol = risk ? beTol * risk : Math.abs(t.entry) * 1e-6;
+        const sl = t.slExit != null ? t.slExit : t.exit;
+        const d = (sl - t.entry) * (t.side === 'long' ? 1 : -1);
+        if (Math.abs(d) <= tol) t.reason = 'BE'; else if (d > tol) t.reason = 'Trail';
+      }
+      if (t.parts > 1) t.reason = 'Partial+' + t.reason;              // e.g. Partial+BE = part at the first target, rest at breakeven
+      const beByR = t.r != null && Math.abs(t.r) <= beTol && t.reason !== 'TP';
+      t.res = (t.reason === 'BE' || beByR || t.profit === 0) ? 'be' : t.profit > 0 ? 'win' : 'loss';
+      t.holdMin = (t.exitTime - t.entryTime) / 60000;
+    }
+    const n = tr.length;
+    const S = { n, deposit, currency: parsed.currency || '', trades: tr };
+    const sum = a => a.reduce((s, x) => s + x, 0);
+    const P = tr.map(t => t.profit);
+    S.net = sum(P);
+    S.grossProfit = sum(P.filter(x => x > 0)); S.grossLoss = sum(P.filter(x => x < 0));
+    S.pf = S.grossLoss < 0 ? S.grossProfit / -S.grossLoss : (S.grossProfit > 0 ? Infinity : NaN);
+    S.wins = tr.filter(t => t.res === 'win').length; S.losses = tr.filter(t => t.res === 'loss').length; S.bes = tr.filter(t => t.res === 'be').length;
+    S.winRate = n ? S.wins / n : NaN; S.winRateExBE = (S.wins + S.losses) ? S.wins / (S.wins + S.losses) : NaN;
+    const W = tr.filter(t => t.profit > 0).map(t => t.profit), L = tr.filter(t => t.profit < 0).map(t => t.profit);
+    S.avgWin = W.length ? sum(W) / W.length : NaN; S.avgLoss = L.length ? sum(L) / L.length : NaN;
+    S.payoff = (W.length && L.length) ? S.avgWin / -S.avgLoss : NaN;
+    S.best = n ? Math.max(...P) : NaN; S.worst = n ? Math.min(...P) : NaN;
+    S.expectancy = n ? S.net / n : NaN;
+    const mean = S.expectancy, sd = n > 1 ? Math.sqrt(sum(P.map(x => (x - mean) ** 2)) / (n - 1)) : NaN;
+    S.sharpeTrade = sd > 0 ? mean / sd : NaN;
+    // streaks (breakeven trades end both)
+    let cw = 0, cl = 0; S.maxConsW = 0; S.maxConsL = 0; S.maxConsLossMoney = 0; let clm = 0;
+    for (const t of tr) {
+      if (t.res === 'win') { cw++; cl = 0; clm = 0; } else if (t.res === 'loss') { cl++; cw = 0; clm += t.profit; } else { cw = 0; cl = 0; clm = 0; }
+      S.maxConsW = Math.max(S.maxConsW, cw); S.maxConsL = Math.max(S.maxConsL, cl); S.maxConsLossMoney = Math.min(S.maxConsLossMoney, clm);
+    }
+    // balance curve + drawdown
+    const base = deposit != null ? deposit : 0;
+    let bal = base, peak = base, peakT = tr.length ? tr[0].entryTime : 0;
+    S.curve = [{ t: tr.length ? tr[0].entryTime : 0, b: base, dd: 0 }];
+    S.maxDD = 0; S.maxDDPct = 0; S.maxDDDur = 0; let ddStart = null;
+    for (const t of tr) {
+      bal += t.profit; t.balance = bal;
+      if (bal >= peak) { if (ddStart != null) S.maxDDDur = Math.max(S.maxDDDur, t.exitTime - ddStart); ddStart = null; peak = bal; peakT = t.exitTime; }
+      else if (ddStart == null) ddStart = peakT;
+      const dd = peak - bal; S.maxDD = Math.max(S.maxDD, dd);
+      if (deposit != null && peak > 0) S.maxDDPct = Math.max(S.maxDDPct, dd / peak);
+      S.curve.push({ t: t.exitTime, b: bal, dd });
+    }
+    if (ddStart != null && tr.length) S.maxDDDur = Math.max(S.maxDDDur, tr[tr.length - 1].exitTime - ddStart);
+    S.final = bal; S.retPct = deposit ? S.net / deposit : NaN;
+    S.recovery = S.maxDD > 0 ? S.net / S.maxDD : NaN;
+    // R multiples
+    const R = tr.filter(t => t.r != null && isFinite(t.r)).map(t => t.r);
+    S.rCount = R.length; S.rGiven = tr.some(t => t.rGiven != null); S.rNet = S.rGiven || !parsed.profitGiven;
+    S.totalR = sum(R); S.avgR = R.length ? S.totalR / R.length : NaN;
+    const rsd = R.length > 1 ? Math.sqrt(sum(R.map(x => (x - S.avgR) ** 2)) / (R.length - 1)) : NaN;
+    S.sqn = rsd > 0 ? Math.sqrt(Math.min(R.length, 100)) * S.avgR / rsd : NaN;
+    let pr = 0, rr = 0; S.maxDDR = 0;
+    for (const t of tr) if (t.r != null && isFinite(t.r)) { rr += t.r; pr = Math.max(pr, rr); S.maxDDR = Math.max(S.maxDDR, pr - rr); }
+    S.R = R;
+    S.avgRisk = tr.filter(t => t.riskPts).length ? sum(tr.filter(t => t.riskPts).map(t => t.riskPts)) / tr.filter(t => t.riskPts).length : NaN;
+    // time
+    const from = parsed.from != null ? parsed.from : (n ? Math.min(...tr.map(t => t.entryTime)) : NaN);
+    const to = parsed.to != null ? parsed.to : (n ? Math.max(...tr.map(t => t.exitTime)) : NaN);
+    S.from = from; S.to = to;
+    let wd = 0;
+    if (isFinite(from) && isFinite(to)) for (let d = Math.floor(from / 864e5); d * 864e5 < to; d++) { const w = new Date(d * 864e5).getUTCDay(); if (w > 0 && w < 6) wd++; }
+    S.weekdays = wd; S.tradeDays = new Set(tr.map(t => Math.floor(t.entryTime / 864e5))).size;
+    S.perDay = wd ? n / wd : NaN;
+    S.avgHold = n ? sum(tr.map(t => t.holdMin)) / n : NaN;
+    S.avgVol = n ? sum(tr.map(t => t.vol)) / n : NaN;
+    // groups
+    const group = (keyFn, order) => {
+      const g = new Map();
+      for (const t of tr) { const k = keyFn(t); if (!g.has(k)) g.set(k, []); g.get(k).push(t); }
+      const keys = order || [...g.keys()].sort();
+      return keys.filter(k => g.has(k)).map(k => {
+        const a = g.get(k), p = a.map(t => t.profit), gp = sum(p.filter(x => x > 0)), gl = -sum(p.filter(x => x < 0));
+        const rr2 = a.filter(t => t.r != null && isFinite(t.r)).map(t => t.r);
+        const w = a.filter(t => t.res === 'win').length, l = a.filter(t => t.res === 'loss').length;
+        return { key: k, n: a.length, wins: w, losses: l, be: a.length - w - l, winRate: w / a.length, net: sum(p),
+          pf: gl > 0 ? gp / gl : (gp > 0 ? Infinity : NaN), r: rr2.length ? sum(rr2) : null };
+      });
+    };
+    const pad = x => String(x).padStart(2, '0');
+    S.bySide = group(t => t.side, ['long', 'short']);
+    S.byReason = group(t => t.reason);
+    S.byMonth = group(t => { const d = new Date(t.exitTime); return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1); });
+    S.byHour = group(t => pad(new Date(t.entryTime).getUTCHours()));
+    const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    S.byWday = group(t => WD[new Date(t.entryTime).getUTCDay()], ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
+    return S;
+  }
+
+  function analyze(text, opt) {
+    const kind = detect(text);
+    const parsed = kind === 'report' ? parseReport(text, opt) : parseJournal(text, opt);
+    return parsed;
+  }
+  return { decode, detect, parseJournal, parseReport, calibrate, guessVpp, mergeParts, stats, analyze, parseTime };
+})();
+/*CORE-END*/
+
+// ------------------------------------------------------------------ UI
+(() => {
+  const $ = id => document.getElementById(id);
+  let TEXT = null, NAME = '', PARSED = null, S = null, userVpp = false, userCost = false, sortKey = 'exitTime', sortDir = 1;
+
+  const fmtN = (x, d = 2) => (x == null || !isFinite(x)) ? (x === Infinity ? '&infin;' : '&ndash;') : x.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const money = (x, sign = true) => (x == null || !isFinite(x)) ? '&ndash;' : (sign && x > 0 ? '+' : '') + fmtN(x) + (S && S.currency ? ' ' + S.currency : '');
+  const pct = (x, sign = false) => (x == null || !isFinite(x)) ? '&ndash;' : (sign && x > 0 ? '+' : '') + (x * 100).toFixed(1) + '%';
+  const cls = x => x > 0 ? 'pos' : x < 0 ? 'neg' : '';
+  const rfmt = x => (x == null || !isFinite(x)) ? '&ndash;' : (x > 0 ? '+' : '') + x.toFixed(2) + 'R';
+  const dt = (t, sec) => { if (!isFinite(t)) return '&ndash;'; const d = new Date(t), p = x => String(x).padStart(2, '0'); return d.getUTCFullYear() + '.' + p(d.getUTCMonth() + 1) + '.' + p(d.getUTCDate()) + ' ' + p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + (sec ? ':' + p(d.getUTCSeconds()) : ''); };
+  const dur = m => !isFinite(m) ? '&ndash;' : m < 60 ? Math.round(m) + ' min' : m < 1440 ? (m / 60).toFixed(1) + ' h' : (m / 1440).toFixed(1) + ' d';
+  const digits = () => { const ps = S.trades.map(t => t.entry); let d = 2; for (const p of ps.slice(0, 50)) { const s = String(p); const k = s.includes('.') ? s.split('.')[1].length : 0; d = Math.max(d, Math.min(k, 5)); } return d; };
+
+  function load(text, name) {
+    TEXT = text; NAME = name || ''; userVpp = false; userCost = false; $('dep').value = '';
+    run();
+  }
+  function run() {
+    if (TEXT == null) return;
+    PARSED = Core.analyze(TEXT, { mode: $('mode').value });
+    const cal = Core.calibrate(PARSED, userVpp ? (+$('vpp').value || 1) : null);
+    if (!userVpp && cal.vpp != null) $('vpp').value = cal.vpp;
+    if (!userCost) $('cost').value = +(cal.cost || 0).toFixed(8);
+    $('vpp').disabled = $('cost').disabled = PARSED.profitGiven;
+    $('vppNote').textContent = PARSED.profitGiven ? 'Profit per trade taken from the file.' : (userCost ? 'manual cost per lot' : cal.note);
+    const dep = $('dep').value === '' ? null : +$('dep').value;
+    S = Core.stats(PARSED, { vpp: +$('vpp').value || 1, cost: +$('cost').value || 0, beTol: +$('beTol').value, deposit: dep, merge: $('merge').checked });
+    render();
+  }
+
+  function card(k, v, s, c) { return `<div class="card"><div class="k">${k}</div><div class="v ${c || ''}">${v}</div>${s ? `<div class="s">${s}</div>` : ''}</div>`; }
+  function kv(rows) { return rows.map(r => `<tr><td>${r[0]}</td><td class="${r[2] || ''}">${r[1]}</td></tr>`).join(''); }
+  function gtable(rows, label) {
+    if (!rows.length) return '<tr><td>No trades</td></tr>';
+    const hasR = rows.some(r => r.r != null);
+    return `<tr><th>${label}</th><th>Trades</th><th>Wins</th><th>Losses</th><th>BE</th><th>Win rate</th><th>Net</th><th>PF</th>${hasR ? '<th>R</th>' : ''}</tr>` +
+      rows.map(r => `<tr><td>${r.key}</td><td>${r.n}</td><td>${r.wins}</td><td>${r.losses}</td><td>${r.be}</td><td>${pct(r.winRate)}</td><td class="${cls(r.net)}">${money(r.net)}</td><td>${fmtN(r.pf)}</td>${hasR ? `<td class="${cls(r.r)}">${rfmt(r.r)}</td>` : ''}</tr>`).join('');
+  }
+
+  function render() {
+    $('out').classList.remove('hidden');
+    const P = PARSED;
+    $('title').textContent = 'Summary' + (P.expert ? ' - ' + P.expert : '');
+    $('meta').innerHTML = [NAME && `<b>${NAME}</b>`, P.source, P.symbol && 'Symbol ' + P.symbol + (P.tf ? ',' + P.tf : ''),
+      isFinite(S.from) && 'Period ' + dt(S.from).slice(0, 10) + ' &rarr; ' + dt(S.to).slice(0, 10),
+      P.deposit != null && 'Initial deposit ' + fmtN(P.deposit) + ' ' + (P.currency || ''),
+      P.finalBalance != null && 'Final balance in file ' + fmtN(P.finalBalance) + ' ' + (P.currency || '')].filter(Boolean).join(' &middot; ');
+    const hasDep = S.deposit != null;
+    $('cards').innerHTML = [
+      card('Net profit', money(S.net), hasDep ? pct(S.retPct, true) + ' of deposit' : '', cls(S.net)),
+      hasDep ? card('Final balance', fmtN(S.final) + ' ' + S.currency, P.finalBalance != null ? 'file: ' + fmtN(P.finalBalance) : '') : '',
+      card('Trades', S.n, fmtN(S.perDay) + ' per weekday &middot; ' + S.tradeDays + ' days with trades'),
+      card('Win rate', pct(S.winRate), `${S.wins} W / ${S.losses} L / ${S.bes} BE &middot; excl. BE ${pct(S.winRateExBE)}`),
+      card('Profit factor', fmtN(S.pf), 'gross ' + money(S.grossProfit, false) + ' / ' + money(S.grossLoss, false), S.pf >= 1 ? 'pos' : 'neg'),
+      card('Max drawdown', money(-S.maxDD), hasDep ? pct(S.maxDDPct) + ' of peak' : '', 'neg'),
+      card('Expectancy', money(S.expectancy), 'per trade'),
+      S.rCount ? card('Total R', rfmt(S.totalR), 'avg ' + rfmt(S.avgR) + ' &middot; ' + (S.rGiven ? 'net, from file' : S.rNet ? 'net of costs, initial stop' : 'gross, initial stop'), cls(S.totalR)) : '',
+      card('Avg win / avg loss', money(S.avgWin, false) + ' / ' + money(S.avgLoss, false), 'payoff ' + fmtN(S.payoff)),
+      card('Recovery factor', fmtN(S.recovery), 'net profit / max drawdown', cls(S.recovery))
+    ].join('');
+    const warn = P.warnings.slice();
+    if (!P.profitGiven && P.source.includes('journal')) warn.push('Journal logs have no profit per deal: profit = price move x lots x ' + fmtN(+$('vpp').value, 2) + ' - ' + fmtN(+$('cost').value, 2) + ' x lots. Check the first value for your symbol (US100 / indices usually 1, gold 100, EURUSD 100000).');
+    if (!S.n) warn.push('No closed trades were found. Is this a Strategy Tester journal (with "deal #... done" lines) or a tester report?');
+    if (P.finalBalance != null && S.deposit != null && Math.abs(S.final - P.finalBalance) > Math.max(1, Math.abs(P.finalBalance) * 0.001))
+      warn.push('Computed final balance ' + fmtN(S.final) + ' differs from the file (' + fmtN(P.finalBalance) + ') - commission, swap or open positions.');
+    $('warnings').innerHTML = warn.map(w => `<li>${w}</li>`).join('');
+
+    $('perf').innerHTML = kv([
+      ['Net profit', money(S.net), cls(S.net)], ['Gross profit', money(S.grossProfit), 'pos'], ['Gross loss', money(S.grossLoss), 'neg'],
+      ['Profit factor', fmtN(S.pf)], ['Return on deposit', pct(S.retPct, true), cls(S.retPct)], ['Expectancy per trade', money(S.expectancy), cls(S.expectancy)],
+      ['Max drawdown', money(-S.maxDD) + (hasDep ? ' (' + pct(S.maxDDPct) + ')' : ''), 'neg'], ['Longest drawdown', dur(S.maxDDDur / 60000)],
+      ['Recovery factor', fmtN(S.recovery)], ['Sharpe (per trade)', fmtN(S.sharpeTrade, 3)],
+      ...(S.rCount ? [['Total R (' + S.rCount + ' trades with a known stop)', rfmt(S.totalR), cls(S.totalR)], ['Average R', rfmt(S.avgR), cls(S.avgR)],
+        ['Max drawdown in R', rfmt(-S.maxDDR), 'neg'], ['SQN (R, max 100 trades)', fmtN(S.sqn)]] : [])
+    ]);
+    $('risk').innerHTML = kv([
+      ['Total trades', S.n], ['Wins / losses / breakeven', `${S.wins} / ${S.losses} / ${S.bes}`], ['Win rate (all trades)', pct(S.winRate)],
+      ['Win rate (excl. breakeven)', pct(S.winRateExBE)], ['Average win', money(S.avgWin), 'pos'], ['Average loss', money(S.avgLoss), 'neg'],
+      ['Payoff ratio (avg win / avg loss)', fmtN(S.payoff)], ['Largest win', money(S.best), cls(S.best)], ['Largest loss', money(S.worst), cls(S.worst)],
+      ['Max consecutive wins', S.maxConsW], ['Max consecutive losses', S.maxConsL + ' (' + money(S.maxConsLossMoney) + ')'],
+      ['Trades per weekday', fmtN(S.perDay) + ' (' + S.weekdays + ' weekdays)'], ['Average holding time', dur(S.avgHold)],
+      ['Average volume', fmtN(S.avgVol) + ' lots'], ['Average initial stop', isFinite(S.avgRisk) ? fmtN(S.avgRisk, digits()) + ' price' : '&ndash;'],
+      ...(P.counts.placed != null ? [['Pending orders placed / filled / cancelled', `${P.counts.placed || 0} / ${P.counts.filled || 0} / ${P.counts.cancelled || 0}`]] : [])
+    ]);
+    $('ls').innerHTML = gtable(S.bySide, 'Side');
+    $('exits').innerHTML = gtable(S.byReason, 'Exit');
+    $('months').innerHTML = gtable(S.byMonth, 'Month');
+    $('hours').innerHTML = gtable(S.byHour, 'Hour');
+    $('wdays').innerHTML = gtable(S.byWday, 'Day');
+    drawEquity(); drawBars($('mchart'), S.byMonth.map(r => r.key), S.byMonth.map(r => r.net));
+    drawBars($('hchart'), S.byHour.map(r => r.key), S.byHour.map(r => r.net));
+    drawHist();
+    renderTrades();
+  }
+
+  function renderTrades() {
+    const fs = $('fSide').value, fr = $('fRes').value, dg = digits();
+    let rows = S.trades.filter(t => (!fs || t.side === fs) && (!fr || t.res === fr));
+    rows = rows.slice().sort((a, b) => { const x = a[sortKey], y = b[sortKey]; return (x === y ? 0 : x == null ? 1 : y == null ? -1 : x < y ? -1 : 1) * sortDir; });
+    const H = [['#', null], ['Ticket', 'ticket'], ['Side', 'side'], ['Lots', 'vol'], ['Entry time', 'entryTime'], ['Entry', 'entry'], ['Stop', 'sl0'],
+      ['Exit time', 'exitTime'], ['Exit', 'exit'], ['Exit reason', 'reason'], ['Hold', 'holdMin'], ['Points', 'pts'], ['R', 'r'], ['Profit', 'profit'], ['Balance', 'balance']];
+    $('trades').innerHTML = '<tr>' + H.map(h => `<th class="${h[1] ? 'sortable' : ''}" data-k="${h[1] || ''}">${h[0]}${sortKey === h[1] ? (sortDir > 0 ? ' &#9650;' : ' &#9660;') : ''}</th>`).join('') + '</tr>' +
+      rows.map((t, i) => `<tr><td>${i + 1}</td><td>${t.ticket}</td><td>${t.side}</td><td>${fmtN(t.vol)}</td><td>${dt(t.entryTime)}</td><td>${fmtN(t.entry, dg)}</td>` +
+        `<td>${t.sl0 != null ? fmtN(t.sl0, dg) : '&ndash;'}</td><td>${dt(t.exitTime)}</td><td title="${t.parts > 1 ? 'size-weighted exit of ' + t.parts + ' closes; first close ' + fmtN(t.firstExit, dg) + ' at ' + dt(t.firstExitTime) : ''}">${fmtN(t.exit, dg)}${t.parts > 1 ? ' *' : ''}</td><td><span class="tag ${t.reason}">${t.reason}</span></td>` +
+        `<td>${dur(t.holdMin)}</td><td class="${cls(t.pts)}">${fmtN(t.pts, dg)}</td><td class="${cls(t.r)}">${rfmt(t.r)}</td>` +
+        `<td class="${t.res === 'be' ? 'be' : cls(t.profit)}">${money(t.profit)}</td><td>${fmtN(t.balance)}</td></tr>`).join('');
+    $('tcount').textContent = rows.length + ' of ' + S.n + ' trades';
+    $('trades').querySelectorAll('th.sortable').forEach(th => th.onclick = () => { const k = th.dataset.k; if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; } renderTrades(); });
+  }
+
+  function exportCsv() {
+    const cols = ['ticket', 'sym', 'side', 'vol', 'entryTime', 'entry', 'sl0', 'tp0', 'exitTime', 'exit', 'reason', 'res', 'holdMin', 'pts', 'r', 'profit', 'balance'];
+    const v = (t, c) => c.endsWith('Time') ? dt(t[c], true) : (t[c] == null ? '' : t[c]);
+    const csv = [cols.join(',')].concat(S.trades.map(t => cols.map(c => JSON.stringify(v(t, c))).join(','))).join('\n');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    a.download = (NAME.replace(/\.[^.]+$/, '') || 'mt5_trades') + '_trades.csv';
+    a.click();
+  }
+
+  // ---------------------------------------------------------------- charts (canvas, no libraries)
+  function prep(cv) {
+    const r = window.devicePixelRatio || 1, w = cv.clientWidth || 800, h = +cv.getAttribute('height');
+    cv.width = w * r; cv.height = h * r; cv.style.height = h + 'px';
+    const g = cv.getContext('2d'); g.setTransform(r, 0, 0, r, 0, 0); g.clearRect(0, 0, w, h);
+    g.font = '11px -apple-system,Segoe UI,Roboto,Arial'; return [g, w, h];
+  }
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function niceTicks(lo, hi, n) {
+    if (hi === lo) { hi = lo + 1; lo = lo - 1; }
+    const step0 = (hi - lo) / n, mag = Math.pow(10, Math.floor(Math.log10(step0))), f = step0 / mag;
+    const step = (f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10) * mag, out = [];
+    for (let v = Math.ceil(lo / step) * step; v <= hi + step * 1e-9; v += step) out.push(+v.toFixed(10));
+    return out;
+  }
+  function drawEquity() {
+    const [g, w, h] = prep($('eq')), c = S.curve;
+    if (c.length < 2) { g.fillStyle = css('--muted'); g.fillText('No trades', 10, 20); return; }
+    const L = 70, R = 12, T = 10, B = 24, ddH = 70, mainH = h - T - B - ddH - 10;
+    const bs = c.map(p => p.b), lo = Math.min(...bs), hi = Math.max(...bs), maxDD = Math.max(...c.map(p => p.dd), 1e-9);
+    const t0 = c[0].t, t1 = c[c.length - 1].t || t0 + 1;
+    const X = (i) => L + (w - L - R) * (c.length > 1 ? i / (c.length - 1) : 0);   // trade-index axis
+    const ticks = niceTicks(lo, hi, 5), ylo = Math.min(lo, ticks[0]), yhi = Math.max(hi, ticks[ticks.length - 1]);
+    const Y = v => T + mainH * (1 - (v - ylo) / ((yhi - ylo) || 1));
+    g.strokeStyle = css('--line'); g.fillStyle = css('--muted'); g.lineWidth = 1;
+    for (const v of ticks) { const y = Y(v); g.beginPath(); g.moveTo(L, y); g.lineTo(w - R, y); g.stroke(); g.fillText(v.toLocaleString('en-US'), 4, y + 4); }
+    if (S.deposit != null) { g.setLineDash([4, 4]); g.strokeStyle = css('--grey'); g.beginPath(); g.moveTo(L, Y(S.deposit)); g.lineTo(w - R, Y(S.deposit)); g.stroke(); g.setLineDash([]); }
+    g.strokeStyle = css('--blue'); g.lineWidth = 2; g.beginPath();
+    c.forEach((p, i) => i ? g.lineTo(X(i), Y(p.b)) : g.moveTo(X(i), Y(p.b))); g.stroke();
+    // drawdown panel
+    const dT = T + mainH + 10, DY = v => dT + ddH * (v / maxDD);
+    g.fillStyle = 'rgba(239,83,80,.45)'; g.beginPath(); g.moveTo(X(0), dT);
+    c.forEach((p, i) => g.lineTo(X(i), DY(p.dd))); g.lineTo(X(c.length - 1), dT); g.closePath(); g.fill();
+    g.fillStyle = css('--muted'); g.fillText('DD', 4, dT + 12); g.fillText('-' + maxDD.toLocaleString('en-US', { maximumFractionDigits: 0 }), 4, dT + ddH);
+    // x labels: dates at 5 points
+    for (let k = 0; k <= 4; k++) { const i = Math.round((c.length - 1) * k / 4); const s = dt(c[i].t).slice(0, 10); const x = Math.min(Math.max(X(i) - 30, L), w - R - 62); g.fillText(s, x, h - 6); }
+    g.fillText('trade #', w - R - 40, dT - 2);
+  }
+  function drawBars(cv, labels, vals) {
+    const [g, w, h] = prep(cv);
+    if (!vals.length) { g.fillStyle = css('--muted'); g.fillText('No trades', 10, 20); return; }
+    const L = 62, R = 8, T = 8, B = 22, lo = Math.min(0, ...vals), hi = Math.max(0, ...vals);
+    const ticks = niceTicks(lo, hi, 4), ylo = Math.min(lo, ticks[0]), yhi = Math.max(hi, ticks[ticks.length - 1]);
+    const Y = v => T + (h - T - B) * (1 - (v - ylo) / ((yhi - ylo) || 1));
+    g.strokeStyle = css('--line'); g.fillStyle = css('--muted');
+    for (const v of ticks) { const y = Y(v); g.beginPath(); g.moveTo(L, y); g.lineTo(w - R, y); g.stroke(); g.fillText(v.toLocaleString('en-US'), 4, y + 4); }
+    const bw = (w - L - R) / vals.length, step = Math.ceil(labels.length / Math.max(1, Math.floor((w - L - R) / 48)));
+    vals.forEach((v, i) => {
+      g.fillStyle = v >= 0 ? css('--green') : css('--red');
+      const y0 = Y(0), y1 = Y(v); g.fillRect(L + i * bw + bw * 0.15, Math.min(y0, y1), bw * 0.7, Math.max(1, Math.abs(y1 - y0)));
+      if (i % step === 0) { g.fillStyle = css('--muted'); g.fillText(labels[i], L + i * bw + 2, h - 6); }
+    });
+  }
+  function drawHist() {
+    const R = S.R;
+    if (!R.length) { const [g] = prep($('rchart')); g.fillStyle = css('--muted'); g.fillText('No initial stops known - R not available', 10, 20); $('rnote').textContent = ''; return; }
+    const edges = [-Infinity, -1.5, -1.05, -0.5, -0.05, 0.05, 0.5, 1.5, 2.5, 3.5, Infinity];
+    const names = ['< -1.5', '-1.5..-1', '-1..-0.5', '-0.5..0', 'BE', '0..0.5', '0.5..1.5', '1.5..2.5', '2.5..3.5', '> 3.5'];
+    const cnt = names.map(() => 0);
+    for (const r of R) for (let k = 0; k < names.length; k++) if (r >= edges[k] && r < edges[k + 1]) { cnt[k]++; break; }
+    const [g, w, h] = prep($('rchart')), L = 30, Rr = 8, T = 8, B = 22, mx = Math.max(...cnt, 1), bw = (w - L - Rr) / names.length;
+    cnt.forEach((v, k) => {
+      const bh = (h - T - B) * v / mx;
+      g.fillStyle = k < 4 ? css('--red') : k === 4 ? css('--grey') : css('--green');
+      g.fillRect(L + k * bw + bw * 0.12, h - B - bh, bw * 0.76, bh);
+      g.fillStyle = css('--text'); if (v) g.fillText(v, L + k * bw + bw / 2 - 6, h - B - bh - 3);
+      g.fillStyle = css('--muted'); g.fillText(names[k], L + k * bw + 2, h - 6);
+    });
+    $('rnote').textContent = R.length + ' trades with a known initial stop. ' + (S.rGiven ? 'R from the file (net of costs).' : S.rNet ? 'R = profit / money at risk at the initial stop (net of costs).' : 'R before costs = points / initial stop distance.');
+  }
+
+  // ---------------------------------------------------------------- inputs
+  const readFile = f => { const rd = new FileReader(); rd.onload = () => load(Core.decode(rd.result), f.name); rd.readAsArrayBuffer(f); };
+  const drop = $('drop');
+  drop.onclick = () => $('file').click();
+  $('file').onchange = e => { if (e.target.files[0]) readFile(e.target.files[0]); };
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => { const f = e.dataTransfer.files[0]; if (f) readFile(f); });
+  $('pasteGo').onclick = () => { if ($('paste').value.trim()) load($('paste').value, 'pasted text'); };
+  $('vpp').oninput = () => { userVpp = true; };
+  $('cost').oninput = () => { userCost = true; };
+  $('cost').onchange = run;
+  $('rerun').onclick = run;
+  ['mode', 'beTol', 'dep', 'merge'].forEach(id => $(id).onchange = run);
+  $('vpp').onchange = run;
+  $('fSide').onchange = renderTrades; $('fRes').onchange = renderTrades;
+  $('csv').onclick = exportCsv;
+  window.addEventListener('resize', () => { if (S) { drawEquity(); drawBars($('mchart'), S.byMonth.map(r => r.key), S.byMonth.map(r => r.net)); drawBars($('hchart'), S.byHour.map(r => r.key), S.byHour.map(r => r.net)); drawHist(); } });
+  window.MT5Analyzer = { load };
+})();
+</script>
+</body>
+</html>
