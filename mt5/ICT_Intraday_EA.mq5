@@ -7,6 +7,8 @@
 //|   of the drop -> stop at the 5m breaker; half closed at 3R + stop |
 //|   to breakeven, the rest runs to the next Rule 1 swing (v1.10).   |
 //|   Flat 15 min before the 17:00 New York close, every day (v1.20). |
+//|   v1.40: NASDAQ and GOLD - two input sets (NQ_* / AU_*), picked   |
+//|   by the chart symbol; InpTradeNasdaq / InpTradeGold switch each. |
 //|                                                                   |
 //|   SHORT described in the comments; LONG is the mirror image.      |
 //|   Works on COMPLETED 5m candles only (no repaint). Attach to any  |
@@ -17,7 +19,7 @@
 //|   backtest of these rules LOSES money (US100 Oct 2026: -21.6R).   |
 //+------------------------------------------------------------------+
 #property copyright "ICT Intraday EA"
-#property version   "1.31"
+#property version   "1.40"
 #property strict
 
 #include <Trade/Trade.mqh>
@@ -25,14 +27,13 @@
 //------------------------------------------------------------------ inputs
 input group "Mode"
 input bool   InpLiveTrading      = true;    // true = automatic orders; false = signals / alerts only
-input double InpRiskPct          = 1.0;     // risk per trade (% of balance)
-input bool   InpUS100Only        = true;    // trade only on a US100 / NAS100 / USTEC chart
+input bool   InpTradeNasdaq      = true;    // trade NASDAQ charts (US100 / NAS100 / USTEC / NDX / NQ) with the NASDAQ inputs
+input bool   InpTradeGold        = true;    // trade GOLD charts (XAUUSD / GOLD / GC) with the GOLD inputs
 input bool   InpAlerts           = true;    // Alert() popups for setups, orders, fills and exits
 
 input group "Automation safety"
 input bool   InpAllowRealAccount = false;   // REAL accounts stay signals-only unless true (demo / prop evaluation accounts trade)
 input int    InpMaxOpen          = 0;       // max simultaneous orders + positions of this EA (0 = no limit, as in the backtest)
-input double InpMaxSpread        = 8.0;     // do not place orders while the spread is wider (price units; 0 = off)
 input double InpDailyLossPct     = 4.0;     // no new trades for the day after equity falls this % from the day's start (0 = off)
 input double InpMaxDrawdownPct   = 8.0;     // halt after equity falls this % from its peak (0 = off); InpResetPeak to resume
 input bool   InpFlattenOnLimit   = false;   // also close open positions when a loss limit is hit
@@ -46,43 +47,170 @@ input group "History"
 input int    InpH1Bars           = 30000;   // 1H candles loaded for the D/W/M/4H/1H levels (~5 years)
 input int    InpWarmupDays       = 30;      // 5m days replayed at start (levels swept / bias / pending setups)
 
-input group "Rule 1 - liquidity"
-input int    InpPivDWM           = 2;       // D / W / M swing size (candles each side)
-input int    InpPiv4H            = 10;      // 4H swing size (0 = off)
-input bool   InpLiq1H            = true;    // 1H swings with the 4H swing size
-input bool   InpSessions         = true;    // Asia / London / NY session highs and lows that are also 1H+ swings
-input int    InpSessionDays      = 7;       // session level stays sweepable for N days
-input bool   InpFvgLiq4H         = true;    // far edge of every FRESH 4H FVG
-input bool   InpFvgLiq1H         = true;    // far edge of every FRESH 1H FVG
-input bool   InpFvgLiqD          = true;    // far edge of every FRESH D FVG (v1.30)
-input bool   InpMacro            = true;    // ICT macro window highs / lows (NY: 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10)
-input int    InpMacroHours       = 24;      // macro level stays sweepable for N hours
 
-input group "Rules 2-6"
-input double InpSweepDispATR     = 1.0;     // sweep (B): two displacement candles moving >= x ATR14
-input int    InpIfvgLookback     = 48;      // IFVG: 5m / 15m FVG completed within N 5m candles before the sweep
-input bool   InpIfvg15m          = true;    // the IFVG may also be a 15m FVG
-input bool   InpMssBreak         = true;    // the break may also be a post-sweep 5m MSS
-input bool   InpBosWick          = true;    // the break may be a body close OR a wick
-input int    InpReversal         = 48;      // IFVG + break within N 5m candles of the sweep
-input int    InpDispCandles      = 2;       // displacement: >= N candles moving >= x ATR14 (or one candle body >= x ATR14)
-input double InpDispATR          = 1.0;     // displacement: x ATR14
-input bool   InpBiasFilter       = true;    // only trade in the direction of the last Rule 1 swing sweep (high swept = shorts)
-
-input group "Entry / exit"
-input int    InpFvgAfter         = 2;       // entry FVG / VI may complete N candles after the reversal
-input int    InpEntryValidMin    = 60;      // limit order valid N minutes after the reversal candle close
-input bool   InpOnePerEntry      = true;    // one trade per direction + entry zone / price
-input bool   InpPartial          = true;    // close InpPartialPct at InpTargetR, stop to breakeven, rest runs to the next Rule 1 swing
-input double InpPartialPct       = 50.0;    // % of the position closed at the first target
-input double InpTargetR          = 3.0;     // first target in R (the only target when InpPartial = false)
-input bool   InpTargetSwing      = false;   // InpPartial = false only: target = nearest major 5m swing (10 each side), else InpTargetR
-input double InpBE_at_R          = 1.0;     // stop to breakeven at +R on completed 5m candles after the fill (0 = off). With InpPartial
-input bool   InpBEBeforeTP1      = false;   // ... it is used only if this is true (else the stop moves to breakeven at the first target)
-input bool   InpEODClose         = true;    // close all trades InpEODMin minutes before the market close; no entries from then to the reopen
-input string InpEODCloseNY       = "17:00"; // market close, New York time (US100 CFD daily close 17:00; cash market 16:00)
-input int    InpEODMin           = 15;      // minutes before the close
+input group "Magic"
 input ulong  InpMagic            = 770101;  // magic number
+
+input group "NASDAQ - risk"
+input double NQ_RiskPct            = 1.0;       // NASDAQ: risk per trade (% of balance)
+
+input group "NASDAQ - spread"
+input double NQ_MaxSpread          = 8.0;       // NASDAQ: do not place orders while the spread is wider (price units; 0 = off)
+
+input group "NASDAQ - Rule 1 - liquidity"
+input int    NQ_PivDWM             = 2;         // NASDAQ: D / W / M swing size (candles each side)
+input int    NQ_Piv4H              = 10;        // NASDAQ: 4H swing size (0 = off)
+input bool   NQ_Liq1H              = true;      // NASDAQ: 1H swings with the 4H swing size
+input bool   NQ_Sessions           = true;      // NASDAQ: Asia / London / NY session highs and lows that are also 1H+ swings
+input int    NQ_SessionDays        = 7;         // NASDAQ: session level stays sweepable for N days
+input bool   NQ_FvgLiq4H           = true;      // NASDAQ: far edge of every FRESH 4H FVG
+input bool   NQ_FvgLiq1H           = true;      // NASDAQ: far edge of every FRESH 1H FVG
+input bool   NQ_FvgLiqD            = true;      // NASDAQ: far edge of every FRESH D FVG (v1.30)
+input bool   NQ_Macro              = true;      // NASDAQ: ICT macro window highs / lows (NY: 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10)
+input int    NQ_MacroHours         = 24;        // NASDAQ: macro level stays sweepable for N hours
+
+input group "NASDAQ - Rules 2-6"
+input double NQ_SweepDispATR       = 1.0;       // NASDAQ: sweep (B): two displacement candles moving >= x ATR14
+input int    NQ_IfvgLookback       = 48;        // NASDAQ: IFVG: 5m / 15m FVG completed within N 5m candles before the sweep
+input bool   NQ_Ifvg15m            = true;      // NASDAQ: the IFVG may also be a 15m FVG
+input bool   NQ_MssBreak           = true;      // NASDAQ: the break may also be a post-sweep 5m MSS
+input bool   NQ_BosWick            = true;      // NASDAQ: the break may be a body close OR a wick
+input int    NQ_Reversal           = 48;        // NASDAQ: IFVG + break within N 5m candles of the sweep
+input int    NQ_DispCandles        = 2;         // NASDAQ: displacement: >= N candles moving >= x ATR14 (or one candle body >= x ATR14)
+input double NQ_DispATR            = 1.0;       // NASDAQ: displacement: x ATR14
+input bool   NQ_BiasFilter         = true;      // NASDAQ: only trade in the direction of the last Rule 1 swing sweep (high swept = shorts)
+
+input group "NASDAQ - Entry / exit"
+input int    NQ_FvgAfter           = 2;         // NASDAQ: entry FVG / VI may complete N candles after the reversal
+input int    NQ_EntryValidMin      = 60;        // NASDAQ: limit order valid N minutes after the reversal candle close
+input bool   NQ_OnePerEntry        = true;      // NASDAQ: one trade per direction + entry zone / price
+input bool   NQ_Partial            = true;      // NASDAQ: close InpPartialPct at InpTargetR, stop to breakeven, rest runs to the next Rule 1 swing
+input double NQ_PartialPct         = 50.0;      // NASDAQ: % of the position closed at the first target
+input double NQ_TargetR            = 3.0;       // NASDAQ: first target in R (the only target when InpPartial = false)
+input bool   NQ_TargetSwing        = false;     // NASDAQ: InpPartial = false only: target = nearest major 5m swing (10 each side), else InpTargetR
+input double NQ_BE_at_R            = 1.0;       // NASDAQ: stop to breakeven at +R on completed 5m candles after the fill (0 = off). With InpPartial
+input bool   NQ_BEBeforeTP1        = false;     // NASDAQ: ... it is used only if this is true (else the stop moves to breakeven at the first target)
+input bool   NQ_EODClose           = true;      // NASDAQ: close all trades InpEODMin minutes before the market close; no entries from then to the reopen
+input string NQ_EODCloseNY         = "17:00";   // NASDAQ: market close, New York time (US100 CFD daily close 17:00; cash market 16:00)
+input int    NQ_EODMin             = 15;        // NASDAQ: minutes before the close
+
+input group "GOLD - risk"
+input double AU_RiskPct            = 1.0;       // GOLD: risk per trade (% of balance)
+
+input group "GOLD - spread"
+input double AU_MaxSpread          = 1.0;       // GOLD: do not place orders while the spread is wider (price units; 0 = off)
+
+input group "GOLD - Rule 1 - liquidity"
+input int    AU_PivDWM             = 2;         // GOLD: D / W / M swing size (candles each side)
+input int    AU_Piv4H              = 10;        // GOLD: 4H swing size (0 = off)
+input bool   AU_Liq1H              = true;      // GOLD: 1H swings with the 4H swing size
+input bool   AU_Sessions           = true;      // GOLD: Asia / London / NY session highs and lows that are also 1H+ swings
+input int    AU_SessionDays        = 7;         // GOLD: session level stays sweepable for N days
+input bool   AU_FvgLiq4H           = true;      // GOLD: far edge of every FRESH 4H FVG
+input bool   AU_FvgLiq1H           = true;      // GOLD: far edge of every FRESH 1H FVG
+input bool   AU_FvgLiqD            = true;      // GOLD: far edge of every FRESH D FVG (v1.30)
+input bool   AU_Macro              = true;      // GOLD: ICT macro window highs / lows (NY: 02:33-03:00, 04:03-04:30, 08:50-09:10, 09:50-10:10, 10:50-11:10, 11:50-12:10, 13:10-13:40, 15:15-15:45, 19:50-20:10, 20:50-21:10)
+input int    AU_MacroHours         = 24;        // GOLD: macro level stays sweepable for N hours
+
+input group "GOLD - Rules 2-6"
+input double AU_SweepDispATR       = 1.0;       // GOLD: sweep (B): two displacement candles moving >= x ATR14
+input int    AU_IfvgLookback       = 48;        // GOLD: IFVG: 5m / 15m FVG completed within N 5m candles before the sweep
+input bool   AU_Ifvg15m            = true;      // GOLD: the IFVG may also be a 15m FVG
+input bool   AU_MssBreak           = true;      // GOLD: the break may also be a post-sweep 5m MSS
+input bool   AU_BosWick            = true;      // GOLD: the break may be a body close OR a wick
+input int    AU_Reversal           = 48;        // GOLD: IFVG + break within N 5m candles of the sweep
+input int    AU_DispCandles        = 2;         // GOLD: displacement: >= N candles moving >= x ATR14 (or one candle body >= x ATR14)
+input double AU_DispATR            = 1.0;       // GOLD: displacement: x ATR14
+input bool   AU_BiasFilter         = true;      // GOLD: only trade in the direction of the last Rule 1 swing sweep (high swept = shorts)
+
+input group "GOLD - Entry / exit"
+input int    AU_FvgAfter           = 2;         // GOLD: entry FVG / VI may complete N candles after the reversal
+input int    AU_EntryValidMin      = 60;        // GOLD: limit order valid N minutes after the reversal candle close
+input bool   AU_OnePerEntry        = true;      // GOLD: one trade per direction + entry zone / price
+input bool   AU_Partial            = true;      // GOLD: close InpPartialPct at InpTargetR, stop to breakeven, rest runs to the next Rule 1 swing
+input double AU_PartialPct         = 50.0;      // GOLD: % of the position closed at the first target
+input double AU_TargetR            = 3.0;       // GOLD: first target in R (the only target when InpPartial = false)
+input bool   AU_TargetSwing        = false;     // GOLD: InpPartial = false only: target = nearest major 5m swing (10 each side), else InpTargetR
+input double AU_BE_at_R            = 1.0;       // GOLD: stop to breakeven at +R on completed 5m candles after the fill (0 = off). With InpPartial
+input bool   AU_BEBeforeTP1        = false;     // GOLD: ... it is used only if this is true (else the stop moves to breakeven at the first target)
+input bool   AU_EODClose           = true;      // GOLD: close all trades InpEODMin minutes before the market close; no entries from then to the reopen
+input string AU_EODCloseNY         = "17:00";   // GOLD: market close, New York time (US100 CFD daily close 17:00; cash market 16:00)
+input int    AU_EODMin             = 15;        // GOLD: minutes before the close
+
+//------------------------------------------------------------------ the active set (NASDAQ or GOLD), chosen in OnInit
+double InpRiskPct;
+double InpMaxSpread;
+int    InpPivDWM;
+int    InpPiv4H;
+bool   InpLiq1H;
+bool   InpSessions;
+int    InpSessionDays;
+bool   InpFvgLiq4H;
+bool   InpFvgLiq1H;
+bool   InpFvgLiqD;
+bool   InpMacro;
+int    InpMacroHours;
+double InpSweepDispATR;
+int    InpIfvgLookback;
+bool   InpIfvg15m;
+bool   InpMssBreak;
+bool   InpBosWick;
+int    InpReversal;
+int    InpDispCandles;
+double InpDispATR;
+bool   InpBiasFilter;
+int    InpFvgAfter;
+int    InpEntryValidMin;
+bool   InpOnePerEntry;
+bool   InpPartial;
+double InpPartialPct;
+double InpTargetR;
+bool   InpTargetSwing;
+double InpBE_at_R;
+bool   InpBEBeforeTP1;
+bool   InpEODClose;
+string InpEODCloseNY;
+int    InpEODMin;
+bool   g_isGold = false, g_isNasdaq = false, g_marketOK = false;
+
+void LoadMarketInputs()
+  {
+   InpRiskPct = g_isGold ? AU_RiskPct : NQ_RiskPct;
+   InpMaxSpread = g_isGold ? AU_MaxSpread : NQ_MaxSpread;
+   InpPivDWM = g_isGold ? AU_PivDWM : NQ_PivDWM;
+   InpPiv4H = g_isGold ? AU_Piv4H : NQ_Piv4H;
+   InpLiq1H = g_isGold ? AU_Liq1H : NQ_Liq1H;
+   InpSessions = g_isGold ? AU_Sessions : NQ_Sessions;
+   InpSessionDays = g_isGold ? AU_SessionDays : NQ_SessionDays;
+   InpFvgLiq4H = g_isGold ? AU_FvgLiq4H : NQ_FvgLiq4H;
+   InpFvgLiq1H = g_isGold ? AU_FvgLiq1H : NQ_FvgLiq1H;
+   InpFvgLiqD = g_isGold ? AU_FvgLiqD : NQ_FvgLiqD;
+   InpMacro = g_isGold ? AU_Macro : NQ_Macro;
+   InpMacroHours = g_isGold ? AU_MacroHours : NQ_MacroHours;
+   InpSweepDispATR = g_isGold ? AU_SweepDispATR : NQ_SweepDispATR;
+   InpIfvgLookback = g_isGold ? AU_IfvgLookback : NQ_IfvgLookback;
+   InpIfvg15m = g_isGold ? AU_Ifvg15m : NQ_Ifvg15m;
+   InpMssBreak = g_isGold ? AU_MssBreak : NQ_MssBreak;
+   InpBosWick = g_isGold ? AU_BosWick : NQ_BosWick;
+   InpReversal = g_isGold ? AU_Reversal : NQ_Reversal;
+   InpDispCandles = g_isGold ? AU_DispCandles : NQ_DispCandles;
+   InpDispATR = g_isGold ? AU_DispATR : NQ_DispATR;
+   InpBiasFilter = g_isGold ? AU_BiasFilter : NQ_BiasFilter;
+   InpFvgAfter = g_isGold ? AU_FvgAfter : NQ_FvgAfter;
+   InpEntryValidMin = g_isGold ? AU_EntryValidMin : NQ_EntryValidMin;
+   InpOnePerEntry = g_isGold ? AU_OnePerEntry : NQ_OnePerEntry;
+   InpPartial = g_isGold ? AU_Partial : NQ_Partial;
+   InpPartialPct = g_isGold ? AU_PartialPct : NQ_PartialPct;
+   InpTargetR = g_isGold ? AU_TargetR : NQ_TargetR;
+   InpTargetSwing = g_isGold ? AU_TargetSwing : NQ_TargetSwing;
+   InpBE_at_R = g_isGold ? AU_BE_at_R : NQ_BE_at_R;
+   InpBEBeforeTP1 = g_isGold ? AU_BEBeforeTP1 : NQ_BEBeforeTP1;
+   InpEODClose = g_isGold ? AU_EODClose : NQ_EODClose;
+   InpEODCloseNY = g_isGold ? AU_EODCloseNY : NQ_EODCloseNY;
+   InpEODMin = g_isGold ? AU_EODMin : NQ_EODMin;
+  }
+
+
 
 //------------------------------------------------------------------ small helpers
 int    IMax(int a, int b) { return a > b ? a : b; }
@@ -309,7 +437,12 @@ int OnInit()
    trade.SetExpertMagicNumber(InpMagic);
    g_hedging = (AccountInfoInteger(ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_HEDGING);
    if(!g_hedging) Print("Netting account: the EA holds one order / position at a time (the model can overlap trades).");
-   if(InpUS100Only && !IsUS100()) Print("Not a US100 chart - EA idle. Symbol: ", g_sym);
+   g_isGold   = IsGold();
+   g_isNasdaq = !g_isGold && IsUS100();
+   g_marketOK = (g_isNasdaq && InpTradeNasdaq) || (g_isGold && InpTradeGold);
+   LoadMarketInputs();                                         // the NASDAQ or the GOLD input set for this chart
+   if(!g_marketOK) Print("Not a NASDAQ / GOLD chart, or that market is switched off - EA idle. Symbol: ", g_sym);
+   else Print("Market: ", g_isGold ? "GOLD" : "NASDAQ", " - using the ", g_isGold ? "GOLD" : "NASDAQ", " inputs.");
 
    long login = AccountInfoInteger(ACCOUNT_LOGIN);
    g_gvPeak   = "ICTINTRA_PEAK_"   + IntegerToString((int)login);
@@ -353,6 +486,12 @@ bool LiveAllowed()
    if(!InpLiveTrading) return false;
    if(AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_TRADE_MODE_REAL && !InpAllowRealAccount) return false;
    return true;
+  }
+
+bool IsGold()
+  {
+   string s = g_sym; StringToUpper(s);
+   return StringFind(s, "XAU") >= 0 || StringFind(s, "GOLD") >= 0 || StringFind(s, "GC") == 0;
   }
 
 bool IsUS100()
@@ -416,7 +555,7 @@ bool InitEngine()
 //+------------------------------------------------------------------+
 void OnTick()
   {
-   if(InpUS100Only && !IsUS100()) return;
+   if(!g_marketOK) return;
    if(!g_ready) { if(!InitEngine()) return; }
 
    g_halted = RiskHalted();
@@ -1392,7 +1531,7 @@ void ShowStatus()
    int alive = 0, pend = 0, open = 0;
    for(int i = 0; i < ArraySize(g_lv); i++) if(!g_lv[i].used) alive++;
    for(int k = 0; k < ArraySize(g_sg); k++) { if(g_sg[k].state == 1) pend++; if(g_sg[k].state == 2) open++; }
-   Comment("ICT Intraday EA  |  ", LiveAllowed() ? "AUTOMATIC" : "SIGNALS ONLY", g_halted ? "  |  HALTED (loss limit)" : "",
+   Comment("ICT Intraday EA  |  ", g_isGold ? "GOLD" : "NASDAQ", " inputs  |  ", LiveAllowed() ? "AUTOMATIC" : "SIGNALS ONLY", g_halted ? "  |  HALTED (loss limit)" : "",
            "\nBias: ", g_biasTx,
            "\nLive Rule 1 levels: ", alive, "   swept levels waiting for IFVG + break: ", ArraySize(g_sw),
            "\nModel: pending orders ", pend, ", open trades ", open,

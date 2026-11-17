@@ -96,6 +96,16 @@ order with the same comment (`ICTi S/L <reversal time>`) is adopted. The chart c
 waiting sweeps, pending/open model trades and the model's R since start. Safety inputs (daily loss, max drawdown, max
 spread, real-account lock, `InpMaxOpen`) work as in the swing EA. Netting accounts: one order/position at a time.
 
+## NASDAQ and GOLD (v1.40)
+`InpUS100Only` is gone. **`InpTradeNasdaq`** and **`InpTradeGold`** switch each market on or off, and every trading input
+exists twice: **`NQ_*`** (groups "NASDAQ - ...") and **`AU_*`** (groups "GOLD - ..."): risk %, max spread, Rule 1
+liquidity, rules 2-6, entry / exit (partial, breakeven, end-of-day close). When the EA starts it reads the chart symbol:
+XAU / GOLD / GC* -> the GOLD inputs, US100 / NAS100 / USTEC / NDX / NQ -> the NASDAQ inputs; any other symbol, or a market
+that is switched off -> the EA stays idle. The chart comment shows which set is in use. Both sets start with the same
+defaults except the max spread (NASDAQ 8.0, GOLD 1.0 price units) - set your gold values in the GOLD groups.
+Shared by both: mode, safety / loss limits (account-wide), time zone, history, magic number. Attach one copy of the EA to a
+NASDAQ chart and one to a gold chart; they keep apart by symbol. The rules have only been backtested on US100.
+
 ## Known differences from the Python backtest
 - Before the 5m warm-up, levels count as swept by a 1H wick + close back (the backtest uses 5m candles throughout).
 - Session highs/lows: the backtest checks the 1H+ swing filter against all swings, including later ones; the EA activates a
